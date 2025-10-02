@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
      <button id="theme-toggle" class="theme-toggle">🌙</button>
 
   <header>
@@ -15,6 +16,15 @@
 
     
     <main class="gallery">
+    <header>
+      <h1>🎨 CSS Art Museum</h1>
+      <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
+      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    </header>
+    
+    <main class="gallery">
+      <!-- Example art cards -->
+
       <div class="art-card">
         <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
         <p>Sample Art by Shamli</p>
@@ -31,11 +41,17 @@
         <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
         <p>Glowing Star by Rohith</p>
       </div>
-    </main>
+
+      <div class="art-card">
+        <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
+        <p>Golden Night by Irfan</p>
+      </div>
+
 
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
+
 
     <script>
     const toggleBtn = document.getElementById("theme-toggle");
