@@ -4,60 +4,210 @@
     <meta charset="UTF-8" />
     <title>CSS Art Museum</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   </head>
   <body>
+    <!-- Top Navigation:designed by Nitin Yadav -->
+    <div class="nav-header">
+        <canvas id="headerCanvas"></canvas>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-palette logo-icon"></i>
+                <span>CSS Art Museum</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="#contribute"><i class="fas fa-code-branch"></i> Contribute</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle">🌙 Dark</button></li>
+            </ul>
+        </nav>
+    </div>
+
     <header>
       <h1>🎨 CSS Art Museum</h1>
       <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
-      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
     </header>
     
     <main class="gallery">
       <!-- Example art cards -->
       <div class="art-card">
-        <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
+        <iframe src="css-art-museum/arts/sample.html" title="Sample CSS Art"></iframe>
         <p>Sample Art by Shamli</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
+        <iframe src="css-art-museum/arts/geometry.html" title="Geometric CSS Art"></iframe>
         <p>Geometric Art by Shamli</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
+        <iframe src="css-art-museum/arts/rotating_cube.html" title="Rotating Cube"></iframe>
         <p>Geometric Art by Hardik</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
+        <iframe src="css-art-museum/arts/Rohith_stars.html" title="Glowing Star"></iframe>
         <p>Glowing Star by Rohith</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
+        <iframe src="css-art-museum/arts/irfan-goldennight.html" title="Golden Night"></iframe>
         <p>Golden Night by Irfan</p>
       </div>
+    </main>
 
+    <!-- footer:made by Nitin Yadav -->
     <footer>
-      <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
+        <canvas id="footerCanvas"></canvas>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle"></i>🎨 CSS Art Museum</h3>
+                <p>A curated collection of stunning CSS art designs and creative experiments created by the open source community.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3><i class="fas fa-link"></i> Quick Links</h3>
+                <ul>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                    <li><a href="#contribute"><i class="fas fa-code-branch"></i> Contribute</a></li>
+                    <li><a href="https://hacktoberfest.com"><i class="fas fa-beer"></i> Hacktoberfest</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section" id="footer">
+                <h3><i class="fas fa-share-alt"></i>Connect</h3>
+                <div class="social-links">
+                    <a href="https://x.com/NITINYADAV2188" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Shamli-Singh-Yadav" title="GitHub"><i class="fab fa-github"></i></a>
+                    <!-- <a href="#" title="CodePen"><i class="fab fa-codepen"></i></a> -->
+                    <a href="https://discord.com/yadavji_41983" title="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p><i class="fas fa-heart"></i> Made with love by the Open Source Community | Hacktoberfest 2025</p>
+        </div>
     </footer>
     <script>
-      const toggleBtn = document.getElementById("themeToggle");
-      const body = document.body;
+// Three.js Header Background: designed by Nitin Yadav
+        function initHeaderBackground() {
+            const canvas = document.getElementById('headerCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            camera.position.z = 5;
 
-      // Load saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark-theme");
-        toggleBtn.textContent = "☀️ Light";
-      }
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            for (let i = 0; i < 500; i++) {
+                vertices.push(
+                    Math.random() * 20 - 10,
+                    Math.random() * 20 - 10,
+                    Math.random() * 20 - 10
+                );
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            const material = new THREE.PointsMaterial({ 
+                color: 0x00d4ff, 
+                size: 0.05,
+                transparent: true,
+                opacity: 0.6
+            });
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
 
-      toggleBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-theme");
-        if (body.classList.contains("dark-theme")) {
-          toggleBtn.textContent = "☀️ Light";
-          localStorage.setItem("theme", "dark");
-        } else {
-          toggleBtn.textContent = "🌙 Dark";
-          localStorage.setItem("theme", "light");
+            function animate() {
+                requestAnimationFrame(animate);
+                points.rotation.x += 0.0005;
+                points.rotation.y += 0.001;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            });
         }
-      });
+
+        // Three.js Footer Background
+        function initFooterBackground() {
+            const canvas = document.getElementById('footerCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            camera.position.z = 5;
+
+            const geometry = new THREE.TorusGeometry(3, 0.3, 16, 100);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0x00d4ff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.2
+            });
+            const torus = new THREE.Mesh(geometry, material);
+            scene.add(torus);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                torus.rotation.x += 0.005;
+                torus.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            });
+        }
+
+        // Initialize Three.js backgrounds when page loads
+        window.addEventListener('load', () => {
+            initHeaderBackground();
+            initFooterBackground();
+        });
+
+        // Dark mode toggle
+        const toggleBtn = document.getElementById("themeToggle");
+        const body = document.body;
+
+        // Load saved theme
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark-theme");
+            toggleBtn.textContent = "☀️ Light";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            body.classList.toggle("dark-theme");
+            if (body.classList.contains("dark-theme")) {
+                toggleBtn.textContent = "☀️ Light";
+                localStorage.setItem("theme", "dark");
+            } else {
+                toggleBtn.textContent = "🌙 Dark";
+                localStorage.setItem("theme", "light");
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
     </script>
   </body>
 </html>
