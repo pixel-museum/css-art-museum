@@ -33,38 +33,45 @@ header p {
 /* Gallery Grid */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto 40px;
+  padding: 0 10px;
 }
 
 /* Art Card Styling */
 .art-card {
   background-color: #fff;
   border-radius: 12px;
-  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column ;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .art-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .art-card iframe {
   width: 100%;
-  height: 250px;
+  height: 320px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
+  display:block;
 }
 
 .art-card p {
   text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
+  padding:12px;
+  font-weight: 500;
+  font-size: 1rem;
   color: #2c3e50;
+  background: #fafafa;
+  border-top: 1px solid #eee; 
 }
 
 /* Footer */
@@ -73,4 +80,10 @@ footer {
   margin-top: 40px;
   font-size: 0.9rem;
   color: #777;
+}
+
+@media (max-width: 480px) {
+  .art-card iframe {
+    height: 260px;
+  }
 }
