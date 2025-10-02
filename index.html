@@ -15,23 +15,68 @@
     <main class="gallery">
       <!-- Example art cards -->
       <div class="art-card">
-        <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
+        <div class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading artwork...</div>
+        </div>
+        <div class="error-overlay">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message">Failed to load artwork</div>
+          <button class="retry-button" onclick="retryIframe(this)">Retry</button>
+        </div>
+        <iframe src="arts/sample.html" title="Sample CSS Art" onload="hideLoading(this)" onerror="showError(this)"></iframe>
         <p>Sample Art by Shamli</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
+        <div class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading artwork...</div>
+        </div>
+        <div class="error-overlay">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message">Failed to load artwork</div>
+          <button class="retry-button" onclick="retryIframe(this)">Retry</button>
+        </div>
+        <iframe src="arts/geometry.html" title="Geometric CSS Art" onload="hideLoading(this)" onerror="showError(this)"></iframe>
         <p>Geometric Art by Shamli</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
+        <div class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading artwork...</div>
+        </div>
+        <div class="error-overlay">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message">Failed to load artwork</div>
+          <button class="retry-button" onclick="retryIframe(this)">Retry</button>
+        </div>
+        <iframe src="arts/rotating_cube.html" title="Rotating Cube" onload="hideLoading(this)" onerror="showError(this)"></iframe>
         <p>Geometric Art by Hardik</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
+        <div class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading artwork...</div>
+        </div>
+        <div class="error-overlay">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message">Failed to load artwork</div>
+          <button class="retry-button" onclick="retryIframe(this)">Retry</button>
+        </div>
+        <iframe src="arts/Rohith_stars.html" title="Glowing Star" onload="hideLoading(this)" onerror="showError(this)"></iframe>
         <p>Glowing Star by Rohith</p>
       </div>
       <div class="art-card">
-        <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
+        <div class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading artwork...</div>
+        </div>
+        <div class="error-overlay">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message">Failed to load artwork</div>
+          <button class="retry-button" onclick="retryIframe(this)">Retry</button>
+        </div>
+        <iframe src="arts/irfan-goldennight.html" title="Golden Night" onload="hideLoading(this)" onerror="showError(this)"></iframe>
         <p>Golden Night by Irfan</p>
       </div>
 
@@ -57,6 +102,77 @@
           toggleBtn.textContent = "🌙 Dark";
           localStorage.setItem("theme", "light");
         }
+      });
+
+      // Loading and Error handling functions
+      function hideLoading(iframe) {
+        const artCard = iframe.parentElement;
+        const loadingOverlay = artCard.querySelector('.loading-overlay');
+        const errorOverlay = artCard.querySelector('.error-overlay');
+        
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('hidden');
+          setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+          }, 300);
+        }
+        
+        // Hide error overlay if it was showing
+        if (errorOverlay) {
+          errorOverlay.classList.remove('show');
+        }
+      }
+
+      function showError(iframe) {
+        const artCard = iframe.parentElement;
+        const loadingOverlay = artCard.querySelector('.loading-overlay');
+        const errorOverlay = artCard.querySelector('.error-overlay');
+        
+        // Hide loading overlay
+        if (loadingOverlay) {
+          loadingOverlay.style.display = 'none';
+        }
+        
+        // Show error overlay
+        if (errorOverlay) {
+          errorOverlay.classList.add('show');
+        }
+      }
+
+      function retryIframe(button) {
+        const artCard = button.closest('.art-card');
+        const iframe = artCard.querySelector('iframe');
+        const loadingOverlay = artCard.querySelector('.loading-overlay');
+        const errorOverlay = artCard.querySelector('.error-overlay');
+        
+        // Hide error overlay
+        errorOverlay.classList.remove('show');
+        
+        // Show loading overlay
+        loadingOverlay.style.display = 'flex';
+        loadingOverlay.classList.remove('hidden');
+        
+        // Reload iframe
+        const src = iframe.src;
+        iframe.src = '';
+        setTimeout(() => {
+          iframe.src = src;
+        }, 100);
+      }
+
+      // Add timeout for loading states (fallback if onload doesn't fire)
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.querySelectorAll('.loading-overlay:not(.hidden)').forEach(overlay => {
+            const artCard = overlay.parentElement;
+            const iframe = artCard.querySelector('iframe');
+            
+            // If iframe still hasn't loaded after 5 seconds, show error
+            if (iframe && !iframe.contentDocument) {
+              showError(iframe);
+            }
+          });
+        }, 5000);
       });
     </script>
   </body>

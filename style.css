@@ -45,7 +45,7 @@ header p {
   background-color: #fff;
   border-radius: 12px;
   padding: 10px;
-  
+  position: relative;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -135,4 +135,112 @@ footer {
 
 body:not(.dark-theme) #themeToggle {
   color: #333; 
+}
+
+/* Loading States */
+
+.loading-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 250px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e3e3e3;
+  border-top: 4px solid #2c3e50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Error State */
+.error-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 250px;
+  background: #fff5f5;
+  border: 2px dashed #e53e3e;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+}
+
+.error-overlay.show {
+  display: flex;
+}
+
+.error-icon {
+  font-size: 2rem;
+  color: #e53e3e;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.retry-button {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s;
+}
+
+.retry-button:hover {
+  background: #c53030;
+}
+
+/* Dark theme support for loading/error states */
+.dark-theme .loading-overlay {
+  background: #2d2d2d;
+}
+
+.dark-theme .loading-text {
+  color: #ccc;
+}
+
+.dark-theme .error-overlay {
+  background: #2d1b1b;
+  border-color: #e53e3e;
 }
