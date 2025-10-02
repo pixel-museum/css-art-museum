@@ -74,3 +74,85 @@ footer {
   font-size: 0.9rem;
   color: #777;
 }
+
+/* ============================
+   Dark Mode Support
+   ============================ */
+:root {
+  --bg-color: #f4f4f9;
+  --text-color: #333;
+  --header-color: #2c3e50;
+  --subtext-color: #555;
+  --card-bg: #fff;
+  --card-text: #2c3e50;
+  --card-shadow: rgba(0,0,0,0.1);
+  --card-shadow-hover: rgba(0,0,0,0.2);
+  --footer-color: #777;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --header-color: #f1f1f1;
+  --subtext-color: #bbbbbb;
+  --card-bg: #1e1e1e;
+  --card-text: #f1f1f1;
+  --card-shadow: rgba(255,255,255,0.05);
+  --card-shadow-hover: rgba(255,255,255,0.15);
+  --footer-color: #aaa;
+}
+
+/* Apply Theme Variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header h1 {
+  color: var(--header-color);
+}
+
+header p {
+  color: var(--subtext-color);
+}
+
+.art-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+.art-card:hover {
+  box-shadow: 0 8px 20px var(--card-shadow-hover);
+}
+
+.art-card p {
+  color: var(--card-text);
+}
+
+footer {
+  color: var(--footer-color);
+}
+
+/* ============================
+   Toggle Button Styling
+   ============================ */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 0 2px 8px var(--card-shadow);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px var(--card-shadow-hover);
+}

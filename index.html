@@ -1,37 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <title>CSS Art Museum</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>🎨 CSS Art Museum</h1>
-      <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
-    </header>
+     <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+  <header>
+    <h1>🎨 CSS Art Museum</h1>
+    <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
+  </header>
+
     
-  <main class="gallery">
-    <!-- Example art card -->
-    <div class="art-card">
-      <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
-      <p>Sample Art by Shamli</p>
-    </div>
-    <div class="art-card">
-      <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
-      <p>Geometric Art by Shamli</p>
-    </div>
-    <div class="art-card">
-      <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
-      <p>Geometric Art by Hardik</p>
-    </div>
-    <div class="art-card">
+    <main class="gallery">
+      <div class="art-card">
+        <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
+        <p>Sample Art by Shamli</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
+        <p>Geometric Art by Shamli</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
+        <p>Geometric Art by Hardik</p>
+      </div>
+      <div class="art-card">
         <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
         <p>Glowing Star by Rohith</p>
       </div>
+    </main>
 
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
+
+    <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    // Load saved theme
+    if (localStorage.getItem("theme")) {
+      root.setAttribute("data-theme", localStorage.getItem("theme"));
+      toggleBtn.textContent = localStorage.getItem("theme") === "dark" ? "☀️" : "🌙";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      toggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
+    });
+  </script>
+
   </body>
 </html>
