@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Art Museum</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
@@ -34,16 +35,19 @@
         <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
         <p>Golden Night by Irfan</p>
       </div>
+    </main>
 
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
+    
     <script>
       const toggleBtn = document.getElementById("themeToggle");
       const body = document.body;
 
       // Load saved theme
-      if (localStorage.getItem("theme") === "dark") {
+      const savedTheme = sessionStorage.getItem("theme");
+      if (savedTheme === "dark") {
         body.classList.add("dark-theme");
         toggleBtn.textContent = "☀️ Light";
       }
@@ -52,10 +56,10 @@
         body.classList.toggle("dark-theme");
         if (body.classList.contains("dark-theme")) {
           toggleBtn.textContent = "☀️ Light";
-          localStorage.setItem("theme", "dark");
+          sessionStorage.setItem("theme", "dark");
         } else {
           toggleBtn.textContent = "🌙 Dark";
-          localStorage.setItem("theme", "light");
+          sessionStorage.setItem("theme", "light");
         }
       });
     </script>
