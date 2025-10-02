@@ -34,10 +34,11 @@ header p {
 /* Gallery Grid */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto 40px;
+  padding: 0 10px;
 }
 
 /* Art Card Styling */
@@ -57,7 +58,7 @@ header p {
 
 .art-card iframe {
   width: 100%;
-  height: 300px;
+  height: 250px;
   border: none;
   border-radius: 8px;
   overflow: hidden;   
@@ -66,13 +67,6 @@ header p {
 
 .art-card iframe::-webkit-scrollbar {
   display: none; 
-}
-
-.art-card iframe {
-  width: 100%;
-  height: 250px;
-  border: none;
-  border-radius: 8px;
 }
 
 .art-card p {
@@ -135,4 +129,79 @@ footer {
 
 body:not(.dark-theme) #themeToggle {
   color: #333; 
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 5px;
+  }
+  
+  .art-card {
+    padding: 8px;
+  }
+  
+  .art-card iframe {
+    height: 220px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+  }
+  
+  .theme-toggle {
+    top: 5px;
+    right: 10px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet Design */
+@media (min-width: 481px) and (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  
+  .art-card iframe {
+    height: 240px;
+  }
+  
+  body {
+    padding: 15px;
+  }
+}
+
+/* Desktop Design */
+@media (min-width: 769px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .art-card iframe {
+    height: 250px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  .art-card iframe {
+    height: 280px;
+  }
 }
