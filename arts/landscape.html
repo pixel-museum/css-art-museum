@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenic Landscape</title>
+    <style>
+        body {
+            margin: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            background: linear-gradient(#8fd3fe, #e0f3ff 55%, #dff2d6 56%, #eef8ea 60%);
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            top: 6%;
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #fff7a6 60%, #ffd24d 80%);
+            box-shadow: 0 0 40px 14px rgba(255, 233, 119, 0.7);
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: #fff;
+            border-radius: 50px;
+            box-shadow: 30px 10px #fff, -20px 15px #fff, 50px 15px #fff;
+            opacity: 0.9;
+            animation: float 50s linear infinite;
+        }
+
+        .cloud.small {
+            width: 70px;
+            height: 40px;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateX(-30%);
+            }
+
+            to {
+                transform: translateX(120%);
+            }
+        }
+
+        /* Mountains */
+        .mountain {
+            position: absolute;
+            bottom: 22%;
+            width: 70%;
+            height: 100%;
+            background: #7f96a7;
+            clip-path: polygon(0% 100%, 25% 60%, 50% 90%, 75% 55%, 100% 100%);
+        }
+
+        .m1 {
+            left: -5%;
+            background: #a3b7c9;
+        }
+
+        .m2 {
+            left: 20%;
+            background: #7f96a7;
+        }
+
+        .m3 {
+            left: 45%;
+            background: #5f7486;
+        }
+
+        /* Land */
+        .land {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 28%;
+            background: linear-gradient(#bfe6a8, #66b36a);
+            z-index: 1;
+        }
+
+        /* Trees */
+        .tree {
+    position: absolute;
+    bottom: 28%;
+    left: 0;
+    width: 12px;
+    height: 100px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    --scale: 1;
+    transform: translateX(-50%) scale(var(--scale));
+    transform-origin: bottom center;
+}
+
+.trunk {
+    width: 12px;
+    height: 40px;
+    background: #6b4f36;
+}
+
+.foliage {
+    width: 60px;
+    height: 60px;
+    background: #2f8f46;
+    border-radius: 50%;
+    margin-bottom: -1px; 
+}
+
+.foliage.alt {
+    background: #3aa259;
+}
+
+
+        /* Tree variants */
+        .tree.sm {
+            --scale: 0.65;
+            opacity: 0.95;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <div class="sun"></div>
+
+        <!-- Clouds -->
+        <div class="cloud small" style="top:12%; left:-20%; animation-duration:55s;"></div>
+        <div class="cloud small" style="top:18%; left:10%; animation-duration:48s;"></div>
+        <div class="cloud small" style="top:10%; left:55%; animation-duration:52s;"></div>
+
+        <!-- Mountains -->
+        <div class="mountain m1"></div>
+        <div class="mountain m2"></div>
+        <div class="mountain m3"></div>
+
+        <!-- Trees -->
+        <div class="tree sm" style="left:18%">
+            <div class="foliage"></div>
+            <div class="trunk"></div>
+        </div>
+        <div class="tree sm" style="left:32%">
+            <div class="foliage alt"></div>
+            <div class="trunk"></div>
+        </div>
+        <div class="tree sm" style="left:48%">
+            <div class="foliage"></div>
+            <div class="trunk"></div>
+        </div>
+        <div class="tree sm" style="left:66%">
+            <div class="foliage alt"></div>
+            <div class="trunk"></div>
+        </div>
+        <div class="tree sm" style="left:82%">
+            <div class="foliage"></div>
+            <div class="trunk"></div>
+        </div>
+
+        <!-- Land -->
+        <div class="land"></div>
+    </div>
+</body>
+
+</html>
