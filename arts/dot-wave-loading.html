@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dot-wave {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot-wave div {
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(45deg,#ff6b6b,#feca57);
+    border-radius: 50%;
+    animation: wave 1s infinite ease-in-out;
+  }
+
+  .dot-wave div:nth-child(2) { animation-delay: 0.2s; }
+  .dot-wave div:nth-child(3) { animation-delay: 0.4s; }
+  .dot-wave div:nth-child(4) { animation-delay: 0.6s; }
+  .dot-wave div:nth-child(5) { animation-delay: 0.8s; }
+
+  @keyframes wave {
+    0%, 100% { transform: scale(0.5); opacity: 0.5; }
+    50% { transform: scale(1.5); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+  <div class="dot-wave">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+</html>
