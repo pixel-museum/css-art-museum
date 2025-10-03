@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art - Abstract Sunset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .art-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(180deg,
+                    #ff6b6b 0%,
+                    #ff8e53 25%,
+                    #feca57 50%,
+                    #ee5a6f 75%,
+                    #341f97 100%);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .sun {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #fff5b4 0%, #ffb347 60%, #ff6b6b 100%);
+            border-radius: 50%;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 80px rgba(255, 179, 71, 0.8),
+                0 0 120px rgba(255, 107, 107, 0.4);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .mountain-1 {
+            border-width: 0 250px 300px 250px;
+            border-color: transparent transparent #2d3561 transparent;
+            left: -100px;
+        }
+
+        .mountain-2 {
+            border-width: 0 200px 250px 200px;
+            border-color: transparent transparent #1e2749 transparent;
+            right: -50px;
+        }
+
+        .mountain-3 {
+            border-width: 0 150px 200px 150px;
+            border-color: transparent transparent #3d4a7a transparent;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255, 255, 255, 0.03) 50px,
+                    rgba(255, 255, 255, 0.03) 100px);
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        .wave-1 {
+            height: 80px;
+            animation: wave 8s linear infinite;
+        }
+
+        .wave-2 {
+            height: 60px;
+            animation: wave 6s linear infinite reverse;
+            bottom: 20px;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100px);
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .star:nth-child(1) {
+            top: 20px;
+            left: 50px;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 40px;
+            left: 150px;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(3) {
+            top: 60px;
+            left: 400px;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(4) {
+            top: 30px;
+            right: 80px;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(5) {
+            top: 80px;
+            left: 250px;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(6) {
+            top: 50px;
+            right: 180px;
+            animation-delay: 2.5s;
+        }
+
+        .bird {
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: transparent;
+            animation: fly 12s linear infinite;
+        }
+
+        .bird::before,
+        .bird::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .bird::before {
+            transform: rotate(-25deg);
+            transform-origin: right;
+        }
+
+        .bird::after {
+            transform: rotate(25deg);
+            transform-origin: left;
+            left: 15px;
+        }
+
+        .bird-1 {
+            top: 120px;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .bird-2 {
+            top: 140px;
+            left: -70px;
+            animation-delay: 3s;
+        }
+
+        .bird-3 {
+            top: 110px;
+            left: -90px;
+            animation-delay: 6s;
+        }
+
+        @keyframes fly {
+            0% {
+                left: -50px;
+            }
+
+            100% {
+                left: 550px;
+            }
+        }
+
+        .reflection {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top,
+                    rgba(255, 255, 255, 0.1) 0%,
+                    transparent 100%);
+        }
+
+        .title {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="art-container">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+        <div class="sun"></div>
+
+        <div class="bird bird-1"></div>
+        <div class="bird bird-2"></div>
+        <div class="bird bird-3"></div>
+
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+
+        <div class="mountain mountain-1"></div>
+        <div class="mountain mountain-2"></div>
+        <div class="mountain mountain-3"></div>
+
+        <div class="reflection"></div>
+
+        <div class="title">CSS ART</div>
+    </div>
+</body>
+
+</html>
