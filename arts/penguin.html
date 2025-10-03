@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Penguin Art</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(180deg, #a0d8ef 0%, #ffffff 100%);
+        }
+        .penguin {
+            position: relative;
+            width: 200px;
+            height: 300px;
+        }
+        .body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80%;
+            background: black;
+            border-radius: 100px / 150px;
+        }
+        .belly {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 125px;
+            height: 125px;
+            background: white;
+            border-radius: 60px / 80px;
+        }
+        .eye {
+            position: absolute;
+            top: 40px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+        }
+        .eye.left {
+            left: 50px;
+        }
+        .eye.right {
+            right: 50px;
+        }
+        .beak {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            background: orange;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .wing {
+            position: absolute;
+            bottom: 30px;
+            width: 60px;
+            height: 120px;
+            background: black;
+            border-radius: 30px / 60px;
+        }
+        .wing.left {
+            left: -30px;
+            transform: rotate(-20deg);
+        }
+        .wing.right {
+            right: -30px;
+            transform: rotate(20deg);
+        }
+        .foot {
+            position: absolute;
+            bottom: -10px;
+            width: 60px;
+            height: 20px;
+            background: orange;
+            border-radius: 30% / 50%;
+        }
+        .foot.left {
+            left: 40px;
+        }
+        .foot.right {
+            right: 40px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="penguin">
+        <!-- Penguin body -->
+        <div class="body">
+            <div class="belly"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="beak"></div>
+            <div class="wing left"></div>
+            <div class="wing right"></div>
+            <div class="foot left"></div>
+            <div class="foot right"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
