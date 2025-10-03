@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Rain Effect</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrixCanvas"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById("matrixCanvas");
+            if (!canvas) {
+                console.error("Canvas element not found!");
+                return;
+            }
+
+            const ctx = canvas.getContext("2d");
+            if (!ctx) {
+                console.error("Could not get 2D context from canvas!");
+                return;
+            }
+
+            const setup = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                chars = "CSSARTMuSEUM";
+                size = 30; 
+                cols = Math.floor(canvas.width / size);
+
+                drops = Array.from({ length: cols }).map(() => Math.floor(Math.random() * -100));
+            };
+
+            let chars, size, cols, drops;
+
+            setup();
+
+            const fps = 30;
+            const frameTime = 1000 / fps;
+            let last = 0;
+
+            function draw(now) {
+                requestAnimationFrame(draw);
+                if (now - last < frameTime) return;
+                last = now;
+
+                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = "#0F0";
+                ctx.font = `${size}px monospace`;
+
+                for (let i = 0; i < drops.length; i++) {
+                    if (drops[i] * size > 0) {
+                        const char = chars.charAt(Math.floor(Math.random() * chars.length));
+                        const x = i * size;
+                        const y = drops[i] * size;
+                        ctx.fillText(char, x, y);
+                    }
+                    
+                    if (drops[i] * size > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            requestAnimationFrame(draw);
+
+            window.addEventListener("resize", setup);
+        });
+    </script>
+</body>
+</html>
