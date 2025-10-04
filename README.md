@@ -7,13 +7,37 @@ Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gal
 
 ---
 
-## 🚀 How to Contribute
-1. Fork this repo  
-2. Create a new file inside the `/arts/` folder  
-   - Name your file as `yourname-artname.html`  
-3. Add your CSS artwork (only HTML + CSS allowed)  
-4. Add your art details in the `index.html` gallery page  
-5. Submit a Pull Request 🎉  
+### 🚀 How to Contribute
+
+1. **Fork** this repo
+2. **Clone** your fork locally
+    ```bash
+    git clone [https://github.com/](https://github.com/)<your-username>/css-art-museum.git
+    cd css-art-museum
+    ```
+    Create a branch for your **artwork**
+    ```bash
+    git checkout -b my-artwork
+    ```
+
+3. **Add your artwork**
+
+    Navigate to the `/arts/` folder
+    Create a new file: `yourname-artname.html` 
+    Add your HTML + CSS artwork (no JS/images)
+    Update `arts.json` or the gallery page to include your art
+
+4. **Commit & push your changes**
+
+    ```bash
+    git add .
+    git commit -m "Added CSS artwork: yourname-artname"
+    git push origin my-artwork
+    ```
+    Create a Pull Request (PR)
+    Go to your fork on GitHub -> Click Compare & Pull Request
+    Include a screenshot of your **artwork** in the PR description
+
 
 ---
 
