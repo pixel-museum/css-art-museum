@@ -660,6 +660,95 @@ footer p {
   border: 1px solid rgba(139, 127, 255, 0.2);
 }
 
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 12px var(--shadow-light),
+    0 8px 24px var(--shadow-medium),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  color: var(--secondary-text);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  border-color: var(--accent-color);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 8px 20px var(--shadow-medium),
+    0 12px 32px var(--shadow-strong),
+    0 0 0 1px rgba(108, 99, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: var(--accent-color);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.scroll-to-top svg {
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Dark theme support for scroll to top button */
+.dark-theme .scroll-to-top {
+  background: var(--secondary-bg);
+  border-color: var(--border-color);
+  color: var(--secondary-text);
+}
+
+.dark-theme .scroll-to-top:hover {
+  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Responsive adjustments for scroll to top button */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
 .dark-theme .view-code:hover {
   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }
