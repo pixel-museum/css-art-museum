@@ -602,18 +602,7 @@ footer p {
   /* optional: nice hover effect */
 }
 
-
-.circlefollower {
-  width: 20px;
-  height: 20px;
-  background-color: yellow;
-  border-radius: 50%;
-  pointer-events: none; 
-  position: relative;
-  transition:cubic-bezier(0.215, 0.610, 0.355, 1) 0s;
-  transform: translate(-50%, -50%);
-  z-index:9999999999;
-.link{
+.link {
   background: #000;
   color: white;
   padding: 2px 4px;
