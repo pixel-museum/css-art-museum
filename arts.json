@@ -168,6 +168,44 @@
     "file": "Angela_aurora.html",
     "title": "Aurora Lights",
     "author": "Angela Bera"
+  },
+  { 
+    "file": "saturn.html",
+    "title": "Saturn",
+    "author": "Thanuja Kedila"
+  } ,
+  { 
+    "file": "night_owl.html",
+    "title": "Night Owl",
+    "author": "Thanuja Kedila"
+  },
+  {
+    "file": "prath-rotating-earth.html",
+    "title": "Rotating Earth",
+    "author": "Pratham"
+  },
+
+  {
+    "file": "waqar-vinyl.html",
+    "title": "Vinyl Record",
+    "author": "Waqar"
+  },
+
+  {
+    "file": "morphin_art.html",
+    "title": "Curiosity Portal ",
+    "author": "Sumit Vishwakarma"
+  },
+
+  { 
+    "file": "celestial_engine.html",
+    "title": "Celestial Engine",
+    "author": "Sumit Vishwakarma"
+    },
+  {
+    "file": "Soumyosish_animated_gradient_card.html",
+    "title": "Animated Gradient Card",
+    "author": "Soumyosish"
   }
 
 ]
