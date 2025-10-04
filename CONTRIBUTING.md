@@ -31,8 +31,8 @@ Follow these steps to add your CSS artwork to the museum:
       Add your HTML + CSS artwork (no JS/images)
       
 5.Update the gallery
-      Open index.html
-      Add a new card for your artwork (iframe + your name)  
+      Open arts.json
+      and add you art there
 
 6.Commit your changes
 ```bash

@@ -155,12 +155,15 @@
   <script>
     function sanitizeFilename(raw) {
       if (!raw) return null;
-      if (raw.includes("..")) return null;
-      if (!raw.startsWith("arts/")) return null;
+      // We only need to prevent directory traversal. We will add the "arts/" prefix later.
+      if (raw.includes("..") || raw.includes("/") || raw.includes("\\")) {
+        return null;
+      }
       return raw;
     }
 
     const params = new URLSearchParams(location.search);
+    // Get the clean filename, e.g., "hariksh-sunset.html"
     const file = sanitizeFilename(params.get("file"));
 
     const preview = document.getElementById("artPreview");
@@ -172,7 +175,7 @@
 
     // Apply dark mode from query param
     const darkMode = params.get("dark") === "true";
-    if(darkMode) document.body.classList.add("dark");
+    if (darkMode) document.body.classList.add("dark");
 
     // Set toggle button text
     themeToggle.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
@@ -189,21 +192,26 @@
     });
 
     if (!file) {
-      fileNameEl.textContent = "No file specified or invalid filename";
-      codeBlock.textContent = "No file specified. Go back to the gallery and click an artwork.";
+      fileNameEl.textContent = "Error";
+      codeBlock.textContent = "No file specified or the filename is invalid. Please go back to the gallery and try again.";
     } else {
-      fileNameEl.textContent = file;
-      preview.src = file;
-      downloadBtn.href = file;
-      downloadBtn.setAttribute("download", file);
+      // --- FIX IS HERE ---
+      // We build the full path *after* we know the filename is safe.
+      const filePath = `arts/${file}`;
 
-      fetch(file, { cache: "no-store" })
+      fileNameEl.textContent = file; // Show the clean filename
+      preview.src = filePath;       // Use the full path for the iframe
+      downloadBtn.href = filePath;    // Use the full path for the download link
+      downloadBtn.setAttribute("download", file); // Use the clean filename for the download attribute
+
+      // Use the full path to fetch the code
+      fetch(filePath, { cache: "no-store" })
         .then(res => {
-          if (!res.ok) throw new Error("HTTP " + res.status);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.text();
         })
         .then(txt => codeBlock.textContent = txt)
-        .catch(err => codeBlock.textContent = "Error loading code: " + err.message);
+        .catch(err => codeBlock.textContent = `Error loading code: ${err.message}`);
     }
 
     copyBtn.addEventListener("click", async () => {
