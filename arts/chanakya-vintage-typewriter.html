@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art - Vintage Typewriter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2d1b00 0%, #1a0f00 100%);
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .art-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(145deg, #4a4a4a 0%, #2a2a2a 100%);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            position: relative;
+            width: 90%;
+            height: 85%;
+        }
+
+        .paper-holder {
+            position: absolute;
+            width: 280px;
+            height: 180px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 10px 10px 0 0;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5),
+                inset 0 2px 5px rgba(255, 255, 255, 0.05);
+        }
+
+        .paper {
+            position: absolute;
+            width: 240px;
+            height: 200px;
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .paper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 24px,
+                    rgba(0, 0, 0, 0.1) 24px,
+                    rgba(0, 0, 0, 0.1) 25px);
+        }
+
+        .typed-text {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 20px;
+            font-size: 11px;
+            line-height: 24px;
+            color: #1a1a1a;
+            font-weight: bold;
+            animation: typing 8s steps(40) infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes typing {
+            0%, 100% {
+                width: 0;
+            }
+            50%, 90% {
+                width: 90%;
+            }
+        }
+
+        .paper-roll-top {
+            position: absolute;
+            width: 260px;
+            height: 20px;
+            background: linear-gradient(90deg, #3a3a3a 0%, #2a2a2a 50%, #3a3a3a 100%);
+            border-radius: 10px;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .paper-roll-top::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 8px,
+                    rgba(0, 0, 0, 0.2) 8px,
+                    rgba(0, 0, 0, 0.2) 10px);
+            border-radius: 10px;
+        }
+
+        .typewriter-body {
+            position: absolute;
+            width: 350px;
+            height: 180px;
+            background: linear-gradient(145deg, #2d2d2d 0%, #1a1a1a 100%);
+            border-radius: 20px 20px 10px 10px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                inset 0 2px 5px rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-name {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .keyboard-section {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 120px;
+        }
+
+        .key-row {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .key {
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(145deg, #4a4a4a 0%, #2a2a2a 100%);
+            border-radius: 3px;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #e8e8e8;
+            font-weight: bold;
+            animation: keyPress 3s ease-in-out infinite;
+        }
+
+        .key:nth-child(3n) {
+            animation-delay: 0.5s;
+        }
+
+        .key:nth-child(5n) {
+            animation-delay: 1s;
+        }
+
+        .key:nth-child(7n) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes keyPress {
+            0%, 90%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            }
+            5% {
+                transform: translateY(3px);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .space-bar {
+            width: 140px !important;
+            margin-top: 4px;
+        }
+
+        .carriage-return {
+            position: absolute;
+            width: 40px;
+            height: 12px;
+            background: linear-gradient(90deg, #3a3a3a 0%, #2a2a2a 100%);
+            border-radius: 6px;
+            top: 50px;
+            right: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .carriage-return::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #d4af37;
+            border-radius: 50%;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+        }
+
+        .type-bar-holder {
+            position: absolute;
+            width: 200px;
+            height: 80px;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            perspective: 500px;
+        }
+
+        .type-bar {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(180deg, #5a5a5a 0%, #2a2a2a 100%);
+            left: 50%;
+            bottom: 0;
+            transform-origin: bottom;
+            animation: typeBarStrike 3s ease-in-out infinite;
+        }
+
+        @keyframes typeBarStrike {
+            0%, 90%, 100% {
+                transform: translateX(-50%) rotateX(0deg);
+            }
+            5%, 10% {
+                transform: translateX(-50%) rotateX(-45deg);
+            }
+        }
+
+        .type-bar::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #3a3a3a;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ribbon-holder {
+            position: absolute;
+            width: 140px;
+            height: 20px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+            border-radius: 10px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .ribbon {
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg,
+                    #8b0000 0%,
+                    #5c0000 50%,
+                    #8b0000 100%);
+            top: 4px;
+            animation: ribbonMove 2s linear infinite;
+        }
+
+        @keyframes ribbonMove {
+            0% {
+                transform: translateX(-10px);
+            }
+            100% {
+                transform: translateX(10px);
+            }
+        }
+
+        .paper-guide {
+            position: absolute;
+            width: 2px;
+            height: 140px;
+            background: #4a4a4a;
+            top: 30px;
+        }
+
+        .paper-guide-left {
+            left: 30px;
+        }
+
+        .paper-guide-right {
+            right: 30px;
+        }
+
+        .roller-knob {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(145deg, #d4af37 0%, #b8941f 100%);
+            border-radius: 50%;
+            top: -5px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .roller-knob-left {
+            left: -5px;
+            animation: rotateKnob 4s linear infinite;
+        }
+
+        .roller-knob-right {
+            right: -5px;
+            animation: rotateKnob 4s linear infinite reverse;
+        }
+
+        @keyframes rotateKnob {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .roller-knob::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 2px;
+            background: #1a1a1a;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .roller-knob::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 12px;
+            background: #1a1a1a;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .desk-surface {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(180deg, #3a2415 0%, #2a1810 100%);
+            bottom: 0;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .desk-texture {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 4px,
+                    rgba(0, 0, 0, 0.1) 4px,
+                    rgba(0, 0, 0, 0.1) 6px);
+        }
+
+        .title {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 10px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="art-container">
+        <div class="content-wrapper">
+            <div class="paper-holder">
+                <div class="paper-roll-top"></div>
+                <div class="paper">
+                    <div class="typed-text">The quick brown fox jumps over the lazy dog...</div>
+                </div>
+                <div class="paper-guide paper-guide-left">
+                    <div class="roller-knob roller-knob-left"></div>
+                </div>
+                <div class="paper-guide paper-guide-right">
+                    <div class="roller-knob roller-knob-right"></div>
+                </div>
+            </div>
+
+            <div class="type-bar-holder">
+                <div class="type-bar"></div>
+            </div>
+
+            <div class="typewriter-body">
+                <div class="brand-name">CLASSIC</div>
+
+                <div class="ribbon-holder">
+                    <div class="ribbon"></div>
+                </div>
+
+                <div class="carriage-return"></div>
+
+                <div class="keyboard-section">
+                    <div class="key-row">
+                        <div class="key">Q</div>
+                        <div class="key">W</div>
+                        <div class="key">E</div>
+                        <div class="key">R</div>
+                        <div class="key">T</div>
+                        <div class="key">Y</div>
+                        <div class="key">U</div>
+                        <div class="key">I</div>
+                        <div class="key">O</div>
+                        <div class="key">P</div>
+                    </div>
+                    <div class="key-row">
+                        <div class="key">A</div>
+                        <div class="key">S</div>
+                        <div class="key">D</div>
+                        <div class="key">F</div>
+                        <div class="key">G</div>
+                        <div class="key">H</div>
+                        <div class="key">J</div>
+                        <div class="key">K</div>
+                        <div class="key">L</div>
+                    </div>
+                    <div class="key-row">
+                        <div class="key">Z</div>
+                        <div class="key">X</div>
+                        <div class="key">C</div>
+                        <div class="key">V</div>
+                        <div class="key">B</div>
+                        <div class="key">N</div>
+                        <div class="key">M</div>
+                    </div>
+                    <div class="key-row">
+                        <div class="key space-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="desk-surface">
+                <div class="desk-texture"></div>
+            </div>
+
+            <div class="title">Vintage Typewriter</div>
+        </div>
+    </div>
+</body>
+
+</html>
