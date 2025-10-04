@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CSS Cat</title>
+<style>
+  :root{--skin:#f6e7d7;--accent:#2d3a6d;--pink:#ff7bb5;}
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbe8ff,#e8f2ff 60%);display:grid;place-items:center}
+  .cat{width:36vmin;height:30vmin;position:relative;display:grid;place-items:center}
+  .head{
+    width:26vmin;height:22vmin;background:var(--skin);border-radius:50% 50% 45% 45%;position:relative;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+  /* ears */
+  .ear{
+    width:8vmin;height:8vmin;background:var(--skin);position:absolute;top:-3vmin;border-radius:30% 30% 0 0;
+    transform:rotate(-20deg);left:4vmin;box-shadow: inset 0 -1vmin rgba(0,0,0,0.02);
+  }
+  .ear.right{left:auto;right:4vmin;transform:rotate(20deg)}
+  .ear::after{content:"";position:absolute;inset:20% 20% 10% 20%;background:linear-gradient(180deg,#ffd6ea,#ffc2e0);border-radius:20%}
+
+  /* eyes */
+  .eye{width:4vmin;height:4vmin;border-radius:50%;background:var(--accent);position:absolute;top:8vmin;box-shadow:0 6px 16px rgba(45,58,109,0.18)}
+  .eye.left{left:7vmin}.eye.right{right:7vmin}
+  .eye::after{content:"";width:1.2vmin;height:1.2vmin;background:#fff;border-radius:50%;position:absolute;left:18%;top:14%}
+
+  /* nose + mouth */
+  .nose{width:2.4vmin;height:2vmin;background:var(--pink);border-radius:50%;position:absolute;top:12.6vmin;left:50%;transform:translateX(-50%)}
+  .m1,.m2{position:absolute;width:8vmin;height:6vmin;border-bottom:2px solid rgba(0,0,0,0.08);top:14.3vmin}
+  .m1{left:50%;transform:translateX(-105%) rotate(-6deg)} .m2{left:50%;transform:translateX(5%) rotate(6deg)}
+
+  /* whiskers */
+  .whisker{position:absolute;height:0;border-top:2px solid rgba(0,0,0,0.06);width:12vmin;top:13.6vmin}
+  .whisker.left1{left:-2vmin;transform:rotate(-6deg)} .whisker.left2{left:-2vmin;top:15vmin;transform:rotate(4deg)}
+  .whisker.right1{right:-2vmin;transform:rotate(6deg)} .whisker.right2{right:-2vmin;top:15vmin;transform:rotate(-4deg)}
+
+  /* little heart blush */
+  .blush{position:absolute;width:3vmin;height:1.6vmin;border-radius:1vmin;background:linear-gradient(180deg,#ffd6ea,#ffc2e0);top:15vmin;left:9vmin;opacity:.95}
+  .blush.right{left:auto;right:9vmin}
+
+</style>
+</head>
+<body>
+  <div class="cat" role="img" aria-label="Cute cartoon cat">
+    <div class="head">
+      <div class="ear"></div>
+      <div class="ear right"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+      <div class="m1"></div>
+      <div class="m2"></div>
+      <div class="whisker left1"></div>
+      <div class="whisker left2"></div>
+      <div class="whisker right1"></div>
+      <div class="whisker right2"></div>
+      <div class="blush"></div>
+      <div class="blush right"></div>
+    </div>
+  </div>
+</body>
+</html>
