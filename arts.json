@@ -1,8 +1,33 @@
 [
   {
+    "file": "chanakya-vintage-typewriter.html",
+    "title": "Vintage Typewriter",
+    "author": "Chanakya"
+  },
+  {
     "file": "hariksh-sunset.html",
     "title": "Sunset CSS Art",
     "author": "Hariksh"
+  },
+  {
+    "file": "dot-wave-loading.html",
+    "title": "Dot loading",
+    "author": "Ritesh"
+  },
+   {
+    "file": "matrix-pulse-loading.html",
+    "title": "Matrix-pulse-loading",
+    "author": "Ritesh"
+  },
+   {
+    "file": "dot-wave-loading.html",
+    "title": "Dot loading",
+    "author": "Ritesh"
+  },
+  {
+    "file": "penguin.html",
+    "title": "Penguin Art",
+    "author": " JamesFloyd-Pen"
   },
   {
     "file": "sample.html",
@@ -64,11 +89,7 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  {
-    "file": "Dhanush-particle_constellation.html",
-    "title": "Particle Constellation",
-    "author": "DhanushNehru"
-  },
+  
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -118,5 +139,98 @@
     "file": "manudwivedi-aurora.html",
     "title": "Aurora (Interactive)",
     "author": "Manu Dwivedi"
+  },
+  {
+    "file": "Sneha-Raindrop Ripple.html",
+    "title": "Raindrop Ripple",
+    "author": "Sneha"
+  },
+  {
+    "file": "ujjwal-train.html",
+    "title": "Train",
+    "author": "ujjwal"
+  },
+  {
+    "file": "ring-loading.html",
+    "title": "Ring Loading",
+    "author": "Ritesh"
+  },
+  {
+    "file": "night_sky.html",
+    "title": "Night Sky",
+    "author": "Srinjoyee Dey"
+  },
+  { 
+    "file": "pratik_face.html",
+    "title": "face",
+    "author": "Pratik"
+  },
+  {
+    "file": "Angela_aurora.html",
+    "title": "Aurora Lights",
+    "author": "Angela Bera"
+  },
+  { 
+    "file": "saturn.html",
+    "title": "Saturn",
+    "author": "Thanuja Kedila"
+  } ,
+  { 
+    "file": "night_owl.html",
+    "title": "Night Owl",
+    "author": "Thanuja Kedila"
+  },
+  {
+    "file": "prath-rotating-earth.html",
+    "title": "Rotating Earth",
+    "author": "Pratham"
+  },
+
+  {
+    "file": "waqar-vinyl.html",
+    "title": "Vinyl Record",
+    "author": "Waqar"
+  },
+
+  {
+    "file": "morphin_art.html",
+    "title": "Curiosity Portal ",
+    "author": "Sumit Vishwakarma"
+  },
+
+  { 
+    "file": "celestial_engine.html",
+    "title": "Celestial Engine",
+    "author": "Sumit Vishwakarma"
+    },
+  {
+    "file": "Soumyosish_animated_gradient_card.html",
+    "title": "Animated Gradient Card",
+    "author": "Soumyosish"
+  },
+  {
+    "file": "rj_nebula.html",
+    "title": "Nebula",
+    "author": "RJ"
+  },
+  {
+    "file": "kartik_gradients.html",
+    "title": "Shapes and Gradients",
+    "author": "Kartik Tripathi"
+  },
+  {
+    "file": "aerospace-celestial_wanderers.html",
+    "title": "Animated Celestial Wanderers",
+    "author": "Aerospace"
+  },
+  {
+    "file": "rj_nebula.html",
+    "title": "Nebula",
+    "author": "RJ"
+  },
+  {
+    "file": "cat.html",
+    "title": "Cat Art",
+    "author": "Rishita"
   }
 ]

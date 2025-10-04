@@ -1,0 +1,292 @@
+<div class="aurora-container">
+  <div class="stars-field"></div>
+  <div class="mountain-silhouette"></div>
+  <div class="aurora-layer layer-1"></div>
+  <div class="aurora-layer layer-2"></div>
+  <div class="aurora-layer layer-3"></div>
+  <div class="aurora-layer layer-4"></div>
+  <div class="aurora-layer layer-5"></div>
+  <div class="aurora-layer layer-6"></div>
+  <div class="aurora-shimmer"></div>
+</div>
+
+<style>
+.aurora-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: 
+    radial-gradient(ellipse at center top, #1a1a2e 0%, #0f0f23 50%, #000 100%),
+    linear-gradient(to bottom, #000428 0%, #004e92 20%, #020111 80%, #000 100%);
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Mountain silhouette for depth */
+.mountain-silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: #000;
+  clip-path: polygon(0% 100%, 12% 70%, 22% 85%, 35% 60%, 45% 75%, 60% 45%, 75% 65%, 85% 50%, 100% 70%, 100% 100%);
+  z-index: 10;
+}
+
+/* Enhanced star field */
+.stars-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 85% 15%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 45% 35%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 75% 45%, rgba(255,255,255,0.95), transparent),
+    radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 65% 25%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(1px 1px at 35% 15%, rgba(255,255,255,0.75), transparent),
+    radial-gradient(2px 2px at 55% 65%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 90% 35%, rgba(255,255,255,0.7), transparent);
+  background-repeat: no-repeat;
+  animation: star-twinkle 8s ease-in-out infinite;
+}
+
+/* Multiple aurora layers for realistic effect */
+.aurora-layer {
+  position: absolute;
+  width: 150%;
+  height: 60%;
+  top: 15%;
+  left: -25%;
+  mix-blend-mode: screen;
+  border-radius: 50% 50% 0 0;
+}
+
+.layer-1 {
+  background: 
+    radial-gradient(ellipse 1000px 180px at 30% 70%, rgba(50, 255, 150, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 120px at 70% 50%, rgba(100, 255, 200, 0.3) 0%, transparent 60%);
+  filter: blur(2px);
+  animation: aurora-flow-1 10s ease-in-out infinite;
+}
+
+.layer-2 {
+  background: 
+    radial-gradient(ellipse 900px 200px at 60% 80%, rgba(150, 255, 100, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 600px 140px at 20% 40%, rgba(200, 255, 150, 0.25) 0%, transparent 55%);
+  filter: blur(4px);
+  animation: aurora-flow-2 14s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+.layer-3 {
+  background: 
+    radial-gradient(ellipse 1100px 160px at 40% 60%, rgba(255, 200, 100, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 100px at 80% 75%, rgba(255, 150, 200, 0.25) 0%, transparent 50%);
+  filter: blur(6px);
+  animation: aurora-flow-3 18s ease-in-out infinite;
+  animation-delay: -7s;
+}
+
+.layer-4 {
+  background: 
+    radial-gradient(ellipse 800px 220px at 10% 55%, rgba(100, 200, 255, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 950px 180px at 90% 65%, rgba(150, 100, 255, 0.3) 0%, transparent 60%);
+  filter: blur(3px);
+  animation: aurora-flow-4 12s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+.layer-5 {
+  background: 
+    radial-gradient(ellipse 750px 140px at 50% 45%, rgba(255, 100, 150, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 850px 190px at 25% 85%, rgba(100, 255, 255, 0.3) 0%, transparent 65%);
+  filter: blur(5px);
+  animation: aurora-flow-5 16s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.layer-6 {
+  background: 
+    radial-gradient(ellipse 1000px 170px at 75% 35%, rgba(200, 255, 100, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 130px at 15% 95%, rgba(255, 200, 255, 0.25) 0%, transparent 55%);
+  filter: blur(8px);
+  animation: aurora-flow-6 13s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+/* Shimmering effect overlay */
+.aurora-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255,255,255,0.1) 25%, 
+      transparent 50%, 
+      rgba(255,255,255,0.05) 75%, 
+      transparent 100%);
+  animation: shimmer-sweep 6s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+
+/* Realistic aurora animations with flowing, wavy movement */
+@keyframes aurora-flow-1 {
+  0% { 
+    transform: translateX(-30%) translateY(15%) skewX(-8deg) scaleY(0.8) scaleX(1.1);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateX(-10%) translateY(-5%) skewX(4deg) scaleY(1.2) scaleX(0.9);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: translateX(15%) translateY(10%) skewX(-6deg) scaleY(0.9) scaleX(1.2);
+    opacity: 0.7;
+  }
+  75% { 
+    transform: translateX(25%) translateY(-8%) skewX(3deg) scaleY(1.3) scaleX(0.8);
+    opacity: 0.85;
+  }
+  100% { 
+    transform: translateX(35%) translateY(5%) skewX(-5deg) scaleY(1.0) scaleX(1.0);
+    opacity: 0.65;
+  }
+}
+
+@keyframes aurora-flow-2 {
+  0% { 
+    transform: translateX(40%) translateY(-12%) skewX(6deg) scaleY(1.1) scaleX(0.9);
+    opacity: 0.7;
+  }
+  30% { 
+    transform: translateX(15%) translateY(8%) skewX(-3deg) scaleY(0.8) scaleX(1.3);
+    opacity: 0.5;
+  }
+  60% { 
+    transform: translateX(-5%) translateY(-6%) skewX(7deg) scaleY(1.4) scaleX(0.7);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translateX(-35%) translateY(12%) skewX(-4deg) scaleY(0.9) scaleX(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes aurora-flow-3 {
+  0% { 
+    transform: translateX(-20%) translateY(18%) skewX(-9deg) scaleY(1.2) scaleX(1.0);
+    opacity: 0.8;
+  }
+  40% { 
+    transform: translateX(10%) translateY(-10%) skewX(5deg) scaleY(0.7) scaleX(1.2);
+    opacity: 0.6;
+  }
+  80% { 
+    transform: translateX(30%) translateY(14%) skewX(-7deg) scaleY(1.5) scaleX(0.8);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translateX(45%) translateY(-3%) skewX(2deg) scaleY(1.0) scaleX(1.0);
+    opacity: 0.7;
+  }
+}
+
+@keyframes aurora-flow-4 {
+  0% { 
+    transform: translateX(30%) translateY(-15%) skewX(8deg) scaleY(0.9) scaleX(1.1);
+    opacity: 0.65;
+  }
+  35% { 
+    transform: translateX(5%) translateY(7%) skewX(-5deg) scaleY(1.3) scaleX(0.9);
+    opacity: 0.85;
+  }
+  70% { 
+    transform: translateX(-15%) translateY(-4%) skewX(6deg) scaleY(0.8) scaleX(1.2);
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateX(-40%) translateY(10%) skewX(-3deg) scaleY(1.1) scaleX(1.0);
+    opacity: 0.75;
+  }
+}
+
+@keyframes aurora-flow-5 {
+  0% { 
+    transform: translateX(-15%) translateY(10%) skewX(-4deg) scaleY(1.0) scaleX(1.0);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translateX(20%) translateY(-16%) skewX(9deg) scaleY(1.4) scaleX(0.8);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translateX(50%) translateY(8%) skewX(-6deg) scaleY(0.85) scaleX(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes aurora-flow-6 {
+  0% { 
+    transform: translateX(25%) translateY(-8%) skewX(3deg) scaleY(1.1) scaleX(0.95);
+    opacity: 0.75;
+  }
+  25% { 
+    transform: translateX(-5%) translateY(12%) skewX(-7deg) scaleY(0.9) scaleX(1.2);
+    opacity: 0.55;
+  }
+  75% { 
+    transform: translateX(-25%) translateY(-12%) skewX(4deg) scaleY(1.3) scaleX(0.8);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: translateX(-45%) translateY(6%) skewX(-2deg) scaleY(0.95) scaleX(1.0);
+    opacity: 0.65;
+  }
+}
+
+@keyframes star-twinkle {
+  0% { 
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
+  }
+  25% { 
+    opacity: 1;
+    transform: scale(1.05) rotate(90deg);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(0.95) rotate(180deg);
+  }
+  75% { 
+    opacity: 0.95;
+    transform: scale(1.02) rotate(270deg);
+  }
+  100% { 
+    opacity: 0.8;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+</style>

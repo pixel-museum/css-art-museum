@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nebula Alchemy — CSS Art</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#09060a 0%, #0f0b12 40%, #17121a 100%);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px;
+  }
+  .frame{
+    width:min(1200px,94vw);
+    height:min(760px,86vh);
+    border-radius:26px;
+    position:relative;
+    overflow:hidden;
+    padding:34px;
+    background:
+      radial-gradient(600px 300px at 10% 20%, rgba(255,80,120,0.06), transparent 10%),
+      radial-gradient(500px 260px at 85% 70%, rgba(120,80,255,0.05), transparent 12%),
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));
+    box-shadow:
+      0 10px 40px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.02);
+    backdrop-filter: blur(6px);
+  }
+
+  .title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    position:relative;
+    z-index:30;
+    margin-bottom:12px;
+  }
+  .badge{
+    width:44px;height:44px;border-radius:10px;
+    background:linear-gradient(135deg,#ff7aa2,#ffb86b);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:#140412;
+    transform:rotate(-6deg);
+    box-shadow:0 6px 18px rgba(255,110,140,0.12);
+  }
+  h1{font-size:22px;letter-spacing:-0.02em}
+  p.sub{opacity:0.7;font-size:13px;margin-top:2px;}
+
+
+  .canvas{
+    position:absolute;inset:0;padding:120px 60px;
+    display:grid;grid-template-columns:1fr 360px;gap:28px;
+  }
+
+  .art{
+    position:relative;border-radius:18px;overflow:visible;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
+    padding:28px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  
+  .nebula{
+    width:420px;height:420px;position:relative;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    filter:drop-shadow(0 12px 40px rgba(0,0,0,0.6));
+  }
+
+  .orb{
+    position:absolute;border-radius:50%;mix-blend-mode:screen;
+    filter: blur(36px);
+    opacity:0.95;
+    animation: floatOrb 12s ease-in-out infinite;
+  }
+  .orb.o1{width:420px;height:420px;left:0;top:0;background:radial-gradient(circle at 30% 30%, rgba(255,120,165,0.18), rgba(255,80,140,0.04) 40%, transparent 60%); animation-duration:14s;}
+  .orb.o2{width:320px;height:320px;left:40px;top:40px;background:radial-gradient(circle at 60% 50%, rgba(90,80,255,0.12), rgba(120,200,255,0.03) 40%, transparent 60%); animation-duration:10s;}
+  .orb.o3{width:260px;height:260px;left:80px;top:80px;background:radial-gradient(circle at 40% 60%, rgba(255,210,120,0.09), rgba(255,140,80,0.02) 40%, transparent 60%); animation-duration:16s;}
+
+  @keyframes floatOrb{
+    0%{transform:translateY(0) scale(1)}
+    50%{transform:translateY(-16px) scale(1.02)}
+    100%{transform:translateY(0) scale(1)}
+  }
+
+  .ring{
+    position:absolute;width:420px;height:420px;border-radius:50%;
+    display:block;left:0;top:0;pointer-events:none;
+    background:
+      conic-gradient(from 120deg, rgba(255,120,165,0.28), rgba(255,120,165,0) 15%),
+      conic-gradient(from -20deg, rgba(115,95,255,0.22), rgba(115,95,255,0) 18%);
+    mask:
+      radial-gradient(closest-side, transparent 68%, black 69%),
+      radial-gradient(closest-side, black 0 62%, transparent 63%);
+    transform-origin:center;
+    animation: spinSlow 25s linear infinite;
+    opacity:0.95;
+  }
+  @keyframes spinSlow{to{transform:rotate(360deg)}}
+
+  .stars{
+    position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;
+  }
+  .stars span{
+    position:absolute;width:6px;height:6px;border-radius:50%;
+    background:linear-gradient(180deg,#fff8,#ffd3);
+    opacity:0.9;filter:blur(0.6px);
+    animation: twinkle 4s ease-in-out infinite;
+    transform-origin:center;
+  }
+  @keyframes twinkle{
+    0%{opacity:.2;transform:scale(.6)}
+    50%{opacity:1;transform:scale(1.15)}
+    100%{opacity:.2;transform:scale(.6)}
+  }
+
+  .petal{
+    position:absolute;width:18px;height:28px;border-radius:50% 50% 40% 40%;
+    background:linear-gradient(180deg,#ff8aa6,#ff6a9d);
+    transform-origin:center;
+    animation: drift 9s linear infinite;
+    opacity:0.95;
+    mix-blend-mode:screen;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  }
+  .petal::after{
+    content:"";
+    position:absolute;left:5px;top:2px;width:8px;height:8px;border-radius:50%;
+    background:rgba(255,255,255,0.12);
+  }
+  @keyframes drift{
+    0%{transform:translateY(0) rotate(0) scale(.9)}
+    25%{transform:translateY(-40px) rotate(8deg) scale(1)}
+    50%{transform:translateY(-90px) rotate(18deg) scale(.95)}
+    75%{transform:translateY(-140px) rotate(8deg) scale(.9)}
+    100%{transform:translateY(-200px) rotate(0) scale(.85); opacity:.0}
+  }
+
+
+  .aside{
+    border-radius:16px;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+    display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    z-index:50;backdrop-filter: blur(4px);
+  }
+  .aside h3{font-size:16px}
+  .muted{opacity:.68;font-size:13px;line-height:1.35}
+
+  .badges{display:flex;gap:10px;margin-top:6px}
+  .chip{
+    border-radius:14px;padding:8px 12px;font-size:13px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+
+  .footer-actions{position:absolute;left:34px;bottom:24px;display:flex;gap:12px;z-index:40}
+  .btn{
+    padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#ff7ca1,#ffb36e);
+    color:#140412;font-weight:700;font-size:14px;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(255,120,150,0.12);
+  }
+  .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+
+  /* responsive touch */
+  @media (max-width:900px){
+    .canvas{grid-template-columns:1fr; padding:40px 20px}
+    .aside{order:2;width:100%}
+    .art{order:1}
+    .frame{padding:18px}
+  }
+
+ 
+  .s1{left:12%;top:18%;width:8px;height:8px;animation-delay:0s}
+  .s2{left:28%;top:8%;width:5px;height:5px;animation-delay:.6s}
+  .s3{left:46%;top:22%;width:6px;height:6px;animation-delay:.9s}
+  .s4{left:62%;top:10%;width:4px;height:4px;animation-delay:1.2s}
+  .s5{left:78%;top:24%;width:6px;height:6px;animation-delay:.4s}
+  .s6{left:20%;top:56%;width:5px;height:5px;animation-delay:1.4s}
+  .s7{left:42%;top:60%;width:6px;height:6px;animation-delay:.8s}
+  .s8{left:68%;top:52%;width:7px;height:7px;animation-delay:.2s}
+
+  .p1{left:36%;bottom:6%;animation-delay:0s;transform:translateY(0) rotate(-8deg)}
+  .p2{left:44%;bottom:2%;animation-delay:1.3s;transform:translateY(0) rotate(6deg);width:22px;height:34px}
+  .p3{left:52%;bottom:10%;animation-delay:.6s;transform:translateY(0) rotate(-10deg);background:linear-gradient(180deg,#caa2ff,#ff8ac0)}
+  .p4{left:18%;bottom:12%;animation-delay:0.4s;width:16px;height:24px;background:linear-gradient(180deg,#7ea6ff,#b9ffdd)}
+  .p5{left:60%;bottom:16%;animation-delay:0.9s;width:20px;height:30px;background:linear-gradient(180deg,#ffd6a8,#ff9fbd)}
+
+  
+  .caption{
+    position:absolute;bottom:18px;left:22px;z-index:40;
+    color:rgba(255,255,255,0.9);font-weight:600;font-size:13px;
+    display:flex;gap:10px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:10px 14px;border-radius:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.45);
+  }
+  .spark{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,#fff,#ffd6da);box-shadow:0 8px 20px rgba(255,120,150,0.12)}
+</style>
+</head>
+<body>
+  <div class="frame" role="img" aria-label="Nebula Alchemy artwork">
+ 
+
+    <div class="canvas" aria-hidden="false">
+      <main class="art" aria-hidden="false">
+        <div class="nebula" role="presentation">
+          <div class="orb o1"></div>
+          <div class="orb o2"></div>
+          <div class="orb o3"></div>
+
+          <div class="ring" aria-hidden="true"></div>
+
+          <div class="stars" aria-hidden="true">
+            <span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span>
+            <span class="s5"></span><span class="s6"></span><span class="s7"></span><span class="s8"></span>
+          </div>
+
+          <!-- petals -->
+          <div class="petal p1"></div>
+          <div class="petal p2"></div>
+          <div class="petal p3"></div>
+          <div class="petal p4"></div>
+          <div class="petal p5"></div>
+
+        </div>
+
+      
+      </main>
+
+     
+    </div>
+
+  </div>
+</body>
+</html>
