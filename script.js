@@ -26,23 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${art.title} by ${art.author}</p>
         `;
 
-        // 2. Create the "View Code" button and its link
+        // 2. Create the "View Code" button and its link (simple link now)
         const viewerButtonAnchor = document.createElement("a");
-        viewerButtonAnchor.classList.add("view-code"); // This class is styled by your CSS
-        viewerButtonAnchor.href = `art-viewer.html?file=${art.file}`; // Fallback href
+        viewerButtonAnchor.classList.add("view-code");
+        viewerButtonAnchor.href = `art-viewer.html?file=${encodeURIComponent(art.file)}`; // No theme param
 
         const button = document.createElement("button");
         button.textContent = "View Code";
 
-        // 3. Add a click listener to pass the current theme to the viewer page
-        viewerButtonAnchor.addEventListener("click", (e) => {
-          e.preventDefault(); // Stop the default link behavior
-          const isDark = document.body.classList.contains("dark-theme");
-          // Construct the final URL with the theme parameter
-          const url = `art-viewer.html?file=${encodeURIComponent(art.file)}&dark=${isDark}`;
-          window.location.href = url; // Navigate to the new page
-        });
-        
         viewerButtonAnchor.appendChild(button);
         artCard.appendChild(viewerButtonAnchor); // Add the button to the card
         
