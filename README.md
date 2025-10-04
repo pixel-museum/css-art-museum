@@ -21,7 +21,9 @@ Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gal
 - Only **original CSS art** (no images)  
 - Keep code clean and commented  
 - Small contributions (like text/typo only) will be marked invalid  
-- PRs will be accepted with `hacktoberfest-accepted` label  
+- PRs will be accepted with `hacktoberfest-accepted` label
+
+- ⚠️ Note: When raising a PR, please add a screenshot of both your code changes and the output/result. PRs without screenshots may take longer to review.
 
 --- 
 

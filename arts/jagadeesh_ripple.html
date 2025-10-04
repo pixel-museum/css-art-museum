@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+     
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+    }
+
+    .circle {
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: press 0.6s ease-in-out infinite;
+    }
+
+    .inner { width: 20vw; height: 20vw; background: #777; animation-delay: 0s; }
+    .middle { width: 40vw; height: 40vw; background: #555; animation-delay: 0.5s; }
+    .border { width: 60vw; height: 60vw; background: #333; animation-delay: 1s; }
+    .outer { width: 80vw; height: 80vw; background: #111; animation-delay: 1.5s; }
+
+    @keyframes press {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(10px) scale(0.95);
+      }
+    }
+  </style>
+  <title>Pen Press Ripple</title>
+</head>
+<body>
+  <div class="container">
+    <div class="circle outer">
+      <div class="circle border">
+        <div class="circle middle">
+          <div class="circle inner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
