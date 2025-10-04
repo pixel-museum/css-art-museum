@@ -1,5 +1,10 @@
 [
   {
+    "file": "chanakya-vintage-typewriter.html",
+    "title": "Vintage Typewriter",
+    "author": "Chanakya"
+  },
+  {
     "file": "hariksh-sunset.html",
     "title": "Sunset CSS Art",
     "author": "Hariksh"
@@ -84,11 +89,7 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  {
-    "file": "Dhanush-particle_constellation.html",
-    "title": "Particle Constellation",
-    "author": "DhanushNehru"
-  },
+  
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -163,7 +164,12 @@
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
-  } ,
+  },
+  {
+    "file": "Angela_aurora.html",
+    "title": "Aurora Lights",
+    "author": "Angela Bera"
+  },
   { 
     "file": "saturn.html",
     "title": "Saturn",
@@ -185,13 +191,13 @@
     "title": "Vinyl Record",
     "author": "Waqar"
   },
-  
+
   {
     "file": "morphin_art.html",
     "title": "Curiosity Portal ",
     "author": "Sumit Vishwakarma"
   },
-  
+
   { 
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
@@ -203,9 +209,18 @@
     "author": "Soumyosish"
   },
   {
+    "file": "rj_nebula.html",
+    "title": "Nebula",
+    "author": "RJ"
+  },
+  {
+    "file": "kartik_gradients.html",
+    "title": "Shapes and Gradients",
+    "author": "Kartik Tripathi"
+  },
+  {
     "file": "aerospace-celestial_wanderers.html",
     "title": "Animated Celestial Wanderers",
     "author": "Aerospace"
   }
-
 ]

@@ -241,11 +241,28 @@ header p {
 /* Sophisticated Gallery Layout with Visual Appeal */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  padding: 0 10px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.gallery::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  background:
+    linear-gradient(45deg, transparent 30%, rgba(108, 99, 255, 0.03) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(212, 175, 55, 0.04) 50%, transparent 70%);
+  border-radius: 24px;
+  z-index: -1;
+  animation: galleryGlow 15s ease-in-out infinite;
 }
 
 @keyframes galleryGlow {
@@ -347,7 +364,7 @@ header p {
 
 .art-card iframe {
   width: 100%;
-  height: 250px;
+  height: 300px;
   border: none;
   border-radius: 16px;
   scrollbar-width: none;
@@ -368,6 +385,15 @@ header p {
 
 .art-card iframe::-webkit-scrollbar {
   display: none;
+}
+
+.art-card:hover iframe {
+  transform: scale(1.03) rotateX(-2deg);
+  box-shadow:
+    0 12px 30px var(--shadow-medium),
+    0 4px 8px var(--shadow-light),
+    0 0 0 2px rgba(108, 99, 255, 0.1);
+  border-radius: 20px;
 }
 
 .art-card p {
@@ -586,77 +612,143 @@ footer p {
   align-items: center;
 }
 
-/* Responsive Design - Mobile First */
+.view-code {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+
+  /* Styles copied and adapted from 'header p' */
+  color: var(--secondary-text);
+  font-size: 0.95rem;
+  /* Sized to fit nicely in the card */
+  font-weight: 500;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* For Safari */
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.1);
+}
+
+/* Reset style of the <button> element inside the <a> tag */
+.view-code button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.view-code:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.15);
+  color: var(--primary-text);
+}
+
+/* Dark Theme Sync for .view-code */
+.dark-theme .view-code {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(139, 127, 255, 0.2);
+}
+
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 12px var(--shadow-light),
+    0 8px 24px var(--shadow-medium),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  color: var(--secondary-text);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  border-color: var(--accent-color);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 8px 20px var(--shadow-medium),
+    0 12px 32px var(--shadow-strong),
+    0 0 0 1px rgba(108, 99, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: var(--accent-color);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.scroll-to-top svg {
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Dark theme support for scroll to top button */
+.dark-theme .scroll-to-top {
+  background: var(--secondary-bg);
+  border-color: var(--border-color);
+  color: var(--secondary-text);
+}
+
+.dark-theme .scroll-to-top:hover {
+  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Responsive adjustments for scroll to top button */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
 @media (max-width: 480px) {
-  body {
-    padding: 10px;
+  .scroll-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
   }
-  
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 0 5px;
-  }
-  
-  .art-card {
-    padding: 8px;
-  }
-  
-  .art-card iframe {
-    height: 220px;
-  }
-  
-  header h1 {
-    font-size: 1.8rem;
-  }
-  
-  header p {
-    font-size: 1rem;
-  }
-  
-  .theme-toggle {
-    top: 5px;
-    right: 10px;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.9rem;
-  }
-}
 
-/* Tablet Design */
-@media (min-width: 481px) and (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  
-  .art-card iframe {
-    height: 240px;
-  }
-  
-  body {
-    padding: 15px;
-  }
-}
-
-/* Desktop Design */
-@media (min-width: 769px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-  
-  .art-card iframe {
-    height: 250px;
-  }
-}
-
-/* Large Desktop */
-@media (min-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-  }
-  
-  .art-card iframe {
-    height: 280px;
-  }
+.dark-theme .view-code:hover {
+  box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }

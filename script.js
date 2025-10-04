@@ -128,5 +128,30 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(style);
 
+  // Scroll to Top Button Functionality
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  const scrollThreshold = 300; // Show button after scrolling 300px
+
+  // Show/hide scroll to top button based on scroll position
+  function toggleScrollToTopButton() {
+    if (window.pageYOffset > scrollThreshold) {
+      scrollToTopBtn.classList.add('visible');
+    } else {
+      scrollToTopBtn.classList.remove('visible');
+    }
+  }
+
+  // Smooth scroll to top function
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  // Add event listeners
+  window.addEventListener('scroll', toggleScrollToTopButton);
+  scrollToTopBtn.addEventListener('click', scrollToTop);
+
   loadArts();
 });
