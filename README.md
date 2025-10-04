@@ -1,7 +1,7 @@
 # 🎨 CSS Art Museum
 
 Welcome to the **CSS Art Museum**!  
-This is an open-source project where developers can showcase their creativity using **pure CSS and HTML**.  
+This is an open-source project where developers can showcase their creativity using **HTML, CSS, and JavaScript**.  
 
 Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gallery!  
 
@@ -18,15 +18,13 @@ Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gal
 ---
 
 ## 📌 Rules
-- Only **original CSS art** (no images/JS)  
+- Only **original CSS art** (no images)  
 - Keep code clean and commented  
 - Small contributions (like text/typo only) will be marked invalid  
-- PRs will be accepted with `hacktoberfest-accepted` label  
+- PRs will be accepted with `hacktoberfest-accepted` label
 
----
+- ⚠️ Note: When raising a PR, please add a screenshot of both your code changes and the output/result. PRs without screenshots may take longer to review.
 
-## 🏆 Hacktoberfest Note
-This repo is part of **Hacktoberfest 2025**.  
-All valid PRs will count towards your 4 PRs.  
+--- 
 
 Happy contributing 💖

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bounce by Prasanth</title>
+  <style>
+:root {
+  --bounceBg: #d4dfd7;
+  --white: #FFF;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+.card {
+  align-items: center;
+  border-radius: 0.25rem;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 250px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+
+.bounce-box {
+  background-color: var(--bounceBg);
+}
+
+.bounce-box::before {
+  animation: shadow 1.6s ease-in-out infinite both;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  bottom: 2rem;
+  box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.2);
+  content: '';
+  height: 0.1rem;
+  left: 25%;
+  position: absolute;
+  right: 25%;
+}
+
+.down {
+  animation: down 1.6s ease-in infinite both;
+  bottom: 2rem;
+  position: absolute;
+}
+
+.down .up {
+  animation: up 1.6s ease-in-out infinite both;
+}
+
+.down .up .squeeze {
+  animation: squeeze 1.6s cubic-bezier(0.72, 0.03, 0.28, 0.97) infinite both;
+  transform-origin: 50% 100%;
+}
+
+.down .up .squeeze .rotate-inward {
+  animation: rotate-inward 1.6s ease-out infinite both;
+}
+
+.down .up .squeeze .rotate-inward .rotate-outward {
+  animation: rotate-outward 1.6s ease-in infinite both;
+}
+
+.square {
+  background-color: var(--white);
+  height: 5rem;
+  width: 5rem;
+}
+
+@keyframes down {
+  0% {
+    transform: translateY(-10rem);
+  }
+  20%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes up {
+  0%,
+  75% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10rem);
+  }
+}
+
+@keyframes squeeze {
+  0%,
+  4% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.8, 0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-inward {
+  0% {
+    transform: rotate(-135deg);
+  }
+  20%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-outward {
+  0%,
+  80% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    transform: scaleX(0.3);
+  }
+  45%,
+  50% {
+    transform: scaleX(0.8);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="card bounce-box">
+    <div class="down">
+      <div class="up">
+        <div class="squeeze">
+          <div class="rotate-inward">
+            <div class="rotate-outward">
+              <div class="square"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
