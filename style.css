@@ -278,7 +278,6 @@ header p {
   height: 300px;
   border: none;
   border-radius: 16px;
-  overflow: hidden;   
   scrollbar-width: none;
   box-shadow: 
     0 6px 16px var(--shadow-light),
@@ -289,6 +288,8 @@ header p {
               linear-gradient(-45deg, #f0f0f0 25%, transparent 25%);
   background-size: 10px 10px;
   background-position: 0 0, 0 5px;
+  overflow: hidden; /* This line is already there */
+  scrollbar-width: none; /* Add this for Firefox */
 }
 
 .art-card iframe::-webkit-scrollbar {
