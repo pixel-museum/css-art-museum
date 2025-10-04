@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Celestial Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+      
+
+        :root {
+            --bg-color: #030409;
+            --ring-color: #7bdeff;
+            --core-glow: #ffffff;
+            --accent-color: #f7b801;
+            --shadow-color: rgba(123, 222, 255, 0.5);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .title {
+            color: var(--ring-color);
+            font-size: 2rem;
+            text-shadow: 0 0 10px var(--shadow-color), 0 0 20px var(--shadow-color);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+
+        .engine-container {
+            width: 300px;
+            height: 300px;
+            perspective: 1200px;
+            position: relative;
+        }
+
+        
+        .engine {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotate-engine 40s linear infinite;
+        }
+        
+
+        .ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--ring-color);
+            transform-style: preserve-3d;
+            box-shadow: 0 0 15px var(--shadow-color), inset 0 0 10px var(--shadow-color);
+        }
+        
+
+        
+        .ring-1 {
+            animation: rotate-1 10s linear infinite;
+        }
+
+        .ring-2 {
+            transform: rotateY(90deg);
+            animation: rotate-2 12s linear infinite reverse;
+        }
+
+        .ring-3 {
+            transform: rotateX(90deg);
+            animation: rotate-3 15s linear infinite;
+        }
+
+
+        .core-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin: -50px 0 0 -50px;
+            transform-style: preserve-3d;
+            animation: rotate-core-container 8s ease-in-out infinite alternate;
+        }
+        
+
+        .core {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--core-glow);
+            box-shadow: 0 0 20px 10px var(--core-glow);
+            animation: pulse-core 2s ease-in-out infinite alternate;
+        }
+
+
+        .arc {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            margin-left: -2px;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+            transform-origin: center;
+        }
+        
+        .arc-1 { transform: rotateZ(45deg); }
+        .arc-2 { transform: rotateZ(-45deg); }
+        .arc-3 { transform: rotateZ(135deg); }
+        .arc-4 { transform: rotateZ(-135deg); }
+        
+
+       
+        .engine-container:hover .engine { animation-duration: 10s; }
+        .engine-container:hover .ring-1 { animation-duration: 2s; }
+        .engine-container:hover .ring-2 { animation-duration: 3s; }
+        .engine-container:hover .ring-3 { animation-duration: 4s; }
+        .engine-container:hover .core { animation: pulse-core 0.5s ease-in-out infinite alternate; }
+
+
+
+        @keyframes rotate-engine {
+            from { transform: rotateY(0deg) rotateX(10deg); }
+            to { transform: rotateY(360deg) rotateX(10deg); }
+        }
+
+        @keyframes rotate-1 {
+            from { transform: rotateZ(0deg) rotateX(20deg); }
+            to { transform: rotateZ(360deg) rotateX(20deg); }
+        }
+
+        @keyframes rotate-2 {
+            from { transform: rotateY(90deg) rotateX(0deg); }
+            to { transform: rotateY(90deg) rotateX(360deg); }
+        }
+
+        @keyframes rotate-3 {
+            from { transform: rotateX(90deg) rotateY(0deg); }
+            to { transform: rotateX(90deg) rotateY(360deg); }
+        }
+
+        @keyframes rotate-core-container {
+            from { transform: rotateZ(0deg) rotateY(0deg); }
+            to { transform: rotateZ(180deg) rotateY(360deg); }
+        }
+
+        @keyframes pulse-core {
+            from { transform: scale(0.9); box-shadow: 0 0 20px 10px var(--core-glow); opacity: 0.8; }
+            to { transform: scale(1.1); box-shadow: 0 0 35px 18px var(--core-glow); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="engine-container">
+        <div class="engine">
+            <div class="ring ring-1">
+                <div class="ring ring-2">
+                    <div class="ring ring-3">
+                        <div class="core-container">
+                            <div class="arc arc-1"></div>
+                            <div class="arc arc-2"></div>
+                            <div class="arc arc-3"></div>
+                            <div class="arc arc-4"></div>
+                            <div class="core"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

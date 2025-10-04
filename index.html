@@ -5,12 +5,14 @@
     <title>CSS Art Museum</title>
     <link rel="icon" type="image/png" href="./logo.png">
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Untitled design.png">
   </head>
   <body>
     <header>
       <h1>🎨 CSS Art Museum</h1>
       <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
       <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+      <input type="text" id="search-bar" placeholder="Search artworks...">
     </header>
     <main class="gallery">
     
@@ -191,122 +193,13 @@
     
     
     
+    <main class="gallery" id="gallery-container">
+       </main>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    </main>
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
-    <script>
-      const toggleBtn = document.getElementById("themeToggle");
-      const body = document.body;
-      const artCards = document.querySelectorAll(".art-card");
 
-      // Load saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark-theme");
-        toggleBtn.textContent = "☀️ Light";
-      }
-
-      // Enhanced theme toggle
-      toggleBtn.addEventListener("click", () => {
-        // Add ripple effect
-        const ripple = document.createElement('span');
-        ripple.style.cssText = `
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(108, 99, 255, 0.3);
-          transform: scale(0);
-          animation: ripple 0.6s linear;
-          left: 50%; top: 50%;
-          width: 20px; height: 20px;
-          margin: -10px 0 0 -10px;
-        `;
-        toggleBtn.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-
-        body.classList.toggle("dark-theme");
-        if (body.classList.contains("dark-theme")) {
-          toggleBtn.textContent = "☀️ Light";
-          localStorage.setItem("theme", "dark");
-        } else {
-          toggleBtn.textContent = "🌙 Dark";
-          localStorage.setItem("theme", "light");
-        }
-      });
-
-      // Enhanced card animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.style.animation = 'cardEntrance 0.8s ease-out both';
-            }, index * 100);
-          }
-        });
-      }, observerOptions);
-
-      artCards.forEach(card => {
-        cardObserver.observe(card);
-        
-        // Add mouse tracking for subtle tilt
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          
-          const rotateX = (e.clientY - centerY) / 20;
-          const rotateY = (centerX - e.clientX) / 20;
-          
-          card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = '';
-        });
-      });
-
-      // Parallax effect for background elements
-      let ticking = false;
-      
-      function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('body::before, body::after');
-        
-        requestAnimationFrame(() => {
-          document.body.style.backgroundPositionY = `${scrolled * 0.2}px`;
-          ticking = false;
-        });
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          ticking = true;
-          updateParallax();
-        }
-      });
-
-      // Add CSS for ripple animation
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes ripple {
-          to { transform: scale(4); opacity: 0; }
-        }
-        .theme-toggle { position: relative; overflow: hidden; }
-      `;
-      document.head.appendChild(style);
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
