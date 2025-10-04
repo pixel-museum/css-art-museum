@@ -1,47 +1,16 @@
-// Wait until the DOM is fully loaded before running scripts
 document.addEventListener('DOMContentLoaded', () => {
   const galleryContainer = document.getElementById('gallery-container');
-  
-  // --- Function to Load Art from JSON ---
+  const searchBar = document.getElementById('search-bar'); // Grab the search input
+  let allArts = []; // Store all arts for filtering
+
   async function loadArts() {
     try {
       const response = await fetch('arts.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
       const arts = await response.json();
       
-      galleryContainer.innerHTML = ''; // Clear any loading message
-      
-      // Loop through each art object and create a complete art card for it
-      arts.forEach(art => {
-        const artCard = document.createElement('div');
-        artCard.className = 'art-card';
-        
-        const filePath = `arts/${art.file}`;
-
-        // 1. Create the preview iframe and the title paragraph
-        artCard.innerHTML = `
-          <iframe src="${filePath}" title="${art.title}" loading="lazy" seamless></iframe>
-          <p>${art.title} by ${art.author}</p>
-        `;
-
-        // 2. Create the "View Code" button and its link (simple link now)
-        const viewerButtonAnchor = document.createElement("a");
-        viewerButtonAnchor.classList.add("view-code");
-        viewerButtonAnchor.href = `art-viewer.html?file=${encodeURIComponent(art.file)}`; // No theme param
-
-        const button = document.createElement("button");
-        button.textContent = "View Code";
-
-        viewerButtonAnchor.appendChild(button);
-        artCard.appendChild(viewerButtonAnchor); // Add the button to the card
-        
-        galleryContainer.appendChild(artCard); // Add the fully formed card to the gallery
-      });
-
-      // After adding all cards, initialize the animations for them
-      initializeCardAnimations();
+      allArts = arts; // Store arts for filtering
+      renderArts(allArts); // Initial render
 
     } catch (error) {
       console.error('Could not load arts:', error);
@@ -49,18 +18,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Theme Toggling and UI Animations ---
-  
+  // Function to render given arts
+  function renderArts(arts) {
+    galleryContainer.innerHTML = '';
+    arts.forEach(art => {
+      const artCard = document.createElement('div');
+      artCard.className = 'art-card';
+      const filePath = `arts/${art.file}`;
+      artCard.innerHTML = `
+        <iframe src="${filePath}" title="${art.title}" loading="lazy" seamless></iframe>
+        <p>${art.title} by ${art.author}</p>
+      `;
+
+      const viewerButtonAnchor = document.createElement("a");
+      viewerButtonAnchor.classList.add("view-code");
+      viewerButtonAnchor.href = `art-viewer.html?file=${encodeURIComponent(art.file)}`;
+      const button = document.createElement("button");
+      button.textContent = "View Code";
+      viewerButtonAnchor.appendChild(button);
+      artCard.appendChild(viewerButtonAnchor);
+
+      galleryContainer.appendChild(artCard);
+    });
+
+    initializeCardAnimations(); // Reinitialize animations
+  }
+
+  // --- Search Filter ---
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.toLowerCase().trim();
+    const filteredArts = allArts.filter(art =>
+      art.title.toLowerCase().includes(query) || art.author.toLowerCase().includes(query)
+    );
+    renderArts(filteredArts);
+  });
+
+  // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
   const body = document.body;
 
-  // Load saved theme
   if (localStorage.getItem("theme") === "dark") {
     body.classList.add("dark-theme");
     toggleBtn.textContent = "☀️ Light";
   }
 
-  // Theme toggle
   toggleBtn.addEventListener("click", () => {
     const ripple = document.createElement('span');
     ripple.style.cssText = `
@@ -81,29 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Function to set up card animations (Intersection Observer, hover effects, etc.)
   function initializeCardAnimations() {
     const artCards = document.querySelectorAll(".art-card");
     if (artCards.length === 0) return;
 
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.animation = 'cardEntrance 0.8s ease-out both';
-          }, index * 100); // Stagger the animation
+          setTimeout(() => { entry.target.style.animation = 'cardEntrance 0.8s ease-out both'; }, index * 100);
         }
       });
     }, observerOptions);
 
     artCards.forEach(card => {
       cardObserver.observe(card);
-      
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -112,14 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateY = (centerX - e.clientX) / 20;
         card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
   }
 
-  // Parallax effect for background
+  // Parallax
   let ticking = false;
   function updateParallax() {
     const scrolled = window.pageYOffset;
@@ -128,14 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ticking = false;
     });
   }
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      ticking = true;
-      updateParallax();
-    }
-  });
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; updateParallax(); } });
 
-  // Add CSS for ripple animation
   const style = document.createElement('style');
   style.textContent = `
     @keyframes ripple { to { transform: scale(4); opacity: 0; } }
@@ -143,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .error-message { text-align: center; color: #ff4d4d; grid-column: 1 / -1; }
   `;
   document.head.appendChild(style);
-  
-  // --- Initial Call to load the gallery ---
+
   loadArts();
 });
