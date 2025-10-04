@@ -10,7 +10,7 @@ document.querySelectorAll(".art-card").forEach((card) => {
   const button = document.createElement("button");
   button.textContent = "Art Viewer";
 
-  button.addEventListener("click", (e) => {
+  anchor.addEventListener("click", (e) => {
     e.preventDefault();
     const isDark = document.body.classList.contains("dark-theme");
     const url = `art-viewer.html?file=${encodeURIComponent(artSrc)}&dark=${isDark}`;
