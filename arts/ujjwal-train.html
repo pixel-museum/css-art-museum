@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujjwal's TRAIN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0e2a 0%, #1a2a4a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .animation-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .track-container {
+            position: relative;
+            height: 100px;
+            margin: 40px 0;
+        }
+
+        .track {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #2a3f76 0%, #4a67b5 50%, #2a3f76 100%);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(78, 133, 255, 0.3);
+        }
+
+        .train {
+            position: absolute;
+            bottom: 20px;
+            left: -180px;
+            display: flex;
+            align-items: flex-end;
+            animation: moveTrain 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                left: -180px;
+            }
+            100% {
+                left: calc(100% + 20px);
+            }
+        }
+
+        .engine {
+            width: 120px;
+            height: 50px;
+            background: linear-gradient(135deg, #4e85ff, #6ecbf5, #4e85ff);
+            position: relative;
+            border-radius: 0 25px 8px 8px;
+            box-shadow: 0 0 20px rgba(78, 133, 255, 0.6);
+            overflow: hidden;
+        }
+
+        .engine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 0 25px 0 0;
+        }
+
+        .engine::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 15px 0 0 #ffffff, 30px 0 0 #ffffff, 45px 0 0 #ffffff;
+        }
+
+        .coach {
+            width: 80px;
+            height: 45px;
+            background: linear-gradient(135deg, #3a57a5, #5a77c5);
+            border-radius: 5px;
+            margin-left: 3px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(58, 87, 165, 0.4);
+            overflow: hidden;
+        }
+
+        .coach::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .window {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(160, 197, 255, 0.9);
+            border-radius: 2px;
+            top: 12px;
+            left: 12px;
+            box-shadow: 18px 0 0 rgba(160, 197, 255, 0.9), 36px 0 0 rgba(160, 197, 255, 0.9);
+        }
+
+        .pantograph {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 2px;
+            height: 15px;
+            background: #ffffff;
+            border-radius: 1px;
+        }
+
+        .pantograph::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 18px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 1px;
+        }
+
+        .speed-lines {
+            position: absolute;
+            top: 0;
+            left: -40px;
+            width: 200px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent 0px,
+                rgba(255, 255, 255, 0.1) 2px,
+                transparent 4px,
+                transparent 12px
+            );
+            animation: speedLines 0.3s linear infinite;
+        }
+
+        @keyframes speedLines {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .engine, .coach {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <div class="track-container">
+            <div class="track"></div>
+            <div class="train">
+                <div class="coach">
+                    <div class="window"></div>
+                </div>
+                <div class="coach">
+                    <div class="window"></div>
+                </div>
+                <div class="engine">
+                    <div class="pantograph"></div>
+                </div>
+                <div class="speed-lines"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

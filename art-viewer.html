@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Art Viewer — CSS Art Museum</title>
+  <style>
+    :root{
+      --gap: 12px;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --muted: #666;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,Arial;}
+    header{
+      display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--panel);
+      box-shadow:0 1px 0 rgba(0,0,0,0.06);
+    }
+    header .back{border:0;padding:8px 10px;border-radius:8px;cursor:pointer;background:#eee;text-decoration: none ;color:black;}
+    header h1{font-size:16px;margin:0;flex:1}
+    
+    /* Theme toggle button */
+    .theme-toggle{
+      border:0;
+      padding:6px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      background:#eee;
+      font-size:13px;
+      color:black;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover{
+      background:#ddd;
+    }
+
+    .wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:var(--gap);
+      padding:var(--gap);
+      height: calc(100vh - 64px);
+      background:var(--bg);
+      box-sizing:border-box;
+    }
+    .preview-panel, .code-panel{
+      background:var(--panel);
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    iframe.preview{
+      width:100%;
+      height:100%;
+      border:0;
+      flex:1;
+      background: white;
+    }
+    .code-header{
+      display:flex;
+      gap:8px;
+      padding:10px;
+      align-items:center;
+      border-bottom:1px solid #eee;
+      background:#fafafa;
+    }
+    .code-header .filename{font-weight:600;}
+    .btn{
+      border:0;padding:8px 10px;border-radius:8px;cursor:pointer;background:#eee;
+      font-size:13px; text-decoration: none;color: black;
+    }
+    .code-area{
+      padding:12px;
+      overflow:auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace;
+      font-size:13px;
+      line-height:1.4;
+      background:#0f1720;
+      color:#d6e9ff;
+      height:100%;
+      box-sizing:border-box;
+      white-space:pre;
+    }
+    .controls {margin-left:auto;display:flex;gap:8px;}
+    @media (max-width:920px){
+      .wrap{grid-template-columns: 1fr; height: auto;}
+      iframe.preview{height:50vh;}
+      .code-area{height:50vh;}
+    }
+
+    /* --- Dark Mode --- */
+    body.dark{
+      --bg: #0f0f0f;
+      --panel: #1a1a1a;
+      --muted: #aaa;
+      color: #f0f0f0;
+    }
+    body.dark header{
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+    }
+    body.dark .wrap{
+      background: var(--bg);
+    }
+    body.dark .preview-panel,
+    body.dark .code-panel{
+      background: var(--panel);
+      box-shadow: 0 6px 18px rgba(255,255,255,0.06);
+    }
+    body.dark .code-area{
+      background:#0b0f14;
+      color:#cde0ff;
+    }
+    body.dark .code-header{
+      background:#181818;
+      border-bottom:1px solid #333;
+    }
+    body.dark .btn, body.dark .back, body.dark .theme-toggle{
+      background:#222;
+      color:#eee;
+      border:1px solid #333;
+    }
+    body.dark .btn:hover, body.dark .back:hover, body.dark .theme-toggle:hover{
+      background:#333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="index.html" title="Back to gallery">← Back</a>
+    <h1>CSS Art Viewer</h1>
+    <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
+  </header>
+
+  <main class="wrap">
+    <section class="preview-panel" aria-label="Live preview">
+      <iframe class="preview" id="artPreview" title="Art preview"></iframe>
+    </section>
+
+    <section class="code-panel" aria-label="Source code">
+      <div class="code-header">
+        <div class="filename" id="fileName">—</div>
+        <div class="controls">
+          <button class="btn" id="copyBtn">Copy</button>
+          <a class="btn" id="downloadBtn" href="#" download>Download</a>
+        </div>
+      </div>
+
+      <pre class="code-area" id="codeBlock" aria-live="polite">Loading code…</pre>
+    </section>
+  </main>
+
+  <script>
+  const preview = document.getElementById("artPreview");
+  const codeBlock = document.getElementById("codeBlock");
+  const fileNameEl = document.getElementById("fileName");
+  const copyBtn = document.getElementById("copyBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const themeToggle = document.getElementById("themeToggle");
+
+  // Apply theme from localStorage
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark");
+
+  themeToggle.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    themeToggle.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  });
+
+  // File loading
+  function sanitizeFilename(raw) {
+    if (!raw) return null;
+    if (raw.includes("..") || raw.includes("/") || raw.includes("\\")) return null;
+    return raw;
+  }
+
+  const params = new URLSearchParams(location.search);
+  const file = sanitizeFilename(params.get("file"));
+
+  if (!file) {
+    fileNameEl.textContent = "Error";
+    codeBlock.textContent = "No file specified or the filename is invalid. Please go back to the gallery and try again.";
+  } else {
+    const filePath = `arts/${file}`;
+
+    fileNameEl.textContent = file;
+    preview.src = filePath;
+    downloadBtn.href = filePath;
+    downloadBtn.setAttribute("download", file);
+
+    fetch(filePath, { cache: "no-store" })
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.text();
+      })
+      .then(txt => codeBlock.textContent = txt)
+      .catch(err => codeBlock.textContent = `Error loading code: ${err.message}`);
+  }
+
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(codeBlock.textContent);
+      copyBtn.textContent = "Copied ✓";
+      setTimeout(() => copyBtn.textContent = "Copy", 1500);
+    } catch (e) {
+      copyBtn.textContent = "Copy failed";
+      setTimeout(() => copyBtn.textContent = "Copy", 1500);
+    }
+  });
+</script>
+
+</body>
+</html>

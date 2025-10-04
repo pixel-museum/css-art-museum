@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Animated Gradient Card</title>
+    <style>
+      body {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .card {
+        width: 280px;
+        height: 360px;
+        border-radius: 20px;
+        background: linear-gradient(
+          135deg,
+          #ff6f61,
+          #ff9671,
+          #ffc15e,
+          #72f2eb,
+          #1282a2
+        );
+        box-shadow: 0 20px 40px rgba(18, 130, 162, 0.6);
+        position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        animation: rotateCard 6s linear infinite;
+        overflow: hidden;
+      }
+      @keyframes rotateCard {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        50% {
+          transform: rotateX(20deg) rotateY(20deg);
+        }
+        100% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 25%,
+          rgba(255, 255, 255, 0.35) 50%,
+          rgba(255, 255, 255, 0) 75%
+        );
+        animation: shineMove 6s linear infinite;
+        transform: rotate(25deg);
+        pointer-events: none;
+      }
+
+      @keyframes shineMove {
+        0% {
+          transform: translateX(-100%) rotate(25deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(25deg);
+        }
+      }
+      .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .content h1 {
+        margin: 0 0 15px 0;
+        font-size: 2rem;
+      }
+      .content p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="content">
+        <h1>Gradient 3D Card</h1>
+        <p>
+          This card features animated and a smooth gradient shine effect using
+          pure CSS.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

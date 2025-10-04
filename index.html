@@ -3,61 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <title>CSS Art Museum</title>
+    <link rel="icon" type="image/png" href="./logo.png">
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Untitled design.png">
   </head>
   <body>
     <header>
       <h1>🎨 CSS Art Museum</h1>
       <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
       <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+      <input type="text" id="search-bar" placeholder="Search artworks...">
     </header>
     
-    <main class="gallery">
-      <!-- Example art cards -->
-      <div class="art-card">
-        <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
-        <p>Sample Art by Shamli</p>
-      </div>
-      <div class="art-card">
-        <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
-        <p>Geometric Art by Shamli</p>
-      </div>
-      <div class="art-card">
-        <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
-        <p>Geometric Art by Hardik</p>
-      </div>
-      <div class="art-card">
-        <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
-        <p>Glowing Star by Rohith</p>
-      </div>
-      <div class="art-card">
-        <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
-        <p>Golden Night by Irfan</p>
-      </div>
-
+    <main class="gallery" id="gallery-container">
+       </main>
+    
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
-    <script>
-      const toggleBtn = document.getElementById("themeToggle");
-      const body = document.body;
 
-      // Load saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark-theme");
-        toggleBtn.textContent = "☀️ Light";
-      }
-
-      toggleBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-theme");
-        if (body.classList.contains("dark-theme")) {
-          toggleBtn.textContent = "☀️ Light";
-          localStorage.setItem("theme", "dark");
-        } else {
-          toggleBtn.textContent = "🌙 Dark";
-          localStorage.setItem("theme", "light");
-        }
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

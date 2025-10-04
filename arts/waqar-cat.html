@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Cat Art</title>
+    <style>
+        :root {
+            --black: #161515;
+            --white: #fff;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        * {
+            position: absolute;
+        }
+
+        *:before,
+        *:after {
+            content: "";
+            position: absolute;
+        }
+
+        .center {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .x-center {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .y-center {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .cat {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        .body {
+            width: 85%;
+            height: 60%;
+            background-color: var(--black);
+            border-radius: 50% 10% 50% 40%/60% 5% 65% 50%;
+            right: 0;
+            bottom: 0;
+        }
+
+        .head {
+            width: 60%;
+            height: 50%;
+            background-color: var(--black);
+            border-radius: 50% 50% 30% 30% /60% 60% 30% 30%;
+            right: 0;
+            top: 10%;
+        }
+
+        .eyes {
+            height: 5%;
+            width: 50%;
+            top: 45%;
+            right: 15%;
+        }
+
+        .eye {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--white);
+            animation: eye-move 3s none infinite;
+        }
+
+        .eye.left {
+            left: 0;
+        }
+
+        .eye.right {
+            right: 0;
+        }
+
+        .ear {
+            width: 0;
+            height: 0;
+            border-color: transparent transparent var(--black);
+            border-style: solid;
+        }
+
+        .ear.left {
+            border-width: 0 7px 10px 7px;
+            left: 15%;
+            bottom: 90%;
+            transform: rotate(-30deg);
+        }
+
+        .ear.right {
+            border-width: 0 10px 15px 10px;
+            right: 5%;
+            bottom: 85%;
+            transform: rotate(30deg);
+        }
+
+        .cat > .tail {
+            height: 18%;
+            width: 50%;
+            background-color: var(--black);
+            bottom: 0;
+            right: 35%;
+            border-radius: 50%/250%;
+        }
+
+        .cat > .tail > .tail {
+            right: 90%;
+        }
+
+        .tail > .tail {
+            height: 100%;
+            transform-origin: center right;
+            transform: rotate(0deg);
+            width: 25px;
+            right: 26%;
+            animation: tail 2s none infinite;
+            border-top-left-radius: 50% 50%;
+            border-bottom-left-radius: 50% 50%;
+            background-color: inherit;
+        }
+
+        @keyframes tail {
+            5% {
+                transform: rotate(0);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+            70%,
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes eye-move {
+            0% {
+                transform: scaleY(1);
+            }
+            5% {
+                transform: scaleY(0);
+            }
+
+            10%,
+            100% {
+                transform: scaleY(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cat center">
+        <div class="body"></div>
+        <div class="head">
+            <div class="eyes">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+            </div>
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+        </div>
+        <div class="tail">
+            <div class="tail">
+                <div class="tail">
+                    <div class="tail">
+                        <div class="tail">
+                            <div class="tail"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

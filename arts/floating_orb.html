@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowing floating orbs</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #0b0c1c 0%, #1b1d3b 100%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff6ec7, #8e44ad);
+    box-shadow: 0 0 20px #ff6ec7, 0 0 40px #8e44ad, 0 0 60px #ff6ec7;
+    animation: float 6s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+  }
+
+  .orb:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+
+  .orb:nth-child(2) {
+    width: 90px;
+    height: 90px;
+    top: 50%;
+    left: 60%;
+    animation-delay: 1s;
+  }
+
+  .orb:nth-child(3) {
+    width: 50px;
+    height: 50px;
+    top: 70%;
+    left: 30%;
+    animation-delay: 2s;
+  }
+
+  .orb:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    left: 50%;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-50px) translateX(30px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 15px #ff6ec7, 0 0 30px #8e44ad, 0 0 45px #ff6ec7; }
+    100% { box-shadow: 0 0 35px #ff6ec7, 0 0 60px #8e44ad, 0 0 90px #ff6ec7; }
+  }
+</style>
+</head>
+<body>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</body>
+</html>
