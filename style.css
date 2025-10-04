@@ -748,7 +748,7 @@ footer p {
     width: 40px;
     height: 40px;
   }
-
+}
 .dark-theme .view-code:hover {
   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }

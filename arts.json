@@ -232,5 +232,10 @@
     "file": "cat.html",
     "title": "Cat Art",
     "author": "Rishita"
+  },
+  {
+    "file": "gravity-affected-ball.html",
+    "title": "Gravity Affected Ball",
+    "author": "Akshit"
   }
 ]
