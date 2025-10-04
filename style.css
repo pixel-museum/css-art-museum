@@ -483,3 +483,26 @@ footer p {
     transition-duration: 0.01ms !important;
   }
 }
+.art-card iframe {
+  pointer-events: none; /* disables clicking inside iframe */
+}
+.art-card a {
+  text-decoration: none;   /* removes underline */
+  color: inherit;          /* makes it use the same text color as normal text */
+  font-weight: 500;        /* optional: makes it a bit bolder */
+}
+
+.art-card a:hover {
+  color: #ff4081;          /* optional: nice hover effect */
+}
+.link{
+  background: #000;
+  color: white;
+  padding: 2px 4px;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
