@@ -163,6 +163,16 @@
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
+  } ,
+  { 
+    "file": "saturn.html",
+    "title": "Saturn",
+    "author": "Thanuja Kedila"
+  } ,
+  { 
+    "file": "night_owl.html",
+    "title": "Night Owl",
+    "author": "Thanuja Kedila"
   },
 
   {
@@ -187,4 +197,5 @@
       "title": "Animated Gradient Card",
       "author": "Soumyosish"
     }
+
 ]
