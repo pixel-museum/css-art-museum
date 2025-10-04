@@ -169,4 +169,22 @@
     "title": "Rotating Earth",
     "author": "Pratham"
   }
+
+  {
+    "file": "waqar-vinyl.html",
+    "title": "Vinyl Record",
+    "author": "Waqar"
+  },
+  
+  {
+    "file": "morphin_art.html",
+    "title": "Curiosity Portal ",
+    "author": "Sumit Vishwakarma"
+  },
+  
+  { 
+    "file": "celestial_engine.html",
+    "title": "Celestial Engine",
+    "author": "Sumit Vishwakarma"
+    }
 ]
