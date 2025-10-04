@@ -515,6 +515,53 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.view-code {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
   
-  
+  /* Styles copied and adapted from 'header p' */
+  color: var(--secondary-text);
+  font-size: 0.95rem; /* Sized to fit nicely in the card */
+  font-weight: 500;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.1);
+}
+
+/* Reset style of the <button> element inside the <a> tag */
+.view-code button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.view-code:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.15);
+  color: var(--primary-text);
+}
+
+/* Dark Theme Sync for .view-code */
+.dark-theme .view-code {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(139, 127, 255, 0.2);
+}
+
+.dark-theme .view-code:hover {
+   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }

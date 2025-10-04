@@ -18,7 +18,22 @@
     }
     header .back{border:0;padding:8px 10px;border-radius:8px;cursor:pointer;background:#eee;text-decoration: none ;color:black;}
     header h1{font-size:16px;margin:0;flex:1}
-    .meta {color:var(--muted);font-size:13px}
+    
+    /* Theme toggle button */
+    .theme-toggle{
+      border:0;
+      padding:6px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      background:#eee;
+      font-size:13px;
+      color:black;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover{
+      background:#ddd;
+    }
+
     .wrap{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -74,13 +89,49 @@
       iframe.preview{height:50vh;}
       .code-area{height:50vh;}
     }
+
+    /* --- Dark Mode --- */
+    body.dark{
+      --bg: #0f0f0f;
+      --panel: #1a1a1a;
+      --muted: #aaa;
+      color: #f0f0f0;
+    }
+    body.dark header{
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+    }
+    body.dark .wrap{
+      background: var(--bg);
+    }
+    body.dark .preview-panel,
+    body.dark .code-panel{
+      background: var(--panel);
+      box-shadow: 0 6px 18px rgba(255,255,255,0.06);
+    }
+    body.dark .code-area{
+      background:#0b0f14;
+      color:#cde0ff;
+    }
+    body.dark .code-header{
+      background:#181818;
+      border-bottom:1px solid #333;
+    }
+    body.dark .btn, body.dark .back, body.dark .theme-toggle{
+      background:#222;
+      color:#eee;
+      border:1px solid #333;
+    }
+    body.dark .btn:hover, body.dark .back:hover, body.dark .theme-toggle:hover{
+      background:#333;
+    }
   </style>
 </head>
 <body>
   <header>
     <a class="back" href="index.html" title="Back to gallery">← Back</a>
     <h1>CSS Art Viewer</h1>
-    <div class="meta" id="metaText">Loading…</div>
+    <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
   </header>
 
   <main class="wrap">
@@ -102,68 +153,75 @@
   </main>
 
   <script>
-    // Helpers: sanitize filename (allow letters, numbers, dash, underscore, dot)
-    function sanitizeFilename(raw){
-      if(!raw) return null;
-      // Remove any path traversal or slashes
-      raw = raw.replace(/(\.\.\/|\/|\\)/g, "");
-      // Allow only safe chars
-      const safe = raw.match(/^[a-zA-Z0-9._-]+$/) ? raw : null;
-      return safe;
+    function sanitizeFilename(raw) {
+      if (!raw) return null;
+      // We only need to prevent directory traversal. We will add the "arts/" prefix later.
+      if (raw.includes("..") || raw.includes("/") || raw.includes("\\")) {
+        return null;
+      }
+      return raw;
     }
 
     const params = new URLSearchParams(location.search);
-    const rawFile = params.get("file");
-    const file = sanitizeFilename(rawFile);
+    // Get the clean filename, e.g., "hariksh-sunset.html"
+    const file = sanitizeFilename(params.get("file"));
 
     const preview = document.getElementById("artPreview");
     const codeBlock = document.getElementById("codeBlock");
     const fileNameEl = document.getElementById("fileName");
-    const metaText = document.getElementById("metaText");
     const copyBtn = document.getElementById("copyBtn");
     const downloadBtn = document.getElementById("downloadBtn");
+    const themeToggle = document.getElementById("themeToggle");
 
-    if(!file){
-      fileNameEl.textContent = "No file specified or invalid filename";
-      codeBlock.textContent = "No file specified. Go back to the gallery and click an artwork.";
-      metaText.textContent = "";
+    // Apply dark mode from query param
+    const darkMode = params.get("dark") === "true";
+    if (darkMode) document.body.classList.add("dark");
+
+    // Set toggle button text
+    themeToggle.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+
+    // Toggle dark/light mode
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      themeToggle.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+
+      // Update URL query param without reload
+      const url = new URL(window.location);
+      url.searchParams.set('dark', document.body.classList.contains("dark"));
+      history.replaceState(null,'', url);
+    });
+
+    if (!file) {
+      fileNameEl.textContent = "Error";
+      codeBlock.textContent = "No file specified or the filename is invalid. Please go back to the gallery and try again.";
     } else {
-      fileNameEl.textContent = file;
-      metaText.textContent = "Preview + code";
+      // --- FIX IS HERE ---
+      // We build the full path *after* we know the filename is safe.
+      const filePath = `arts/${file}`;
 
-      const artPath = "./arts/" + encodeURIComponent(file);
+      fileNameEl.textContent = file; // Show the clean filename
+      preview.src = filePath;       // Use the full path for the iframe
+      downloadBtn.href = filePath;    // Use the full path for the download link
+      downloadBtn.setAttribute("download", file); // Use the clean filename for the download attribute
 
-      // Set preview (safe: use sanitized filename)
-      preview.src = "./arts/" + file;
-
-      // Set download link (same-origin)
-      downloadBtn.href = "./arts/" + file;
-      downloadBtn.setAttribute("download", file);
-
-      // Fetch the code
-      fetch("./arts/" + file, {cache: "no-store"})
+      // Use the full path to fetch the code
+      fetch(filePath, { cache: "no-store" })
         .then(res => {
-          if(!res.ok) throw new Error("HTTP " + res.status);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.text();
         })
-        .then(txt => {
-          // show raw text safely
-          codeBlock.textContent = txt;
-        })
-        .catch(err => {
-          codeBlock.textContent = "Error loading code: " + err.message;
-        });
+        .then(txt => codeBlock.textContent = txt)
+        .catch(err => codeBlock.textContent = `Error loading code: ${err.message}`);
     }
 
-    // Copy to clipboard
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(codeBlock.textContent);
         copyBtn.textContent = "Copied ✓";
-        setTimeout(()=> copyBtn.textContent = "Copy", 1500);
+        setTimeout(() => copyBtn.textContent = "Copy", 1500);
       } catch (e) {
         copyBtn.textContent = "Copy failed";
-        setTimeout(()=> copyBtn.textContent = "Copy", 1500);
+        setTimeout(() => copyBtn.textContent = "Copy", 1500);
       }
     });
   </script>
