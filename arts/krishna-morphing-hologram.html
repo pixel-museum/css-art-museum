@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Morphing Hologram - Krishna's Unique CSS Art</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+      background-size: 400% 400%;
+      animation: backgroundShift 8s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hologram-container {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    /* Main Hologram Shape */
+    .hologram-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120px;
+      height: 120px;
+      transform: translate(-50%, -50%);
+      transform-style: preserve-3d;
+      animation: hologramRotate 6s linear infinite;
+    }
+
+    @keyframes hologramRotate {
+      0% { transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      33% { transform: translate(-50%, -50%) rotateX(120deg) rotateY(120deg) rotateZ(120deg); }
+      66% { transform: translate(-50%, -50%) rotateX(240deg) rotateY(240deg) rotateZ(240deg); }
+      100% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    }
+
+    /* Morphing Faces of the Hologram */
+    .holo-face {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px solid;
+      background: linear-gradient(45deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+      backdrop-filter: blur(5px);
+    }
+
+    .face-1 {
+      transform: translateZ(60px);
+      border-color: #00ffff;
+      box-shadow: 
+        inset 0 0 20px rgba(0,255,255,0.3),
+        0 0 30px rgba(0,255,255,0.4);
+      animation: morphShape1 4s ease-in-out infinite;
+    }
+
+    .face-2 {
+      transform: rotateY(90deg) translateZ(60px);
+      border-color: #ff00ff;
+      box-shadow: 
+        inset 0 0 20px rgba(255,0,255,0.3),
+        0 0 30px rgba(255,0,255,0.4);
+      animation: morphShape2 4s ease-in-out infinite 1s;
+    }
+
+    .face-3 {
+      transform: rotateY(180deg) translateZ(60px);
+      border-color: #ffff00;
+      box-shadow: 
+        inset 0 0 20px rgba(255,255,0,0.3),
+        0 0 30px rgba(255,255,0,0.4);
+      animation: morphShape3 4s ease-in-out infinite 2s;
+    }
+
+    .face-4 {
+      transform: rotateY(-90deg) translateZ(60px);
+      border-color: #00ff00;
+      box-shadow: 
+        inset 0 0 20px rgba(0,255,0,0.3),
+        0 0 30px rgba(0,255,0,0.4);
+      animation: morphShape4 4s ease-in-out infinite 3s;
+    }
+
+    @keyframes morphShape1 {
+      0%, 100% { border-radius: 0%; transform: translateZ(60px) scale(1); }
+      25% { border-radius: 50%; transform: translateZ(80px) scale(1.2); }
+      50% { border-radius: 20% 50% 30% 40%; transform: translateZ(60px) scale(0.8); }
+      75% { border-radius: 0% 100% 0% 100%; transform: translateZ(40px) scale(1.1); }
+    }
+
+    @keyframes morphShape2 {
+      0%, 100% { border-radius: 50%; transform: rotateY(90deg) translateZ(60px) scale(1); }
+      25% { border-radius: 0%; transform: rotateY(90deg) translateZ(80px) scale(1.3); }
+      50% { border-radius: 40% 20% 60% 10%; transform: rotateY(90deg) translateZ(60px) scale(0.7); }
+      75% { border-radius: 100% 0% 100% 0%; transform: rotateY(90deg) translateZ(40px) scale(1.2); }
+    }
+
+    @keyframes morphShape3 {
+      0%, 100% { border-radius: 30% 70% 20% 80%; transform: rotateY(180deg) translateZ(60px) scale(1); }
+      25% { border-radius: 80% 20% 70% 30%; transform: rotateY(180deg) translateZ(80px) scale(1.1); }
+      50% { border-radius: 50%; transform: rotateY(180deg) translateZ(60px) scale(0.9); }
+      75% { border-radius: 0%; transform: rotateY(180deg) translateZ(40px) scale(1.4); }
+    }
+
+    @keyframes morphShape4 {
+      0%, 100% { border-radius: 100% 0% 100% 0%; transform: rotateY(-90deg) translateZ(60px) scale(1); }
+      25% { border-radius: 30% 70% 20% 80%; transform: rotateY(-90deg) translateZ(80px) scale(0.8); }
+      50% { border-radius: 0%; transform: rotateY(-90deg) translateZ(60px) scale(1.3); }
+      75% { border-radius: 50%; transform: rotateY(-90deg) translateZ(40px) scale(1); }
+    }
+
+    /* Holographic Scanning Lines */
+    .scan-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,255,255,0.03) 2px,
+        rgba(0,255,255,0.03) 4px
+      );
+      animation: scanEffect 2s linear infinite;
+    }
+
+    @keyframes scanEffect {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Holographic Data Streams */
+    .data-stream {
+      position: absolute;
+      width: 2px;
+      height: 200px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0,255,255,0.8),
+        rgba(255,0,255,0.8),
+        transparent
+      );
+      animation: dataFlow 3s linear infinite;
+    }
+
+    .stream-1 {
+      top: -100px;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .stream-2 {
+      top: -100px;
+      right: 25%;
+      animation-delay: 1s;
+    }
+
+    .stream-3 {
+      top: -100px;
+      left: 70%;
+      animation-delay: 2s;
+    }
+
+    @keyframes dataFlow {
+      0% { transform: translateY(0) scaleY(0); opacity: 0; }
+      50% { transform: translateY(50px) scaleY(1); opacity: 1; }
+      100% { transform: translateY(350px) scaleY(0); opacity: 0; }
+    }
+
+    /* Holographic Particles */
+    .holo-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(0,255,255,1), transparent);
+      border-radius: 50%;
+      animation: particleFloat 4s ease-in-out infinite;
+    }
+
+    .particle-1 {
+      top: 10%;
+      left: 20%;
+      animation-delay: 0s;
+      animation-duration: 5s;
+    }
+
+    .particle-2 {
+      top: 80%;
+      right: 15%;
+      animation-delay: 1s;
+      animation-duration: 4s;
+    }
+
+    .particle-3 {
+      top: 30%;
+      right: 30%;
+      animation-delay: 2s;
+      animation-duration: 6s;
+    }
+
+    .particle-4 {
+      bottom: 20%;
+      left: 10%;
+      animation-delay: 3s;
+      animation-duration: 4.5s;
+    }
+
+    @keyframes particleFloat {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.3; 
+        box-shadow: 0 0 5px rgba(0,255,255,0.5);
+      }
+      50% { 
+        transform: translate(20px, -20px) scale(1.5); 
+        opacity: 1; 
+        box-shadow: 0 0 15px rgba(0,255,255,1);
+      }
+    }
+
+    /* Energy Rings */
+    .energy-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(0,255,255,0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: energyPulse 3s ease-in-out infinite;
+    }
+
+    .ring-1 {
+      width: 180px;
+      height: 180px;
+      animation-delay: 0s;
+    }
+
+    .ring-2 {
+      width: 220px;
+      height: 220px;
+      animation-delay: 1s;
+      border-color: rgba(255,0,255,0.4);
+    }
+
+    .ring-3 {
+      width: 260px;
+      height: 260px;
+      animation-delay: 2s;
+      border-color: rgba(255,255,0,0.4);
+    }
+
+    @keyframes energyPulse {
+      0%, 100% { 
+        transform: translate(-50%, -50%) scale(0.8); 
+        opacity: 0.2;
+        border-width: 1px;
+      }
+      50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 0.8;
+        border-width: 3px;
+      }
+    }
+
+    /* Holographic Glitch Effect */
+    .glitch-layer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120px;
+      height: 120px;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(45deg, rgba(255,0,0,0.1), rgba(0,255,0,0.1), rgba(0,0,255,0.1));
+      mix-blend-mode: screen;
+      animation: glitch 5s linear infinite;
+    }
+
+    @keyframes glitch {
+      0%, 90%, 100% { 
+        transform: translate(-50%, -50%) skew(0deg); 
+        opacity: 0;
+      }
+      91% { 
+        transform: translate(-48%, -52%) skew(2deg); 
+        opacity: 0.7;
+      }
+      92% { 
+        transform: translate(-52%, -48%) skew(-1deg); 
+        opacity: 0.5;
+      }
+      93% { 
+        transform: translate(-50%, -50%) skew(1deg); 
+        opacity: 0.8;
+      }
+      94%, 96% { 
+        transform: translate(-50%, -50%) skew(0deg); 
+        opacity: 0;
+      }
+      95% { 
+        transform: translate(-49%, -51%) skew(-2deg); 
+        opacity: 0.6;
+      }
+    }
+
+    /* Matrix-style Digital Rain */
+    .digital-char {
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: rgba(0,255,0,0.7);
+      animation: digitalRain 4s linear infinite;
+    }
+
+    .char-1 {
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .char-2 {
+      left: 15%;
+      animation-delay: 1s;
+    }
+
+    .char-3 {
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .char-4 {
+      right: 25%;
+      animation-delay: 3s;
+    }
+
+    @keyframes digitalRain {
+      0% { 
+        top: -10%; 
+        opacity: 0; 
+        transform: scale(0.5);
+      }
+      10% { 
+        opacity: 1; 
+        transform: scale(1);
+      }
+      90% { 
+        opacity: 1; 
+        transform: scale(1);
+      }
+      100% { 
+        top: 110%; 
+        opacity: 0; 
+        transform: scale(0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hologram-container">
+    <!-- Scanning Lines Effect -->
+    <div class="scan-lines"></div>
+    
+    <!-- Energy Rings -->
+    <div class="energy-ring ring-1"></div>
+    <div class="energy-ring ring-2"></div>
+    <div class="energy-ring ring-3"></div>
+    
+    <!-- Main Hologram Core -->
+    <div class="hologram-core">
+      <div class="holo-face face-1"></div>
+      <div class="holo-face face-2"></div>
+      <div class="holo-face face-3"></div>
+      <div class="holo-face face-4"></div>
+    </div>
+    
+    <!-- Glitch Effect Layer -->
+    <div class="glitch-layer"></div>
+    
+    <!-- Holographic Particles -->
+    <div class="holo-particle particle-1"></div>
+    <div class="holo-particle particle-2"></div>
+    <div class="holo-particle particle-3"></div>
+    <div class="holo-particle particle-4"></div>
+    
+    <!-- Data Streams -->
+    <div class="data-stream stream-1"></div>
+    <div class="data-stream stream-2"></div>
+    <div class="data-stream stream-3"></div>
+    
+    <!-- Digital Characters -->
+    <div class="digital-char char-1">01</div>
+    <div class="digital-char char-2">10</div>
+    <div class="digital-char char-3">11</div>
+    <div class="digital-char char-4">00</div>
+  </div>
+</body>
+</html>
