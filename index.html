@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | CSS Art Museum</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favconicon.png">
-</head>
-<body class="home-container">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Art Museum</title>
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Untitled design.png">
+  </head>
+  <body>
+    <header>
+      <h1>🎨 CSS Art Museum</h1>
+      <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
+      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+      <input type="text" id="search-bar" placeholder="Search artworks...">
+    </header>
+    
+    <main class="gallery" id="gallery-container">
+       </main>
+    
+    <footer>
+      <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
+    </footer>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">🎨 CSS Art Museum</div>
-    <button id="nav-btn" class="nav-btn">Get Started</button>
-  </header>
+    <!-- Navigate to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor"/>
+      </svg>
+    </button>
 
-  <!-- Main Content -->
-  <div class="home-content">
-    <h1 class="title">🎨 Welcome to the CSS Art Museum</h1>
-    <p class="subtitle">A gallery of creativity powered by HTML & CSS.</p>
-    <button id="get-started" class="btn">Get Started</button>
-  </div>
-
-  <footer>
-    <p>Crafted with ❤️ for Hacktoberfest 2025</p>
-  </footer>
-
-  <script>
-    document.getElementById("get-started").addEventListener("click", () => {
-      window.location.href = "gallery.html";
-    });
-
-    document.getElementById("nav-btn").addEventListener("click", () => {
-      window.location.href = "gallery.html";
-    });
-  </script>
-   <script src="script.js"></script>
-</body>
- 
+    <script src="script.js"></script>
+  </body>
 </html>
