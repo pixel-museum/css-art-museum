@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon City</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0a0a1a 0%, #1a0a2e 50%, #2a1a3e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .cityscape {
+            position: relative;
+            width: 800px;
+            height: 500px;
+        }
+
+        /* Animated grid background */
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+            perspective: 500px;
+            transform: rotateX(60deg);
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 0 50px, 50px 0; }
+        }
+
+        /* Buildings container */
+        .buildings {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        /* Building base style */
+        .building {
+            position: relative;
+            background: linear-gradient(to right, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Individual buildings with different heights */
+        .building-1 {
+            width: 80px;
+            height: 280px;
+            background: linear-gradient(to right, #1a1a3e 0%, #2a1a4e 50%, #1a1a3e 100%);
+        }
+
+        .building-2 {
+            width: 100px;
+            height: 350px;
+            background: linear-gradient(to right, #0e1a3e 0%, #1e2a5e 50%, #0e1a3e 100%);
+        }
+
+        .building-3 {
+            width: 70px;
+            height: 220px;
+            background: linear-gradient(to right, #1a0e3e 0%, #2a1e5e 50%, #1a0e3e 100%);
+        }
+
+        .building-4 {
+            width: 90px;
+            height: 320px;
+            background: linear-gradient(to right, #1a1a4e 0%, #2a2a6e 50%, #1a1a4e 100%);
+        }
+
+        .building-5 {
+            width: 110px;
+            height: 380px;
+            background: linear-gradient(to right, #0a1a3e 0%, #1a2a5e 50%, #0a1a3e 100%);
+        }
+
+        .building-6 {
+            width: 75px;
+            height: 260px;
+            background: linear-gradient(to right, #1a0a3e 0%, #2a1a5e 50%, #1a0a3e 100%);
+        }
+
+        /* Windows grid */
+        .windows {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 15px 10px;
+        }
+
+        .window {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+                        inset 0 0 3px rgba(0, 255, 255, 0.3);
+            animation: window-flicker 4s infinite;
+        }
+
+        .window:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        .window:nth-child(3n) {
+            animation-delay: 1s;
+        }
+
+        @keyframes window-flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Neon signs on buildings */
+        .neon-sign {
+            position: absolute;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: neon-flicker 3s infinite;
+        }
+
+        .sign-1 {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff00ff;
+            text-shadow: 
+                0 0 5px #ff00ff,
+                0 0 10px #ff00ff,
+                0 0 20px #ff00ff,
+                0 0 40px #ff00ff;
+        }
+
+        .sign-2 {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ffff;
+            text-shadow: 
+                0 0 5px #00ffff,
+                0 0 10px #00ffff,
+                0 0 20px #00ffff,
+                0 0 40px #00ffff;
+        }
+
+        .sign-3 {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff0080;
+            text-shadow: 
+                0 0 5px #ff0080,
+                0 0 10px #ff0080,
+                0 0 20px #ff0080,
+                0 0 40px #ff0080;
+        }
+
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            20%, 24%, 55% {
+                opacity: 0.4;
+                filter: brightness(0.4);
+            }
+        }
+
+        /* Antennas on top of buildings */
+        .antenna {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 30px;
+            background: linear-gradient(to top, #444, #888);
+        }
+
+        .antenna::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff0000,
+                        0 0 20px #ff0000;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0.2; }
+        }
+
+        /* Holographic billboards */
+        .billboard {
+            position: absolute;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4),
+                        inset 0 0 15px rgba(0, 255, 255, 0.2);
+            animation: billboard-glow 3s ease-in-out infinite;
+        }
+
+        .billboard-1 {
+            top: 80px;
+            left: 100px;
+            width: 100px;
+            height: 60px;
+        }
+
+        .billboard-2 {
+            top: 50px;
+            right: 150px;
+            width: 120px;
+            height: 70px;
+        }
+
+        @keyframes billboard-glow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.4),
+                            inset 0 0 15px rgba(0, 255, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 255, 0.6),
+                            inset 0 0 20px rgba(255, 0, 255, 0.3);
+            }
+        }
+
+        /* Flying vehicles */
+        .vehicle {
+            position: absolute;
+            width: 40px;
+            height: 12px;
+            background: linear-gradient(to right, #ff00ff, #00ffff);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+            animation: fly-across 8s linear infinite;
+        }
+
+        .vehicle::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-right: 20px solid rgba(255, 0, 255, 0.5);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+
+        .vehicle-1 {
+            top: 120px;
+            animation-delay: 0s;
+        }
+
+        .vehicle-2 {
+            top: 180px;
+            animation-delay: 3s;
+            animation-duration: 10s;
+        }
+
+        .vehicle-3 {
+            top: 250px;
+            animation-delay: 5s;
+            animation-duration: 12s;
+        }
+
+        @keyframes fly-across {
+            0% {
+                left: -50px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                left: 850px;
+                opacity: 0;
+            }
+        }
+
+        /* Searchlight beams */
+        .searchlight {
+            position: absolute;
+            bottom: 0;
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to top, 
+                rgba(0, 255, 255, 0.6) 0%,
+                rgba(0, 255, 255, 0.2) 50%,
+                transparent 100%);
+            transform-origin: bottom center;
+            animation: search 8s ease-in-out infinite;
+        }
+
+        .searchlight-1 {
+            left: 150px;
+            animation-delay: 0s;
+        }
+
+        .searchlight-2 {
+            right: 200px;
+            animation-delay: 2s;
+        }
+
+        @keyframes search {
+            0%, 100% { transform: rotate(-30deg); }
+            50% { transform: rotate(30deg); }
+        }
+
+        /* Fog layer */
+        .fog {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, 
+                rgba(138, 43, 226, 0.2) 0%,
+                transparent 100%);
+            animation: fog-move 15s ease-in-out infinite;
+        }
+
+        @keyframes fog-move {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Stars in the background */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: star-twinkle 3s infinite;
+        }
+
+        .star:nth-child(1) { top: 30px; left: 100px; animation-delay: 0s; }
+        .star:nth-child(2) { top: 50px; left: 300px; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 70px; left: 500px; animation-delay: 1s; }
+        .star:nth-child(4) { top: 40px; left: 650px; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 60px; left: 750px; animation-delay: 2s; }
+        .star:nth-child(6) { top: 80px; left: 200px; animation-delay: 0.3s; }
+        .star:nth-child(7) { top: 35px; left: 400px; animation-delay: 0.8s; }
+        .star:nth-child(8) { top: 55px; left: 600px; animation-delay: 1.3s; }
+
+        @keyframes star-twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* City title */
+        .city-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Arial Black', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            animation: gradient-shift 3s ease infinite;
+            letter-spacing: 4px;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cityscape">
+
+        <!-- Stars -->
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+        <!-- Grid background -->
+        <div class="grid"></div>
+
+
+        <!-- Flying vehicles -->
+        <div class="vehicle vehicle-1"></div>
+        <div class="vehicle vehicle-2"></div>
+        <div class="vehicle vehicle-3"></div>
+
+        <!-- Searchlight beams -->
+        <div class="searchlight searchlight-1"></div>
+        <div class="searchlight searchlight-2"></div>
+
+        <!-- Buildings -->
+        <div class="buildings">
+            <div class="building building-1">
+                <div class="antenna"></div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+
+            <div class="building building-2">
+                <div class="antenna"></div>
+                <div class="neon-sign sign-1">TECH</div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+
+            <div class="building building-3">
+                <div class="antenna"></div>
+                <div class="neon-sign sign-2">FUTURE</div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+
+            <div class="building building-4">
+                <div class="antenna"></div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+
+            <div class="building building-5">
+                <div class="antenna"></div>
+                <div class="neon-sign sign-3">NEO</div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+
+            <div class="building building-6">
+                <div class="antenna"></div>
+                <div class="windows">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fog layer -->
+        <div class="fog"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ManuDwivedi — Aurora</title>
+  <style>
+    :root{
+      --bg:#041423;
+      --hue1:200; /* blue */
+      --hue2:280; /* magenta */
+      --hue3:110; /* green */
+    }
+
+    /* Reset and centering */
+    html,body{height:100%;}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(12,30,48,0.4), transparent 20%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(4,20,35,0.35), transparent 20%),
+                  var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .stage{
+      width:min(1100px,94vw);
+      height:min(640px,76vh);
+      position:relative;
+      border-radius:14px;
+      box-shadow: 0 30px 80px rgba(2,8,12,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      overflow:hidden;
+      backdrop-filter: blur(2px);
+    }
+
+    /* soft starfield created purely with gradients and box-shadows */
+    .stars{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 0.5px, transparent 1px),
+        radial-gradient(circle at 30% 10%, rgba(255,255,255,0.8) 0.6px, transparent 1px),
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.6) 0.5px, transparent 1px),
+        radial-gradient(circle at 70% 25%, rgba(255,255,255,0.7) 0.6px, transparent 1px),
+        radial-gradient(circle at 85% 60%, rgba(255,255,255,0.5) 0.5px, transparent 1px);
+      background-size: 100% 100%;
+      mix-blend-mode: screen;
+      opacity:0.9;
+      transform: translateZ(0);
+      pointer-events:none;
+    }
+
+    /* Layered aurora ribbons */
+    .ribbon{
+      position:absolute;
+      left:-25%;
+      width:150%;
+      height:40%;
+      bottom:6%;
+      filter: blur(28px) saturate(140%);
+      transform-origin:center left;
+      opacity:0.9;
+      mix-blend-mode: screen;
+    }
+
+    .ribbon.one{
+      background: linear-gradient(120deg, hsla(var(--hue1),90%,60%,0.95), transparent 60%);
+      height:36%;
+      bottom:36%;
+      animation: swayOne 9s ease-in-out infinite;
+    }
+
+    .ribbon.two{
+      background: linear-gradient(100deg, hsla(var(--hue2),88%,64%,0.95), transparent 60%);
+      height:42%;
+      bottom:20%;
+      animation: swayTwo 11s ease-in-out infinite;
+      opacity:0.85;
+    }
+
+    .ribbon.three{
+      background: linear-gradient(90deg, hsla(var(--hue3),86%,58%,0.9), transparent 60%);
+      height:30%;
+      bottom:10%;
+      animation: swayThree 12.5s ease-in-out infinite;
+      opacity:0.85;
+    }
+
+    /* subtle foreground reflection */
+    .foreground{
+      position:absolute;
+      left:0;right:0;bottom:0;height:28%;
+      background: linear-gradient(180deg, transparent 0%, rgba(2,6,8,0.2) 60%, rgba(2,6,8,0.6) 100%);
+      pointer-events:none;
+    }
+
+    /* small label */
+    .label{
+      position:absolute;
+      left:18px;top:14px;
+      font-size:14px;
+      letter-spacing:0.06em;
+      color:rgba(255,255,255,0.82);
+      text-shadow:0 1px 0 rgba(0,0,0,0.4);
+    }
+
+    /* animations: gentle horizontal sway and vertical undulation */
+    @keyframes swayOne{
+      0%{ transform: translateX(-6%) translateY(0) rotate(-6deg) scaleX(1.06); }
+      50%{ transform: translateX(6%) translateY(-22px) rotate(-4deg) scaleX(1.02); }
+      100%{ transform: translateX(-6%) translateY(0) rotate(-6deg) scaleX(1.06); }
+    }
+
+    @keyframes swayTwo{
+      0%{ transform: translateX(-8%) translateY(0) rotate(-8deg) scaleX(1.08); }
+      50%{ transform: translateX(10%) translateY(-34px) rotate(-2deg) scaleX(1); }
+      100%{ transform: translateX(-8%) translateY(0) rotate(-8deg) scaleX(1.08); }
+    }
+
+    @keyframes swayThree{
+      0%{ transform: translateX(-10%) translateY(0) rotate(-3deg) scaleX(1.04); }
+      50%{ transform: translateX(8%) translateY(-18px) rotate(1deg) scaleX(1); }
+      100%{ transform: translateX(-10%) translateY(0) rotate(-3deg) scaleX(1.04); }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:700px){
+      .stage{ height:62vh; border-radius:8px; }
+      .ribbon{ filter: blur(20px); }
+    }
+  </style>
+</head>
+  <body>
+  <div class="stage" role="img" aria-label="Interactive colorful aurora made with CSS gradients and soft ribbons">
+    <div class="label">move your cursor</div>
+    <div class="stars" aria-hidden="true"></div>
+
+    <div class="ribbon one" aria-hidden="true"></div>
+    <div class="ribbon two" aria-hidden="true"></div>
+    <div class="ribbon three" aria-hidden="true"></div>
+
+    <div class="foreground" aria-hidden="true"></div>
+  </div>
+  <script>
+    
+    (function(){
+      const stage = document.querySelector('.stage');
+      if(!stage) return;
+
+      let pointerX = 0, pointerY = 0;
+      let px = 0, py = 0;
+      const ease = 0.08; // smoothing
+      const maxRotate = 6; // degrees
+      const maxTranslate = 18; // px for parallax
+
+      function onPointerMove(e){
+        const rect = stage.getBoundingClientRect();
+        const x = (e.clientX ?? (e.touches && e.touches[0].clientX)) || (rect.left + rect.width/2);
+        const y = (e.clientY ?? (e.touches && e.touches[0].clientY)) || (rect.top + rect.height/2);
+        // normalized -1 .. 1
+        pointerX = ( (x - (rect.left + rect.width/2)) / (rect.width/2) );
+        pointerY = ( (y - (rect.top + rect.height/2)) / (rect.height/2) );
+        // clamp
+        pointerX = Math.max(-1, Math.min(1, pointerX));
+        pointerY = Math.max(-1, Math.min(1, pointerY));
+      }
+
+      function onLeave(){
+        pointerX = 0; pointerY = 0;
+      }
+
+      function raf(){
+        // easing
+        px += (pointerX - px) * ease;
+        py += (pointerY - py) * ease;
+
+        const rotY = px * maxRotate; // rotate around Y
+        const rotX = -py * maxRotate; // rotate around X (invert)
+        const transX = -px * maxTranslate;
+        const transY = -py * maxTranslate * 0.6;
+
+        // apply transform; keep existing 3d context
+        stage.style.transform = `perspective(900px) translateZ(0) rotateX(${rotX}deg) rotateY(${rotY}deg) translate(${transX}px, ${transY}px)`;
+
+        requestAnimationFrame(raf);
+      }
+
+      // Pointer and touch events
+      window.addEventListener('pointermove', onPointerMove, {passive:true});
+      window.addEventListener('touchmove', onPointerMove, {passive:true});
+      window.addEventListener('pointerleave', onLeave);
+      window.addEventListener('touchend', onLeave);
+
+      // start loop
+      requestAnimationFrame(raf);
+    })();
+  </script>
+</body>
+</html>
