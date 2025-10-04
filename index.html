@@ -15,11 +15,54 @@
     <main class="gallery">
     
       <div class="art-card">
-        <a href="art-viewer.html?file=sample.html">
-          <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
-          <p>Sample Art by Shamli</p>
-          <div class="link">Preview the code</div>
-        </a>
+        <iframe src="arts/hariksh-sunset.html" title="Sunset CSS Art"></iframe>
+        <p>Sample Art by Hariksh</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/sample.html" title="Sample CSS Art"></iframe>
+        <p>Sample Art by Shamli</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/matrix.html" title="Matrix Rain Animation"></iframe>
+        <p>Sample Art by Eternity</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/geometry.html" title="Geometric CSS Art"></iframe>
+        <p>Geometric Art by Shamli</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/rotating_cube.html" title="Rotating Cube"></iframe>
+        <p>Geometric Art by Hardik</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/Rohith_stars.html" title="Glowing Star"></iframe>
+        <p>Glowing Star by Rohith</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/helicopter.html" title="Helicopter"></iframe>
+        <p>Helicopter by Dhamith</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/irfan-goldennight.html" title="Golden Night"></iframe>
+        <p>Golden Night by Irfan</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/irfan-ocean.html" title="Ocean Scene"></iframe>
+        <p>Ocean Scene by Irfan</p>
+      </div>
+      <div class="art-card">
+        <iframe src="arts/waqar-cat.html" title="CSS Cat Art"></iframe>
+        <p>Cat by Waqar</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/mbm08-ironman.html" title="Ironman CSS Art"></iframe>
+        <p>Ironman by MBM08</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/matrix-pulse-loading.html" title="Matrix Pulse Loading"></iframe>
+        <p>Matrix Pulse Loading</p>
       </div>
 
       <div class="art-card">
@@ -55,14 +98,23 @@
       </div>
 
       <div class="art-card">
-        <a href="art-viewer.html?file=irfan-goldennight.html">
-          <iframe
-            src="arts/irfan-goldennight.html"
-            title="Golden Night"
-          ></iframe>
-          <p>Golden Night by Irfan</p>
-          <div class="link">Preview the code</div>
-        </a>
+        <iframe src="arts/yash-zoomout.html" title="CSS Owl Art"></iframe>
+        <p>Solar system by Yash</p>
+      </div>
+      
+       <div class="art-card">
+        <iframe src="arts/Dhanush-particle_constellation.html" title="Particle Constellation"></iframe>
+        <p>Particle Constellation by DhanushNehru</p>
+      </div>
+      
+       <div class="art-card">
+        <iframe src="arts/krishna-morphing-hologram.html" title="Morphing Hologram"></iframe>
+        <p>Morphing Hologram by Krishna</p>
+      </div>
+      
+       <div class="art-card">
+        <iframe src="arts/prasanth_bounce.html" title="Bounce"></iframe>
+        <p>Bounce By Prasanth</p>
       </div>
 
       <div class="art-card">
@@ -91,14 +143,67 @@
         </a>
       </div>
 
-      <!-- Contributors can add more art-cards here -->
+      <div class="art-card">
+        <iframe src="arts/angel-ufo_alien.html" title="Hovering UFO with Alien"></iframe>
+        <p>Hovering UFO by Angel</p>
+      </div>
+    
+      <div class="art-card">
+        <iframe src="arts/bouncing_ball.html" title="CSS Cat Art"></iframe>
+        <p>Bouncing Ball by Kartikay</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/floating_orb.html" title="CSS Cat Art"></iframe>
+        <p>Floating Orb by Kartikay</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/pulsating_ring.html" title="CSS Cat Art"></iframe>
+        <p>Pulsating Ring by Kartikay</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/waves.html" title="CSS Cat Art"></iframe>
+        <p>Waves by Kartikay</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/neon-city.html" title="Neon City"></iframe>
+        <p>Neon City By Yashasvi</p>
+      </div>
+      
+      <div class="art-card">
+        <iframe src="arts/manudwivedi-aurora.html" title="Aurora CSS Art (Interactive)"></iframe>
+        <p>Aurora by Manu Dwivedi</p>
+       </p>
+      </div>
+     <!-- Contributors can add more art-cards here -->  
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </main>
     <footer>
       <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
     </footer>
     <script>
       const toggleBtn = document.getElementById("themeToggle");
       const body = document.body;
+      const artCards = document.querySelectorAll(".art-card");
 
       // Load saved theme
       if (localStorage.getItem("theme") === "dark") {
@@ -106,7 +211,23 @@
         toggleBtn.textContent = "☀️ Light";
       }
 
+      // Enhanced theme toggle
       toggleBtn.addEventListener("click", () => {
+        // Add ripple effect
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(108, 99, 255, 0.3);
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          left: 50%; top: 50%;
+          width: 20px; height: 20px;
+          margin: -10px 0 0 -10px;
+        `;
+        toggleBtn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+
         body.classList.toggle("dark-theme");
         if (body.classList.contains("dark-theme")) {
           toggleBtn.textContent = "☀️ Light";
@@ -116,6 +237,72 @@
           localStorage.setItem("theme", "light");
         }
       });
+
+      // Enhanced card animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.animation = 'cardEntrance 0.8s ease-out both';
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      artCards.forEach(card => {
+        cardObserver.observe(card);
+        
+        // Add mouse tracking for subtle tilt
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          const rotateX = (e.clientY - centerY) / 20;
+          const rotateY = (centerX - e.clientX) / 20;
+          
+          card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // Parallax effect for background elements
+      let ticking = false;
+      
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('body::before, body::after');
+        
+        requestAnimationFrame(() => {
+          document.body.style.backgroundPositionY = `${scrolled * 0.2}px`;
+          ticking = false;
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          updateParallax();
+        }
+      });
+
+      // Add CSS for ripple animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes ripple {
+          to { transform: scale(4); opacity: 0; }
+        }
+        .theme-toggle { position: relative; overflow: hidden; }
+      `;
+      document.head.appendChild(style);
     </script>
   </body>
 </html>
