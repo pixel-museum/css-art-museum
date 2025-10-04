@@ -186,7 +186,7 @@
     <script>
       const toggleBtn = document.getElementById("themeToggle");
       const body = document.body;
-
+      const main_elem = document.querySelector(".gallery")
       // Load saved theme
       if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-theme");
@@ -203,6 +203,51 @@
           localStorage.setItem("theme", "light");
         }
       });
+      const elem = document.createElement("div");
+      const colors = ["green", "blue", "red", "purple"];
+      let clicks = 0; 
+
+      window.addEventListener("click", (e) => {
+        
+        elem.style.background = colors[clicks % colors.length];
+        
+        clicks += 1; 
+      });
+    elem.classList.add("circlefollower");
+    elem.style.display = "none";
+    elem.style.position = "absolute";
+    document.body.appendChild(elem); 
+
+    let hideTimeout;
+    
+    window.addEventListener("mousemove", (e) => {
+      
+        clearTimeout(hideTimeout);
+        
+        const scrollX = window.scrollX;
+        const scrollY = window.scrollY;
+        elem.style.display = "block";
+        const posx = e.clientX + scrollX;
+        const posy = e.clientY + scrollY;
+        if (posx >= 1000) {
+            elem.animate({
+                left: `${posx}px`,
+                top: `${posy}px`,
+                scale: 5
+            }, { duration: 500, fill: "forwards" });
+        } else {
+            elem.animate({
+                left: `${posx}px`,
+                top: `${posy}px`,
+                scale: 1
+            }, { duration: 500, fill: "forwards" });
+        }
+
+        hideTimeout = setTimeout(() => {
+            elem.style.display = "none";
+        }, 1000);
+    });
+
     </script>
   </body>
 </html>
