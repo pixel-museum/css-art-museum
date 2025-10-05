@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn Highway: CSS Collage Art</title>
+    <style>
+        /* CSS resets and base styles */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            overflow: hidden; /* Hide star overflow */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- Galaxy Background Animations & Swirl --- */
+
+        /* Keyframe animation for stars to sparkle/twinkle */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.2); }
+        }
+
+        /* Keyframe animation for the subtle background nebula swirl */
+        @keyframes galaxy-swirl {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* --- Galaxy Container (Nebula) --- */
+
+        .galaxy-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* REALISTIC SPACE REALM with Swirling Colors */
+            background:
+                /* Central Magenta/Purple Swirl */
+                radial-gradient(circle at 60% 70%, rgba(200, 50, 255, 0.3) 5%, transparent 30%),
+                /* Cyan/Blue Cloud */
+                radial-gradient(circle at 30% 20%, rgba(50, 200, 255, 0.3) 5%, transparent 35%),
+                /* Red/Orange Accent */
+                radial-gradient(circle at 90% 90%, rgba(255, 100, 50, 0.25) 1%, transparent 25%),
+                /* Deep space base color (Darkest) */
+                linear-gradient(180deg, #000008 0%, #000000 100%);
+            perspective: 800px;
+            background-size: 200% 200%; /* Allows the background animation to shift the gradients */
+            animation: galaxy-swirl 100s linear infinite alternate; /* Slow, continuous swirl */
+        }
+
+        /* 1st Layer of Stars (Very Dense) */
+        .stars {
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* Base stars (White + Colored) - significantly more points for density */
+            box-shadow:
+                100px 50px #fff, 200px 100px #fff, 300px 150px #fff, 400px 200px #fff,
+                -100px -50px #fff, -200px -100px #fff, -300px -150px #fff, -400px -200px #fff,
+                50px 300px #fff, 150px 350px #fff, 250px 400px #fff, 350px 450px #fff,
+                -50px -300px #fff, -150px -350px #fff, -250px -400px #fff, -350px -450px #fff,
+                500px 100px #fff, -500px 100px #fff, 100px -500px #fff, -100px -500px #fff,
+                700px 700px #fff, -700px -700px #fff, 200px -600px #fff, -300px 750px #fff,
+                120px 80px #fff, 220px 120px #fff, 320px 170px #fff, 420px 220px #fff,
+                -120px -70px #fff, -220px -110px #fff, -320px -160px #fff, -420px -210px #fff,
+                650px 400px #fff, -650px 400px #fff, 400px -650px #fff, -400px -650px #fff,
+                80px 500px #fff, -80px 500px #fff, 80px -500px #fff, -80px -500px #fff,
+                10px 10px 2px 2px #ff00ff, 150px 150px 1px 1px #00ffff, 450px 450px 3px 3px #ff0077,
+                -10px -10px 2px 2px #00ffff, -150px -150px 1px 1px #ff00ff, -450px -450px 3px 3px #00ffff,
+                300px 100px 1px 1px #ffcc00, -300px 100px 1px 1px #00ccff, 100px -300px 1px 1px #cc00ff,
+                -100px -300px 1px 1px #ff00cc;
+
+            animation: twinkle 3s infinite alternate; /* Apply sparkling animation */
+        }
+
+        /* 2nd Layer of Stars (Denser & Deeper) */
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            /* Create a second layer of stars */
+            box-shadow:
+                30px 250px #fff, 130px 350px #fff, 230px 450px #fff, 330px 550px #fff,
+                -30px -250px #fff, -130px -350px #fff, -230px -450px #fff, -330px -550px #fff,
+                630px 250px #fff, -630px -350px #fff, 130px -650px #fff, -130px 650px #fff,
+                40px 140px #fff, 240px 190px #fff, 340px 240px #fff, 440px 290px #fff,
+                -40px -140px #fff, -240px -190px #fff, -340px -240px #fff, -440px -290px #fff,
+                550px 300px #fff, -550px 300px #fff, 300px -550px #fff, -300px -550px #fff,
+                70px 450px #fff, -70px 450px #fff, 70px -450px #fff, -70px -450px #fff;
+
+            animation: twinkle 4s 1s infinite alternate; /* Apply sparkling animation with a delay */
+            transform: scale(0.8);
+        }
+
+        /* 3rd Layer of Stars (Closer/Larger/Foregound Sparkle) */
+        .stars-closer {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: transparent;
+            left: 50%;
+            top: 50%;
+            /* Larger, brighter stars for the foreground sparkle - more points added */
+            box-shadow:
+                50px 50px 3px #fff, -50px -50px 3px #fff, 150px -30px 2px #fff, -200px 180px 4px #fff,
+                30px 450px 3px #fff, -350px -100px 2px #fff, 450px 30px 3px #fff, -10px -400px 4px #fff,
+                250px 250px 3px #fff, -150px -250px 2px #fff, 400px -200px 4px #fff, -50px 300px 3px #fff,
+                -200px -200px 3px #fff, 200px 200px 3px #fff, 100px 100px 2px #fff, -100px -100px 2px #fff;
+
+            animation: twinkle 2s linear infinite alternate;
+        }
+
+
+        /* --- Saturn Highway Art Piece --- */
+
+        .saturn-scene {
+            position: relative;
+            z-index: 10;
+            /* Position Saturn lower, mimicking the collage perspective */
+            transform: translateY(100px) scale(1.1);
+        }
+
+        /* The Planet Sphere */
+        .saturn {
+            width: 250px;
+            height: 250px;
+            /* REFINED SATURN: Muted, pale beige/gray tones for a realistic atmosphere */
+            background: radial-gradient(circle at 50% 50%, #f0ead6 0%, #dcd1af 40%, #c4b58e 80%, #a0977a 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        /* The Rings (The Road) */
+        .rings-road {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* TILT and rotate the ring structure to create the highway effect */
+            transform: translate(-50%, -50%) rotateX(65deg) rotateZ(20deg);
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            z-index: -1; /* Place behind the planet center */
+            box-shadow:
+                /* Outer light ring */
+                0 0 0 10px rgba(255, 255, 255, 0.2) inset,
+                /* Dark middle gap to make the road clearer */
+                0 0 0 30px rgba(0, 0, 0, 0.7) inset;
+
+            /* The visible road/track surface */
+            border: 30px solid #555;
+            overflow: hidden;
+        }
+
+        /* Inner Ring Detail (looks like inner lines) */
+        .rings-road::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 1px dashed #aaa; /* Dashed center line effect */
+        }
+
+        /* Container for the cars, sets their orbit path */
+        .cars-track {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px; /* Orbit Diameter (inner circle) */
+            height: 300px;
+            transform-style: preserve-3d;
+        }
+
+        /* Keyframe animation for cars to orbit the planet */
+        @keyframes orbit {
+            /* Includes the inverse tilt to keep the car lying flat on the tilted ring */
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(175px) rotateX(-65deg) rotateZ(-20deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(175px) rotateX(-65deg) rotateZ(-20deg); }
+        }
+
+        /* Basic Car Shape */
+        .car {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 12px;
+            border-radius: 5px; /* Softer rounded edges */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            z-index: 5;
+            position: relative; /* Essential for positioning the ::before pseudo-element */
+        }
+
+        /* Car Cabin/Roof for a more recognizable vehicle shape */
+        .car::before {
+            content: '';
+            position: absolute;
+            top: -8px; /* Move roof up */
+            left: 5px;
+            width: 20px;
+            height: 10px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background: inherit; /* Takes the color of the car (red or blue) */
+            /* Optional: subtle line for a window effect */
+            box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Override for the white car's cabin to make it visible */
+        .white-car::before {
+            background: #ccc; /* Use a gray color for the roof */
+        }
+
+        /* Individual Car Styling and Animation */
+        .red-car {
+            background: #ff4757;
+            animation: orbit 8s linear infinite;
+        }
+
+        .blue-car {
+            background: #2e86de;
+            animation: orbit 10s linear infinite reverse; /* Slower and opposite direction */
+            animation-delay: 3.33s; /* Staggered starting position (1/3 of the way around) */
+        }
+
+        .white-car {
+            background: #f1f2f6;
+            animation: orbit 6s linear infinite; /* Fastest car */
+            animation-delay: 4s; /* Staggered starting position (2/3 of the way around) */
+            width: 35px; /* Slightly longer vehicle */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="galaxy-container">
+        <!-- The stars element uses box-shadow to create the sparkle field -->
+        <div class="stars"></div>
+        <!-- NEW star layer for added sparkle -->
+        <div class="stars-closer"></div>
+
+        <div class="saturn-scene">
+            <div class="saturn">
+                <div class="rings-road">
+                    <!-- The cars-track div is invisible, used only to define the orbit path -->
+                    <div class="cars-track">
+                        <div class="car red-car"></div>
+                        <div class="car blue-car"></div>
+                        <div class="car white-car"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
