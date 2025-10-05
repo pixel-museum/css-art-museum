@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+        }
+
+        /* Matrix Rain Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-size: 20px;
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+            animation: matrixFall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes matrixFall {
+            0% {
+                top: -100%;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0.3;
+            }
+        }
+
+        /* Terminal Container */
+        .terminal-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #0f0;
+            border-radius: 10px;
+            width: 800px;
+            max-width: 95%;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.5),
+                        inset 0 0 50px rgba(0, 255, 0, 0.1);
+            animation: terminalGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes terminalGlow {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 255, 0, 0.1); }
+            100% { box-shadow: 0 0 50px rgba(0, 255, 0, 0.6), inset 0 0 50px rgba(0, 255, 0, 0.2); }
+        }
+
+        .terminal-header {
+            background: #0a0a0a;
+            padding: 10px 15px;
+            border-bottom: 1px solid #0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        .btn-red { background: #ff5f56; }
+        .btn-yellow { background: #ffbd2e; }
+        .btn-green { background: #27c93f; }
+
+        @keyframes buttonPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .terminal-title {
+            margin-left: auto;
+            font-size: 12px;
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 400px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            margin: 5px 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .prompt {
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 16px;
+            background: #0f0;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .success { color: #0f0; }
+        .warning { color: #ff0; text-shadow: 0 0 5px #ff0; }
+        .error { color: #f00; text-shadow: 0 0 5px #f00; }
+        .info { color: #0ff; text-shadow: 0 0 5px #0ff; }
+
+        /* Skull ASCII Art */
+        .skull {
+            color: #f00;
+            text-shadow: 0 0 10px #f00;
+            font-size: 10px;
+            line-height: 1.2;
+            margin: 20px 0;
+            animation: skullGlitch 3s ease-in-out infinite;
+        }
+
+        @keyframes skullGlitch {
+            0%, 90%, 100% { 
+                transform: translate(0, 0);
+                text-shadow: 0 0 10px #f00;
+            }
+            92% { 
+                transform: translate(-2px, 2px);
+                text-shadow: 2px 0 10px #0ff, -2px 0 10px #f0f;
+            }
+            94% { 
+                transform: translate(2px, -2px);
+                text-shadow: -2px 0 10px #0ff, 2px 0 10px #f0f;
+            }
+            96% { 
+                transform: translate(-2px, -2px);
+                text-shadow: 2px 2px 10px #0ff, -2px -2px 10px #f0f;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #001a00;
+            border: 1px solid #0f0;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0f0, #0a0);
+            width: 0%;
+            animation: progressFill 3s ease-in-out forwards;
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        @keyframes progressFill {
+            to { width: 100%; }
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Glitch effect */
+        .glitch {
+            animation: glitchText 2s ease-in-out infinite;
+        }
+
+        @keyframes glitchText {
+            0%, 90%, 100% { 
+                transform: translate(0);
+            }
+            92% { 
+                transform: translate(-2px, 2px);
+                color: #f0f;
+            }
+            94% { 
+                transform: translate(2px, -2px);
+                color: #0ff;
+            }
+            96% { 
+                transform: translate(-2px, -2px);
+                color: #ff0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- Terminal -->
+    <div class="terminal-container">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-button btn-red"></div>
+                <div class="terminal-button btn-yellow"></div>
+                <div class="terminal-button btn-green"></div>
+                <div class="terminal-title">root@hacker:~$</div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line" style="animation-delay: 0s;">
+                    <span class="prompt">root@hacker:~$</span> initializing system...
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.5s;">
+                    <span class="success">✓</span> System initialized successfully
+                </div>
+                <div class="terminal-line" style="animation-delay: 1s;">
+                    <span class="prompt">root@hacker:~$</span> connecting to mainframe...
+                </div>
+                <div class="terminal-line" style="animation-delay: 1.5s;">
+                    <span class="spinner">⠋</span> Establishing secure connection...
+                </div>
+                <div class="terminal-line" style="animation-delay: 2s;">
+                    <span class="success">✓</span> Connected to mainframe [192.168.1.100]
+                </div>
+                <div class="terminal-line" style="animation-delay: 2.5s;">
+                    <span class="prompt">root@hacker:~$</span> bypass security protocols
+                </div>
+                <div class="terminal-line" style="animation-delay: 3s;">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="terminal-line" style="animation-delay: 6s;">
+                    <span class="warning">⚠</span> Firewall detected! Initiating bypass sequence...
+                </div>
+                <div class="terminal-line" style="animation-delay: 6.5s;">
+                    <span class="success">✓</span> Firewall bypassed
+                </div>
+                <div class="terminal-line" style="animation-delay: 7s;">
+                    <span class="success">✓</span> Decrypting database...
+                </div>
+                <div class="terminal-line" style="animation-delay: 7.5s;">
+                    <span class="info">ℹ</span> Extracting sensitive data...
+                </div>
+                <div class="terminal-line" style="animation-delay: 8s;">
+                    <span class="glitch">ACCESS GRANTED</span>
+                </div>
+                <div class="terminal-line skull" style="animation-delay: 8.5s;">
+<pre>
+    ___________
+   /           \
+  /   X     X   \
+ |               |
+ |   \       /   |
+ |    \_____/    |
+  \             /
+   \___________/
+</pre>
+                </div>
+                <div class="terminal-line" style="animation-delay: 9s;">
+                    <span class="error">SYSTEM COMPROMISED</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 9.5s;">
+                    <span class="prompt">root@hacker:~$</span> <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const matrixBg = document.getElementById('matrixBg');
+        const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        
+        function createMatrixColumn() {
+            const column = document.createElement('div');
+            column.className = 'matrix-column';
+            column.style.left = Math.random() * 100 + '%';
+            column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            let text = '';
+            for (let i = 0; i < 20; i++) {
+                text += characters[Math.floor(Math.random() * characters.length)] + '<br>';
+            }
+            column.innerHTML = text;
+            
+            matrixBg.appendChild(column);
+            
+            setTimeout(() => {
+                column.remove();
+            }, 5000);
+        }
+        
+        // Create initial columns
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createMatrixColumn, i * 200);
+        }
+        
+        // Keep creating columns
+        setInterval(createMatrixColumn, 300);
+
+        // Animate spinner
+        const spinnerChars = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+        let spinnerIndex = 0;
+        const spinners = document.querySelectorAll('.spinner');
+        
+        setInterval(() => {
+            spinnerIndex = (spinnerIndex + 1) % spinnerChars.length;
+            spinners.forEach(spinner => {
+                spinner.textContent = spinnerChars[spinnerIndex];
+            });
+        }, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioluminescent Jellyfish</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #0a1628 0%, #020b1a 100%);
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Water effect overlay */
+        .water-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(transparent 50%, rgba(0, 50, 100, 0.1) 50%);
+            background-size: 100% 20px;
+            animation: waterFlow 3s linear infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes waterFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 20px; }
+        }
+
+        /* Bubbles */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            border-radius: 50%;
+            animation: rise linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Jellyfish container */
+        .jellyfish {
+            position: absolute;
+            animation: float ease-in-out infinite;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-30px) translateX(20px);
+            }
+            50% {
+                transform: translateY(-60px) translateX(0);
+            }
+            75% {
+                transform: translateY(-30px) translateX(-20px);
+            }
+        }
+
+        /* Jellyfish bell (body) */
+        .bell {
+            width: 100px;
+            height: 120px;
+            background: radial-gradient(ellipse at 50% 40%, 
+                rgba(255, 255, 255, 0.3) 0%,
+                currentColor 40%,
+                transparent 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.9);
+            }
+        }
+
+        .bell::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 60%;
+            top: 20%;
+            left: 15%;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.4) 0%,
+                transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Inner bell details */
+        .bell::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            bottom: 0;
+            left: 30%;
+            background: currentColor;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        /* Tentacles */
+        .tentacles {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        .tentacle {
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, currentColor, transparent);
+            border-radius: 50%;
+            transform-origin: top center;
+            opacity: 0.8;
+        }
+
+        .tentacle:nth-child(1) {
+            height: 150px;
+            left: 20%;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        .tentacle:nth-child(2) {
+            height: 180px;
+            left: 30%;
+            animation: sway 2.8s ease-in-out infinite 0.3s;
+        }
+
+        .tentacle:nth-child(3) {
+            height: 160px;
+            left: 40%;
+            animation: sway 3.2s ease-in-out infinite 0.6s;
+        }
+
+        .tentacle:nth-child(4) {
+            height: 140px;
+            left: 50%;
+            animation: sway 2.9s ease-in-out infinite 0.9s;
+        }
+
+        .tentacle:nth-child(5) {
+            height: 170px;
+            left: 60%;
+            animation: sway 3.1s ease-in-out infinite 1.2s;
+        }
+
+        .tentacle:nth-child(6) {
+            height: 155px;
+            left: 70%;
+            animation: sway 2.7s ease-in-out infinite 1.5s;
+        }
+
+        .tentacle:nth-child(7) {
+            height: 145px;
+            left: 80%;
+            animation: sway 3.3s ease-in-out infinite 1.8s;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-15deg);
+            }
+            50% {
+                transform: rotate(15deg);
+            }
+        }
+
+        /* Oral arms (shorter tentacles) */
+        .oral-arms {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+        }
+
+        .oral-arm {
+            position: absolute;
+            width: 6px;
+            height: 80px;
+            background: linear-gradient(to bottom, currentColor 50%, transparent);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .oral-arm:nth-child(1) {
+            left: 25%;
+            animation: swayShort 2s ease-in-out infinite;
+        }
+
+        .oral-arm:nth-child(2) {
+            left: 50%;
+            animation: swayShort 2.2s ease-in-out infinite 0.5s;
+        }
+
+        .oral-arm:nth-child(3) {
+            left: 75%;
+            animation: swayShort 1.8s ease-in-out infinite 1s;
+        }
+
+        @keyframes swayShort {
+            0%, 100% {
+                transform: rotate(-10deg) scaleY(1);
+            }
+            50% {
+                transform: rotate(10deg) scaleY(0.95);
+            }
+        }
+
+        /* Individual jellyfish with different colors and positions */
+        .jellyfish1 {
+            top: 15%;
+            left: 20%;
+            color: #00d9ff;
+            animation-duration: 6s;
+        }
+
+        .jellyfish2 {
+            top: 40%;
+            left: 60%;
+            color: #ff00ff;
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+
+        .jellyfish2 .bell {
+            width: 80px;
+            height: 100px;
+        }
+
+        .jellyfish3 {
+            top: 60%;
+            left: 30%;
+            color: #00ffaa;
+            animation-duration: 6.5s;
+            animation-delay: 2s;
+        }
+
+        .jellyfish3 .bell {
+            width: 90px;
+            height: 110px;
+        }
+
+        .jellyfish4 {
+            top: 25%;
+            right: 15%;
+            color: #ffaa00;
+            animation-duration: 7.5s;
+            animation-delay: 3s;
+        }
+
+        .jellyfish4 .bell {
+            width: 70px;
+            height: 90px;
+        }
+
+        .jellyfish5 {
+            top: 70%;
+            right: 25%;
+            color: #aa00ff;
+            animation-duration: 6.8s;
+            animation-delay: 1.5s;
+        }
+
+        /* Small fish */
+        .fish {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(90deg, #4a9eff 0%, #2176d9 100%);
+            border-radius: 50% 0 0 50%;
+            animation: swim linear infinite;
+            opacity: 0.7;
+        }
+
+        .fish::before {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid #2176d9;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .fish::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            width: 4px;
+            height: 4px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        @keyframes swim {
+            0% {
+                transform: translateX(-100px) scaleX(1);
+            }
+            49% {
+                transform: translateX(calc(100vw + 100px)) scaleX(1);
+            }
+            50% {
+                transform: translateX(calc(100vw + 100px)) scaleX(-1);
+            }
+            100% {
+                transform: translateX(-100px) scaleX(-1);
+            }
+        }
+
+        .fish1 {
+            top: 20%;
+            animation-duration: 25s;
+        }
+
+        .fish2 {
+            top: 50%;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+
+        .fish3 {
+            top: 75%;
+            animation-duration: 28s;
+            animation-delay: 10s;
+        }
+
+        /* Seaweed */
+        .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to top, #1a4d2e 0%, #0f3d1e 100%);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            animation: seaweedSway 4s ease-in-out infinite;
+        }
+
+        @keyframes seaweedSway {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .seaweed1 {
+            left: 10%;
+            height: 200px;
+        }
+
+        .seaweed2 {
+            left: 25%;
+            height: 250px;
+            animation-delay: 0.5s;
+        }
+
+        .seaweed3 {
+            right: 20%;
+            height: 180px;
+            animation-delay: 1s;
+        }
+
+        .seaweed4 {
+            right: 8%;
+            height: 220px;
+            animation-delay: 1.5s;
+        }
+
+        /* Light rays from surface */
+        .light-ray {
+            position: absolute;
+            top: -50px;
+            width: 100px;
+            height: 120vh;
+            background: linear-gradient(to bottom, 
+                rgba(100, 200, 255, 0.1) 0%,
+                transparent 80%);
+            transform: skewX(-20deg);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .light-ray1 {
+            left: 15%;
+        }
+
+        .light-ray2 {
+            left: 45%;
+            animation-delay: 2s;
+        }
+
+        .light-ray3 {
+            right: 20%;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Light rays -->
+    <div class="light-ray light-ray1"></div>
+    <div class="light-ray light-ray2"></div>
+    <div class="light-ray light-ray3"></div>
+
+    <!-- Water overlay effect -->
+    <div class="water-overlay"></div>
+
+    <!-- Jellyfish -->
+    <div class="jellyfish jellyfish1">
+        <div class="bell"></div>
+        <div class="oral-arms">
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+        </div>
+        <div class="tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <div class="jellyfish jellyfish2">
+        <div class="bell"></div>
+        <div class="oral-arms">
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+        </div>
+        <div class="tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <div class="jellyfish jellyfish3">
+        <div class="bell"></div>
+        <div class="oral-arms">
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+        </div>
+        <div class="tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <div class="jellyfish jellyfish4">
+        <div class="bell"></div>
+        <div class="oral-arms">
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+        </div>
+        <div class="tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <div class="jellyfish jellyfish5">
+        <div class="bell"></div>
+        <div class="oral-arms">
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+            <div class="oral-arm"></div>
+        </div>
+        <div class="tentacles">
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+            <div class="tentacle"></div>
+        </div>
+    </div>
+
+    <!-- Fish -->
+    <div class="fish fish1"></div>
+    <div class="fish fish2"></div>
+    <div class="fish fish3"></div>
+
+    <!-- Seaweed -->
+    <div class="seaweed seaweed1"></div>
+    <div class="seaweed seaweed2"></div>
+    <div class="seaweed seaweed3"></div>
+    <div class="seaweed seaweed4"></div>
+
+    <script>
+        // Generate bubbles
+        function createBubbles() {
+            for (let i = 0; i < 30; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 15 + 5;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(bubble);
+            }
+        }
+
+        createBubbles();
+    </script>
+</body>
+</html>

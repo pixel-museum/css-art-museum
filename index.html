@@ -3,29 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <title>CSS Art Museum</title>
+
     <!-- <link rel="icon" type="image/png" href="./logo.png"> -->
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Untitled design.png" />
+
   </head>
   <body>
     <header>
-      <h1>🎨 CSS Art Museum</h1>
-      <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
-      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
-      <input type="text" id="search-bar" placeholder="Search artworks...">
+      <nav>
+        <h1 class="logo">🎨 CSS Art Museum</h1>
+        <input type="text" id="search-bar" placeholder="Search artworks..." />
+        <a href="https://github.com/Shamli-Singh-Yadav/css-art-museum" target="_blank" rel="noopener noreferrer" class="footer-button star-button">
+            <svg class="star-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path></svg>
+            Star
+            <span class="star-count" id="star-count">...</span>
+          </a>
+        <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+      </nav>
+      <p>
+        Welcome! Explore amazing CSS artworks created by contributors.
+      </p>
     </header>
-    
-    <main class="gallery" id="gallery-container">
-       </main>
-    
+
+    <main class="gallery" id="gallery-container"></main>
+
     <footer>
-      <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
+      <div class="footer-content">
+        <div class="footer-top">
+          <!-- GitHub Logo Link -->
+          <a href="https://github.com/Shamli-Singh-Yadav/css-art-museum" target="_blank" rel="noopener noreferrer">
+            <img src="./github-logo.png" alt="GitHub Logo" class="footer-logo">
+          </a>
+          <!-- Star Repo Button -->
+          <a href="https://github.com/Shamli-Singh-Yadav/css-art-museum" target="_blank" rel="noopener noreferrer" class="footer-button star-button">
+            <svg class="star-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path></svg>
+            Star
+            <span class="star-count" id="star-count">...</span>
+          </a>
+          <!-- Contributors Link -->
+          <a href="https://github.com/Shamli-Singh-Yadav/css-art-museum/graphs/contributors" target="_blank" rel="noopener noreferrer" class="footer-button">
+            Contributors
+          </a>
+        </div>
+        <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
+      </div>
     </footer>
 
-    <!-- Navigate to Top Button -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor" />
       </svg>
     </button>
 

@@ -14,14 +14,14 @@
     "title": "Dot loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
     "author": "Ritesh"
   },
-   {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
+  {
+    "file": "ring-loading.html",
+    "title": "Ring Loading",
     "author": "Ritesh"
   },
   {
@@ -89,7 +89,7 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  
+
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -151,6 +151,16 @@
     "author": "ujjwal"
   },
   {
+    "file": "ujjwal-hacker.html",
+    "title": "Hacker",
+    "author": "ujjwal"
+  },
+  {
+    "file": "ujjwal-peacock.html",
+    "title": "Peakcock",
+    "author": "ujjwal"
+  },
+  {
     "file": "ring-loading.html",
     "title": "Ring Loading",
     "author": "Ritesh"
@@ -160,7 +170,7 @@
     "title": "Night Sky",
     "author": "Srinjoyee Dey"
   },
-  { 
+  {
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
@@ -170,12 +180,12 @@
     "title": "Aurora Lights",
     "author": "Angela Bera"
   },
-  { 
+  {
     "file": "saturn.html",
     "title": "Saturn",
     "author": "Thanuja Kedila"
-  } ,
-  { 
+  },
+  {
     "file": "night_owl.html",
     "title": "Night Owl",
     "author": "Thanuja Kedila"
@@ -198,15 +208,20 @@
     "author": "Sumit Vishwakarma"
   },
 
-  { 
+  {
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
     "author": "Sumit Vishwakarma"
-    },
+  },
   {
     "file": "Soumyosish_animated_gradient_card.html",
     "title": "Animated Gradient Card",
     "author": "Soumyosish"
+  },
+  {
+    "file": "usa_flag.html",
+    "title": "USA Flag",
+    "author": "Sutthinart Khunvadhana"
   },
   {
     "file": "rj_nebula.html",
@@ -232,5 +247,20 @@
     "file": "cat.html",
     "title": "Cat Art",
     "author": "Rishita"
+  },
+  {
+    "file": "gravity-affected-ball.html",
+    "title": "Gravity Affected Ball",
+    "author": "Akshit"
+  },
+  {
+    "file": "glowing_dusk.html",
+    "title": "Glowing Dusk",
+    "author": "Injora"
+  },
+  {
+    "file": "jellyfish-grass.html",
+    "title": "Jellyfish CSS Art",
+    "author": "Chanakya"
   }
 ]
