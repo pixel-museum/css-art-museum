@@ -1,5 +1,10 @@
 [
   {
+    "file": "uday-rain-in-dark-night.html",
+    "title": "Rain In Dark",
+    "author": "Uday"
+  },
+  {
     "file": "chanakya-vintage-typewriter.html",
     "title": "Vintage Typewriter",
     "author": "Chanakya"
@@ -14,12 +19,12 @@
     "title": "Dot loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "dot-wave-loading.html",
     "title": "Dot loading",
     "author": "Ritesh"
@@ -89,7 +94,7 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  
+
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -170,7 +175,7 @@
     "title": "Night Sky",
     "author": "Srinjoyee Dey"
   },
-  { 
+  {
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
@@ -180,12 +185,12 @@
     "title": "Aurora Lights",
     "author": "Angela Bera"
   },
-  { 
+  {
     "file": "saturn.html",
     "title": "Saturn",
     "author": "Thanuja Kedila"
-  } ,
-  { 
+  },
+  {
     "file": "night_owl.html",
     "title": "Night Owl",
     "author": "Thanuja Kedila"
@@ -208,11 +213,11 @@
     "author": "Sumit Vishwakarma"
   },
 
-  { 
+  {
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
     "author": "Sumit Vishwakarma"
-    },
+  },
   {
     "file": "Soumyosish_animated_gradient_card.html",
     "title": "Animated Gradient Card",
