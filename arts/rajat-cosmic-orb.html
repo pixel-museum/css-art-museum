@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art - Cosmic Orb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .cosmic-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main cosmic orb */
+        .cosmic-orb {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #ff6b6b,
+                #4ecdc4,
+                #45b7d1,
+                #96ceb4,
+                #feca57,
+                #ff9ff3,
+                #54a0ff,
+                #5f27cd,
+                #ff6b6b
+            );
+            animation: rotate 8s linear infinite;
+            box-shadow: 
+                0 0 50px rgba(255, 107, 107, 0.4),
+                0 0 100px rgba(78, 205, 196, 0.3),
+                0 0 150px rgba(69, 183, 209, 0.2);
+        }
+
+        /* Inner glowing core */
+        .cosmic-orb::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle at 30% 30%,
+                rgba(255, 255, 255, 0.8) 0%,
+                rgba(255, 255, 255, 0.4) 30%,
+                rgba(255, 255, 255, 0.1) 60%,
+                transparent 100%
+            );
+            animation: pulse 3s ease-in-out infinite alternate;
+        }
+
+        /* Outer energy ring */
+        .cosmic-orb::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: conic-gradient(
+                from 180deg,
+                transparent,
+                rgba(255, 107, 107, 0.6),
+                transparent,
+                rgba(78, 205, 196, 0.6),
+                transparent,
+                rgba(69, 183, 209, 0.6),
+                transparent
+            );
+            animation: rotate 12s linear infinite reverse;
+            z-index: -1;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(2) {
+            top: 10%;
+            left: 20%;
+            animation-delay: -1s;
+            animation-duration: 7s;
+        }
+
+        .particle:nth-child(3) {
+            top: 80%;
+            right: 15%;
+            animation-delay: -2s;
+            animation-duration: 5s;
+        }
+
+        .particle:nth-child(4) {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: -3s;
+            animation-duration: 8s;
+        }
+
+        .particle:nth-child(5) {
+            top: 30%;
+            right: 25%;
+            animation-delay: -4s;
+            animation-duration: 6s;
+        }
+
+        .particle:nth-child(6) {
+            bottom: 60%;
+            left: 80%;
+            animation-delay: -5s;
+            animation-duration: 7s;
+        }
+
+        /* Central energy core */
+        .energy-core {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.8) 30%,
+                rgba(255, 255, 255, 0.3) 70%,
+                transparent 100%
+            );
+            animation: core-pulse 2s ease-in-out infinite alternate;
+            box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.8),
+                0 0 60px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animations */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.4;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) scale(1.2);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px) translateX(-15px) scale(0.8);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes core-pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .cosmic-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .cosmic-orb {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .energy-core {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-container">
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <!-- Main cosmic orb -->
+        <div class="cosmic-orb">
+            <div class="energy-core"></div>
+        </div>
+    </div>
+</body>
+</html>
