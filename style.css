@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Elegant Art Museum Color Variables */
 :root {
   /* Light theme - Museum whites and sophisticated grays */
@@ -40,7 +45,7 @@ body {
     radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
     linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
   background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
-  background-attachment: fixed;
+  background-attachment: scroll; /* Changed from 'fixed' to 'scroll' for better scroll performance */
   color: var(--primary-text);
   line-height: 1.6;
   padding: 100px 20px 40px; /* Added top padding to prevent content from hiding behind fixed nav */
