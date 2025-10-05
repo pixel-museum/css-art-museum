@@ -148,10 +148,34 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth'
     });
   }
+  
+  // --- ADDED: GitHub Star Count Fetcher ---
+  async function getGitHubStars() {
+    const starCountElement = document.getElementById('star-count');
+    if (!starCountElement) return;
 
-  // Add event listeners
+    try {
+      // Fetch repository data from GitHub API
+      const response = await fetch('https://api.github.com/repos/Shamli-Singh-Yadav/css-art-museum');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      const starCount = data.stargazers_count;
+      // Display the star count in the element
+      starCountElement.textContent = starCount.toLocaleString(); // Formats number with commas
+    } catch (error) {
+      console.error('Failed to fetch GitHub stars:', error);
+      starCountElement.textContent = 'N/A'; // Show N/A on error
+    }
+  }
+
+
+  // --- Event Listeners and Initial Function Calls ---
   window.addEventListener('scroll', toggleScrollToTopButton);
   scrollToTopBtn.addEventListener('click', scrollToTop);
 
   loadArts();
+  getGitHubStars(); // Call the new function to fetch stars on page load
 });
+
