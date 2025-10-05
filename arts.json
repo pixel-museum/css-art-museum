@@ -89,11 +89,7 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  {
-    "file": "Dhanush-particle_constellation.html",
-    "title": "Particle Constellation",
-    "author": "DhanushNehru"
-  },
+  
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -216,6 +212,35 @@
     "file": "usa_flag.html",
     "title": "USA Flag",
     "author": "Sutthinart Khunvadhana"
+  },
+  {
+    "file": "rj_nebula.html",
+    "title": "Nebula",
+    "author": "RJ"
+  },
+  {
+    "file": "kartik_gradients.html",
+    "title": "Shapes and Gradients",
+    "author": "Kartik Tripathi"
+  },
+  {
+    "file": "aerospace-celestial_wanderers.html",
+    "title": "Animated Celestial Wanderers",
+    "author": "Aerospace"
+  },
+  {
+    "file": "rj_nebula.html",
+    "title": "Nebula",
+    "author": "RJ"
+  },
+  {
+    "file": "cat.html",
+    "title": "Cat Art",
+    "author": "Rishita"
+  },
+  {
+    "file": "glowing_dusk.html",
+    "title": "Glowing Dusk",
+    "author": "Injora"
   }
-
 ]

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowing Dusk</title>
+<style>
+  /* Body and Sky */
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to top, #ff9e2c, #ff6b6b, #ff3c3c);
+    overflow: hidden;
+    position: relative;
+    animation: skyShift 10s infinite alternate;
+  }
+
+  @keyframes skyShift {
+    0% { background: linear-gradient(to top, #ff9e2c, #ff6b6b, #ff3c3c); }
+    50% { background: linear-gradient(to top, #ffb347, #ff7e5f, #ff4e4e); }
+    100% { background: linear-gradient(to top, #ff9e2c, #ff6b6b, #ff3c3c); }
+  }
+
+  /* Sun */
+  .sun {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fff68f, #ffdd33);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: sunGlow 3s infinite alternate;
+  }
+
+  @keyframes sunGlow {
+    0% { box-shadow: 0 0 30px 10px rgba(255, 221, 51, 0.5); }
+    100% { box-shadow: 0 0 60px 25px rgba(255, 221, 51, 0.8); }
+  }
+
+  /* Mountains */
+  .mountain {
+    width: 0;
+    height: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 200px solid #2e2e2e;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .mountain:nth-child(2) {
+    left: 200px;
+    border-bottom: 250px solid #1a1a1a;
+    border-left: 320px solid transparent;
+    border-right: 320px solid transparent;
+    z-index: -1;
+  }
+
+  .mountain:nth-child(3) {
+    left: -220px;
+    border-bottom: 180px solid #3b3b3b;
+    border-left: 250px solid transparent;
+    border-right: 250px solid transparent;
+    z-index: -1;
+  }
+
+  /* Clouds */
+  .cloud {
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50px;
+    position: absolute;
+    top: 100px;
+    opacity: 0.7;
+    animation: cloudMove 20s linear infinite;
+  }
+
+  .cloud:before,
+  .cloud:after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    border-radius: 50px;
+  }
+
+  .cloud:after {
+    width: 120px;
+    height: 100px;
+    top: -40px;
+    left: 60px;
+  }
+
+  .cloud:nth-child(4) {
+    top: 150px;
+    left: -250px;
+    animation-duration: 25s;
+  }
+
+  .cloud:nth-child(5) {
+    top: 50px;
+    left: -400px;
+    animation-duration: 30s;
+  }
+
+  @keyframes cloudMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(110vw); }
+  }
+
+</style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="mountain"></div>
+  <div class="mountain"></div>
+  <div class="mountain"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+</body>
+</html>
