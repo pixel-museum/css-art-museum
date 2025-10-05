@@ -1,14 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("gallery-container");
   const searchBar = document.getElementById("search-bar");
-  let allArts = [];
+  const sortByLikesBtn = document.getElementById("sort-by-likes-btn"); // Get the sort button
+  let allArts = []; // This will store the merged data (art info + likes)
 
   async function loadArts() {
     try {
+      // Step 1: Fetch local art data from arts.json
       const response = await fetch("arts.json");
       if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const arts = await response.json();
-      allArts = arts;
+      const localArts = await response.json();
+
+      // Step 2: Fetch like counts from the backend API
+      const artworksWithLikes = await getAllArtworksApi(); // This function is from api-service.js
+      const artLikesMap = new Map(artworksWithLikes.map(art => [art.id, art.likes]));
+
+      // Step 3: Merge local data with like counts
+      allArts = localArts.map(art => ({
+        ...art,
+        likes: artLikesMap.get(art.file) || 0, // Add likes property, default to 0
+      }));
+
       renderArts(allArts);
     } catch (error) {
       console.error("Could not load arts:", error);
@@ -17,13 +29,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // MODIFIED: This function now creates the complete card HTML in one step.
+  // MODIFIED: This function now uses the 'likes' property and checks local storage for 'liked' status.
   function renderArts(arts) {
     galleryContainer.innerHTML = "";
+    
+    // We need the LikedArtworks helper to check the liked status
+    const LikedArtworks = {
+        get: () => {
+            try {
+                const liked = localStorage.getItem('likedArtworks');
+                return liked ? new Set(JSON.parse(liked)) : new Set();
+            } catch (e) {
+                return new Set();
+            }
+        },
+        isLiked: (id) => LikedArtworks.get().has(id),
+    };
+      
     arts.forEach((art) => {
       const artCard = document.createElement("div");
       artCard.className = "art-card";
       const filePath = `arts/${art.file}`;
+      const isLiked = LikedArtworks.isLiked(art.file);
 
       artCard.innerHTML = `
         <iframe src="${filePath}" title="${art.title}" loading="lazy" seamless></iframe>
@@ -33,10 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button>View Code</button>
             </a>
             <div class="like-container" data-id="${art.file}">
-                <svg class="heart-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="heart-icon ${isLiked ? 'liked' : ''}" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
-                <span></span>
+                <span>${art.likes}</span>
             </div>
         </div>
       `;
@@ -45,6 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     initializeCardAnimations();
+  }
+    
+  // --- ADDED: Sort by Likes functionality ---
+  function sortByLikes() {
+    // Create a copy of the array before sorting to avoid modifying the original
+    const sortedArts = [...allArts].sort((a, b) => b.likes - a.likes);
+    renderArts(sortedArts);
   }
 
   // --- Search Filter ---
@@ -161,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- ADDED: GitHub Star Count Fetcher ---
+  // --- GitHub Star Count Fetcher ---
   async function getGitHubStars() {
     const starCountElement = document.getElementById("star-count");
     if (!starCountElement) return;
@@ -185,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Event Listeners and Initial Function Calls ---
   window.addEventListener("scroll", toggleScrollToTopButton);
   scrollToTopBtn.addEventListener("click", scrollToTop);
+  sortByLikesBtn.addEventListener("click", sortByLikes); // Add listener for the sort button
 
   loadArts();
   getGitHubStars();

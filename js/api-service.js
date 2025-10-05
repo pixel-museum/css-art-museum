@@ -11,9 +11,24 @@ async function getAllArtworksApi() {
     }
 }
 
+async function getAllArtworksIdsApi(id) {
+    try {
+        const encodedId = encodeURIComponent(id);
+        const response = await fetch(`${BACKEND_URL}/api/artworks/one/${encodedId}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        console.log("Fetched artwork IDs:", response);
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching artwork IDs:", error);
+        return [];
+    }
+}
+
+
 async function addArtworkApi(id) {
     try {
-        const response = await fetch(`${BACKEND_URL}/api/artworks/add/${id}`, {
+        const encodedId = encodeURIComponent(id);
+        const response = await fetch(`${BACKEND_URL}/api/artworks/add/${encodedId}`, {
             method: 'POST',
         });
         if (!response.ok && response.status !== 409) {
@@ -28,7 +43,8 @@ async function addArtworkApi(id) {
 
 async function likeArtworkApi(id) {
     try {
-        const response = await fetch(`${BACKEND_URL}/api/artworks/like/${id}`, {
+        const encodedId = encodeURIComponent(id);
+        const response = await fetch(`${BACKEND_URL}/api/artworks/like/${encodedId}`, {
             method: 'PUT',
         });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,7 +57,8 @@ async function likeArtworkApi(id) {
 
 async function unlikeArtworkApi(id) {
     try {
-        const response = await fetch(`${BACKEND_URL}/api/artworks/unlike/${id}`, {
+        const encodedId = encodeURIComponent(id);
+        const response = await fetch(`${BACKEND_URL}/api/artworks/unlike/${encodedId}`, {
             method: 'PUT',
         });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);

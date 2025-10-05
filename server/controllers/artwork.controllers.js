@@ -31,7 +31,20 @@ const addArtwork = async (req, res) => {
     }
 };
 
+const getArtworkById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const artwork = await Artwork.findOne({ id: id });
+        res.status(200).json(artwork);
+    } catch (error) {
+        console.error(`Error fetching artwork ${id}:`, error);
+        throw new Error('Failed to fetch artwork');
+    }
+}
+
+
 module.exports = {
     getAllArtworks,
     addArtwork,
+    getArtworkById,
 };  

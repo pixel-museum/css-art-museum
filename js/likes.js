@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("gallery-container");
+
+  // This helper object is still needed for updating likes in local storage
   const LikedArtworks = {
     get: () => {
       try {
@@ -22,42 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  async function initializeLikes() {
-    const artworksWithLikes = await getAllArtworksApi();
-    const artLikesMap = new Map(artworksWithLikes.map(art => [art.id, art.likes]));
-
-    const artCards = document.querySelectorAll('.art-card');
-
-    artCards.forEach(card => {
-      const likeContainer = card.querySelector('.like-container');
-      const viewerButtonAnchor = card.querySelector('.view-code');
-      
-      if (likeContainer && viewerButtonAnchor) {
-        const actionsWrapper = document.createElement('div');
-        actionsWrapper.className = 'card-actions';
-
-        actionsWrapper.appendChild(viewerButtonAnchor);
-        actionsWrapper.appendChild(likeContainer);
-        
-        card.appendChild(actionsWrapper);
-      }
-
-      const artId = likeContainer?.dataset.id;
-      if (!artId) return;
-
-      const likeCount = artLikesMap.get(artId) || 0;
-      const heartIcon = likeContainer.querySelector('.heart-icon');
-      const countSpan = likeContainer.querySelector('span');
-
-      countSpan.textContent = likeCount;
-
-      if (LikedArtworks.isLiked(artId)) {
-        heartIcon.classList.add('liked');
-      }
-    });
-  }
-
-
   async function handleLikeClick(event) {
     const likeContainer = event.target.closest('.like-container');
     if (!likeContainer) return;
@@ -69,22 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Optimistically update the UI
     if (LikedArtworks.isLiked(artId)) {
+      // Unlike action
       countSpan.textContent = currentLikes - 1;
       heartIcon.classList.remove('liked');
       LikedArtworks.remove(artId);
-      // Call the API function from apiService.js
       await unlikeArtworkApi(artId);
     } else {
+      // Like action
       countSpan.textContent = currentLikes + 1;
       heartIcon.classList.add('liked');
       LikedArtworks.add(artId);
-      // Call the API function from apiService.js
       await likeArtworkApi(artId);
     }
   }
 
-  setTimeout(initializeLikes, 500);
-
+  // The main responsibility is now just to listen for clicks on the gallery.
   galleryContainer.addEventListener('click', handleLikeClick);
 });
-
