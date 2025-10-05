@@ -25,9 +25,16 @@ Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gal
     Navigate to the `/arts/` folder
     Create a new file: `yourname-artname.html` 
     Add your HTML + CSS artwork (no JS/images)
-    Update `arts.json` or the gallery page to include your art
+    Update `arts.json` or the gallery page to include your art.
+   ```bash
+    {
+    "file": "example.html",
+    "title": "example",
+    "author": "example"
+   }
+   ```
 
-4. **Commit & push your changes**
+5. **Commit & push your changes**
 
     ```bash
     git add .
