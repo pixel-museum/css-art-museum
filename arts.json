@@ -14,14 +14,14 @@
     "title": "Dot loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
     "author": "Ritesh"
   },
-   {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
+  {
+    "file": "ring-loading.html",
+    "title": "Ring Loading",
     "author": "Ritesh"
   },
   {
@@ -80,16 +80,10 @@
     "author": "MBM08"
   },
   {
-    "file": "matrix-pulse-loading.html",
-    "title": "Matrix Pulse Loading",
-    "author": "Unknown"
-  },
-  {
     "file": "yash-zoomout.html",
     "title": "Solar System",
     "author": "Yash"
   },
-  
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -161,16 +155,11 @@
     "author": "ujjwal"
   },
   {
-    "file": "ring-loading.html",
-    "title": "Ring Loading",
-    "author": "Ritesh"
-  },
-  {
     "file": "night_sky.html",
     "title": "Night Sky",
     "author": "Srinjoyee Dey"
   },
-  { 
+  {
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
@@ -180,12 +169,12 @@
     "title": "Aurora Lights",
     "author": "Angela Bera"
   },
-  { 
+  {
     "file": "saturn.html",
     "title": "Saturn",
     "author": "Thanuja Kedila"
-  } ,
-  { 
+  },
+  {
     "file": "night_owl.html",
     "title": "Night Owl",
     "author": "Thanuja Kedila"
@@ -195,24 +184,21 @@
     "title": "Rotating Earth",
     "author": "Pratham"
   },
-
   {
     "file": "waqar-vinyl.html",
     "title": "Vinyl Record",
     "author": "Waqar"
   },
-
   {
     "file": "morphin_art.html",
     "title": "Curiosity Portal ",
     "author": "Sumit Vishwakarma"
   },
-
-  { 
+  {
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
     "author": "Sumit Vishwakarma"
-    },
+  },
   {
     "file": "Soumyosish_animated_gradient_card.html",
     "title": "Animated Gradient Card",
