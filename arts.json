@@ -320,21 +320,28 @@
     "author": "Thanuja Kedila"
   },
   {
-    "file" : "Prasanth-style-text.html",
+    "file": "Prasanth-style-text.html",
     "title": "CSS text layer",
     "author": "Prasanth"
-  },
-  {
-     "file":"sandeep-solarsystem.html" ,
-     "title":"Solar System" ,
-     "author":"sandeep"
-    
   },
   {
     "file": "parth-artwork.html",
     "title": "CSS Sunset landscape",
     "author": "Parth"
-  }
-
+  },
+  {
+    "file": "sandeep-solarsystem.html",
+    "title": "Solar System",
+    "author": "sandeep"
+  },
+  {
+    "file": "forest.html",
+    "title": "Forest",
+    "author": "Siddhant"
+  },
+  {
+    "file": "aditi-meteor-shower.html",
+    "title": "Meteor-Shower",
+    "author": "Aditi"
+  },
 ]
-
