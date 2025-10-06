@@ -981,54 +981,33 @@ header p {
   font-weight: 500;
   font-size: 0.9rem;
 }
-/* === Sort by Likes Button Styling === */
-#sort-by-likes-btn {
-  /* Positioning and Layout */
-  display: inline-block;
-  margin: 20px auto 0; /* Adds space below the welcome message */
-  
-  /* Appearance */
-  background: var(--secondary-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 12px 24px;
+
+.sorting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.sorting-container label {
+  padding: 10px;
+  font-size: 1rem;
   color: var(--secondary-text);
-  font-family: 'Inter', sans-serif;
+}
+.sorting-container select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--secondary-bg);
+  color: var(--primary-text);
   font-size: 0.95rem;
-  font-weight: 600;
   cursor: pointer;
-  
-  /* Effects & Transitions */
-  box-shadow: 0 4px 12px var(--shadow-light), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s ease;
 }
-
-#sort-by-likes-btn:hover {
-  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.08));
+.sorting-container select:hover {
   border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 20px var(--shadow-medium), 0 0 0 1px rgba(108, 99, 255, 0.2);
-}
-
-#sort-by-likes-btn:active {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 4px 12px var(--shadow-light);
-}
-
-/* Dark theme hover effect adjustment */
-.dark-theme #sort-by-likes-btn:hover {
-  box-shadow: 0 8px 20px var(--shadow-medium), 0 0 0 1px rgba(139, 127, 255, 0.3);
-}
-
-/* Responsive adjustment for smaller screens */
-@media (max-width: 768px) {
-  #sort-by-likes-btn {
-    margin-top: 24px;
-    width: 100%;
-    max-width: 300px;
-  }
-}
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+} 
 
 /* Dark theme styles for header elements */
 .dark-theme header nav {
