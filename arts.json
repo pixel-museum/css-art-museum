@@ -1,6 +1,11 @@
 [
   {
-    "file": "abstract_shapes.css",
+    "file": "noor-spaceart.html",
+    "title": "Space-art",
+    "author": "Noor"
+  },
+  {
+    "file": "abstract_shapes.html",
     "title": "Abstract Shapes",
     "author": "Mayank Bansal"
   },
@@ -20,7 +25,7 @@
     "author": "Chanakya"
   },
   {
-    "file": "Waqar-arc..html",
+    "file": "Waqar-arc.html",
     "title": "Arc Reactor",
     "author": "Waqar"
   },
