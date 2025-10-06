@@ -320,16 +320,18 @@
     "author": "Thanuja Kedila"
   },
   {
-    "file" : "Prasanth-style-text.html",
+    "file": "Prasanth-style-text.html",
     "title": "CSS text layer",
     "author": "Prasanth"
   },
   {
-     "file":"sandeep-solarsystem.html" ,
-     "title":"Solar System" ,
-     "author":"sandeep"
-    
+    "file": "sandeep-solarsystem.html",
+    "title": "Solar System",
+    "author": "sandeep"
+  },
+  {
+    "file": "forest.html",
+    "title": "Forest",
+    "author": "Siddhant"
   }
-
 ]
-
