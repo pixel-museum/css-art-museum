@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Elegant Art Museum Color Variables */
 :root {
   --primary-bg: #fafafa;
@@ -28,6 +33,10 @@
   --button-border: rgba(27, 31, 36, 0.15);
   --button-hover-bg: #f3f4f6;
   --count-bg: rgba(209, 213, 219, 0.5);
+  --button-bg: #f6f8fa;
+  --button-border: rgba(27, 31, 36, 0.15);
+  --button-hover-bg: #f3f4f6;
+  --count-bg: rgba(209, 213, 219, 0.5);
 }
 
 /* Body Styling - Museum-inspired with Visual Appeal */
@@ -39,7 +48,7 @@ body {
     radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
     linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
   background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
-  background-attachment: fixed;
+  background-attachment: scroll; /* Changed from 'fixed' to 'scroll' for better scroll performance */
   color: var(--primary-text);
   line-height: 1.6;
   padding: 100px 20px 40px; /* Added top padding to prevent content from hiding behind fixed nav */
@@ -97,6 +106,7 @@ body::after {
 /* Main Header container */
 header {
   text-align: center;
+  margin-bottom: 40px; /* Reduced margin */
   margin-bottom: 40px; /* Reduced margin */
   position: relative;
   width: 100%;
@@ -671,6 +681,50 @@ footer {
   pointer-events: none;
 }
 
+/* MODIFIED: View Code Button Styling */
+.view-code {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  background: transparent;
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.view-code button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.view-code:hover {
+  background: var(--accent-subtle);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
+  color: var(--accent-color);
+}
+
+.dark-theme .view-code {
+  border-color: rgba(139, 127, 255, 0.3);
+}
+
+.dark-theme .view-code:hover {
+  background: var(--accent-subtle);
+  border-color: var(--accent-color);
+}
 
 /* Scroll to Top Button */
 .scroll-to-top {
@@ -764,6 +818,9 @@ footer {
 .dark-theme .view-code:hover {
   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }
+
+
+
 
 .card-actions {
   display: grid;

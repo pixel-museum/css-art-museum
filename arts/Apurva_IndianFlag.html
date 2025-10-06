@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Indian Flag</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Keep your animated tricolor background */
+      background: linear-gradient(90deg, #FF9933, #FFFFFF, #138808);
+      background-size: 600% 600%;
+      animation: tricolor 10s linear infinite;
+    }
+
+    @keyframes tricolor {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .flag-container {
+      width: 90%;
+      max-width: 600px;
+      aspect-ratio: 3 / 2;
+      border: 1px solid #000;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    /* Three horizontal bands */
+    /* Animate only the saffron band with moving gradient */
+    .saffron {
+      flex: 1;
+      background: linear-gradient(270deg, #FF9933, #FFB347, #FF9933);
+      background-size: 600% 100%;
+      animation: moveOrange 3s linear infinite;
+    }
+
+    @keyframes moveOrange {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .white { background-color: #FFFFFF; flex: 1; display: flex; justify-content: center; align-items: center; }
+    .green { background-color: #138808; flex: 1; }
+
+    /* Ashoka Chakra rotation */
+    .chakra {
+      width: 30%;
+      aspect-ratio: 1 / 1;
+      animation: rotateChakra 6s linear infinite;
+    }
+
+    @keyframes rotateChakra {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    svg { width: 100%; height: 100%; }
+    .circle { fill: none; stroke: #000080; stroke-width: 2; }
+    .spoke { stroke: #000080; stroke-width: 1.5; transform-origin: center; }
+  </style>
+</head>
+<body>
+  <div class="flag-container">
+    <div class="saffron"></div>
+
+    <div class="white">
+      <div class="chakra">
+        <svg viewBox="0 0 100 100">
+          <circle class="circle" cx="50" cy="50" r="45" />
+          <g id="spokes">
+            <line class="spoke" x1="50" y1="5" x2="50" y2="50" />
+          </g>
+          <g>
+            <use href="#spokes" transform="rotate(15 50 50)" />
+            <use href="#spokes" transform="rotate(30 50 50)" />
+            <use href="#spokes" transform="rotate(45 50 50)" />
+            <use href="#spokes" transform="rotate(60 50 50)" />
+            <use href="#spokes" transform="rotate(75 50 50)" />
+            <use href="#spokes" transform="rotate(90 50 50)" />
+            <use href="#spokes" transform="rotate(105 50 50)" />
+            <use href="#spokes" transform="rotate(120 50 50)" />
+            <use href="#spokes" transform="rotate(135 50 50)" />
+            <use href="#spokes" transform="rotate(150 50 50)" />
+            <use href="#spokes" transform="rotate(165 50 50)" />
+            <use href="#spokes" transform="rotate(180 50 50)" />
+            <use href="#spokes" transform="rotate(195 50 50)" />
+            <use href="#spokes" transform="rotate(210 50 50)" />
+            <use href="#spokes" transform="rotate(225 50 50)" />
+            <use href="#spokes" transform="rotate(240 50 50)" />
+            <use href="#spokes" transform="rotate(255 50 50)" />
+            <use href="#spokes" transform="rotate(270 50 50)" />
+            <use href="#spokes" transform="rotate(285 50 50)" />
+            <use href="#spokes" transform="rotate(300 50 50)" />
+            <use href="#spokes" transform="rotate(315 50 50)" />
+            <use href="#spokes" transform="rotate(330 50 50)" />
+            <use href="#spokes" transform="rotate(345 50 50)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="green"></div>
+  </div>
+</body>
+</html>
