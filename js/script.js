@@ -409,4 +409,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (recentlyReviewedContainer) {
     recentlyReviewedContainer.addEventListener('click', handleRecentLikeClick);
   }
+  window.addEventListener('keydown', (e) => {
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') return;
+    if (e.key === '/') {
+      e.preventDefault();
+      searchBar.focus();
+      searchBar.select();
+    }
+  });
 });
