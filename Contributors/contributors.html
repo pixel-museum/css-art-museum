@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributors</title>
+  <link rel="stylesheet" href="contributors.css">
+</head>
+<body>
+  <h1>✨ Our Amazing Contributors ✨</h1>
+  <div class="contributors-grid" id="contributors-list"></div>
+
+  <script>
+    async function loadContributors() {
+      const response = await fetch("contributors.json");
+      const contributors = await response.json();
+      const container = document.getElementById("contributors-list");
+
+      contributors.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "contributor-card";
+
+        card.innerHTML = `
+          <img src="https://avatars.githubusercontent.com/${c.username}" alt="${c.username}">
+          <h3>@${c.username}</h3>
+          <p>Contributed to CSS Art Museum 🎨</p>
+          <a href="https://github.com/${c.username}" target="_blank">View Profile</a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    loadContributors();
+  </script>
+</body>
+</html>
