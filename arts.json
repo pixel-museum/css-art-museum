@@ -5,6 +5,11 @@
     "author": "Uday"
   },
   {
+    "file": "Angela_oceanwaves.html",
+    "title": "Ocean Waves",
+    "author": "Angela Bera"
+  },
+  {
     "file": "chanakya-vintage-typewriter.html",
     "title": "Vintage Typewriter",
     "author": "Chanakya"
@@ -27,6 +32,11 @@
   {
     "file": "dot-wave-loading.html",
     "title": "Dot loading",
+    "author": "Ritesh"
+  },
+  {
+    "file": "ring-loading.html",
+    "title": "Ring Loading",
     "author": "Ritesh"
   },
   {
@@ -267,5 +277,11 @@
     "file": "jellyfish-grass.html",
     "title": "Jellyfish CSS Art",
     "author": "Chanakya"
+  },
+  {
+    "file": "moon-landing.html",
+    "title": "Moon Landing Art",
+    "author": "Nitish K"
   }
+
 ]
