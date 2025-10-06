@@ -1,8 +1,23 @@
 [
   {
+    "file": "uday-rain-in-dark-night.html",
+    "title": "Rain In Dark",
+    "author": "Uday"
+  },
+  {
+    "file": "Angela_oceanwaves.html",
+    "title": "Ocean Waves",
+    "author": "Angela Bera"
+  },
+  {
     "file": "chanakya-vintage-typewriter.html",
     "title": "Vintage Typewriter",
     "author": "Chanakya"
+  },
+  {
+    "file": "Waqar-arc..html",
+    "title": "Arc Reactor",
+    "author": "Waqar"
   },
   {
     "file": "hariksh-sunset.html",
@@ -17,6 +32,11 @@
   {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
+    "author": "Ritesh"
+  },
+  {
+    "file": "dot-wave-loading.html",
+    "title": "Dot loading",
     "author": "Ritesh"
   },
   {
@@ -267,5 +287,11 @@
     "file": "scenery.html",
     "title": "Scenery",
     "author": "Soham"
+  },
+  {
+    "file": "moon-landing.html",
+    "title": "Moon Landing Art",
+    "author": "Nitish K"
   }
+
 ]
