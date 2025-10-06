@@ -1,8 +1,23 @@
 [
   {
+    "file": "uday-rain-in-dark-night.html",
+    "title": "Rain In Dark",
+    "author": "Uday"
+  },
+  {
+    "file": "Angela_oceanwaves.html",
+    "title": "Ocean Waves",
+    "author": "Angela Bera"
+  },
+  {
     "file": "chanakya-vintage-typewriter.html",
     "title": "Vintage Typewriter",
     "author": "Chanakya"
+  },
+  {
+    "file": "Waqar-arc..html",
+    "title": "Arc Reactor",
+    "author": "Waqar"
   },
   {
     "file": "hariksh-sunset.html",
@@ -14,14 +29,19 @@
     "title": "Dot loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
     "author": "Ritesh"
   },
-   {
+  {
     "file": "dot-wave-loading.html",
     "title": "Dot loading",
+    "author": "Ritesh"
+  },
+  {
+    "file": "ring-loading.html",
+    "title": "Ring Loading",
     "author": "Ritesh"
   },
   {
@@ -70,6 +90,11 @@
     "author": "Irfan"
   },
   {
+    "file": "Apurva_IndianFlag.html",
+    "title": "Animated Indian Flag",
+    "author": "Apurva"
+  },
+  {
     "file": "waqar-cat.html",
     "title": "CSS Cat Art",
     "author": "Waqar"
@@ -89,7 +114,6 @@
     "title": "Solar System",
     "author": "Yash"
   },
-  
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
@@ -170,7 +194,7 @@
     "title": "Night Sky",
     "author": "Srinjoyee Dey"
   },
-  { 
+  {
     "file": "pratik_face.html",
     "title": "face",
     "author": "Pratik"
@@ -180,12 +204,12 @@
     "title": "Aurora Lights",
     "author": "Angela Bera"
   },
-  { 
+  {
     "file": "saturn.html",
     "title": "Saturn",
     "author": "Thanuja Kedila"
-  } ,
-  { 
+  },
+  {
     "file": "night_owl.html",
     "title": "Night Owl",
     "author": "Thanuja Kedila"
@@ -195,24 +219,21 @@
     "title": "Rotating Earth",
     "author": "Pratham"
   },
-
   {
     "file": "waqar-vinyl.html",
     "title": "Vinyl Record",
     "author": "Waqar"
   },
-
   {
     "file": "morphin_art.html",
     "title": "Curiosity Portal ",
     "author": "Sumit Vishwakarma"
   },
-
-  { 
+  {
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
     "author": "Sumit Vishwakarma"
-    },
+  },
   {
     "file": "Soumyosish_animated_gradient_card.html",
     "title": "Animated Gradient Card",
@@ -267,5 +288,21 @@
     "file": "Jaswanth_Kumar-Glowing_Butterfly.html",
     "title": "Glowing Butterfly",
     "author": "Jaswanth Kumar"
+  },
+  {
+    "file": "rajat-cosmic-orb.html",
+    "title": "Cosmic Orb",
+    "author": "Rajat"
+  },
+    "file": "scenery.html",
+    "title": "Scenery",
+    "author": "Soham"
+  },
+  {
+    "file": "moon-landing.html",
+    "title": "Moon Landing Art",
+    "author": "Nitish K"
   }
-  ]
+
+]
+
