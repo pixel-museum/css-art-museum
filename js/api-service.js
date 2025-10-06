@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:3000";        // Change this to your backend URL of rendor
+const BACKEND_URL = "https://css-art-museum-backend.onrender.com";
 
 async function getAllArtworksApi() {
     try {

@@ -26,12 +26,12 @@ This allows access from anywhere (good for testing).
 
 ## 3. Deploy on Render
 1. Go to [Render Dashboard](https://dashboard.render.com/login) and create an account.
-2. Click **New → Static Site**.
+2. Click **New → Web Service**.
 3. Select your repository.
 4. Fill in the settings:
 - **Root Directory**: `./server`  
-- **Build Command**: `npm run start`
-
+- **Build Command**: `npm install`
+- **Start Command**: `npm run start`
 ---
 
 ## 4. Add Environment Variable
