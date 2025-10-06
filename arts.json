@@ -4,7 +4,11 @@
     "title": "Neon City",
     "author": "Anuradha"
   },
-
+  {
+    "file": "Anuradha-aurora-night-sky.html",
+    "title": "Aurora Night Sky",
+    "author": "Anuradha"
+  },
   {
     "file": "noor-spaceart.html",
     "title": "Space-art",
@@ -48,11 +52,6 @@
   {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
     "author": "Ritesh"
   },
   {
@@ -249,11 +248,6 @@
     "file": "usa_flag.html",
     "title": "USA Flag",
     "author": "Sutthinart Khunvadhana"
-  },
-  {
-    "file": "rj_nebula.html",
-    "title": "Nebula",
-    "author": "RJ"
   },
   {
     "file": "kartik_gradients.html",

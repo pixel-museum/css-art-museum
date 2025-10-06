@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Night Sky - CSS Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container */
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Stars */
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 
+                100px 150px white,
+                200px 80px white,
+                300px 200px white,
+                400px 120px white,
+                500px 250px white,
+                150px 300px white,
+                250px 180px white,
+                350px 280px white,
+                450px 90px white,
+                550px 320px white,
+                80px 400px white,
+                180px 220px white,
+                280px 380px white,
+                380px 160px white,
+                480px 340px white,
+                50px 100px white,
+                600px 200px white,
+                700px 150px white,
+                800px 300px white,
+                900px 180px white,
+                120px 450px white,
+                320px 80px white,
+                520px 180px white,
+                720px 280px white,
+                920px 380px white,
+                60px 260px white,
+                260px 420px white,
+                460px 140px white,
+                660px 360px white,
+                860px 240px white;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Aurora Borealis */
+        .aurora {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+
+        .aurora-layer-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(0, 255, 200, 0.3) 20%,
+                rgba(100, 200, 255, 0.4) 40%,
+                rgba(150, 100, 255, 0.3) 60%,
+                rgba(255, 100, 200, 0.3) 80%,
+                transparent 100%);
+            animation: aurora1 8s ease-in-out infinite;
+        }
+
+        .aurora-layer-2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(100, 255, 150, 0.2) 15%,
+                rgba(150, 200, 255, 0.3) 35%,
+                rgba(200, 150, 255, 0.4) 55%,
+                rgba(255, 150, 200, 0.2) 75%,
+                transparent 100%);
+            animation: aurora2 10s ease-in-out infinite reverse;
+        }
+
+        .aurora-layer-3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(50, 255, 255, 0.2) 25%,
+                rgba(150, 150, 255, 0.3) 50%,
+                rgba(255, 100, 255, 0.2) 75%,
+                transparent 100%);
+            animation: aurora3 12s ease-in-out infinite;
+        }
+
+        @keyframes aurora1 {
+            0%, 100% { 
+                transform: translateX(-10%) scaleY(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateX(10%) scaleY(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes aurora2 {
+            0%, 100% { 
+                transform: translateX(5%) scaleY(0.9);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translateX(-5%) scaleY(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes aurora3 {
+            0%, 100% { 
+                transform: translateX(0%) scaleY(1);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateX(8%) scaleY(1.15);
+                opacity: 0.6;
+            }
+        }
+
+        /* Mountains */
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 35%;
+        }
+
+        .mountain-back {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 30vw solid transparent;
+            border-right: 30vw solid transparent;
+            border-bottom: 25vh solid #1a1a2e;
+            transform: translateX(10%);
+            opacity: 0.6;
+        }
+
+        .mountain-mid {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            width: 0;
+            height: 0;
+            border-left: 25vw solid transparent;
+            border-right: 25vw solid transparent;
+            border-bottom: 30vh solid #16213e;
+            opacity: 0.8;
+        }
+
+        .mountain-front {
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            width: 0;
+            height: 0;
+            border-left: 35vw solid transparent;
+            border-right: 35vw solid transparent;
+            border-bottom: 35vh solid #0f1419;
+        }
+
+        /* Snow caps */
+        .snow-cap-1 {
+            position: absolute;
+            bottom: 35vh;
+            left: 40%;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 40px solid rgba(255, 255, 255, 0.9);
+            filter: blur(1px);
+        }
+
+        .snow-cap-2 {
+            position: absolute;
+            bottom: 30vh;
+            right: 35%;
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 35px solid rgba(255, 255, 255, 0.85);
+            filter: blur(1px);
+        }
+
+        /* Moon */
+        .moon {
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #fefefe, #e8e8e8);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.3),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Moon craters */
+        .crater {
+            position: absolute;
+            background: rgba(200, 200, 200, 0.3);
+            border-radius: 50%;
+        }
+
+        .crater-1 {
+            width: 15px;
+            height: 15px;
+            top: 20px;
+            left: 25px;
+        }
+
+        .crater-2 {
+            width: 10px;
+            height: 10px;
+            top: 45px;
+            left: 50px;
+        }
+
+        .crater-3 {
+            width: 8px;
+            height: 8px;
+            top: 35px;
+            left: 15px;
+        }
+
+        /* Shooting star */
+        .shooting-star {
+            position: absolute;
+            top: 20%;
+            right: 30%;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 3s ease-out infinite;
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-200px) translateY(200px);
+                opacity: 0;
+            }
+        }
+
+        /* Pine trees */
+        .tree {
+            position: absolute;
+            bottom: 10%;
+        }
+
+        .tree-1 {
+            left: 15%;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 80px solid #0a0a0a;
+        }
+
+        .tree-1::before,
+        .tree-1::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 60px solid #0a0a0a;
+        }
+
+        .tree-1::before {
+            bottom: 30px;
+        }
+
+        .tree-1::after {
+            bottom: 50px;
+        }
+
+        .tree-2 {
+            right: 20%;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 60px solid #0a0a0a;
+        }
+
+        .tree-2::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            bottom: 25px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 45px solid #0a0a0a;
+        }
+
+        /* Credit */
+        .credit {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <!-- Stars -->
+        <div class="stars"></div>
+        
+        <!-- Aurora Borealis -->
+        <div class="aurora">
+            <div class="aurora-layer-1"></div>
+            <div class="aurora-layer-2"></div>
+            <div class="aurora-layer-3"></div>
+        </div>
+        
+        <!-- Moon -->
+        <div class="moon">
+            <div class="crater crater-1"></div>
+            <div class="crater crater-2"></div>
+            <div class="crater crater-3"></div>
+        </div>
+        
+        <!-- Shooting star -->
+        <div class="shooting-star"></div>
+        
+        <!-- Mountains -->
+        <div class="mountains">
+            <div class="mountain-back"></div>
+            <div class="mountain-mid"></div>
+            <div class="mountain-front"></div>
+            <div class="snow-cap-1"></div>
+            <div class="snow-cap-2"></div>
+        </div>
+        
+        <!-- Trees -->
+        <div class="tree tree-1"></div>
+        <div class="tree tree-2"></div>
+        
+        <!-- Credit -->
+        <div class="credit">CSS Art Museum - Aurora Night Sky</div>
+    </div>
+</body>
+</html>
