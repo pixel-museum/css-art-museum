@@ -194,6 +194,20 @@ header p {
   animation: fadeInUp 1s ease-out 0.5s both;
 }
 
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
+  margin: 10px auto 18px;
+  letter-spacing: 0.02em;
+  color: var(--primary-text);
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--gold-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Modified Search Bar for the navbar */
 #search-bar {
   width: 100%;
@@ -432,6 +446,25 @@ header p {
   background-position: 0 0, 0 5px;
   overflow: hidden;
   scrollbar-width: none;
+}
+
+.art-card h3 {
+  text-align: center;
+  margin: 8px 0 14px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--primary-text);
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.art-card:hover h3 {
+  filter: brightness(1.05);
 }
 
 .art-card iframe::-webkit-scrollbar {
@@ -1033,4 +1066,9 @@ header p {
   color: var(--secondary-text);
   /* The blur effect is not needed with a solid background */
   backdrop-filter: none; 
+}
+
+#recently-reviewed-gallery {
+  grid-template-columns: repeat(3, 320px); 
+  max-width: calc(320px * 3 + 30px * 2); 
 }
