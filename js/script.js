@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("search-bar");
   const sortByLikesBtn = document.getElementById("sort-by-likes-btn"); // Get the sort button
   let allArts = []; // This will store the merged data (art info + likes)
+  let pagination = null; // Pagination instance
 
   async function loadArts() {
     try {
@@ -21,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         likes: artLikesMap.get(art.file) || 0, // Add likes property, default to 0
       }));
 
+      // Initialize pagination after data is loaded
+      initializePagination();
       renderArts(allArts);
     } catch (error) {
       console.error("Could not load arts:", error);
@@ -29,8 +32,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // MODIFIED: This function now uses the 'likes' property and checks local storage for 'liked' status.
-  function renderArts(arts) {
+  /**
+   * Initialize pagination instance
+   */
+  function initializePagination() {
+    pagination = new Pagination({
+      itemsPerPage: 24,
+      containerId: 'gallery-container',
+      paginationId: 'pagination-controls'
+    });
+
+    // Set items to paginate
+    pagination.setItems(allArts);
+
+    // Override the render method to use our custom rendering
+    pagination.render = function() {
+      const currentItems = this.getCurrentPageItems();
+      renderArtCards(currentItems);
+      this.renderControls();
+    };
+
+    // Initial render
+    pagination.render();
+  }
+
+  /**
+   * Render art cards (extracted from renderArts for reusability)
+   */
+  function renderArtCards(arts) {
     galleryContainer.innerHTML = "";
     
     // We need the LikedArtworks helper to check the liked status
@@ -53,28 +82,40 @@ document.addEventListener("DOMContentLoaded", () => {
       const isLiked = LikedArtworks.isLiked(art.file);
 
       artCard.innerHTML = `
-        <iframe src="${filePath}" title="${art.title}" loading="lazy" seamless></iframe>
-        <p>${art.title} by ${art.author}</p>
+        <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
+        <h3>${art.title}</h3>
+        <p>by ${art.author}</p>
         <div class="card-actions">
-            <a class="view-code" href="art-viewer.html?file=${encodeURIComponent(art.file)}">
-                <button>View Code</button>
+            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(art.file)}">
+                View Code
             </a>
             <div class="like-container" data-id="${art.file}">
-                <svg class="heart-icon ${isLiked ? 'liked' : ''}" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
-                <span>${art.likes}</span>
+                <span class="like-count">${art.likes}</span>
             </div>
         </div>
       `;
-
       galleryContainer.appendChild(artCard);
     });
-
+    
     initializeCardAnimations();
   }
+
+  /**
+   * Wrapper function to maintain compatibility with existing code
+   */
+  function renderArts(arts) {
+    if (pagination) {
+      pagination.setFilteredItems(arts);
+      pagination.render();
+    } else {
+      renderArtCards(arts);
+    }
+  }
     
-  // --- ADDED: Sort by Likes functionality ---
+  // --- Sort by Likes functionality ---
   function sortByLikes() {
     // Create a copy of the array before sorting to avoid modifying the original
     const sortedArts = [...allArts].sort((a, b) => b.likes - a.likes);
@@ -146,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rotateY = (centerX - e.clientX) / 20;
         card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
+
       card.addEventListener("mouseleave", () => {
         card.style.transform = "";
       });
@@ -161,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = false;
     });
   }
+
   window.addEventListener("scroll", () => {
     if (!ticking) {
       ticking = true;
