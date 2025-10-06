@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowing Mountain Scene</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let snowflakes = [];
+        const numSnowflakes = 200;
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+
+            for (let i = 0; i < numSnowflakes; i++) {
+                snowflakes.push(new Snowflake());
+            }
+        }
+
+        function draw() {
+
+            for (let y = 0; y < height; y++) {
+                let inter = map(y, 0, height, 0, 1);
+                let c = lerpColor(color(10, 17, 40), color(45, 53, 97), inter);
+                stroke(c);
+                line(0, y, width, y);
+            }
+
+            noStroke();
+            fill(244, 244, 244, 200);
+            circle(width * 0.85, height * 0.15, 80);
+            fill(244, 244, 244, 100);
+            circle(width * 0.85, height * 0.15, 100);
+
+            snowflakes.sort((a, b) => a.z - b.z);
+
+            for (let flake of snowflakes) {
+                flake.update();
+                flake.display();
+            }
+
+            drawMountains();
+        }
+
+        class Snowflake {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+
+                this.z = random(0, 1);
+                this.x = random(-width * 0.2, width * 1.2);
+                this.y = random(-100, -10);
+                
+                this.baseSize = map(this.z, 0, 1, 2, 12);
+
+                this.speed = map(this.z, 0, 1, 0.3, 1.5) * map(this.baseSize, 2, 12, 0.8, 1.5);
+
+                this.xSpeed = map(this.z, 0, 1, -0.2, -0.5);
+
+                this.angle = random(TWO_PI);
+                this.angleSpeed = random(-0.02, 0.02);
+
+                this.opacity = map(this.z, 0, 1, 150, 255);
+            }
+            
+            update() {
+
+                this.y += this.speed;
+
+                this.angle += this.angleSpeed;
+                this.x += this.xSpeed + sin(this.angle) * 0.3;
+                
+                this.speed += 0.005;
+                this.speed = constrain(this.speed, 0.3, 2);
+                
+                if (this.y > height + 10) {
+                    this.reset();
+                }
+                
+                if (this.x > width + 50 || this.x < -50) {
+                    this.reset();
+                }
+            }
+            
+            display() {
+                noStroke();
+                fill(255, 255, 255, this.opacity);
+                
+                if (this.z < 0.3) {
+                    fill(255, 255, 255, this.opacity * 0.6);
+                }
+                
+                circle(this.x, this.y, this.baseSize);
+                
+                if (this.z > 0.7) {
+                    fill(255, 255, 255, this.opacity * 0.3);
+                    circle(this.x, this.y, this.baseSize * 1.5);
+                }
+            }
+        }
+
+        function drawMountains() {
+            noStroke();
+            
+            fill(26, 26, 46);
+            triangle(0, height, 250, height - 300, 500, height);
+            
+            // Mountain 2 (center-left)
+            fill(22, 33, 62);
+            triangle(width * 0.1, height, width * 0.3, height - 350, width * 0.5, height);
+            
+            // Mountain 3 (right)
+            fill(15, 52, 96);
+            triangle(width * 0.5, height, width * 0.75, height - 280, width, height);
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
+</body>
+</html>
