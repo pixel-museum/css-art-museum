@@ -1,0 +1,227 @@
+:root {
+  --gap: 12px;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --muted: #666;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, system-ui, Arial;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--panel);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+header .back {
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #eee;
+  text-decoration: none;
+  color: black;
+}
+header h1 {
+  font-size: 16px;
+  margin: 0;
+  flex: 1;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  border: 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #eee;
+  font-size: 13px;
+  color: black;
+  transition: all 0.3s ease;
+}
+.theme-toggle:hover {
+  background: #ddd;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
+  height: calc(100vh - 64px);
+  background: var(--bg);
+  box-sizing: border-box;
+}
+.preview-panel,
+.code-panel {
+  background: var(--panel);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+iframe.preview {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  flex: 1;
+  background: white;
+}
+.code-header {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+.code-header .filename {
+  font-weight: 600;
+}
+.btn {
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #eee;
+  font-size: 13px;
+  text-decoration: none;
+  color: black;
+}
+.code-area {
+  padding: 12px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New",
+    monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  background: #0f1720;
+  color: #d6e9ff;
+  height: 100%;
+  box-sizing: border-box;
+  white-space: pre;
+}
+.controls {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 920px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  iframe.preview {
+    height: 50vh;
+  }
+  .code-area {
+    height: 50vh;
+  }
+}
+
+/* --- Dark Mode --- */
+body.dark {
+  --bg: #0f0f0f;
+  --panel: #1a1a1a;
+  --muted: #aaa;
+  color: #f0f0f0;
+}
+body.dark header {
+  background: var(--panel);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+body.dark .wrap {
+  background: var(--bg);
+}
+body.dark .preview-panel,
+body.dark .code-panel {
+  background: var(--panel);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.06);
+}
+body.dark .code-area {
+  background: #0b0f14;
+  color: #cde0ff;
+}
+body.dark .code-header {
+  background: #181818;
+  border-bottom: 1px solid #333;
+}
+body.dark .btn,
+body.dark .back,
+body.dark .theme-toggle {
+  background: #222;
+  color: #eee;
+  border: 1px solid #333;
+}
+body.dark .btn:hover,
+body.dark .back:hover,
+body.dark .theme-toggle:hover {
+  background: #333;
+}
+.like-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--secondary-text);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Unified hover effects for both buttons */
+.view-code:hover,
+.like-container:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
+}
+
+/* Dark theme adjustments */
+.dark-theme .view-code,
+.dark-theme .like-container {
+  border-color: var(--button-border);
+  color: var(--secondary-text);
+}
+
+.dark-theme .view-code:hover,
+.dark-theme .like-container:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 4px 15px rgba(139, 127, 255, 0.2);
+}
+
+/* Icon styling to inherit color and handle the 'liked' state */
+.heart-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor; /* Icon color will now match the text color */
+  fill: none;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.heart-icon.liked {
+  fill: #ff4d4d;
+  stroke: #ff4d4d;
+}
+
+/* This prevents the icon from changing color on hover if it's already liked */
+.like-container:hover .heart-icon.liked {
+  color: #ff4d4d;
+}
+
+.like-count {
+  font-weight: 500;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Abstract Art</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .art-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.75;
+      mix-blend-mode: screen;
+      animation-timing-function: ease-in-out;
+    }
+
+    .shape1 {
+      width: 200px;
+      height: 200px;
+      background: #ff3cac;
+      top: 10%;
+      left: 20%;
+      animation: float1 8s infinite alternate;
+    }
+
+    .shape2 {
+      width: 150px;
+      height: 150px;
+      background: #784ba0;
+      top: 30%;
+      left: 60%;
+      animation: float2 6s infinite alternate;
+    }
+
+    .shape3 {
+      width: 100px;
+      height: 100px;
+      background: #2b86c5;
+      top: 60%;
+      left: 40%;
+      animation: float3 5s infinite alternate;
+    }
+
+    .shape4 {
+      width: 250px;
+      height: 250px;
+      background: #ff9966;
+      top: 50%;
+      left: 10%;
+      animation: float4 7s infinite alternate;
+    }
+
+    .shape5 {
+      width: 120px;
+      height: 120px;
+      background: #00f2fe;
+      top: 70%;
+      left: 70%;
+      animation: float5 9s infinite alternate;
+    }
+
+    .square {
+      border-radius: 0;
+      opacity: 0.5;
+      transform: rotate(45deg);
+    }
+
+    .square1 {
+      width: 80px;
+      height: 80px;
+      background: #f9d423;
+      top: 20%;
+      left: 75%;
+      animation: square1 6s infinite alternate;
+    }
+
+    .square2 {
+      width: 60px;
+      height: 60px;
+      background: #fc6076;
+      top: 80%;
+      left: 30%;
+      animation: square2 10s infinite alternate;
+    }
+
+    .square3 {
+      width: 90px;
+      height: 90px;
+      background: #8EC5FC;
+      top: 40%;
+      left: 50%;
+      animation: square3 8s infinite alternate;
+    }
+
+    @keyframes float1 {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        transform: translateY(-50px) scale(1.1);
+      }
+    }
+
+    @keyframes float2 {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        transform: translate(-30px, 20px) scale(1.05);
+      }
+    }
+
+    @keyframes float3 {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-30px) rotate(180deg);
+      }
+    }
+
+    @keyframes float4 {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      100% {
+        transform: scale(1.2) rotate(360deg);
+      }
+    }
+
+    @keyframes float5 {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(50px);
+      }
+    }
+
+    @keyframes square1 {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+      100% {
+        transform: rotate(360deg) scale(1.1);
+      }
+    }
+
+    @keyframes square2 {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-60px);
+      }
+    }
+
+    @keyframes square3 {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.3);
+      }
+    }
+    .glow {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="art-container">
+    <div class="shape shape1 glow"></div>
+    <div class="shape shape2 glow"></div>
+    <div class="shape shape3"></div>
+    <div class="shape shape4 glow"></div>
+    <div class="shape shape5"></div>
+
+    <div class="shape square square1"></div>
+    <div class="shape square square2 glow"></div>
+    <div class="shape square square3"></div>
+  </div>
+</body>
+</html>
