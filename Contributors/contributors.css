@@ -1,0 +1,79 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f9f7f7, #fdf2f8);
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #ff4d6d;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contributor-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contributor-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.contributor-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #ff4d6d;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.contributor-card:hover img {
+  transform: scale(1.1);
+}
+
+.contributor-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.contributor-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.contributor-card a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ff4d6d, #ff8c42);
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.3s ease;
+}
+
+.contributor-card a:hover {
+  opacity: 0.8;
+}

@@ -12,6 +12,17 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
 
 /* Elegant Art Museum Color Variables */
 :root {
@@ -181,6 +192,20 @@ header p {
   border: 1px solid rgba(108, 99, 255, 0.1);
   box-shadow: 0 4px 20px rgba(108, 99, 255, 0.1);
   animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
+  margin: 10px auto 18px;
+  letter-spacing: 0.02em;
+  color: var(--primary-text);
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--gold-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Modified Search Bar for the navbar */
@@ -423,6 +448,25 @@ header p {
   scrollbar-width: none;
 }
 
+.art-card h3 {
+  text-align: center;
+  margin: 8px 0 14px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--primary-text);
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.art-card:hover h3 {
+  filter: brightness(1.05);
+}
+
 .art-card iframe::-webkit-scrollbar {
   display: none;
 }
@@ -460,99 +504,122 @@ header p {
 }
 
 /* === NEW FOOTER STYLES START === */
-footer {
-  text-align: center;
-  margin-top: 80px;
-  padding: 30px 20px;
-  background: var(--accent-bg);
-  border-top: 1px solid var(--border-color);
-  border-radius: 16px 16px 0 0;
+/* =================== Footer Styles =================== */
+/* =================== Footer Styles =================== */
+
+/* Root variables */
+:root {
+  --accent-bg: #f9f9fb;
+  --accent-color: #6c63ff;
+  --accent-subtle: #ececff;
+  --gold-accent: #f1c40f;
+  --secondary-text: #555;
+  --muted-text: #777;
+  --button-bg: #fff;
+  --button-border: #ddd;
+  --border-color: #e2e2e2;
+  --hover-bg: rgba(108,99,255,0.08);
 }
 
-.footer-content {
-  max-width: 1400px;
-  margin: 0 auto;
+/* Dark theme */
+.dark-theme {
+  --accent-bg: #1c1c1c;
+  --accent-color: #8b7fff;
+  --accent-subtle: #2a2a2a;
+  --gold-accent: #f4d03f;
+  --secondary-text: #ccc;
+  --muted-text: #888;
+  --button-bg: #222;
+  --button-border: #444;
+  --border-color: #333;
+  --hover-bg: rgba(139,127,255,0.15);
+}
+
+/* Footer Container */
+
+/* Footer Links Styling */
+.footer-section a {
+  color: var(--footer-link); /* or choose a color like #fff, #ccc */
+  text-decoration: none;     /* removes underline */
+  transition: color 0.3s ease;
+}
+/* Star icon color */
+.star-button .star-icon path {
+  fill: gold; /* Makes the star golden */
+}
+
+.footer-section a:hover {
+  color: var(--accent);      /* highlight on hover */
+}
+
+.footer-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
 }
 
-.footer-top {
+/* Footer Sections */
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+/* Footer Social Logos */
+.footer-social {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.footer-content p {
-  color: var(--muted-text);
-  font-size: 0.9rem;
-  font-weight: 400;
-  background-color: var(--button-bg);
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--button-border);
+.footer-social-logo {
+  width: 30px;    /* small GitHub logo */
+  height: 30px;
+  object-fit: contain;
 }
 
-.footer-logo {
-  width: 32px; /* MODIFIED: Reduced logo size */
-  height: 32px; /* MODIFIED: Reduced logo size */
-  filter: var(--logo-filter, invert(0));
-  transition: transform 0.3s ease;
-}
-
-.footer-logo:hover {
-  transform: scale(1.1);
+/* Footer Buttons (Star / Contributors) */
+.footer-extra-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .footer-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 5px;
+  padding: 8px 12px;
   background-color: transparent;
-  border: 1px solid var(--button-border); /* MODIFIED: Ensured border is visible */
-  border-radius: 8px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
   text-decoration: none;
-  color: var(--secondary-text);
-  font-weight: 500;
+  color: var(--accent);
   font-size: 0.9rem;
-  transition: all 0.2s ease-in-out; /* MODIFIED: Added transition for animations */
+  transition: 0.3s ease;
 }
 
 .footer-button:hover {
-  background-color: var(--button-hover-bg);
-  border-color: var(--secondary-text);
-  color: var(--primary-text);
-  transform: translateY(-2px); /* MODIFIED: Added hover animation */
-  box-shadow: 0 4px 12px var(--shadow-light); /* MODIFIED: Added hover shadow */
-}
-
-.footer-button:active {
-  transform: translateY(0); /* MODIFIED: Added active state animation */
-  box-shadow: none;
+  background-color: var(--accent);
+  color: #fff;
 }
 
 .star-icon {
   width: 16px;
   height: 16px;
-  fill: #e3b341; /* MODIFIED: Set star color to yellow */
 }
 
-.star-count {
-  background-color: transparent;
-  color: var(--secondary-text);
-  padding: 0;
-  margin-left: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--footer-bottom-bg);
+  font-size: 0.85rem;
+  margin-top: 20px;
 }
 
-.footer-button:hover .star-count {
-  color: var(--primary-text);
-}
 /* === NEW FOOTER STYLES END === */
 
 
@@ -999,4 +1066,9 @@ footer {
   color: var(--secondary-text);
   /* The blur effect is not needed with a solid background */
   backdrop-filter: none; 
+}
+
+#recently-reviewed-gallery {
+  grid-template-columns: repeat(3, 320px); 
+  max-width: calc(320px * 3 + 30px * 2); 
 }

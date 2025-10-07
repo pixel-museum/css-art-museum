@@ -1,8 +1,135 @@
 document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("gallery-container");
+  const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
   const searchBar = document.getElementById("search-bar");
   const sortByLikesBtn = document.getElementById("sort-by-likes-btn"); // Get the sort button
   let allArts = []; // This will store the merged data (art info + likes)
+  let pagination = null; // Pagination instance
+
+  const RecentlyReviewed = {
+    get: () => {
+      try {
+        const data = JSON.parse(localStorage.getItem("recentlyReviewed") || "[]");
+        return Array.isArray(data) ? data : [];
+      } catch (e) {
+        return [];
+      }
+    },
+    add: (art) => {
+      if (!art || !art.file) return;
+      const list = RecentlyReviewed.get().filter((a) => a.file !== art.file);
+      list.push({ file: art.file, title: art.title, author: art.author });
+      while (list.length > 3) list.shift();
+      localStorage.setItem("recentlyReviewed", JSON.stringify(list));
+    },
+  };
+
+  function renderRecentlyReviewed() {
+    if (!recentlyReviewedContainer) return;
+    const items = RecentlyReviewed.get();
+    recentlyReviewedContainer.innerHTML = "";
+    items
+      .slice()
+      .reverse()
+      .forEach((item) => {
+        const filePath = `arts/${item.file}`;
+        const card = document.createElement("div");
+        card.className = "art-card";
+        let isLiked = false;
+        try {
+          const liked = localStorage.getItem('likedArtworks');
+          const likedSet = liked ? new Set(JSON.parse(liked)) : new Set();
+          isLiked = likedSet.has(item.file);
+        } catch (e) {
+          isLiked = false;
+        }
+        const likesCount = (Array.isArray(allArts) ? (allArts.find(a => a.file === item.file)?.likes) : 0) || 0;
+        card.innerHTML = `
+          <iframe loading="lazy" seamless src="${filePath}" title="${item.title}"></iframe>
+        <h3>${item.title}</h3>
+        <p>by ${item.author}</p>
+        <div class="card-actions">
+            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(item.file)}">
+                View Code
+            </a>
+            <div class="like-container" data-id="${item.file}">
+                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                 <span class="like-count">${likesCount}</span>
+            </div>
+        </div>
+        `;
+        recentlyReviewedContainer.appendChild(card);
+      });
+
+    initializeCardAnimations();
+  }
+
+  // Like handler for Recently Reviewed section
+  function handleRecentLikeClick(event) {
+    const likeContainer = event.target && event.target.closest ? event.target.closest('.like-container') : null;
+    if (!likeContainer) return;
+
+    const artId = likeContainer.dataset.id;
+    const heartIcon = likeContainer.querySelector('.heart-icon');
+    const countSpan = likeContainer.querySelector('span');
+    let currentLikes = parseInt(countSpan.textContent, 10);
+    if (Number.isNaN(currentLikes)) currentLikes = 0;
+
+    // LocalStorage 
+    const LocalLiked = {
+      get: () => {
+        try {
+          const liked = localStorage.getItem('likedArtworks');
+          return liked ? new Set(JSON.parse(liked)) : new Set();
+        } catch (e) {
+          return new Set();
+        }
+      },
+      add: (id) => {
+        const s = LocalLiked.get();
+        s.add(id);
+        localStorage.setItem('likedArtworks', JSON.stringify([...s]));
+      },
+      remove: (id) => {
+        const s = LocalLiked.get();
+        s.delete(id);
+        localStorage.setItem('likedArtworks', JSON.stringify([...s]));
+      },
+      has: (id) => LocalLiked.get().has(id)
+    };
+
+    (async () => {
+      try {
+        if (LocalLiked.has(artId)) {
+          // Unlike
+          countSpan.textContent = Math.max(0, currentLikes - 1);
+          heartIcon.classList.remove('liked');
+          LocalLiked.remove(artId);
+          const res = await unlikeArtworkApi(artId);
+          if (res && typeof res.likes === 'number') {
+            countSpan.textContent = res.likes;
+            const art = Array.isArray(allArts) ? allArts.find(a => a.file === artId) : null;
+            if (art) art.likes = res.likes;
+          }
+        } else {
+          // Like
+          countSpan.textContent = currentLikes + 1;
+          heartIcon.classList.add('liked');
+          LocalLiked.add(artId);
+          const res = await likeArtworkApi(artId);
+          if (res && typeof res.likes === 'number') {
+            countSpan.textContent = res.likes;
+            const art = Array.isArray(allArts) ? allArts.find(a => a.file === artId) : null;
+            if (art) art.likes = res.likes;
+          }
+        }
+      } catch (e) {
+        renderRecentlyReviewed();
+      }
+    })();
+  }
 
   async function loadArts() {
     try {
@@ -21,7 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
         likes: artLikesMap.get(art.file) || 0, // Add likes property, default to 0
       }));
 
+      // Initialize pagination after data is loaded
+      initializePagination();
       renderArts(allArts);
+      renderRecentlyReviewed();
     } catch (error) {
       console.error("Could not load arts:", error);
       galleryContainer.innerHTML =
@@ -29,8 +159,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // MODIFIED: This function now uses the 'likes' property and checks local storage for 'liked' status.
-  function renderArts(arts) {
+  /**
+   * Initialize pagination instance
+   */
+  function initializePagination() {
+    pagination = new Pagination({
+      itemsPerPage: 24,
+      containerId: 'gallery-container',
+      paginationId: 'pagination-controls'
+    });
+
+    // Set items to paginate
+    pagination.setItems(allArts);
+
+    // Override the render method to use our custom rendering
+    pagination.render = function() {
+      const currentItems = this.getCurrentPageItems();
+      renderArtCards(currentItems);
+      this.renderControls();
+    };
+
+    // Initial render
+    pagination.render();
+  }
+
+  /**
+   * Render art cards (extracted from renderArts for reusability)
+   */
+  function renderArtCards(arts) {
     galleryContainer.innerHTML = "";
     
     // We need the LikedArtworks helper to check the liked status
@@ -49,32 +205,52 @@ document.addEventListener("DOMContentLoaded", () => {
     arts.forEach((art) => {
       const artCard = document.createElement("div");
       artCard.className = "art-card";
+      artCard.dataset.file = art.file;
+      artCard.dataset.title = art.title;
+      artCard.dataset.author = art.author;
       const filePath = `arts/${art.file}`;
       const isLiked = LikedArtworks.isLiked(art.file);
 
       artCard.innerHTML = `
-        <iframe src="${filePath}" title="${art.title}" loading="lazy" seamless></iframe>
-        <p>${art.title} by ${art.author}</p>
+        <h3>${art.title}</h3>
+        <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
+        <p>by ${art.author}</p>
         <div class="card-actions">
-            <a class="view-code" href="art-viewer.html?file=${encodeURIComponent(art.file)}">
-                <button>View Code</button>
+            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(art.file)}">
+                View Code
             </a>
             <div class="like-container" data-id="${art.file}">
-                <svg class="heart-icon ${isLiked ? 'liked' : ''}" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
-                <span>${art.likes}</span>
+                <span class="like-count">${art.likes}</span>
             </div>
         </div>
       `;
-
+     artCard.addEventListener("click", (e) => {
+        if (e.target && e.target.closest && e.target.closest('.like-container')) return;
+        RecentlyReviewed.add({ file: art.file, title: art.title, author: art.author });
+        renderRecentlyReviewed();
+      });
       galleryContainer.appendChild(artCard);
     });
-
+    
     initializeCardAnimations();
   }
+
+  /**
+   * Wrapper function to maintain compatibility with existing code
+   */
+  function renderArts(arts) {
+    if (pagination) {
+      pagination.setFilteredItems(arts);
+      pagination.render();
+    } else {
+      renderArtCards(arts);
+    }
+  }
     
-  // --- ADDED: Sort by Likes functionality ---
+  // --- Sort by Likes functionality ---
   function sortByLikes() {
     // Create a copy of the array before sorting to avoid modifying the original
     const sortedArts = [...allArts].sort((a, b) => b.likes - a.likes);
@@ -146,6 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rotateY = (centerX - e.clientX) / 20;
         card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
+
       card.addEventListener("mouseleave", () => {
         card.style.transform = "";
       });
@@ -161,6 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = false;
     });
   }
+
   window.addEventListener("scroll", () => {
     if (!ticking) {
       ticking = true;
@@ -225,4 +403,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadArts();
   getGitHubStars();
+
+  renderRecentlyReviewed();
+
+  if (recentlyReviewedContainer) {
+    recentlyReviewedContainer.addEventListener('click', handleRecentLikeClick);
+  }
+  window.addEventListener('keydown', (e) => {
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') return;
+    if (e.key === '/') {
+      e.preventDefault();
+      searchBar.focus();
+      searchBar.select();
+    }
+  });
 });

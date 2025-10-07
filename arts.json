@@ -1,5 +1,15 @@
 [
   {
+    "file": "Anuradha-neon-city.html",
+    "title": "Neon City",
+    "author": "Anuradha"
+  },
+  {
+    "file": "Anuradha-aurora-night-sky.html",
+    "title": "Aurora Night Sky",
+    "author": "Anuradha"
+  },
+  {
     "file": "noor-spaceart.html",
     "title": "Space-art",
     "author": "Noor"
@@ -42,11 +52,6 @@
   {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
     "author": "Ritesh"
   },
   {
@@ -245,11 +250,6 @@
     "author": "Sutthinart Khunvadhana"
   },
   {
-    "file": "rj_nebula.html",
-    "title": "Nebula",
-    "author": "RJ"
-  },
-  {
     "file": "kartik_gradients.html",
     "title": "Shapes and Gradients",
     "author": "Kartik Tripathi"
@@ -308,5 +308,40 @@
     "file": "mathurojus-sunset-landscape.html",
     "title": "CSS Sunset Landscape",
     "author": "Mathurojus"
+  },
+  {
+    "file": "grid-background.html",
+    "title": "Animated Grid backgound ",
+    "author": "Shivin"
+  },
+  {
+    "file": "diwali-card.html",
+    "title": "Diwali Diya Grid ",
+    "author": "Shivin"
+  },
+  {
+    "file": "night-sky-landscape.html",
+    "title": "Night Sky Landscape ",
+    "author": "Thanuja Kedila"
+  },
+  {
+    "file": "Prasanth-style-text.html",
+    "title": "CSS text layer",
+    "author": "Prasanth"
+  },
+  {
+    "file": "sandeep-solarsystem.html",
+    "title": "Solar System",
+    "author": "sandeep"
+  },
+  {
+    "file": "forest.html",
+    "title": "Forest",
+    "author": "Siddhant"
+  },
+  {
+    "file": "aditi-meteor-shower.html",
+    "title": "Meteor-Shower",
+    "author": "Aditi"
   }
 ]

@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>CSS Art Museum</title>
+
+
+    <!-- <link rel="icon" type="image/png" href="./logo.png"> -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Untitled design.png" />
+
     <link rel="icon" type="image/png" href="./assets/logo.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="/assets/Untitled design.png" />
+
   </head>
   <body>
     <header>
@@ -39,60 +50,86 @@
       <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
       <button id="sort-by-likes-btn">Sort by Likes</button>
     </header>
-    
+    <section class="recently-reviewed-container">
+      <h2 class="section-title">Recently Reviewed</h2>
+      <div class="gallery" id="recently-reviewed-gallery">
+      </div>
+    </section>
+    <h2 class="section-title">Art Museum</h2>
     <main class="gallery" id="gallery-container"></main>
 
-    <footer>
-      <div class="footer-content">
-        <div class="footer-top">
-          <!-- GitHub Logo Link -->
-          <a
-            href="https://github.com/Shamli-Singh-Yadav/css-art-museum"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./assets/github-logo.png"
-              alt="GitHub Logo"
-              class="footer-logo"
-            />
-          </a>
-          <!-- Star Repo Button -->
-          <a
-            href="https://github.com/Shamli-Singh-Yadav/css-art-museum"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-button star-button"
-          >
-            <svg
-              class="star-icon"
-              viewBox="0 0 16 16"
-              version="1.1"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
-              ></path>
-            </svg>
-            Star
-            <span class="star-count" id="star-count">...</span>
-          </a>
-          <!-- Contributors Link -->
-          <a
-            href="https://github.com/Shamli-Singh-Yadav/css-art-museum/graphs/contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-button"
-          >
-            Contributors
-          </a>
-        </div>
-        <p>Made with ❤️ by the Open Source Community | Hacktoberfest 2025</p>
+<footer>
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>About ArtMuseum</h3>
+      <p>ArtMuseum is a platform for artists, creators, and enthusiasts to explore, share, and celebrate creativity worldwide.</p>
+    </div>
+
+    <!-- Features / Quick Links -->
+    <div class="footer-section">
+      <h3>Features</h3>
+      <ul>
+        <li><a href="#">Explore Gallery</a></li>
+        <li><a href="#">Submit Artwork</a></li>
+        <li><a href="#">Trending Art</a></li>
+        <li><a href="#">Artist Profiles</a></li>
+        <li><a href="#">Events & Workshops</a></li>
+      </ul>
+    </div>
+
+    <!-- Community -->
+    <div class="footer-section">
+      <h3>Community</h3>
+      <ul>
+        <li><a href="#">Discord</a></li>
+        <li><a href="#">Slack</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-section footer-newsletter">
+      <h3>Subscribe</h3>
+      <p>Get latest updates and news directly in your inbox.</p>
+      <form>
+        <input type="email" placeholder="Your email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Social Media + Contributors -->
+    <div class="footer-section">
+      <h3>Connect with Us</h3>
+      <div class="footer-social">
+        <a href="https://github.com/Shamli-Singh-Yadav" title="GitHub"><img src="./assets/github-logo.png" alt="GitHub Logo" class="footer-social-logo"></a>
+        <a href="#" title="LinkedIn"><img src="./assets/linkedin-logo.png" alt="Linkedin logo" class="footer-social-logo"></a>
+        <a href="#" title="Twitter"><img src="./assets/twitter.png" alt="Twitter logo" class="footer-social-logo"></a>
       </div>
-    </footer>
+
+      <!-- Contributors & Stars -->
+      <div class="footer-extra-buttons">
+        <a href="https://github.com/Shamli-Singh-Yadav/css-art-museum" target="_blank" class="footer-button star-button">
+          <svg class="star-icon" viewBox="0 0 16 16" width="16" height="16">
+            <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
+          </svg>
+          Star <span class="star-count" id="star-count">...</span>
+        </a>
+        <a href="Contributors/contributors.html" target="_blank" class="footer-button">Contributors</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    &copy; 2025 ArtMuseum. All rights reserved.
+  </div>
+</footer>
+
 
     <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
       <svg
@@ -103,6 +140,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor" />
+      </svg>
       <svg
         width="24"
         height="24"
@@ -115,6 +153,7 @@
     </button>
 
     <script src="./js/api-service.js"></script>
+    <script src="./js/pagination.js"></script>
     <script src="./js/likes.js"></script>
     <script src="./js/script.js"></script>
   </body>

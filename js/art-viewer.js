@@ -33,7 +33,7 @@ function sanitizeFilename(raw) {
 }
 
 const params = new URLSearchParams(location.search);
-const file = sanitizeFilename(params.get("file"));
+const file = sanitizeFilename(params.get("art"));
 
 if (!file) {
   fileNameEl.textContent = "Error";
