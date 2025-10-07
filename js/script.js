@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("gallery-container");
   const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
   const searchBar = document.getElementById("search-bar");
-  const sortByLikesBtn = document.getElementById("sort-by-likes-btn"); // Get the sort button
+  // Sorting dropdown
+  const sortingDropdown = document.getElementById("sorting-dropdown");
   let allArts = []; // This will store the merged data (art info + likes)
   let pagination = null; // Pagination instance
 
@@ -250,11 +251,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
     
-  // --- Sort by Likes functionality ---
-  function sortByLikes() {
-    // Create a copy of the array before sorting to avoid modifying the original
-    const sortedArts = [...allArts].sort((a, b) => b.likes - a.likes);
-    renderArts(sortedArts);
+
+  // --- Sorting integration ---
+  window.sortAndRenderArts = function() {
+    if (!allArts) return;
+    const sorted = window.sortArts ? window.sortArts(allArts) : allArts;
+    renderArts(sorted);
+  };
+
+  if (sortingDropdown) {
+    sortingDropdown.addEventListener('change', () => {
+      window.sortAndRenderArts();
+    });
   }
 
   // --- Search Filter ---
@@ -399,9 +407,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Event Listeners and Initial Function Calls ---
   window.addEventListener("scroll", toggleScrollToTopButton);
   scrollToTopBtn.addEventListener("click", scrollToTop);
-  sortByLikesBtn.addEventListener("click", sortByLikes); // Add listener for the sort button
+
 
   loadArts();
+  // Initial sort and render after arts are loaded
+  window.sortAndRenderArts();
   getGitHubStars();
 
   renderRecentlyReviewed();

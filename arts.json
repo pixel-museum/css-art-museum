@@ -305,6 +305,11 @@
     "author": "Nitish K"
   },
   {
+    "file": "mathurojus-sunset-landscape.html",
+    "title": "CSS Sunset Landscape",
+    "author": "Mathurojus"
+  },
+  {
     "file": "grid-background.html",
     "title": "Animated Grid backgound ",
     "author": "Shivin"
@@ -323,6 +328,11 @@
     "file": "Prasanth-style-text.html",
     "title": "CSS text layer",
     "author": "Prasanth"
+  },
+  {
+    "file": "parth-artwork.html",
+    "title": "CSS Sunset landscape",
+    "author": "Parth"
   },
   {
     "file": "sandeep-solarsystem.html",
@@ -344,4 +354,5 @@
     "title": "Snowing Mountain Scene",
     "author": "Vidhan Sachdeva"
   }
+
 ]

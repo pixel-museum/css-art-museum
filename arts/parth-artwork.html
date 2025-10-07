@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunset Landscape Artwork</title>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: linear-gradient(to top, #ff7e5f, #feb47b, #ffd194);
+}
+.scene {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.sun {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff8b5, #ffd87c, #ffb347);
+  box-shadow: 0 0 100px 50px rgba(255, 200, 100, 0.4);
+}
+.hill {
+  position: absolute;
+  width: 200%;
+  left: -50%;
+  border-radius: 50%;
+  transform-origin: bottom;
+}
+.hill-back {
+  height: 40vh;
+  bottom: -15vh;
+  background: radial-gradient(
+    circle at 50% 100%,
+    #5a4b4b 0%,
+    #3b2f2f 60%,
+    #2b2424 100%
+  );
+  z-index: 1;
+}
+.hill-mid {
+  height: 45vh;
+  bottom: -20vh;
+  background: radial-gradient(
+    circle at 50% 100%,
+    #463838 0%,
+    #2f2525 70%,
+    #1f1818 100%
+  );
+  z-index: 2;
+}
+.hill-front {
+  height: 55vh;
+  bottom: -25vh;
+  background: radial-gradient(
+    circle at 50% 100%,
+    #2b2222 0%,
+    #1a1414 70%,
+    #0e0a0a 100%
+  );
+  z-index: 3;
+}
+.scene::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 210, 150, 0.25),
+    transparent 70%
+  );
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  .sun {
+    width: 120px;
+    height: 120px;
+    top: 25%;
+  }
+  .hill-back {
+    height: 35vh;
+  }
+  .hill-mid {
+    height: 40vh;
+  }
+  .hill-front {
+    height: 50vh;
+  }
+}
+@media (max-width: 480px) {
+  .sun {
+    width: 90px;
+    height: 90px;
+    top: 30%;
+  }
+  .hill-back {
+    height: 30vh;
+  }
+  .hill-mid {
+    height: 35vh;
+  }
+  .hill-front {
+    height: 45vh;
+  }
+}
+</style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="sun"></div>
+      <div class="hill hill-back"></div>
+      <div class="hill hill-mid"></div>
+      <div class="hill hill-front"></div>
+    </div>
+  </body>
+</html>
