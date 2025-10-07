@@ -1051,3 +1051,33 @@ header p {
   grid-template-columns: repeat(3, 320px); 
   max-width: calc(320px * 3 + 30px * 2); 
 }
+
+/* Fix for Issue #184: Recently Reviewed Section Transitions */
+
+/* Add smooth transition for recently reviewed container */
+.recently-reviewed-container {
+  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+  overflow: hidden;
+  opacity: 1;
+  max-height: 1000px; /* Adjust based on your content */
+}
+
+/* Hidden state for recently reviewed section */
+.recently-reviewed-container.hidden {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Ensure sorting container has proper spacing */
+.sorting-container {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition: margin 0.3s ease;
+}
+
+/* Adjust margin when recently reviewed is hidden */
+.recently-reviewed-container.hidden + .sorting-container {
+  margin-top: 0;
+}
