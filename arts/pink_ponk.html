@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Classic Pink Pong Ball Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #f8e0f4 0%, #fff0f8 60%, #ffeaf3 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pong-card {
+      width: 320px;
+      height: 370px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 28px;
+      box-shadow: 0 8px 40px 0 rgba(192, 48, 154, 0.10), 0 2px 10px rgba(206, 46, 118, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid #fde3eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      padding: 36px 24px 32px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .pong-card:hover {
+      box-shadow: 0 16px 48px 0 rgba(192, 48, 154, 0.18), 0 4px 18px rgba(206, 46, 118, 0.10);
+    }
+
+    .ball {
+      width: 92px;
+      height: 92px;
+      background: radial-gradient(circle at 30% 25%, #fff4fa 32%, #fe99d1 65%, #ea449a 86%);
+      border-radius: 50%;
+      box-shadow: 0 8px 28px 0 #ce2e7644, 0 2px 18px #fc4ec14a;
+      margin-bottom: 26px;
+      position: absolute;
+      top: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: rotateBall 6s linear infinite, moveBall 17s cubic-bezier(.67,-0.06,.55,1.09) infinite;
+    }
+
+    .ball::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 22px;
+      top: 24px;
+      width: 25px;
+      height: 16px;
+      background: radial-gradient(circle, #fff 80%, #ffe4ef00 100%);
+      opacity: 0.7;
+      border-radius: 50%;
+      filter: blur(1px);
+      transform: rotate(-10deg);
+    }
+
+    @keyframes rotateBall {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+    @keyframes moveBall {
+      0%, 100% { top: 38px; left: 50%; }
+      18% { top: 62px; left: 62%; }
+      33% { top: 108px; left: 74%; }
+      49% { top: 130px; left: 53%; }
+      66% { top: 80px; left: 24%; }
+      82% { top: 48px; left: 36%; }
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #cd2d85;
+      margin-top: 152px;
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+      text-align: center;
+      width: 100%;
+      text-shadow: 0 1px 7px #ffc1ec2b;
+    }
+    .card-desc {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #9b4381;
+      text-align: center;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      margin-bottom: 0;
+      margin-top: 2px;
+      width: 100%;
+    }
+    .divider {
+      margin: 26px 0 24px 0;
+      width: 40%;
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, #f8daf4, #ea449a 50%, #f8daf4);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="pong-card">
+    <div class="ball"></div>
+    <div class="card-title">Pink Pong Ball</div>
+    <hr class="divider"/>
+    <div class="card-desc">A refined, professional CSS card featuring a gently animated pink pong ball. Elegant for portfolios and showcases.</div>
+  </div>
+</body>
+</html>

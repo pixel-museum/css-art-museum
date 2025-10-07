@@ -1,289 +1,3 @@
-[
-  {
-    "file": "noor-spaceart.html",
-    "title": "Space-art",
-    "author": "Noor"
-  },
-  {
-    "file": "abstract_shapes.html",
-    "title": "Abstract Shapes",
-    "author": "Mayank Bansal"
-  },
-  {
-    "file": "uday-rain-in-dark-night.html",
-    "title": "Rain In Dark",
-    "author": "Uday"
-  },
-  {
-    "file": "Angela_oceanwaves.html",
-    "title": "Ocean Waves",
-    "author": "Angela Bera"
-  },
-  {
-    "file": "chanakya-vintage-typewriter.html",
-    "title": "Vintage Typewriter",
-    "author": "Chanakya"
-  },
-  {
-    "file": "Waqar-arc.html",
-    "title": "Arc Reactor",
-    "author": "Waqar"
-  },
-  {
-    "file": "hariksh-sunset.html",
-    "title": "Sunset CSS Art",
-    "author": "Hariksh"
-  },
-  {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "matrix-pulse-loading.html",
-    "title": "Matrix-pulse-loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "ring-loading.html",
-    "title": "Ring Loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "penguin.html",
-    "title": "Penguin Art",
-    "author": " JamesFloyd-Pen"
-  },
-  {
-    "file": "sample.html",
-    "title": "Sample CSS Art",
-    "author": "Shamli"
-  },
-  {
-    "file": "matrix.html",
-    "title": "Matrix Rain Animation",
-    "author": "Eternity"
-  },
-  {
-    "file": "geometry.html",
-    "title": "Geometric Art",
-    "author": "Shamli"
-  },
-  {
-    "file": "rotating_cube.html",
-    "title": "Rotating Cube",
-    "author": "Hardik"
-  },
-  {
-    "file": "Rohith_stars.html",
-    "title": "Glowing Star",
-    "author": "Rohith"
-  },
-  {
-    "file": "helicopter.html",
-    "title": "Helicopter",
-    "author": "Dhamith"
-  },
-  {
-    "file": "irfan-goldennight.html",
-    "title": "Golden Night",
-    "author": "Irfan"
-  },
-  {
-    "file": "irfan-ocean.html",
-    "title": "Ocean Scene",
-    "author": "Irfan"
-  },
-  {
-    "file": "Apurva_IndianFlag.html",
-    "title": "Animated Indian Flag",
-    "author": "Apurva"
-  },
-  {
-    "file": "waqar-cat.html",
-    "title": "CSS Cat Art",
-    "author": "Waqar"
-  },
-  {
-    "file": "mbm08-ironman.html",
-    "title": "Ironman CSS Art",
-    "author": "MBM08"
-  },
-  {
-    "file": "yash-zoomout.html",
-    "title": "Solar System",
-    "author": "Yash"
-  },
-  {
-    "file": "krishna-morphing-hologram.html",
-    "title": "Morphing Hologram",
-    "author": "Krishna"
-  },
-  {
-    "file": "prasanth_bounce.html",
-    "title": "Bounce",
-    "author": "Prasanth"
-  },
-  {
-    "file": "rotatingeffect.html",
-    "title": "Rotating Gallery Effect",
-    "author": "Meenal"
-  },
-  {
-    "file": "angel-ufo_alien.html",
-    "title": "Hovering UFO",
-    "author": "Angel"
-  },
-  {
-    "file": "bouncing_ball.html",
-    "title": "Bouncing Ball",
-    "author": "Kartikay"
-  },
-  {
-    "file": "floating_orb.html",
-    "title": "Floating Orb",
-    "author": "Kartikay"
-  },
-  {
-    "file": "pulsating_ring.html",
-    "title": "Pulsating Ring",
-    "author": "Kartikay"
-  },
-  {
-    "file": "waves.html",
-    "title": "Waves",
-    "author": "Kartikay"
-  },
-  {
-    "file": "neon-city.html",
-    "title": "Neon City",
-    "author": "Yashasvi"
-  },
-  {
-    "file": "manudwivedi-aurora.html",
-    "title": "Aurora (Interactive)",
-    "author": "Manu Dwivedi"
-  },
-  {
-    "file": "Sneha-Raindrop Ripple.html",
-    "title": "Raindrop Ripple",
-    "author": "Sneha"
-  },
-  {
-    "file": "ujjwal-train.html",
-    "title": "Train",
-    "author": "ujjwal"
-  },
-  {
-    "file": "ujjwal-hacker.html",
-    "title": "Hacker",
-    "author": "ujjwal"
-  },
-  {
-    "file": "ujjwal-peacock.html",
-    "title": "Peakcock",
-    "author": "ujjwal"
-  },
-  {
-    "file": "night_sky.html",
-    "title": "Night Sky",
-    "author": "Srinjoyee Dey"
-  },
-  {
-    "file": "pratik_face.html",
-    "title": "face",
-    "author": "Pratik"
-  },
-  {
-    "file": "Angela_aurora.html",
-    "title": "Aurora Lights",
-    "author": "Angela Bera"
-  },
-  {
-    "file": "saturn.html",
-    "title": "Saturn",
-    "author": "Thanuja Kedila"
-  },
-  {
-    "file": "night_owl.html",
-    "title": "Night Owl",
-    "author": "Thanuja Kedila"
-  },
-  {
-    "file": "prath-rotating-earth.html",
-    "title": "Rotating Earth",
-    "author": "Pratham"
-  },
-  {
-    "file": "waqar-vinyl.html",
-    "title": "Vinyl Record",
-    "author": "Waqar"
-  },
-  {
-    "file": "morphin_art.html",
-    "title": "Curiosity Portal ",
-    "author": "Sumit Vishwakarma"
-  },
-  {
-    "file": "celestial_engine.html",
-    "title": "Celestial Engine",
-    "author": "Sumit Vishwakarma"
-  },
-  {
-    "file": "Soumyosish_animated_gradient_card.html",
-    "title": "Animated Gradient Card",
-    "author": "Soumyosish"
-  },
-  {
-    "file": "usa_flag.html",
-    "title": "USA Flag",
-    "author": "Sutthinart Khunvadhana"
-  },
-  {
-    "file": "rj_nebula.html",
-    "title": "Nebula",
-    "author": "RJ"
-  },
-  {
-    "file": "kartik_gradients.html",
-    "title": "Shapes and Gradients",
-    "author": "Kartik Tripathi"
-  },
-  {
-    "file": "aerospace-celestial_wanderers.html",
-    "title": "Animated Celestial Wanderers",
-    "author": "Aerospace"
-  },
-  {
-    "file": "rj_nebula.html",
-    "title": "Nebula",
-    "author": "RJ"
-  },
-  {
-    "file": "cat.html",
-    "title": "Cat Art",
-    "author": "Rishita"
-  },
-  {
-    "file": "gravity-affected-ball.html",
-    "title": "Gravity Affected Ball",
-    "author": "Akshit"
-  },
-  {
-    "file": "glowing_dusk.html",
-    "title": "Glowing Dusk",
-    "author": "Injora"
-  },
-  {
-    "file": "jellyfish-grass.html",
-    "title": "Jellyfish CSS Art",
-    "author": "Chanakya"
-  },
   {
     "file": "Jaswanth_Kumar-Glowing_Butterfly.html",
     "title": "Glowing Butterfly",
@@ -308,5 +22,41 @@
     "file": "mathurojus-diwali-lights.html",
     "title": "Diwali Lights",
     "author": "Mathurojus"
-  }
-]
+  },
+  {
+    "file": "mathurojus-sunset-landscape.html",
+    "title": "CSS Sunset Landscape",
+    "author": "Mathurojus"
+  },
+  {
+    "file": "grid-background.html",
+    "title": "Animated Grid backgound ",
+    "author": "Shivin"
+  },
+  {
+    "file": "diwali-card.html",
+    "title": "Diwali Diya Grid ",
+    "author": "Shivin"
+  },
+  {
+    "file": "night-sky-landscape.html",
+    "title": "Night Sky Landscape ",
+    "author": "Thanuja Kedila"
+  },
+  {
+    "file": "Prasanth-style-text.html",
+    "title": "CSS text layer",
+    "author": "Prasanth"
+  },
+  {
+    "file": "parth-artwork.html",
+    "title": "CSS Sunset landscape",
+    "author": "Parth"
+  },
+  {
+    "file": "sandeep-solarsystem.html",
+    "title": "Solar System",
+    "author": "sandeep"
+  },
+  {
+    "file": "forest.html",

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributors</title>
+  <link rel="stylesheet" href="contributors.css">
+</head>
+<body>
+  <h1>✨ Our Amazing Contributors ✨</h1>
+  <div class="contributors-grid" id="contributors-list"></div>
+
+  <script>
+    async function loadContributors() {
+      const response = await fetch("contributors.json");
+      const contributors = await response.json();
+      const container = document.getElementById("contributors-list");
+
+      const taglines = [
+        "✨ Bringing art to life with CSS ✨",
+        "🎨 Crafted beautiful CSS masterpieces",
+        "💡 Adding creativity to the Art Museum",
+        "🌟 A proud contributor to CSS Art Gallery",
+        "🖌️ Painting the web with CSS skills",
+        "🚀 Helping the Art Museum shine with CSS",
+        "🌈 Styled the gallery with imagination",
+        "📌 Making CSS Art more colorful & fun",
+        "🎉 Contributor & CSS Art Enthusiast",
+        "🧩 A piece of the CSS Art puzzle"
+      ];
+
+      contributors.forEach((c, index) => {
+        const card = document.createElement("div");
+        card.className = "contributor-card";
+
+        const tagline = taglines[index % taglines.length];
+
+        card.innerHTML = `
+          <img src="https://avatars.githubusercontent.com/${c.username}" alt="${c.username}">
+          <h3>@${c.username}</h3>
+          <p>${tagline}</p>
+          <a href="https://github.com/${c.username}" target="_blank">View Profile</a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    loadContributors();
+    
+  </script>
+</body>
+</html>
