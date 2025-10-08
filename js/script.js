@@ -273,17 +273,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Search Filter ---
-  searchBar.addEventListener("input", () => {
-    const query = searchBar.value.toLowerCase().trim();
-    const filteredArts = allArts.filter(
-      (art) =>
-        art.title.toLowerCase().includes(query) ||
-        art.author.toLowerCase().includes(query)
-    );
-    renderArts(filteredArts);
-  });
+  // --- Search Filter with Recently Reviewed Hide/Show (Fix for Issue #184) ---
+const recentlyReviewedSection = document.querySelector('.recently-reviewed-container');
 
+searchBar.addEventListener("input", () => {
+  const query = searchBar.value.toLowerCase().trim();
+  
+  // Hide or show recently reviewed section based on search query
+  if (recentlyReviewedSection) {
+    if (query.length > 0) {
+      // Hide recently reviewed when searching
+      recentlyReviewedSection.classList.add('hidden');
+    } else {
+      // Show recently reviewed when search is empty
+      recentlyReviewedSection.classList.remove('hidden');
+    }
+  }
+  
+  // Existing filter logic
+  const filteredArts = allArts.filter(
+    (art) =>
+      art.title.toLowerCase().includes(query) ||
+      art.author.toLowerCase().includes(query)
+  );
+  renderArts(filteredArts);
+});
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
   const body = document.body;
