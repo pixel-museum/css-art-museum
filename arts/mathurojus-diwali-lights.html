@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diwali Lights</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #1a0033, #330066);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Diya (lamp) container */
+    .diya-container {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 60px;
+    }
+    
+    /* Individual Diya */
+    .diya {
+      position: relative;
+      width: 80px;
+      height: 50px;
+    }
+    
+    /* Diya base */
+    .diya-base {
+      width: 70px;
+      height: 25px;
+      background: linear-gradient(to bottom, #ff6b35, #d84315);
+      border-radius: 0 0 50% 50%;
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+    }
+    
+    /* Diya flame */
+    .flame {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 40px;
+      background: linear-gradient(to top, #ff9800, #ffeb3b, #fff59d);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 1.5s ease-in-out infinite;
+      box-shadow: 0 0 20px #ff9800,
+                  0 0 40px #ff9800,
+                  0 0 60px #ff6b00;
+    }
+    
+    /* Flame glow */
+    .flame::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 15px;
+      background: #fff59d;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+    
+    /* String lights */
+    .lights-string {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #333;
+    }
+    
+    /* Individual light bulbs */
+    .light {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      border-radius: 50% 50% 0 0;
+      top: -30px;
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .light:nth-child(1) {
+      left: 10%;
+      background: #ff1744;
+      box-shadow: 0 0 20px #ff1744;
+      animation-delay: 0s;
+    }
+    
+    .light:nth-child(2) {
+      left: 25%;
+      background: #00e676;
+      box-shadow: 0 0 20px #00e676;
+      animation-delay: 0.3s;
+    }
+    
+    .light:nth-child(3) {
+      left: 40%;
+      background: #ffeb3b;
+      box-shadow: 0 0 20px #ffeb3b;
+      animation-delay: 0.6s;
+    }
+    
+    .light:nth-child(4) {
+      left: 55%;
+      background: #00b0ff;
+      box-shadow: 0 0 20px #00b0ff;
+      animation-delay: 0.9s;
+    }
+    
+    .light:nth-child(5) {
+      left: 70%;
+      background: #ff6b00;
+      box-shadow: 0 0 20px #ff6b00;
+      animation-delay: 1.2s;
+    }
+    
+    .light:nth-child(6) {
+      left: 85%;
+      background: #e040fb;
+      box-shadow: 0 0 20px #e040fb;
+      animation-delay: 1.5s;
+    }
+    
+    /* Title */
+    .title {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 48px;
+      font-weight: bold;
+      color: #ffeb3b;
+      text-shadow: 0 0 10px #ff9800,
+                   0 0 20px #ff9800,
+                   0 0 30px #ff6b00;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    /* Animations */
+    @keyframes flicker {
+      0%, 100% {
+        transform: translateX(-50%) scale(1) translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(-50%) scale(1.1) translateY(-3px);
+        opacity: 0.9;
+      }
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title -->
+    <div class="title">Happy Diwali</div>
+    
+    <!-- String Lights -->
+    <div class="lights-string">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+    
+    <!-- Diyas (Traditional Lamps) -->
+    <div class="diya-container">
+      <div class="diya">
+        <div class="flame"></div>
+        <div class="diya-base"></div>
+      </div>
+      <div class="diya">
+        <div class="flame" style="animation-delay: 0.3s;"></div>
+        <div class="diya-base"></div>
+      </div>
+      <div class="diya">
+        <div class="flame" style="animation-delay: 0.6s;"></div>
+        <div class="diya-base"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
