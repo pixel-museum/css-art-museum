@@ -368,5 +368,10 @@
     "file": "universesm-door_animation.html",
     "title": "Animated Almirah door",
     "author": "universe-sm"
+  },
+  {
+    "file": "circular-image-gallery.html",
+    "title": "Animated circular-image-gallery",
+    "author": "Harshit"
   }
 ]
