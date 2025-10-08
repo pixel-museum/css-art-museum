@@ -266,15 +266,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Search Filter ---
-  searchBar.addEventListener("input", () => {
-    const query = searchBar.value.toLowerCase().trim();
-    const filteredArts = allArts.filter(
-      (art) =>
-        art.title.toLowerCase().includes(query) ||
-        art.author.toLowerCase().includes(query)
-    );
+searchBar.addEventListener("input", () => {
+  const query = searchBar.value.toLowerCase().trim();
+  const filteredArts = allArts.filter(
+    (art) =>
+      art.title.toLowerCase().includes(query) ||
+      art.author.toLowerCase().includes(query)
+  );
+  
+  // Check if no results found
+  if (filteredArts.length === 0 && query !== "") {
+    galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
+    // Hide pagination controls if they exist
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = 'none';
+  } else {
+    // Show pagination controls again
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = '';
     renderArts(filteredArts);
-  });
+  }
+});
 
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
