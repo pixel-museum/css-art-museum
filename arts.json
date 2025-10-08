@@ -80,6 +80,11 @@
     "author": "Shamli"
   },
   {
+    "file": "christmas-art.html",
+    "title": "Christmas Wonderland",
+    "author": "Apurva"
+  },
+  {
     "file": "rotating_cube.html",
     "title": "Rotating Cube",
     "author": "Hardik"
@@ -310,6 +315,11 @@
     "author": "Nitish K"
   },
   {
+    "file": "mathurojus-diwali-lights.html",
+    "title": "Diwali Lights",
+    "author": "Mathurojus"
+  },
+  {
     "file": "mathurojus-sunset-landscape.html",
     "title": "CSS Sunset Landscape",
     "author": "Mathurojus"
@@ -365,6 +375,16 @@
     "author": "Soumyosish"
   },
   {
+    "file": "Krasper707-matrix-background.html",
+    "title": "Matrix Terminal Loader",
+    "author": "Krasper707"
+  },
+  {
+    "file": "lighthouse.html",
+    "title": "Light House by the Shore",
+    "author": "Nitish K"
+  },
+  {
     "file": "universesm-door_animation.html",
     "title": "Animated Almirah door",
     "author": "universe-sm"
@@ -374,4 +394,6 @@
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
   }
+
 ]
+
