@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sand Hourglass - CSS Art Museum</title>
+  <style>
+    /* Sand Hourglass CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #2c3e50 0%, #34495e 100%);
+      overflow: hidden;
+    }
+    .hourglass-container {
+      position: relative;
+      width: 200px;
+      height: 300px;
+    }
+    .hourglass {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .frame {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #8b4513 20%, #a0522d 100%);
+      clip-path: polygon(50% 0%, 80% 40%, 80% 60%, 50% 100%, 20% 60%, 20% 40%);
+      z-index: 2;
+    }
+    .glass {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+      height: 80%;
+      top: 10%;
+      background: rgba(255, 255, 255, 0.1);
+      clip-path: polygon(50% 0%, 75% 40%, 75% 60%, 50% 100%, 25% 60%, 25% 40%);
+      z-index: 1;
+    }
+    .sand-top {
+      position: absolute;
+      top: 10%;
+      left: 25%;
+      width: 50%;
+      height: 40%;
+      background: radial-gradient(circle, #f4a261 20%, #e76f51 100%);
+      clip-path: polygon(50% 0%, 100% 80%, 50% 100%, 0% 80%);
+      animation: sand-fall 6s linear infinite;
+      z-index: 1;
+    }
+    .sand-bottom {
+      position: absolute;
+      bottom: 10%;
+      left: 25%;
+      width: 50%;
+      height: 0;
+      background: radial-gradient(circle, #f4a261 20%, #e76f51 100%);
+      clip-path: polygon(0% 20%, 50% 100%, 100% 20%, 50% 0%);
+      animation: sand-pile 6s linear infinite;
+      z-index: 1;
+    }
+    .sand-stream {
+      position: absolute;
+      top: 50%;
+      left: 49%;
+      width: 2%;
+      height: 10%;
+      background: #e76f51;
+      animation: stream-flow 6s linear infinite;
+      z-index: 1;
+    }
+    @keyframes sand-fall {
+      0% { height: 40%; opacity: 1; }
+      80% { height: 0; opacity: 0.5; }
+      100% { height: 0; opacity: 0; }
+    }
+    @keyframes sand-pile {
+      0% { height: 0; opacity: 0; }
+      20% { opacity: 0.5; }
+      80% { height: 40%; opacity: 1; }
+      100% { height: 40%; opacity: 1; }
+    }
+    @keyframes stream-flow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      80% { opacity: 1; }
+      90% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hourglass-container">
+    <div class="hourglass">
+      <div class="frame"></div>
+      <div class="glass"></div>
+      <div class="sand-top"></div>
+      <div class="sand-stream"></div>
+      <div class="sand-bottom"></div>
+    </div>
+  </div>
+</body>
+</html>
