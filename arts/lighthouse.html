@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Lighthouse by the Shore - CSS Art Museum</title>
+  <style>
+    /* Mini Lighthouse by the Shore CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #0a0a23 0%, #1c2526 100%);
+      overflow: hidden;
+    }
+    .scene {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+    .sea {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, #2f4f4f 20%, #4682b4 100%);
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: wave-move 4s ease-in-out infinite;
+    }
+    .wave:nth-child(2) {
+      animation-delay: 1s;
+      opacity: 0.5;
+    }
+    .wave:nth-child(3) {
+      animation-delay: 2s;
+      opacity: 0.7;
+    }
+    .shore {
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to bottom, #696969 20%, #4a4a4a 100%);
+      border-radius: 50% 50% 0 0;
+    }
+    .lighthouse {
+      position: absolute;
+      bottom: 150px;
+      left: 120px;
+      width: 40px;
+      height: 80px;
+      background: linear-gradient(to bottom, #ffffff 50%, #ff0000 50%);
+      border-radius: 5px 5px 0 0;
+      z-index: 2;
+    }
+    .lighthouse::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #000000;
+      border-radius: 50%;
+    }
+    .light-beam {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform-origin: 50% 10px;
+      width: 100px;
+      height: 10px;
+      background: linear-gradient(to right, rgba(255, 255, 224, 0.5), transparent);
+      animation: rotate-beam 6s linear infinite;
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite;
+    }
+    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
+    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
+    .star3 { width: 1px; height: 1px; top: 50px; left: 150px; animation-delay: 1.5s; }
+    @keyframes wave-move {
+      0%, 100% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+    }
+    @keyframes rotate-beam {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stars">
+      <div class="star star1"></div>
+      <div class="star star2"></div>
+      <div class="star star3"></div>
+    </div>
+    <div class="sea">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    <div class="shore"></div>
+    <div class="lighthouse">
+      <div class="light-beam"></div>
+    </div>
+  </div>
+</body>
+</html>

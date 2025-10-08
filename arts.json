@@ -80,6 +80,11 @@
     "author": "Shamli"
   },
   {
+    "file": "christmas-art.html",
+    "title": "Christmas Wonderland",
+    "author": "Apurva"
+  },
+  {
     "file": "rotating_cube.html",
     "title": "Rotating Cube",
     "author": "Hardik"
@@ -138,6 +143,11 @@
     "file": "rotatingeffect.html",
     "title": "Rotating Gallery Effect",
     "author": "Meenal"
+  },
+  {
+    "file": "angel-coffee_mug.html",
+    "title": "Coffee Mug",
+    "author": "Angel"
   },
   {
     "file": "angel-ufo_alien.html",
@@ -305,6 +315,11 @@
     "author": "Nitish K"
   },
   {
+    "file": "mathurojus-diwali-lights.html",
+    "title": "Diwali Lights",
+    "author": "Mathurojus"
+  },
+  {
     "file": "mathurojus-sunset-landscape.html",
     "title": "CSS Sunset Landscape",
     "author": "Mathurojus"
@@ -359,11 +374,26 @@
     "title": "Animated Pink Ponk Ball",
     "author": "Soumyosish"
   },
-    {
+  {
     "file": "Krasper707-matrix-background.html",
     "title": "Matrix Terminal Loader",
     "author": "Krasper707"
+  },
+  {
+    "file": "lighthouse.html",
+    "title": "Light House by the Shore",
+    "author": "Nitish K"
+  },
+  {
+    "file": "universesm-door_animation.html",
+    "title": "Animated Almirah door",
+    "author": "universe-sm"
+  },
+  {
+    "file": "sand-hourglass.html",
+    "title": "Sand Hour Glass",
+    "author": "Thanuja Kedila"
   }
 
-
 ]
+
