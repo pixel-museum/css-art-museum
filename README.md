@@ -34,6 +34,23 @@ Contribute your **CSS Art** during Hacktoberfest 2025 and become part of our gal
    }
    ```
 
+## ✨ Contributors Recognition
+We value each and every contribution! 🎉  
+Along with your code/artwork changes, we also want to recognize you on our **Contributors Page**.  
+
+### 📝 How to add yourself as a contributor
+1. Go to the file: [`Contributors/contributors.json`](Contributors/contributors.json)
+2. **Check if your GitHub username is already listed.**
+   - ✅ If your name is already there → No action needed.  
+   - ❌ If your name is not listed → Please add it at the end of the list.
+3. Add your username in this format:
+   ```json
+   {
+     "username": "your-github-username"
+   }
+   ```
+
+
 5. **Commit & push your changes**
 
     ```bash

@@ -1,5 +1,5 @@
 /* Import elegant fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 /* Basic Reset */
 * {
@@ -12,10 +12,19 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
 
 /* Elegant Art Museum Color Variables */
 :root {
-  /* Light theme - Museum whites and sophisticated grays */
   --primary-bg: #fafafa;
   --secondary-bg: #ffffff;
   --accent-bg: #f8f8f8;
@@ -34,18 +43,33 @@ html {
   --button-border: rgba(27, 31, 36, 0.15);
   --button-hover-bg: #f3f4f6;
   --count-bg: rgba(209, 213, 219, 0.5);
+  --button-bg: #f6f8fa;
+  --button-border: rgba(27, 31, 36, 0.15);
+  --button-hover-bg: #f3f4f6;
+  --count-bg: rgba(209, 213, 219, 0.5);
 }
 
 /* Body Styling - Museum-inspired with Visual Appeal */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background:
-    radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(108, 99, 255, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(212, 175, 55, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(108, 99, 255, 0.03) 0%,
+      transparent 50%
+    ),
     linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
   background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
-  background-attachment:scroll; /* Changed from 'fixed' to 'scroll' for better scroll performance */
+  background-attachment: scroll; /* Changed from 'fixed' to 'scroll' for better scroll performance */
   color: var(--primary-text);
   line-height: 1.6;
   padding: 100px 20px 40px; /* Added top padding to prevent content from hiding behind fixed nav */
@@ -57,33 +81,40 @@ body {
 
 /* Subtle floating elements for visual interest */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 10%;
   right: -5%;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(108, 99, 255, 0.03) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(108, 99, 255, 0.03) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
   z-index: -1;
 }
 
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   bottom: 10%;
   left: -5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.04) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   animation: float 25s ease-in-out infinite reverse;
   z-index: -1;
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translate(0, 0) rotate(0deg);
@@ -104,6 +135,7 @@ body::after {
 header {
   text-align: center;
   margin-bottom: 40px; /* Reduced margin */
+  margin-bottom: 40px; /* Reduced margin */
   position: relative;
   width: 100%;
 }
@@ -113,17 +145,15 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 25px; /* Reduced padding */
-  
-  /* Fixed positioning */
+  padding: 10px 25px;
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 95%; /* Contained width */
-  max-width: 1400px; /* Max width for large screens */
+  width: 95%;
+  max-width: 1400px;
   z-index: 100;
-  
+
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px); /* For Safari */
@@ -132,13 +162,16 @@ header nav {
   box-shadow: 0 8px 32px 0 rgba(108, 99, 255, 0.15);
 }
 
-
 /* Modified h1 (Logo) styling for the navbar */
 header h1.logo {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-weight: 600;
   font-size: clamp(1.4rem, 3vw, 1.8rem); /* Adjusted font size */
-  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-text) 0%,
+    var(--accent-color) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -149,7 +182,6 @@ header h1.logo {
 }
 
 @keyframes titleShine {
-
   0%,
   100% {
     filter: brightness(1);
@@ -160,8 +192,9 @@ header h1.logo {
   }
 }
 
-header h1::before, header h1::after {
-    content: none;
+header h1::before,
+header h1::after {
+  content: none;
 }
 
 /* Welcome message below the navbar */
@@ -181,20 +214,37 @@ header p {
   animation: fadeInUp 1s ease-out 0.5s both;
 }
 
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
+  margin: 10px auto 18px;
+  letter-spacing: 0.02em;
+  color: var(--primary-text);
+  background: linear-gradient(
+    135deg,
+    var(--primary-text) 0%,
+    var(--gold-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Modified Search Bar for the navbar */
 #search-bar {
   width: 100%;
   max-width: 500px;
   padding: 10px 20px; /* Reduced padding */
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   border: 1px solid rgba(108, 99, 255, 0.2);
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   color: var(--primary-text);
-  box-shadow:
-    0 4px 12px var(--shadow-light),
+  box-shadow: 0 4px 12px var(--shadow-light),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: all 0.4s ease;
   outline: none;
@@ -210,8 +260,7 @@ header p {
 
 #search-bar:focus {
   border-color: var(--accent-color);
-  box-shadow:
-    0 6px 18px rgba(108, 99, 255, 0.2),
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.6);
   transform: scale(1.02);
@@ -241,8 +290,7 @@ header p {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--secondary-text);
-  box-shadow:
-    0 4px 12px var(--shadow-light),
+  box-shadow: 0 4px 12px var(--shadow-light),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   animation: toggleFloat 4s ease-in-out infinite;
@@ -263,13 +311,15 @@ header p {
 }
 
 .theme-toggle:hover {
-  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(
+    135deg,
+    var(--accent-subtle),
+    rgba(212, 175, 55, 0.1)
+  );
   border-color: var(--accent-color);
   transform: translateY(-4px) scale(1.05);
-  box-shadow:
-    0 8px 20px var(--shadow-medium),
-    0 4px 12px rgba(108, 99, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 20px var(--shadow-medium),
+    0 4px 12px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   color: var(--accent-color);
 }
 
@@ -277,11 +327,13 @@ header p {
   transform: translateY(-2px) scale(1.02);
 }
 
-
 /* Sophisticated Gallery Layout with Visual Appeal */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Reduced min-width */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(320px, 1fr)
+  ); /* Reduced min-width */
   gap: 30px; /* Reduced gap */
   max-width: 1400px;
   margin: 0 auto 80px;
@@ -291,22 +343,30 @@ header p {
 }
 
 .gallery::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -40px;
   left: -40px;
   right: -40px;
   bottom: -40px;
-  background:
-    linear-gradient(45deg, transparent 30%, rgba(108, 99, 255, 0.03) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(212, 175, 55, 0.04) 50%, transparent 70%);
+  background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(108, 99, 255, 0.03) 50%,
+      transparent 70%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 30%,
+      rgba(212, 175, 55, 0.04) 50%,
+      transparent 70%
+    );
   border-radius: 24px;
   z-index: -1;
   animation: galleryGlow 15s ease-in-out infinite;
 }
 
 @keyframes galleryGlow {
-
   0%,
   100% {
     opacity: 0.5;
@@ -322,9 +382,7 @@ header p {
   background: var(--secondary-bg);
   border-radius: 16px; /* Reduced radius */
   padding: 20px; /* Reduced padding */
-  box-shadow:
-    0 4px 12px var(--shadow-light),
-    0 12px 32px var(--shadow-medium),
+  box-shadow: 0 4px 12px var(--shadow-light), 0 12px 32px var(--shadow-medium),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid var(--border-color);
@@ -355,26 +413,35 @@ header p {
 }
 
 .art-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, var(--accent-color), var(--gold-accent), var(--accent-color));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    var(--gold-accent),
+    var(--accent-color)
+  );
   opacity: 0;
   transition: all 0.4s ease;
   border-radius: 20px 20px 0 0;
 }
 
 .art-card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(108, 99, 255, 0.1) 0%,
+    transparent 70%
+  );
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
   border-radius: 50%;
@@ -393,11 +460,8 @@ header p {
 
 .art-card:hover {
   transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
-  box-shadow:
-    0 8px 25px var(--shadow-medium),
-    0 20px 60px var(--shadow-strong),
-    0 0 0 1px rgba(108, 99, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 25px var(--shadow-medium), 0 20px 60px var(--shadow-strong),
+    0 0 0 1px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   border-color: var(--accent-color);
   filter: brightness(1.02);
 }
@@ -408,9 +472,7 @@ header p {
   border: none;
   border-radius: 12px; /* Reduced radius */
   scrollbar-width: none;
-  box-shadow:
-    0 6px 16px var(--shadow-light),
-    0 2px 4px var(--shadow-medium);
+  box-shadow: 0 6px 16px var(--shadow-light), 0 2px 4px var(--shadow-medium);
   transition: all 0.4s ease;
   position: relative;
   background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
@@ -421,15 +483,36 @@ header p {
   scrollbar-width: none;
 }
 
+.art-card h3 {
+  text-align: center;
+  margin: 8px 0 14px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--primary-text);
+  letter-spacing: 0.01em;
+  background: linear-gradient(
+    135deg,
+    var(--primary-text) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.art-card:hover h3 {
+  filter: brightness(1.05);
+}
+
 .art-card iframe::-webkit-scrollbar {
   display: none;
 }
 
 .art-card:hover iframe {
   transform: scale(1.03) rotateX(-2deg);
-  box-shadow:
-    0 12px 30px var(--shadow-medium),
-    0 4px 8px var(--shadow-light),
+  box-shadow: 0 12px 30px var(--shadow-medium), 0 4px 8px var(--shadow-light),
     0 0 0 2px rgba(108, 99, 255, 0.1);
   border-radius: 20px;
 }
@@ -443,7 +526,11 @@ header p {
   line-height: 1.5;
   letter-spacing: 0.025em;
   padding: 10px 14px;
-  background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(212, 175, 55, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.05),
+    rgba(212, 175, 55, 0.05)
+  );
   border-radius: 10px;
   border: 1px solid rgba(108, 99, 255, 0.1);
   position: relative;
@@ -451,108 +538,186 @@ header p {
 }
 
 .art-card:hover p {
-  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(212, 175, 55, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.1),
+    rgba(212, 175, 55, 0.08)
+  );
   border-color: rgba(108, 99, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
 }
 
 /* === NEW FOOTER STYLES START === */
-footer {
-  text-align: center;
-  margin-top: 80px;
-  padding: 30px 20px;
-  background: var(--accent-bg);
-  border-top: 1px solid var(--border-color);
-  border-radius: 16px 16px 0 0;
+/* =================== Footer Styles =================== */
+/* =================== Footer Styles =================== */
+
+/* Root variables */
+:root {
+  --accent-bg: #f9f9fb;
+  --accent-color: #6c63ff;
+  --accent-subtle: #ececff;
+  --gold-accent: #f1c40f;
+  --secondary-text: #555;
+  --muted-text: #777;
+  --button-bg: #fff;
+  --button-border: #ddd;
+  --border-color: #e2e2e2;
+  --hover-bg: rgba(108, 99, 255, 0.08);
 }
 
-.footer-content {
-  max-width: 1400px;
+/* Dark theme */
+.dark-theme {
+  --accent-bg: #1c1c1c;
+  --accent-color: #8b7fff;
+  --accent-subtle: #2a2a2a;
+  --gold-accent: #f4d03f;
+  --secondary-text: #ccc;
+  --muted-text: #888;
+  --button-bg: #222;
+  --button-border: #444;
+  --border-color: #333;
+  --hover-bg: rgba(139, 127, 255, 0.15);
+}
+
+/* Footer Container */
+
+/* Footer Links Styling */
+.footer-section a {
+  color: var(--footer-link); /* or choose a color like #fff, #ccc */
+  text-decoration: none; /* removes underline */
+  transition: color 0.3s ease;
+}
+/* Star icon color */
+.star-button .star-icon path {
+  fill: gold; /* Makes the star golden */
+}
+
+.footer-section a:hover {
+  color: var(--accent); /* highlight on hover */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(5, 250px);
+  /* place-items: center; */
+  width: 100%;
   margin: 0 auto;
+  padding: 40px;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  gap: 1rem;
+}  
+
+/* Footer Sections */
+.footer-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  flex: 1 1 200px;
+  gap: 1rem;
+  margin: 10px;
+}
+.footer-section h3,
+li {
+  white-space: nowrap;
+}
+.footer-section p {
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
-.footer-top {
+/* Footer Social Logos */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* footer section li */
+.footer-section li {
+  list-style: inside;
+}
+
+.footer-social-logo {
+  width: 30px; /* small GitHub logo */
+  height: 30px;
+  object-fit: contain;
+}
+/* footer-input */
+.footer-newsletter form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.footer-newsletter input {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+.footer-newsletter input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+#subscribe-btn {
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.15);
+  outline: none;
+  border: none;
+  border: 2px solid #4f499c;
+  color: #4439db;
+  width: 80%;
+  transition: all 0.3s ease;
+}
+#subscribe-btn:hover {
+  background: #4f499c;
+  color: white;
+}
+
+/* Footer Buttons (Star / Contributors) */
+.footer-extra-buttons {
   display: flex;
   align-items: center;
-  gap: 16px;
-}
-
-.footer-content p {
-  color: var(--muted-text);
-  font-size: 0.9rem;
-  font-weight: 400;
-  background-color: var(--button-bg);
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--button-border);
-}
-
-.footer-logo {
-  width: 32px; /* MODIFIED: Reduced logo size */
-  height: 32px; /* MODIFIED: Reduced logo size */
-  filter: var(--logo-filter, invert(0));
-  transition: transform 0.3s ease;
-}
-
-.footer-logo:hover {
-  transform: scale(1.1);
+  justify-content: start;
+  gap: 10px;
 }
 
 .footer-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 5px;
+  padding: 8px 12px;
   background-color: transparent;
-  border: 1px solid var(--button-border); /* MODIFIED: Ensured border is visible */
-  border-radius: 8px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
   text-decoration: none;
-  color: var(--secondary-text);
-  font-weight: 500;
+  color: var(--accent);
   font-size: 0.9rem;
-  transition: all 0.2s ease-in-out; /* MODIFIED: Added transition for animations */
+  transition: 0.3s ease;
 }
 
 .footer-button:hover {
-  background-color: var(--button-hover-bg);
-  border-color: var(--secondary-text);
-  color: var(--primary-text);
-  transform: translateY(-2px); /* MODIFIED: Added hover animation */
-  box-shadow: 0 4px 12px var(--shadow-light); /* MODIFIED: Added hover shadow */
-}
-
-.footer-button:active {
-  transform: translateY(0); /* MODIFIED: Added active state animation */
-  box-shadow: none;
+  background-color: var(--accent);
+  color: #fff;
 }
 
 .star-icon {
   width: 16px;
   height: 16px;
-  fill: #e3b341; /* MODIFIED: Set star color to yellow */
 }
 
-.star-count {
-  background-color: transparent;
-  color: var(--secondary-text);
-  padding: 0;
-  margin-left: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--footer-bottom-bg);
+  font-size: 0.85rem;
+  margin-top: 20px;
 }
 
-.footer-button:hover .star-count {
-  color: var(--primary-text);
-}
 /* === NEW FOOTER STYLES END === */
-
 
 /* Dark Theme - Sophisticated Museum Night Mode */
 .dark-theme {
@@ -578,7 +743,11 @@ footer {
 }
 
 .dark-theme body {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-bg) 0%,
+    var(--museum-warm) 100%
+  );
 }
 
 /* Dark theme styles for new navbar */
@@ -611,7 +780,7 @@ footer {
   header {
     margin-bottom: 40px;
   }
-  
+
   header nav {
     flex-direction: column;
     gap: 16px;
@@ -619,9 +788,9 @@ footer {
     padding: 16px;
     width: calc(100% - 30px);
   }
-  
+
   #search-bar {
-      margin: 0;
+    margin: 0;
   }
 
   header h1.logo {
@@ -645,14 +814,27 @@ footer {
   .theme-toggle {
     padding: 8px 14px;
     font-size: 0.8rem;
-  }
-
-  /* Footer responsive styles */
+  } 
   .footer-top {
     flex-direction: column;
   }
 }
-
+/* footer responsiveness */
+@media (max-width: 1290px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width:765px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width:520px) {
+  .footer-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
@@ -738,9 +920,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 4px 12px var(--shadow-light),
-    0 8px 24px var(--shadow-medium),
+  box-shadow: 0 4px 12px var(--shadow-light), 0 8px 24px var(--shadow-medium),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
@@ -758,14 +938,15 @@ footer {
 }
 
 .scroll-to-top:hover {
-  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(
+    135deg,
+    var(--accent-subtle),
+    rgba(212, 175, 55, 0.1)
+  );
   border-color: var(--accent-color);
   transform: translateY(-4px) scale(1.1);
-  box-shadow: 
-    0 8px 20px var(--shadow-medium),
-    0 12px 32px var(--shadow-strong),
-    0 0 0 1px rgba(108, 99, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 20px var(--shadow-medium), 0 12px 32px var(--shadow-strong),
+    0 0 0 1px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   color: var(--accent-color);
 }
 
@@ -789,7 +970,11 @@ footer {
 }
 
 .dark-theme .scroll-to-top:hover {
-  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(
+    135deg,
+    var(--accent-subtle),
+    rgba(212, 175, 55, 0.1)
+  );
   border-color: var(--accent-color);
   color: var(--accent-color);
 }
@@ -817,4 +1002,164 @@ footer {
   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }
 
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 5px;
+  padding: 0 4px 4px;
+}
 
+.view-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--secondary-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.view-code button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.like-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--secondary-text);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Unified hover effects for both buttons */
+.view-code:hover,
+.like-container:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
+}
+
+/* Dark theme adjustments */
+.dark-theme .view-code,
+.dark-theme .like-container {
+  border-color: var(--button-border);
+  color: var(--secondary-text);
+}
+
+.dark-theme .view-code:hover,
+.dark-theme .like-container:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 4px 15px rgba(139, 127, 255, 0.2);
+}
+
+/* Icon styling to inherit color and handle the 'liked' state */
+.heart-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor; /* Icon color will now match the text color */
+  fill: none;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.heart-icon.liked {
+  fill: #ff4d4d;
+  stroke: #ff4d4d;
+}
+
+/* This prevents the icon from changing color on hover if it's already liked */
+.like-container:hover .heart-icon.liked {
+  color: #ff4d4d;
+}
+
+.like-count {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.sorting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.sorting-container label {
+  padding: 10px;
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+.sorting-container select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--secondary-bg);
+  color: var(--primary-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sorting-container select:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+}
+
+/* Dark theme styles for header elements */
+.dark-theme header nav {
+  background: rgba(26, 26, 26, 0.65); /* Darker, more defined glass effect */
+  border: 1px solid rgba(139, 127, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme #search-bar {
+  background: rgba(40, 40, 40, 0.75); /* Contrasting dark background */
+  border-color: var(--border-color);
+  color: var(--primary-text);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06); /* Subtle inner highlight */
+}
+
+.dark-theme #search-bar::placeholder {
+  color: var(--secondary-text);
+  opacity: 0.9;
+}
+
+.dark-theme #search-bar:focus {
+  background: rgba(50, 50, 50, 0.8);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(139, 127, 255, 0.25),
+    /* Added a focus ring for accessibility */ inset 0 1px 1px
+      rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme header p {
+  /* Using a solid background from your variables for better readability */
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  color: var(--secondary-text);
+  /* The blur effect is not needed with a solid background */
+  backdrop-filter: none;
+}
+
+#recently-reviewed-gallery {
+  grid-template-columns: repeat(3, 320px);
+  max-width: calc(320px * 3 + 30px * 2);
+}
