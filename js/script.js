@@ -411,7 +411,7 @@ searchBar.addEventListener("input", () => {
 
     try {
       const response = await fetch(
-        "https://api.github.com/repos/Shamli-Singh-Yadav/css-art-museum"
+        "https://api.github.com/repos/pixel-museum/css-art-museum"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
