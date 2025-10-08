@@ -140,6 +140,11 @@
     "author": "Meenal"
   },
   {
+    "file": "angel-coffee_mug.html",
+    "title": "Coffee Mug",
+    "author": "Angel"
+  },
+  {
     "file": "angel-ufo_alien.html",
     "title": "Hovering UFO",
     "author": "Angel"
@@ -305,6 +310,11 @@
     "author": "Nitish K"
   },
   {
+    "file": "mathurojus-diwali-lights.html",
+    "title": "Diwali Lights",
+    "author": "Mathurojus"
+  },
+  {
     "file": "mathurojus-sunset-landscape.html",
     "title": "CSS Sunset Landscape",
     "author": "Mathurojus"
@@ -363,7 +373,11 @@
     "file": "lighthouse.html",
     "title": "Light House by the Shore",
     "author": "Nitish K"
+  },
+  {
+    "file": "universesm-door_animation.html",
+    "title": "Animated Almirah door",
+    "author": "universe-sm"
   }
-
-
 ]
+
