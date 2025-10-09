@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Coffee Cup - Angel Agarwal</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#f0e5d8, #d1c4b2);
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  .cup {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    background: #fff3e0;
+    border-radius: 0 0 15px 15px;
+    border: 4px solid #d2691e;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    animation: tilt 3s ease-in-out infinite alternate;
+    cursor: pointer;
+  }
+  .cup:hover {
+    animation: wiggle 0.5s ease-in-out;
+  }
+  @keyframes tilt {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(2deg); }
+  }
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+  .handle {
+    position: absolute;
+    right: -30px;
+    top: 30px;
+    width: 25px;
+    height: 50px;
+    border: 4px solid #d2691e;
+    border-radius: 50%;
+    background: #fff3e0;
+  }
+  .coffee {
+    width: 90%;
+    height: 40%;
+    background: #6f4e37;
+    border-radius: 0 0 12px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .steam {
+    position: absolute;
+    top: -30px;
+    width: 10px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: rise 2s infinite;
+  }
+  .steam::before,
+  .steam::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    opacity: 0.6;
+    left: 0;
+    top: 0;
+    animation: rise 2s infinite;
+  }
+  .steam::after {
+    left: -10px;
+    animation-delay: 0.5s;
+  }
+  .steam::before {
+    left: 10px;
+    animation-delay: 1s;
+  }
+  @keyframes rise {
+    0% { transform: translateX(-50%) translateY(0) scaleX(1); opacity: 0.4; }
+    50% { transform: translateX(-50%) translateY(-20px) scaleX(1.2); opacity: 0.6; }
+    100% { transform: translateX(-50%) translateY(-50px) scaleX(1.5); opacity: 0; }
+  }
+  .face {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+  }
+  .eye {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    animation: blink 4s infinite;
+  }
+  @keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+  .smile {
+    position: absolute;
+    bottom: 10px;
+    width: 40px;
+    height: 15px;
+    border-bottom: 3px solid #000;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+</head>
+<body>
+  <div class="cup">
+    <div class="coffee"></div>
+    <div class="steam"></div>
+    <div class="handle"></div>
+    <div class="face">
+      <div class="eye"></div>
+      <div class="eye"></div>
+    </div>
+    <div class="smile"></div>
+  </div>
+</body>
+</html>

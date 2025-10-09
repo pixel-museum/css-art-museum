@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Terminal Loader</title>
+    <style>
+        :root {
+            --matrix-green: #0f0;
+            --terminal-bg: rgba(20, 20, 20, 0.85);
+            --terminal-border: #444;
+            --terminal-shadow: rgba(0, 255, 0, 0.4);
+        }
+
+        body {
+            background-color: #000;
+            color: var(--matrix-green);
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        .matrix-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;  
+        }
+
+        .matrix-stream {
+            position: absolute;
+            top: -100%; 
+            font-size: 1.2rem;
+            writing-mode: vertical-rl; 
+            text-orientation: upright;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: 0 0 8px var(--terminal-shadow);
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100%; 
+            }
+        }
+
+        .matrix-stream:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: -3s; }
+        .matrix-stream:nth-child(2) { left: 10%; animation-duration: 8s; animation-delay: -1s; }
+        .matrix-stream:nth-child(3) { left: 18%; animation-duration: 15s; animation-delay: -10s; }
+        .matrix-stream:nth-child(4) { left: 25%; animation-duration: 9s; animation-delay: -5s; }
+        .matrix-stream:nth-child(5) { left: 33%; animation-duration: 13s; animation-delay: -12s; }
+        .matrix-stream:nth-child(6) { left: 45%; animation-duration: 7s; animation-delay: -2s; }
+        .matrix-stream:nth-child(7) { left: 55%; animation-duration: 11s; animation-delay: -8s; }
+        .matrix-stream:nth-child(8) { left: 68%; animation-duration: 14s; animation-delay: -6s; }
+        .matrix-stream:nth-child(9) { left: 80%; animation-duration: 9s; animation-delay: -4s; }
+        .matrix-stream:nth-child(10){ left: 92%; animation-duration: 10s; animation-delay: -9s; }
+
+
+        /* The Terminal (Foreground) */
+        .terminal {
+            position: relative;
+            z-index: 2;
+            width: 700px;
+            max-width: 90%;
+            height: 400px;
+            background: var(--terminal-bg);
+            border: 1px solid var(--terminal-border);
+            border-radius: 5px;
+            box-shadow: 0 0 25px var(--terminal-shadow);
+            backdrop-filter: blur(3px); 
+        }
+
+        .terminal-header {
+            background: #333;
+            color: #ccc;
+            padding: 8px;
+            border-bottom: 1px solid var(--terminal-border);
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .terminal-body {
+            padding: 15px;
+            height: calc(100% - 70px); 
+            overflow-y: auto;
+        }
+        
+        .line {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        .line > span {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--matrix-green); 
+            animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+
+        /* Stagger the animation for each line */
+        .line:nth-child(1) > span { width: 0; animation-delay: 0s; }
+        .line:nth-child(2) > span { width: 0; animation-delay: 2s; }
+        .line:nth-child(3) > span { width: 0; animation-delay: 4s; }
+        .line:nth-child(4) > span { width: 0; animation-delay: 6s; }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--matrix-green); }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            border: 1px solid var(--matrix-green);
+            margin-top: 10px;
+            opacity: 0;
+            animation: fade-in 1s forwards;
+            animation-delay: 6s; 
+        }
+
+        .progress-bar::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: var(--matrix-green);
+            box-shadow: 0 0 10px var(--terminal-shadow);
+            animation: load 2s linear forwards;
+            animation-delay: 7s;
+        }
+        
+        @keyframes load {
+            to { width: 100%; }
+        }
+        
+        @keyframes fade-in {
+            to { opacity: 1; }
+        }
+
+        .status {
+            color: #fff;
+            background: var(--matrix-green);
+            padding: 0 5px;
+            border-radius: 3px;
+            margin-left: 10px;
+            opacity: 0;
+            animation: fade-in 1s forwards;
+            animation-delay: 9.5s; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Matrix Bg Divs -->
+    <div class="matrix-background">
+        <div class="matrix-stream">日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ0123456789</div>
+        <div class="matrix-stream">ç§å£æ°´ç¥é›»å­¸è»Šé¦¬éš­é³¥å±±å·ç”°äººåŠ›å¥³å­ç”·å¤§ä¸­å°</div>
+        <div class="matrix-stream">ZWERTYUIOPASDFGHJKLXCVBNM1234567890@#$%^&*()</div>
+        <div class="matrix-stream">¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏ</div>
+        <div class="matrix-stream">АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзий</div>
+        <div class="matrix-stream">ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛ</div>
+        <div class="matrix-stream">011010010110111001100110011011110111001101100101</div>
+        <div class="matrix-stream">THEMATRIXHASYOUFOLLOWTHEWHITERABBITNEO</div>
+        <div class="matrix-stream">♔♕♖♗♘♙♚♛♜♝♞♟♠♡♢♣♤♥♦♧</div>
+        <div class="matrix-stream">CSSARTMUSEUMHACKTOBERFEST2025WELCOME</div>
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-header">/bin/loader --init</div>
+        <div class="terminal-body">
+            <p class="line">$ <span>Booting system kernel...</span></p>
+            <p class="line">$ <span>Connecting to mainframe...</span></p>
+            <p class="line">$ <span>Decrypting access codes...</span></p>
+            <p class="line">$ <span>Loading resources...
+                <span class="status">DONE</span>
+            </span>
+            </p>
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+</body>
+</html>

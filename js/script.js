@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sorting dropdown
   const sortingDropdown = document.getElementById("sorting-dropdown");
   let allArts = []; // This will store the merged data (art info + likes)
+  let currentFilteredArts = [];  //Initialize currentFilteredArts with all arts
   let pagination = null; // Pagination instance
-
+  
   const RecentlyReviewed = {
     get: () => {
       try {
@@ -149,6 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
         likes: artLikesMap.get(art.file) || 0, // Add likes property, default to 0
       }));
 
+      // Initialize currentFilteredArts with all arts
+      currentFilteredArts = [...allArts];
+
       // Initialize pagination after data is loaded
       initializePagination();
       renderArts(allArts);
@@ -243,6 +247,9 @@ document.addEventListener("DOMContentLoaded", () => {
    * Wrapper function to maintain compatibility with existing code
    */
   function renderArts(arts) {
+
+    // Update currentFilteredArts whenever renderArts is called
+    currentFilteredArts = arts;
     if (pagination) {
       pagination.setFilteredItems(arts);
       pagination.render();
@@ -253,9 +260,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
   // --- Sorting integration ---
+  // FIXED: Now sorts currentFilteredArts instead of allArts
   window.sortAndRenderArts = function() {
-    if (!allArts) return;
-    const sorted = window.sortArts ? window.sortArts(allArts) : allArts;
+    if (!currentFilteredArts || currentFilteredArts.length === 0) return;
+    const sorted = window.sortArts ? window.sortArts(currentFilteredArts) : currentFilteredArts;
     renderArts(sorted);
   };
 
@@ -265,9 +273,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Search Filter ---
+  // --- Search Filter with Recently Reviewed Hide/Show (Fix for Issue #184) ---
+const recentlyReviewedSection = document.querySelector('.recently-reviewed-container');
+
 searchBar.addEventListener("input", () => {
   const query = searchBar.value.toLowerCase().trim();
+  
+  // Hide or show recently reviewed section based on search query
+  if (recentlyReviewedSection) {
+    if (query.length > 0) {
+      // Hide recently reviewed when searching
+      recentlyReviewedSection.classList.add('hidden');
+    } else {
+      // Show recently reviewed when search is empty
+      recentlyReviewedSection.classList.remove('hidden');
+    }
+  }
+  
+  // Existing filter logic
   const filteredArts = allArts.filter(
     (art) =>
       art.title.toLowerCase().includes(query) ||
@@ -401,7 +424,7 @@ searchBar.addEventListener("input", () => {
 
     try {
       const response = await fetch(
-        "https://api.github.com/repos/Shamli-Singh-Yadav/css-art-museum"
+        "https://api.github.com/repos/pixel-museum/css-art-museum"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
