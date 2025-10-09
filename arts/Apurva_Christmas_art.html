@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CSS Art — Christmas Wonderland</title>
+<style>
+  :root{
+    --bg1:#0a1628;
+    --bg2:#1a2744;
+    --tree-green:#0d7c3a;
+    --tree-dark:#064d26;
+    --star:#ffc107;
+    --snow:#ffffff;
+    --present1:#e53935;
+    --present2:#1e88e5;
+    --present3:#43a047;
+    --ribbon:#ffd54a;
+    --santa-red:#d32f2f;
+    --santa-skin:#ffccbc;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(ellipse 1400px 700px at 20% 15%, rgba(100,150,255,0.08), transparent),
+                radial-gradient(ellipse 1000px 500px at 80% 85%, rgba(255,100,150,0.05), transparent),
+                linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color:#fff;
+  }
+
+  .scene{
+    width: min(920px, 94vw);
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.7), 
+                0 10px 30px rgba(100,150,255,0.1),
+                inset 0 2px 20px rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 30%);
+  }
+
+  /* Animated Snow */
+  .snow{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .flake{
+    position:absolute;
+    top:-10%;
+    width:5px;height:5px;border-radius:50%;
+    background:radial-gradient(circle, #fff, #e3f2fd);
+    opacity:0.85;
+    filter:drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    animation: fall linear infinite;
+  }
+  .flake:nth-child(1){left:3%; animation-duration:11s; animation-delay:0s; width:4px;height:4px}
+  .flake:nth-child(2){left:10%; animation-duration:15s; animation-delay:-3s; width:6px;height:6px}
+  .flake:nth-child(3){left:18%; animation-duration:12s; animation-delay:-1s; width:3px;height:3px}
+  .flake:nth-child(4){left:26%; animation-duration:10s; animation-delay:-4s; width:5px;height:5px}
+  .flake:nth-child(5){left:34%; animation-duration:13s; animation-delay:-6s; width:4px;height:4px}
+  .flake:nth-child(6){left:42%; animation-duration:17s; animation-delay:-2s; width:3px;height:3px}
+  .flake:nth-child(7){left:50%; animation-duration:14s; animation-delay:-7s; width:6px;height:6px}
+  .flake:nth-child(8){left:58%; animation-duration:9s; animation-delay:-5s; width:4px;height:4px}
+  .flake:nth-child(9){left:66%; animation-duration:16s; animation-delay:-2.5s; width:5px;height:5px}
+  .flake:nth-child(10){left:74%; animation-duration:11s; animation-delay:-9s; width:3px;height:3px}
+  .flake:nth-child(11){left:82%; animation-duration:15s; animation-delay:-3.2s; width:5px;height:5px}
+  .flake:nth-child(12){left:90%; animation-duration:12s; animation-delay:-6.3s; width:4px;height:4px}
+  .flake:nth-child(13){left:95%; animation-duration:18s; animation-delay:-8.1s; width:6px;height:6px}
+  .flake:nth-child(14){left:62%; animation-duration:10.5s; animation-delay:-4.4s; width:3px;height:3px}
+  .flake:nth-child(15){left:46%; animation-duration:13.5s; animation-delay:-1.7s; width:5px;height:5px}
+  .flake:nth-child(16){left:12%; animation-duration:14.5s; animation-delay:-5.2s; width:4px;height:4px}
+  .flake:nth-child(17){left:88%; animation-duration:11.5s; animation-delay:-7.8s; width:5px;height:5px}
+  .flake:nth-child(18){left:38%; animation-duration:16.5s; animation-delay:-3.9s; width:3px;height:3px}
+
+  @keyframes fall{
+    0%{ transform: translateY(-10vh) translateX(0) rotate(0deg); opacity:0.9 }
+    50%{ opacity:0.6 }
+    100%{ transform: translateY(115vh) translateX(40px) rotate(360deg); opacity:0 }
+  }
+
+  /* Thin Ground Snow */
+  .ground{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:8%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(241,249,255,0.98));
+    box-shadow: 0 -4px 20px rgba(100,150,255,0.2), 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  }
+
+  /* Moon */
+  .moon{
+    position:absolute;
+    top:8%;
+    right:12%;
+    width:80px;
+    height:80px;
+    background: radial-gradient(circle at 30% 30%, #fff9e6, #ffe082);
+    border-radius:50%;
+    box-shadow: 0 0 40px rgba(255,235,130,0.6), 0 0 80px rgba(255,235,130,0.3);
+    animation: moon-glow 4s ease-in-out infinite;
+  }
+  @keyframes moon-glow{
+    0%, 100%{ box-shadow: 0 0 40px rgba(255,235,130,0.6), 0 0 80px rgba(255,235,130,0.3); }
+    50%{ box-shadow: 0 0 60px rgba(255,235,130,0.8), 0 0 120px rgba(255,235,130,0.4); }
+  }
+
+ /* Christmas Tree */
+.tree-wrap {
+  position: absolute;
+  left: 8%;
+  bottom: -72px; /* slightly above ground */
+  width: 360px;
+  max-width: 38%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 5; /* above ground and gifts */
+}
+
+.tree {
+  position: relative;
+  width: 300px;   /* approximate tree width */
+  height: 400px;  /* enough to fit tiers + trunk + star */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tree Tiers */
+.tier {
+  width: 0;
+  margin-bottom: -35px;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* Largest bottom tier */
+.tier.t1 {
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 130px solid var(--tree-green);
+}
+
+/* Middle tier */
+.tier.t2 {
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  border-bottom: 115px solid #0e8840;
+}
+
+/* Top tier */
+.tier.t3 {
+  border-left: 105px solid transparent;
+  border-right: 105px solid transparent;
+  border-bottom: 95px solid var(--tree-dark);
+  margin-bottom: -25px;
+}
+
+/* Tree Trunk */
+.trunk {
+  width: 55px;
+  height: 48px;
+  background: linear-gradient(180deg, #8b5a3c, #5d3a1a);
+  border-radius: 6px;
+  margin: 0 auto 0;
+  box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+/* Tree Roots */
+.roots {
+  width: 80px;
+  height: 12px;
+  background: linear-gradient(180deg, #5d3a1a, #3e2612);
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+.tree-wrap {
+  z-index: 10; /* higher than .ground (z-index: 2) */
+}
+ /* Glowing Star */
+  .star{
+    position:absolute;
+    top:-80px;
+    left:50%;
+    transform:translateX(-50%);
+    width:60px;
+    height:60px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background: linear-gradient(135deg, #fffde7, #ffd54a 30%, #ffb300);
+    filter: drop-shadow(0 0 25px rgba(255,213,74,0.8));
+    animation: star-sparkle 3s ease-in-out infinite;
+  }
+  @keyframes star-sparkle{
+    0%, 100%{ 
+      transform: translateX(-50%) scale(1) rotate(0deg); 
+      filter: drop-shadow(0 0 25px rgba(255,213,74,0.8)); 
+    }
+    50%{ 
+      transform: translateX(-50%) scale(1.15) rotate(180deg); 
+      filter: drop-shadow(0 0 45px rgba(255,213,74,1)) saturate(1.3); 
+    }
+  }
+
+  /* Ornaments */
+  .ornament {
+    position:absolute;
+    width:16px;height:16px;border-radius:50%;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4), inset -3px -3px 6px rgba(255,255,255,0.3);
+  }
+  .ornament.red { background: radial-gradient(circle at 30% 30%, #ff6b6b, #d32f2f); }
+  .ornament.blue { background: radial-gradient(circle at 30% 30%, #64b5f6, #1976d2); }
+  .ornament.gold { background: radial-gradient(circle at 30% 30%, #ffd54a, #f57f17); }
+  .ornament.silver { background: radial-gradient(circle at 30% 30%, #e0e0e0, #9e9e9e); }
+
+  .o1{left:calc(50% - 70px); top:-30px}
+  .o2{left:calc(50% + 30px); top:-22px}
+  .o3{left:calc(50% - 40px); top:8px}
+  .o4{left:calc(50% + 60px); top:32px}
+  .o5{left:calc(50% - 85px); top:38px}
+  .o6{left:calc(50% + 10px); top:65px}
+  .o7{left:calc(50% - 55px); top:72px}
+  .o8{left:calc(50% + 78px); top:58px}
+
+  /* Twinkling Lights */
+  .light {
+    position:absolute;
+    width:10px;height:10px;border-radius:50%;
+    animation: twinkle-shine 2s infinite;
+  }
+  .light.yellow { background: radial-gradient(circle, #fff9c4, #ffd54a); }
+  .light.red { background: radial-gradient(circle, #ffcdd2, #e53935); }
+  .light.blue { background: radial-gradient(circle, #bbdefb, #1e88e5); }
+  .light.green { background: radial-gradient(circle, #c8e6c9, #43a047); }
+
+  .l1{left:calc(50% - 22px); top:-12px; animation-delay:0s}
+  .l2{left:calc(50% - 58px); top:18px; animation-delay:0.3s}
+  .l3{left:calc(50% + 45px); top:4px; animation-delay:0.6s}
+  .l4{left:calc(50% - 10px); top:40px; animation-delay:0.9s}
+  .l5{left:calc(50% + 72px); top:56px; animation-delay:1.2s}
+  .l6{left:calc(50% - 98px); top:62px; animation-delay:1.5s}
+  .l7{left:calc(50% + 18px); top:78px; animation-delay:1.8s}
+  .l8{left:calc(50% - 72px); top:48px; animation-delay:2.1s}
+
+  @keyframes twinkle-shine{
+    0%, 100%{ transform: scale(0.7); opacity:0.3; box-shadow: 0 0 8px currentColor }
+    50%{ transform: scale(1.3); opacity:1; box-shadow: 0 0 20px currentColor, 0 0 30px currentColor }
+  }
+
+
+
+  /* Gift Stack */
+  .presents{
+    position:absolute;
+    right:10%;
+    bottom:8%;
+    display:flex;
+    gap:14px;
+    align-items:flex-end;
+    z-index:2;
+  }
+  .present{
+    position:relative;
+    border-radius:8px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+    transform-origin:center bottom;
+    animation: present-pop 1.2s ease forwards;
+  }
+  .present.p1{
+    width:75px;
+    height:58px;
+    background:linear-gradient(135deg, #e53935, #c62828);
+  }
+  .present.p2{
+    width:68px;
+    height:72px;
+    background:linear-gradient(135deg, #1e88e5, #1565c0);
+  }
+  .present.p3{
+    width:62px;
+    height:52px;
+    background:linear-gradient(135deg, #43a047, #2e7d32);
+  }
+
+  @keyframes present-pop{
+    0%{ transform: translateY(30px) scale(0.85); opacity:0 }
+    60%{ transform: translateY(-8px) scale(1.05); }
+    100%{ transform: translateY(0) scale(1); opacity:1 }
+  }
+
+  .ribbon{
+    position:absolute;
+    inset:0;
+  }
+  .ribbon::before{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:100%;
+    background:linear-gradient(180deg, #ffd54a, #ffb300);
+    left:calc(50% - 10px);
+    border-radius:4px;
+  }
+  .ribbon::after{
+    content:"";
+    position:absolute;
+    height:20px;
+    width:100%;
+    background:linear-gradient(90deg, #ffd54a, #ffb300);
+    top:calc(50% - 10px);
+    border-radius:4px;
+  }
+  .bow{
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    width:28px;
+    height:16px;
+    border-radius:8px;
+    background:linear-gradient(135deg, #ffd54a, #ffb300);
+    box-shadow:inset 0 -4px rgba(0,0,0,0.15);
+  }
+
+  /* Stars Background */
+  .stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .star-dot{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation: star-twinkle 3s ease-in-out infinite;
+  }
+  .star-dot:nth-child(1){top:12%;left:8%;animation-delay:0s}
+  .star-dot:nth-child(2){top:25%;left:15%;animation-delay:0.5s;width:3px;height:3px}
+  .star-dot:nth-child(3){top:18%;left:88%;animation-delay:1s}
+  .star-dot:nth-child(4){top:35%;left:92%;animation-delay:1.5s;width:3px;height:3px}
+  .star-dot:nth-child(5){top:45%;left:6%;animation-delay:2s}
+  .star-dot:nth-child(6){top:55%;left:95%;animation-delay:2.5s}
+  .star-dot:nth-child(7){top:8%;left:45%;animation-delay:0.8s;width:3px;height:3px}
+  .star-dot:nth-child(8){top:22%;left:72%;animation-delay:1.8s}
+
+  @keyframes star-twinkle{
+    0%, 100%{ opacity:0.3; transform:scale(1) }
+    50%{ opacity:1; transform:scale(1.5) }
+  }
+  
+
+  .glow{
+    position:absolute;
+    inset: -15% -8% auto -8%;
+    height:45%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.08), transparent 50%);
+    pointer-events:none;
+    mix-blend-mode:screen;
+  }
+
+  @media (max-width:720px){
+    .tree-wrap{ left:5%; width:42%; }
+    .santa{ width:70px; height:100px; right:24%; }
+    .present.p1{ width:58px; height:46px }
+    .present.p2{ width:52px; height:58px }
+    .present.p3{ width:48px; height:42px }
+    .moon{ width:60px; height:60px; top:6%; right:8% }
+  }
+
+  @media (max-width:420px){
+    .tree-wrap{ left:6%; width:46% }
+    .santa{ width:60px; height:90px; }
+    .presents{ gap:10px }
+  }
+</style>
+</head>
+<body>
+  <div class="scene" role="img" aria-label="Magical Christmas wonderland with tree, moon, dancing Santa and gifts">
+    
+    <div class="stars" aria-hidden="true">
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+      <div class="star-dot"></div>
+    </div>
+
+    <div class="moon" aria-hidden="true"></div>
+
+    <div class="snow" aria-hidden="true">
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+      <div class="flake"></div><div class="flake"></div><div class="flake"></div>
+    </div>
+
+    <div class="tree-wrap">
+      <div class="tree">
+        <div class="star"></div>
+        <div class="tier t1"></div>
+        <div class="tier t2"></div>
+        <div class="tier t3"></div>
+        <div class="trunk"></div>
+
+        <div class="ornament red o1"></div>
+        <div class="ornament gold o2"></div>
+        <div class="ornament blue o3"></div>
+        <div class="ornament red o4"></div>
+        <div class="ornament silver o5"></div>
+        <div class="ornament gold o6"></div>
+        <div class="ornament blue o7"></div>
+        <div class="ornament red o8"></div>
+
+        <div class="light yellow l1"></div>
+        <div class="light red l2"></div>
+        <div class="light blue l3"></div>
+        <div class="light green l4"></div>
+        <div class="light yellow l5"></div>
+        <div class="light red l6"></div>
+        <div class="light blue l7"></div>
+        <div class="light green l8"></div>
+      </div>
+    </div>
+
+    <div class="santa" aria-label="Dancing Santa">
+      <div class="santa-body">
+        <div class="belt">
+          <div class="buckle"></div>
+        </div>
+        <div class="santa-head">
+          <div class="hat">
+            <div class="hat-trim"></div>
+            <div class="hat-pom"></div>
+          </div>
+          <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+          <div class="nose"></div>
+          <div class="beard"></div>
+        </div>
+        <div class="arm left">
+          <div class="hand"></div>
+          <div class="santa-gift"></div>
+        </div>
+        <div class="arm right">
+          <div class="hand"></div>
+          <div class="santa-gift"></div>
+        </div>
+      </div>
+      <div class="legs">
+        <div class="leg">
+          <div class="boot"></div>
+        </div>
+        <div class="leg">
+          <div class="boot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="presents">
+      <div class="present p1">
+        <div class="ribbon"><div class="bow"></div></div>
+      </div>
+      <div class="present p2">
+        <div class="ribbon"><div class="bow"></div></div>
+      </div>
+      <div class="present p3">
+        <div class="ribbon"><div class="bow"></div></div>
+      </div>
+    </div>
+
+    <div class="ground"></div>
+    <div class="glow"></div>
+  </div>
+</body>
+</html>
