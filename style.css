@@ -639,9 +639,48 @@ li {
 }
 
 .footer-social-logo {
-  width: 30px; /* small GitHub logo */
-  height: 30px;
+  width: 50px; /* small GitHub logo */
+  height: 50px;
   object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 50%;
+  padding: 5px;
+  background: transparent;
+}
+
+.footer-social a {
+    display: flex; /* Allows sizing and centering */
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Set a fixed size for the clickable area */
+    height: 40px;
+    border-radius: 50%;
+    
+    /* Standard button transition and appearance */
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer-social a:hover {
+    /* Apply the light mode blue background/glow */
+    background: linear-gradient(
+        135deg,
+        var(--accent-subtle),
+        rgba(212, 175, 55, 0.1)
+    );
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px var(--shadow-medium), 0 12px 32px var(--shadow-strong),
+        0 0 0 1px rgba(99, 91, 249, 0.2), inset 0 1px 0 rgba(117, 209, 237, 0.8);
+    color: var(--accent-color);
+    
+    /* Move the transform animation to the container as well */
+    transform: translateY(-4px) scale(1.1);
+}
+
+.footer-social a:active {
+    transform: translateY(-2px) scale(1.05);
 }
 /* footer-input */
 .footer-newsletter form {
@@ -769,6 +808,28 @@ li {
 .dark-theme footer {
   background: var(--accent-bg);
   border-color: var(--border-color);
+}
+
+.dark-theme .footer-social a {
+    background: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+.dark-theme .footer-social a:hover {
+    background: linear-gradient(
+        135deg,
+        var(--accent-subtle),
+        rgba(212, 175, 55, 0.1)
+    );
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(139, 127, 255, 0.2); 
+    color: var(--accent-color);
+}
+
+/* IMPORTANT: Re-apply the transform to the IMAGE on hover, so the icon also scales */
+.footer-social a:hover .footer-social-logo {
+    transform: none; /* Reset transform on the image, the parent handles it now */
+    filter: brightness(1.1); /* Optional: brighten icon on hover */
 }
 
 /* Responsive Design */
@@ -1193,3 +1254,7 @@ li {
 .recently-reviewed-container.hidden + .sorting-container {
   margin-top: 0; 
 }
+
+
+/* Animated circular gallery */
+

@@ -1,5 +1,15 @@
 [
   {
+    "file": "funny_cloud.html",
+    "title": "Robot",
+    "author": "jeturgavli"
+  },
+  {
+    "file": "robot.html",
+    "title": "Robot",
+    "author": "jeturgavli"
+  },
+  {
     "file": "Anuradha-neon-city.html",
     "title": "Neon City",
     "author": "Anuradha"
@@ -18,6 +28,11 @@
     "file": "abstract_shapes.html",
     "title": "Abstract Shapes",
     "author": "Mayank Bansal"
+  },
+  {
+    "file":"SK-tesseract.html",
+    "title":"Tesseract",
+    "author":"Saikiran-Sugurthi"
   },
   {
     "file": "uday-rain-in-dark-night.html",
@@ -80,7 +95,7 @@
     "author": "Shamli"
   },
   {
-    "file": "christmas-art.html",
+    "file": "Apurva_Christmas_art.html",
     "title": "Christmas Wonderland",
     "author": "Apurva"
   },
@@ -390,9 +405,20 @@
     "author": "universe-sm"
   },
   {
-    "file": "sand-hourglass.html",
-    "title": "Sand Hour Glass",
-    "author": "Thanuja Kedila"
+    "file": "universesm_RotatingCarWheel.html",
+    "title": "Rotating Car Wheel",
+    "author": "universe-sm"
+  }
+
+]
+    "file": "circular-image-gallery.html",
+    "title": "Animated circular-image-gallery",
+    "author": "Harshit"
+  },
+  {
+    "file": "Debosmita_Particle_text_effect.html",
+    "title": "Particle Text Effect",
+    "author": "Debosmita"
   }
 
 ]

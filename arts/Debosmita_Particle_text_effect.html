@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Particle Text Animation</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let words = ["Hello", "I'm", "Debosmita"];
+let currentWordIndex = 0;
+let fontSize = 120;
+let particles = [];
+let animationId;
+
+function createParticlesFromText(text) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  ctx.font = `bold ${fontSize}px sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const newParticles = [];
+
+  for (let y = 0; y < canvas.height; y += 4) {
+    for (let x = 0; x < canvas.width; x += 4) {
+      const i = (y * canvas.width + x) * 4;
+      const alpha = imageData.data[i + 3];
+      if (alpha > 128) {
+        newParticles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          destX: x,
+          destY: y,
+          vx: 0,
+          vy: 0
+        });
+      }
+    }
+  }
+
+  particles = newParticles;
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let p of particles) {
+    const dx = p.destX - p.x;
+    const dy = p.destY - p.y;
+    p.vx += dx * 0.01;
+    p.vy += dy * 0.01;
+    p.vx *= 0.9;
+    p.vy *= 0.9;
+    p.x += p.vx;
+    p.y += p.vy;
+
+    ctx.fillStyle = "cyan";
+    ctx.fillRect(p.x, p.y, 2, 2);
+  }
+
+  animationId = requestAnimationFrame(animateParticles);
+}
+
+function showNextWord() {
+  cancelAnimationFrame(animationId);
+  createParticlesFromText(words[currentWordIndex]);
+  animateParticles();
+
+  currentWordIndex = (currentWordIndex + 1) % words.length;
+
+  setTimeout(showNextWord, 3000);
+}
+showNextWord();
+window.addEventListener("resize", () => {
+  location.reload();
+});
+</script>
+</body>
+</html>
