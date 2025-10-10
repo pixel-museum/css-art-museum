@@ -405,6 +405,12 @@
     "author": "universe-sm"
   },
   {
+    "file": "universesm_RotatingCarWheel.html",
+    "title": "Rotating Car Wheel",
+    "author": "universe-sm"
+  }
+
+]
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
@@ -414,10 +420,20 @@
     "title": "Particle Text Effect",
     "author": "Debosmita"
   },
-  {
+  { 
     "file": "Living_Origami.html",
     "title": "Animated Living Origami",
     "author": "Harsha"
+  },
+{
+    "file": "flying-bird.html",
+    "title": "Flying Bird",
+    "author": "Thanuja Kedila"
+  },
+{
+    "file": "atomic-structure.html",
+    "title": "Atomic Structure",
+    "author": "Nitish K"
   }
 
 ]
