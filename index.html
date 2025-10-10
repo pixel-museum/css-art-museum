@@ -48,7 +48,14 @@
         <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
       </nav>
       <p>Welcome! Explore amazing CSS artworks created by contributors.</p>
-      <!-- Sorting Dropdown -->
+      
+    </header>
+    <section class="recently-reviewed-container">
+      <h2 class="section-title">Recently Reviewed</h2>
+      <div class="gallery" id="recently-reviewed-gallery">
+      </div>
+    </section>
+    <!-- Sorting Dropdown -->
       <div class="sorting-container">
         <label for="sorting-dropdown">Sort by:</label>
         <select id="sorting-dropdown">
@@ -58,12 +65,6 @@
           <option value="least-liked">Least Liked</option>
         </select>
       </div>
-    </header>
-    <section class="recently-reviewed-container">
-      <h2 class="section-title">Recently Reviewed</h2>
-      <div class="gallery" id="recently-reviewed-gallery">
-      </div>
-    </section>
     <h2 class="section-title">Art Museum</h2>
     <main class="gallery" id="gallery-container"></main>
 
@@ -106,7 +107,7 @@
       <p>Get latest updates and news directly in your inbox.</p>
       <form>
         <input type="email" placeholder="Your email" />
-        <button type="submit">Subscribe</button>
+        <button id="subscribe-btn" type="submit">Subscribe</button>
       </form>
     </div>
 
@@ -114,9 +115,9 @@
     <div class="footer-section">
       <h3>Connect with Us</h3>
       <div class="footer-social">
-        <a href="https://github.com/pixel-museum/css-art-museum" title="GitHub"><img src="./assets/github-logo.png" alt="GitHub Logo" class="footer-social-logo"></a>
-        <a href="#" title="LinkedIn"><img src="./assets/linkedin-logo.png" alt="Linkedin logo" class="footer-social-logo"></a>
-        <a href="#" title="Twitter"><img src="./assets/twitter.png" alt="Twitter logo" class="footer-social-logo"></a>
+        <a href="https://github.com/pixel-museum/css-art-museum" aria-label="GitHub" title="GitHub"><img src="./assets/github-logo.png" alt="GitHub Logo" class="footer-social-logo"></a>
+        <a href="#" title="LinkedIn"><img src="./assets/linkedin-logo.png" aria-label="LinkedIn" alt="Linkedin logo" class="footer-social-logo"></a>
+        <a href="#" title="Twitter"><img src="./assets/twitter.png" aria-label="Twitter" alt="Twitter logo" class="footer-social-logo"></a>
       </div>
 
       <!-- Contributors & Stars -->

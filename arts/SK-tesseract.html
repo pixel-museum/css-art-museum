@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Unfolding Hypercube</title>
+    <style>
+        /* 1. Scene Setup & Global Styles */
+        :root {
+            --scene-perspective: 1000px;
+            --outer-cube-size: 200px;
+            --inner-cube-size: 100px;
+            --outer-cube-color: rgba(0, 255, 255, 0.4); /* Cyan, semi-transparent */
+            --inner-cube-color: rgba(255, 0, 255, 0.7); /* Magenta, less transparent */
+            --border-style: 2px solid;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+            overflow: hidden;
+        }
+
+        /* 2. The 3D Space & Tesseract Container */
+        .scene {
+            width: var(--outer-cube-size);
+            height: var(--outer-cube-size);
+            perspective: var(--scene-perspective);
+        }
+
+        .tesseract {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            /* Main animation for the entire object */
+            animation: rotate-tesseract 20s infinite linear;
+        }
+
+        /* 3. General Cube & Face Styles */
+        .cube {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .face {
+            position: absolute;
+            box-sizing: border-box; /* Ensures border is included in size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-family: monospace;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* 4. Positioning Each Face of the Cubes */
+        /*
+           The logic:
+           1. Rotate the face to its correct orientation.
+           2. Translate it outwards from the center by half the cube's size.
+        */
+
+        /* Outer Cube Faces */
+        .outer .face {
+            width: var(--outer-cube-size);
+            height: var(--outer-cube-size);
+            margin-left: calc(var(--outer-cube-size) / -2);
+            margin-top: calc(var(--outer-cube-size) / -2);
+            background-color: var(--outer-cube-color);
+            border: var(--border-style) cyan;
+        }
+        .outer .front  { transform: translateZ(calc(var(--outer-cube-size) / 2)); }
+        .outer .back   { transform: rotateY(180deg) translateZ(calc(var(--outer-cube-size) / 2)); }
+        .outer .right  { transform: rotateY(90deg) translateZ(calc(var(--outer-cube-size) / 2)); }
+        .outer .left   { transform: rotateY(-90deg) translateZ(calc(var(--outer-cube-size) / 2)); }
+        .outer .top    { transform: rotateX(90deg) translateZ(calc(var(--outer-cube-size) / 2)); }
+        .outer .bottom { transform: rotateX(-90deg) translateZ(calc(var(--outer-cube-size) / 2)); }
+
+
+        /* Inner Cube Faces */
+        .inner {
+            /* This animation makes the inner cube rotate independently */
+            animation: rotate-inner-cube 12s infinite linear reverse;
+        }
+        .inner .face {
+            width: var(--inner-cube-size);
+            height: var(--inner-cube-size);
+            margin-left: calc(var(--inner-cube-size) / -2);
+            margin-top: calc(var(--inner-cube-size) / -2);
+            background-color: var(--inner-cube-color);
+            border: var(--border-style) magenta;
+        }
+        .inner .front  { transform: translateZ(calc(var(--inner-cube-size) / 2)); }
+        .inner .back   { transform: rotateY(180deg) translateZ(calc(var(--inner-cube-size) / 2)); }
+        .inner .right  { transform: rotateY(90deg) translateZ(calc(var(--inner-cube-size) / 2)); }
+        .inner .left   { transform: rotateY(-90deg) translateZ(calc(var(--inner-cube-size) / 2)); }
+        .inner .top    { transform: rotateX(90deg) translateZ(calc(var(--inner-cube-size) / 2)); }
+        .inner .bottom { transform: rotateX(-90deg) translateZ(calc(var(--inner-cube-size) / 2)); }
+
+        /* 5. Keyframe Animations */
+        @keyframes rotate-tesseract {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+        @keyframes rotate-inner-cube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(-360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="tesseract">
+            <div class="cube outer">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+            <div class="cube inner">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
