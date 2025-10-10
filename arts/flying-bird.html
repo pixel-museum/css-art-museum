@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flying Bird - CSS Art Museum</title>
+  <style>
+    /* Flying Bird CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #0a0a23 0%, #1c2526 100%);
+      overflow: hidden;
+    }
+    .scene {
+      position: relative;
+      width: 400px;
+      height: 300px;
+    }
+    .bird {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      width: 50px;
+      height: 30px;
+      animation: fly 10s linear infinite;
+    }
+    .body {
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50% 50% 20% 20%;
+      left: 10px;
+      top: 5px;
+      z-index: 2;
+    }
+    .beak {
+      position: absolute;
+      left: 35px;
+      top: 10px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid #f4a261;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      z-index: 2;
+    }
+    .wing-left, .wing-right {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      background: #ffffff;
+      border-radius: 50% 20% 50% 20%;
+      transform-origin: center;
+    }
+    .wing-left {
+      left: 5px;
+      top: 0;
+      animation: flap-left 0.5s ease-in-out infinite;
+    }
+    .wing-right {
+      left: 25px;
+      top: 0;
+      animation: flap-right 0.5s ease-in-out infinite;
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite;
+    }
+    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
+    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
+    .star3 { width: 1px; height: 1px; top: 150px; left: 100px; animation-delay: 1.5s; }
+    .star4 { width: 2px; height: 2px; top: 30px; left: 300px; animation-delay: 2s; }
+    @keyframes fly {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(300px, -50px); }
+      50% { transform: translate(600px, 0); }
+      75% { transform: translate(300px, 50px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes flap-left {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-45deg) translateY(-10px); }
+    }
+    @keyframes flap-right {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(45deg) translateY(-10px); }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stars">
+      <div class="star star1"></div>
+      <div class="star star2"></div>
+      <div class="star star3"></div>
+      <div class="star star4"></div>
+    </div>
+    <div class="bird">
+      <div class="body"></div>
+      <div class="beak"></div>
+      <div class="wing-left"></div>
+      <div class="wing-right"></div>
+    </div>
+  </div>
+</body>
+</html>
