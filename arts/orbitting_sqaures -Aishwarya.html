@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Orbiting Squares</title>
+
+        <style>
+            body {
+                background-color:black;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+            }
+
+            .container {
+                position:relative;
+                width:200px;
+                height:200px;
+            }
+
+            .square {
+                position:absolute;
+                top:50%;
+                left:50%;
+                width:100px;
+                height:100px;
+                border:3px solid;
+                border-radius:5px;
+                transform:translate(-50%,-50%);
+               
+            }
+
+            .white {
+                border-color:white;
+                width:100px;
+                height:100px;
+                animation-delay:0s;
+                animation:rotate 4s linear infinite;
+            }
+             .green {
+                border-color:#90EE90;
+                width:110px;
+                height:110px;
+                animation-delay:2s;
+                animation:rotate 4s linear infinite;
+            }
+             .blue {
+                border-color:#00B4D8;
+                width:120px;
+                height:120px;
+                animation-delay:3.4s;
+                animation:rotate 4s linear infinite;
+            }
+
+            .violet {
+                border-color:#9400D3;
+                width:130px;
+                height:130px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+            }
+            .pink {
+                border-color:#FF1493;
+                width:140px;
+                height:140px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+            }
+            .forestgreen {
+                border-color:#228B22;
+                width:150px;
+                height:150px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+
+            }
+            .skyblue {
+                border-color:#87CEEB;
+                width:160px;
+                height:160px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+            }
+            .goldenrod {
+                border-color:#DAA520;
+                width:170px;
+                height:170px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+            }
+            .coral {
+                border-color:#FF6B6B;
+                width:180px;
+                height:180px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+
+            }
+
+            .amber {
+                border-color:#FFD93D;
+                 width:190px;
+                height:190px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+
+
+            }
+
+            .turquoise {
+                border-color:#AEEEEE ;
+                width:200px;
+                height:200px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+
+            }
+            .olive {
+                border-color:#6B8E23;
+                 width:210px;
+                height:210px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+
+            }
+            .wood {
+                border-color:#DEB887 ;
+                width:210px;
+                height:210px;
+                animation-delay:3.8s;
+                animation:rotate 4s linear infinite;
+            }
+
+  
+            @keyframes rotate {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    100% {
+                        transform: translate(-50%, -50%) rotate(360deg);
+                    }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="square blue">
+
+            </div>
+            <div class="square green">
+
+            </div>
+            <div class="square white">
+
+            </div>
+            <div class="square violet"></div>
+            <div class="square pink"></div>
+            <div class="square forestgreen"></div>
+            <div class="square skyblue"></div>
+            <div class="square goldenrod"></div>
+            <div class="square amber"></div>
+            <div class="square turquoise"></div>
+            <div class="square coral"></div>
+            <div class="square olive"></div>
+            <div class="square wood"></div>
+          
+
+
+        </div>
+
+    </body>
+</html>
