@@ -425,7 +425,8 @@
     "author": "universe-sm"
   }
 
-]
+] 
+   {
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
@@ -440,7 +441,7 @@
     "file": "coder561858-Rollingballs.html",
     "title": "Rolling Balls",
     "author": "coder561858"
-
+  }
   { 
     "file": "Living_Origami.html",
     "title": "Animated Living Origami",
