@@ -26,47 +26,51 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  function renderRecentlyReviewed() {
-    if (!recentlyReviewedContainer) return;
-    const items = RecentlyReviewed.get();
-    recentlyReviewedContainer.innerHTML = "";
-    items
-      .slice()
-      .reverse()
-      .forEach((item) => {
-        const filePath = `arts/${item.file}`;
-        const card = document.createElement("div");
-        card.className = "art-card";
-        let isLiked = false;
-        try {
-          const liked = localStorage.getItem('likedArtworks');
-          const likedSet = liked ? new Set(JSON.parse(liked)) : new Set();
-          isLiked = likedSet.has(item.file);
-        } catch (e) {
-          isLiked = false;
-        }
-        const likesCount = (Array.isArray(allArts) ? (allArts.find(a => a.file === item.file)?.likes) : 0) || 0;
-        card.innerHTML = `
-          <iframe loading="lazy" seamless src="${filePath}" title="${item.title}"></iframe>
-        <h3>${item.title}</h3>
-        <p>by ${item.author}</p>
-        <div class="card-actions">
-            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(item.file)}">
-                View Code
-            </a>
-            <div class="like-container" data-id="${item.file}">
-                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                 <span class="like-count">${likesCount}</span>
-            </div>
-        </div>
-        `;
-        recentlyReviewedContainer.appendChild(card);
-      });
+  async function renderRecentlyReviewed() {
+  const recentlyReviewedContainer = document.getElementById("recently-reviewed");
+  if (!recentlyReviewedContainer) return;
 
+  let items = RecentlyReviewed.get();
+
+  // 🔍 Check if files exist (remove deleted ones)
+  items = await Promise.all(items.map(async (item) => {
+    const filePath = `arts/${item.file}`;
+    try {
+      const res = await fetch(filePath, { method: "HEAD" });
+      return res.ok ? item : null;
+    } catch {
+      return null;
+    }
+  }));
+
+  // 🧹 Remove invalid (deleted) entries
+  items = items.filter(Boolean);
+  localStorage.setItem("recentlyReviewed", JSON.stringify(items));
+
+  // 🧱 Clear container before re-rendering
+  recentlyReviewedContainer.innerHTML = "";
+
+  // ♻️ Render only valid existing artworks
+  items.reverse().forEach((item) => {
+    const filePath = `arts/${item.file}`;
+    const card = document.createElement("div");
+    card.className = "art-card";
+    card.innerHTML = `
+      <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+      <div class="art-info">
+        <p class="art-title">${item.title || "Untitled"}</p>
+        <p class="art-author">${item.author || "Unknown"}</p>
+      </div>
+    `;
+    recentlyReviewedContainer.appendChild(card);
+  });
+
+  // 🌀 Reinitialize animations if you use them
+  if (typeof initializeCardAnimations === "function") {
     initializeCardAnimations();
   }
+}
+
 
   // Like handler for Recently Reviewed section
   function handleRecentLikeClick(event) {

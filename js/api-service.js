@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://css-art-museum-backend.onrender.com";
+const BACKEND_URL = "http://localhost:3000/";
 
 async function getAllArtworksApi() {
     try {
