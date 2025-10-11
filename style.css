@@ -1,1260 +1,156 @@
-/* Import elegant fonts */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+/*
+ * 🌟 IMPROVEMENTS FOR ANIMATED CIRCULAR GALLERY 🌟
+ *
+ * 1. New dedicated class for the circular gallery: .circular-gallery.
+ * 2. Establishes a 3D context using 'perspective' on the container.
+ * 3. Uses 'transform-style: preserve-3d' on the container to allow 3D positioning of children.
+ * 4. Positions each art card in 3D space along a circle's circumference.
+ * 5. Adds a subtle rotation animation to the entire carousel.
+ */
 
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* === ANIMATED CIRCULAR GALLERY STYLES START === */
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-main {
-  flex: 1;
-}
-
-/* Elegant Art Museum Color Variables */
-:root {
-  --primary-bg: #fafafa;
-  --secondary-bg: #ffffff;
-  --accent-bg: #f8f8f8;
-  --primary-text: #1a1a1a;
-  --secondary-text: #4a4a4a;
-  --muted-text: #757575;
-  --border-color: #e8e8e8;
-  --shadow-light: rgba(0, 0, 0, 0.04);
-  --shadow-medium: rgba(0, 0, 0, 0.08);
-  --shadow-strong: rgba(0, 0, 0, 0.12);
-  --accent-color: #6c63ff;
-  --accent-subtle: #f0efff;
-  --gold-accent: #d4af37;
-  --museum-warm: #f5f4f0;
-  --button-bg: #f6f8fa;
-  --button-border: rgba(27, 31, 36, 0.15);
-  --button-hover-bg: #f3f4f6;
-  --count-bg: rgba(209, 213, 219, 0.5);
-  --button-bg: #f6f8fa;
-  --button-border: rgba(27, 31, 36, 0.15);
-  --button-hover-bg: #f3f4f6;
-  --count-bg: rgba(209, 213, 219, 0.5);
-}
-
-/* Body Styling - Museum-inspired with Visual Appeal */
-body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(
-      circle at 20% 80%,
-      rgba(108, 99, 255, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(212, 175, 55, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(108, 99, 255, 0.03) 0%,
-      transparent 50%
-    ),
-    linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
-  background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
-  background-attachment: scroll; /* Changed from 'fixed' to 'scroll' for better scroll performance */
-  color: var(--primary-text);
-  line-height: 1.6;
-  padding: 100px 20px 40px; /* Added top padding to prevent content from hiding behind fixed nav */
-  min-height: 100vh;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Subtle floating elements for visual interest */
-body::before {
-  content: "";
-  position: fixed;
-  top: 10%;
-  right: -5%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(
-    circle,
-    rgba(108, 99, 255, 0.03) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  animation: float 20s ease-in-out infinite;
-  z-index: -1;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  bottom: 10%;
-  left: -5%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.04) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  animation: float 25s ease-in-out infinite reverse;
-  z-index: -1;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-
-  33% {
-    transform: translate(30px, -30px) rotate(120deg);
-  }
-
-  66% {
-    transform: translate(-20px, 20px) rotate(240deg);
-  }
-}
-
-/* === MODIFIED HEADER AND NEW NAVBAR STYLING START === */
-
-/* Main Header container */
-header {
-  text-align: center;
-  margin-bottom: 40px; /* Reduced margin */
-  margin-bottom: 40px; /* Reduced margin */
-  position: relative;
-  width: 100%;
-}
-
-/* Floating Fixed Navbar */
-header nav {
-  display: flex;
-  justify-content: space-between;
+/* The main gallery container needs 3D context */
+.circular-gallery {
+  /* Inherit general gallery properties */
+  display: flex; /* Change to flex to stack cards for rotation */
+  justify-content: center;
   align-items: center;
-  padding: 10px 25px;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1400px;
-  z-index: 100;
+  gap: 0; /* Remove gap as items will be positioned in 3D */
 
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* For Safari */
-  border-radius: 14px; /* Slightly smaller radius */
-  border: 1px solid rgba(108, 99, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(108, 99, 255, 0.15);
-}
+  max-width: 1000px; /* Adjust max-width to center the 3D element */
+  margin: 60px auto 80px;
+  height: 400px; /* Give the container a defined height for centering */
 
-/* Modified h1 (Logo) styling for the navbar */
-header h1.logo {
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  font-size: clamp(1.4rem, 3vw, 1.8rem); /* Adjusted font size */
-  background: linear-gradient(
-    135deg,
-    var(--primary-text) 0%,
-    var(--accent-color) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-  letter-spacing: -0.02em;
-  animation: titleShine 3s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-@keyframes titleShine {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-
-  50% {
-    filter: brightness(1.1);
-  }
-}
-
-header h1::before,
-header h1::after {
-  content: none;
-}
-
-/* Welcome message below the navbar */
-header p {
-  color: var(--secondary-text);
-  font-size: 1.1rem;
-  font-weight: 400;
-  max-width: 600px;
-  margin: 0 auto; /* Centered without top margin */
-  line-height: 1.8;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  padding: 16px 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(108, 99, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.1);
-  animation: fadeInUp 1s ease-out 0.5s both;
-}
-
-.section-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-  font-weight: 600;
-  text-align: center;
-  margin: 10px auto 18px;
-  letter-spacing: 0.02em;
-  color: var(--primary-text);
-  background: linear-gradient(
-    135deg,
-    var(--primary-text) 0%,
-    var(--gold-accent) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Modified Search Bar for the navbar */
-#search-bar {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px 20px; /* Reduced padding */
-  font-size: 0.95rem;
-  font-family: "Inter", sans-serif;
-  border: 1px solid rgba(108, 99, 255, 0.2);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  color: var(--primary-text);
-  box-shadow: 0 4px 12px var(--shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.4s ease;
-  outline: none;
-  margin: 0 24px;
-  text-align: left;
-}
-
-#search-bar::placeholder {
-  color: var(--secondary-text);
-  opacity: 0.7;
-  text-align: left;
-}
-
-#search-bar:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.6);
-  transform: scale(1.02);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Modified Theme Toggle for the navbar */
-.theme-toggle {
-  position: static;
-  background: var(--secondary-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 30px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--secondary-text);
-  box-shadow: 0 4px 12px var(--shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  animation: toggleFloat 4s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-/* === MODIFIED HEADER AND NEW NAVBAR STYLING END === */
-
-@keyframes toggleFloat {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
-}
-
-.theme-toggle:hover {
-  background: linear-gradient(
-    135deg,
-    var(--accent-subtle),
-    rgba(212, 175, 55, 0.1)
-  );
-  border-color: var(--accent-color);
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 20px var(--shadow-medium),
-    0 4px 12px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: var(--accent-color);
-}
-
-.theme-toggle:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* Sophisticated Gallery Layout with Visual Appeal */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(320px, 1fr)
-  ); /* Reduced min-width */
-  gap: 30px; /* Reduced gap */
-  max-width: 1400px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
-  perspective: 1000px;
-  position: relative;
-}
-
-.gallery::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  left: -40px;
-  right: -40px;
-  bottom: -40px;
-  background: linear-gradient(
-      45deg,
-      transparent 30%,
-      rgba(108, 99, 255, 0.03) 50%,
-      transparent 70%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 30%,
-      rgba(212, 175, 55, 0.04) 50%,
-      transparent 70%
-    );
-  border-radius: 24px;
-  z-index: -1;
-  animation: galleryGlow 15s ease-in-out infinite;
-}
-
-@keyframes galleryGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-/* Museum-Quality Art Cards with Enhanced Visual Appeal */
-.art-card {
-  background: var(--secondary-bg);
-  border-radius: 16px; /* Reduced radius */
-  padding: 20px; /* Reduced padding */
-  box-shadow: 0 4px 12px var(--shadow-light), 0 12px 32px var(--shadow-medium),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
+  /* CRITICAL: Set up 3D space */
+  perspective: 1500px;
   transform-style: preserve-3d;
-  animation: cardEntrance 0.8s ease-out both;
+  position: relative;
 }
 
-@keyframes cardEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(30px) rotateX(10deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-  }
-}
-
-.art-card:nth-child(odd) {
-  animation-delay: 0.1s;
-}
-
-.art-card:nth-child(even) {
-  animation-delay: 0.2s;
-}
-
-.art-card::before {
-  content: "";
+/* Base class for the carousel itself (the rotating part) */
+.circular-gallery-carousel {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    var(--gold-accent),
-    var(--accent-color)
-  );
-  opacity: 0;
-  transition: all 0.4s ease;
-  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotateCarousel 40s infinite linear;
 }
 
-.art-card::after {
-  content: "";
-  position: absolute;
+/* Pause animation on hover for inspection */
+.circular-gallery-carousel:hover {
+  animation-play-state: paused;
+}
+
+/* Art Card Positioning in 3D Space */
+.circular-gallery .art-card {
+  position: absolute; /* Take cards out of the normal flow */
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(
-    circle,
-    rgba(108, 99, 255, 0.1) 0%,
-    transparent 70%
-  );
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease;
-  border-radius: 50%;
-  z-index: -1;
+  width: 300px; /* Fixed width for consistent circle size */
+  height: 350px; /* Fixed height for consistent circle size */
+  margin-left: -150px; /* Half of width to center */
+  margin-top: -175px; /* Half of height to center */
+
+  /* Ensure card stays flat in 3D space initially */
+  transform: none;
+  opacity: 0.95;
+  cursor: pointer;
+  pointer-events: auto; /* Re-enable pointer events */
 }
 
-.art-card:hover::before {
-  opacity: 1;
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.4);
+.circular-gallery .art-card:hover {
+  /* Enhanced hover effect for circular gallery */
+  transform: scale(1.05) translateZ(100px);
+  box-shadow: 0 10px 40px var(--shadow-strong);
+  z-index: 10;
 }
 
-.art-card:hover::after {
-  width: 300px;
-  height: 300px;
-}
-
-.art-card:hover {
-  transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
-  box-shadow: 0 8px 25px var(--shadow-medium), 0 20px 60px var(--shadow-strong),
-    0 0 0 1px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border-color: var(--accent-color);
-  filter: brightness(1.02);
-}
-
-.art-card iframe {
-  width: 100%;
-  height: 250px; /* Reduced height */
-  border: none;
-  border-radius: 12px; /* Reduced radius */
-  scrollbar-width: none;
-  box-shadow: 0 6px 16px var(--shadow-light), 0 2px 4px var(--shadow-medium);
-  transition: all 0.4s ease;
-  position: relative;
-  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
-    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%);
-  background-size: 10px 10px;
-  background-position: 0 0, 0 5px;
-  overflow: hidden;
-  scrollbar-width: none;
-}
-
-.art-card h3 {
-  text-align: center;
-  margin: 8px 0 14px;
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  font-size: 1.05rem;
-  line-height: 1.35;
-  color: var(--primary-text);
-  letter-spacing: 0.01em;
-  background: linear-gradient(
-    135deg,
-    var(--primary-text) 0%,
-    var(--accent-color) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.art-card:hover h3 {
-  filter: brightness(1.05);
-}
-
-.art-card iframe::-webkit-scrollbar {
-  display: none;
-}
-
-.art-card:hover iframe {
-  transform: scale(1.03) rotateX(-2deg);
-  box-shadow: 0 12px 30px var(--shadow-medium), 0 4px 8px var(--shadow-light),
-    0 0 0 2px rgba(108, 99, 255, 0.1);
-  border-radius: 20px;
-}
-
-.art-card p {
-  text-align: center;
-  margin-top: 16px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--secondary-text);
-  line-height: 1.5;
-  letter-spacing: 0.025em;
-  padding: 10px 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.05),
-    rgba(212, 175, 55, 0.05)
-  );
-  border-radius: 10px;
-  border: 1px solid rgba(108, 99, 255, 0.1);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.art-card:hover p {
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.1),
-    rgba(212, 175, 55, 0.08)
-  );
-  border-color: rgba(108, 99, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
-}
-
-/* === NEW FOOTER STYLES START === */
-/* =================== Footer Styles =================== */
-/* =================== Footer Styles =================== */
-
-/* Root variables */
+/* Calculate the positioning for N elements (e.g., 6 elements) */
+/* We need to define the radius (R) and the rotation angle (A) for each card.
+   R is set by the translateZ value.
+   A = (360deg / N) * index.
+   For 6 cards, A = index * 60deg. R is chosen for a nice circular appearance.
+*/
 :root {
-  --accent-bg: #f9f9fb;
-  --accent-color: #6c63ff;
-  --accent-subtle: #ececff;
-  --gold-accent: #f1c40f;
-  --secondary-text: #555;
-  --muted-text: #777;
-  --button-bg: #fff;
-  --button-border: #ddd;
-  --border-color: #e2e2e2;
-  --hover-bg: rgba(108, 99, 255, 0.08);
+  --radius: 500px; /* Defines the depth of the circle */
 }
 
-/* Dark theme */
-.dark-theme {
-  --accent-bg: #1c1c1c;
-  --accent-color: #8b7fff;
-  --accent-subtle: #2a2a2a;
-  --gold-accent: #f4d03f;
-  --secondary-text: #ccc;
-  --muted-text: #888;
-  --button-bg: #222;
-  --button-border: #444;
-  --border-color: #333;
-  --hover-bg: rgba(139, 127, 255, 0.15);
+.circular-gallery .art-card:nth-child(1) {
+  transform: rotateY(calc(1 * 60deg)) translateZ(var(--radius));
+}
+.circular-gallery .art-card:nth-child(2) {
+  transform: rotateY(calc(2 * 60deg)) translateZ(var(--radius));
+}
+.circular-gallery .art-card:nth-child(3) {
+  transform: rotateY(calc(3 * 60deg)) translateZ(var(--radius));
+}
+.circular-gallery .art-card:nth-child(4) {
+  transform: rotateY(calc(4 * 60deg)) translateZ(var(--radius));
+}
+.circular-gallery .art-card:nth-child(5) {
+  transform: rotateY(calc(5 * 60deg)) translateZ(var(--radius));
+}
+.circular-gallery .art-card:nth-child(6) {
+  transform: rotateY(calc(6 * 60deg)) translateZ(var(--radius));
 }
 
-/* Footer Container */
-
-/* Footer Links Styling */
-.footer-section a {
-  color: var(--footer-link); /* or choose a color like #fff, #ccc */
-  text-decoration: none; /* removes underline */
-  transition: color 0.3s ease;
-}
-/* Star icon color */
-.star-button .star-icon path {
-  fill: gold; /* Makes the star golden */
-}
-
-.footer-section a:hover {
-  color: var(--accent); /* highlight on hover */
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(5, 250px);
-  /* place-items: center; */
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
-  gap: 1rem;
-}  
-
-/* Footer Sections */
-.footer-section {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 200px;
-  gap: 1rem;
-  margin: 10px;
-}
-.footer-section h3,
-li {
-  white-space: nowrap;
-}
-.footer-section p {
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-/* Footer Social Logos */
-.footer-social {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-/* footer section li */
-.footer-section li {
-  list-style: inside;
-}
-
-.footer-social-logo {
-  width: 50px; /* small GitHub logo */
-  height: 50px;
-  object-fit: contain;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border-radius: 50%;
-  padding: 5px;
-  background: transparent;
-}
-
-.footer-social a {
-    display: flex; /* Allows sizing and centering */
-    align-items: center;
-    justify-content: center;
-    width: 40px; /* Set a fixed size for the clickable area */
-    height: 40px;
-    border-radius: 50%;
-    
-    /* Standard button transition and appearance */
-    background: var(--secondary-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px var(--shadow-light);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.footer-social a:hover {
-    /* Apply the light mode blue background/glow */
-    background: linear-gradient(
-        135deg,
-        var(--accent-subtle),
-        rgba(212, 175, 55, 0.1)
-    );
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 20px var(--shadow-medium), 0 12px 32px var(--shadow-strong),
-        0 0 0 1px rgba(99, 91, 249, 0.2), inset 0 1px 0 rgba(117, 209, 237, 0.8);
-    color: var(--accent-color);
-    
-    /* Move the transform animation to the container as well */
-    transform: translateY(-4px) scale(1.1);
-}
-
-.footer-social a:active {
-    transform: translateY(-2px) scale(1.05);
-}
-/* footer-input */
-.footer-newsletter form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.footer-newsletter input {
-  padding: 0.6rem 0.8rem;
-  font-size: 1rem;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-}
-.footer-newsletter input:focus {
-  border: 2px solid rgba(0, 0, 0, 0.5);
-}
-#subscribe-btn {
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.15);
-  outline: none;
-  border: none;
-  border: 2px solid #4f499c;
-  color: #4439db;
-  width: 80%;
-  transition: all 0.3s ease;
-}
-#subscribe-btn:hover {
-  background: #4f499c;
-  color: white;
-}
-
-/* Footer Buttons (Star / Contributors) */
-.footer-extra-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 10px;
-}
-
-.footer-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 12px;
-  background-color: transparent;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--accent);
-  font-size: 0.9rem;
-  transition: 0.3s ease;
-}
-
-.footer-button:hover {
-  background-color: var(--accent);
-  color: #fff;
-}
-
-.star-icon {
-  width: 16px;
-  height: 16px;
-}
-
-/* Footer Bottom */
-.footer-bottom {
-  text-align: center;
-  padding: 15px;
-  background-color: var(--footer-bottom-bg);
-  font-size: 0.85rem;
-  margin-top: 20px;
-}
-
-/* === NEW FOOTER STYLES END === */
-
-/* Dark Theme - Sophisticated Museum Night Mode */
-.dark-theme {
-  --primary-bg: #0f0f0f;
-  --secondary-bg: #1a1a1a;
-  --accent-bg: #161616;
-  --primary-text: #f0f0f0;
-  --secondary-text: #c0c0c0;
-  --muted-text: #888888;
-  --border-color: #2a2a2a;
-  --shadow-light: rgba(0, 0, 0, 0.3);
-  --shadow-medium: rgba(0, 0, 0, 0.4);
-  --shadow-strong: rgba(0, 0, 0, 0.5);
-  --accent-color: #8b7fff;
-  --accent-subtle: #1a1825;
-  --gold-accent: #f4d03f;
-  --museum-warm: #1c1915;
-  --button-bg: #21262d;
-  --button-border: #30363d;
-  --button-hover-bg: #30363d;
-  --count-bg: rgba(72, 83, 99, 0.5);
-  --logo-filter: invert(1); /* Invert logo for dark mode */
-}
-
-.dark-theme body {
-  background: linear-gradient(
-    135deg,
-    var(--primary-bg) 0%,
-    var(--museum-warm) 100%
-  );
-}
-
-/* Dark theme styles for new navbar */
-.dark-theme header nav {
-  background: rgba(30, 30, 30, 0.5);
-  border: 1px solid rgba(139, 127, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.dark-theme .art-card {
-  background: var(--secondary-bg);
-  border-color: var(--border-color);
-}
-
-.dark-theme .art-card:hover {
-  border-color: var(--accent-color);
-}
-
-.dark-theme footer {
-  background: var(--accent-bg);
-  border-color: var(--border-color);
-}
-
-.dark-theme .footer-social a {
-    background: var(--secondary-bg);
-    border-color: var(--border-color);
-}
-
-.dark-theme .footer-social a:hover {
-    background: linear-gradient(
-        135deg,
-        var(--accent-subtle),
-        rgba(212, 175, 55, 0.1)
-    );
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 20px rgba(139, 127, 255, 0.2); 
-    color: var(--accent-color);
-}
-
-/* IMPORTANT: Re-apply the transform to the IMAGE on hover, so the icon also scales */
-.footer-social a:hover .footer-social-logo {
-    transform: none; /* Reset transform on the image, the parent handles it now */
-    filter: brightness(1.1); /* Optional: brighten icon on hover */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  body {
-    padding: 100px 15px 20px;
+/* Animation for the carousel rotation */
+@keyframes rotateCarousel {
+  from {
+    transform: rotateY(0deg);
   }
-
-  header {
-    margin-bottom: 40px;
-  }
-
-  header nav {
-    flex-direction: column;
-    gap: 16px;
-    top: 15px;
-    padding: 16px;
-    width: calc(100% - 30px);
-  }
-
-  #search-bar {
-    margin: 0;
-  }
-
-  header h1.logo {
-    font-size: 1.8rem;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 0 10px;
-  }
-
-  .art-card {
-    padding: 20px;
-  }
-
-  .art-card iframe {
-    height: 240px;
-  }
-
-  .theme-toggle {
-    padding: 8px 14px;
-    font-size: 0.8rem;
-  } 
-  .footer-top {
-    flex-direction: column;
-  }
-}
-/* footer responsiveness */
-@media (max-width: 1290px) {
-  .footer-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width:765px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width:520px) {
-  .footer-container {
-    grid-template-columns: repeat(1, 1fr);
+  to {
+    transform: rotateY(360deg);
   }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  :root {
-    --border-color: #333333;
-    --shadow-light: rgba(0, 0, 0, 0.2);
-  }
-
-  .dark-theme {
-    --border-color: #666666;
-  }
+/* Override general gallery styles for this specific layout */
+/* Disable the animated glow border on the circular gallery, as it can interfere with 3D */
+.circular-gallery::before {
+    content: none;
 }
 
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+/* Remove card entrance animation as it will conflict with the 3D positioning */
+.circular-gallery .art-card {
+    animation: none;
+    opacity: 1;
 }
 
-.art-card iframe {
-  pointer-events: none;
+/* Media query for smaller screens: revert to a standard grid or stack */
+@media (max-width: 1000px) {
+    .circular-gallery {
+        perspective: none;
+        transform-style: flat;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .circular-gallery-carousel {
+        position: static;
+        width: 100%;
+        height: auto;
+        animation: none;
+        transform-style: flat;
+    }
+
+    .circular-gallery .art-card {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        transform: none;
+        /* Re-enable a simple entrance animation if desired */
+        animation: cardEntrance 0.8s ease-out both;
+    }
+
+    .circular-gallery .art-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 8px 25px var(--shadow-medium);
+        z-index: auto;
+    }
 }
 
-/* MODIFIED: View Code Button Styling */
-.view-code {
-  display: block;
-  width: 100%;
-  margin-top: 16px;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease-out;
-  cursor: pointer;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(108, 99, 255, 0.2);
-  background: transparent;
-  color: var(--accent-color);
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.view-code button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.view-code:hover {
-  background: var(--accent-subtle);
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
-  color: var(--accent-color);
-}
-
-.dark-theme .view-code {
-  border-color: rgba(139, 127, 255, 0.3);
-}
-
-.dark-theme .view-code:hover {
-  background: var(--accent-subtle);
-  border-color: var(--accent-color);
-}
-
-/* Scroll to Top Button */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: var(--secondary-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px var(--shadow-light), 0 8px 24px var(--shadow-medium),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px) scale(0.8);
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  color: var(--secondary-text);
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.scroll-to-top:hover {
-  background: linear-gradient(
-    135deg,
-    var(--accent-subtle),
-    rgba(212, 175, 55, 0.1)
-  );
-  border-color: var(--accent-color);
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 8px 20px var(--shadow-medium), 0 12px 32px var(--shadow-strong),
-    0 0 0 1px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: var(--accent-color);
-}
-
-.scroll-to-top:active {
-  transform: translateY(-2px) scale(1.05);
-}
-
-.scroll-to-top svg {
-  transition: all 0.3s ease;
-}
-
-.scroll-to-top:hover svg {
-  transform: translateY(-2px);
-}
-
-/* Dark theme support for scroll to top button */
-.dark-theme .scroll-to-top {
-  background: var(--secondary-bg);
-  border-color: var(--border-color);
-  color: var(--secondary-text);
-}
-
-.dark-theme .scroll-to-top:hover {
-  background: linear-gradient(
-    135deg,
-    var(--accent-subtle),
-    rgba(212, 175, 55, 0.1)
-  );
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
-
-/* Responsive adjustments for scroll to top button */
-@media (max-width: 768px) {
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  .scroll-to-top {
-    bottom: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-.dark-theme .view-code:hover {
-  box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
-}
-
-.card-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 5px;
-  padding: 0 4px 4px;
-}
-
-.view-code {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--secondary-text);
-  font-weight: 500;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.view-code button {
-  background: none;
-  border: none;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.like-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--secondary-text);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-/* Unified hover effects for both buttons */
-.view-code:hover,
-.like-container:hover {
-  background-color: var(--accent-subtle);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
-}
-
-/* Dark theme adjustments */
-.dark-theme .view-code,
-.dark-theme .like-container {
-  border-color: var(--button-border);
-  color: var(--secondary-text);
-}
-
-.dark-theme .view-code:hover,
-.dark-theme .like-container:hover {
-  background-color: var(--accent-subtle);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  box-shadow: 0 4px 15px rgba(139, 127, 255, 0.2);
-}
-
-/* Icon styling to inherit color and handle the 'liked' state */
-.heart-icon {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor; /* Icon color will now match the text color */
-  fill: none;
-  transition: fill 0.2s, stroke 0.2s;
-}
-
-.heart-icon.liked {
-  fill: #ff4d4d;
-  stroke: #ff4d4d;
-}
-
-/* This prevents the icon from changing color on hover if it's already liked */
-.like-container:hover .heart-icon.liked {
-  color: #ff4d4d;
-}
-
-.like-count {
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.sorting-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.sorting-container label {
-  padding: 10px;
-  font-size: 1rem;
-  color: var(--secondary-text);
-}
-.sorting-container select {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background: var(--secondary-bg);
-  color: var(--primary-text);
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.sorting-container select:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
-}
-
-/* Dark theme styles for header elements */
-.dark-theme header nav {
-  background: rgba(26, 26, 26, 0.65); /* Darker, more defined glass effect */
-  border: 1px solid rgba(139, 127, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-}
-
-.dark-theme #search-bar {
-  background: rgba(40, 40, 40, 0.75); /* Contrasting dark background */
-  border-color: var(--border-color);
-  color: var(--primary-text);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06); /* Subtle inner highlight */
-}
-
-.dark-theme #search-bar::placeholder {
-  color: var(--secondary-text);
-  opacity: 0.9;
-}
-
-.dark-theme #search-bar:focus {
-  background: rgba(50, 50, 50, 0.8);
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(139, 127, 255, 0.25),
-    /* Added a focus ring for accessibility */ inset 0 1px 1px
-      rgba(255, 255, 255, 0.08);
-}
-
-.dark-theme header p {
-  /* Using a solid background from your variables for better readability */
-  background: var(--secondary-bg);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-  color: var(--secondary-text);
-  /* The blur effect is not needed with a solid background */
-  backdrop-filter: none;
-}
-
-#recently-reviewed-gallery { 
-  grid-template-columns: repeat(3, 320px); 
-  max-width: calc(320px * 3 + 30px * 2); 
-}
-
-/* Fix for Issue #184: Recently Reviewed Section Transitions */
-
-/* Add smooth transition for recently reviewed container */
-.recently-reviewed-container {
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
-  overflow: hidden;
-  opacity: 1;
-  max-height: 1000px; /* Adjust based on your content */
-}
-
-/* Hidden state for recently reviewed section */
-.recently-reviewed-container.hidden {
-  opacity: 0;
-  max-height: 0;
-  margin: 0;
-  pointer-events: none;
-}
-
-/* Ensure sorting container has proper spacing */
-.sorting-container {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  transition: margin 0.3s ease;
-}
-
-/* Adjust margin when recently reviewed is hidden */
-.recently-reviewed-container.hidden + .sorting-container {
-  margin-top: 0; 
-}
-
-
-/* Animated circular gallery */
-
+/* === ANIMATED CIRCULAR GALLERY STYLES END === */
