@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subtle Animated Gradient Text</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 5rem;
+  background: linear-gradient(90deg, #ff6f91, #845ec2, #00c9a7, #ffbe0b);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s ease infinite, pulse 3s infinite;
+  text-align: center;
+}
+
+h1:hover {
+  animation: gradientMove 1.5s ease infinite, pulse 2s infinite, scaleUp 0.5s ease forwards;
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle pulsating glow effect */
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 5px rgba(255,111,145,0.5), 0 0 10px rgba(132,94,194,0.3); }
+  50% { text-shadow: 0 0 8px rgba(255,111,145,0.6), 0 0 15px rgba(132,94,194,0.4); }
+}
+
+/* Scale on hover */
+@keyframes scaleUp {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1.05); }
+}
+</style>
+</head>
+<body>
+<h1>Animated Gradient</h1>
+</body>
+</html>
