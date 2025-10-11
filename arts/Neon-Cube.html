@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neon Cube</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --neon-a: #00eaff;
+    --neon-b: #7c4dff;
+    --neon-c: #ff2d95;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid;
+    place-items: center;
+    background: radial-gradient(120% 120% at 50% 20%, #101420, var(--bg));
+    color: #c9d1d9;
+    font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, sans-serif;
+  }
+
+  .wrap {
+    width: min(75vmin, 640px);
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    filter: drop-shadow(0 0 10px #00ffff20);
+  }
+
+  .stage {
+    width: 60%;
+    aspect-ratio: 1/1;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(-18deg) rotateY(35deg);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #ffffff15;
+    border-radius: 12px;
+    box-shadow: inset 0 0 20px #ffffff10;
+  }
+
+  /* Edges as glowing outlines via pseudo-elements */
+  .edge { position: absolute; inset: 0; }
+  .edge::before, .edge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    filter: blur(0.6px) contrast(1.2);
+    box-shadow:
+      0 0 14px var(--glow, #0ff4),
+      0 0 30px var(--glow, #0ff3),
+      0 0 60px var(--glow, #0ff2);
+  }
+
+  /* 6 faces transformed in 3D space */
+  .f1 { transform: translateZ(90px); --glow: var(--neon-a); }
+  .f2 { transform: rotateY(90deg) translateZ(90px); --glow: var(--neon-b); }
+  .f3 { transform: rotateY(180deg) translateZ(90px); --glow: var(--neon-c); }
+  .f4 { transform: rotateY(-90deg) translateZ(90px); --glow: var(--neon-a); }
+  .f5 { transform: rotateX(90deg) translateZ(90px); --glow: var(--neon-b); }
+  .f6 { transform: rotateX(-90deg) translateZ(90px); --glow: var(--neon-c); }
+
+  .f1 .edge::before { border-color: var(--neon-a); }
+  .f2 .edge::before { border-color: var(--neon-b); }
+  .f3 .edge::before { border-color: var(--neon-c); }
+  .f4 .edge::before { border-color: var(--neon-a); }
+  .f5 .edge::before { border-color: var(--neon-b); }
+  .f6 .edge::before { border-color: var(--neon-c); }
+
+  /* Rotator */
+  .rotator {
+    position: absolute;
+    inset: 0;
+    animation: spin 16s linear infinite;
+    transform-style: preserve-3d;
+  }
+
+  /* Floor glow */
+  .floor {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00eaff22, transparent 60%);
+    filter: blur(14px);
+    transform: translateZ(-140px) rotateX(90deg);
+    opacity: .8;
+  }
+
+  @keyframes spin {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to   { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  @keyframes float {
+    0%,100% { transform: perspective(900px) rotateX(-18deg) rotateY(35deg) translateY(0); }
+    50%     { transform: perspective(900px) rotateX(-18deg) rotateY(35deg) translateY(-8px); }
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 4%;
+    letter-spacing: .12em;
+    font-size: clamp(12px, 1.9vmin, 16px);
+    color: #a5b4fc;
+    text-shadow: 0 1px 2px #0008;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap" role="img" aria-label="Neon rotating cube illusion rendered with CSS">
+    <div class="stage">
+      <div class="floor"></div>
+      <div class="rotator">
+        <div class="face f1"><div class="edge"></div></div>
+        <div class="face f2"><div class="edge"></div></div>
+        <div class="face f3"><div class="edge"></div></div>
+        <div class="face f4"><div class="edge"></div></div>
+        <div class="face f5"><div class="edge"></div></div>
+        <div class="face f6"><div class="edge"></div></div>
+      </div>
+    </div>
+    <div class="caption">Neon Cube</div>
+  </div>
+</body>
+</html>
