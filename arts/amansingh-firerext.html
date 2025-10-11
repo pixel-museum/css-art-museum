@@ -9,13 +9,24 @@
   background-color: #111;
   color: #FFF;
 }
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  width: 90%;
+}
 h1 {
   background-color: rgba(256,256,256,.03);
   background-image: -webkit-linear-gradient(top, #111, #0c0c0c);
   background-image: -moz-linear-gradient(top, #111, #0c0c0c);
   background-image: -ms-linear-gradient(top, #111, #0c0c0c);
   background-image: -o-linear-gradient(top, #111, #0c0c0c);
-  font-size: 2em;
+  font-size: 10px;
   font-family: 'Amethysta', serif;
   text-align: center;
   line-height: 1.4em;
@@ -34,17 +45,17 @@ span {
 }
 
 .fire {
-  animation: animation 0.5s  infinite alternate;
-  -moz-animation: animation 1s ease-in-out infinite alternate;
-  -webkit-animation: animation 1s ease-in-out infinite alternate;
-  -o-animation: animation 1s ease-in-out infinite alternate;
+  animation: animation 0.2s  infinite alternate;
+  -moz-animation: animation 0.2s ease-in-out infinite alternate;
+  -webkit-animation: animation 0.2s ease-in-out infinite alternate;
+  -o-animation: animation 0.2s ease-in-out infinite alternate;
 }
 
 .burn {
-  animation: animation .65s ease-in-out infinite alternate;
-  -moz-animation: animation .65s ease-in-out infinite alternate;
-  -webkit-animation: animation .65s ease-in-out infinite alternate;
-  -o-animation: animation .65s ease-in-out infinite alternate;
+  animation: animation .5s ease-in-out infinite alternate;
+  -moz-animation: animation .5s ease-in-out infinite alternate;
+  -webkit-animation: animation .5s ease-in-out infinite alternate;
+  -o-animation: animation .5s ease-in-out infinite alternate;
 }
 
 @keyframes animation
@@ -121,10 +132,12 @@ span {
     </style>
 </head>
 <body>
-    <link href='https://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Caesar+Dressing' rel='stylesheet' type='text/css'>
-    
-    <h1>Animated <span class="fire">F</span><span class="burn">i</span><span class="burn">r</span><span
-            class="fire">e</span> Text-Shadow</h1>
+   <div class="container">
+     <link href='https://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Caesar+Dressing' rel='stylesheet' type='text/css'>
+     
+     <h1>Animated <span class="fire">F</span><span class="burn">i</span><span class="burn">r</span><span
+             class="fire">e</span>Text</h1>
+   </div>
 </body>
 </html>
