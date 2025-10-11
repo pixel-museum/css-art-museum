@@ -1,0 +1,24 @@
+.app {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #24124d, #0b051a);
+  overflow: hidden;
+}
+
+.flower-svg {
+  width: 360px;
+  height: 360px;
+  filter: drop-shadow(0 8px 25px rgba(0,0,0,0.6));
+}
+
+.petal {
+  transform-origin: 0 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.flower-center {
+  filter: drop-shadow(0 6px 15px rgba(0,0,0,0.5));
+}
