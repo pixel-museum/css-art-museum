@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunrise Over Mountains - Cinematic CSS Art</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at bottom, #1e0028, #000010 80%);
+    overflow: hidden;
+  }
+
+  .frame {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 12px solid #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(255,255,255,0.25), 0 0 100px rgba(255,200,150,0.1);
+  }
+
+  .sky {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #120f40, #301860, #fcb045);
+    animation: skyChange 10s infinite alternate ease-in-out;
+  }
+
+  @keyframes skyChange {
+    0% { background: linear-gradient(to top, #0b0228, #201060, #f79d00); }
+    50% { background: linear-gradient(to top, #ff512f, #f09819, #ffb347); }
+    100% { background: linear-gradient(to top, #120f40, #301860, #fcb045); }
+  }
+
+  .sun {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fff8b0 0%, #ffcf00 40%, #ff8a00 70%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 40px rgba(255,200,50,0.6), 0 0 80px rgba(255,200,50,0.3);
+    animation: rise 12s infinite alternate ease-in-out;
+  }
+
+  @keyframes rise {
+    0% { bottom: -100px; filter: brightness(0.6); }
+    50% { bottom: 220px; filter: brightness(1.2); }
+    100% { bottom: 300px; filter: brightness(0.9); }
+  }
+
+  .mountain {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(to top, #3b3b98, #182848);
+    clip-path: polygon(0% 100%, 25% 40%, 50% 100%, 75% 50%, 100% 100%);
+    animation: sway 15s ease-in-out infinite alternate;
+  }
+
+  .mountain.back {
+    opacity: 0.5;
+    height: 260px;
+    background: linear-gradient(to top, #1e2a38, #4b6cb7);
+    animation-delay: 3s;
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-10px); }
+  }
+
+  .ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(to top, #013220, #036d3d);
+  }
+
+  .reflection {
+    position: absolute;
+    bottom: -80px;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+    filter: blur(5px);
+    opacity: 0.5;
+    animation: shimmer 10s infinite ease-in-out;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.05); }
+  }
+
+  /* Glowing border pulse */
+  .frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(255,180,100,0.2);
+    animation: glow 8s infinite ease-in-out alternate;
+  }
+
+  @keyframes glow {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.8; }
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="mountain back"></div>
+    <div class="mountain front"></div>
+    <div class="ground"></div>
+    <div class="reflection"></div>
+  </div>
+</body>
+</html>

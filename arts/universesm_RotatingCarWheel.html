@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" class="css">
+</head>
+<style>
+    body {
+    background: linear-gradient(to bottom, rgb(134, 186, 223)2%, white 40%);
+    background-size: 100vw 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 90vh;
+
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 50%;
+}
+
+.outerwheel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    background: linear-gradient(to bottom, black 90%, rgb(174, 172, 172) 10%);
+    background-size: 2% 2%;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+
+
+}
+
+.inwheel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 70%;
+    height: 70%;
+    background-color: white;
+    border-radius: 100%;
+    outline: 15px solid grey;
+}
+
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+
+    }
+    50%{
+        transform:rotate(180deg);
+    }
+    100%{
+         transform: rotate(360deg);
+    }
+}
+
+
+@media(max-width:600px){
+    .outerwheel{
+        height:80%;
+        width:110%;
+        background: linear-gradient(to bottom, black 80%, rgb(174, 172, 172) 10%);
+         background-size: 3% 3%;
+    }
+    .inwheel{
+        outline:8px solid grey;
+    }
+}
+
+@media(min-width:601px){
+    .outerwheel{
+        height:90%;
+        width:120%;
+        background: linear-gradient(to bottom, black 80%, rgb(174, 172, 172) 10%);
+         background-size: 3% 3%;
+    }
+    .inwheel{
+        outline:12px solid grey;
+    }
+}
+@media(min-width:1080px){
+    .outerwheel{
+       width: 50%;
+        height: 80%;
+        background: linear-gradient(to bottom, black 80%, rgb(174, 172, 172) 10%);
+         background-size: 3% 3%;
+    }
+    .inwheel{
+        outline:15px solid grey;
+    }
+}
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="outerwheel">
+                <div class="inwheel">
+                    <svg viewBox="0 0 2000 2000">
+                        <circle class="circle" cx="1000" cy="1000" r="500" fill="gray" />
+                        <line id="spoke" x1="1000" y1="1000" x2="1000" y2="5" stroke="gray" stroke-width="200" />
+                        <use href="#spoke" transform="rotate(72 1000 1000)" />
+                        <use href="#spoke" transform="rotate(144 1000 1000)" />
+                        <use href="#spoke" transform="rotate(216 1000 1000)" />
+                        <use href="#spoke" transform="rotate(288 1000 1000)" />
+                        <circle class="circle" cx="1000" cy="1000" r="200" fill="black" />
+
+
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
