@@ -296,8 +296,21 @@ searchBar.addEventListener("input", () => {
       art.title.toLowerCase().includes(query) ||
       art.author.toLowerCase().includes(query)
   );
-  renderArts(filteredArts);
+  
+  // Check if no results found
+  if (filteredArts.length === 0 && query !== "") {
+    galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
+    // Hide pagination controls if they exist
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = 'none';
+  } else {
+    // Show pagination controls again
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = '';
+    renderArts(filteredArts);
+  }
 });
+
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
   const body = document.body;

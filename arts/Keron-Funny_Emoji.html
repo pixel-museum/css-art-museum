@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Funny Emoji</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chibi {
+      width: 200px;
+      height: 200px;
+      background: #ffb6c1;
+      border-radius: 50%;
+      position: relative;
+      animation: bounce 1s infinite alternate;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    .eyes {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .eye {
+      width: 35px;
+      height: 35px;
+      background: white;
+      border: 3px solid #000;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eye::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      animation: blink 3s infinite;
+    }
+
+    .mouth {
+      width: 40px;
+      height: 25px;
+      border: 3px solid #000;
+      border-top: none;
+      border-radius: 0 0 40px 40px;
+      position: absolute;
+      bottom: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+    }
+
+    .blush {
+      width: 20px;
+      height: 10px;
+      background: #ff69b4;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 65px;
+      animation: blushpulse 2s infinite;
+    }
+
+    .blush.left {
+      left: 30px;
+    }
+
+    .blush.right {
+      right: 30px;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-10px) scale(1.05); }
+    }
+
+    @keyframes blink {
+      0%, 90%, 100% { top: 10px; }
+      95% { top: 20px; }
+    }
+
+    @keyframes blushpulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="chibi">
+    <div class="eyes">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+    </div>
+    <div class="mouth"></div>
+    <div class="blush left"></div>
+    <div class="blush right"></div>
+  </div>
+</body>
+</html>

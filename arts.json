@@ -1,5 +1,15 @@
 [
   {
+   "file": "Keron-3D_Box.html",
+   "title": "3D_Box",
+   "author": "kronpatel"
+  },
+  {
+   "file": "Keron-Funny_Emoji.html",
+   "title": "Funny Emoji",
+   "author": "kronpatel"
+  },
+  {
     "file": "funny_cloud.html",
     "title": "Robot",
     "author": "jeturgavli"
@@ -28,6 +38,11 @@
     "file": "abstract_shapes.html",
     "title": "Abstract Shapes",
     "author": "Mayank Bansal"
+  },
+  {
+  "file": "sunrise.html",
+  "title": "Sunrise Over Mountains",
+  "author": "Apurva Jain"
   },
   {
     "file":"SK-tesseract.html",
@@ -405,6 +420,12 @@
     "author": "universe-sm"
   },
   {
+    "file": "universesm_RotatingCarWheel.html",
+    "title": "Rotating Car Wheel",
+    "author": "universe-sm"
+  }
+
+]
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
@@ -414,11 +435,32 @@
     "title": "Particle Text Effect",
     "author": "Debosmita"
   },
+
   {
     "file": "coder561858-Rollingballs.html",
     "title": "Rolling Balls",
     "author": "coder561858"
-  }
 
+  { 
+    "file": "Living_Origami.html",
+    "title": "Animated Living Origami",
+    "author": "Harsha"
+  },
+{
+    "file": "flying-bird.html",
+    "title": "Flying Bird",
+    "author": "Thanuja Kedila"
+  },
+{
+    "file": "atomic-structure.html",
+    "title": "Atomic Structure",
+    "author": "Nitish K"
+  }
+  {
+    "file":"Aurora-pulse.html",
+    "title":"Aurora Pulse",
+    "author":"Komal Sathvik"
+
+  }
 ]
 

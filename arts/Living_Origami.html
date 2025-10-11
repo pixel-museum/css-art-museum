@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Origami</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at center, #f0f8ff, #a0c4ff);
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  .origami {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: fold 6s ease-in-out infinite;
+  }
+
+  .fold {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff8c00, #ffcc00);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform-origin: center;
+    transform: rotateX(0deg) rotateY(0deg);
+    animation: fold-face 3s ease-in-out infinite alternate;
+  }
+
+  .fold:nth-child(2) {
+    background: linear-gradient(135deg, #00bfff, #1e90ff);
+    animation-delay: 1s;
+  }
+  .fold:nth-child(3) {
+    background: linear-gradient(135deg, #32cd32, #7cfc00);
+    animation-delay: 2s;
+  }
+  .fold:nth-child(4) {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    animation-delay: 3s;
+  }
+
+  @keyframes fold {
+    0%, 100% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+      transform: rotateX(45deg) rotateY(45deg);
+    }
+  }
+
+  @keyframes fold-face {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: rotateX(180deg) rotateY(180deg);
+      opacity: 0.5;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="origami">
+  <div class="fold"></div>
+  <div class="fold"></div>
+  <div class="fold"></div>
+  <div class="fold"></div>
+</div>
+</body>
+</html>
