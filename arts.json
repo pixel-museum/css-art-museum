@@ -423,9 +423,8 @@
     "file": "universesm_RotatingCarWheel.html",
     "title": "Rotating Car Wheel",
     "author": "universe-sm"
-  }
-
-]
+  },
+   {
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
@@ -441,6 +440,7 @@
     "title": "Rolling Balls",
     "author": "coder561858"
   }
+  ,
   { 
     "file": "Living_Origami.html",
     "title": "Animated Living Origami",
@@ -455,13 +455,14 @@
     "file": "atomic-structure.html",
     "title": "Atomic Structure",
     "author": "Nitish K"
-  },
+  }
   {
     "file":"Aurora-pulse.html",
     "title":"Aurora Pulse",
     "author":"Komal Sathvik"
 
   }
+  ,
   {
     "file":"AmanSingh-textswing animation.html",
     "title":"textswing animation",
