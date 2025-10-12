@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Dance</title>
+    <style>
+        :root {
+            --bg: #01000a;
+            --neon-a: #00eaff;
+            --neon-b: #7c4dff;
+            --neon-c: #ff2d95;
+            --gold: #FFD700;
+            --silver: #E0E0E0;
+        }
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg);
+        }
+
+        /* --- STABLE STARFIELD --- */
+        /* This version uses radial-gradients, which are much more reliable than long box-shadows */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(1px 1px at 10vw 15vh, white, transparent),
+                radial-gradient(1px 1px at 80vw 25vh, white, transparent),
+                radial-gradient(2px 2px at 50vw 45vh, white, transparent),
+                radial-gradient(2px 2px at 30vw 75vh, white, transparent),
+                radial-gradient(1px 1px at 90vw 85vh, white, transparent),
+                radial-gradient(2px 2px at 15vw 95vh, white, transparent);
+            animation: twinkle 12s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        /* --- BLOB CONTAINER --- */
+        .blob-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* --- BLOB STYLES --- */
+        .blob {
+            position: absolute;
+            border-radius: 100%;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 150px;
+            /* Simplified but powerful glow */
+            box-shadow:
+                inset 0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 20px var(--glow),
+                0 0 50px var(--glow);
+            animation-name: move;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        /* --- BLOB VARIATIONS --- */
+        .blob:nth-child(1) {
+            background: linear-gradient(135deg, var(--neon-a), var(--neon-b));
+            --glow: var(--neon-a);
+            animation-duration: 10s;
+        }
+        .blob:nth-child(2) {
+            background: linear-gradient(135deg, var(--neon-c), var(--neon-b));
+            --glow: var(--neon-c);
+            width: 200px;
+            height: 200px;
+            animation-duration: 7s;
+            animation-delay: -3s;
+        }
+        .blob:nth-child(3) {
+            background: linear-gradient(135deg, #FFD700, #DAA520);
+            --glow: var(--gold);
+            width: 120px;
+            height: 120px;
+            animation-duration: 12s;
+            animation-delay: -6s;
+        }
+        .blob:nth-child(4) {
+            background: linear-gradient(135deg, #E0E0E0, #C0C0C0);
+            --glow: var(--silver);
+            width: 180px;
+            height: 180px;
+            animation-duration: 9s;
+            animation-delay: -1s;
+        }
+
+        /* --- ANIMATION --- */
+        @keyframes move {
+            from {
+                transform: translate(-50%, -50%) translate(-10vw, -10vh) rotate(-90deg);
+                border-radius: 24% 76% 35% 65% / 30% 30% 70% 70%;
+            }
+            to {
+                transform: translate(-50%, -50%) translate(10vw, 15vh) rotate(90deg);
+                border-radius: 76% 24% 65% 35% / 70% 70% 30% 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="blob-container">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+</body>
+</html>
