@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowing Star - CSS Art Museum</title>
+  <style>
+    /* Glowing Star CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #1a1a3d 0%, #000000 100%);
+      overflow: hidden;
+    }
+    .scene {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+    .star {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #ffffff 20%, #ffd700 80%);
+      clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+        50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+      );
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: rotate-glow 6s linear infinite;
+      z-index: 2;
+    }
+    .star::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 10%, transparent 60%);
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite;
+      z-index: 1;
+    }
+    .background-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .bg-star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite;
+    }
+    .bg-star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
+    .bg-star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
+    .bg-star3 { width: 1px; height: 1px; top: 150px; left: 100px; animation-delay: 1.5s; }
+    .bg-star4 { width: 2px; height: 2px; top: 30px; left: 250px; animation-delay: 2s; }
+    @keyframes rotate-glow {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="background-stars">
+      <div class="bg-star bg-star1"></div>
+      <div class="bg-star bg-star2"></div>
+      <div class="bg-star bg-star3"></div>
+      <div class="bg-star bg-star4"></div>
+    </div>
+    <div class="star"></div>
+  </div>
+</body>
+</html>

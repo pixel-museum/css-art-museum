@@ -1,0 +1,26 @@
+name: Auto Label and Assign on Issues
+
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  label_and_assign:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Add Hacktoberfest label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            hacktoberfest-accepted
+
+      - name: Assign issue to creator
+        uses: actions-ecosystem/action-assign-issue@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: ${{ github.actor }}
