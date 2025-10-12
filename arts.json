@@ -455,7 +455,7 @@
     "file": "atomic-structure.html",
     "title": "Atomic Structure",
     "author": "Nitish K"
-  }
+  },
   {
     "file":"Aurora-pulse.html",
     "title":"Aurora Pulse",
@@ -476,6 +476,16 @@
   {
     "file":"amansingh-ghost&ghouls.html",
     "title":"ghost&ghouls text animation",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-textanimation.html",
+    "title":"text animation2",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-rainbowtext.html",
+    "title":"Rainbow text animation",
     "author":"Aman Singh"
   }
 ]
