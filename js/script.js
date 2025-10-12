@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
       artCard.dataset.file = art.file;
       artCard.dataset.title = art.title;
       artCard.dataset.author = art.author;
+      artCard.dataset.category = art.category; // Add this line
       const filePath = `arts/${art.file}`;
       const isLiked = LikedArtworks.isLiked(art.file);
 
@@ -455,6 +456,9 @@ searchBar.addEventListener("input", () => {
 
   renderRecentlyReviewed();
 
+  // Initial render of all arts based on the 'all' category
+  filterAndRenderArts('all');
+
   if (recentlyReviewedContainer) {
     recentlyReviewedContainer.addEventListener('click', handleRecentLikeClick);
   }
@@ -467,4 +471,30 @@ searchBar.addEventListener("input", () => {
       searchBar.select();
     }
   });
+});
+
+// --- Category Filter Logic ---
+const categoryRadios = document.querySelectorAll('input[name="category"]');
+categoryRadios.forEach(radio => {
+radio.addEventListener('change', (event) => {
+const selectedCategory = event.target.value;
+filterAndRenderArts(selectedCategory);
+});
+});
+
+function filterAndRenderArts(selectedCategory) {
+let filteredArts = [];
+if (selectedCategory === 'all') {
+filteredArts = allArts;
+} else {
+filteredArts = allArts.filter(art => art.category === selectedCategory);
+}
+currentFilteredArts = filteredArts; // Update currentFilteredArts for sorting
+if (pagination) {
+pagination.setItems(filteredArts); // Update pagination with filtered items
+pagination.goToPage(1); // Go to the first page of filtered results
+} else {
+renderArtCards(filteredArts);
+}
+}
 });
