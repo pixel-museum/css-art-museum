@@ -1,26 +1,72 @@
-name: Auto Label and Assign on Issues
-
+name: PR Issue Checker
+# Created by @smog-root, modified by ChatGPT.
 on:
-  issues:
-    types: [opened, reopened]
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
 
 jobs:
-  label_and_assign:
+  check_pr_details:
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      pull-requests: write
       contents: read
 
     steps:
-      - name: Add Hacktoberfest label
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Check PR Description and Title
+        id: check_pr_details
+        run: |
+          python - <<'EOF'
+import re
+import sys
+import os
+
+pr_description = os.getenv('GITHUB_EVENT_PULL_REQUEST_BODY', '')
+pr_title = os.getenv('GITHUB_EVENT_PULL_REQUEST_TITLE', '')
+
+# ✅ Check for empty PR description
+if not pr_description.strip():
+    print("❌ PR description is missing.")
+    sys.exit(1)
+
+# ✅ Check for 'Fixes #<issue-number>' or similar keywords
+if not re.search(r'(Fix(es|ed)?|Close(s|d)?|Resolve(s|d)?) #[0-9]+', pr_description, re.IGNORECASE):
+    print("❌ Description must contain something like: Fixes #123 or Closes #45")
+    sys.exit(1)
+
+# ✅ Check title for allowed prefixes
+if not re.match(r'^(Fix|Feat|Doc|Close|Resolve)', pr_title, re.IGNORECASE):
+    print("❌ Title should start with Fix, Feat, Doc, Close, or Resolve.")
+    sys.exit(1)
+
+print("✅ PR description and title are valid.")
+EOF
+        env:
+          GITHUB_EVENT_PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
+          GITHUB_EVENT_PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+
+      - name: Label PR (optional)
+        if: success()
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
             hacktoberfest-accepted
 
-      - name: Assign issue to creator
-        uses: actions-ecosystem/action-assign-issue@v1
+      - name: Auto-assign PR creator
+        if: success()
+        uses: kentaro-m/auto-assign-action@v2.2.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: ${{ github.actor }}
+          assignees: |
+            ${{ github.actor }}
+
+      - name: Output result
+        run: echo "✅ All checks passed successfully!"
