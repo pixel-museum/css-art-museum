@@ -1187,6 +1187,12 @@ li {
   color: var(--accent-color);
 }
 
+/* footer hover effects */
+.footer-section .underline:hover{
+    color: var(--gold-accent);
+    text-decoration: underline;
+}
+
 /* IMPORTANT: Re-apply the transform to the IMAGE on hover, so the icon also scales */
 .footer-social a:hover .footer-social-logo {
   transform: none;
