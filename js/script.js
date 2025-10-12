@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentFilteredArts = [];  //Initialize currentFilteredArts with all arts
   let pagination = null; // Pagination instance
   
+  
   const RecentlyReviewed = {
     get: () => {
       try {
@@ -21,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!art || !art.file) return;
       const list = RecentlyReviewed.get().filter((a) => a.file !== art.file);
       list.push({ file: art.file, title: art.title, author: art.author });
-      while (list.length > 3) list.shift();
+      while (list.length > 5) list.shift();
       localStorage.setItem("recentlyReviewed", JSON.stringify(list));
     },
   };
 
   async function renderRecentlyReviewed() {
-  const recentlyReviewedContainer = document.getElementById("recently-reviewed");
+  const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
   if (!recentlyReviewedContainer) return;
 
   let items = RecentlyReviewed.get();
