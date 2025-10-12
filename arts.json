@@ -39,11 +39,7 @@
     "title": "Abstract Shapes",
     "author": "Mayank Bansal"
   },
-  {
-  "file": "sunrise.html",
-  "title": "Sunrise Over Mountains",
-  "author": "Apurva Jain"
-  },
+  
   {
     "file":"SK-tesseract.html",
     "title":"Tesseract",
@@ -525,6 +521,42 @@
     "file": "greetings.html",
     "title": "Greetings",
     "author": "CristiCode"
+  {
+    "file": "jenil-northernlight.html",
+    "title": "Northern Light",
+    "author": "Jenil"
+  },
+  {
+    "file": "sameera731-lalaland.html",
+    "title": "LaLaLand Autumn Evening",
+    "author": "Sameera Jape"
+  }
+
+  ,
+  {
+    "file":"AmanSingh-textswing animation.html",
+    "title":"textswing animation",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-firerext.html",
+    "title":"fire text animation",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-ghost&ghouls.html",
+    "title":"ghost&ghouls text animation",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-textanimation.html",
+    "title":"text animation2",
+    "author":"Aman Singh"
+  },
+  {
+    "file":"amansingh-rainbowtext.html",
+    "title":"Rainbow text animation",
+    "author":"Aman Singh"
   }
     
 ]
