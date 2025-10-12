@@ -39,11 +39,7 @@
     "title": "Abstract Shapes",
     "author": "Mayank Bansal"
   },
-  {
-  "file": "sunrise.html",
-  "title": "Sunrise Over Mountains",
-  "author": "Apurva Jain"
-  },
+  
   {
     "file":"SK-tesseract.html",
     "title":"Tesseract",
@@ -520,6 +516,11 @@
     "file": "sameera731-nebula-dance.html",
     "title": "Nebula Dance",
     "author": "Sameera Jape"
+  },
+  {
+    "file": "jenil-northernlight.html",
+    "title": "Northern Light",
+    "author": "Jenil"
   }
     
 ]

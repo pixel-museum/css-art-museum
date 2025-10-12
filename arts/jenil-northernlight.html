@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Borealis - Northern Lights</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let stars = [];
+        let auroraWaves = [];
+        let trees = [];
+        let time = 0;
+        
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            
+            // Create stars
+            for (let i = 0; i < 150; i++) {
+                stars.push({
+                    x: random(width),
+                    y: random(height * 0.7),
+                    size: random(1, 3),
+                    twinkleSpeed: random(0.02, 0.05),
+                    brightness: random(150, 255)
+                });
+            }
+            
+            // Create aurora waves
+            for (let i = 0; i < 5; i++) {
+                auroraWaves.push(new AuroraWave(i));
+            }
+            
+            // Create tree silhouettes
+            generateTrees();
+        }
+        
+        function draw() {
+            time += 0.01;
+            
+            // Night sky gradient
+            drawSkyGradient();
+            
+            // Draw twinkling stars
+            drawStars();
+            
+            // Draw aurora borealis
+            drawAurora();
+            
+            // Draw landscape
+            drawLandscape();
+            
+            // Draw trees
+            drawTrees();
+            
+            // Add some gentle snow
+            drawSnowfall();
+        }
+        
+        function drawSkyGradient() {
+            for (let y = 0; y < height; y++) {
+                let inter = map(y, 0, height, 0, 1);
+                let c = lerpColor(color(5, 8, 20), color(15, 25, 45), inter);
+                stroke(c);
+                line(0, y, width, y);
+            }
+        }
+        
+        function drawStars() {
+            noStroke();
+            for (let star of stars) {
+                let brightness = star.brightness + sin(time * star.twinkleSpeed) * 50;
+                brightness = constrain(brightness, 100, 255);
+                
+                fill(255, 255, 240, brightness);
+                circle(star.x, star.y, star.size);
+                
+                // Add subtle glow for brighter stars
+                if (star.size > 2) {
+                    fill(255, 255, 240, brightness * 0.3);
+                    circle(star.x, star.y, star.size * 2);
+                }
+            }
+        }
+        
+        class AuroraWave {
+            constructor(index) {
+                this.points = [];
+                this.yOffset = height * 0.2 + index * 60;
+                this.color = this.getAuroraColor(index);
+                this.waveSpeed = 0.02 + index * 0.005;
+                this.amplitude = 40 + index * 10;
+                this.opacity = 120 - index * 15;
+                
+                // Create wave points
+                for (let x = -50; x <= width + 50; x += 10) {
+                    this.points.push({ x: x, baseY: this.yOffset });
+                }
+            }
+            
+            getAuroraColor(index) {
+                const colors = [
+                    color(64, 224, 208),  // Turquoise
+                    color(127, 255, 0),   // Chartreuse
+                    color(0, 255, 127),   // Spring green
+                    color(255, 20, 147),  // Deep pink
+                    color(138, 43, 226)   // Blue violet
+                ];
+                return colors[index % colors.length];
+            }
+            
+            update() {
+                for (let i = 0; i < this.points.length; i++) {
+                    let point = this.points[i];
+                    point.y = point.baseY + 
+                        sin(time * this.waveSpeed + i * 0.1) * this.amplitude +
+                        sin(time * this.waveSpeed * 1.5 + i * 0.05) * (this.amplitude * 0.5);
+                }
+            }
+            
+            display() {
+                // Draw aurora wave with gradient effect
+                for (let layer = 0; layer < 3; layer++) {
+                    noFill();
+                    let alpha = this.opacity * (1 - layer * 0.3);
+                    stroke(red(this.color), green(this.color), blue(this.color), alpha);
+                    strokeWeight(8 - layer * 2);
+                    
+                    beginShape();
+                    for (let point of this.points) {
+                        let yOffset = layer * 5;
+                        curveVertex(point.x, point.y + yOffset);
+                    }
+                    endShape();
+                }
+                
+                // Add shimmering effect
+                noStroke();
+                fill(red(this.color), green(this.color), blue(this.color), this.opacity * 0.1);
+                beginShape();
+                for (let point of this.points) {
+                    curveVertex(point.x, point.y);
+                }
+                for (let i = this.points.length - 1; i >= 0; i--) {
+                    let point = this.points[i];
+                    curveVertex(point.x, point.y + 80);
+                }
+                endShape(CLOSE);
+            }
+        }
+        
+        function drawAurora() {
+            // Update and display aurora waves
+            for (let wave of auroraWaves) {
+                wave.update();
+                wave.display();
+            }
+        }
+        
+        function generateTrees() {
+            trees = [];
+            for (let x = 0; x < width; x += random(80, 150)) {
+                let treeHeight = random(150, 300);
+                let treeWidth = treeHeight * random(0.3, 0.6);
+                trees.push({
+                    x: x + random(-30, 30),
+                    y: height,
+                    height: treeHeight,
+                    width: treeWidth,
+                    layers: Math.floor(random(4, 7))
+                });
+            }
+        }
+        
+        function drawLandscape() {
+            // Ground
+            noStroke();
+            fill(8, 15, 25);
+            rect(0, height * 0.85, width, height);
+            
+            // Distant mountains
+            fill(12, 20, 35);
+            for (let i = 0; i < 3; i++) {
+                let mountainHeight = height * 0.3 + i * 50;
+                beginShape();
+                vertex(0, height);
+                for (let x = 0; x <= width; x += 50) {
+                    let y = height - mountainHeight + sin(x * 0.01 + i) * 30;
+                    vertex(x, y);
+                }
+                vertex(width, height);
+                endShape(CLOSE);
+            }
+        }
+        
+        function drawTrees() {
+            noStroke();
+            fill(5, 10, 15);
+            
+            for (let tree of trees) {
+                // Tree trunk
+                rect(tree.x - 8, tree.y - tree.height * 0.2, 16, tree.height * 0.2);
+                
+                // Tree layers (pine tree shape)
+                for (let i = 0; i < tree.layers; i++) {
+                    let layerHeight = tree.height * 0.15;
+                    let layerWidth = tree.width * (1 - i * 0.15);
+                    let yPos = tree.y - tree.height * 0.2 - i * layerHeight * 0.7;
+                    
+                    triangle(
+                        tree.x, yPos - layerHeight,
+                        tree.x - layerWidth / 2, yPos,
+                        tree.x + layerWidth / 2, yPos
+                    );
+                }
+            }
+        }
+        
+        function drawSnowfall() {
+            noStroke();
+            fill(255, 255, 255, 150);
+            
+            for (let i = 0; i < 50; i++) {
+                let x = (time * 20 + i * 100) % (width + 100) - 50;
+                let y = (time * 30 + i * 50) % (height + 50) - 50;
+                let size = 2 + sin(time + i) * 1;
+                
+                circle(x, y, size);
+            }
+        }
+        
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            stars = [];
+            
+            // Regenerate stars for new canvas size
+            for (let i = 0; i < 150; i++) {
+                stars.push({
+                    x: random(width),
+                    y: random(height * 0.7),
+                    size: random(1, 3),
+                    twinkleSpeed: random(0.02, 0.05),
+                    brightness: random(150, 255)
+                });
+            }
+            
+            generateTrees();
+        }
+    </script>
+</body>
+</html>
