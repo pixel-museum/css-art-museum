@@ -1,526 +1,626 @@
 [
   {
-   "file": "Keron-3D_Box.html",
-   "title": "3D_Box",
-   "author": "kronpatel"
+    "file": "Keron-3D_Box.html",
+    "title": "3D_Box",
+    "author": "kronpatel",
+    "category": "other"
   },
   {
-   "file": "Keron-Funny_Emoji.html",
-   "title": "Funny Emoji",
-   "author": "kronpatel"
+    "file": "Keron-Funny_Emoji.html",
+    "title": "Funny Emoji",
+    "author": "kronpatel",
+    "category": "funny"
   },
   {
     "file": "funny_cloud.html",
     "title": "Robot",
-    "author": "jeturgavli"
+    "author": "jeturgavli",
+    "category": "funny"
   },
   {
     "file": "robot.html",
     "title": "Robot",
-    "author": "jeturgavli"
+    "author": "jeturgavli",
+    "category": "funny"
   },
   {
     "file": "Anuradha-neon-city.html",
     "title": "Neon City",
-    "author": "Anuradha"
+    "author": "Anuradha",
+    "category": "animated"
   },
   {
     "file": "Anuradha-aurora-night-sky.html",
     "title": "Aurora Night Sky",
-    "author": "Anuradha"
+    "author": "Anuradha",
+    "category": "minimal"
   },
   {
     "file": "noor-spaceart.html",
     "title": "Space-art",
-    "author": "Noor"
+    "author": "Noor",
+    "category": "other"
   },
   {
     "file": "abstract_shapes.html",
     "title": "Abstract Shapes",
-    "author": "Mayank Bansal"
+    "author": "Mayank Bansal",
+    "category": "abstract"
   },
   {
-  "file": "sunrise.html",
-  "title": "Sunrise Over Mountains",
-  "author": "Apurva Jain"
+    "file": "sunrise.html",
+    "title": "Sunrise Over Mountains",
+    "author": "Apurva Jain",
+    "category": "minimal"
   },
   {
-    "file":"SK-tesseract.html",
-    "title":"Tesseract",
-    "author":"Saikiran-Sugurthi"
+    "file": "SK-tesseract.html",
+    "title": "Tesseract",
+    "author": "Saikiran-Sugurthi",
+    "category": "animated"
   },
   {
     "file": "uday-rain-in-dark-night.html",
     "title": "Rain In Dark",
-    "author": "Uday"
+    "author": "Uday",
+    "category": "animated"
   },
   {
     "file": "Angela_oceanwaves.html",
     "title": "Ocean Waves",
-    "author": "Angela Bera"
+    "author": "Angela Bera",
+    "category": "minimal"
   },
   {
     "file": "chanakya-vintage-typewriter.html",
     "title": "Vintage Typewriter",
-    "author": "Chanakya"
+    "author": "Chanakya",
+    "category": "other"
   },
   {
     "file": "Waqar-arc.html",
     "title": "Arc Reactor",
-    "author": "Waqar"
+    "author": "Waqar",
+    "category": "other"
   },
   {
     "file": "hariksh-sunset.html",
     "title": "Sunset CSS Art",
-    "author": "Hariksh"
+    "author": "Hariksh",
+    "category": "minimal"
   },
   {
     "file": "dot-wave-loading.html",
     "title": "Dot loading",
-    "author": "Ritesh"
+    "author": "Ritesh",
+    "category": "animated"
   },
   {
     "file": "matrix-pulse-loading.html",
     "title": "Matrix-pulse-loading",
-    "author": "Ritesh"
+    "author": "Ritesh",
+    "category": "animated"
   },
   {
     "file": "ring-loading.html",
     "title": "Ring Loading",
-    "author": "Ritesh"
+    "author": "Ritesh",
+    "category": "animated"
   },
   {
     "file": "penguin.html",
     "title": "Penguin Art",
-    "author": " JamesFloyd-Pen"
+    "author": " JamesFloyd-Pen",
+    "category": "funny"
   },
   {
     "file": "sample.html",
     "title": "Sample CSS Art",
-    "author": "Shamli"
+    "author": "Shamli",
+    "category": "other"
   },
   {
     "file": "matrix.html",
     "title": "Matrix Rain Animation",
-    "author": "Eternity"
+    "author": "Eternity",
+    "category": "animated"
   },
   {
     "file": "geometry.html",
     "title": "Geometric Art",
-    "author": "Shamli"
+    "author": "Shamli",
+    "category": "abstract"
   },
   {
     "file": "Apurva_Christmas_art.html",
     "title": "Christmas Wonderland",
-    "author": "Apurva"
+    "author": "Apurva",
+    "category": "other"
   },
   {
     "file": "rotating_cube.html",
     "title": "Rotating Cube",
-    "author": "Hardik"
+    "author": "Hardik",
+    "category": "animated"
   },
   {
     "file": "Rohith_stars.html",
     "title": "Glowing Star",
-    "author": "Rohith"
+    "author": "Rohith",
+    "category": "animated"
   },
   {
     "file": "helicopter.html",
     "title": "Helicopter",
-    "author": "Dhamith"
+    "author": "Dhamith",
+    "category": "other"
   },
   {
     "file": "irfan-goldennight.html",
     "title": "Golden Night",
-    "author": "Irfan"
+    "author": "Irfan",
+    "category": "minimal"
   },
   {
     "file": "irfan-ocean.html",
     "title": "Ocean Scene",
-    "author": "Irfan"
+    "author": "Irfan",
+    "category": "minimal"
   },
   {
     "file": "Apurva_IndianFlag.html",
     "title": "Animated Indian Flag",
-    "author": "Apurva"
+    "author": "Apurva",
+    "category": "animated"
   },
   {
     "file": "waqar-cat.html",
     "title": "CSS Cat Art",
-    "author": "Waqar"
+    "author": "Waqar",
+    "category": "funny"
   },
   {
     "file": "mbm08-ironman.html",
     "title": "Ironman CSS Art",
-    "author": "MBM08"
+    "author": "MBM08",
+    "category": "other"
   },
   {
     "file": "yash-zoomout.html",
     "title": "Solar System",
-    "author": "Yash"
+    "author": "Yash",
+    "category": "animated"
   },
   {
     "file": "krishna-morphing-hologram.html",
     "title": "Morphing Hologram",
-    "author": "Krishna"
+    "author": "Krishna",
+    "category": "animated"
   },
   {
     "file": "prasanth_bounce.html",
     "title": "Bounce",
-    "author": "Prasanth"
+    "author": "Prasanth",
+    "category": "animated"
   },
   {
     "file": "rotatingeffect.html",
     "title": "Rotating Gallery Effect",
-    "author": "Meenal"
+    "author": "Meenal",
+    "category": "animated"
   },
   {
     "file": "angel-kinetic_spiraling_pinwheel.html",
     "title": "Kinetic Spiraling Pinwheel",
-    "author": "Angel"
+    "author": "Angel",
+    "category": "animated"
   },
   {
     "file": "angel-cloud_sun.html",
     "title": "Floating Clouds and Sun",
-    "author": "Angel"
+    "author": "Angel",
+    "category": "funny"
   },
   {
     "file": "angel-coffee_mug.html",
     "title": "Coffee Mug",
-    "author": "Angel"
+    "author": "Angel",
+    "category": "other"
   },
   {
     "file": "angel-ufo_alien.html",
     "title": "Hovering UFO",
-    "author": "Angel"
+    "author": "Angel",
+    "category": "animated"
   },
   {
     "file": "bouncing_ball.html",
     "title": "Bouncing Ball",
-    "author": "Kartikay"
+    "author": "Kartikay",
+    "category": "animated"
   },
   {
     "file": "floating_orb.html",
     "title": "Floating Orb",
-    "author": "Kartikay"
+    "author": "Kartikay",
+    "category": "animated"
   },
   {
     "file": "pulsating_ring.html",
     "title": "Pulsating Ring",
-    "author": "Kartikay"
+    "author": "Kartikay",
+    "category": "animated"
   },
   {
     "file": "waves.html",
     "title": "Waves",
-    "author": "Kartikay"
+    "author": "Kartikay",
+    "category": "minimal"
   },
   {
     "file": "neon-city.html",
     "title": "Neon City",
-    "author": "Yashasvi"
+    "author": "Yashasvi",
+    "category": "animated"
   },
   {
     "file": "manudwivedi-aurora.html",
     "title": "Aurora (Interactive)",
-    "author": "Manu Dwivedi"
+    "author": "Manu Dwivedi",
+    "category": "animated"
   },
   {
     "file": "Sneha-Raindrop Ripple.html",
     "title": "Raindrop Ripple",
-    "author": "Sneha"
+    "author": "Sneha",
+    "category": "animated"
   },
   {
     "file": "ujjwal-train.html",
     "title": "Train",
-    "author": "ujjwal"
+    "author": "ujjwal",
+    "category": "animated"
   },
   {
     "file": "ujjwal-hacker.html",
     "title": "Hacker",
-    "author": "ujjwal"
+    "author": "ujjwal",
+    "category": "animated"
   },
   {
     "file": "ujjwal-peacock.html",
     "title": "Peakcock",
-    "author": "ujjwal"
+    "author": "ujjwal",
+    "category": "other"
   },
   {
     "file": "night_sky.html",
     "title": "Night Sky",
-    "author": "Srinjoyee Dey"
+    "author": "Srinjoyee Dey",
+    "category": "minimal"
   },
   {
     "file": "pratik_face.html",
     "title": "face",
-    "author": "Pratik"
+    "author": "Pratik",
+    "category": "other"
   },
   {
     "file": "Angela_aurora.html",
     "title": "Aurora Lights",
-    "author": "Angela Bera"
+    "author": "Angela Bera",
+    "category": "animated"
   },
   {
     "file": "saturn.html",
     "title": "Saturn",
-    "author": "Thanuja Kedila"
+    "author": "Thanuja Kedila",
+    "category": "other"
   },
   {
     "file": "night_owl.html",
     "title": "Night Owl",
-    "author": "Thanuja Kedila"
+    "author": "Thanuja Kedila",
+    "category": "minimal"
   },
   {
     "file": "prath-rotating-earth.html",
     "title": "Rotating Earth",
-    "author": "Pratham"
+    "author": "Pratham",
+    "category": "animated"
   },
   {
     "file": "waqar-vinyl.html",
     "title": "Vinyl Record",
-    "author": "Waqar"
+    "author": "Waqar",
+    "category": "animated"
   },
   {
     "file": "morphin_art.html",
     "title": "Curiosity Portal ",
-    "author": "Sumit Vishwakarma"
+    "author": "Sumit Vishwakarma",
+    "category": "animated"
   },
   {
     "file": "celestial_engine.html",
     "title": "Celestial Engine",
-    "author": "Sumit Vishwakarma"
+    "author": "Sumit Vishwakarma",
+    "category": "animated"
   },
   {
     "file": "Soumyosish_animated_gradient_card.html",
     "title": "Animated Gradient Card",
-    "author": "Soumyosish"
+    "author": "Soumyosish",
+    "category": "animated"
   },
   {
     "file": "usa_flag.html",
     "title": "USA Flag",
-    "author": "Sutthinart Khunvadhana"
+    "author": "Sutthinart Khunvadhana",
+    "category": "animated"
   },
   {
     "file": "kartik_gradients.html",
     "title": "Shapes and Gradients",
-    "author": "Kartik Tripathi"
+    "author": "Kartik Tripathi",
+    "category": "abstract"
   },
   {
     "file": "aerospace-celestial_wanderers.html",
     "title": "Animated Celestial Wanderers",
-    "author": "Aerospace"
+    "author": "Aerospace",
+    "category": "animated"
   },
   {
     "file": "rj_nebula.html",
     "title": "Nebula",
-    "author": "RJ"
+    "author": "RJ",
+    "category": "animated"
   },
   {
     "file": "cat.html",
     "title": "Cat Art",
-    "author": "Rishita"
+    "author": "Rishita",
+    "category": "funny"
   },
   {
     "file": "gravity-affected-ball.html",
     "title": "Gravity Affected Ball",
-    "author": "Akshit"
+    "author": "Akshit",
+    "category": "animated"
   },
   {
     "file": "glowing_dusk.html",
     "title": "Glowing Dusk",
-    "author": "Injora"
+    "author": "Injora",
+    "category": "animated"
   },
   {
     "file": "jellyfish-grass.html",
     "title": "Jellyfish CSS Art",
-    "author": "Chanakya"
+    "author": "Chanakya",
+    "category": "animated"
   },
   {
     "file": "Jaswanth_Kumar-Glowing_Butterfly.html",
     "title": "Glowing Butterfly",
-    "author": "Jaswanth Kumar"
+    "author": "Jaswanth Kumar",
+    "category": "animated"
   },
   {
     "file": "rajat-cosmic-orb.html",
     "title": "Cosmic Orb",
-    "author": "Rajat"
+    "author": "Rajat",
+    "category": "animated"
   },
   {
     "file": "scenery.html",
     "title": "Scenery",
-    "author": "Soham"
+    "author": "Soham",
+    "category": "minimal"
   },
   {
     "file": "moon-landing.html",
     "title": "Moon Landing Art",
-    "author": "Nitish K"
+    "author": "Nitish K",
+    "category": "other"
   },
   {
     "file": "mathurojus-diwali-lights.html",
     "title": "Diwali Lights",
-    "author": "Mathurojus"
+    "author": "Mathurojus",
+    "category": "other"
   },
   {
     "file": "mathurojus-sunset-landscape.html",
     "title": "CSS Sunset Landscape",
-    "author": "Mathurojus"
+    "author": "Mathurojus",
+    "category": "minimal"
   },
   {
     "file": "grid-background.html",
     "title": "Animated Grid backgound ",
-    "author": "Shivin"
+    "author": "Shivin",
+    "category": "animated"
   },
   {
     "file": "diwali-card.html",
     "title": "Diwali Diya Grid ",
-    "author": "Shivin"
+    "author": "Shivin",
+    "category": "animated"
   },
   {
     "file": "night-sky-landscape.html",
     "title": "Night Sky Landscape ",
-    "author": "Thanuja Kedila"
+    "author": "Thanuja Kedila",
+    "category": "minimal"
   },
   {
     "file": "Prasanth-style-text.html",
     "title": "CSS text layer",
-    "author": "Prasanth"
+    "author": "Prasanth",
+    "category": "animated"
   },
   {
     "file": "parth-artwork.html",
     "title": "CSS Sunset landscape",
-    "author": "Parth"
+    "author": "Parth",
+    "category": "minimal"
   },
   {
     "file": "sandeep-solarsystem.html",
     "title": "Solar System",
-    "author": "sandeep"
+    "author": "sandeep",
+    "category": "animated"
   },
   {
     "file": "forest.html",
     "title": "Forest",
-    "author": "Siddhant"
+    "author": "Siddhant",
+    "category": "minimal"
   },
   {
     "file": "aditi-meteor-shower.html",
     "title": "Meteor-Shower",
-    "author": "Aditi"
+    "author": "Aditi",
+    "category": "animated"
   },
   {
     "file": "Snowy-night.html",
     "title": "Snowing Mountain Scene",
-    "author": "Vidhan Sachdeva"
+    "author": "Vidhan Sachdeva",
+    "category": "other"
   },
   {
     "file": "pink_ponk.html",
     "title": "Animated Pink Ponk Ball",
-    "author": "Soumyosish"
+    "author": "Soumyosish",
+    "category": "animated"
   },
   {
     "file": "Krasper707-matrix-background.html",
     "title": "Matrix Terminal Loader",
-    "author": "Krasper707"
+    "author": "Krasper707",
+    "category": "animated"
   },
   {
     "file": "lighthouse.html",
     "title": "Light House by the Shore",
-    "author": "Nitish K"
+    "author": "Nitish K",
+    "category": "other"
   },
   {
     "file": "universesm-door_animation.html",
     "title": "Animated Almirah door",
-    "author": "universe-sm"
+    "author": "universe-sm",
+    "category": "animated"
   },
   {
     "file": "universesm_RotatingCarWheel.html",
     "title": "Rotating Car Wheel",
-    "author": "universe-sm"
+    "author": "universe-sm",
+    "category": "animated"
   },
-   {
+  {
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
-    "author": "Harshit"
+    "author": "Harshit",
+    "category": "animated"
   },
   {
     "file": "Debosmita_Particle_text_effect.html",
     "title": "Particle Text Effect",
-    "author": "Debosmita"
+    "author": "Debosmita",
+    "category": "animated"
   },
-
   {
     "file": "coder561858-Rollingballs.html",
     "title": "Rolling Balls",
-    "author": "coder561858"
+    "author": "coder561858",
+    "category": "animated"
   },
-  { 
+  {
     "file": "Living_Origami.html",
     "title": "Animated Living Origami",
-    "author": "Harsha"
+    "author": "Harsha",
+    "category": "animated"
   },
-{
+  {
     "file": "flying-bird.html",
     "title": "Flying Bird",
-    "author": "Thanuja Kedila"
+    "author": "Thanuja Kedila",
+    "category": "animated"
   },
-{
+  {
     "file": "atomic-structure.html",
     "title": "Atomic Structure",
-    "author": "Nitish K"
+    "author": "Nitish K",
+    "category": "animated"
   },
   {
-    "file":"Aurora-pulse.html",
-    "title":"Aurora Pulse",
-    "author":"Komal Sathvik"
-
+    "file": "Aurora-pulse.html",
+    "title": "Aurora Pulse",
+    "author": "Komal Sathvik",
+    "category": "animated"
   },
   {
-    "file":"AmanSingh-textswing animation.html",
-    "title":"textswing animation",
-    "author":"Aman Singh"
+    "file": "AmanSingh-textswing animation.html",
+    "title": "textswing animation",
+    "author": "Aman Singh",
+    "category": "animated"
   },
   {
-    "file":"amansingh-firerext.html",
-    "title":"fire text animation",
-    "author":"Aman Singh"
+    "file": "amansingh-firerext.html",
+    "title": "fire text animation",
+    "author": "Aman Singh",
+    "category": "animated"
   },
   {
-    "file":"amansingh-ghost&ghouls.html",
-    "title":"ghost&ghouls text animation",
-    "author":"Aman Singh"
+    "file": "amansingh-ghost&ghouls.html",
+    "title": "ghost&ghouls text animation",
+    "author": "Aman Singh",
+    "category": "animated"
   },
   {
-    "file":"Particle-Text.html",
-    "title":"Particle Text",
-    "author":"Shamli Singh Yadav"
+    "file": "Particle-Text.html",
+    "title": "Particle Text",
+    "author": "Shamli Singh Yadav",
+    "category": "animated"
   },
   {
-    "file":"Minimal-Sunset.html",
-    "title":"Minimal Sunset",
-    "author":"Kartikay"
+    "file": "Minimal-Sunset.html",
+    "title": "Minimal Sunset",
+    "author": "Kartikay",
+    "category": "minimal"
   },
   {
-    "file":"Neon-Cube.html",
-    "title":"Neon Cube",
-    "author":"Kartikay"
+    "file": "Neon-Cube.html",
+    "title": "Neon Cube",
+    "author": "Kartikay",
+    "category": "animated"
   },
   {
-    "file":"Waves-Footer.html",
-    "title":"Waves Footer",
-    "author":"Kartikay"
+    "file": "Waves-Footer.html",
+    "title": "Waves Footer",
+    "author": "Kartikay",
+    "category": "minimal"
   },
   {
-    "file":"glowing-star.html",
-    "title":"Glowing Star",
-    "author":"Thanuja Kedila"
+    "file": "glowing-star.html",
+    "title": "Glowing Star",
+    "author": "Thanuja Kedila",
+    "category": "animated"
   },
   {
-    "file":"day-night-cycle.html",
-    "title":"Day Night Cycle",
-    "author":"Nitish K"
+    "file": "day-night-cycle.html",
+    "title": "Day Night Cycle",
+    "author": "Nitish K",
+    "category": "minimal"
   },
   {
     "file": "sameera731-nebula-dance.html",
     "title": "Nebula Dance",
-    "author": "Sameera Jape"
+    "author": "Sameera Jape",
+    "category": "animated"
   }
-    
 ]
-
