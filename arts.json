@@ -1,588 +1,930 @@
 [
-  {
+ {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
-   "author": "kronpatel"
+   "author": "kronpatel",
+   "tags": ["3d", "box", "animation", "css"],
+   "description": "A 3D animated cube created using CSS transforms and perspective effects.",
+   "date": "2024-07-18"
   },
   {
    "file": "Keron-Funny_Emoji.html",
    "title": "Funny Emoji",
-   "author": "kronpatel"
-  },
-  {
-    "file": "funny_cloud.html",
-    "title": "Robot",
-    "author": "jeturgavli"
-  },
-  {
-    "file": "robot.html",
-    "title": "Robot",
-    "author": "jeturgavli"
-  },
-  {
-    "file": "Anuradha-neon-city.html",
-    "title": "Neon City",
-    "author": "Anuradha"
-  },
-  {
-    "file": "Anuradha-aurora-night-sky.html",
-    "title": "Aurora Night Sky",
-    "author": "Anuradha"
-  },
-  {
-    "file": "noor-spaceart.html",
-    "title": "Space-art",
-    "author": "Noor"
-  },
-  {
-    "file": "abstract_shapes.html",
-    "title": "Abstract Shapes",
-    "author": "Mayank Bansal"
-  },
-  
-  {
-    "file":"SK-tesseract.html",
-    "title":"Tesseract",
-    "author":"Saikiran-Sugurthi"
-  },
-  {
-    "file": "uday-rain-in-dark-night.html",
-    "title": "Rain In Dark",
-    "author": "Uday"
-  },
-  {
-    "file": "Angela_oceanwaves.html",
-    "title": "Ocean Waves",
-    "author": "Angela Bera"
-  },
-  {
-    "file": "chanakya-vintage-typewriter.html",
-    "title": "Vintage Typewriter",
-    "author": "Chanakya"
-  },
-  {
-    "file": "Waqar-arc.html",
-    "title": "Arc Reactor",
-    "author": "Waqar"
-  },
-  {
-    "file": "hariksh-sunset.html",
-    "title": "Sunset CSS Art",
-    "author": "Hariksh"
-  },
-  {
-    "file": "dot-wave-loading.html",
-    "title": "Dot loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "matrix-pulse-loading.html",
-    "title": "Matrix-pulse-loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "ring-loading.html",
-    "title": "Ring Loading",
-    "author": "Ritesh"
-  },
-  {
-    "file": "penguin.html",
-    "title": "Penguin Art",
-    "author": " JamesFloyd-Pen"
-  },
-  {
-    "file": "sample.html",
-    "title": "Sample CSS Art",
-    "author": "Shamli"
-  },
-  {
-    "file": "matrix.html",
-    "title": "Matrix Rain Animation",
-    "author": "Eternity"
-  },
-  {
-    "file": "geometry.html",
-    "title": "Geometric Art",
-    "author": "Shamli"
-  },
-  {
-    "file": "Apurva_Christmas_art.html",
-    "title": "Christmas Wonderland",
-    "author": "Apurva"
-  },
-  {
-    "file": "rotating_cube.html",
-    "title": "Rotating Cube",
-    "author": "Hardik"
-  },
-  {
-    "file": "Rohith_stars.html",
-    "title": "Glowing Star",
-    "author": "Rohith"
-  },
-  {
-    "file": "helicopter.html",
-    "title": "Helicopter",
-    "author": "Dhamith"
-  },
-  {
-    "file": "irfan-goldennight.html",
-    "title": "Golden Night",
-    "author": "Irfan"
-  },
-  {
-    "file": "irfan-ocean.html",
-    "title": "Ocean Scene",
-    "author": "Irfan"
-  },
-  {
-    "file": "Apurva_IndianFlag.html",
-    "title": "Animated Indian Flag",
-    "author": "Apurva"
-  },
-  {
-    "file": "waqar-cat.html",
-    "title": "CSS Cat Art",
-    "author": "Waqar"
-  },
-  {
-    "file": "mbm08-ironman.html",
-    "title": "Ironman CSS Art",
-    "author": "MBM08"
-  },
-  {
-    "file": "yash-zoomout.html",
-    "title": "Solar System",
-    "author": "Yash"
-  },
-  {
-    "file": "krishna-morphing-hologram.html",
-    "title": "Morphing Hologram",
-    "author": "Krishna"
-  },
-  {
-    "file": "prasanth_bounce.html",
-    "title": "Bounce",
-    "author": "Prasanth"
-  },
-  {
-    "file": "rotatingeffect.html",
-    "title": "Rotating Gallery Effect",
-    "author": "Meenal"
-  },
-  {
-    "file": "angel-kinetic_spiraling_pinwheel.html",
-    "title": "Kinetic Spiraling Pinwheel",
-    "author": "Angel"
-  },
-  {
-    "file": "angel-cloud_sun.html",
-    "title": "Floating Clouds and Sun",
-    "author": "Angel"
-  },
-  {
-    "file": "angel-coffee_mug.html",
-    "title": "Coffee Mug",
-    "author": "Angel"
-  },
-  {
-    "file": "angel-ufo_alien.html",
-    "title": "Hovering UFO",
-    "author": "Angel"
-  },
-  {
-    "file": "bouncing_ball.html",
-    "title": "Bouncing Ball",
-    "author": "Kartikay"
-  },
-  {
-    "file": "floating_orb.html",
-    "title": "Floating Orb",
-    "author": "Kartikay"
-  },
-  {
-    "file": "pulsating_ring.html",
-    "title": "Pulsating Ring",
-    "author": "Kartikay"
-  },
-  {
-    "file": "waves.html",
-    "title": "Waves",
-    "author": "Kartikay"
-  },
-  {
-    "file": "neon-city.html",
-    "title": "Neon City",
-    "author": "Yashasvi"
-  },
-  {
-    "file": "manudwivedi-aurora.html",
-    "title": "Aurora (Interactive)",
-    "author": "Manu Dwivedi"
-  },
-  {
-    "file": "Sneha-Raindrop Ripple.html",
-    "title": "Raindrop Ripple",
-    "author": "Sneha"
-  },
-  {
-    "file": "ujjwal-train.html",
-    "title": "Train",
-    "author": "ujjwal"
-  },
-  {
-    "file": "ujjwal-hacker.html",
-    "title": "Hacker",
-    "author": "ujjwal"
-  },
-  {
-    "file": "ujjwal-peacock.html",
-    "title": "Peakcock",
-    "author": "ujjwal"
-  },
-  {
-    "file": "night_sky.html",
-    "title": "Night Sky",
-    "author": "Srinjoyee Dey"
-  },
-  {
-    "file": "pratik_face.html",
-    "title": "face",
-    "author": "Pratik"
-  },
-  {
-    "file": "Angela_aurora.html",
-    "title": "Aurora Lights",
-    "author": "Angela Bera"
-  },
-  {
-    "file": "saturn.html",
-    "title": "Saturn",
-    "author": "Thanuja Kedila"
-  },
-  {
-    "file": "night_owl.html",
-    "title": "Night Owl",
-    "author": "Thanuja Kedila"
-  },
-  {
-    "file": "prath-rotating-earth.html",
-    "title": "Rotating Earth",
-    "author": "Pratham"
-  },
-  {
-    "file": "waqar-vinyl.html",
-    "title": "Vinyl Record",
-    "author": "Waqar"
-  },
-  {
-    "file": "morphin_art.html",
-    "title": "Curiosity Portal ",
-    "author": "Sumit Vishwakarma"
-  },
-  {
-    "file": "celestial_engine.html",
-    "title": "Celestial Engine",
-    "author": "Sumit Vishwakarma"
-  },
-  {
-    "file": "Soumyosish_animated_gradient_card.html",
-    "title": "Animated Gradient Card",
-    "author": "Soumyosish"
-  },
-  {
-    "file": "usa_flag.html",
-    "title": "USA Flag",
-    "author": "Sutthinart Khunvadhana"
-  },
-  {
-    "file": "kartik_gradients.html",
-    "title": "Shapes and Gradients",
-    "author": "Kartik Tripathi"
-  },
-  {
-    "file": "aerospace-celestial_wanderers.html",
-    "title": "Animated Celestial Wanderers",
-    "author": "Aerospace"
-  },
-  {
-    "file": "rj_nebula.html",
-    "title": "Nebula",
-    "author": "RJ"
-  },
-  {
-    "file": "cat.html",
-    "title": "Cat Art",
-    "author": "Rishita"
-  },
-  {
-    "file": "gravity-affected-ball.html",
-    "title": "Gravity Affected Ball",
-    "author": "Akshit"
-  },
-  {
-    "file": "glowing_dusk.html",
-    "title": "Glowing Dusk",
-    "author": "Injora"
-  },
-  {
-    "file": "jellyfish-grass.html",
-    "title": "Jellyfish CSS Art",
-    "author": "Chanakya"
-  },
-  {
-    "file": "Jaswanth_Kumar-Glowing_Butterfly.html",
-    "title": "Glowing Butterfly",
-    "author": "Jaswanth Kumar"
-  },
-  {
-    "file": "rajat-cosmic-orb.html",
-    "title": "Cosmic Orb",
-    "author": "Rajat"
-  },
-  {
-    "file": "scenery.html",
-    "title": "Scenery",
-    "author": "Soham"
-  },
-  {
-    "file": "moon-landing.html",
-    "title": "Moon Landing Art",
-    "author": "Nitish K"
-  },
-  {
-    "file": "mathurojus-diwali-lights.html",
-    "title": "Diwali Lights",
-    "author": "Mathurojus"
-  },
-  {
-    "file": "mathurojus-sunset-landscape.html",
-    "title": "CSS Sunset Landscape",
-    "author": "Mathurojus"
-  },
-  {
-    "file": "grid-background.html",
-    "title": "Animated Grid backgound ",
-    "author": "Shivin"
-  },
-  {
-    "file": "diwali-card.html",
-    "title": "Diwali Diya Grid ",
-    "author": "Shivin"
-  },
-  {
-    "file": "night-sky-landscape.html",
-    "title": "Night Sky Landscape ",
-    "author": "Thanuja Kedila"
-  },
+   "author": "kronpatel",
+   "tags": ["emoji", "funny", "animated", "faces"],
+   "description": "A playful and animated emoji artwork that showcases various fun facial expressions using CSS.",
+   "date": "2024-08-10"
+  },
+  {
+   "file": "funny_cloud.html",
+   "title": "Robot",
+   "author": "jeturgavli",
+   "tags": ["robot", "animated", "funny", "css-art"],
+   "description": "A creative CSS artwork of a funny robot with smooth animations and expressive movements.",
+   "date": "2024-09-05"
+  },
+ {
+   "file": "robot.html",
+   "title": "Robot",
+   "author": "jeturgavli",
+   "tags": ["robot", "3d", "animation", "tech"],
+   "description": "A futuristic CSS robot animation designed with 3D-like effects and smooth motion transitions.",
+   "date": "2024-07-25"
+  },
+ {
+   "file": "Anuradha-neon-city.html",
+   "title": "Neon City",
+   "author": "Anuradha",
+   "tags": ["neon", "cityscape", "lights", "night", "animation"],
+   "description": "A mesmerizing city skyline glowing with neon lights and smooth CSS animations that capture the essence of nightlife.",
+   "date": "2024-06-15"
+  },
+ {
+   "file": "Anuradha-aurora-night-sky.html",
+   "title": "Aurora Night Sky",
+   "author": "Anuradha",
+   "tags": ["aurora", "night", "sky", "stars", "animation"],
+   "description": "A beautiful CSS animation that depicts the magical glow of aurora lights dancing across a calm night sky.",
+   "date": "2024-06-18"
+  },
+ {
+   "file": "noor-spaceart.html",
+   "title": "Space-art",
+   "author": "Noor",
+   "tags": ["space", "planets", "stars", "galaxy", "animation"],
+   "description": "A creative CSS artwork that explores the vastness of space through animated stars, planets, and galactic motion.",
+   "date": "2024-06-22"
+  },
+  {
+   "file": "abstract_shapes.html",
+   "title": "Abstract Shapes",
+   "author": "Mayank Bansal",
+   "tags": ["abstract", "shapes", "geometry", "design", "animation"],
+   "description": "A modern CSS artwork featuring dynamic abstract geometric shapes that blend color and motion for a captivating visual effect.",
+   "date": "2024-06-25"
+  },
+ {
+   "file": "SK-tesseract.html",
+   "title": "Tesseract",
+   "author": "Saikiran-Sugurthi",
+   "tags": ["3D", "cube", "rotation", "geometry", "illusion"],
+   "description": "A mesmerizing 3D rotating cube illusion created using CSS transformations, representing depth and dimensional motion.",
+   "date": "2024-07-10"
+  },
+  {
+   "file": "uday-rain-in-dark-night.html",
+   "title": "Rain In Dark",
+   "author": "Uday",
+   "tags": ["rain", "dark", "night", "weather", "animation"],
+   "description": "A soothing CSS animation that captures the calm and mystery of rainfall on a dark night, using subtle lighting and motion effects.",
+   "date": "2024-05-30"
+  },
+  {
+   "file": "Angela_oceanwaves.html",
+   "title": "Ocean Waves",
+   "author": "Angela Bera",
+   "tags": ["ocean", "waves", "nature", "animation", "calm"],
+   "description": "A relaxing CSS animation depicting the rhythmic motion of ocean waves, blending smooth transitions and soothing blue tones.",
+   "date": "2024-06-12"
+  },
+  {
+   "file": "chanakya-vintage-typewriter.html",
+   "title": "Vintage Typewriter",
+   "author": "Chanakya",
+   "tags": ["vintage", "typewriter", "animation", "retro", "mechanical"],
+   "description": "A nostalgic CSS artwork that recreates the charm of a vintage typewriter with animated typing effects and classic retro aesthetics.",
+   "date": "2024-07-05"
+  },
+  {
+   "file": "Waqar-arc.html",
+   "title": "Arc Reactor",
+   "author": "Waqar",
+   "tags": ["ironman", "arc", "reactor", "glow", "sci-fi"],
+   "description": "A futuristic CSS animation inspired by Iron Man’s Arc Reactor, featuring glowing energy rings and smooth rotational motion effects.",
+   "date": "2024-06-18"
+  },
+  {
+   "file": "hariksh-sunset.html",
+   "title": "Sunset CSS Art",
+   "author": "Hariksh",
+   "tags": ["sunset", "landscape", "nature", "gradient", "animation"],
+   "description": "A peaceful CSS illustration showcasing a glowing sunset with smooth gradients and minimalistic animation capturing the evening sky.",
+   "date": "2024-07-02"
+  },
   {
-    "file": "Prasanth-style-text.html",
-    "title": "CSS text layer",
-    "author": "Prasanth"
+   "file": "dot-wave-loading.html",
+   "title": "Dot Loading",
+   "author": "Ritesh",
+   "tags": ["loading", "animation", "dots", "wave", "minimal"],
+   "description": "A clean CSS animation that visualizes a wave-like dot loading effect, perfect for modern user interfaces and loaders.",
+   "date": "2024-06-20"
+  },
+ {
+   "file": "matrix-pulse-loading.html",
+   "title": "Matrix Pulse Loading",
+   "author": "Ritesh",
+   "tags": ["loading", "matrix", "pulse", "animation", "tech"],
+   "description": "A dynamic CSS loading animation inspired by the Matrix aesthetic, featuring pulsing lights and smooth rhythmic motion.",
+   "date": "2024-06-22"
+  },
+ {
+   "file": "ring-loading.html",
+   "title": "Ring Loading",
+   "author": "Ritesh",
+   "tags": ["loading", "ring", "spinner", "circle", "animation"],
+   "description": "A minimalist CSS ring loading spinner showcasing fluid rotation and symmetry, ideal for modern loading screens.",
+   "date": "2024-07-01"
+  },
+ {
+   "file": "penguin.html",
+   "title": "Penguin Art",
+   "author": "JamesFloyd-Pen",
+   "tags": ["penguin", "animal", "illustration", "cute", "CSS"],
+   "description": "A delightful CSS artwork of a penguin, crafted using simple shapes and smooth color blending to create an adorable design.",
+   "date": "2024-05-28"
+  },
+  {
+   "file": "sample.html",
+   "title": "Sample CSS Art",
+   "author": "Shamli",
+   "tags": ["sample", "CSS", "design", "animation", "creative"],
+   "description": "A simple yet elegant CSS artwork created to demonstrate creative design and animation fundamentals.",
+   "date": "2024-06-05"
+  },
+ {
+   "file": "matrix.html",
+   "title": "Matrix Rain Animation",
+   "author": "Eternity",
+   "tags": ["matrix", "rain", "code", "animation", "cyberpunk"],
+   "description": "A stunning CSS animation inspired by the Matrix digital rain, featuring falling green symbols that simulate a hacker-style aesthetic.",
+   "date": "2024-06-15"
+  },
+ {
+   "file": "geometry.html",
+   "title": "Geometric Art",
+   "author": "Shamli",
+   "tags": ["geometry", "abstract", "shapes", "design", "minimal"],
+   "description": "A creative geometric CSS artwork combining symmetry and abstract patterns to form an eye-catching visual composition.",
+   "date": "2024-07-03"
+  },
+  {
+  "file": "Apurva_Christmas_art.html",
+   "title": "Christmas Wonderland",
+   "author": "Apurva",
+   "tags": ["christmas", "winter", "snow", "holiday", "festive"],
+   "description": "A delightful CSS artwork capturing the magic of Christmas with snowy landscapes, lights, and a festive atmosphere.",
+   "date": "2024-12-20"
+  },
+ {
+   "file": "rotating_cube.html",
+   "title": "Rotating Cube",
+   "author": "Hardik",
+   "tags": ["3D", "cube", "rotation", "animation", "geometry"],
+   "description": "A clean 3D CSS animation featuring a smoothly rotating cube that demonstrates transformation and perspective effects.",
+   "date": "2024-06-28"
+  },
+ {
+   "file": "Rohith_stars.html",
+   "title": "Glowing Star",
+   "author": "Rohith",
+   "tags": ["star", "glow", "animation", "space", "light"],
+   "description": "A luminous CSS animation of a glowing star that shines with vibrant gradients and soft light effects.",
+   "date": "2024-05-25"
+  },
+ {
+   "file": "helicopter.html",
+   "title": "Helicopter",
+   "author": "Dhamith",
+   "tags": ["helicopter", "vehicle", "animation", "sky", "motion"],
+   "description": "A playful CSS animation illustrating a flying helicopter in motion, showcasing realistic rotor effects and movement.",
+   "date": "2024-06-10"
+  },
+ {
+   "file": "irfan-goldennight.html",
+   "title": "Golden Night",
+   "author": "Irfan",
+   "tags": ["night", "golden", "moon", "sky", "animation"],
+   "description": "An elegant CSS art piece depicting a golden-hued night sky with glowing celestial elements and smooth animations.",
+   "date": "2024-07-08"
+  },
+  {
+   "file": "irfan-ocean.html",
+   "title": "Ocean Scene",
+   "author": "Irfan",
+   "tags": ["ocean", "waves", "nature", "animation", "sea"],
+   "description": "A peaceful CSS animation depicting gentle ocean waves and a calm seascape, highlighting the beauty of nature through motion.",
+   "date": "2024-06-16"
+  },
+ {
+   "file": "Apurva_IndianFlag.html",
+   "title": "Animated Indian Flag",
+   "author": "Apurva",
+   "tags": ["flag", "India", "patriotic", "animation", "wind"],
+   "description": "A graceful CSS animation of the Indian flag waving in the wind, symbolizing pride and patriotism with elegant motion.",
+   "date": "2024-08-15"
+  },
+ {
+   "file": "waqar-cat.html",
+   "title": "CSS Cat Art",
+   "author": "Waqar",
+   "tags": ["cat", "animal", "cute", "illustration", "CSS"],
+   "description": "An adorable CSS artwork of a cat designed with simple shapes and playful colors to bring charm and creativity to life.",
+   "date": "2024-06-07"
+  },
+ {
+   "file": "mbm08-ironman.html",
+   "title": "Ironman CSS Art",
+   "author": "MBM08",
+   "tags": ["ironman", "superhero", "marvel", "animation", "tech"],
+   "description": "A bold CSS art inspired by Iron Man, showcasing glowing effects and armor details through advanced animation techniques.",
+   "date": "2024-07-12"
+  },
+ {
+   "file": "yash-zoomout.html",
+   "title": "Solar System",
+   "author": "Yash",
+   "tags": ["solar system", "space", "planets", "orbit", "animation"],
+   "description": "A fascinating CSS animation visualizing the solar system with rotating planets orbiting around the sun in smooth motion.",
+   "date": "2024-06-21"
+  },
+ {
+   "file": "krishna-morphing-hologram.html",
+   "title": "Morphing Hologram",
+   "author": "Krishna",
+   "tags": ["hologram", "morphing", "3D", "animation", "tech"],
+   "description": "A futuristic CSS animation that morphs holographic shapes with glowing transitions, representing digital transformation.",
+   "date": "2024-07-15"
+  },
+  {
+   "file": "prasanth_bounce.html",
+   "title": "Bounce",
+   "author": "Prasanth",
+   "tags": ["bounce", "animation", "motion", "circle", "CSS"],
+   "description": "A simple yet lively CSS animation showing a ball bouncing smoothly to demonstrate motion, timing, and easing effects.",
+   "date": "2024-06-09"
+  },
+ {
+   "file": "rotatingeffect.html",
+   "title": "Rotating Gallery Effect",
+   "author": "Meenal",
+   "tags": ["gallery", "rotation", "3D", "animation", "design"],
+   "description": "A creative CSS-based rotating gallery effect that transitions images in a 3D loop, ideal for modern interactive portfolios.",
+   "date": "2024-06-19"
+  },
+ {
+   "file": "angel-kinetic_spiraling_pinwheel.html",
+   "title": "Kinetic Spiraling Pinwheel",
+   "author": "Angel",
+   "tags": ["pinwheel", "spiral", "kinetic", "animation", "motion"],
+   "description": "An engaging CSS animation of a spiraling pinwheel that creates a mesmerizing kinetic motion effect through rotation and symmetry.",
+   "date": "2024-07-04"
+  },
+ {
+   "file": "angel-cloud_sun.html",
+   "title": "Floating Clouds and Sun",
+   "author": "Angel",
+   "tags": ["clouds", "sun", "sky", "weather", "animation"],
+   "description": "A soft and relaxing CSS animation featuring floating clouds and a shining sun that brings a bright day scene to life.",
+   "date": "2024-05-31"
+  },
+ {
+   "file": "angel-coffee_mug.html",
+   "title": "Coffee Mug",
+   "author": "Angel",
+   "tags": ["coffee", "mug", "illustration", "minimal", "CSS"],
+   "description": "A minimalistic CSS artwork of a coffee mug designed with clean lines and warm tones to create a cozy visual aesthetic.",
+   "date": "2024-06-14"
+  },
+  {
+   "file": "angel-ufo_alien.html",
+   "title": "Hovering UFO",
+   "author": "Angel",
+   "tags": ["UFO", "alien", "space", "hover", "animation"],
+   "description": "A fun CSS animation of a UFO hovering in space with glowing lights and smooth motion, creating a sci-fi visual effect.",
+   "date": "2024-06-17"
+  },
+ {
+   "file": "bouncing_ball.html",
+   "title": "Bouncing Ball",
+   "author": "Kartikay",
+   "tags": ["ball", "bounce", "animation", "motion", "physics"],
+   "description": "A lively CSS animation of a ball bouncing naturally to demonstrate smooth motion and timing effects.",
+   "date": "2024-05-29"
+  },
+ {
+   "file": "floating_orb.html",
+   "title": "Floating Orb",
+   "author": "Kartikay",
+   "tags": ["orb", "floating", "glow", "animation", "minimal"],
+   "description": "A calming CSS animation of a glowing orb floating gently, highlighting smooth transitions and light effects.",
+   "date": "2024-06-11"
+  },
+ {
+   "file": "pulsating_ring.html",
+   "title": "Pulsating Ring",
+   "author": "Kartikay",
+   "tags": ["ring", "pulse", "animation", "circle", "effect"],
+   "description": "A rhythmic CSS animation showing a pulsating ring that expands and contracts with glowing energy-like motion.",
+   "date": "2024-06-23"
+  },
+ {
+   "file": "waves.html",
+   "title": "Waves",
+   "author": "Kartikay",
+   "tags": ["waves", "ocean", "motion", "animation", "calm"],
+   "description": "A serene CSS animation depicting continuous wave motion, representing the gentle rhythm of the ocean.",
+   "date": "2024-07-06"
+  },
+ {
+   "file": "neon-city.html",
+   "title": "Neon City",
+   "author": "Yashasvi",
+   "tags": ["neon", "city", "lights", "night", "animation"],
+   "description": "A vibrant CSS artwork illustrating a glowing neon cityscape with illuminated buildings and night ambience.",
+   "date": "2024-07-09"
+  },
+ {
+   "file": "manudwivedi-aurora.html",
+   "title": "Aurora (Interactive)",
+   "author": "Manu Dwivedi",
+   "tags": ["aurora", "northern lights", "interactive", "sky", "animation"],
+   "description": "An interactive CSS animation that simulates aurora lights dancing across the sky with smooth gradients and transitions.",
+   "date": "2024-07-13"
+  },
+ {
+   "file": "Sneha-Raindrop Ripple.html",
+   "title": "Raindrop Ripple",
+   "author": "Sneha",
+   "tags": ["rain", "ripple", "water", "animation", "nature"],
+   "description": "A beautiful CSS animation illustrating raindrops creating ripples on a surface, producing a calming visual rhythm.",
+   "date": "2024-06-04"
+  },
+ {
+   "file": "ujjwal-train.html",
+   "title": "Train",
+   "author": "ujjwal",
+   "tags": ["train", "motion", "travel", "animation", "transport"],
+   "description": "A detailed CSS animation of a moving train showcasing motion effects and scene transitions for a realistic journey.",
+   "date": "2024-06-26"
+  },
+ {
+   "file": "ujjwal-hacker.html",
+   "title": "Hacker",
+   "author": "ujjwal",
+   "tags": ["hacker", "matrix", "code", "animation", "cyber"],
+   "description": "A cool CSS animation inspired by hacker aesthetics with green cascading code and a digital vibe.",
+   "date": "2024-06-15"
+  },
+ {
+   "file": "ujjwal-peacock.html",
+   "title": "Peacock",
+   "author": "ujjwal",
+   "tags": ["peacock", "bird", "nature", "feathers", "animation"],
+   "description": "A colorful CSS artwork depicting a peacock with detailed feather animations and elegant design.",
+   "date": "2024-06-22"
+  },
+ {
+   "file": "night_sky.html",
+   "title": "Night Sky",
+   "author": "Srinjoyee Dey",
+   "tags": ["night", "sky", "stars", "space", "animation"],
+   "description": "A serene CSS animation of a starry night sky with twinkling effects and soothing motion.",
+   "date": "2024-06-25"
+  },
+ {
+   "file": "pratik_face.html",
+   "title": "Face",
+   "author": "Pratik",
+   "tags": ["face", "portrait", "art", "animation", "expression"],
+   "description": "A creative CSS artwork forming a human face through geometric shapes and animated transitions.",
+   "date": "2024-06-30"
+  },
+ {
+   "file": "Angela_aurora.html",
+   "title": "Aurora Lights",
+   "author": "Angela Bera",
+   "tags": ["aurora", "lights", "sky", "northern lights", "animation"],
+   "description": "A mesmerizing CSS animation simulating the northern lights glowing across a calm sky.",
+   "date": "2024-07-04"
+  },
+ {
+   "file": "saturn.html",
+   "title": "Saturn",
+   "author": "Thanuja Kedila",
+   "tags": ["saturn", "planet", "space", "rings", "animation"],
+   "description": "A detailed CSS animation of the planet Saturn and its rings rotating elegantly in space.",
+   "date": "2024-07-09"
+  },
+ {
+   "file": "night_owl.html",
+   "title": "Night Owl",
+   "author": "Thanuja Kedila",
+   "tags": ["owl", "night", "bird", "animation", "nature"],
+   "description": "A charming CSS artwork of an owl sitting under the moonlight with blinking eyes and soft animations.",
+   "date": "2024-07-12"
+  },
+ {
+   "file": "prath-rotating-earth.html",
+   "title": "Rotating Earth",
+   "author": "Pratham",
+   "tags": ["earth", "rotation", "planet", "animation", "space"],
+   "description": "A smooth CSS animation depicting a rotating Earth with continents and atmospheric details.",
+   "date": "2024-07-18"
+  },
+ {
+   "file": "waqar-vinyl.html",
+   "title": "Vinyl Record",
+   "author": "Waqar",
+   "tags": ["vinyl", "music", "record", "rotation", "animation"],
+   "description": "A nostalgic CSS animation of a spinning vinyl record symbolizing the beauty of classic music.",
+   "date": "2024-07-22"
+  },
+ {
+   "file": "morphin_art.html",
+   "title": "Curiosity Portal",
+   "author": "Sumit Vishwakarma",
+   "tags": ["portal", "morphing", "animation", "abstract", "transition"],
+   "description": "An abstract CSS animation that morphs smoothly between shapes, symbolizing curiosity and transformation.",
+   "date": "2024-07-28"
+  },
+ {
+   "file": "celestial_engine.html",
+   "title": "Celestial Engine",
+   "author": "Sumit Vishwakarma",
+   "tags": ["celestial", "engine", "space", "rotation", "animation"],
+   "description": "A captivating CSS animation representing cosmic motion through gears and orbital elements.",
+   "date": "2025-08-03"
+  },
+ {
+   "file": "Soumyosish_animated_gradient_card.html",
+   "title": "Animated Gradient Card",
+   "author": "Soumyosish",
+   "tags": ["gradient", "card", "animation", "design", "ui"],
+   "description": "A stylish CSS card design with animated gradient transitions and a modern UI aesthetic.",
+   "date": "2025-08-07"
+  },
+  {
+   "file": "usa_flag.html",
+   "title": "USA Flag",
+   "author": "Sutthinart Khunvadhana",
+   "tags": ["flag", "USA", "patriotism", "animation", "design"],
+   "description": "A detailed CSS artwork of the USA flag, showcasing its stripes and stars with elegant animation effects.",
+   "date": "2025-01-10"
+  },
+ {
+   "file": "kartik_gradients.html",
+   "title": "Shapes and Gradients",
+   "author": "Kartik Tripathi",
+   "tags": ["gradients", "shapes", "design", "abstract", "animation"],
+   "description": "A creative CSS composition of abstract shapes blended with smooth gradient transitions and dynamic effects.",
+   "date": "2025-02-05"
+  },
+ {
+   "file": "aerospace-celestial_wanderers.html",
+   "title": "Animated Celestial Wanderers",
+   "author": "Aerospace",
+   "tags": ["space", "planets", "celestial", "animation", "orbit"],
+   "description": "A mesmerizing CSS animation depicting planets and stars gracefully orbiting in a vast cosmic environment.",
+   "date": "2025-03-12"
+  },
+ {
+   "file": "rj_nebula.html",
+   "title": "Nebula",
+   "author": "RJ",
+   "tags": ["nebula", "space", "galaxy", "colors", "animation"],
+   "description": "A vibrant CSS artwork inspired by space nebulae, featuring flowing color gradients and glowing effects.",
+   "date": "2025-04-03"
+  },
+ {
+   "file": "cat.html",
+   "title": "Cat Art",
+   "author": "Rishita",
+   "tags": ["cat", "animal", "cute", "animation", "art"],
+   "description": "A delightful CSS illustration of a cat, combining charming motion and minimalistic animation details.",
+   "date": "2025-05-09"
+  },
+  {
+   "file": "gravity-affected-ball.html",
+   "title": "Gravity Affected Ball",
+   "author": "Akshit",
+   "tags": ["physics", "ball", "gravity", "animation", "motion"],
+   "description": "A smooth CSS animation demonstrating a ball’s movement under gravity, simulating realistic motion physics.",
+   "date": "2025-06-02"
+  },
+ {
+   "file": "glowing_dusk.html",
+   "title": "Glowing Dusk",
+   "author": "Injora",
+   "tags": ["sunset", "glow", "landscape", "evening", "animation"],
+   "description": "A soothing CSS landscape art depicting the calm beauty of dusk with glowing tones and subtle animations.",
+   "date": "2025-06-15"
+  },
+ {
+   "file": "jellyfish-grass.html",
+   "title": "Jellyfish CSS Art",
+   "author": "Chanakya",
+   "tags": ["ocean", "jellyfish", "sea", "animation", "art"],
+   "description": "A stunning CSS creation featuring animated jellyfish gracefully floating through an underwater environment.",
+   "date": "2025-06-28"
+  },
+ {
+   "file": "Jaswanth_Kumar-Glowing_Butterfly.html",
+   "title": "Glowing Butterfly",
+   "author": "Jaswanth Kumar",
+   "tags": ["butterfly", "glow", "nature", "wings", "animation"],
+   "description": "A luminous CSS butterfly design with delicate wing movements and glowing color transitions for a magical effect.",
+   "date": "2025-07-10"
+  },
+ {
+   "file": "rajat-cosmic-orb.html",
+   "title": "Cosmic Orb",
+   "author": "Rajat",
+   "tags": ["space", "orb", "cosmic", "animation", "light"],
+   "description": "A mesmerizing cosmic-themed CSS artwork showing a glowing orb pulsating in a galactic backdrop.",
+   "date": "2025-07-21"
+  },
+ {
+   "file": "scenery.html",
+   "title": "Scenery",
+   "author": "Soham",
+   "tags": ["landscape", "nature", "art", "animation", "scenery"],
+   "description": "A beautiful CSS landscape artwork capturing the calmness of nature with animated skies and soft gradients.",
+   "date": "2025-08-03"
+  },
+ {
+   "file": "moon-landing.html",
+   "title": "Moon Landing Art",
+   "author": "Nitish K",
+   "tags": ["moon", "space", "astronaut", "animation", "night"],
+   "description": "A creative CSS artwork recreating the iconic moon landing scene with subtle motion and lunar textures.",
+   "date": "2025-08-14"
+  },
+ {
+   "file": "mathurojus-diwali-lights.html",
+   "title": "Diwali Lights",
+   "author": "Mathurojus",
+   "tags": ["festival", "lights", "diwali", "celebration", "animation"],
+   "description": "A vibrant CSS animation illustrating the spirit of Diwali with glowing lamps and festive lighting effects.",
+   "date": "2025-08-24"
+  },
+ {
+   "file": "mathurojus-sunset-landscape.html",
+   "title": "CSS Sunset Landscape",
+   "author": "Mathurojus",
+   "tags": ["sunset", "landscape", "evening", "animation", "sky"],
+   "description": "A visually soothing CSS depiction of a sunset over a landscape with smooth color transitions and glowing skies.",
+   "date": "2025-09-01"
+  },
+ {
+   "file": "grid-background.html",
+   "title": "Animated Grid Background",
+   "author": "Shivin",
+   "tags": ["grid", "background", "animation", "design", "pattern"],
+   "description": "A dynamic animated CSS grid background with geometric patterns and smooth transitions for modern design use.",
+   "date": "2025-09-12"
+  },
+ {
+   "file": "diwali-card.html",
+   "title": "Diwali Diya Grid",
+   "author": "Shivin",
+   "tags": ["diwali", "festival", "diyas", "animation", "lights"],
+   "description": "A festive CSS grid design inspired by Diwali, featuring glowing diyas arranged in an elegant animated pattern.",
+   "date": "2025-09-25"
+  },
+ {
+   "file": "night-sky-landscape.html",
+   "title": "Night Sky Landscape",
+   "author": "Thanuja Kedila",
+   "tags": ["night", "sky", "stars", "landscape", "animation"],
+   "description": "A serene CSS landscape showing a starry night sky with twinkling stars and glowing moonlight effects.",
+   "date": "2025-10-01"
+  },
+ {
+   "file": "Prasanth-style-text.html",
+   "title": "CSS Text Layer",
+   "author": "Prasanth",
+   "tags": ["text", "typography", "design", "layer", "animation"],
+   "description": "A stylish CSS typography effect that layers animated text for a bold and modern presentation.",
+   "date": "2025-10-10"
+  },
+ {
+   "file": "parth-artwork.html",
+   "title": "CSS Sunset Landscape",
+   "author": "Parth",
+   "tags": ["sunset", "landscape", "nature", "animation", "sky"],
+   "description": "A calm CSS landscape scene featuring a glowing sunset and soft gradients representing the beauty of dusk.",
+   "date": "2025-01-04"
+  },
+ {
+   "file": "sandeep-solarsystem.html",
+   "title": "Solar System",
+   "author": "Sandeep",
+   "tags": ["space", "planets", "solar", "animation", "orbit"],
+   "description": "A CSS animation that beautifully visualizes the solar system with orbiting planets around the sun.",
+   "date": "2025-01-10"
+  },
+ {
+   "file": "forest.html",
+   "title": "Forest",
+   "author": "Siddhant",
+   "tags": ["forest", "nature", "trees", "animation", "landscape"],
+   "description": "A serene CSS artwork illustrating a lush green forest with animated elements and soothing tones.",
+   "date": "2025-01-18"
+  },
+ {
+   "file": "aditi-meteor-shower.html",
+   "title": "Meteor Shower",
+   "author": "Aditi",
+   "tags": ["meteor", "night", "sky", "animation", "space"],
+   "description": "A dynamic CSS animation capturing a stunning meteor shower lighting up the night sky.",
+   "date": "2025-02-01"
+  },
+ {
+   "file": "Snowy-night.html",
+   "title": "Snowing Mountain Scene",
+   "author": "Vidhan Sachdeva",
+   "tags": ["snow", "mountain", "winter", "animation", "night"],
+   "description": "A beautiful winter-themed CSS animation showing snowfall over a calm mountain landscape.",
+   "date": "2025-02-15"
+  },
+ {
+   "file": "pink_ponk.html",
+   "title": "Animated Pink Ponk Ball",
+   "author": "Soumyosish",
+   "tags": ["animation", "ball", "bounce", "fun", "minimal"],
+   "description": "A playful CSS animation featuring a bouncing pink ball in a lively and minimal setup.",
+   "date": "2025-03-01"
+  },
+ {
+   "file": "Krasper707-matrix-background.html",
+   "title": "Matrix Terminal Loader",
+   "author": "Krasper707",
+   "tags": ["matrix", "loader", "terminal", "cyberpunk", "animation"],
+   "description": "A CSS loader inspired by the Matrix terminal, featuring cascading green code in a futuristic style.",
+   "date": "2025-03-14"
+  },
+ {
+   "file": "lighthouse.html",
+   "title": "Light House by the Shore",
+   "author": "Nitish K",
+   "tags": ["lighthouse", "sea", "animation", "night", "coast"],
+   "description": "A scenic CSS artwork showing a glowing lighthouse guiding the waves along the seashore at night.",
+   "date": "2025-03-27"
+  },
+ {
+   "file": "universesm-door_animation.html",
+   "title": "Animated Almirah Door",
+   "author": "universe-sm",
+   "tags": ["door", "animation", "open", "interactive", "object"],
+   "description": "A CSS animation of an almirah door smoothly opening and closing, showcasing realistic hinge motion.",
+   "date": "2025-04-05"
+  },
+ { 
+   "file": "universesm_RotatingCarWheel.html",
+   "title": "Rotating Car Wheel",
+   "author": "universe-sm",
+   "tags": ["wheel", "rotation", "car", "animation", "motion"],
+   "description": "A neat CSS animation of a rotating car wheel demonstrating circular motion principles.",
+   "date": "2025-04-15"
+  },
+ {
+   "file": "circular-image-gallery.html",
+   "title": "Animated Circular Image Gallery",
+   "author": "Harshit",
+   "tags": ["gallery", "circle", "rotation", "images", "animation"],
+   "description": "A creative CSS-based circular image gallery with rotating motion and smooth transitions.",
+   "date": "2025-04-28"
+  },
+ {
+   "file": "Debosmita_Particle_text_effect.html",
+   "title": "Particle Text Effect",
+   "author": "Debosmita",
+   "tags": ["text", "particles", "animation", "effect", "design"],
+   "description": "An impressive CSS animation that transforms text into floating particle effects.",
+   "date": "2025-05-02"
+  },
+ {
+   "file": "coder561858-Rollingballs.html",
+   "title": "Rolling Balls",
+   "author": "coder561858",
+   "tags": ["animation", "balls", "motion", "rolling", "physics"],
+   "description": "A CSS animation displaying smooth ball rolling motion across a flat surface.",
+   "date": "2025-05-11"
+  },
+ {
+   "file": "Living_Origami.html",
+   "title": "Animated Living Origami",
+   "author": "Harsha",
+   "tags": ["origami", "animation", "folding", "art", "motion"],
+   "description": "A unique CSS animation imitating paper folding art, bringing origami to life.",
+   "date": "2025-05-22"
+  },
+ {
+   "file": "flying-bird.html",
+   "title": "Flying Bird",
+   "author": "Thanuja Kedila",
+   "tags": ["bird", "flight", "sky", "animation", "nature"],
+   "description": "A graceful CSS animation of a bird in flight, showcasing smooth wing motion and natural rhythm.",
+   "date": "2025-06-05"
+  },
+ {
+   "file": "atomic-structure.html",
+   "title": "Atomic Structure",
+   "author": "Nitish K",
+   "tags": ["atom", "science", "structure", "animation", "rotation"],
+   "description": "A scientific CSS animation depicting an atomic structure with rotating electrons and a nucleus.",
+   "date": "2025-06-15"
+  },
+ {
+   "file": "Aurora-pulse.html",
+   "title": "Aurora Pulse",
+   "author": "Komal Sathvik",
+   "tags": ["aurora", "pulse", "lights", "animation", "sky"],
+   "description": "A mesmerizing CSS artwork showing pulsating aurora lights across the night sky.",
+   "date": "2025-06-28"
+  },
+ {
+   "file": "AmanSingh-textswing animation.html",
+   "title": "Text Swing Animation",
+   "author": "Aman Singh",
+   "tags": ["text", "swing", "animation", "motion", "typography"],
+   "description": "A fun and dynamic CSS text animation where letters swing smoothly for a lively visual effect.",
+   "date": "2025-07-05"
+  },
+ {
+   "file": "amansingh-firerext.html",
+   "title": "Fire Text Animation",
+   "author": "Aman Singh",
+   "tags": ["fire", "text", "animation", "glow", "typography"],
+   "description": "A fiery CSS text animation that mimics the movement and glow of real flames.",
+   "date": "2025-07-13"
+  },
+ {
+   "file": "amansingh-ghost&ghouls.html",
+   "title": "Ghost & Ghouls Text Animation",
+   "author": "Aman Singh",
+   "tags": ["ghost", "spooky", "text", "animation", "halloween"],
+   "description": "A spooky-themed CSS text animation featuring ghostly and glowing text transitions.",
+   "date": "2025-07-20"
+  },
+ {
+   "file": "Particle-Text.html",
+   "title": "Particle Text",
+   "author": "Shamli Singh Yadav",
+   "tags": ["text", "particles", "effect", "animation", "creative"],
+   "description": "A mesmerizing CSS animation that converts static text into an interactive particle formation.",
+   "date": "2025-07-30"
+  },
+ {
+   "file": "Minimal-Sunset.html",
+   "title": "Minimal Sunset",
+   "author": "Kartikay",
+   "tags": ["sunset", "minimal", "nature", "animation", "sky"],
+   "description": "A minimalist CSS sunset design using clean lines and warm gradients for a modern aesthetic.",
+   "date": "2025-08-07"
+  },
+ {
+   "file": "Neon-Cube.html",
+   "title": "Neon Cube",
+   "author": "Kartikay",
+   "tags": ["neon", "cube", "3D", "animation", "glow"],
+   "description": "A 3D CSS animation of a glowing neon cube rotating in a futuristic visual style.",
+   "date": "2025-08-15"
+  },
+ {
+   "file": "Waves-Footer.html",
+   "title": "Waves Footer",
+   "author": "Kartikay",
+   "tags": ["waves", "footer", "animation", "water", "design"],
+   "description": "A smooth CSS animation for website footers featuring gently moving ocean waves.",
+   "date": "2025-08-22"
+  },
+ {
+   "file": "glowing-star.html",
+   "title": "Glowing Star",
+   "author": "Thanuja Kedila",
+   "tags": ["star", "glow", "animation", "night", "light"],
+   "description": "A glowing star animation built with CSS, radiating soft light and cosmic beauty.",
+   "date": "2025-09-01"
+  },
+ {
+   "file": "day-night-cycle.html",
+   "title": "Day Night Cycle",
+   "author": "Nitish K",
+   "tags": ["day", "night", "cycle", "sky", "animation"],
+   "description": "A CSS animation showing a complete day-to-night transition with smooth lighting effects.",
+   "date": "2025-09-10"
+  },
+ {
+   "file": "sameera731-nebula-dance.html",
+   "title": "Nebula Dance",
+   "author": "Sameera Jape",
+   "tags": ["nebula", "space", "animation", "galaxy", "colorful"],
+   "description": "A visually stunning CSS animation inspired by colorful dancing nebulas in outer space.",
+   "date": "2025-09-20"
   },
   {
-    "file": "parth-artwork.html",
-    "title": "CSS Sunset landscape",
-    "author": "Parth"
-  },
-  {
-    "file": "sandeep-solarsystem.html",
-    "title": "Solar System",
-    "author": "sandeep"
-  },
-  {
-    "file": "forest.html",
-    "title": "Forest",
-    "author": "Siddhant"
-  },
-  {
-    "file": "aditi-meteor-shower.html",
-    "title": "Meteor-Shower",
-    "author": "Aditi"
-  },
-  {
-    "file": "Snowy-night.html",
-    "title": "Snowing Mountain Scene",
-    "author": "Vidhan Sachdeva"
-  },
-  {
-    "file": "pink_ponk.html",
-    "title": "Animated Pink Ponk Ball",
-    "author": "Soumyosish"
-  },
-  {
-    "file": "Krasper707-matrix-background.html",
-    "title": "Matrix Terminal Loader",
-    "author": "Krasper707"
-  },
-  {
-    "file": "lighthouse.html",
-    "title": "Light House by the Shore",
-    "author": "Nitish K"
-  },
-  {
-    "file": "universesm-door_animation.html",
-    "title": "Animated Almirah door",
-    "author": "universe-sm"
-  },
-  {
-    "file": "universesm_RotatingCarWheel.html",
-    "title": "Rotating Car Wheel",
-    "author": "universe-sm"
-  },
-   {
-    "file": "circular-image-gallery.html",
-    "title": "Animated circular-image-gallery",
-    "author": "Harshit"
-  },
-  {
-    "file": "Debosmita_Particle_text_effect.html",
-    "title": "Particle Text Effect",
-    "author": "Debosmita"
-  },
-
-  {
-    "file": "coder561858-Rollingballs.html",
-    "title": "Rolling Balls",
-    "author": "coder561858"
-  },
-  { 
-    "file": "Living_Origami.html",
-    "title": "Animated Living Origami",
-    "author": "Harsha"
-  },
-{
-    "file": "flying-bird.html",
-    "title": "Flying Bird",
-    "author": "Thanuja Kedila"
-  },
-{
-    "file": "atomic-structure.html",
-    "title": "Atomic Structure",
-    "author": "Nitish K"
-  },
-  {
-    "file":"Aurora-pulse.html",
-    "title":"Aurora Pulse",
-    "author":"Komal Sathvik"
-
-  },
-  {
-    "file":"AmanSingh-textswing animation.html",
-    "title":"textswing animation",
-    "author":"Aman Singh"
-  },
-  {
-    "file":"amansingh-firerext.html",
-    "title":"fire text animation",
-    "author":"Aman Singh"
-  },
-  {
-    "file":"amansingh-ghost&ghouls.html",
-    "title":"ghost&ghouls text animation",
-    "author":"Aman Singh"
-  },
-  {
-    "file":"Particle-Text.html",
-    "title":"Particle Text",
-    "author":"Shamli Singh Yadav"
-  },
-  {
-    "file":"Minimal-Sunset.html",
-    "title":"Minimal Sunset",
-    "author":"Kartikay"
-  },
-  {
-    "file":"Neon-Cube.html",
-    "title":"Neon Cube",
-    "author":"Kartikay"
-  },
-  {
-    "file":"Waves-Footer.html",
-    "title":"Waves Footer",
-    "author":"Kartikay"
-  },
-  {
-    "file":"glowing-star.html",
-    "title":"Glowing Star",
-    "author":"Thanuja Kedila"
-  },
-  {
-    "file":"day-night-cycle.html",
-    "title":"Day Night Cycle",
-    "author":"Nitish K"
-  },
-  {
-    "file": "sameera731-nebula-dance.html",
-    "title": "Nebula Dance",
-    "author": "Sameera Jape"
-  },
-   {
     "file": "greetings.html",
     "title": "Greetings",
-    "author": "CristiCode"
+    "author": "CristiCode",
+    "tags": ["animation", "card", "css-art"],
+    "description": "A warm animated greeting card made with CSS and HTML.",
+    "date": "2025-01-15"
+  },
   {
     "file": "jenil-northernlight.html",
     "title": "Northern Light",
-    "author": "Jenil"
+    "author": "Jenil",
+    "tags": ["nature", "lights", "gradient", "css-animation"],
+    "description": "Beautiful recreation of the northern lights using gradients and keyframes.",
+    "date": "2025-02-02"
   },
   {
     "file": "sameera731-lalaland.html",
     "title": "LaLaLand Autumn Evening",
-    "author": "Sameera Jape"
-  }
-
-  ,
-  {
-    "file":"AmanSingh-textswing animation.html",
-    "title":"textswing animation",
-    "author":"Aman Singh"
+    "author": "Sameera Jape",
+    "tags": ["autumn", "landscape", "css-art"],
+    "description": "A cozy autumn evening scene inspired by LaLaLand, created using pure CSS.",
+    "date": "2025-02-20"
   },
   {
-    "file":"amansingh-firerext.html",
-    "title":"fire text animation",
-    "author":"Aman Singh"
+    "file": "AmanSingh-textswing animation.html",
+    "title": "textswing animation",
+    "author": "Aman Singh",
+    "tags": ["text", "animation", "swing", "typography"],
+    "description": "Creative swinging text animation using transform and keyframes.",
+    "date": "2025-03-05"
   },
   {
-    "file":"amansingh-ghost&ghouls.html",
-    "title":"ghost&ghouls text animation",
-    "author":"Aman Singh"
+    "file": "amansingh-firerext.html",
+    "title": "fire text animation",
+    "author": "Aman Singh",
+    "tags": ["text", "fire", "glow", "css-animation"],
+    "description": "A glowing fire-inspired text animation built with CSS effects.",
+    "date": "2025-03-10"
   },
   {
-    "file":"amansingh-textanimation.html",
-    "title":"text animation2",
-    "author":"Aman Singh"
+    "file": "amansingh-ghost&ghouls.html",
+    "title": "ghost&ghouls text animation",
+    "author": "Aman Singh",
+    "tags": ["halloween", "spooky", "text", "animation"],
+    "description": "Spooky ghost and ghoul-themed animated typography for Halloween.",
+    "date": "2025-03-15"
   },
   {
-    "file":"amansingh-rainbowtext.html",
-    "title":"Rainbow text animation",
-    "author":"Aman Singh"
+    "file": "amansingh-textanimation.html",
+    "title": "text animation2",
+    "author": "Aman Singh",
+    "tags": ["text", "loop", "css-animation"],
+    "description": "A smooth looping text animation made for CSS art lovers.",
+    "date": "2025-03-18"
+  },
+  {
+    "file": "amansingh-rainbowtext.html",
+    "title": "Rainbow text animation",
+    "author": "Aman Singh",
+    "tags": ["rainbow", "gradient", "text", "colorful"],
+    "description": "Vibrant rainbow text animation with gradient transitions.",
+    "date": "2025-03-20"
   },
   {
     "file": "temporal_eclipse.html",
     "title": "Temporal Eclipse",
-    "author": "Moranggoo"
+    "author": "Moranggoo",
+    "tags": ["space", "eclipse", "animation", "minimal"],
+    "description": "A minimalist eclipse animation showing light and shadow transitions.",
+    "date": "2025-04-01"
   },
   {
     "file": "hariharan-halloween.html",
     "title": "Happy Halloween",
-    "author": "Hariharan"
+    "author": "Hariharan",
+    "tags": ["halloween", "festival", "glow", "css-art"],
+    "description": "A festive Halloween CSS artwork with glowing pumpkins and bats.",
+    "date": "2025-04-10"
   },
   {
-     "file": "jenil-floating_polaroid_gallery.html",
+    "file": "jenil-floating_polaroid_gallery.html",
     "title": "Floating Polaroid Gallery",
-    "author": "Jenil"
+    "author": "Jenil",
+    "tags": ["gallery", "polaroid", "animation", "floating"],
+    "description": "An elegant floating gallery showcasing polaroid-style frames.",
+    "date": "2025-04-22"
   },
   {
-    "file":"flower_blossoming_night_garden.html",
-    "title":"Night Garden",
-    "author":"Debosmita"
+    "file": "flower_blossoming_night_garden.html",
+    "title": "Night Garden",
+    "author": "Debosmita",
+    "tags": ["garden", "flowers", "night", "css-art"],
+    "description": "A mesmerizing night garden scene with blooming flowers and stars.",
+    "date": "2025-05-05"
   },
   {
-    "file":"Commits_Grid_text.html",
-    "title":"Grid text",
-    "author":"Debosmita"
+    "file": "Commits_Grid_text.html",
+    "title": "Grid text",
+    "author": "Debosmita",
+    "tags": ["grid", "text", "animation", "design"],
+    "description": "A CSS grid-based animated text effect that forms creative patterns.",
+    "date": "2025-05-12"
   }
-    
 ]
-
