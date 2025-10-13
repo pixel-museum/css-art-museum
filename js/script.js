@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentFilteredArts = [];  //Initialize currentFilteredArts with all arts
   let pagination = null; // Pagination instance
   
+  
   const RecentlyReviewed = {
     get: () => {
       try {
@@ -21,52 +22,56 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!art || !art.file) return;
       const list = RecentlyReviewed.get().filter((a) => a.file !== art.file);
       list.push({ file: art.file, title: art.title, author: art.author });
-      while (list.length > 3) list.shift();
+      while (list.length > 5) list.shift();
       localStorage.setItem("recentlyReviewed", JSON.stringify(list));
     },
   };
 
-  function renderRecentlyReviewed() {
-    if (!recentlyReviewedContainer) return;
-    const items = RecentlyReviewed.get();
-    recentlyReviewedContainer.innerHTML = "";
-    items
-      .slice()
-      .reverse()
-      .forEach((item) => {
-        const filePath = `arts/${item.file}`;
-        const card = document.createElement("div");
-        card.className = "art-card";
-        let isLiked = false;
-        try {
-          const liked = localStorage.getItem('likedArtworks');
-          const likedSet = liked ? new Set(JSON.parse(liked)) : new Set();
-          isLiked = likedSet.has(item.file);
-        } catch (e) {
-          isLiked = false;
-        }
-        const likesCount = (Array.isArray(allArts) ? (allArts.find(a => a.file === item.file)?.likes) : 0) || 0;
-        card.innerHTML = `
-          <iframe loading="lazy" seamless src="${filePath}" title="${item.title}"></iframe>
-        <h3>${item.title}</h3>
-        <p>by ${item.author}</p>
-        <div class="card-actions">
-            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(item.file)}">
-                View Code
-            </a>
-            <div class="like-container" data-id="${item.file}">
-                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                 <span class="like-count">${likesCount}</span>
-            </div>
-        </div>
-        `;
-        recentlyReviewedContainer.appendChild(card);
-      });
+  async function renderRecentlyReviewed() {
+  const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
+  if (!recentlyReviewedContainer) return;
 
+  let items = RecentlyReviewed.get();
+
+  // 🔍 Check if files exist (remove deleted ones)
+  items = await Promise.all(items.map(async (item) => {
+    const filePath = `arts/${item.file}`;
+    try {
+      const res = await fetch(filePath, { method: "HEAD" });
+      return res.ok ? item : null;
+    } catch {
+      return null;
+    }
+  }));
+
+  // 🧹 Remove invalid (deleted) entries
+  items = items.filter(Boolean);
+  localStorage.setItem("recentlyReviewed", JSON.stringify(items));
+
+  // 🧱 Clear container before re-rendering
+  recentlyReviewedContainer.innerHTML = "";
+
+  // ♻️ Render only valid existing artworks
+  items.reverse().forEach((item) => {
+    const filePath = `arts/${item.file}`;
+    const card = document.createElement("div");
+    card.className = "art-card";
+    card.innerHTML = `
+      <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+      <div class="art-info">
+        <p class="art-title">${item.title || "Untitled"}</p>
+        <p class="art-author">${item.author || "Unknown"}</p>
+      </div>
+    `;
+    recentlyReviewedContainer.appendChild(card);
+  });
+
+  // 🌀 Reinitialize animations if you use them
+  if (typeof initializeCardAnimations === "function") {
     initializeCardAnimations();
   }
+}
+
 
   // Like handler for Recently Reviewed section
   function handleRecentLikeClick(event) {
@@ -296,8 +301,21 @@ searchBar.addEventListener("input", () => {
       art.title.toLowerCase().includes(query) ||
       art.author.toLowerCase().includes(query)
   );
-  renderArts(filteredArts);
+  
+  // Check if no results found
+  if (filteredArts.length === 0 && query !== "") {
+    galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
+    // Hide pagination controls if they exist
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = 'none';
+  } else {
+    // Show pagination controls again
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = '';
+    renderArts(filteredArts);
+  }
 });
+
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
   const body = document.body;
