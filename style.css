@@ -54,21 +54,9 @@ main {
 /* Body Styling - Museum-inspired with Visual Appeal */
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(
-      circle at 20% 80%,
-      rgba(108, 99, 255, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(212, 175, 55, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(108, 99, 255, 0.03) 0%,
-      transparent 50%
-    ),
+  background: radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
     linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
   background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
   background-attachment: scroll;
@@ -89,11 +77,7 @@ body::before {
   right: -5%;
   width: 200px;
   height: 200px;
-  background: radial-gradient(
-    circle,
-    rgba(108, 99, 255, 0.03) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.03) 0%, transparent 70%);
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
   z-index: -1;
@@ -106,11 +90,7 @@ body::after {
   left: -5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.04) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   animation: float 25s ease-in-out infinite reverse;
   z-index: -1;
@@ -219,11 +199,7 @@ header p {
   margin: 10px auto 18px;
   letter-spacing: 0.02em;
   color: var(--primary-text);
-  background: linear-gradient(
-    135deg,
-    var(--primary-text) 0%,
-    var(--gold-accent) 100%
-  );
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--gold-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -241,8 +217,7 @@ header p {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   color: var(--primary-text);
-  box-shadow: 0 4px 12px var(--shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 12px var(--shadow-light), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: all 0.4s ease;
   outline: none;
   margin: 0 24px;
@@ -257,8 +232,7 @@ header p {
 
 #search-bar:focus {
   border-color: var(--accent-color);
-  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.6);
   transform: scale(1.02);
 }
@@ -286,8 +260,7 @@ header p {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--secondary-text);
-  box-shadow: 0 4px 12px var(--shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px var(--shadow-light), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   animation: toggleFloat 4s ease-in-out infinite;
   flex-shrink: 0;
@@ -306,15 +279,11 @@ header p {
 }
 
 .theme-toggle:hover {
-  background: linear-gradient(
-    135deg,
-    var(--accent-subtle),
-    rgba(212, 175, 55, 0.1)
-  );
+  background: linear-gradient(135deg, var(--accent-subtle), rgba(212, 175, 55, 0.1));
   border-color: var(--accent-color);
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 20px var(--shadow-medium),
-    0 4px 12px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 20px var(--shadow-medium), 0 4px 12px rgba(108, 99, 255, 0.2), inset 0 1px 0
+    rgba(255, 255, 255, 0.8);
   color: var(--accent-color);
 }
 
@@ -341,18 +310,8 @@ header p {
   left: -40px;
   right: -40px;
   bottom: -40px;
-  background: linear-gradient(
-      45deg,
-      transparent 30%,
-      rgba(108, 99, 255, 0.03) 50%,
-      transparent 70%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 30%,
-      rgba(212, 175, 55, 0.04) 50%,
-      transparent 70%
-    );
+  background: linear-gradient(45deg, transparent 30%, rgba(108, 99, 255, 0.03) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(212, 175, 55, 0.04) 50%, transparent 70%);
   border-radius: 24px;
   z-index: -1;
   animation: galleryGlow 15s ease-in-out infinite;
@@ -409,12 +368,7 @@ header p {
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    var(--gold-accent),
-    var(--accent-color)
-  );
+  background: linear-gradient(90deg, var(--accent-color), var(--gold-accent), var(--accent-color));
   opacity: 0;
   transition: all 0.4s ease;
   border-radius: 20px 20px 0 0;
@@ -427,11 +381,7 @@ header p {
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(
-    circle,
-    rgba(108, 99, 255, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
   border-radius: 50%;
@@ -450,8 +400,8 @@ header p {
 
 .art-card:hover {
   transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
-  box-shadow: 0 8px 25px var(--shadow-medium), 0 20px 60px var(--shadow-strong),
-    0 0 0 1px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 25px var(--shadow-medium), 0 20px 60px var(--shadow-strong), 0 0 0 1px rgba(108, 99, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
   border-color: var(--accent-color);
   filter: brightness(1.02);
 }
@@ -483,11 +433,7 @@ header p {
   line-height: 1.35;
   color: var(--primary-text);
   letter-spacing: 0.01em;
-  background: linear-gradient(
-    135deg,
-    var(--primary-text) 0%,
-    var(--accent-color) 100%
-  );
+  background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -503,8 +449,7 @@ header p {
 
 .art-card:hover iframe {
   transform: scale(1.03) rotateX(-2deg);
-  box-shadow: 0 12px 30px var(--shadow-medium), 0 4px 8px var(--shadow-light),
-    0 0 0 2px rgba(108, 99, 255, 0.1);
+  box-shadow: 0 12px 30px var(--shadow-medium), 0 4px 8px var(--shadow-light), 0 0 0 2px rgba(108, 99, 255, 0.1);
   border-radius: 20px;
 }
 
@@ -517,11 +462,7 @@ header p {
   line-height: 1.5;
   letter-spacing: 0.025em;
   padding: 10px 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.05),
-    rgba(212, 175, 55, 0.05)
-  );
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(212, 175, 55, 0.05));
   border-radius: 10px;
   border: 1px solid rgba(108, 99, 255, 0.1);
   position: relative;
@@ -529,11 +470,7 @@ header p {
 }
 
 .art-card:hover p {
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.1),
-    rgba(212, 175, 55, 0.08)
-  );
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(212, 175, 55, 0.08));
   border-color: rgba(108, 99, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
@@ -1361,6 +1298,7 @@ li {
   z-index: 1000;
   backdrop-filter: blur(10px);
   color: var(--secondary-text);
+  white-space: nowrap;
 }
 
 .scroll-to-top.visible {
