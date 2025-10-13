@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Eclipse</title>
+    <style>
+        :root {
+            --cor-fundo: #121212;
+            --cor-relogio: #232323;
+            --cor-ponteiro-horas: rgba(79, 192, 255, 0.6);
+            --cor-ponteiro-minutos: rgba(255, 255, 255, 0.7);
+            --sombra-relogio: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--cor-fundo);
+            overflow: hidden;
+        }
+        
+        .relogio {
+            width: 90vmin;
+            height: 90vmin;
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 50%;
+            background-color: var(--cor-relogio);
+            box-shadow: var(--sombra-relogio);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .relogio::before,
+        .relogio::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .relogio::before {
+            background: conic-gradient(
+                from 0deg,
+                var(--cor-ponteiro-horas) 0%,
+                transparent 40%
+            );
+            filter: drop-shadow(0 0 15px var(--cor-ponteiro-horas));
+            animation: girar 43200s linear infinite; 
+        }
+
+        .relogio::after {
+            background: conic-gradient(
+                from 0deg,
+                var(--cor-ponteiro-minutos) 0%,
+                transparent 15%
+            );
+             filter: drop-shadow(0 0 10px var(--cor-ponteiro-minutos));
+            animation: girar 3600s linear infinite;
+        }
+
+        .ponto-central {
+            width: 3%;
+            height: 3%;
+            background-color: var(--cor-ponteiro-minutos);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="relogio">
+        <div class="ponto-central"></div>
+    </div>
+
+</body>
+</html>
