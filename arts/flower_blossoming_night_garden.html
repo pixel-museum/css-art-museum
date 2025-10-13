@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Looping Night Garden</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #0a043c, #000);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .flower-container {
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* Stem */
+  .stem {
+    position: relative;
+    width: 14px;
+    height: 120px;
+    background: linear-gradient(to top, #013220, #038c33);
+    border-radius: 10px;
+    animation: growStem 6s ease-in-out infinite;
+    transform-origin: bottom center;
+    margin: 0 20px;
+  }
+
+  /* Petals */
+  .petal {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, #ff4ccf, #7a0bc0);
+    border-radius: 50% 50% 50% 50%;
+    opacity: 0;
+    transform: scale(0);
+    animation: bloom 6s ease-in-out infinite;
+  }
+  .petal:nth-child(1) { top: -80px; left: -35px; animation-delay: 1s; }
+  .petal:nth-child(2) { top: -60px; left: -75px; animation-delay: 1.3s; }
+  .petal:nth-child(3) { top: -60px; left: 5px; animation-delay: 1.6s; }
+  .petal:nth-child(4) { top: -100px; left: -65px; animation-delay: 1.9s; }
+  .petal:nth-child(5) { top: -100px; left: -5px; animation-delay: 2.2s; }
+
+  /* Center of flower */
+  .center {
+    position: absolute;
+    top: -75px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #ffda03, #ff9500);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    animation: appearCenter 6s ease-in-out infinite;
+    box-shadow: 0 0 30px 10px rgba(255, 200, 0, 0.3);
+  }
+
+  /* Leaves */
+  .leaf {
+    position: absolute;
+    bottom: -10px;
+    width: 40px;
+    height: 20px;
+    background: radial-gradient(circle, #00b140, #014d24);
+    border-radius: 50%;
+    animation: leafWave 6s ease-in-out infinite;
+  }
+  .leaf.left { left: -30px; transform-origin: right center; animation-delay: 1s; }
+  .leaf.right { right: -30px; transform-origin: left center; animation-delay: 2s; }
+
+  /* Moon */
+  .moon {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #ffffcc, #f0e68c);
+    border-radius: 50%;
+    box-shadow: 0 0 80px 20px rgba(255, 255, 200, 0.5);
+  }
+
+  /* Stars */
+  .stars span {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+  }
+
+  /* Fireflies */
+  .firefly {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #ffff66, #ffcc00);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fly 5s infinite ease-in-out;
+  }
+
+  @keyframes growStem { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(1); } }
+  @keyframes bloom { 0%, 100% { opacity: 0; transform: scale(0); } 30%, 70% { opacity: 1; transform: scale(1); } }
+  @keyframes appearCenter { 0%, 100% { opacity: 0; transform: scale(0); } 40%, 60% { opacity: 1; transform: scale(1); } }
+  @keyframes leafWave { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+  @keyframes fly { 0%, 100% { opacity: 0; transform: translate(0,0); } 50% { opacity: 1; transform: translate(calc(200px * var(--dirX)), calc(200px * var(--dirY))); } }
+</style>
+</head>
+<body>
+  <div class="moon"></div>
+  <div class="stars"></div>
+  <div class="flower-container" style="left: 150px;">
+    <div class="stem">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+  </div>
+  <div class="flower-container" style="left: 350px;">
+    <div class="stem">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+  </div>
+  <div class="flower-container" style="left: 550px;">
+    <div class="stem">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+  </div>
+  <script>
+    // Stars
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('span');
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+
+    // Fireflies
+    for (let i = 0; i < 20; i++) {
+      const firefly = document.createElement('div');
+      firefly.className = 'firefly';
+      firefly.style.left = Math.random() * window.innerWidth + 'px';
+      firefly.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+      firefly.style.setProperty('--dirX', (Math.random() * 2 - 1).toFixed(2));
+      firefly.style.setProperty('--dirY', (Math.random() * 2 - 1).toFixed(2));
+      firefly.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(firefly);
+    }
+  </script>
+</body>
+</html>
