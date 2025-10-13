@@ -521,6 +521,7 @@
     "file": "greetings.html",
     "title": "Greetings",
     "author": "CristiCode"
+   },
   {
     "file": "jenil-northernlight.html",
     "title": "Northern Light",
@@ -582,7 +583,10 @@
     "file":"Commits_Grid_text.html",
     "title":"Grid text",
     "author":"Debosmita"
+  },{
+    "file":"amansingh-earthwithcss.html",
+    "title":"Earth with CSS",
+    "author":"Aman Singh"
   }
-    
 ]
 
