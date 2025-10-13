@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Center - CSS Art Museum</title>
+<style>
+    /* --- Global Styles & Variables --- */
+    :root {
+        --bg-color: #F5F3FF;
+        --primary-purple: #6D28D9;
+        --primary-purple-light: #EDE9FE;
+        --accent-purple: #9D4EDD;
+        --border-color: #C4B5FD;
+        --text-color: #1F2937;
+        --text-color-light: #4B5563;
+        --white: #FFFFFF;
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        --border-radius: 12px;
+        --transition-speed: 0.3s;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* --- Main Container & Layout --- */
+    .support-container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    /* --- Header Section --- */
+    .support-header {
+        text-align: center;
+        margin-bottom: 50px;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    .support-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #6D28D9, #9D4EDD);
+    color: transparent;                  /* Fallback */
+    -webkit-background-clip: text;       /* Chrome, Safari, Edge */
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;               /* Standard property (not supported everywhere yet) */
+}
+
+
+    .support-header p {
+        font-size: 1.25rem;
+        color: var(--text-color-light);
+    }
+
+    /* --- Search Bar --- */
+    .search-section {
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: 600px;
+        padding: 14px 20px;
+        font-size: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background-color: var(--white);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .search-bar:focus {
+        outline: none;
+        border-color: var(--primary-purple);
+        box-shadow: 0 0 0 4px var(--primary-purple-light);
+    }
+
+    /* --- Section Styling --- */
+    .support-section {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 40px 30px;
+        margin-bottom: 40px;
+        border: 1px solid #E5E7EB;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        animation: fadeIn 1s ease forwards;
+    }
+
+    .support-section h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--accent-purple);
+    }
+
+    /* --- FAQ Section --- */
+    .faq-category h4 {
+        font-size: 1.5rem;
+        margin-top: 32px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--primary-purple-light);
+    }
+
+    .faq-category:first-of-type h4 {
+        margin-top: 0;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #E5E7EB;
+        overflow: hidden;
+        transition: all var(--transition-speed);
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+    }
+
+    .faq-item summary {
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 16px 20px;
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        transition: color var(--transition-speed);
+        background-color: var(--primary-purple-light);
+        border-radius: var(--border-radius);
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+        content: '+';
+        font-size: 1.5rem;
+        font-weight: 300;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform var(--transition-speed);
+    }
+
+    .faq-item[open] summary {
+        color: var(--primary-purple);
+    }
+
+    .faq-item[open] summary::after {
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-answer {
+        padding: 0 20px 20px 20px;
+        color: var(--text-color-light);
+        animation: fadeIn 0.3s ease forwards;
+    }
+
+    /* --- Contact Section --- */
+    .contact-grid {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .contact-form, .contact-info {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    .contact-form h4, .contact-info h4 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--accent-purple);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background-color: var(--white);
+        transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-purple);
+        box-shadow: 0 0 0 4px var(--primary-purple-light);
+    }
+
+    .form-group textarea { resize: vertical; }
+
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--white);
+        background: linear-gradient(90deg, #6D28D9, #9D4EDD);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .submit-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .contact-info ul { list-style: none; padding: 0; }
+    .contact-info li { margin-bottom: 14px; }
+    .contact-info a { color: var(--accent-purple); font-weight: 500; text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
+
+    /* --- Animations --- */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Responsive Styles --- */
+    @media (max-width: 768px) {
+        .support-header h1 { font-size: 2.2rem; }
+        .contact-grid { flex-direction: column; }
+        .support-section { padding: 30px 20px; }
+    }
+
+</style>
+</head>
+<body>
+
+<main class="support-container">
+    <section class="support-header">
+        <h1>Support Center</h1>
+        <p>Welcome to the CSS Art Museum Help Desk. We're here to assist you!</p>
+    </section>
+
+    <section class="search-section">
+        <input type="search" class="search-bar" placeholder="Search for answers...">
+    </section>
+
+    <section class="support-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-category">
+            <h4>General</h4>
+            <details class="faq-item">
+                <summary>What is CSS Art Museum?</summary>
+                <div class="faq-answer">
+                    <p>CSS Art Museum is a digital platform showcasing art created entirely with CSS.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Is it free to use?</summary>
+                <div class="faq-answer">
+                    <p>Yes! All browsing, profile creation, and submissions are free.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-category">
+            <h4>For Artists & Creators</h4>
+            <details class="faq-item">
+                <summary>How do I submit my artwork?</summary>
+                <div class="faq-answer">
+                    <p>Sign up, click "Submit Artwork," and paste your HTML/CSS code with a title and description.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-category">
+            <h4>Account & Technical</h4>
+            <details class="faq-item">
+                <summary>I forgot my password. What do I do?</summary>
+                <div class="faq-answer">
+                    <p>Use the "Forgot Password?" link on the login page to reset it via email.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="support-section">
+        <h2>Still Need Help?</h2>
+        <p style="text-align:center; max-width: 600px; margin: 0 auto 32px auto; color: var(--text-color-light);">If you couldn't find the answer in our FAQ, please contact our support team.</p>
+        <div class="contact-grid">
+            <div class="contact-form">
+                <h4>Contact Us Directly</h4>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h4>Other Ways to Connect</h4>
+                <p>Reach out or get help from the community through:</p>
+                <ul>
+                    <li><strong>Community Discord:</strong> Real-time chat with artists and our team.</li>
+                    <li><strong>Community Forum:</strong> Longer discussions and structured feedback.</li>
+                    <li><strong>Support Email:</strong> <a href="mailto:support@artmuseum.com">support@artmuseum.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
