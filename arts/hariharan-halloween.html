@@ -1,824 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glowing Dusk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Halloween Scene</title>
+</head>
 <style>
-@import "compass/css3";
-@import url(https://fonts.googleapis.com/css?family=Amatic+SC:400,700);
-@import url(https://fonts.googleapis.com/css?family=Nosifer);
+    body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #282c34; /* Dark background */
+}
 
-* {
-  margin: 0;
-  padding: 0;
+.scene {
+    position: relative;
+    width: 900px; /* Adjust as needed */
+    height: 500px; /* Adjust as needed */
+    background: linear-gradient(to bottom, #1a2a3a, #0d1217); /* Dark sky gradient */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
 }
-.happy {
-  font-family: 'Amatic SC', cursive;
-  font-size: 10em;
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  z-index: 2;
-  text-shadow: 0px 0px 20px green;
-  transform: translateX(-50%);
-}
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: rgba(185,215,235,1);
-background: -moz-radial-gradient(center, ellipse cover, rgba(185,215,235,1) 0%, rgba(24,70,102,1) 100%);
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(185,215,235,1)), color-stop(100%, rgba(24,70,102,1)));
-background: -webkit-radial-gradient(center, ellipse cover, rgba(185,215,235,1) 0%, rgba(24,70,102,1) 100%);
-background: -o-radial-gradient(center, ellipse cover, rgba(185,215,235,1) 0%, rgba(24,70,102,1) 100%);
-background: -ms-radial-gradient(center, ellipse cover, rgba(185,215,235,1) 0%, rgba(24,70,102,1) 100%);
-background: radial-gradient(ellipse at center, rgba(185,215,235,1) 0%, rgba(24,70,102,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9d7eb', endColorstr='#184666', GradientType=1 );
-}
-.stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-.sky {
-  position: absolute;;
-  width: 100%;
-  height: 100%;
-  
-  .moon {
-    box-shadow: 0px 0px 0 10px rgba(24,70,102,0.2), 0px 0px 0 20px rgba(24,70,102,0.3), 0px 0px 40px 80px rgba(24,70,102,0.2), 0px 0px 40px 120px rgba(24,70,102,0.2);
+
+/* Moon */
+.moon {
     position: absolute;
-    top: 50%;
-    z-index: 1;
+    width: 180px;
+    height: 180px;
+    background-color: #a8c1d6;
+    border-radius: 50%;
+    top: 80px;
     left: 50%;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(212,228,239,1);
-    background: -moz-linear-gradient(-45deg, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-    background: -webkit-linear-gradient(-45deg, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-    background: -o-linear-gradient(-45deg, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-    background: linear-gradient(135deg, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
-  }
-  
-  .cloud {
-    position: relative;
-    width: 12em;
-    height: 5em;
-    background-color: #003756;
-    border-radius: 100px;
-    left: -100px;
-    top: 0;
-    box-shadow: inset -10px -10px 10px darken(#003756, 5%);
-    z-index: 2;
-    border: 1px solid ligthen(#003756, 15%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 40px #a8c1d6, inset 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Clouds */
+.cloud {
+    position: absolute;
+    background-color: #3f5f7a;
+    border-radius: 50px;
     opacity: 0.8;
-    
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      border-radius: 100%;
-      left: 15%;
-      top: -50px;
-      background-color: #003756;
-      box-shadow: inset 0px 10px 10px -5px darken(#003756, 5%);
-    }
-    
-    &:before {
-      content: '';
-      background-color: #003756;
-      width: 70px;
-      height: 70px;
-      border-radius: 100%;
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      box-shadow: inset -5px 5px 5px darken(#003756, 5%);
-    }
-    
-    &:nth-child(1) {
-      left: -15%;
-      top: 100px;
-      -webkit-animation: cloud 40s infinite linear;
-      -webkit-animation-delay: 0.2s;
-      transform: scale(4);
-    }
-    
-    &:nth-child(2) {
-      left: -15%;
-      top: 100px;
-      -webkit-animation: cloud 35s infinite linear;
-      -webkit-animation-delay: 20s;
-      transform: scale(1.4);
-    }
-    
-    &:nth-child(3) {
-      left: -15%;
-      top: -70px;
-      -webkit-animation: cloud 30s infinite linear;
-      -webkit-animation-delay: 10s;
-      transform: scale(0.8);
-    }
-        
-    &:nth-child(4) {
-      left: -15%;
-      top: -90px;
-      -webkit-animation: cloud 50s infinite linear;
-      -webkit-animation-delay: 15s;
-      transform: scale(0.7);
-    }
-    
-    &:nth-child(5) {
-      left: -30%;
-      top: -90px;
-      -webkit-animation: cloud 50s infinite linear;
-      -webkit-animation-delay:30s;
-      transform: scale(1.2);
-    }
-    
-     &:nth-child(6) {
-      left: -30%;
-      top: -300px;
-      -webkit-animation: cloud 50s infinite linear;
-      -webkit-animation-delay: 0s;
-      transform: scale(1.28);
-    }
-    
-     &:nth-child(7) {
-      left: -40%;
-      top: -405px;
-      -webkit-animation: cloud 30s infinite linear;
-      -webkit-animation-delay: 40s;
-      transform: scale(1.2);
-    }
-  }
+    z-index: 10;
 }
-
-.cat {
-  position: absolute;
-  top: -140px;
-  left: 40%;
-  width: 100px;
-  height: 200px;
-  z-index: 5;
-  
-  .head {
-    width: 100px;
-    height: 90px;
-    background-color: black;
-    border-radius: 50%;
-    
-    .ears {
-      .left-ear, .right-ear {
-        position: absolute;
-        top: 10px;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 20px solid black;
-        top: -5px;
-      }
-      
-      .left-ear {
-        transform: rotate(-40deg);
-      }
-      .right-ear {
-        transform: rotate(40deg);
-        right: 0;
-      }
-    }
-    
-    .eyes {
-      position: absolute;
-      width: 90%;
-      top: 25px;
-      height: 20px;
-      left: 10px;
-      
-      .left-eye, .right-eye {
-        position: absolute;
-        width: 30px;
-        height: 10px;
-        background-color: white; 
-        border-radius: 50%;
-        -webkit-animation: blink 2.4s infinite;
-        
-        &:after {
-          content: '';
-          width: 5px;
-          height: 10px;
-          background-color: black;
-          position: absolute;
-          top: 0px;
-          left: 10px;
-          z-index: 5;
-          border-radius: 50%;
-        }
-      }
-      
-      .left-eye {
-        height: 10px;
-      }
-      
-      .right-eye {
-        height: 10px;
-        right: 10px;
-      }
-    }
-    
-    .whiskers {
-      position: absolute;
-      top: 50px;
-      height: 30px;
-      z-index: 5;
-      width: 140%;
-      left: -20px;
-      padding-top: 0px;
-      
-      .left-whisker, .right-whisker {
-        width: 100px;
-        height: 2px;
-        background-color: black;
-        position: absolute;
-        z-index: 10;
-        
-        &:after, &:before {
-          position: absolute;
-          content: '';
-          background-color: black;
-          width: 50px;
-          height: 2px;
-          transform-origin: 100% 50%;
-        }
-        
-        &:after {
-          transform: rotate(-20deg);
-        }
-        
-        &:before {
-          transform: rotate(20deg);
-        }
-      }      
-      
-      .left-whisker {
-        left: 0px;
-        width: 50px;
-      }
-      
-      .right-whisker {
-        transform: rotate(-180deg);
-        right: 0;
-      }
-    }
-  }
-}
-
-.body {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  z-index: 10;
-  bottom: 2px;
-  
-  .top {
-    position: absolute;
-    width: 70px;
-    background-color: black;
+.cloud-1 {
+    width: 200px;
     height: 80px;
-    left: 17px;
-    border-radius: 60%;
-    top: -10px;
-  }
-  .bottom {
-    position: absolute;
-    width: 90px;
-    height: 100px;
-    background: black;
-    border-radius: 70%;
-    top: 10px;
-    left: 8px;
-  }
-  
-  .tail {
-    position: absolute;
-    top: 100%;
-    height: 120px;
-    width: 15px;
-    background-color: black;
-    left: 45px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 10px;
-    @include animation(swing 6s linear infinite);
-    @include transform-origin(50%, top);
-  }
+    top: 50px;
+    left: -50px;
+    animation: moveCloud 30s linear infinite alternate;
+}
+.cloud-2 {
+    width: 150px;
+    height: 60px;
+    top: 100px;
+    right: -30px;
+    animation: moveCloud 25s linear infinite alternate reverse;
+    opacity: 0.7;
 }
 
-.fence {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  z-index: 3;
-  
-  .fence-container {
-    position: relative;
-    height: 60vh;
-    width: 100vw;
-  }
-  
-  &:after {
-    content: '';
+@keyframes moveCloud {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(150px); }
+}
+
+/* Fence Top (horizon line) */
+.fence-top {
     position: absolute;
     width: 100%;
     height: 30px;
-    background-color: black;
-    top: 60px;
-    box-shadow: 0px -5px 5px rgba(212,228,239,0.9);
-  }
-  
-  .posts {
-    & div[class^='post'] {
-      background: black;
-      height: 100%;
-      position: absolute;
-      width: 40px;
-      bottom: -10px;
-      
-      &:before {
-        content: '';
-        position: absolute;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 20px solid black;
-        top: -19px;
-      }
-      
-      &:nth-child(1) {
-        left: 10%;
-        transform: rotate(-3deg);
-      }
-      
-      &:nth-child(2) {
-        left: 25%;
-        transform: rotate(3deg);
-      }
-      
-      &:nth-child(3) {
-        left: 35%;
-        transform: rotate(-5deg);
-      }
-      &:nth-child(4) {
-        left: 50%;
-        transform: rotate(5deg);
-      }
-      &:nth-child(5) {
-        left: 65%;
-        transform: rotate(-10deg);
-      }
-      &:nth-child(6) {
-        left: 80%;
-        transform: rotate(8deg);
-      }
-    }
-  }
+    background-color: #222;
+    top: 250px;
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-.tombs {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  
-  .tomb {
-    width: 150px;
-    height: 220px;
-    background-color: black;
+/* Cat */
+.cat {
     position: absolute;
-    z-index: 11;
-    bottom: -10px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      background-color: white;
-    }
-    
-    &:before {
-      width: 3px;
-      height: 50px;
-      left: 50%;
-      top: 20%;
-    }
-    &:after {
-      height: 3px;
-      width: 50px;
-      left: 35%;
-      top: 30%;
-    }
-    
-    &:nth-child(1) {
-      left: 10%;
-      transform: rotate(5deg);
-    }
-    
-    &:nth-child(2) {
-      left: 30%;
-      transform: rotate(-5deg);
-    }
-    
-    &:nth-child(3) {
-      left: 52%;
-      bottom: -30px;
-      transform: rotate(0deg) scale(0.8);
-    }
-    
-    &:nth-child(4) {
-      left: 82%;
-      bottom: -30px;
-      transform: rotate(-10deg) scale(1.2);
-    }
-  }
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    top: 220px; /* Position on the fence */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 21;
+    animation: swayCat 3s ease-in-out infinite alternate;
+}
+.cat .body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: black;
+}
+.cat .ear {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid black;
+    top: -15px;
+}
+.cat .left-ear { left: 5px; transform: rotate(-10deg); }
+.cat .right-ear { right: 5px; transform: rotate(10deg); }
+.cat .tail {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background-color: black;
+    border-radius: 5px 5px 50% 50%;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) rotate(30deg);
+    transform-origin: top center;
+    animation: wagTail 1.5s ease-in-out infinite alternate;
+}
+.cat .eye {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: limegreen; /* Green glow for eyes */
+    border-radius: 50%;
+    top: 25px;
+    box-shadow: 0 0 8px limegreen;
+}
+.cat .left-eye { left: 18px; }
+.cat .right-eye { right: 18px; }
+
+@keyframes swayCat {
+    0% { transform: translateX(-50%) rotate(-5deg); }
+    100% { transform: translateX(-50%) rotate(5deg); }
+}
+@keyframes wagTail {
+    0% { transform: translateX(-50%) rotate(30deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
 }
 
-@-webkit-keyframes cloud {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
-  }
+
+/* Fence Posts (bottom part) */
+.fence-posts {
+    position: absolute;
+    width: 100%;
+    height: 150px; /* How much is visible below the top bar */
+    top: 280px; /* Adjust based on fence-top position */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Ensure posts sit at the bottom */
+    z-index: 15; /* Behind the cat, but in front of gravestones */
+}
+.fence-posts .post {
+    width: 40px;
+    height: 100%;
+    background-color: #1a1a1a;
+    transform: skewX(-5deg); /* Slight angle */
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.fence-posts .post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #222, #111);
+    opacity: 0.8;
+}
+.fence-posts .post-1 { height: 120px; left: -10%; }
+.fence-posts .post-2 { height: 140px; left: -5%; }
+.fence-posts .post-3 { height: 160px; }
+.fence-posts .post-4 { height: 130px; right: -5%; }
+.fence-posts .post-5 { height: 150px; right: -10%; }
+.fence-posts .post-6 { height: 110px; right: -15%; } /* Added more posts for perspective */
+
+
+/* Gravestones */
+.gravestones {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 350px; /* Below the fence */
+    display: flex;
+    justify-content: space-around;
+    z-index: 12; /* Behind everything else */
+}
+.gravestone {
+    width: 80px;
+    height: 100px;
+    background-color: #333;
+    border-radius: 40px 40px 10px 10px;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    transform: rotate(-3deg); /* Slight tilt */
+}
+.gravestone span {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    color: #666;
+    font-family: 'Times New Roman', serif;
+}
+.grave-1 { left: -15%; transform: rotate(-5deg); }
+.grave-2 { left: -5%; }
+.grave-3 { right: -5%; transform: rotate(5deg); }
+.grave-4 { right: -15%; }
+.grave-5 { left: 10%; top: -20px; transform: scale(0.8) rotate(2deg); opacity: 0.8; } /* Further back */
+
+
+/* Spiders */
+.spiders {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 25;
+}
+.spider {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+    animation: dangleSpider 5s ease-in-out infinite alternate;
+}
+.spider::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 80px; /* Web length */
+    background-color: rgba(255,255,255,0.3);
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.spider-1 { top: 50px; left: 150px; animation-delay: 0s; }
+.spider-2 { top: 70px; left: 300px; animation-delay: 1.5s; width: 20px; height: 20px; }
+.spider-3 { top: 60px; left: 600px; animation-delay: 3s; width: 30px; height: 30px; }
+
+@keyframes dangleSpider {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
 }
 
-@keyframes cloud {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
-  }
+/* Happy Halloween Text */
+.halloween-text {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Creepster', cursive; /* A spooky font, ensure to import it */
+    font-size: 4em;
+    color: limegreen;
+    text-shadow: 0 0 15px limegreen, 0 0 30px limegreen;
+    z-index: 30;
+    animation: pulseGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes blink {
-  90% {
-    transform: none;
-    animation-timing-function: ease-in;
-  }
-  93% {
-    transform: translateY(5px) scaleY(0)
-  }
-  100% {
-    animation-timing-function: ease-out;
-  }
-}
-@include keyframes(swing) {
-  0% { @include rotate(-10deg); }
-  50% { @include rotate(10deg)}
-  100% { @include rotate(-10deg)}
-}
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); /* Import a spooky font */
 
-[class*="spider"] {
-	position: absolute;
-	height: 40px;
-	width: 50px;
-	@include border-radius(50%);
-	margin: 40px 0 0 0;
-	background: #152736;
-  z-index: 99999;
-	
-	*, &:before, &:after, :after, :before {
-		position: absolute;
-		content: "";
-	}
-	
-	&:before {
-		height: 40px;
-		width: 1px;
-		background: #AAAAAA;
-		top: -40px;
-		left: 50%;
-	}
-	
-	.eye {
-		top: 16px;
-		height: 14px;
-		width: 12px;
-		background: #FFFFFF;
-		@include border-radius(50%);
-		
-		&:after {
-			top: 6px;
-			height: 5px;
-			width: 5px;
-			@include border-radius(50%);
-			background: black;
-		}
-		
-		&.left {
-			left: 14px;
-			
-			&:after {
-				right: 3px;
-			}
-		}
-		
-		&.right {
-			right: 14px;
-			
-			&:after {
-				left: 3px;
-			}
-		}
-	}
-	
-	.leg {
-		top: -1px;
-		height: 12px;
-		width: 14px;
-		border-top: 2px solid #152736;
-		border-left: 1px solid transparent;
-		border-right: 1px solid transparent;
-		border-bottom: 1px solid transparent;
-		z-index: -1;
-		
-		&.left {
-			left: -12px;
-			@include transform(rotate(36deg) skewX(-20deg));
-			border-left: 2px solid #152736;
-			@include border-radius(60% 0 0 0 );
-		}
-		
-		&.right {
-			right: -12px;
-			@include transform(rotate(-36deg) skewX(20deg));
-			border-right: 2px solid #152736;
-			@include border-radius(0 60% 0 0 );
-		}
-		
-		&:nth-of-type(1) {
-			animation: 0.7s moveLeftLegs 0s infinite;
-		}
-		
-		&:nth-of-type(2)  {
-			top: 7px;
-			left: -15px;
-			animation: 0.7s moveLeftLegs 0.05s infinite;
-		}
-		
-		&:nth-of-type(3)  {
-			top: 15px;
-			left: -16px;
-			animation: 0.7s moveLeftLegs 0.1s infinite;
-		}
-		
-		&:nth-of-type(4)  {
-			top: 24px;
-			left: -14px;
-			animation: 0.7s moveLeftLegs 0.2s infinite;
-		}
-		
-		&:nth-of-type(5) {
-			animation: 0.7s moveRightLegs 0s infinite;			
-		}
-		
-		&:nth-of-type(6)  {
-			top: 7px;
-			right: -15px;
-			animation: 0.7s moveRightLegs 0.05s infinite;
-		}
-		
-		&:nth-of-type(7)  {
-			top: 15px;
-			right: -16px;
-			animation: 0.7s moveRightLegs 1s infinite;
-		}
-		
-		&:nth-of-type(8)  {
-			top: 24px;
-			right: -14px;
-			animation: 0.7s moveRightLegs 2s infinite;
-		}
-	}
-}
-
-.spider_0  {
-	left: 5%;
-	margin-top: 200px;
-	animation: moveSpider 2s infinite alternate;
-	
-	&:before {
-		top: -200px;
-		height: 200px;
-	}
-}
-
-.spider_1  {
-	left: 20%;
-	margin-top: 120px;
-	animation: moveSpider 2s infinite alternate;
-	animation-delay: 0.1s;
-	
-	&:before {
-		top: -120px;
-		height: 120px;
-	}
-}
-
-.spider_2  {
-	left: 35%;
-	margin-top: 240px;
-	animation: moveSpider 2s infinite alternate;
-	animation-delay: 0.3s;	
-	
-	&:before {
-		top: -240px;
-		height: 240px;
-	}
-}
-
-.spider_3  {
-	right: 35%;
-	margin-top: 160px;
-	animation: moveSpider 2s infinite alternate;	
-	animation-delay: 0.5s;
-	
-	&:before {
-		top: -160px;
-		height: 160px;
-	}
-}
-
-.spider_4  {
-	right: 20%;
-	margin-top: 50px;
-	animation: moveSpider 2s infinite alternate;	
-	animation-delay: 0.2s;
-	
-	&:before {
-		top: -50px;
-		height: 50px;
-	}
-}
-
-.spider_5  {
-	right: 5%;
-	margin-top: 210px;
-	animation: moveSpider 2s infinite alternate;	
-	animation-delay: 0.4s;
-	
-	&:before {
-		top: -210px;
-		height: 210px;
-	}
-}
-
-@keyframes moveLeftLegs {
-	 0% {
-		@include transform(rotate(25deg) skewX(-20deg));
-	}
-	50% {
-		@include transform(rotate(45deg) skewX(-20deg));
-	}
-	to {
-		@include transform(rotate(36deg) skewX(-20deg));
-	}
-}
-
-@keyframes moveRightLegs {
-	 0% {
-		@include transform(rotate(-25deg) skewX(20deg));
-	}
-	50% {
-		@include transform(rotate(-45deg) skewX(20deg));
-	}
-	to {
-		@include transform(rotate(-36deg) skewX(20deg));
-	}
-}
-
-@keyframes moveSpider {
-	from {
-		@include transform(translateY(0%))
-	}
-	to {
-		@include transform(translateY(-100%))		
-	}
+@keyframes pulseGlow {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+    100% { transform: translateX(-50%) scale(1.05); opacity: 1; text-shadow: 0 0 20px limegreen, 0 0 40px limegreen; }
 }
 </style>
-
-
-<div class="stage">
-  <div class="spider_1">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-  </div>
-  <div class="spider_2">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-  </div>
-  <div class="spider_3">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-  </div>
-  <div class="spider_4">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="left leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-    <span class="right leg"></span>
-  </div>
-  
-  <h1 class="happy">
-    Happy Halloween!!
-  </h1>
-  <div class="sky">
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    
-    <div class="moon"></div>
-  </div> <!-- End Sky -->
-  
-  <div class="fence">
-    <div class="fence-container">
-      <div class="cat">
-    <div class="head">
-      <div class="ears">
-        <div class="left-ear"></div>
-        <div class="right-ear"></div>
-      </div> <!-- End Ears -->
-      <div class="eyes">
-        <div class="left-eye"></div>
-        <div class="right-eye"></div>
-      </div><!-- End Eyes -->
-      <div class="whiskers">
-        <div class="left-whisker"></div>
-        <div class="right-whisker"></div>
-      </div><!-- End whiskers -->
-    </div><!-- End Head -->
-    <div class="body">
-      <div class="top"></div>
-      <div class="bottom"></div>
-      <div class="tail"></div>
-    </div><!-- End body -->
-  </div><!-- End cat -->
-      
+<body>
+    <div class="scene">
+        <div class="moon"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="fence-top"></div>
+        <div class="cat">
+            <div class="ear left-ear"></div>
+            <div class="ear right-ear"></div>
+            <div class="body"></div>
+            <div class="tail"></div>
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+        </div>
+        <div class="fence-posts">
+            <div class="post post-1"></div>
+            <div class="post post-2"></div>
+            <div class="post post-3"></div>
+            <div class="post post-4"></div>
+            <div class="post post-5"></div>
+            <div class="post post-6"></div>
+        </div>
+        <div class="gravestones">
+            <div class="gravestone grave-1"><span>+</span></div>
+            <div class="gravestone grave-2"><span>+</span></div>
+            <div class="gravestone grave-3"><span>+</span></div>
+            <div class="gravestone grave-4"><span>+</span></div>
+            <div class="gravestone grave-5"><span>+</span></div>
+        </div>
+        <div class="spiders">
+            <div class="spider spider-1"></div>
+            <div class="spider spider-2"></div>
+            <div class="spider spider-3"></div>
+        </div>
+        <div class="halloween-text">Happy Halloween!</div>
     </div>
-    <div class="posts">
-      <div class="post1"></div>
-      <div class="post2"></div>
-      <div class="post3"></div>
-      <div class="post4"></div>
-      <div class="post5"></div>
-      <div class="post6"></div>
-    </div><!-- End posts -->
-  </div><!-- End fence -->
-  <div class="tombs">
-    <div class="tomb"></div>
-    <div class="tomb"></div>
-    <div class="tomb"></div>
-    <div class="tomb"></div>
-  </div>
-</div><!-- End stage -->
+
+    <script src="script.js"></script>
 </body>
 </html>
