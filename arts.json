@@ -965,5 +965,13 @@
     "tags":["animation","balloons","motion"],
     "description":"An animated scene of colorful neon balloons moving up in the starry night sky.",
     "date":"2025-10-14"
+  },
+  {
+    "file":"amansingh-earthwithcss.html",
+    "title":"Earth with pure  CSS",
+    "author":"Aman Singh",
+    "tags": ["planet", "earth", "animation", "space", "celestial"],
+    "description": "A 2D animated model of the Earth rotating on its axis.",
+    "date": "2024-05-30"
   }
 ]
