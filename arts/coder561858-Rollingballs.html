@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Endless Rolling Balls - Same Line</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .background {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ball {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      will-change: transform;
+      animation: roll-spin 6s linear infinite;
+    }
+
+    .ball1 {
+      background: url(https://img.freepik.com/premium-vector/abstract-background-design-with-neon-effect_628659-690.jpg) no-repeat;
+      background-size: cover;
+      animation-delay: 0s;
+    }
+
+    .ball2 {
+      background: url(https://thumbs.dreamstime.com/z/hexagon-net-pattern-vector-background-hexagonal-honeycomb-seamless-grid-texture-hexagon-net-honeycomb-pattern-vector-background-126372828.jpg?w=450) no-repeat;
+      background-size: cover;
+      animation-delay: -1.5s;
+    }
+
+    .ball3 {
+      background: url(https://static.vecteezy.com/system/resources/previews/007/629/334/original/abstract-pattern-background-free-vector.jpg) no-repeat;
+      background-size: cover;
+      animation-delay: -3s;
+    }
+
+    .ball4 {
+      background: url(https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg) no-repeat;
+      background-size: cover;
+      animation-delay: -4.5s;
+    }
+
+    @keyframes roll-spin {
+      0% {
+        transform: translateY(-50%) translateX(-150px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-50%) translateX(120vw) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+    <div class="ball ball4"></div>
+  </div>
+</body>
+</html>

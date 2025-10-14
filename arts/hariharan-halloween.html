@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Halloween Scene</title>
+</head>
+<style>
+    body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #282c34; /* Dark background */
+}
+
+.scene {
+    position: relative;
+    width: 900px; /* Adjust as needed */
+    height: 500px; /* Adjust as needed */
+    background: linear-gradient(to bottom, #1a2a3a, #0d1217); /* Dark sky gradient */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background-color: #a8c1d6;
+    border-radius: 50%;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 40px #a8c1d6, inset 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Clouds */
+.cloud {
+    position: absolute;
+    background-color: #3f5f7a;
+    border-radius: 50px;
+    opacity: 0.8;
+    z-index: 10;
+}
+.cloud-1 {
+    width: 200px;
+    height: 80px;
+    top: 50px;
+    left: -50px;
+    animation: moveCloud 30s linear infinite alternate;
+}
+.cloud-2 {
+    width: 150px;
+    height: 60px;
+    top: 100px;
+    right: -30px;
+    animation: moveCloud 25s linear infinite alternate reverse;
+    opacity: 0.7;
+}
+
+@keyframes moveCloud {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(150px); }
+}
+
+/* Fence Top (horizon line) */
+.fence-top {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background-color: #222;
+    top: 250px;
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Cat */
+.cat {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    top: 220px; /* Position on the fence */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 21;
+    animation: swayCat 3s ease-in-out infinite alternate;
+}
+.cat .body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: black;
+}
+.cat .ear {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid black;
+    top: -15px;
+}
+.cat .left-ear { left: 5px; transform: rotate(-10deg); }
+.cat .right-ear { right: 5px; transform: rotate(10deg); }
+.cat .tail {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background-color: black;
+    border-radius: 5px 5px 50% 50%;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) rotate(30deg);
+    transform-origin: top center;
+    animation: wagTail 1.5s ease-in-out infinite alternate;
+}
+.cat .eye {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: limegreen; /* Green glow for eyes */
+    border-radius: 50%;
+    top: 25px;
+    box-shadow: 0 0 8px limegreen;
+}
+.cat .left-eye { left: 18px; }
+.cat .right-eye { right: 18px; }
+
+@keyframes swayCat {
+    0% { transform: translateX(-50%) rotate(-5deg); }
+    100% { transform: translateX(-50%) rotate(5deg); }
+}
+@keyframes wagTail {
+    0% { transform: translateX(-50%) rotate(30deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+
+/* Fence Posts (bottom part) */
+.fence-posts {
+    position: absolute;
+    width: 100%;
+    height: 150px; /* How much is visible below the top bar */
+    top: 280px; /* Adjust based on fence-top position */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Ensure posts sit at the bottom */
+    z-index: 15; /* Behind the cat, but in front of gravestones */
+}
+.fence-posts .post {
+    width: 40px;
+    height: 100%;
+    background-color: #1a1a1a;
+    transform: skewX(-5deg); /* Slight angle */
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.fence-posts .post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #222, #111);
+    opacity: 0.8;
+}
+.fence-posts .post-1 { height: 120px; left: -10%; }
+.fence-posts .post-2 { height: 140px; left: -5%; }
+.fence-posts .post-3 { height: 160px; }
+.fence-posts .post-4 { height: 130px; right: -5%; }
+.fence-posts .post-5 { height: 150px; right: -10%; }
+.fence-posts .post-6 { height: 110px; right: -15%; } /* Added more posts for perspective */
+
+
+/* Gravestones */
+.gravestones {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 350px; /* Below the fence */
+    display: flex;
+    justify-content: space-around;
+    z-index: 12; /* Behind everything else */
+}
+.gravestone {
+    width: 80px;
+    height: 100px;
+    background-color: #333;
+    border-radius: 40px 40px 10px 10px;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    transform: rotate(-3deg); /* Slight tilt */
+}
+.gravestone span {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    color: #666;
+    font-family: 'Times New Roman', serif;
+}
+.grave-1 { left: -15%; transform: rotate(-5deg); }
+.grave-2 { left: -5%; }
+.grave-3 { right: -5%; transform: rotate(5deg); }
+.grave-4 { right: -15%; }
+.grave-5 { left: 10%; top: -20px; transform: scale(0.8) rotate(2deg); opacity: 0.8; } /* Further back */
+
+
+/* Spiders */
+.spiders {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 25;
+}
+.spider {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+    animation: dangleSpider 5s ease-in-out infinite alternate;
+}
+.spider::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 80px; /* Web length */
+    background-color: rgba(255,255,255,0.3);
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.spider-1 { top: 50px; left: 150px; animation-delay: 0s; }
+.spider-2 { top: 70px; left: 300px; animation-delay: 1.5s; width: 20px; height: 20px; }
+.spider-3 { top: 60px; left: 600px; animation-delay: 3s; width: 30px; height: 30px; }
+
+@keyframes dangleSpider {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
+}
+
+/* Happy Halloween Text */
+.halloween-text {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Creepster', cursive; /* A spooky font, ensure to import it */
+    font-size: 4em;
+    color: limegreen;
+    text-shadow: 0 0 15px limegreen, 0 0 30px limegreen;
+    z-index: 30;
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); /* Import a spooky font */
+
+@keyframes pulseGlow {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+    100% { transform: translateX(-50%) scale(1.05); opacity: 1; text-shadow: 0 0 20px limegreen, 0 0 40px limegreen; }
+}
+</style>
+<body>
+    <div class="scene">
+        <div class="moon"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="fence-top"></div>
+        <div class="cat">
+            <div class="ear left-ear"></div>
+            <div class="ear right-ear"></div>
+            <div class="body"></div>
+            <div class="tail"></div>
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+        </div>
+        <div class="fence-posts">
+            <div class="post post-1"></div>
+            <div class="post post-2"></div>
+            <div class="post post-3"></div>
+            <div class="post post-4"></div>
+            <div class="post post-5"></div>
+            <div class="post post-6"></div>
+        </div>
+        <div class="gravestones">
+            <div class="gravestone grave-1"><span>+</span></div>
+            <div class="gravestone grave-2"><span>+</span></div>
+            <div class="gravestone grave-3"><span>+</span></div>
+            <div class="gravestone grave-4"><span>+</span></div>
+            <div class="gravestone grave-5"><span>+</span></div>
+        </div>
+        <div class="spiders">
+            <div class="spider spider-1"></div>
+            <div class="spider spider-2"></div>
+            <div class="spider spider-3"></div>
+        </div>
+        <div class="halloween-text">Happy Halloween!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
