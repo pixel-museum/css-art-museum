@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animated Color-Changing Moving Balls</title>
+  <style>
+    :root{
+      --bg:#03040a;
+    }
+    html,body{height:100%;margin:0}
+    body{
+      background: radial-gradient(ellipse at center, #071022 0%, var(--bg) 60%);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:#fff;
+    }
+    canvas{display:block; width:100vw; height:100vh}
+
+    /* small UI panel for quick tweaks */
+    .panel{
+      position:fixed; left:12px; top:12px; z-index:30; background:rgba(255,255,255,0.06); backdrop-filter:blur(6px); border-radius:10px; padding:10px 12px; color:#e7eef8; font-size:13px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.6);
+    }
+    .panel label{display:block; font-size:12px; opacity:0.9}
+    .panel input[type=range]{width:180px}
+    .panel .row{display:flex; gap:8px; align-items:center; margin:6px 0}
+    .credits{position:fixed; right:12px; bottom:12px; color:#9fb3d0; font-size:12px; opacity:0.8}
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <div class="panel" aria-hidden>
+    <div class="row">
+      <label>Stars: <span id="count">300</span></label>
+    </div>
+    <div class="row">
+      <input id="num" type="range" min="50" max="1200" value="300">
+    </div>
+    <div class="row">
+      <label>Speed: <span id="speedVal">1.0</span></label>
+    </div>
+    <div class="row">
+      <input id="speed" type="range" min="0.1" max="4" step="0.1" value="1">
+    </div>
+    <div class="row">
+      <label>Twinkle (0-1): <span id="tw">0.5</span></label>
+    </div>
+    <div class="row">
+      <input id="twinkle" type="range" min="0" max="1" step="0.01" value="0.5">
+    </div>
+  </div>
+
+  <div class="credits">Animated stars — edit the file to customize</div>
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+
+    // handle high DPI
+    function resize(){
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // controls
+    const numInput = document.getElementById('num');
+    const countEl = document.getElementById('count');
+    const speedInput = document.getElementById('speed');
+    const speedVal = document.getElementById('speedVal');
+    const twinkleInput = document.getElementById('twinkle');
+    const twEl = document.getElementById('tw');
+
+    // star class
+    class Star{
+      constructor(w,h){
+        this.reset(w,h);
+      }
+      reset(w,h){
+        this.x = Math.random()*w;
+        this.y = Math.random()*h;
+        const angle = Math.random()*Math.PI*2;
+        const baseSpeed = 0.1 + Math.random()*0.9;
+        this.vx = Math.cos(angle)*baseSpeed;
+        this.vy = Math.sin(angle)*baseSpeed;
+        this.baseR = 0.6 + Math.random()*1.6; // radius
+        this.hue = Math.random()*360;
+        this.hueSpeed = (Math.random()*40 - 20); // deg per second
+        this.alpha = 0.6 + Math.random()*0.4;
+        this.twinklePhase = Math.random()*Math.PI*2;
+        this.twinkleSpeed = 0.5 + Math.random()*1.5;
+      }
+      step(dt, w,h,globalSpeed,twinkle){
+        this.x += this.vx * dt * 60 * globalSpeed;
+        this.y += this.vy * dt * 60 * globalSpeed;
+        this.hue += this.hueSpeed * dt;
+        this.twinklePhase += this.twinkleSpeed * dt * (1-twinkle*0.7);
+        // wrap around edges
+        if(this.x < -20) this.x = w + 20;
+        if(this.x > w + 20) this.x = -20;
+        if(this.y < -20) this.y = h + 20;
+        if(this.y > h + 20) this.y = -20;
+      }
+      draw(ctx, time, twinkle){
+        const pulse = 0.6 + Math.sin(this.twinklePhase + time*0.005)*0.4*twinkle;
+        const r = this.baseR * (0.6 + pulse);
+        // create glow by radial gradient
+        const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r*8);
+        // hue cycling + slight pastel
+        const h = (this.hue%360 + 360) % 360;
+        const color1 = `hsla(${h}, 90%, ${40 + Math.sin(time*0.002+this.hue)*6}%, ${this.alpha})`;
+        const color2 = `hsla(${(h+40)%360}, 80%, ${45}%, ${this.alpha*0.06})`;
+        g.addColorStop(0, color1);
+        g.addColorStop(0.4, color1);
+        g.addColorStop(1, color2);
+
+        ctx.beginPath();
+        ctx.fillStyle = g;
+        ctx.arc(this.x, this.y, r*6, 0, Math.PI*2);
+        ctx.fill();
+
+        // bright core
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${h}, 100%, 60%, ${0.9*this.alpha})`;
+        ctx.arc(this.x, this.y, r, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    let stars = [];
+    let last = performance.now();
+    let speed = parseFloat(speedInput.value);
+    let twinkle = parseFloat(twinkleInput.value);
+
+    function build(n){
+      stars = [];
+      for(let i=0;i<n;i++) stars.push(new Star(canvas.width, canvas.height));
+    }
+    build(parseInt(numInput.value));
+
+    numInput.addEventListener('input', ()=>{
+      const n = parseInt(numInput.value);
+      countEl.textContent = n;
+      build(n);
+    });
+    speedInput.addEventListener('input', ()=>{ speed = parseFloat(speedInput.value); speedVal.textContent = speed.toFixed(1); });
+    twinkleInput.addEventListener('input', ()=>{ twinkle = parseFloat(twinkleInput.value); twEl.textContent = twinkle.toFixed(2); });
+
+    // optional mouse repulsion
+    const mouse = {x:-9999,y:-9999,down:false};
+    window.addEventListener('mousemove', e=>{ mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', ()=>{ mouse.x = -9999; mouse.y = -9999; });
+
+    function frame(now){
+      const dt = Math.min(0.06, (now-last)/1000);
+      last = now;
+      const w = canvas.width / (window.devicePixelRatio || 1);
+      const h = canvas.height / (window.devicePixelRatio || 1);
+
+      // subtle background paint to create motion trails
+      ctx.fillStyle = 'rgba(1,6,12,0.18)';
+      ctx.fillRect(0,0,w,h);
+
+      // draw stars
+      for(let s of stars){
+        // small mouse interaction
+        if(mouse.x > -9000){
+          const dx = s.x - mouse.x;
+          const dy = s.y - mouse.y;
+          const dist2 = dx*dx + dy*dy;
+          const min = 120*120;
+          if(dist2 < min){
+            const f = (1 - dist2/min) * 2.5;
+            s.x += dx * 0.001 * f;
+            s.y += dy * 0.001 * f;
+          }
+        }
+
+        s.step(dt, w, h, speed, twinkle);
+        s.draw(ctx, now, twinkle);
+      }
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    // click toggles burst
+    canvas.addEventListener('click', ()=>{
+      for(let i=0;i<20;i++){
+        const s = new Star(canvas.width, canvas.height);
+        s.vx *= 4; s.vy *= 4; s.baseR *= 2;
+        stars.push(s);
+      }
+      // cap
+      if(stars.length > 3000) stars.splice(3000);
+      document.body.animate([{opacity:0.98},{opacity:1}],{duration:300,iterations:1});
+    });
+
+    // keyboard shortcuts
+    window.addEventListener('keydown', e=>{
+      if(e.key === 'c') build(parseInt(numInput.value)); // rebuild
+      if(e.key === '+') { numInput.value = Math.min(1200, +numInput.value + 50); numInput.dispatchEvent(new Event('input')); }
+      if(e.key === '-') { numInput.value = Math.max(50, +numInput.value - 50); numInput.dispatchEvent(new Event('input')); }
+    });
+
+  </script>
+</body>
+</html>
