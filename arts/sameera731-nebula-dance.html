@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Dance</title>
+    <style>
+      :root {
+            --bg: #01000a;
+            --neon-a: #00eaff;
+            --neon-b: #7c4dff;
+            --neon-c: #ff2d95;
+            --gold: #FFD700;
+            --silver: #E0E0E0;
+        }
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg);
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(1px 1px at 10vw 15vh, white, transparent),
+                radial-gradient(1px 1px at 80vw 25vh, white, transparent),
+                radial-gradient(2px 2px at 50vw 45vh, white, transparent),
+                radial-gradient(2px 2px at 30vw 75vh, white, transparent),
+                radial-gradient(1px 1px at 90vw 85vh, white, transparent),
+                radial-gradient(2px 2px at 15vw 95vh, white, transparent);
+            animation: twinkle 12s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        .blob-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 100%;
+            left: 50%;
+            top: 50%;
+            box-shadow:
+                inset 0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 20px var(--glow),
+                0 0 50px var(--glow);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            mix-blend-mode: lighten;
+        }
+
+        /* --- Choreography for a Dense Diagonal Split --- */
+        .blob:nth-child(1) { /* To Top-Left */
+            background: linear-gradient(135deg, var(--neon-a), var(--neon-b));
+            --glow: var(--neon-a);
+            width: 220px; height: 220px;
+            animation: nebula-split-tl 8s infinite;
+        }
+        .blob:nth-child(2) { /* To Bottom-Right */
+            background: linear-gradient(135deg, var(--neon-c), var(--neon-b));
+            --glow: var(--neon-c);
+            width: 180px; height: 180px;
+            animation: nebula-split-br 8s infinite;
+        }
+        .blob:nth-child(3) { /* To Top-Left */
+            background: linear-gradient(135deg, var(--gold), #DAA520);
+            --glow: var(--gold);
+            width: 150px; height: 150px;
+            animation: nebula-split-tl 8s -4s infinite; /* Offset timing */
+        }
+        .blob:nth-child(4) { /* To Bottom-Right */
+            background: linear-gradient(135deg, var(--silver), #C0C0C0);
+            --glow: var(--silver);
+            width: 120px; height: 120px;
+            animation: nebula-split-br 8s -4s infinite; /* Offset timing */
+        }
+        .blob:nth-child(5) { /* To Top-Left */
+            background: linear-gradient(135deg, var(--neon-b), var(--neon-a));
+            --glow: var(--neon-b);
+            width: 100px; height: 100px;
+            animation: nebula-split-tl 8s -2s infinite; /* Offset timing */
+        }
+        .blob:nth-child(6) { /* To Bottom-Right */
+            background: linear-gradient(135deg, var(--neon-c), var(--gold));
+            --glow: var(--gold);
+            width: 160px; height: 160px;
+            animation: nebula-split-br 8s -2s infinite; /* Offset timing */
+        }
+        .blob:nth-child(7) { /* To Top-Left */
+            background: linear-gradient(135deg, var(--silver), var(--neon-a));
+            --glow: var(--neon-a);
+            width: 130px; height: 130px;
+            animation: nebula-split-tl 8s -6s infinite; /* Offset timing */
+        }
+        .blob:nth-child(8) { /* To Bottom-Right */
+            background: linear-gradient(135deg, var(--neon-b), var(--neon-c));
+            --glow: var(--neon-c);
+            width: 190px; height: 190px;
+            animation: nebula-split-br 8s -6s infinite; /* Offset timing */
+        }
+
+        /* --- Animation Keyframes for Short Diagonal Movement --- */
+        @keyframes nebula-split-tl { /* To Top-Left */
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-65%, -65%) translate(-10vw, -10vh) scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes nebula-split-br { /* To Bottom-Right */
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-35%, -35%) translate(10vw, 10vh) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="blob-container">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+</body>
+</html>

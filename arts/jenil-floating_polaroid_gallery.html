@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Polaroid Gallery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let polaroids = [];
+        let time = 0;
+        let backgroundParticles = [];
+        
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            
+            // Create floating polaroids
+            for (let i = 0; i < 12; i++) {
+                polaroids.push(new Polaroid(i));
+            }
+            
+            // Create background particles
+            for (let i = 0; i < 50; i++) {
+                backgroundParticles.push(new BackgroundParticle());
+            }
+        }
+        
+        function draw() {
+            time += 0.01;
+            
+            // Dark gradient background
+            drawBackground();
+            
+            // Draw background particles
+            drawBackgroundParticles();
+            
+            // Sort polaroids by depth for proper layering
+            polaroids.sort((a, b) => a.z - b.z);
+            
+            // Update and draw polaroids
+            for (let polaroid of polaroids) {
+                polaroid.update();
+                polaroid.display();
+            }
+            
+            // Add film grain effect
+            addFilmGrain();
+        }
+        
+        function drawBackground() {
+            for (let y = 0; y < height; y++) {
+                let inter = map(y, 0, height, 0, 1);
+                let c = lerpColor(color(15, 15, 25), color(5, 5, 15), inter);
+                stroke(c);
+                line(0, y, width, y);
+            }
+        }
+        
+        class Polaroid {
+            constructor(index) {
+                this.index = index;
+                this.reset();
+                this.artType = Math.floor(random(4)); // Different art types
+                this.colorPalette = this.generateColorPalette();
+                this.animationOffset = random(TWO_PI);
+            }
+            
+            reset() {
+                this.x = random(-width * 0.2, width * 1.2);
+                this.y = random(-height * 0.2, height * 1.2);
+                this.z = random(0.3, 1);
+                
+                this.targetX = random(width * 0.1, width * 0.9);
+                this.targetY = random(height * 0.1, height * 0.9);
+                
+                this.rotation = random(-PI/6, PI/6);
+                this.rotationSpeed = random(-0.005, 0.005);
+                
+                this.size = map(this.z, 0.3, 1, 80, 200);
+                this.floatSpeed = random(0.5, 1.5);
+                
+                this.opacity = map(this.z, 0.3, 1, 180, 255);
+            }
+            
+            generateColorPalette() {
+                const palettes = [
+                    [color(255, 107, 107), color(255, 142, 83), color(255, 199, 95)],
+                    [color(72, 219, 251), color(116, 185, 255), color(162, 155, 254)],
+                    [color(255, 159, 243), color(255, 99, 132), color(255, 87, 87)],
+                    [color(134, 239, 172), color(59, 130, 246), color(147, 51, 234)],
+                    [color(249, 168, 212), color(192, 132, 252), color(165, 180, 252)]
+                ];
+                return random(palettes);
+            }
+            
+            update() {
+                // Smooth movement towards target
+                this.x = lerp(this.x, this.targetX, 0.02);
+                this.y = lerp(this.y, this.targetY, 0.02);
+                
+                // Add floating motion
+                this.x += sin(time * this.floatSpeed + this.animationOffset) * 0.8;
+                this.y += cos(time * this.floatSpeed * 0.7 + this.animationOffset) * 0.6;
+                
+                // Gentle rotation
+                this.rotation += this.rotationSpeed;
+                
+                // Change target occasionally
+                if (random(1) < 0.003) {
+                    this.targetX = random(width * 0.1, width * 0.9);
+                    this.targetY = random(height * 0.1, height * 0.9);
+                }
+                
+                // Reset if too far off screen
+                if (this.x < -300 || this.x > width + 300 || 
+                    this.y < -300 || this.y > height + 300) {
+                    this.reset();
+                }
+            }
+            
+            display() {
+                push();
+                translate(this.x, this.y);
+                rotate(this.rotation);
+                scale(this.z);
+                
+                // Drop shadow
+                push();
+                translate(5, 5);
+                fill(0, 0, 0, 50);
+                noStroke();
+                rect(-this.size/2, -this.size/2, this.size, this.size * 1.2, 5);
+                pop();
+                
+                // Polaroid frame
+                fill(255, 255, 255, this.opacity);
+                stroke(220, 220, 220, this.opacity);
+                strokeWeight(1);
+                rect(-this.size/2, -this.size/2, this.size, this.size * 1.2, 5);
+                
+                // Photo area
+                push();
+                translate(0, -this.size * 0.1);
+                this.drawArt();
+                pop();
+                
+                // Bottom white space (polaroid style)
+                fill(255, 255, 255, this.opacity);
+                rect(-this.size/2 + 5, this.size * 0.3, this.size - 10, this.size * 0.3);
+                
+                pop();
+            }
+            
+            drawArt() {
+                let artSize = this.size - 20;
+                
+                // Clip to photo area
+                push();
+                fill(0);
+                rect(-artSize/2, -artSize/2, artSize, artSize);
+                
+                // Different art types
+                switch(this.artType) {
+                    case 0:
+                        this.drawWaveArt(artSize);
+                        break;
+                    case 1:
+                        this.drawGeometricArt(artSize);
+                        break;
+                    case 2:
+                        this.drawParticleArt(artSize);
+                        break;
+                    case 3:
+                        this.drawFluidArt(artSize);
+                        break;
+                }
+                pop();
+            }
+            
+            drawWaveArt(size) {
+                noFill();
+                strokeWeight(2);
+                
+                for (let i = 0; i < 20; i++) {
+                    stroke(this.colorPalette[i % this.colorPalette.length]);
+                    beginShape();
+                    for (let x = -size/2; x <= size/2; x += 5) {
+                        let y = sin(x * 0.02 + time * 2 + i * 0.5 + this.animationOffset) * (size/8) + 
+                               sin(x * 0.01 + time + i * 0.3) * (size/12);
+                        vertex(x, y + (i - 10) * 3);
+                    }
+                    endShape();
+                }
+            }
+            
+            drawGeometricArt(size) {
+                let numShapes = 8;
+                
+                for (let i = 0; i < numShapes; i++) {
+                    let angle = (time * 0.5 + i * TWO_PI / numShapes + this.animationOffset);
+                    let radius = size * 0.15 + sin(time + i) * size * 0.1;
+                    
+                    let x = cos(angle) * radius;
+                    let y = sin(angle) * radius;
+                    
+                    fill(this.colorPalette[i % this.colorPalette.length]);
+                    noStroke();
+                    
+                    push();
+                    translate(x, y);
+                    rotate(time + i);
+                    rect(-10, -10, 20, 20);
+                    pop();
+                }
+            }
+            
+            drawParticleArt(size) {
+                let numParticles = 30;
+                
+                for (let i = 0; i < numParticles; i++) {
+                    let angle = time * 0.3 + i * 0.2 + this.animationOffset;
+                    let radius = (size/4) * (1 + sin(time * 0.5 + i) * 0.5);
+                    
+                    let x = cos(angle + i) * radius * sin(time * 0.2 + i);
+                    let y = sin(angle + i) * radius * cos(time * 0.3 + i);
+                    
+                    fill(this.colorPalette[i % this.colorPalette.length]);
+                    noStroke();
+                    
+                    let particleSize = 3 + sin(time * 2 + i) * 2;
+                    circle(x, y, particleSize);
+                }
+            }
+            
+            drawFluidArt(size) {
+                noStroke();
+                
+                for (let i = 0; i < 15; i++) {
+                    let x = sin(time * 0.5 + i * 0.8 + this.animationOffset) * size * 0.3;
+                    let y = cos(time * 0.7 + i * 0.6 + this.animationOffset) * size * 0.3;
+                    
+                    let blobSize = 20 + sin(time * 1.5 + i) * 15;
+                    
+                    fill(this.colorPalette[i % this.colorPalette.length]);
+                    circle(x, y, blobSize);
+                }
+            }
+        }
+        
+        class BackgroundParticle {
+            constructor() {
+                this.x = random(width);
+                this.y = random(height);
+                this.size = random(1, 3);
+                this.speed = random(0.2, 0.8);
+                this.opacity = random(30, 80);
+            }
+            
+            update() {
+                this.y += this.speed;
+                if (this.y > height + 10) {
+                    this.y = -10;
+                    this.x = random(width);
+                }
+            }
+            
+            display() {
+                fill(255, 255, 255, this.opacity);
+                noStroke();
+                circle(this.x, this.y, this.size);
+            }
+        }
+        
+        function drawBackgroundParticles() {
+            for (let particle of backgroundParticles) {
+                particle.update();
+                particle.display();
+            }
+        }
+        
+        function addFilmGrain() {
+            for (let i = 0; i < 100; i++) {
+                stroke(255, random(5, 25));
+                point(random(width), random(height));
+            }
+        }
+        
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            
+            // Reset all polaroids for new canvas size
+            for (let polaroid of polaroids) {
+                polaroid.reset();
+            }
+        }
+        
+        // Interactive: Click to shuffle polaroids
+        function mousePressed() {
+            for (let polaroid of polaroids) {
+                polaroid.targetX = random(width * 0.1, width * 0.9);
+                polaroid.targetY = random(height * 0.1, height * 0.9);
+                polaroid.artType = Math.floor(random(4));
+                polaroid.colorPalette = polaroid.generateColorPalette();
+            }
+        }
+    </script>
+</body>
+</html>
