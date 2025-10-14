@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Flying Balloons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0a0a1f 0%, #1a1a3e 50%, #2d1b4e 100%);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .star {
+            width: 2px;
+            height: 2px;
+        }
+
+        .star:nth-child(odd) {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: .1s;
+        }
+
+        .star:nth-child(2) {
+            top: 30%;
+            left: 20%;
+            animation-delay: 1.1s;
+        }
+
+        .star:nth-child(3) {
+            top: 70%;
+            left: 35%;
+            animation-delay: 0.8s;
+        }
+
+        .star:nth-child(4) {
+            top: 40%;
+            left: 60%;
+            animation-delay: 1.6s;
+        }
+
+        .star:nth-child(5) {
+            top: 15%;
+            left: 80%;
+            animation-delay: 0.3s;
+        }
+
+        .star:nth-child(6) {
+            top: 50%;
+            left: 90%;
+            animation-delay: 1.9s;
+        }
+
+        .star:nth-child(7) {
+            top: 80%;
+            left: 10%;
+            animation-delay: 2.2s;
+        }
+
+        .star:nth-child(8) {
+            top: 65%;
+            left: 50%;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(9) {
+            top: 25%;
+            left: 70%;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(10) {
+            top: 75%;
+            left: 85%;
+            animation-delay: 1.7s;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: floatUp 8s linear infinite;
+            opacity: 0;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .highlight {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 10px;
+            left: 20px;
+            filter: blur(1px);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                transform: translateY(-110vh) scale(1.05) rotate(4deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.1) rotate(-4deg);
+                opacity: 0;
+            }
+        }
+
+        :root {
+            --colors:
+                #ff006e,
+                #00f5ff,
+                #ffd000,
+                #b000ff,
+                #00ff88,
+                #ff3c00;
+        }
+
+        .balloon {
+            left: calc(var(--i) * 6%);
+            animation-delay: calc(var(--i) * 1.2s);
+            background: linear-gradient(135deg, var(--color) 0%, white 100%);
+            box-shadow: 0 0 30px var(--color), inset -10px -10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="balloon" style="--i:0; --color:#ff006e;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:1; --color:#00f5ff;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:2; --color:#ffd000;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:3; --color:#b000ff;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:4; --color:#00ff88;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:5; --color:#ff3c00;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:6; --color:#ff006e;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:7; --color:#00f5ff;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:8; --color:#ffd000;">
+        <div class="highlight"></div>
+    </div>
+    <div class="balloon" style="--i:9; --color:#b000ff;">
+        <div class="highlight"></div>
+    </div>
+</body>
+
+</html>
