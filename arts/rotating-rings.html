@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Rings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, blue 0%, #1a1a2e 50%, #16213e 100%);
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(10deg); }
+        }
+
+        .orb {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+        }
+
+        .ring:nth-child(1) {
+            border-color: rgba(255, 71, 87, 0.8);
+            animation: rotateRing1 8s linear infinite;
+            box-shadow: 0 0 30px rgba(255, 71, 87, 0.5);
+        }
+
+        .ring:nth-child(2) {
+            border-color: rgba(64, 224, 208, 0.8);
+            animation: rotateRing2 10s linear infinite;
+            box-shadow: 0 0 30px rgba(64, 224, 208, 0.5);
+        }
+
+        .ring:nth-child(3) {
+            border-color: rgba(255, 195, 0, 0.8);
+            animation: rotateRing3 12s linear infinite;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.5);
+        }
+
+        .ring:nth-child(4) {
+            border-color: rgba(138, 43, 226, 0.8);
+            animation: rotateRing4 9s linear infinite;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .ring:nth-child(5) {
+            border-color: rgba(0, 255, 127, 0.8);
+            animation: rotateRing5 11s linear infinite;
+            box-shadow: 0 0 30px rgba(0, 255, 127, 0.5);
+        }
+
+        .ring:nth-child(6) {
+            border-color: rgba(255, 105, 180, 0.8);
+            animation: rotateRing6 7s linear infinite;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+        }
+
+        @keyframes rotateRing1 {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(0deg); }
+        }
+
+        @keyframes rotateRing2 {
+            0% { transform: rotateX(60deg) rotateY(0deg); }
+            100% { transform: rotateX(60deg) rotateY(360deg); }
+        }
+
+        @keyframes rotateRing3 {
+            0% { transform: rotateX(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(0deg) rotateZ(360deg); }
+        }
+
+        @keyframes rotateRing4 {
+            0% { transform: rotateY(45deg) rotateX(0deg); }
+            100% { transform: rotateY(45deg) rotateX(360deg); }
+        }
+
+        @keyframes rotateRing5 {
+            0% { transform: rotateZ(30deg) rotateY(0deg); }
+            100% { transform: rotateZ(30deg) rotateY(360deg); }
+        }
+
+        @keyframes rotateRing6 {
+            0% { transform: rotateX(120deg) rotateZ(0deg); }
+            100% { transform: rotateX(120deg) rotateZ(360deg); }
+        }
+
+        .core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(100,200,255,0.6) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: coreGlow 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 40px rgba(255,255,255,0.6),
+                0 0 80px rgba(100,200,255,0.4),
+                inset 0 0 30px rgba(255,255,255,0.3);
+        }
+
+        @keyframes coreGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 40px rgba(255,255,255,0.6),
+                    0 0 80px rgba(100,200,255,0.4),
+                    inset 0 0 30px rgba(255,255,255,0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 60px rgba(255,255,255,0.8),
+                    0 0 120px rgba(100,200,255,0.6),
+                    inset 0 0 40px rgba(255,255,255,0.5);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: particleFloat 4s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            50% { 
+                transform: translate(var(--tx), var(--ty)) scale(1.5);
+                opacity: 1;
+            }
+            90% { opacity: 1; }
+        }
+
+        .particle:nth-child(1) { top: 50%; left: 50%; --tx: 100px; --ty: -80px; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 50%; left: 50%; --tx: -90px; --ty: 70px; animation-delay: 0.5s; }
+        .particle:nth-child(3) { top: 50%; left: 50%; --tx: 80px; --ty: 90px; animation-delay: 1s; }
+        .particle:nth-child(4) { top: 50%; left: 50%; --tx: -100px; --ty: -60px; animation-delay: 1.5s; }
+        .particle:nth-child(5) { top: 50%; left: 50%; --tx: 70px; --ty: -100px; animation-delay: 2s; }
+        .particle:nth-child(6) { top: 50%; left: 50%; --tx: -80px; --ty: 80px; animation-delay: 2.5s; }
+        .particle:nth-child(7) { top: 50%; left: 50%; --tx: 90px; --ty: 60px; animation-delay: 3s; }
+        .particle:nth-child(8) { top: 50%; left: 50%; --tx: -70px; --ty: -90px; animation-delay: 3.5s; }
+
+        .glow-effect {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(100,150,255,0.1) 0%, transparent 70%);
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .container:hover .ring {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-effect"></div>
+    <div class="container">
+        <div class="orb">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="core"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+</body>
+</html>
