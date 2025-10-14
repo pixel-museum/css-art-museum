@@ -911,6 +911,14 @@
     "date": "2024-02-28"
   },
   {
+    "file":"gnautspace-astronaut_in_the_ocean.html",
+    "title":"Astronaut In The Ocean",
+    "author":"GnautSpace",
+    "tags":["animation","astronaut","ocean","motion"],
+    "description":"An animated scene of an astronaut in the ocean.",
+    "date":"2025-10-03"
+  },
+  {
     "file":"Commits_Grid_text.html",
     "title":"Grid text",
     "author":"Debosmita",
@@ -933,5 +941,13 @@
     "tags":["animation","rings","motion","smooth"],
     "description":"Some rotating rings that moves across the screen in a smooth, continuous motion.",
     "date":"2024-10-14"
+  },
+  {
+    "file":"gnautspace-neon_balloons.html",
+    "title":"Endless Neon Balloons",
+    "author":"GnautSpace",
+    "tags":["animation","balloons","motion"],
+    "description":"An animated scene of colorful neon balloons moving up in the starry night sky.",
+    "date":"2025-10-14"
   }
 ]
