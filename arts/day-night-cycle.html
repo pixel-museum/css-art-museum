@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day and Night Cycle - CSS Art Museum</title>
+  <style>
+    /* Day and Night Cycle CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%);
+      animation: sky-transition 16s linear infinite;
+      overflow: hidden;
+    }
+    .scene {
+      position: relative;
+      width: 400px;
+      height: 300px;
+    }
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, #228b22 20%, #006400 100%);
+      border-radius: 50% 50% 0 0;
+      z-index: 1;
+    }
+    .sun-moon {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #ffeb3b 20%, #ffa500 80%);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+      animation: orbit 16s linear infinite;
+      z-index: 2;
+    }
+    .sun-moon::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #f5f5f5 20%, #b0c4de 80%);
+      border-radius: 50%;
+      opacity: 0;
+      animation: moon-phase 16s linear infinite;
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      animation: stars-appear 16s linear infinite;
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
+    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
+    .star3 { width: 1px; height: 1px; top: 150px; left: 100px; animation-delay: 1.5s; }
+    .star4 { width: 2px; height: 2px; top: 30px; left: 300px; animation-delay: 2s; }
+    @keyframes sky-transition {
+      0%, 20% { background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%); } /* Day */
+      30%, 70% { background: linear-gradient(to bottom, #0a0a23 0%, #1c2526 100%); } /* Night */
+      80%, 100% { background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%); } /* Day */
+    }
+    @keyframes orbit {
+      0% { transform: translate(-50%, 0) translateY(-100px) rotate(0deg) translateY(100px); }
+      25% { transform: translate(-50%, 0) translateY(-100px) rotate(90deg) translateY(100px); }
+      50% { transform: translate(-50%, 0) translateY(-100px) rotate(180deg) translateY(100px); }
+      75% { transform: translate(-50%, 0) translateY(-100px) rotate(270deg) translateY(100px); }
+      100% { transform: translate(-50%, 0) translateY(-100px) rotate(360deg) translateY(100px); }
+    }
+    @keyframes moon-phase {
+      0%, 20% { opacity: 0; } /* Sun visible */
+      30%, 70% { opacity: 1; } /* Moon visible */
+      80%, 100% { opacity: 0; } /* Sun visible */
+    }
+    @keyframes stars-appear {
+      0%, 20% { opacity: 0; }
+      30%, 70% { opacity: 1; }
+      80%, 100% { opacity: 0; }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stars">
+      <div class="star star1"></div>
+      <div class="star star2"></div>
+      <div class="star star3"></div>
+      <div class="star star4"></div>
+    </div>
+    <div class="ground"></div>
+    <div class="sun-moon"></div>
+  </div>
+</body>
+</html>

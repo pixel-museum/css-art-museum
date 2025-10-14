@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Greetings</title>
+		<style>
+			.emoji {
+				font-size: 80px;
+			}
+
+			.emoji::after {
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+
+			.wave::after {
+				content: "✋";
+				--emoji: "👋";
+				animation-name: twoFrames;
+				animation-duration: 1.2s;
+			}
+
+			@keyframes twoFrames {
+				50% {
+					content: var(--emoji);
+				}
+			}
+		</style>
+	</head>
+	<body>
+        <div id="home" class="container mr-5">
+        <p class="welcome"><span class="emoji wave" role="img" aria-label="hand wave"></span></p>
+    </div>
+    </body>
+</html>
