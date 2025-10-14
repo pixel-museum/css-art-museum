@@ -64,6 +64,11 @@
     "date": "2023-10-03"
   },
   {
+  "file": "sunrise.html",
+  "title": "Sunrise Over Mountains",
+  "author": "Apurva Jain"
+  },
+  {
     "file":"SK-tesseract.html",
     "title":"Tesseract",
     "author":"Saikiran-Sugurthi",
@@ -222,6 +227,16 @@
     "tags": ["flag", "national", "animation", "patriotism", "india"],
     "description": "An animated representation of the flag of India, typically shown waving.",
     "date": "2024-03-31"
+  },
+  {
+    "file": "Apurva_unicorn_art.html",
+    "title": "Mini Unicorn Art",
+    "author": "Apurva"
+  },
+   {
+    "file": "Apurva_rainbow.html",
+    "title": "CSS Rainbow Art",
+    "author": "Apurva"
   },
   {
     "file": "waqar-cat.html",

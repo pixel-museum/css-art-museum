@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure CSS Unicorn</title>
+  <style>
+    :root{
+      --bg:#f6f8ff;
+      --unicorn-white:#fff;
+      --outline:#e6d7ff;
+      --mane1:#ff9ec9;
+      --mane2:#b3d6ff;
+      --mane3:#ffd88f;
+      --mane4:#c6ffd9;
+      --horn:#ffd36b;
+      --eye:#2b2b2b;
+      --shadow: rgba(20,20,60,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(1200px 500px at 10% 10%, #ffffff 0%, var(--bg) 30%), var(--bg);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      padding:40px;
+    }
+
+    .stage{
+      width:520px;
+      height:420px;
+      position:relative;
+      filter:drop-shadow(0 12px 30px var(--shadow));
+    }
+
+    /* body */
+    .unicorn{
+      position:absolute;
+      left:60px;
+      top:140px;
+      width:380px;
+      height:220px;
+    }
+
+    .body{
+      position:absolute;
+      left:40px;
+      top:40px;
+      width:260px;
+      height:150px;
+      background:var(--unicorn-white);
+      border-radius:60% 55% 45% 45% / 60% 50% 55% 45%;
+      box-shadow: inset -8px -6px 0 rgba(0,0,0,0.02);
+      border:6px solid var(--outline);
+      transform-origin:center left;
+      animation: bob 3.5s ease-in-out infinite;
+    }
+
+    @keyframes bob{
+      0%,100%{transform: rotate(0deg)}
+      50%{transform: rotate(-1.2deg)}
+    }
+
+    /* head */
+    .head{
+      position:absolute;
+      left:230px;
+      top:-10px;
+      width:150px;
+      height:130px;
+      background:var(--unicorn-white);
+      border-radius:55% 50% 45% 65% / 60% 55% 45% 50%;
+      border:6px solid var(--outline);
+      transform-origin:30% 50%;
+      animation: nod 4s ease-in-out infinite;
+    }
+    @keyframes nod{
+      0%,100%{transform: translateY(0) rotate(0deg)}
+      40%{transform: translateY(-6px) rotate(-2deg)}
+      60%{transform: translateY(0) rotate(0)}
+    }
+
+    /* ear */
+    .ear{
+      position:absolute;
+      left:18px;
+      top:6px;
+      width:34px;height:30px;
+      background:linear-gradient(180deg,#fff,#fdf6ff);
+      border-radius:60% 40% 30% 70% / 65% 45% 55% 35%;
+      transform:rotate(-12deg);
+      border:5px solid var(--outline);
+      overflow:hidden;
+    }
+    .ear:after{
+      content:"";position:absolute;left:6px;top:6px;width:16px;height:14px;border-radius:50%;background:#ffe9ff;opacity:0.9;transform:rotate(-12deg);
+    }
+
+    /* horn */
+    .horn{
+      position:absolute;
+      left:18px; top:-36px;
+      width:18px;height:70px;
+      background:linear-gradient(180deg,var(--horn), #ffb86b);
+      border-radius:10px 10px 30px 30px;
+      transform:rotate(-18deg);
+      border:5px solid var(--outline);
+      overflow:visible;
+    }
+    .horn:before, .horn:after{
+      content:"";position:absolute;left:50%;transform:translateX(-50%);
+      width:8px;height:6px;border-radius:6px;opacity:0.9;
+      background:rgba(255,255,255,0.34);
+      top:14px; transform-origin:center; 
+    }
+    .horn:after{top:36px;width:10px;height:8px}
+
+    /* mane (multiple layered gradients + shapes) */
+    .mane{
+      position:absolute;left:-10px;top:10px;width:220px;height:180px;pointer-events:none;
+    }
+    .mane .strand{
+      position:absolute;left:0;top:0;width:140px;height:40px;border-radius:60px;transform-origin:left center;opacity:0.95;
+      box-shadow:0 6px 10px rgba(0,0,0,0.06);
+    }
+    .s1{background:linear-gradient(90deg,var(--mane1), #ffb2e3);transform:rotate(-25deg);left:16px;top:-8px;width:180px;height:48px;}
+    .s2{background:linear-gradient(90deg,var(--mane2), #99c9ff);transform:rotate(-8deg);left:6px;top:14px;width:200px;height:44px;}
+    .s3{background:linear-gradient(90deg,var(--mane3), #ffe1a8);transform:rotate(12deg);left:-6px;top:44px;width:190px;height:44px;}
+    .s4{background:linear-gradient(90deg,var(--mane4), #d6ffe6);transform:rotate(30deg);left:-14px;top:78px;width:160px;height:40px;}
+
+    /* mane animation subtle wave */
+    .s1,.s2,.s3,.s4{animation: wave 4s ease-in-out infinite}
+    .s1{animation-delay:0s}
+    .s2{animation-delay:0.15s}
+    .s3{animation-delay:0.3s}
+    .s4{animation-delay:0.45s}
+    @keyframes wave{
+      0%,100%{transform:translateX(0) rotate(var(--r,0deg))}
+      50%{transform:translateX(-4px) rotate(calc(var(--r,0deg) + 4deg))}
+    }
+
+    /* eye */
+    .eye{
+      position:absolute;left:72px;top:48px;width:20px;height:20px;border-radius:50%;background:var(--eye);box-shadow:0 0 0 4px rgba(0,0,0,0.06) inset;
+    }
+    .eye:after{content:"";position:absolute;right:6px;top:4px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.95)}
+
+    /* cheek */
+    .cheek{position:absolute;left:100px;top:78px;width:26px;height:20px;border-radius:40px;background:linear-gradient(90deg,#ffd8f6,#ffd3f0);opacity:0.9;}
+
+    /* legs */
+    .leg{position:absolute;width:18px;height:70px;background:linear-gradient(180deg,#fff,#f6f6ff);border-radius:10px;border:6px solid var(--outline);bottom:-10px;box-shadow:0 6px 10px rgba(0,0,0,0.05);}
+    .leg.l1{left:90px;bottom:-8px;transform:rotate(6deg)}
+    .leg.l2{left:140px;bottom:-10px;transform:rotate(-2deg)}
+    .leg.l3{left:220px;bottom:-8px;transform:rotate(6deg)}
+    .leg.l4{left:270px;bottom:-10px;transform:rotate(-2deg)}
+
+    /* tail */
+    .tail{
+      position:absolute;left:-16px;top:68px;width:220px;height:120px;pointer-events:none;transform-origin:right center;
+    }
+    .tail .t{position:absolute;right:0;width:140px;height:36px;border-radius:60px;transform-origin:right center;box-shadow:0 6px 10px rgba(0,0,0,0.05)}
+    .t1{background:linear-gradient(90deg,var(--mane1),#ffb2e3);right:-18px;top:14px;transform:rotate(24deg)}
+    .t2{background:linear-gradient(90deg,var(--mane2),#99c9ff);right:-40px;top:40px;transform:rotate(34deg)}
+    .t3{background:linear-gradient(90deg,var(--mane3),#ffd88f);right:-58px;top:64px;transform:rotate(42deg)}
+    .t4{background:linear-gradient(90deg,var(--mane4),#c6ffd9);right:-76px;top:88px;transform:rotate(54deg)}
+    .tail{animation: tailsw 3s ease-in-out infinite}
+    @keyframes tailsw{0%,100%{transform:rotate(0deg)}50%{transform:rotate(6deg)}}
+
+    /* sparkles */
+    .sparkle{position:absolute;width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,#fff,#ffe3ff);box-shadow:0 6px 10px rgba(0,0,0,0.05);opacity:0.95}
+    .sp1{left:10px;top:10px;transform:scale(1.2)}
+    .sp2{left:480px;top:30px;transform:scale(0.9)}
+    .sp3{left:420px;top:80px;transform:scale(1)}
+
+    /* ground */
+    .ground{position:absolute;left:0;bottom:18px;width:100%;height:20px;background:linear-gradient(90deg,#fff,#f0f7ff);border-radius:999px;filter:blur(6px);opacity:0.7}
+
+    /* caption */
+    .caption{position:absolute;left:40px;bottom:-40px;font-weight:600;color:#6d6ea2;}
+
+    /* responsive */
+    @media (max-width:600px){.stage{transform:scale(0.72);transform-origin:center}.caption{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="sparkle sp1"></div>
+    <div class="sparkle sp2"></div>
+    <div class="sparkle sp3"></div>
+
+    <div class="unicorn" aria-hidden="true">
+      <div class="body"></div>
+
+      <div class="head">
+        <div class="ear"></div>
+        <div class="horn"></div>
+        <div class="mane" style="--r:-18deg">
+          <div class="strand s1"></div>
+          <div class="strand s2"></div>
+          <div class="strand s3"></div>
+          <div class="strand s4"></div>
+        </div>
+        <div class="eye"></div>
+        <div class="cheek"></div>
+      </div>
+
+      <div class="tail">
+        <div class="t t1"></div>
+        <div class="t t2"></div>
+        <div class="t t3"></div>
+        <div class="t t4"></div>
+      </div>
+
+      <div class="leg l1"></div>
+      <div class="leg l2"></div>
+      <div class="leg l3"></div>
+      <div class="leg l4"></div>
+
+    </div>
+
+    <div class="ground"></div>
+    <div class="caption"></div>
+  </div>
+</body>
+</html>
