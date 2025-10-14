@@ -972,6 +972,14 @@
     "author":"Aman Singh",
     "tags": ["planet", "earth", "animation", "space", "celestial"],
     "description": "A 2D animated model of the Earth rotating on its axis.",
-    "date": "2024-05-30"
+    "date": "2025-10-15"
+  },
+  {
+    "file":"amansingh-3DtextRolling.html",
+    "title":"3D text Rolling Animation",
+    "author":"Aman Singh",
+    "tags": ["text-effect", "3d", "animation", "typography", "motion"],
+    "description": "A 3D text animation where the text rolls or rotates in a three-dimensional space.",
+    "date": "2025-10-15"
   }
 ]
