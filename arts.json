@@ -1,5 +1,10 @@
 [
   {
+    "file": "sharanya_wheel_hamster.html",
+    "title": "Wheel and Hmaster",
+    "author": "Sharanya"
+  },
+  {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
    "author": "kronpatel"
@@ -423,9 +428,8 @@
     "file": "universesm_RotatingCarWheel.html",
     "title": "Rotating Car Wheel",
     "author": "universe-sm"
-  }
-
-]
+  },
+  {
     "file": "circular-image-gallery.html",
     "title": "Animated circular-image-gallery",
     "author": "Harshit"
@@ -440,19 +444,24 @@
     "title": "Animated Living Origami",
     "author": "Harsha"
   },
-{
+ {
     "file": "flying-bird.html",
     "title": "Flying Bird",
     "author": "Thanuja Kedila"
   },
-{
+  {
     "file": "atomic-structure.html",
     "title": "Atomic Structure",
     "author": "Nitish K"
-  }
+  },
   {
     "file":"Aurora-pulse.html",
     "title":"Aurora Pulse",
+    "author":"Komal Sathvik"
+  },
+  {
+    "file":"floating-island.html",
+    "title":"Floating Island",
     "author":"Komal Sathvik"
   }
 ]
