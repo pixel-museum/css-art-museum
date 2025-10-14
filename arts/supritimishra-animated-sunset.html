@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Sunset</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to top, #ff7e5f, #feb47b);
+            overflow: hidden;
+        }
+
+        .sun {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #ffdd59, #ff9f43);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: moveSun 5s infinite alternate;
+        }
+
+        @keyframes moveSun {
+            0% { bottom: 10%; }
+            100% { bottom: 30%; }
+        }
+
+        .cloud {
+            position: absolute;
+            width: 120px;
+            height: 60px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 30px 10px 0 #ffffff, -30px 10px 0 #ffffff;
+            animation: moveClouds 10s linear infinite;
+        }
+
+        .cloud:nth-child(1) {
+            top: 20%;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .cloud:nth-child(2) {
+            top: 40%;
+            left: -200px;
+            animation-delay: 2s;
+        }
+
+        .cloud:nth-child(3) {
+            top: 60%;
+            left: -250px;
+            animation-delay: 4s;
+        }
+
+        @keyframes moveClouds {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="ground"></div>
+</body>
+</html>
