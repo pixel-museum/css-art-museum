@@ -925,5 +925,14 @@
     "tags":["animation","ball","motion","abstract"],
     "description":"An animated ball that moves across the screen in a smooth, continuous motion.",
     "date":"2024-03-17"
-  }
+  },
+  {
+    "file":"blinking-bear.html",
+    "title":"Blinking Bear",
+    "author":"Nitish K",
+    "tags":["animation","bear","animal","blink"],
+    "description":"A Blinking Bear CSS Animation ",
+    "date":"2025-10-14"
+  },
+  
 ]
