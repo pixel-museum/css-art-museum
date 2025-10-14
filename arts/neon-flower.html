@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Flower - CSS Art Museum</title>
+  <style>
+    /* Neon Flower CSS Art by Grok */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #1a1a3d 0%, #000000 100%);
+      overflow: hidden;
+    }
+    .scene {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+    .flower {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .petal {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      border-radius: 50% 50% 0 0;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.6);
+      animation: glow 2s ease-in-out infinite;
+    }
+    .petal1 { transform: rotate(0deg) translateY(-50px); }
+    .petal2 { transform: rotate(72deg) translateY(-50px); }
+    .petal3 { transform: rotate(144deg) translateY(-50px); }
+    .petal4 { transform: rotate(216deg) translateY(-50px); }
+    .petal5 { transform: rotate(288deg) translateY(-50px); }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #ffff00 20%, #ff4500 80%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+      animation: pulse 1.5s ease-in-out infinite;
+      z-index: 3;
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite;
+    }
+    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
+    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
+    .star3 { width: 1px; height: 1px; top: 150px; left: 100px; animation-delay: 1.5s; }
+    .star4 { width: 2px; height: 2px; top: 30px; left: 250px; animation-delay: 2s; }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.6); }
+      50% { box-shadow: 0 0 25px rgba(255, 0, 255, 1), 0 0 35px rgba(0, 255, 255, 0.8); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 20px rgba(255, 255, 0, 0.8); }
+      50% { transform: translate(-50%, -50%) scale(1.2); box-shadow: 0 0 30px rgba(255, 255, 0, 1); }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stars">
+      <div class="star star1"></div>
+      <div class="star star2"></div>
+      <div class="star star3"></div>
+      <div class="star star4"></div>
+    </div>
+    <div class="flower">
+      <div class="petal petal1"></div>
+      <div class="petal petal2"></div>
+      <div class="petal petal3"></div>
+      <div class="petal petal4"></div>
+      <div class="petal petal5"></div>
+      <div class="center"></div>
+    </div>
+  </div>
+</body>
+</html>

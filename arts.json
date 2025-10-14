@@ -908,17 +908,59 @@
     "date": "2024-02-28"
   },
   {
+    "file":"gnautspace-astronaut_in_the_ocean.html",
+    "title":"Astronaut In The Ocean",
+    "author":"GnautSpace",
+    "tags":["animation","astronaut","ocean","motion"],
+    "description":"An animated scene of an astronaut in the ocean.",
+    "date":"2025-10-03"
+  },
+  {
     "file":"Commits_Grid_text.html",
     "title":"Grid text",
-    "author":"Debosmita"
-  },{
-    "file":"amansingh-earthwithcss.html",
-    "title":"Earth with CSS",
-    "author":"Aman Singh"
-  },{
-    "file":"amansingh-3dtextrolling.html",
-    "title":"3D text rolling animation",
-    "author":"Aman Singh"
+    "author":"Debosmita",
+    "tags": ["text-effect", "typography", "grid", "pattern", "abstract"],
+    "description": "Text that is integrated into or stylized by an explicit grid pattern.",
+    "date": "2024-03-08"
+  },
+  {
+    "file":"moving_ball.html",
+    "title":"Moving Animated Ball",
+    "author":"Debosmita",
+    "tags":["animation","ball","motion","abstract"],
+    "description":"An animated ball that moves across the screen in a smooth, continuous motion.",
+    "date":"2024-03-17"
+  },
+  {
+    "file":"neon-flower.html",
+    "title":"Neon Flower",
+    "author":"Thanuja Kedila",
+    "tags":["neon","sky","flower glow","night sky"],
+    "description":"A Neon Flower Glowing At Midnight.",
+    "date":"2025-10-14"
+  },
+  {
+    "file":"blinking-bear.html",
+    "title":"Blinking Bear",
+    "author":"Nitish K",
+    "tags":["animation","bear","animal","blink"],
+    "description":"A Blinking Bear CSS Animation ",
+    "date":"2025-10-14"
+  },
+  {
+    "file":"rotating-rings.html",
+    "title":"Rotating Rings Animation",
+    "author":"Sougata Paul",
+    "tags":["animation","rings","motion","smooth"],
+    "description":"Some rotating rings that moves across the screen in a smooth, continuous motion.",
+    "date":"2024-10-14"
+  },
+  {
+    "file":"gnautspace-neon_balloons.html",
+    "title":"Endless Neon Balloons",
+    "author":"GnautSpace",
+    "tags":["animation","balloons","motion"],
+    "description":"An animated scene of colorful neon balloons moving up in the starry night sky.",
+    "date":"2025-10-14"
   }
 ]
-
