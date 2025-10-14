@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Art Museum</title>
 
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- KEEP: single favicon + single stylesheet reference -->
+    <link rel="icon" type="image/png" href="./assets/logo.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -84,6 +85,7 @@
         <option value="least-liked">Least Liked</option>
       </select>
     </div>
+
     <h2 class="section-title">Art Museum</h2>
     <main class="gallery" id="gallery-container"></main>
 
@@ -198,16 +200,8 @@
       </div>
     </footer>
 
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M12 4L4 12H8V20H16V12H20L12 4Z" fill="currentColor" />
-      </svg>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Scroll to top" type="button">
       <svg
         width="24"
         height="24"
