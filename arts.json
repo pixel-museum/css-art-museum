@@ -902,5 +902,13 @@
     "tags": ["text-effect", "typography", "grid", "pattern", "abstract"],
     "description": "Text that is integrated into or stylized by an explicit grid pattern.",
     "date": "2024-03-08"
+  },
+  {
+    "file":"moving_ball.html",
+    "title":"Moving Animated Ball",
+    "author":"Debosmita",
+    "tags":["animation","ball","motion","abstract"],
+    "description":"An animated ball that moves across the screen in a smooth, continuous motion.",
+    "date":"2024-03-17"
   }
 ]
