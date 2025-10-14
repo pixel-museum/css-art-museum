@@ -77,3 +77,50 @@ h1 {
 .contributor-card a:hover {
   opacity: 0.8;
 }
+
+/* Action buttons wrapper to align View Code and Like buttons */
+.contributor-card .actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+/* Make both links and buttons share the same size and alignment */
+.contributor-card .actions a,
+.contributor-card .actions button {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.12s ease;
+  background-clip: padding-box;
+}
+
+/* Primary action (View Code) */
+.contributor-card .actions a.primary {
+  background: linear-gradient(135deg, #ff4d6d, #ff8c42);
+  color: #fff;
+}
+
+/* Secondary action (Like) — same size but different visual style */
+.contributor-card .actions .like-btn {
+  background: transparent;
+  color: #222;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Hover states */
+.contributor-card .actions a.primary:hover,
+.contributor-card .actions .like-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
