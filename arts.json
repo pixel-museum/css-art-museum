@@ -1,18 +1,11 @@
 [
   {
-    "file": "sharanya_wheel_hamster.html",
-    "title": "Wheel and Hmaster",
-    "author": "Sharanya"
-  },
-  {
-    "file": "sharanya_blazing_squares.html",
-    "title": "Blazing Squares",
-    "author": "Sharanya"
-  },
-  {
-    "file": "sharanya_rotating_compass.html",
-    "title": "Rotating Compass",
-    "author": "Sharanya"
+   "file": "sharanya_rotating_compass.html",
+   "title": "Rotating Compass",
+   "author": "sharanya",
+   "tags": ["compass", "animation", "css", "design"],
+   "description": "A visually engaging rotating compass created using CSS animations.",
+   "date": "2024-07-10"
   },
   {
    "file": "Keron-3D_Box.html",
