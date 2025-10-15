@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Neon Balloons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at bottom, #12001a 0%, #1c0030 50%, #050010 100%);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            width: 2px;
+            height: 2px;
+            animation: twinkle 3s infinite;
+        }
+
+        .star:nth-child(odd) {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star:nth-child(n) {
+            top: calc(var(--t, 50) * 1%);
+            left: calc(var(--l, 50) * 1%);
+            animation-delay: calc(var(--a, 0) * 1s);
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            animation: floatUp var(--speed) linear infinite;
+            animation-delay: var(--delay);
+            transform: translateX(var(--offset)) scale(var(--scale));
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .highlight {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 15px;
+            left: 20px;
+            filter: blur(1px);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateX(var(--offset)) translateY(0) scale(var(--scale)) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            25% {
+                transform: translateX(calc(var(--offset) + var(--drift1))) translateY(-25vh) scale(calc(var(--scale) * 1.05)) rotate(3deg);
+            }
+
+            50% {
+                transform: translateX(calc(var(--offset) + var(--drift2))) translateY(-60vh) scale(calc(var(--scale) * 1.1)) rotate(-3deg);
+            }
+
+            75% {
+                transform: translateX(calc(var(--offset) + var(--drift3))) translateY(-90vh) scale(calc(var(--scale) * 1.15)) rotate(2deg);
+            }
+
+            100% {
+                transform: translateX(calc(var(--offset) + var(--drift4))) translateY(-130vh) scale(calc(var(--scale) * 1.2)) rotate(-2deg);
+                opacity: 0;
+            }
+        }
+
+        :root {
+            --c1: #ff006e;
+            --c2: #00f5ff;
+            --c3: #ffd000;
+            --c4: #b000ff;
+            --c5: #00ff88;
+            --c6: #ff3c00;
+        }
+
+        .balloon {
+            background: linear-gradient(135deg, var(--color) 0%, white 100%);
+            box-shadow: 0 0 30px var(--color), inset -10px -10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .balloon:nth-child(1) {
+            --color: var(--c1);
+            --offset: -150px;
+            --speed: 12s;
+            --delay: 0s;
+            --scale: 1;
+            --drift1: 20px;
+            --drift2: -15px;
+            --drift3: 10px;
+            --drift4: -10px;
+        }
+
+        .balloon:nth-child(2) {
+            --color: var(--c2);
+            --offset: -80px;
+            --speed: 13s;
+            --delay: 2s;
+            --scale: 0.9;
+            --drift1: 10px;
+            --drift2: 25px;
+            --drift3: -15px;
+            --drift4: 10px;
+        }
+
+        .balloon:nth-child(3) {
+            --color: var(--c3);
+            --offset: -20px;
+            --speed: 11s;
+            --delay: 1s;
+            --scale: 1.1;
+            --drift1: -10px;
+            --drift2: 20px;
+            --drift3: 10px;
+            --drift4: -5px;
+        }
+
+        .balloon:nth-child(4) {
+            --color: var(--c4);
+            --offset: 40px;
+            --speed: 14s;
+            --delay: 3s;
+            --scale: 1.0;
+            --drift1: 15px;
+            --drift2: -20px;
+            --drift3: 25px;
+            --drift4: -10px;
+        }
+
+        .balloon:nth-child(5) {
+            --color: var(--c5);
+            --offset: 90px;
+            --speed: 12s;
+            --delay: 4s;
+            --scale: 0.9;
+            --drift1: -20px;
+            --drift2: 15px;
+            --drift3: -25px;
+            --drift4: 10px;
+        }
+
+        .balloon:nth-child(6) {
+            --color: var(--c6);
+            --offset: 140px;
+            --speed: 10s;
+            --delay: 5s;
+            --scale: 1.05;
+            --drift1: 25px;
+            --drift2: -10px;
+            --drift3: 20px;
+            --drift4: -5px;
+        }
+
+        .balloon:nth-child(7) {
+            --color: var(--c1);
+            --offset: -120px;
+            --speed: 15s;
+            --delay: 6s;
+            --scale: 0.95;
+            --drift1: 20px;
+            --drift2: -25px;
+            --drift3: 15px;
+            --drift4: -20px;
+        }
+
+        .balloon:nth-child(8) {
+            --color: var(--c2);
+            --offset: 60px;
+            --speed: 13s;
+            --delay: 7s;
+            --scale: 1.0;
+            --drift1: -15px;
+            --drift2: 25px;
+            --drift3: -10px;
+            --drift4: 15px;
+        }
+
+        .balloon:nth-child(9) {
+            --color: var(--c3);
+            --offset: -60px;
+            --speed: 12s;
+            --delay: 8s;
+            --scale: 1.1;
+            --drift1: 15px;
+            --drift2: -20px;
+            --drift3: 20px;
+            --drift4: -10px;
+        }
+
+        .balloon:nth-child(10) {
+            --color: var(--c4);
+            --offset: 0px;
+            --speed: 14s;
+            --delay: 9s;
+            --scale: 1;
+            --drift1: -10px;
+            --drift2: 10px;
+            --drift3: -5px;
+            --drift4: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="star" style="--t:10;--l:5;--a:0;"></div>
+    <div class="star" style="--t:30;--l:25;--a:1;"></div>
+    <div class="star" style="--t:60;--l:50;--a:2;"></div>
+    <div class="star" style="--t:80;--l:70;--a:1.5;"></div>
+    <div class="star" style="--t:50;--l:90;--a:2.3;"></div>
+    <div class="star" style="--t:15;--l:60;--a:0.5;"></div>
+    <div class="star" style="--t:75;--l:40;--a:1.8;"></div>
+    <div class="star" style="--t:40;--l:10;--a:2.6;"></div>
+
+    <div class="container">
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+        <div class="balloon">
+            <div class="highlight"></div>
+        </div>
+    </div>
+</body>
+
+</html>
