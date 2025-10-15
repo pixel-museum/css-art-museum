@@ -965,5 +965,13 @@
     "tags":["animation","balloons","motion"],
     "description":"An animated scene of colorful neon balloons moving up in the starry night sky.",
     "date":"2025-10-14"
+  },
+  {
+    "file": "universesm_clock.html",
+    "title": "Animated Wall Clock",
+    "author": "universe-sm",
+    "tags": ["animation", "clock", "time", "motion"],
+    "description": "Animation of wall clock with accurate periodic motion.",
+    "date": "2025-10-14"
   }
 ]
