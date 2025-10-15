@@ -965,5 +965,13 @@
     "tags":["animation","balloons","motion"],
     "description":"An animated scene of colorful neon balloons moving up in the starry night sky.",
     "date":"2025-10-14"
+  },
+  {
+    "file":"fighter_jet_sunset.html",
+    "title":"Fighter Jet Sunset",
+    "author":"Kabiirk",
+    "tags":["pixel art","jets","sunset"],
+    "description":"As the sun sets among the mountains, 3 jets fly by after their mission.",
+    "date":"2025-10-15"
   }
 ]
