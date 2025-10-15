@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lalaland Autumn Evening V3</title>
+    <style>
+        :root {
+            --sky-dark: #4a6c89;
+            --sky-medium: #7a9cb2;
+            --sky-light: #b2cbe0;
+            --leaf-color-1: #ffd700; /* Gold */
+            --leaf-color-2: #ffa500; /* Orange */
+            --leaf-color-3: #ff6347; /* Tomato */
+            --leaf-color-4: #cc0000; /* Deep Red */
+            --leaf-color-5: #8b4513; /* SaddleBrown (for darker leaves) */
+            --glow-color-light: rgba(255, 255, 255, 0.8);
+            --glow-color-medium: rgba(255, 200, 0, 0.6);
+            --lamp-glow-color: #ffe066; /* Warm yellow for lamp */
+            --lamp-metal: #4f4f4f;
+            --lamp-glass: #fff;
+            --bench-wood: #6b4c3e;
+            --cat-fur: #f5deb3; /* Wheat color for better contrast */
+            --cat-eyes: #9acd32; /* Yellow-green */
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--sky-dark), var(--sky-medium), var(--sky-light));
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+        }
+
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* --- Street Lamp --- */
+        .street-lamp {
+            position: absolute;
+            bottom: 0;
+            left: 30%; /* Positioned to the left */
+            transform: translateX(-50%);
+            width: 80px;
+            height: 400px;
+            z-index: 20;
+        }
+
+        .lamp-pole {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 100%;
+            background-color: var(--lamp-metal);
+            border-radius: 5px 5px 0 0;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .lamp-head {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 80px;
+            background-color: var(--lamp-metal);
+            border-radius: 5px;
+        }
+        .lamp-head::before { /* Top part */
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 40px;
+            height: 15px;
+            background-color: var(--lamp-metal);
+            border-radius: 5px 5px 0 0;
+        }
+        .lamp-head::after { /* Light source */
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            width: 50px;
+            height: 40px;
+            background-color: var(--lamp-glass);
+            border-radius: 3px;
+            box-shadow: 0 0 15px 5px var(--lamp-glow-color),
+                        0 0 30px 10px rgba(255, 224, 102, 0.5),
+                        0 0 60px 20px rgba(255, 224, 102, 0.2);
+            animation: lampFlicker 3s infinite ease-in-out alternate;
+        }
+
+        @keyframes lampFlicker {
+            0%, 100% { box-shadow: 0 0 15px 5px var(--lamp-glow-color), 0 0 30px 10px rgba(255, 224, 102, 0.5), 0 0 60px 20px rgba(255, 224, 102, 0.2); }
+            50% { box-shadow: 0 0 12px 4px var(--lamp-glow-color), 0 0 25px 8px rgba(255, 224, 102, 0.4), 0 0 50px 15px rgba(255, 224, 102, 0.15); }
+        }
+
+        /* --- Bench (Wider) --- */
+        .bench {
+            position: absolute;
+            bottom: 0;
+            left: 30%; /* Align with lamp */
+            transform: translateX(10%); /* Shift slightly right of lamp */
+            width: 280px; /* Significantly wider */
+            height: 80px;
+            z-index: 15;
+        }
+        .bench-seat {
+            width: 100%;
+            height: 30px;
+            background-color: var(--bench-wood);
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+        }
+        .bench-legs {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .bench-legs::before, .bench-legs::after {
+            content: '';
+            width: 15px;
+            height: 100%;
+            background-color: var(--bench-wood);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        /* --- Static Cat Image --- */
+        .cat {
+            position: absolute;
+            bottom: 60px; /* Positioned to sit on top of the bench seat */
+            left: calc(30% + 100px);
+            z-index: 16;
+            width: 75px;
+            height: 75px;
+            /* Path to your local image file named 'cat.webp' */
+            background: url('../assets/cat.webp') no-repeat center/contain;
+
+        }
+
+        /* --- Leaves (Falling from top of screen) --- */
+        .leaf {
+            position: absolute;
+            background-color: var(--leaf-color-1);
+            border-radius: 50% 0 / 100% 0; /* Leaf-like shape */
+            filter: drop-shadow(0 0 5px var(--glow-color-light)) drop-shadow(0 0 10px var(--glow-color-medium));
+            animation: fallAndSwirl 10s linear infinite;
+            opacity: 0; /* Start invisible */
+            z-index: 5;
+            width: 30px; height: 20px;
+        }
+
+        /* Leaf animations - starting from top of screen */
+        .leaf:nth-child(1) { --start-x: -30vw; --mid-x: -10vw; --end-x: 5vw; animation-duration: 12s; animation-delay: 0s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(2) { --start-x: 20vw; --mid-x: 0vw; --end-x: -10vw; animation-duration: 10s; animation-delay: -0.5s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(3) { --start-x: -10vw; --mid-x: 10vw; --end-x: -5vw; animation-duration: 11s; animation-delay: -1s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(4) { --start-x: 5vw; --mid-x: -15vw; --end-x: 0vw; animation-duration: 13s; animation-delay: -1.5s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(5) { --start-x: -20vw; --mid-x: -5vw; --end-x: 10vw; animation-duration: 9s; animation-delay: -2s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(6) { --start-x: 15vw; --mid-x: -10vw; --end-x: -20vw; animation-duration: 10.5s; animation-delay: -2.5s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(7) { --start-x: -5vw; --mid-x: 20vw; --end-x: 0vw; animation-duration: 11.5s; animation-delay: -3s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(8) { --start-x: 25vw; --mid-x: 5vw; --end-x: -15vw; animation-duration: 14s; animation-delay: -3.5s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(9) { --start-x: -15vw; --mid-x: -8vw; --end-x: 10vw; animation-duration: 12.5s; animation-delay: -4s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(10) { --start-x: 0vw; --mid-x: 25vw; --end-x: -10vw; animation-duration: 9.5s; animation-delay: -4.5s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(11) { --start-x: -25vw; --mid-x: -15vw; --end-x: 5vw; animation-duration: 11s; animation-delay: -5s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(12) { --start-x: 10vw; --mid-x: 0vw; --end-x: -20vw; animation-duration: 10.8s; animation-delay: -5.5s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(13) { --start-x: -5vw; --mid-x: 15vw; --end-x: 0vw; animation-duration: 13.5s; animation-delay: -6s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(14) { --start-x: 20vw; --mid-x: -5vw; --end-x: -10vw; animation-duration: 9.8s; animation-delay: -6.5s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(15) { --start-x: -10vw; --mid-x: 10vw; --end-x: -25vw; animation-duration: 11.2s; animation-delay: -7s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(16) { --start-x: 0vw; --mid-x: -20vw; --end-x: 0vw; animation-duration: 12.2s; animation-delay: -7.5s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(17) { --start-x: 30vw; --mid-x: -5vw; --end-x: -15vw; animation-duration: 14.5s; animation-delay: -8s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(18) { --start-x: -20vw; --mid-x: -12vw; --end-x: 10vw; animation-duration: 13s; animation-delay: -8.5s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(19) { --start-x: 5vw; --mid-x: 22vw; --end-x: -5vw; animation-duration: 10s; animation-delay: -9s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(20) { --start-x: -10vw; --mid-x: -18vw; --end-x: 20vw; animation-duration: 11.8s; animation-delay: -9.5s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(21) { --start-x: 25vw; --mid-x: 8vw; --end-x: -10vw; animation-duration: 10.3s; animation-delay: -10s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(22) { --start-x: -5vw; --mid-x: 25vw; --end-x: 0vw; animation-duration: 12.8s; animation-delay: -10.5s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(23) { --start-x: 18vw; --mid-x: -10vw; --end-x: -15vw; animation-duration: 9.3s; animation-delay: -11s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(24) { --start-x: -22vw; --mid-x: -5vw; --end-x: 15vw; animation-duration: 11.5s; animation-delay: -11.5s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(25) { --start-x: 10vw; --mid-x: -20vw; --end-x: 0vw; animation-duration: 12.3s; animation-delay: -12s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(26) { --start-x: -15vw; --mid-x: 10vw; --end-x: -25vw; animation-duration: 13.8s; animation-delay: -12.5s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(27) { --start-x: 0vw; --mid-x: -25vw; --end-x: 5vw; animation-duration: 12.7s; animation-delay: -13s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(28) { --start-x: 20vw; --mid-x: 5vw; --end-x: -10vw; animation-duration: 9.7s; animation-delay: -13.5s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(29) { --start-x: -10vw; --mid-x: -15vw; --end-x: 20vw; animation-duration: 11.3s; animation-delay: -14s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(30) { --start-x: 30vw; --mid-x: 10vw; --end-x: -20vw; animation-duration: 10.6s; animation-delay: -14.5s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(31) { --start-x: -25vw; --mid-x: -8vw; --end-x: 12vw; animation-duration: 12s; animation-delay: -15s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(32) { --start-x: 5vw; --mid-x: 28vw; --end-x: 0vw; animation-duration: 10.5s; animation-delay: -15.5s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(33) { --start-x: -15vw; --mid-x: 15vw; --end-x: -10vw; animation-duration: 11.8s; animation-delay: -16s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(34) { --start-x: 20vw; --mid-x: -10vw; --end-x: -20vw; animation-duration: 13.5s; animation-delay: -16.5s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(35) { --start-x: -5vw; --mid-x: -20vw; --end-x: 5vw; animation-duration: 9.8s; animation-delay: -17s; background-color: var(--leaf-color-5); }
+        .leaf:nth-child(36) { --start-x: 25vw; --mid-x: 0vw; --end-x: -15vw; animation-duration: 11.2s; animation-delay: -17.5s; background-color: var(--leaf-color-1); }
+        .leaf:nth-child(37) { --start-x: -10vw; --mid-x: 20vw; --end-x: -5vw; animation-duration: 12.5s; animation-delay: -18s; background-color: var(--leaf-color-2); }
+        .leaf:nth-child(38) { --start-x: 0vw; --mid-x: -25vw; --end-x: 10vw; animation-duration: 14s; animation-delay: -18.5s; background-color: var(--leaf-color-3); }
+        .leaf:nth-child(39) { --start-x: -20vw; --mid-x: -10vw; --end-x: 20vw; animation-duration: 10s; animation-delay: -19s; background-color: var(--leaf-color-4); }
+        .leaf:nth-child(40) { --start-x: 15vw; --mid-x: 15vw; --end-x: -10vw; animation-duration: 11.5s; animation-delay: -19.5s; background-color: var(--leaf-color-5); }
+
+        @keyframes fallAndSwirl {
+            0% {
+                transform: translate(calc(-50% + var(--start-x)), -100vh) rotateZ(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(calc(-50% + var(--mid-x)), 50vh) rotateZ(180deg) scale(1.1);
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.7; 
+            }
+            100% {
+                transform: translate(calc(-50% + var(--end-x)), 110vh) rotateZ(360deg) scale(0.7);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="street-lamp">
+            <div class="lamp-pole"></div>
+            <div class="lamp-head"></div>
+        </div>
+
+        <div class="bench">
+            <div class="bench-seat"></div>
+            <div class="bench-legs"></div>
+        </div>
+
+        <div class="cat"></div>
+
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+    </div>
+</body>
+</html>
