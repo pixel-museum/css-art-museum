@@ -1058,5 +1058,13 @@
     "tags":["text-effect","hover","animation"],
     "description":"Text that transforms into a shape when hovered over.",
     "date":"2025-10-25"
+  },
+  {
+    "file":"Debosmita_3D-Photo_album.html",
+    "title":"3D Photo album",
+    "author":"Debosmita",
+    "tags":["3D","photo album","animation"],
+    "description":" A 3D photo album that opens and closes with a smooth animation.",
+    "date":"2025-10-30"
   }
 ]
