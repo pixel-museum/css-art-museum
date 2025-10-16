@@ -981,6 +981,13 @@
     "date":"2025-10-14"
   },
   {
+    "file":"coco-fireworks.html",
+    "title":"Firework Animation",
+    "author":"cocoisarobo",
+    "tags":["fireworks", "css", "animation", "diwali"],
+    "description":"A simple fireworks animation made using HTML, CSS and Javascript",
+  },
+  {
     "file": "universesm_clock.html",
     "title": "Animated Wall Clock",
     "author": "universe-sm",
@@ -994,6 +1001,7 @@
     "author":"Kabiirk",
     "tags":["pixel art","jets","sunset"],
     "description":"As the sun sets among the mountains, 3 jets fly by after their mission.",
+     "date": "2025-10-14"
   },
   {
     "file":"the_great_wave.html",
