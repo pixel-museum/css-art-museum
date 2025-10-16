@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Sky Rainbow with Animated Clouds</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to top, #87ceeb, #cce7ff);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rainbow {
+    position: relative;
+    width: 600px;
+    height: 300px;
+  }
+
+  .arc {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .arc > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 20px solid;
+    border-color: transparent;
+    border-top-color: currentColor;
+    box-sizing: border-box;
+  }
+
+  .red { color: red; }
+  .orange { color: orange; transform: scale(0.91); }
+  .yellow { color: yellow; transform: scale(0.82); }
+  .green { color: green; transform: scale(0.73); }
+  .blue { color: blue; transform: scale(0.64); }
+  .indigo { color: indigo; transform: scale(0.55); }
+  .violet { color: violet; transform: scale(0.46); }
+
+  /* clouds */
+  .cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    opacity: 0.8;
+    animation: float linear infinite;
+  }
+
+  .cloud.c1 { width: 100px; height: 60px; top: 180px; left: -120px; animation-duration: 40s; }
+  .cloud.c2 { width: 150px; height: 80px; top: 200px; left: -180px; animation-duration: 60s; }
+  .cloud.c3 { width: 80px; height: 50px; top: 190px; left: -100px; animation-duration: 50s; }
+
+  @keyframes float {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(120vw) translateY(10px); }
+    100% { transform: translateX(240vw) translateY(0); }
+  }
+
+</style>
+</head>
+<body>
+  <div class="rainbow">
+    <div class="arc red"><div></div></div>
+    <div class="arc orange"><div></div></div>
+    <div class="arc yellow"><div></div></div>
+    <div class="arc green"><div></div></div>
+    <div class="arc blue"><div></div></div>
+    <div class="arc indigo"><div></div></div>
+    <div class="arc violet"><div></div></div>
+  </div>
+
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+</body>
+</html>
