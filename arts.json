@@ -8,6 +8,15 @@
    "date": "2023-08-01"
   },
   {
+    "file": "sk-water-ripple.html",
+   "title": "Water Ripple",
+   "author": "Saikiran-Sugurthi",
+    "tags": ["water", "ripple", "animation", "nature", "effect"],
+    "description": "An animated effect simulating the rippling of water, often used for visual interest or backgrounds.",
+    "date": "2023-07-22"
+   },
+  
+  {
    "file": "Keron-Funny_Emoji.html",
    "title": "Funny Emoji",
    "author": "kronpatel",
@@ -921,10 +930,15 @@
   {
     "file":"Commits_Grid_text.html",
     "title":"Grid text",
-    "author":"Debosmita",
-    "tags": ["text-effect", "typography", "grid", "pattern", "abstract"],
-    "description": "Text that is integrated into or stylized by an explicit grid pattern.",
-    "date": "2024-03-08"
+    "author":"Debosmita"
+  },
+   {
+    "file":"manglam-space-art.html",
+    "title":"Space Art",
+    "author":"Manglam",
+    "tags": ["text-effect", "space", "planet", "sun", "abstract"],
+    "description": "Show outer space , rocket and planets revolving around sun",
+    "date": "2025-10-14"
   },
   {
     "file":"moving_ball.html",
@@ -972,6 +986,29 @@
     "author":"cocoisarobo",
     "tags":["fireworks", "css", "animation", "diwali"],
     "description":"A simple fireworks animation made using HTML, CSS and Javascript",
+  },
+  {
+    "file": "universesm_clock.html",
+    "title": "Animated Wall Clock",
+    "author": "universe-sm",
+    "tags": ["animation", "clock", "time", "motion"],
+    "description": "Animation of wall clock with accurate periodic motion.",
+    "date": "2025-10-14"
+  },
+  {
+    "file":"fighter_jet_sunset.html",
+    "title":"Fighter Jet Sunset",
+    "author":"Kabiirk",
+    "tags":["pixel art","jets","sunset"],
+    "description":"As the sun sets among the mountains, 3 jets fly by after their mission.",
+     "date": "2025-10-14"
+  },
+  {
+    "file":"the_great_wave.html",
+    "title":"The Great Wave",
+    "author":"Kabiirk",
+    "tags":["pixel art","waves","sunset"],
+    "description":"Pixel rendition of a stormy evening with a colossal wave crashing down.",
     "date":"2025-10-15"
   }
 ]
