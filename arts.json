@@ -1,5 +1,13 @@
 [
   {
+   "file": "sharanya_wheelandhamster.html",
+   "title": "Hamster and Wheel",
+   "author": "Sharanya",
+   "tags": ["animation", "hamster", "wheel", "css"],
+   "description": "A playful animation of a hamster running on a wheel, showcasing CSS animation techniques.",
+   "date": "2022-11-13"
+  },
+  {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
    "author": "kronpatel",
