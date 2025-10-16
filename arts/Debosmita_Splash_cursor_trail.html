@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Splash Cursor Trail</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #0b1320, #000);
+      color: #9dd9ff;
+      font-family: "Poppins", sans-serif;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      z-index: 1;
+    }
+    .splash {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: splashAnim 0.6s ease-out forwards;
+    }
+    @keyframes splashAnim {
+      0% {
+        transform: scale(0.3);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #9dd9ff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px #9dd9ff, 0 0 30px #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ Splash Cursor Trail ✨</h1>
+
+  <script>
+    const cursor = document.createElement("div");
+    cursor.classList.add("cursor");
+    document.body.appendChild(cursor);
+
+    const colors = ["#00ffff", "#9dd9ff", "#ff00ff", "#00ff99", "#ffaa00"];
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      createSplash(e.clientX, e.clientY);
+    });
+
+    function createSplash(x, y) {
+      const splash = document.createElement("div");
+      splash.classList.add("splash");
+      splash.style.left = `${x}px`;
+      splash.style.top = `${y}px`;
+      const size = Math.random() * 10 + 10;
+      splash.style.width = `${size}px`;
+      splash.style.height = `${size}px`;
+      splash.style.background = colors[Math.floor(Math.random() * colors.length)];
+      splash.style.boxShadow = `0 0 10px ${splash.style.background}, 0 0 20px ${splash.style.background}`;
+      document.body.appendChild(splash);
+      setTimeout(() => splash.remove(), 600);
+    }
+  </script>
+</body>
+</html>
