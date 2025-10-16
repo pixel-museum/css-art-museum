@@ -1042,5 +1042,13 @@
     "tags":["pixel art","waves","sunset"],
     "description":"Pixel rendition of a stormy evening with a colossal wave crashing down.",
     "date":"2025-10-15"
+  },
+  {
+    "file":"himanshu-email-animation.html",
+    "title":"Animated Mail Icon",
+    "author":"Himanshu Kumar",
+    "tags":["mail","email","animation","icon","interactive"],
+    "description":"A beautiful animated mail envelope with floating particles, heart decoration, and smooth hover effects.",
+    "date":"2025-01-15"
   }
 ]
