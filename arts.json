@@ -981,6 +981,14 @@
     "date":"2025-10-14"
   },
   {
+    "file": "universesm_clock.html",
+    "title": "Animated Wall Clock",
+    "author": "universe-sm",
+    "tags": ["animation", "clock", "time", "motion"],
+    "description": "Animation of wall clock with accurate periodic motion.",
+    "date": "2025-10-14"
+  },
+  {
     "file":"fighter_jet_sunset.html",
     "title":"Fighter Jet Sunset",
     "author":"Kabiirk",
