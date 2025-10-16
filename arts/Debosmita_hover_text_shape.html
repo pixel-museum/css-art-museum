@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Colorful Letter Shapes</title>
+<style>
+  :root{
+    --size: 260px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    background: radial-gradient(circle at 20% 30%, #ff00cc33 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, #00ffff33 0%, transparent 60%),
+                radial-gradient(circle at 60% 40%, #ffea0033 0%, transparent 60%),
+                radial-gradient(circle at 40% 80%, #00ff9933 0%, transparent 60%),
+                #0a0a1a;
+    font-family: "Poppins", sans-serif;
+    overflow:hidden;
+  }
+
+  .shape-card{
+    --w: var(--size);
+    width:var(--w);
+    height:var(--w);
+    position:relative;
+    border-radius:16px;
+    background:rgba(255,255,255,0.05);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,0.07);
+    cursor:pointer;
+    transition: transform .3s ease, box-shadow .4s ease;
+  }
+  .shape-card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(255,255,255,0.25);
+  }
+
+  .static-word{
+    position:relative;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-size:22px;
+    opacity:1;
+    transition:opacity .3s ease;
+    background: linear-gradient(90deg,#ff0080,#ff8c00,#40e0d0);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation: hueShift 5s linear infinite;
+  }
+
+  @keyframes hueShift{
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+  }
+
+  .letters-layer{
+    position:absolute;
+    inset:0;
+    z-index:6;
+    pointer-events:none;
+  }
+
+  .letter{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    transition:transform 700ms cubic-bezier(.18,.76,.22,1), opacity 400ms ease;
+    font-weight:800;
+    font-size:13px;
+    opacity:0;
+    user-select:none;
+    text-transform:uppercase;
+    background: linear-gradient(90deg,#ff0080,#ff8c00,#40e0d0);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation: hueShift 4s linear infinite;
+  }
+
+  .shape-card.arranged .static-word{ opacity:0; }
+  .shape-card.arranged .letter{ opacity:1; }
+
+  @media (max-width:520px){
+    :root{ --size: 200px; }
+    .static-word{ font-size:18px; }
+    .letter{ font-size:11px; }
+  }
+</style>
+</head>
+<body>
+<div class="shape-card" data-shape="square" data-word="square">
+  <div class="static-word">SQUARE</div>
+  <div class="letters-layer"></div>
+</div>
+<div class="shape-card" data-shape="circle" data-word="circle">
+  <div class="static-word">CIRCLE</div>
+  <div class="letters-layer"></div>
+</div>
+<div class="shape-card" data-shape="triangle" data-word="triangle">
+  <div class="static-word">TRIANGLE</div>
+  <div class="letters-layer"></div>
+</div>
+<div class="shape-card" data-shape="heart" data-word="heart">
+  <div class="static-word">HEART</div>
+  <div class="letters-layer"></div>
+</div>
+
+<script>
+const CARDS=document.querySelectorAll('.shape-card');
+
+function createLetters(card,count=64){
+  const layer=card.querySelector('.letters-layer');
+  const word=card.dataset.word||'text';
+  layer.innerHTML='';
+  for(let i=0;i<count;i++){
+    const span=document.createElement('span');
+    span.className='letter';
+    span.textContent=word[i%word.length];
+    layer.appendChild(span);
+  }
+}
+
+function getPoints(shape,count,size){
+  const pts=[];
+  if(shape==='circle'){
+    const r=size*0.75;
+    for(let i=0;i<count;i++){
+      const a=(i/count)*2*Math.PI;
+      pts.push([Math.cos(a)*r,Math.sin(a)*r]);
+    }
+  } else if(shape==='square'){
+    const s=size*1.4, per=count/4, h=s/2;
+    for(let i=0;i<per;i++) pts.push([(-h)+(s/per)*i,-h]);
+    for(let i=0;i<per;i++) pts.push([h,(-h)+(s/per)*i]);
+    for(let i=0;i<per;i++) pts.push([(h)-(s/per)*i,h]);
+    for(let i=0;i<per;i++) pts.push([-h,(h)-(s/per)*i]);
+  } else if(shape==='triangle'){
+    const side=size*1.8, h=Math.sqrt(3)/2*side;
+    const v1=[0,-h/2],v2=[-side/2,h/2],v3=[side/2,h/2];
+    const per=count/3;
+    for(let i=0;i<per;i++){let t=i/per;pts.push([v1[0]+(v2[0]-v1[0])*t,v1[1]+(v2[1]-v1[1])*t]);}
+    for(let i=0;i<per;i++){let t=i/per;pts.push([v2[0]+(v3[0]-v2[0])*t,v2[1]+(v3[1]-v2[1])*t]);}
+    for(let i=0;i<per;i++){let t=i/per;pts.push([v3[0]+(v1[0]-v3[0])*t,v3[1]+(v1[1]-v3[1])*t]);}
+  } else if(shape==='heart'){
+    const scale=size*0.9;
+    for(let i=0;i<count;i++){
+      const t=2*Math.PI*i/count;
+      const x=16*Math.pow(Math.sin(t),3);
+      const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+      pts.push([x*(scale/24),-y*(scale/24)]);
+    }
+  }
+  return pts;
+}
+
+function arrangeLetters(card){
+  const letters=Array.from(card.querySelectorAll('.letter'));
+  const pts=getPoints(card.dataset.shape,letters.length,card.offsetWidth/2);
+  letters.forEach((l,i)=>{
+    const [x,y]=pts[i%pts.length];
+    l.style.transform=`translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${(Math.random()-0.5)*15}deg)`;
+    l.style.opacity=1;
+  });
+  card.classList.add('arranged');
+}
+function resetLetters(card){
+  const letters=card.querySelectorAll('.letter');
+  letters.forEach(l=>{
+    l.style.transform='translate(-50%,-50%) rotate(0deg)';
+    l.style.opacity=0;
+  });
+  card.classList.remove('arranged');
+}
+
+CARDS.forEach(card=>{
+  createLetters(card,70);
+  card.addEventListener('mouseenter',()=>arrangeLetters(card));
+  card.addEventListener('mouseleave',()=>resetLetters(card));
+});
+</script>
+</body>
+</html>
