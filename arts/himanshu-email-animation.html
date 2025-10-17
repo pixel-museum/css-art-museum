@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Mail Icon - Himanshu Kumar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .mail-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        /* Main mail envelope */
+        .mail-envelope {
+            position: relative;
+            width: 120px;
+            height: 80px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform-origin: center;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Mail flap */
+        .mail-flap {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 40px solid #ff6b6b;
+            transform-origin: bottom center;
+            transition: all 0.3s ease;
+            animation: flap 2s ease-in-out infinite;
+        }
+
+        /* Mail flap highlight */
+        .mail-flap::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -50px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 30px solid #ff5252;
+        }
+
+        /* Mail body */
+        .mail-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Mail lines */
+        .mail-line {
+            position: absolute;
+            background: #ddd;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .mail-line:nth-child(1) {
+            top: 20px;
+            left: 15px;
+            width: 60px;
+            animation: lineAppear 1s ease-in-out 0.5s both;
+        }
+
+        .mail-line:nth-child(2) {
+            top: 30px;
+            left: 15px;
+            width: 40px;
+            animation: lineAppear 1s ease-in-out 0.7s both;
+        }
+
+        .mail-line:nth-child(3) {
+            top: 40px;
+            left: 15px;
+            width: 50px;
+            animation: lineAppear 1s ease-in-out 0.9s both;
+        }
+
+        /* Heart decoration */
+        .heart {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 15px;
+            height: 15px;
+            background: #ff6b6b;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -7.5px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 7.5px;
+        }
+
+        /* Sparkle effects */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) {
+            top: 20px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 40px;
+            right: 20px;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: 20px;
+            left: 30px;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(4) {
+            bottom: 30px;
+            right: 30px;
+            animation-delay: 1.5s;
+        }
+
+        /* Hover effects */
+        .mail-container:hover .mail-envelope {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mail-container:hover .mail-flap {
+            transform: rotateX(180deg);
+        }
+
+        .mail-container:hover .heart {
+            animation-duration: 0.5s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes flap {
+            0%, 100% {
+                transform: rotateX(0deg);
+            }
+            50% {
+                transform: rotateX(-10deg);
+            }
+        }
+
+        @keyframes lineAppear {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.2);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: floatParticle 4s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(3) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            left: 40%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(5) {
+            left: 60%;
+            animation-delay: 0.5s;
+        }
+
+        .particle:nth-child(6) {
+            left: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .particle:nth-child(7) {
+            left: 80%;
+            animation-delay: 2.5s;
+        }
+
+        .particle:nth-child(8) {
+            left: 90%;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <div class="mail-container">
+        <div class="mail-envelope">
+            <div class="mail-flap"></div>
+            <div class="mail-body">
+                <div class="mail-line"></div>
+                <div class="mail-line"></div>
+                <div class="mail-line"></div>
+                <div class="heart"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
