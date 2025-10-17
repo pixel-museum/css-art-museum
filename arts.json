@@ -1,5 +1,13 @@
 [
   {
+   "file": "sharanya_wheelandhamster.html",
+   "title": "Hamster and Wheel",
+   "author": "Sharanya",
+   "tags": ["animation", "hamster", "wheel", "css"],
+   "description": "A playful animation of a hamster running on a wheel, showcasing CSS animation techniques.",
+   "date": "2022-11-13"
+  },
+  {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
    "author": "kronpatel",
@@ -981,6 +989,14 @@
     "date":"2025-10-14"
   },
   {
+  "file": "Mohish-DiwaliArtwork.html",
+  "title": "Diwali Artwork",
+  "author": "Mohish",
+  "tags":["animation","Diwali","motion"],
+  "description":"An animated message of happy diwali with lanterns and diyas and fireworks in background.",
+  "date":"2025-10-14"
+  },
+  {
     "file":"amansingh-earthwithcss.html",
     "title":"Earth with pure  CSS",
     "author":"Aman Singh",
@@ -1026,5 +1042,37 @@
     "tags":["pixel art","waves","sunset"],
     "description":"Pixel rendition of a stormy evening with a colossal wave crashing down.",
     "date":"2025-10-15"
+  },
+  {
+    "file":"himanshu-email-animation.html",
+    "title":"Animated Mail Icon",
+    "author":"Himanshu Kumar",
+    "tags":["mail","email","animation","icon","interactive"],
+    "description":"A beautiful animated mail envelope with floating particles, heart decoration, and smooth hover effects.",
+    "date":"2025-01-15"
+  },
+  {
+    "file":"Debosmita_Splash_cursor_trail.html",
+    "title":"Splash Cursor Trail",
+    "author":"Debosmita",
+    "tags":["cursor","trail","animation"],
+    "description":"A colorful splash effect that follows the cursor as it moves across the screen.",
+    "date":"2025-10-21"
+  },
+  {
+    "file":"Debosmita_hover_text_shape.html",
+    "title":"Hover text to shape",
+    "author":"Debosmita",
+    "tags":["text-effect","hover","animation"],
+    "description":"Text that transforms into a shape when hovered over.",
+    "date":"2025-10-25"
+  },
+  {
+    "file":"Debosmita_3D-Photo_album.html",
+    "title":"3D Photo album",
+    "author":"Debosmita",
+    "tags":["3D","photo album","animation"],
+    "description":" A 3D photo album that opens and closes with a smooth animation.",
+    "date":"2025-10-30"
   }
 ]

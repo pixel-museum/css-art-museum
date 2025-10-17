@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Diwali - Festive Celebration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #0a001a, #1a0033 70%, #2e004d);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+      font-family: 'Lora', serif;
+      position: relative;
+    }
+
+    :root {
+      --color-gold: #ffde59;
+      --color-red: #d82c4c;
+      --color-orange: #ff8c00;
+      --color-clay: #a0522d;
+      --launch-height: -70vh;
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 1;
+      box-shadow:
+        100px 30px 0 0px #fff, 200px 80px 0 0px #fff, 300px 50px 0 0px #fff,
+        50px 150px 0 0px #fff, 150px 180px 0 0px #fff, 250px 120px 0 0px #fff,
+        350px 200px 0 0px #fff, 80px 220px 0 0px #fff, 180px 250px 0 0px #fff,
+        280px 280px 0 0px #fff, 380px 300px 0 0px #fff, 120px 330px 0 0px #fff,
+        220px 360px 0 0px #fff, 320px 390px 0 0px #fff, 420px 420px 0 0px #fff,
+        -50px 50px 0 1px #ddd, -150px 100px 0 1px #ddd, -250px 180px 0 1px #ddd,
+        -350px 250px 0 1px #ddd, 400px -30px 0 1px #ddd, 450px 100px 0 1px #ddd,
+        -100px -10px 0 1px #ddd, 500px 250px 0 1px #ddd, 20px 400px 0 1px #ddd,
+        300px 10px 0 1px #ddd, 100px -50px 0 1px #ddd, -200px 300px 0 1px #ddd,
+        -50px -20px 0 1px #ddd, 550px 350px 0 1px #ddd;
+      animation: twinkle 15s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: translateY(30px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .diwali-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 700;
+      color: var(--color-gold);
+      text-shadow: 0 0 10px rgba(255,222,89,0.7), 0 0 20px rgba(255,165,0,0.5), 0 0 40px rgba(255,100,0,0.3);
+      margin-bottom: 40px;
+      z-index: 100;
+      position: relative;
+      opacity: 0;
+      animation: fadeInScale 1.8s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .diya-container {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 5vh;
+      width: 100%;
+      z-index: 80;
+    }
+
+    .diya {
+      width: 90px;
+      height: 45px;
+      background: radial-gradient(circle at 50% 100%, var(--color-clay), #8b4513);
+      border-radius: 0 0 45px 45px / 0 0 22px 22px;
+      position: relative;
+      margin: 0 18px;
+      box-shadow: inset 0 -8px 15px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      animation: fadeInScale 1.2s ease-out forwards;
+      animation-delay: var(--diya-delay);
+      transform-origin: bottom center;
+    }
+    .diya:nth-child(1) { --diya-delay: 1.5s; }
+    .diya:nth-child(2) { --diya-delay: 1.7s; }
+    .diya:nth-child(3) { --diya-delay: 1.9s; }
+    .diya:nth-child(4) { --diya-delay: 2.1s; }
+    .diya:nth-child(5) { --diya-delay: 2.3s; }
+    .diya:nth-child(6) { --diya-delay: 2.5s; }
+    .diya:nth-child(7) { --diya-delay: 2.7s; }
+
+    .diya::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      background-color: var(--color-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--color-gold);
+    }
+
+    .diya::after {
+      content: '';
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 35px;
+      background: radial-gradient(circle at 50% 0%, #fffacd, #ffeb3b, var(--color-orange), transparent 70%);
+      border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+      box-shadow: 0 0 20px 8px rgba(255,165,0,0.8), 0 0 30px 12px rgba(255,69,0,0.6);
+      animation: flameFlicker 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes flameFlicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+      50% { transform: translateX(-50%) scale(1.1) translateY(-3px); opacity: 1; box-shadow: 0 0 25px 10px rgba(255,165,0,0.9), 0 0 35px 15px rgba(255,69,0,0.7); }
+      100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+    }
+
+    .lantern-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+    }
+    .lantern {
+      position: absolute;
+      width: 70px;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--color-red), #ff6b6b);
+      border-radius: 50% 50% 15px 15px / 25% 25% 15px 15px;
+      border: 3px solid var(--color-gold);
+      box-shadow: 0 0 12px rgba(255,165,0,0.7);
+      opacity: 0;
+      animation: fadeInScale 2s ease-out forwards, swing 10s ease-in-out infinite alternate;
+      transform-origin: top center;
+    }
+    .lantern:nth-child(1) { top: 12%; left: 10%; animation-delay: 2s; animation-duration: 9s; }
+    .lantern:nth-child(2) { top: 18%; right: 15%; animation-delay: 2.5s; animation-duration: 11s; }
+    .lantern:nth-child(3) { top: 8%; left: 35%; animation-delay: 3s; animation-duration: 8s; }
+    .lantern:nth-child(4) { top: 22%; right: 35%; animation-delay: 3.5s; animation-duration: 10s; }
+
+    .lantern::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25px;
+      height: 15px;
+      border: 3px solid var(--color-gold);
+      border-bottom: none;
+      border-radius: 15px 15px 0 0;
+      background-color: transparent;
+    }
+    .lantern::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #fffff0, #ffeb3b, var(--color-orange));
+      border-radius: 50%;
+      box-shadow: 0 0 25px 12px rgba(255,235,59,0.9), 0 0 40px 18px rgba(255,152,0,0.7);
+      animation: lanternGlow 3.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes swing {
+      0% { transform: rotateY(0deg) translateX(0px); }
+      50% { transform: rotateY(10deg) translateX(5px); }
+      100% { transform: rotateY(0deg) translateX(0px); }
+    }
+
+    @keyframes lanternGlow {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.95; }
+      50% { transform: translateX(-50%) scale(1.06); opacity: 1; }
+    }
+
+    .fireworks-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: transparent;
+      opacity: 0;
+      animation: fireworkLaunch 2s ease-in forwards infinite;
+      animation-delay: var(--launch-delay);
+      top: calc(100% - 5vh);
+      left: var(--start-left);
+      transform: translateY(0);
+    }
+    .firework:nth-child(1) { --start-left: 20%; --launch-delay: 5.2s; }
+    .firework:nth-child(2) { --start-left: 75%; --launch-delay: 2.8s; }
+    .firework:nth-child(3) { --start-left: 40%; --launch-delay: 8.5s; }
+    .firework:nth-child(4) { --start-left: 15%; --launch-delay: 10.1s; }
+    .firework:nth-child(5) { --start-left: 60%; --launch-delay: 4.0s; }
+    .firework:nth-child(n+6) { display: none; }
+
+    @keyframes fireworkLaunch {
+      0% {
+        opacity: 0;
+        transform: translateY(0);
+        box-shadow: 0 0 5px 2px #fff;
+      }
+      10% { opacity: 1; }
+      80% {
+        transform: translateY(var(--launch-height));
+        opacity: 1;
+        box-shadow: 0 0 10px 4px #fff, 0 0 20px 8px rgba(255,255,255,0.5);
+      }
+      99% {
+        transform: translateY(var(--launch-height));
+        opacity: 0;
+        box-shadow: none;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+    }
+
+    .firework::after {
+      content: '';
+      position: absolute;
+      top: var(--launch-height);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scale(0);
+      opacity: 0;
+      animation: fireworkExplode 0.8s ease-out infinite;
+      animation-delay: calc(var(--launch-delay) + 1.8s);
+    }
+
+    @keyframes fireworkExplode {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+        box-shadow: none;
+      }
+      1% {
+        opacity: 1;
+        transform: scale(0.05);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.5);
+        box-shadow:
+          0 -25px 0 2px var(--color-gold),
+          -25px 0 0 2px var(--color-gold),
+          25px 0 0 2px var(--color-gold);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <h1 class="diwali-text">Happy Diwali!</h1>
+
+  <div class="diya-container">
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+    <div class="diya"></div>
+  </div>
+
+  <div class="lantern-container">
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+  </div>
+
+  <div class="fireworks-container">
+    <div class="firework"></div>
+    <div class="firework"></div>
+    <div class="firework"></div>
+    <div class="firework"></div>
+    <div class="firework"></div>
+  </div>
+</body>
+</html>
