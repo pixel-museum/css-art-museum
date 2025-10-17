@@ -1042,5 +1042,21 @@
     "tags":["pixel art","waves","sunset"],
     "description":"Pixel rendition of a stormy evening with a colossal wave crashing down.",
     "date":"2025-10-15"
+  },
+  {
+    "file":"Debosmita_Splash_cursor_trail.html",
+    "title":"Splash Cursor Trail",
+    "author":"Debosmita",
+    "tags":["cursor","trail","animation"],
+    "description":"A colorful splash effect that follows the cursor as it moves across the screen.",
+    "date":"2025-10-21"
+  },
+  {
+    "file":"Debosmita_hover_text_shape.html",
+    "title":"Hover text to shape",
+    "author":"Debosmita",
+    "tags":["text-effect","hover","animation"],
+    "description":"Text that transforms into a shape when hovered over.",
+    "date":"2025-10-25"
   }
 ]
