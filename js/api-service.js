@@ -1,9 +1,27 @@
 const BACKEND_URL = "https://css-art-museum-backend.onrender.com";
 
+async function fetchWithRetry(url, options = {}, maxRetries = 3) {
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+            const response = await fetch(url, options);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response; // Return response, not response.json()
+        } catch (error) {
+            if (attempt === maxRetries) {
+                console.error(`Failed after ${maxRetries} retries:`, error);
+                throw error;
+            }
+            
+            // Exponential backoff: 1s, 2s, 4s
+            const delay = Math.pow(2, attempt) * 1000;
+            console.log(`Retry attempt ${attempt + 1} after ${delay}ms`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
+}
 async function getAllArtworksApi() {
     try {
-        const response = await fetch(`${BACKEND_URL}/api/artworks/all`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/all`);
         return await response.json();
     } catch (error) {
         console.error("Error fetching all artworks:", error);
@@ -11,11 +29,11 @@ async function getAllArtworksApi() {
     }
 }
 
+
 async function getAllArtworksIdsApi(id) {
     try {
         const encodedId = encodeURIComponent(id);
-        const response = await fetch(`${BACKEND_URL}/api/artworks/one/${encodedId}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/one/${encodedId}`)
         console.log("Fetched artwork IDs:", response);
         return await response.json();
     } catch (error) {
@@ -28,11 +46,12 @@ async function getAllArtworksIdsApi(id) {
 async function addArtworkApi(id) {
     try {
         const encodedId = encodeURIComponent(id);
-        const response = await fetch(`${BACKEND_URL}/api/artworks/add/${encodedId}`, {
+        const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/add/${encodedId}`, {
             method: 'POST',
         });
-        if (!response.ok && response.status !== 409) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        // Handle 409 (conflict) as non-error
+        if (response.status === 409) {
+            return await response.json();
         }
         return await response.json();
     } catch (error) {
@@ -41,13 +60,13 @@ async function addArtworkApi(id) {
     }
 }
 
+
 async function likeArtworkApi(id) {
     try {
         const encodedId = encodeURIComponent(id);
-        const response = await fetch(`${BACKEND_URL}/api/artworks/like/${encodedId}`, {
+        const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/like/${encodedId}`, {
             method: 'PUT',
         });
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.json();
     } catch (error) {
         console.error(`Error liking artwork ${id}:`, error);
@@ -58,16 +77,16 @@ async function likeArtworkApi(id) {
 async function unlikeArtworkApi(id) {
     try {
         const encodedId = encodeURIComponent(id);
-        const response = await fetch(`${BACKEND_URL}/api/artworks/unlike/${encodedId}`, {
+        const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/unlike/${encodedId}`, {
             method: 'PUT',
         });
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.json();
     } catch (error) {
         console.error(`Error unliking artwork ${id}:`, error);
         return null;
     }
 }
+
 
 async function syncArtworks(localArtworks) {
     const backendArtworks = await getAllArtworksApi();
@@ -82,9 +101,7 @@ async function syncArtworks(localArtworks) {
 
 async function initializePage() {
     try {
-        const response = await fetch('./arts.json');
-        if (!response.ok) throw new Error('arts.json not found');
-        
+        const response = await fetchWithRetry('./arts.json');
         const localArtworksData = await response.json();
         const localArtworks = localArtworksData.map(art => ({ ...art, id: art.file }));
 
