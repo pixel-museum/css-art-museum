@@ -1017,7 +1017,7 @@
     "title":"Firework Animation",
     "author":"cocoisarobo",
     "tags":["fireworks", "css", "animation", "diwali"],
-    "description":"A simple fireworks animation made using HTML, CSS and Javascript,
+    "description":"A simple fireworks animation made using HTML, CSS and Javascript",
     "date":"2025-10-16"
   },
   {
@@ -1099,5 +1099,13 @@
     "tags": ["animation", "traffic lights"],
     "description": "Animation of traffic light.",
     "date": "2025-10-17"
+  },
+  {
+    "file": "DIP72-CSS_mandala.html",
+    "title": "CSS Mandala",
+    "author": "Dipanjan Pradhan",
+    "tags": ["animation", "mandala", "Geometric Art", "Rotational Symmetry", "Sacred Geometry"],
+    "description": "A mesmerizing CSS Mandala artwork featuring vibrant gradients and perfect rotational symmetry",
+    "date": "2025-10-19"
   }
 ]
