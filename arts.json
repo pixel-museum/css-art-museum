@@ -1075,5 +1075,13 @@
     "tags":["3D","photo album","animation"],
     "description":" A 3D photo album that opens and closes with a smooth animation.",
     "date":"2025-10-30"
+  },
+  {
+    "file":"amansingh-ballJump.html",
+    "title":"Bouncing Ball",
+    "author":"Aman Singh",
+    "tags":["animation","ball","bouncing"],
+    "description":"An animated ball that bounces up the stairs continuously.",
+    "date":"2025-10-18" 
   }
 ]
