@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break & Restore Toggle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        /* Animated background elements */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 70%;
+            animation-delay: -1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+                opacity: 0.9;
+            }
+            66% {
+                transform: translateY(10px) rotate(240deg);
+                opacity: 0.5;
+            }
+        }
+
+        .artwork-demo {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+                           0 0 0 0 rgba(108, 99, 255, 0.4);
+            }
+            to {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+                           0 0 30px 10px rgba(108, 99, 255, 0.6);
+            }
+        }
+
+        .demo-text {
+            margin-bottom: 40px;
+            animation: textSlideUp 1s ease-out;
+        }
+
+        @keyframes textSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, #a8edea, #fed6e3);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 0.9;
+            }
+        }
+
+        /* Enhanced toggle styles */
+        .break-restore-toggle {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+            animation: bounceIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(108, 99, 255, 0.15);
+            border-radius: 50px;
+            padding: 18px 30px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.15),
+                       0 2px 8px rgba(0, 0, 0, 0.05),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                      transparent, 
+                      rgba(108, 99, 255, 0.2), 
+                      transparent);
+            transition: left 0.6s ease;
+        }
+
+        .toggle-label:hover::before {
+            left: 100%;
+        }
+
+        .toggle-label:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.25),
+                       0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: rgba(108, 99, 255, 0.3);
+        }
+
+        .toggle-handle {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            z-index: 2;
+        }
+
+        .toggle-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #fff 30%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.9;
+            filter: blur(0.5px);
+        }
+
+        .toggle-handle::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: conic-gradient(from 0deg, #ff6b6b, #ff8e8e, #ff6b6b);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toggle-checkbox:checked + .toggle-label .toggle-handle {
+            background: linear-gradient(135deg, #4ecdc4, #6ce6de);
+            transform: rotate(180deg);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .toggle-checkbox:checked + .toggle-label .toggle-handle::after {
+            opacity: 1;
+            animation: handleGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes handleGlow {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .toggle-text {
+            color: #333;
+            font-weight: 600;
+            background: linear-gradient(135deg, #333, #6c63ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-checkbox:checked + .toggle-label .toggle-text {
+            background: linear-gradient(135deg, #4ecdc4, #6c63ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Demo effects for this page only */
+        .demo-effects {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Active state animations */
+        body.active-mode {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .artwork-demo.active-demo {
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="particles" id="particlesContainer"></div>
+
+    <div class="artwork-demo" id="demoContainer">
+        <div class="demo-text">
+            <h1>Break & Restore Toggle</h1>
+            <p>Interactive toggle with magical transformations</p>
+        </div>
+        
+        <!-- The actual toggle component -->
+        <div class="break-restore-toggle">
+            <input type="checkbox" id="breakRestoreToggle" class="toggle-checkbox">
+            <label for="breakRestoreToggle" class="toggle-label">
+                <span class="toggle-handle"></span>
+                <span class="toggle-text">Activate Magic</span>
+            </label>
+        </div>
+        
+        <div class="demo-effects">
+            This toggle transforms the entire website when used in the main museum
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Toggle functionality with enhanced animations
+        document.getElementById('breakRestoreToggle').addEventListener('change', function() {
+            const toggleText = document.querySelector('.toggle-text');
+            const body = document.body;
+            const demoContainer = document.getElementById('demoContainer');
+            
+            if (this.checked) {
+                toggleText.textContent = 'Restore Magic';
+                body.classList.add('active-mode');
+                demoContainer.classList.add('active-demo');
+                
+                // Create explosion effect
+                createExplosion();
+            } else {
+                toggleText.textContent = 'Activate Magic';
+                body.classList.remove('active-mode');
+                demoContainer.classList.remove('active-demo');
+                
+                // Create healing effect
+                createHealingEffect();
+            }
+        });
+
+        function createExplosion() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.background = '#ff6b6b';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                particle.style.animation = `explode 1s ease-out forwards ${i * 0.1}s`;
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        function createHealingEffect() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.background = '#4ecdc4';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animation = `heal 1.5s ease-in forwards ${i * 0.1}s`;
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1500);
+            }
+        }
+
+        // Add explosion and heal keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes explode {
+                0% {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(
+                        ${Math.random() * 200 - 100}px,
+                        ${Math.random() * 200 - 100}px
+                    ) scale(0);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes heal {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize
+        createParticles();
+    </script>
+</body>
+</html>

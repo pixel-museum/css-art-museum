@@ -36,3 +36,20 @@
   }
   syncThemeButtons(themeDesktop, themeMobile)
 })()
+
+// Mobile Navigation Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navContainer = document.getElementById('navContainer');
+  
+  if (mobileToggle && navContainer) {
+    mobileToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      navContainer.setAttribute('aria-expanded', !isExpanded);
+      
+      // Optional: Add animation class
+      navContainer.classList.toggle('nav-open');
+    });
+  }
+});
