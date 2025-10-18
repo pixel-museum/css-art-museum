@@ -1017,7 +1017,7 @@
     "title":"Firework Animation",
     "author":"cocoisarobo",
     "tags":["fireworks", "css", "animation", "diwali"],
-    "description":"A simple fireworks animation made using HTML, CSS and Javascript,
+    "description":"A simple fireworks animation made using HTML, CSS and Javascript",
     "date":"2025-10-16"
   },
   {
@@ -1099,5 +1099,13 @@
     "tags": ["animation", "traffic lights"],
     "description": "Animation of traffic light.",
     "date": "2025-10-17"
-  }
+  },
+  {
+  "file": "break-restore.html",
+  "title": "Break & Restore Toggle", 
+  "author": "crazy-coder-neel",
+  "tags": ["interactive", "animation", "toggle", "effects", "transformation"],
+  "description": "Interactive toggle that transforms the website with stunning underwater floating effects and dramatic breaking animations",
+  "date": "2024-10-18"
+}
 ]
