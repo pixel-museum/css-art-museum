@@ -1017,7 +1017,7 @@
     "title":"Firework Animation",
     "author":"cocoisarobo",
     "tags":["fireworks", "css", "animation", "diwali"],
-    "description":"A simple fireworks animation made using HTML, CSS and Javascript",
+    "description":"A simple fireworks animation made using HTML, CSS and Javascript"
   },
   {
     "file": "universesm_clock.html",
@@ -1074,5 +1074,15 @@
     "tags":["3D","photo album","animation"],
     "description":" A 3D photo album that opens and closes with a smooth animation.",
     "date":"2025-10-30"
+  }
+
+  ,
+  {
+    "file": "universesm_trafficlight.html",
+    "title": "Traffic Light",
+    "author": "universe-sm",
+    "tags": ["animation", "traffic lights"],
+    "description": "Animation of traffic light.",
+    "date": "2025-10-17"
   }
 ]
