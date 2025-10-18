@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<style>
+    body {
+        background: linear-gradient(to bottom, rgb(106, 124, 227) 20%, white 90%);
+        background-size: 100vw 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+        width: 95vw;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        width: 40vw;
+        background: radial-gradient(circle, rgb(105, 105, 105), rgb(0, 0, 0));
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 15px;
+    }
+
+    .batterybox {
+        height: 7vh;
+        width: 7vw;
+        border: 3px solid black;
+        border-radius: 14px;
+        background-color: rgb(255, 255, 255);
+        padding: 2px;
+        overflow: hidden;
+    }
+
+    .front {
+        width: 0.5vw;
+        height: 2vh;
+        background-color: black;
+    }
+
+    i {
+        color: gold;
+    }
+
+    .logo {
+        position: absolute;
+        top: 275px;
+        left: 630px;
+    }
+
+    .fill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        animation: 12s battery linear infinite;
+        border-radius: 11px;
+        z-index: 0;
+    }
+
+    .box {
+        height: 7vh;
+        width: 2vw;
+        background-color: black;
+    }
+
+    .wire {
+        height: 2vh;
+        width: 40vw;
+        background-color: black;
+    }
+
+    @keyframes battery {
+
+        0%,
+        20% {
+            width: 4%;
+            background-color: rgb(217, 118, 242);
+        }
+
+        20%,
+        40% {
+            width: 40%;
+
+            background-color: rgb(182, 8, 246);
+        }
+
+        40%,
+        60% {
+            width: 60%;
+            background-color: rgb(111, 90, 244);
+        }
+
+        60%,
+        80% {
+            width: 80%;
+            background-color: rgb(36, 36, 241);
+        }
+
+        80%,
+        100% {
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+        }
+    }
+
+    @media (max-width:600px) {
+        .main {
+            width: 60vw;
+
+        }
+
+        .batterybox {
+            width: 19vw;
+            height: 14vh;
+        }
+
+        .logo {
+            position: absolute;
+            top: 117px;
+            left: 135px;
+        }
+    }
+
+    @media (min-width:601px) {
+        .main {
+            width: 70vw;
+
+        }
+
+        .batterybox {
+            width: 15vw;
+            height: 10vh;
+        }
+
+        .logo {
+            position: absolute;
+            top: 235px;
+            left: 300px;
+        }
+    }
+
+    @media (min-width:1080px) {
+        .main {
+            width: 40vw;
+
+        }
+
+        .batterybox {
+            height: 7vh;
+            width: 7vw;
+        }
+
+        .logo {
+            position: absolute;
+            top: 275px;
+            left: 630px;
+        }
+
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div class="main">
+            <div class="batterybox">
+                <div class="fill">
+
+                </div>
+                <div class="logo"> <i class="fa-solid fa-bolt"></i></div>
+
+            </div>
+            <div class="front">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
