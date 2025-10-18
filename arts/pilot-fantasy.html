@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilot's Fantasy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #001a33 0%, #003d66 50%, #ff6b35 100%);
+            height: 100vh;
+        }
+
+        .sky {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 100px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-200px); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        .plane {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 60px;
+            cursor: grab;
+            transition: transform 0.1s ease-out;
+            z-index: 100;
+        }
+
+        .plane:active {
+            cursor: grabbing;
+        }
+
+        .plane-body {
+            position: absolute;
+            width: 120px;
+            height: 25px;
+            background: linear-gradient(to bottom, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            clip-path: polygon(0 50%, 15% 20%, 85% 20%, 100% 50%, 85% 80%, 15% 80%);
+            left: 15px;
+            top: 17px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .plane-wing {
+            position: absolute;
+            width: 80px;
+            height: 8px;
+            background: linear-gradient(to right, #e74c3c 0%, #c0392b 100%);
+            clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%);
+            top: 26px;
+            left: 35px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .plane-tail {
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: linear-gradient(to bottom, #e74c3c 0%, #c0392b 100%);
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+            left: 10px;
+            top: 10px;
+        }
+
+        .plane-window {
+            position: absolute;
+            width: 20px;
+            height: 12px;
+            background: linear-gradient(to bottom, rgba(0, 150, 255, 0.8), rgba(0, 100, 200, 0.9));
+            border-radius: 8px 8px 0 0;
+            top: 16px;
+            left: 70px;
+            box-shadow: inset 0 -2px 4px rgba(0,0,0,0.3), 0 2px 8px rgba(0, 150, 255, 0.5);
+        }
+
+        .propeller {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 130px;
+            top: 22px;
+        }
+
+        .propeller::before,
+        .propeller::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff6b35, transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: engine-glow 0.5s ease-in-out infinite;
+        }
+
+        @keyframes engine-glow {
+            0%, 100% { opacity: 0.6; box-shadow: 0 0 5px #ff6b35; }
+            50% { opacity: 1; box-shadow: 0 0 15px #ff6b35, 0 0 25px #ff4500; }
+        }
+
+        .afterburner {
+            position: absolute;
+            width: 30px;
+            height: 8px;
+            background: linear-gradient(to left, rgba(255, 107, 53, 0.9), rgba(255, 69, 0, 0.7), transparent);
+            left: -30px;
+            top: 26px;
+            border-radius: 0 4px 4px 0;
+            filter: blur(2px);
+            animation: burn 0.1s ease-in-out infinite;
+        }
+
+        @keyframes burn {
+            0%, 100% { transform: scaleX(1); opacity: 0.8; }
+            50% { transform: scaleX(1.2); opacity: 1; }
+        }
+
+        .trail {
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
+            left: -100px;
+            top: 29px;
+            border-radius: 2px;
+            animation: trail-fade 0.5s ease-out forwards;
+        }
+
+        @keyframes trail-fade {
+            to { 
+                opacity: 0; 
+                transform: translateX(-50px) scaleX(1.5);
+            }
+        }
+
+        .cockpit-view {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .altitude {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+
+        .instruction {
+            font-size: 14px;
+            color: #ecf0f1;
+        }
+
+        .sun {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #fff9e6 0%, #ffcc00 70%, transparent 100%);
+            border-radius: 50%;
+            right: 100px;
+            top: 50px;
+            animation: pulse 4s ease-in-out infinite;
+            box-shadow: 0 0 60px #ffcc00;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes fly {
+            0% { 
+                left: -50px; 
+                top: 20%;
+            }
+            100% { 
+                left: calc(100% + 50px); 
+                top: 30%;
+            }
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: -50px;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 200px solid #34495e;
+            opacity: 0.3;
+            animation: mountain-pass 25s linear infinite;
+        }
+
+        @keyframes mountain-pass {
+            0% { left: 100%; }
+            100% { left: -300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sky" id="sky">
+        <div class="sun"></div>
+    </div>
+
+    <div class="plane" id="plane">
+        <div class="plane-tail"></div>
+        <div class="plane-wing"></div>
+        <div class="plane-body"></div>
+        <div class="plane-window"></div>
+        <div class="propeller"></div>
+        <div class="afterburner"></div>
+    </div>
+
+    <div class="cockpit-view">
+        <div class="altitude">Altitude: <span id="altitude">5000</span> ft</div>
+        <div class="instruction">🖱️ Drag the plane to fly through the sky!</div>
+    </div>
+
+    <script>
+        const plane = document.getElementById('plane');
+        const sky = document.getElementById('sky');
+        const altitudeDisplay = document.getElementById('altitude');
+        let isDragging = false;
+        let currentX = window.innerWidth / 2;
+        let currentY = window.innerHeight / 2;
+        let targetX = currentX;
+        let targetY = currentY;
+
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'stars';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 60 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            sky.appendChild(star);
+        }
+
+        for (let i = 0; i < 8; i++) {
+            const cloud = document.createElement('div');
+            cloud.className = 'cloud';
+            cloud.style.width = (Math.random() * 100 + 80) + 'px';
+            cloud.style.height = (Math.random() * 40 + 30) + 'px';
+            cloud.style.top = (Math.random() * 70 + 10) + '%';
+            cloud.style.left = (Math.random() * 100) + '%';
+            cloud.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            cloud.style.animationDelay = (Math.random() * 5) + 's';
+
+            sky.appendChild(cloud);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            const mountain = document.createElement('div');
+            mountain.className = 'mountain';
+            mountain.style.animationDelay = (i * 5) + 's';
+            mountain.style.borderBottomColor = `rgba(52, 73, 94, ${0.2 + Math.random() * 0.3})`;
+
+            sky.appendChild(mountain);
+        }
+
+        plane.addEventListener('mousedown', startDrag);
+        plane.addEventListener('touchstart', startDrag);
+
+        function startDrag(e) {
+            isDragging = true;
+            e.preventDefault();
+        }
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag);
+
+        function drag(e) {
+            if (!isDragging) return;
+            
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+            
+            targetX = clientX;
+            targetY = clientY;
+            
+            createTrail();
+        }
+
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+
+        function stopDrag() {
+            isDragging = false;
+        }
+
+        function createTrail() {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+
+            plane.appendChild(trail);
+            setTimeout(() => trail.remove(), 500);
+        }
+
+        function animate() {
+            const dx = targetX - currentX;
+            const dy = targetY - currentY;
+            
+            currentX += dx * 0.1;
+            currentY += dy * 0.1;
+            
+            plane.style.left = currentX + 'px';
+            plane.style.top = currentY + 'px';
+
+            const tiltX = dx * 0.1;
+            const tiltY = dy * 0.05;
+            plane.style.transform = `translate(-50%, -50%) rotate(${tiltX}deg) rotateX(${-tiltY}deg)`;
+
+            const altitude = Math.round(5000 + (window.innerHeight - currentY) * 10);
+            altitudeDisplay.textContent = altitude;
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
