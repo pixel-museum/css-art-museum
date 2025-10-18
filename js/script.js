@@ -469,3 +469,108 @@ searchBar.addEventListener("input", () => {
     }
   });
 });
+
+
+// 🎨 Random Artwork of the Day — uses arts.json
+// 🎨 Random Artwork of the Day — uses arts.json
+function loadRandomArtwork() {
+  fetch("./arts.json")
+    .then(response => response.json())
+    .then(artworks => {
+      if (!Array.isArray(artworks) || artworks.length === 0) return;
+
+      const randomIndex = Math.floor(Math.random() * artworks.length);
+      const art = artworks[randomIndex];
+
+      const container = document.getElementById("random-artwork-container");
+      
+      // Create art card similar to your gallery
+      const artCard = document.createElement("div");
+      artCard.className = "art-card";
+      artCard.setAttribute("data-file", art.file);
+      artCard.setAttribute("data-title", art.title);
+      artCard.setAttribute("data-author", art.author);
+      artCard.style.animation = "0.8s ease-out 0s 1 normal both running cardEntrance";
+
+      artCard.innerHTML = `
+        <h3>${art.title || "Untitled Artwork"}</h3>
+        <iframe 
+          loading="lazy" 
+          seamless="" 
+          src="arts/${art.file}" 
+          title="${art.title || "Artwork"}"
+        ></iframe>
+        <p>by ${art.author || "Unknown Artist"}</p>
+        <div class="card-actions">
+          <a class="view-code" href="art-viewer.html?art=${art.file}">
+            View Code
+          </a>
+          <div class="like-container" data-id="${art.file}">
+            <svg class="heart-icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="like-count">0</span>
+          </div>
+        </div>
+      `;
+
+      // Clear previous artwork and add new one
+      container.innerHTML = '';
+      container.appendChild(artCard);
+
+      // Initialize like functionality for this card
+      initializeLikeButton(artCard);
+
+      // Optional: Change artwork every 24 hours
+      setTimeout(() => loadRandomArtwork(), 86400000);
+    })
+    .catch(err => {
+      console.error("Error loading random artwork:", err);
+    });
+}
+
+// Initialize like button functionality
+function initializeLikeButton(card) {
+  const likeContainer = card.querySelector('.like-container');
+  const heartIcon = card.querySelector('.heart-icon');
+  const likeCount = card.querySelector('.like-count');
+  
+  const artworkId = likeContainer.getAttribute('data-id');
+  
+  // Load existing likes from localStorage
+  let likes = JSON.parse(localStorage.getItem('artwork-likes')) || {};
+  let isLiked = JSON.parse(localStorage.getItem('artwork-liked')) || {};
+  
+  // Set initial like count and state
+  likeCount.textContent = likes[artworkId] || 0;
+  
+  if (isLiked[artworkId]) {
+    heartIcon.classList.add('liked');
+    heartIcon.style.fill = 'currentColor';
+  }
+  
+  // Add click event listener
+  likeContainer.addEventListener('click', function() {
+    if (!isLiked[artworkId]) {
+      // Like the artwork
+      likes[artworkId] = (likes[artworkId] || 0) + 1;
+      isLiked[artworkId] = true;
+      heartIcon.classList.add('liked');
+      heartIcon.style.fill = 'currentColor';
+    } else {
+      // Unlike the artwork
+      likes[artworkId] = Math.max(0, (likes[artworkId] || 1) - 1);
+      isLiked[artworkId] = false;
+      heartIcon.classList.remove('liked');
+      heartIcon.style.fill = 'none';
+    }
+    
+    // Update display and storage
+    likeCount.textContent = likes[artworkId];
+    localStorage.setItem('artwork-likes', JSON.stringify(likes));
+    localStorage.setItem('artwork-liked', JSON.stringify(isLiked));
+  });
+}
+
+// Run on load
+document.addEventListener("DOMContentLoaded", loadRandomArtwork);
