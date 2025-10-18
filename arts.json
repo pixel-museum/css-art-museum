@@ -1084,4 +1084,14 @@
     "description":"An animated ball that bounces up the stairs continuously.",
     "date":"2025-10-18" 
   }
+
+  ,
+  {
+    "file": "universesm_trafficlight.html",
+    "title": "Traffic Light",
+    "author": "universe-sm",
+    "tags": ["animation", "traffic lights"],
+    "description": "Animation of traffic light.",
+    "date": "2025-10-17"
+  }
 ]
