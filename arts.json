@@ -1100,6 +1100,14 @@
     "description": "Animation of traffic light.",
     "date": "2025-10-17"
   },
+   {
+  "file": "harika-hotairballoon.html",
+  "title": "Hot Air Balloon Animation",
+  "author": "Harika",
+  "tags":["animation","balloon","motion"],
+  "description":"An animated scene of colorful hot air balloons moving up in the sky.",
+  "date":"2025-10-18"
+   },
   {
     "file": "DIP72-CSS_mandala.html",
     "title": "CSS Mandala",
