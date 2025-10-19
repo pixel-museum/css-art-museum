@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Morphing Butterfly</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .butterfly {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .wing {
+      position: absolute;
+      width: 100px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #ff80ab, #ff4081);
+      border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
+      box-shadow: 0 0 20px #ff4081, 0 0 40px #ff4081;
+      transform-origin: center;
+      animation: morph 4s ease-in-out infinite alternate;
+    }
+
+    .wing.left {
+      left: 0;
+      transform: rotate(-20deg);
+    }
+
+    .wing.right {
+      right: 0;
+      transform: rotate(20deg);
+    }
+
+    .body {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 140px;
+      background: linear-gradient(to bottom, #212121, #424242);
+      border-radius: 10px;
+      z-index: 1;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .antenna {
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      background: #fff;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%) rotate(30deg);
+      transform-origin: bottom;
+      border-radius: 50%;
+    }
+
+    .antenna::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -4px;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #fff;
+    }
+
+    .antenna.right {
+      transform: translateX(-50%) rotate(-30deg);
+    }
+
+    @keyframes morph {
+      0% {
+        border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
+        transform: scale(1) rotate(20deg);
+      }
+      100% {
+        border-radius: 40% 60% 40% 60% / 40% 40% 60% 60%;
+        transform: scale(1.1) rotate(25deg);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .label {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #ff80ab;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 5px #ff4081;
+    }
+  </style>
+</head>
+<body>
+  <div class="butterfly">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+    <div class="antenna"></div>
+    <div class="antenna right"></div>
+  </div>
+  <div class="label">Morphing Butterfly</div>
+</body>
+</html>
