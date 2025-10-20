@@ -1123,5 +1123,14 @@
     "tags": ["animation", "Battery","Charging"],
     "description": "Animation of Charging Battery",
     "date": "2025-10-18"
+  },
+  
+ {
+    "file": "amit-Morphing Butterfly Wings.html",
+    "title": "CSS Morphing Butterfly",
+    "author": "amit",
+    "tags": ["animation", "butterfly", "morphing"],
+    "description": "A beautiful animation of butterfly wings morphing in and out.",
+    "date": "2025-10-19"
   }
 ]
