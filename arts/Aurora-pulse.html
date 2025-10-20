@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora Pulse — A Living Light Sculpture</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at bottom, #021027 0%, #000814 70%);
+      }
+
+      .aurora {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        perspective: 800px;
+      }
+
+      .wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 0, 255, 0.3),
+          rgba(0, 255, 255, 0.2),
+          rgba(0, 255, 127, 0.3),
+          rgba(255, 255, 0, 0.2),
+          rgba(255, 0, 255, 0.3)
+        );
+        filter: blur(80px);
+        opacity: 0.8;
+        transform: rotateX(60deg) translateZ(0);
+        mix-blend-mode: screen;
+        animation: waveMotion 16s ease-in-out infinite alternate;
+      }
+
+      .wave:nth-child(2) {
+        animation-delay: 4s;
+        opacity: 0.6;
+        filter: blur(100px);
+      }
+
+      .wave:nth-child(3) {
+        animation-delay: 8s;
+        opacity: 0.4;
+        filter: blur(120px);
+      }
+
+      @keyframes waveMotion {
+        0% {
+          transform: translateX(-30%) rotateX(60deg) rotateZ(0deg);
+        }
+        50% {
+          transform: translateX(10%) rotateX(65deg) rotateZ(5deg);
+        }
+        100% {
+          transform: translateX(30%) rotateX(60deg) rotateZ(-5deg);
+        }
+      }
+
+      .stars {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        box-shadow: 100px 200px white, 300px 400px white, 500px 100px white,
+          700px 300px white, 900px 500px white, 1200px 250px white,
+          1400px 450px white;
+        animation: twinkle 3s infinite alternate ease-in-out;
+      }
+
+      @keyframes twinkle {
+        from {
+          opacity: 0.3;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+
+      .glow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 255, 255, 0.1),
+          transparent 70%
+        );
+        animation: pulse 6s ease-in-out infinite alternate;
+        mix-blend-mode: screen;
+      }
+
+      @keyframes pulse {
+        from {
+          opacity: 0.4;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aurora">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="stars"></div>
+      <div class="glow"></div>
+    </div>
+  </body>
+</html>

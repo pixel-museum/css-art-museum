@@ -6,61 +6,110 @@ This project is beginner-friendly and Hacktoberfest-eligible, so feel free to pa
 
 ---
 
-## 🚀 How to Contribute
+## 🎨 How to Contribute
 
-Follow these steps to add your CSS artwork to the museum:
+### Step 1: Create Your Artwork
 
-1. **Fork** this repository  
-   Click the "Fork" button on the top-right corner of this page.
-
-2. **Clone your fork**  
+Navigate to the `/arts/` folder and create a new HTML file:
 ```bash
-    git clone https://github.com/<your-username>/css-art-museum.git
-    cd css-art-museum
+cd arts/
+# Create your file: yourname-artname.html
 ```
 
-3. Create a new branch
-```bash
-   git checkout -b my-artwork
-```
-   
-4.Add your artwork
-      Navigate to the /arts/ folder
-      Create a new file: yourname-artname.html
-      Example: shamli-sunflower.html
-      Add your HTML + CSS artwork (no JS/images)
-      
-5.Update the gallery
-      Open arts.json
-      and add you art there
-
-6.Commit your changes
-```bash
-      git add .
-      git commit -m "Added CSS artwork: Sunflower by Shamli"
-```
-
-7.Push to your fork
-```bash
-      git push origin my-artwork
+**File Structure:**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Art Title</title>
+    <style>
+        /* Your CSS magic here */
+    </style>
+</head>
+<body>
+    <!-- Your HTML structure -->
+    <script>
+        // Optional JavaScript
+    </script>
+</body>
+</html>
 ```
 
-8.Create a Pull Request (PR)
-      Go to your fork on GitHub
-      Click Compare & Pull Request
-      Describe your artwork in the PR description and submit
-      
+### Step 2: Register Your Art
+
+Update the `arts.json` file (or the gallery page) to include your artwork:
+```json
+{
+"file":"amansingh-ballJump.html",
+"title":"Bouncing Ball",
+"author":"Aman Singh",
+"tags":["animation","ball","bouncing"],
+"description":"An animated ball that bounces up the stairs continuously.",
+"date":"2025-10-18"
+}
+```
+
+### Step 3: Add Yourself as a Contributor
+
+📝 **Important:** Don't forget to add yourself to our contributors list!
+
+1. Open `Contributors/contributors.json`
+2. Check if your username is already listed
+3. If not, add your entry at the end:
+```json
+{
+  "username": "your-github-username"
+}
+```
+
+### Step 4: Commit Your Changes
+```bash
+git add .
+git commit -m "Added CSS artwork: yourname-artname"
+git push origin my-artwork-<#issue number>
+```
+
+### Step 5: Create a Pull Request
+
+1. Go to your fork on GitHub
+2. Click **"Compare & Pull Request"**
+3. Fill in the PR template with:
+   - Clear title describing your artwork
+   - Screenshot of your code
+   - Screenshot/GIF of the final output
+4. Submit and wait for review! 🎉
+
+---
 
 ## 📌 Contribution Rules
 
-Follow these simple rules to make sure your PR is valid and accepted:
+Please follow these contribution rules to ensure your PR is valid, accepted, and appreciated! 💫
 
-- ✅ Only **original CSS artwork** is allowed (no copied code, no images, no JavaScript)  
-- ✅ File naming convention: `yourname-artname.html`  
-- ✅ Keep your code **clean, well-indented, and commented**  
-- ✅ Add your artwork to the `index.html` gallery page  
-- ✅ One PR should contain **only one artwork or one fix**  
-- ❌ Spammy or irrelevant PRs will be marked invalid  
+### ✅ DO
+
+- Create **original CSS artwork** — no copied templates, images, or JavaScript.  
+- Use proper **file naming convention:** `yourname-artname.html` for file and `my-artwork-<#issue number>` for branch name.  
+- Keep your code **clean, well-indented, and well-commented**.  
+- Add your artwork to the **`index.html` gallery page**.  
+- Include **screenshots** of both your code and output in your PR.  
+- Test your artwork in **multiple browsers** to ensure compatibility.  
+- Follow **proper naming conventions** for files and folders.  
+- Be **respectful, collaborative,** and helpful in discussions.  
+- Submit **one PR per artwork or fix** for clarity.  
+
+### ❌ DON'T
+
+- Submit any artwork containing **copyrighted material**.  
+- Make **typo-only** or **text-only** PRs — these will be marked invalid.  
+- Use **external image files** unless absolutely necessary.  
+- Submit work **without proper documentation** or screenshots.  
+- Create **spammy or irrelevant** pull requests.  
+
+### 🏷️ PR Labels
+
+All valid and merged contributions will receive the **`hacktoberfest-accepted`** label. 🎉
 
 ---
 
@@ -75,17 +124,6 @@ Even if you are not creating artwork, you can still help the project grow:
 - 🐞 Fixing **bugs or small CSS issues**  
 
 Check issues labeled `good first issue` or `help wanted` to get started!
-
-## 💡 Code of Conduct
-
-To keep this project welcoming and inclusive for everyone:
-
-- 🤝 Be **respectful and inclusive**  
-- 🆘 Help beginners if they ask questions  
-- 💬 Keep discussions **positive and constructive**  
-- 🚫 No harassment, discrimination, or offensive behavior  
-
-This project is meant to be a **safe and welcoming space** for all contributors. 💖
 
 ---
 
