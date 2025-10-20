@@ -81,7 +81,7 @@
     "date": "2023-10-03"
   },
   {
-  "file": "sunrise.html",
+  "file": "Apurva_sunrise.html",
   "title": "Sunrise Over Mountains",
   "author": "Apurva Jain"
   },
@@ -1130,6 +1130,14 @@
     "author":"Yash Savalkar",
     "tags":["animation","secret code","reveal"],
     "description":"The glide to reveal hover effect six digits that are blurred initially but scale up and become clear on hover or focus.",
-    "date":"2025-10-19"
+    "date":"2025-10-19"  
+  },
+ {
+    "file": "amit-Morphing Butterfly Wings.html",
+    "title": "CSS Morphing Butterfly",
+    "author": "amit",
+    "tags": ["animation", "butterfly", "morphing"],
+    "description": "A beautiful animation of butterfly wings morphing in and out.",
+    "date": "2025-10-19"
   }
 ]
