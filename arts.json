@@ -1139,5 +1139,14 @@
     "tags": ["animation", "butterfly", "morphing"],
     "description": "A beautiful animation of butterfly wings morphing in and out.",
     "date": "2025-10-19"
+  },
+  {
+    "file": "VanshBhadana-BlinkingOwl.html",
+    "title": "Blinking Owl",
+    "author": "Vansh Bhadana",
+    "tags": ["animation", "bird", "Owl"],
+    "description": "Cute Little Owl.",
+    "date": "2025-10-20"
   }
+
 ]
