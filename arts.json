@@ -1163,6 +1163,14 @@
     "tags": ["animation", "bird", "Owl"],
     "description": "Cute Little Owl.",
     "date": "2025-10-20"
+  },
+  {
+    "file": "vedant-floating-islands.html",
+    "title": "Floating Islands",
+    "author": "Vedant",
+    "tags": ["islands", "floating", "animation", "clouds", "nature", "dreamy", "landscape"],
+    "description": "A dreamy CSS art scene of floating islands gently bobbing in the sky, casting soft shadows as clouds drift by.",
+    "date": "2025-10-20"
   }
 
 ]
