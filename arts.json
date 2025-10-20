@@ -1125,14 +1125,6 @@
     "date": "2025-10-18"
   },
   {
-    "file": "Amit-css robot face.html",
-    "title": "CSS Robot Face",
-    "author": "universe-sm",
-    "tags": ["animation", "Robot", "Face"],
-    "description": "Animation of a CSS Robot Face",
-    "date": "2025-10-19"
-  },
-  {
     "file":"yashsavalkar321-secretCode.html",
     "title":"Secret Code Reveal",
     "author":"Yash Savalkar",
@@ -1143,10 +1135,26 @@
  {
     "file": "amit-Morphing Butterfly Wings.html",
     "title": "CSS Morphing Butterfly",
-    "author": "amit",
+    "author": "Amit-dev-zone",
     "tags": ["animation", "butterfly", "morphing"],
     "description": "A beautiful animation of butterfly wings morphing in and out.",
     "date": "2025-10-19"
+  },
+ {
+    "file": "amit-Neon Cyber Canopy.html",
+    "title": "CSS Neon Cyber Canopy",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "neon", "canopy"],
+    "description": "A vibrant neon canopy with animated elements.",
+    "date": "2025-10-20"
+  },
+  {
+    "file": "amit-css robot face.html",
+    "title": "CSS Robot Face",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "robot", "face"],
+    "description": "A vibrant robot face with animated elements.",
+    "date": "2025-10-20"
   },
   {
     "file": "VanshBhadana-BlinkingOwl.html",
