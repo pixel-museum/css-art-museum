@@ -1141,5 +1141,13 @@
     "tags": ["animation", "neon", "canopy"],
     "description": "A vibrant neon canopy with animated elements.",
     "date": "2025-10-20"
+  },
+  {
+    "file": "amit-css robot face.html",
+    "title": "CSS Robot Face",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "robot", "face"],
+    "description": "A vibrant robot face with animated elements.",
+    "date": "2025-10-20"
   }
 ]
