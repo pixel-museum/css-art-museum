@@ -81,7 +81,7 @@
     "date": "2023-10-03"
   },
   {
-  "file": "sunrise.html",
+  "file": "Apurva_sunrise.html",
   "title": "Sunrise Over Mountains",
   "author": "Apurva Jain"
   },
@@ -1139,5 +1139,39 @@
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
     "date":"2025-10-20"
+    "date":"2025-10-19"  
+  },
+ {
+    "file": "amit-Morphing Butterfly Wings.html",
+    "title": "CSS Morphing Butterfly",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "butterfly", "morphing"],
+    "description": "A beautiful animation of butterfly wings morphing in and out.",
+    "date": "2025-10-19"
+  },
+ {
+    "file": "amit-Neon Cyber Canopy.html",
+    "title": "CSS Neon Cyber Canopy",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "neon", "canopy"],
+    "description": "A vibrant neon canopy with animated elements.",
+    "date": "2025-10-20"
+  },
+  {
+    "file": "amit-css robot face.html",
+    "title": "CSS Robot Face",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "robot", "face"],
+    "description": "A vibrant robot face with animated elements.",
+    "date": "2025-10-20"
+  },
+  {
+    "file": "VanshBhadana-BlinkingOwl.html",
+    "title": "Blinking Owl",
+    "author": "Vansh Bhadana",
+    "tags": ["animation", "bird", "Owl"],
+    "description": "Cute Little Owl.",
+    "date": "2025-10-20"
   }
+
 ]
