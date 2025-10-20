@@ -81,7 +81,7 @@
     "date": "2023-10-03"
   },
   {
-  "file": "sunrise.html",
+  "file": "Apurva_sunrise.html",
   "title": "Sunrise Over Mountains",
   "author": "Apurva Jain"
   },
@@ -1124,16 +1124,22 @@
     "description": "Animation of Charging Battery",
     "date": "2025-10-18"
   },
-  
+  {
+    "file":"yashsavalkar321-secretCode.html",
+    "title":"Secret Code Reveal",
+    "author":"Yash Savalkar",
+    "tags":["animation","secret code","reveal"],
+    "description":"The glide to reveal hover effect six digits that are blurred initially but scale up and become clear on hover or focus.",
+    "date":"2025-10-19"  
+  },
  {
     "file": "amit-Morphing Butterfly Wings.html",
     "title": "CSS Morphing Butterfly",
-    "author": "amit",
+    "author": "Amit-dev-zone",
     "tags": ["animation", "butterfly", "morphing"],
     "description": "A beautiful animation of butterfly wings morphing in and out.",
     "date": "2025-10-19"
   },
-  
  {
     "file": "amit-Neon Cyber Canopy.html",
     "title": "CSS Neon Cyber Canopy",
@@ -1149,5 +1155,14 @@
     "tags": ["animation", "robot", "face"],
     "description": "A vibrant robot face with animated elements.",
     "date": "2025-10-20"
+  },
+  {
+    "file": "VanshBhadana-BlinkingOwl.html",
+    "title": "Blinking Owl",
+    "author": "Vansh Bhadana",
+    "tags": ["animation", "bird", "Owl"],
+    "description": "Cute Little Owl.",
+    "date": "2025-10-20"
   }
+
 ]
