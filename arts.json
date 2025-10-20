@@ -1132,5 +1132,14 @@
     "tags": ["animation", "butterfly", "morphing"],
     "description": "A beautiful animation of butterfly wings morphing in and out.",
     "date": "2025-10-19"
+  },
+  
+ {
+    "file": "amit-Neon Cyber Canopy.html",
+    "title": "CSS Neon Cyber Canopy",
+    "author": "Amit-dev-zone",
+    "tags": ["animation", "neon", "canopy"],
+    "description": "A vibrant neon canopy with animated elements.",
+    "date": "2025-10-20"
   }
 ]
