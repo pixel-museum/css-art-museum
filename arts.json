@@ -1171,6 +1171,14 @@
     "tags": ["animation", "bird", "Owl"],
     "description": "Cute Little Owl.",
     "date": "2025-10-20"
-  }
+  },
+  {
+    "file": "kunal-solarsystem.html",
+    "title": "Solar System Cursor",
+    "author": "Kunal",
+    "tags": ["animation", "cursor", "solar-system", "interactive"],
+    "description": "An interactive solar system that follows your cursor with orbiting planets.",
+    "date": "2025-10-21"
+}
 
 ]
