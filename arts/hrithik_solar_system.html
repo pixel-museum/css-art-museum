@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar System</title>
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .solar-system {
+      position: relative;
+      width: 800px;
+      height: 800px;
+    }
+
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: yellow;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px yellow;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .planet {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Planet colors */
+    .mercury { background: gray; }
+    .venus   { background: #ccaa66; }
+    .earth   { background: turquoise; }
+    .mars    { background: maroon; }
+    .jupiter { background: #d4a017; }
+    .saturn  { background: #a67c00; }
+    .uranus  { background: cyan; }
+    .neptune { background: blue; }
+    .pluto   { background: pink; }
+
+    /* Orbit sizes and animations */
+    .orbit1  { width: 100px; height: 100px; animation: rotate 5s linear infinite; }
+    .orbit2  { width: 140px; height: 140px; animation: rotate 7s linear infinite; }
+    .orbit3  { width: 180px; height: 180px; animation: rotate 9s linear infinite; }
+    .orbit4  { width: 220px; height: 220px; animation: rotate 11s linear infinite; }
+    .orbit5  { width: 270px; height: 270px; animation: rotate 14s linear infinite; }
+    .orbit6  { width: 320px; height: 320px; animation: rotate 17s linear infinite; }
+    .orbit7  { width: 370px; height: 370px; animation: rotate 20s linear infinite; }
+    .orbit8  { width: 420px; height: 420px; animation: rotate 23s linear infinite; }
+    .orbit9  { width: 470px; height: 470px; animation: rotate 26s linear infinite; }
+
+    .orbit .planet {
+      top: 0;
+      left: 50%;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg) translateX(-50%) translateY(-50%); }
+      to   { transform: rotate(360deg) translateX(-50%) translateY(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="solar-system">
+    <div class="sun"></div>
+
+    <div class="orbit orbit1"><div class="planet mercury"></div></div>
+    <div class="orbit orbit2"><div class="planet venus"></div></div>
+    <div class="orbit orbit3"><div class="planet earth"></div></div>
+    <div class="orbit orbit4"><div class="planet mars"></div></div>
+    <div class="orbit orbit5"><div class="planet jupiter"></div></div>
+    <div class="orbit orbit6"><div class="planet saturn"></div></div>
+    <div class="orbit orbit7"><div class="planet uranus"></div></div>
+    <div class="orbit orbit8"><div class="planet neptune"></div></div>
+    <div class="orbit orbit9"><div class="planet pluto"></div></div>
+  </div>
+</body>
+</html>
