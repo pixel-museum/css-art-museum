@@ -1179,6 +1179,13 @@
     "tags": ["animation", "cursor", "solar-system", "interactive"],
     "description": "An interactive solar system that follows your cursor with orbiting planets.",
     "date": "2025-10-21"
-}
-
+  },
+  {
+    "file": "kunal534-bloodtext.html",
+    "title": "Dripping Blood Text",
+    "author": "Kunal",
+    "tags": ["horror", "animation", "halloween", "blood-effect", "text-effect"],
+    "description": "Eerie blood text with animated dripping effect and puddle formation - perfect for horror themes.",
+    "date": "2025-10-21"
+  }
 ]
