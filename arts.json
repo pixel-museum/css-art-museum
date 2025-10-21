@@ -1187,5 +1187,13 @@
     "tags": ["horror", "animation", "halloween", "blood-effect", "text-effect"],
     "description": "Eerie blood text with animated dripping effect and puddle formation - perfect for horror themes.",
     "date": "2025-10-21"
+  },
+  {
+    "file": "SudoAnirudh-PulsatingCircle.html",
+    "title": "Pulsating Circle",
+    "author": "SudoAnirudh",
+    "tags": ["animation", "circle", "pulse"],
+    "description": "A simple pulsating circle animation.",
+    "date": "2025-10-21"
   }
 ]
