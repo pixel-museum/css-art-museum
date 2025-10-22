@@ -866,7 +866,7 @@ header h1::after {
 
 .theme-toggle:active {
   transform: translateY(0px) scale(1.01);
-  transition: all 0.15s ease-out; /* Quick, smooth press */
+  transition: all 0.45s ease-in-out; /* Quick, smooth press */
 }
 
 /* Sophisticated Gallery Layout with Visual Appeal */
