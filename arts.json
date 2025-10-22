@@ -1229,6 +1229,14 @@
     "tags": ["animation", "aurora", "lights", "css"],
     "description": "A glowing aurora wave animation using pure CSS gradients and keyframes to mimic the northern lights.",
     "date": "2025-10-22"
-  }  
+  }  ,
+  {
+"file":"dawn-dusk.html",
+"title":"Dawn to Dusk",
+"author":"Anand Misra",
+"tags":["animation","dawn","dusk"],
+"description":"An animation that smoothly transitions a landscape scene from dawn to dusk.",
+"date":"2025-10-23"
+}
 ]
 
