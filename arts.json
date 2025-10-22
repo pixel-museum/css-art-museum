@@ -1199,6 +1199,14 @@
     "date": "2025-10-21"
   },
   {
+    "file": "kulsum-css-synthesizer.html",
+    "title": "Rhythmic Pulsating Synthesizer",
+    "author": "Kulsum",
+    "tags": ["music", "animation", "neon", "synthwave", "equalizer"],
+    "description": "An infinite loop animation of a stylish, pulsating synthesizer panel featuring moving equalizer bars and neon effects.",
+    "date": "2025-10-21" 
+  },
+  {
     "file": "SudoAnirudh-PulsatingCircle.html",
     "title": "Pulsating Circle",
     "author": "SudoAnirudh",
@@ -1223,3 +1231,4 @@
     "date": "2025-10-22"
   }  
 ]
+
