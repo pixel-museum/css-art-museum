@@ -1203,5 +1203,13 @@
    "tags": ["animation", "solar-system", "orbits", "css"],
    "description": "Visualize an orbital dance of planets around the sun in this animated solar system model.Highlighting css animations",
    "date": "2025-10-11"
-  }
+  },
+  {
+    "file": "prachip5202-aurorawaves.html",
+    "title": "Aurora Waves",
+    "author": "Prachi P",
+    "tags": ["animation", "aurora", "lights", "css"],
+    "description": "A glowing aurora wave animation using pure CSS gradients and keyframes to mimic the northern lights.",
+    "date": "2025-10-22"
+  }  
 ]
