@@ -80,12 +80,7 @@
     "description": "A display of fluid or static non-representational shapes, focusing on form and color.",
     "date": "2023-10-03"
   },
-  {
-  "file": "Apurva_sunrise.html",
-  "title": "Sunrise Over Mountains",
-  "author": "Apurva Jain"
-  },
-  {
+ {
     "file":"SK-tesseract.html",
     "title":"Tesseract",
     "author":"Saikiran-Sugurthi",
@@ -245,16 +240,31 @@
     "description": "An animated representation of the flag of India, typically shown waving.",
     "date": "2024-03-31"
   },
-  {
-    "file": "Apurva_unicorn_art.html",
-    "title": "Mini Unicorn Art",
-    "author": "Apurva"
-  },
-   {
-    "file": "Apurva_rainbow.html",
-    "title": "CSS Rainbow Art",
-    "author": "Apurva"
-  },
+{
+  "file": "Apurva_unicorn_art.html",
+  "title": "Mini Unicorn Art",
+  "author": "Apurva",
+  "tags": ["unicorn", "art", "css", "animation"],
+  "description": "A colorful and whimsical mini unicorn illustration created using CSS art techniques.",
+  "date": "2025-10-22"
+},
+{
+  "file": "Apurva_rainbow.html",
+  "title": "CSS Rainbow Art",
+  "author": "Apurva",
+  "tags": ["rainbow", "css", "gradient", "art"],
+  "description": "A vibrant rainbow artwork crafted using pure CSS gradients and shapes.",
+  "date": "2025-10-22"
+},
+{
+  "file": "Apurva_sunrise.html",
+  "title": "Sunrise Over Mountains",
+  "author": "Apurva Jain",
+  "tags": ["sunrise", "mountains", "nature", "css"],
+  "description": "A serene CSS-based scene depicting the sunrise over mountain silhouettes with warm hues.",
+  "date": "2025-10-22"
+},
+
   {
     "file": "waqar-cat.html",
     "title": "CSS Cat Art",
