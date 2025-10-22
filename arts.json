@@ -1187,5 +1187,13 @@
     "tags": ["horror", "animation", "halloween", "blood-effect", "text-effect"],
     "description": "Eerie blood text with animated dripping effect and puddle formation - perfect for horror themes.",
     "date": "2025-10-21"
+  },
+  {
+  "file": "hrithik_solar_system.html",
+   "title": "Solar System",
+   "author": "Hrithik Bhattacharya",
+   "tags": ["animation", "solar-system", "orbits", "css"],
+   "description": "Visualize an orbital dance of planets around the sun in this animated solar system model.Highlighting css animations",
+   "date": "2025-10-11"
   }
 ]
