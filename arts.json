@@ -1195,5 +1195,13 @@
     "tags": ["animation", "circle", "pulse"],
     "description": "A simple pulsating circle animation.",
     "date": "2025-10-21"
+  },
+  {
+  "file": "hrithik_solar_system.html",
+   "title": "Solar System",
+   "author": "Hrithik Bhattacharya",
+   "tags": ["animation", "solar-system", "orbits", "css"],
+   "description": "Visualize an orbital dance of planets around the sun in this animated solar system model.Highlighting css animations",
+   "date": "2025-10-11"
   }
 ]
