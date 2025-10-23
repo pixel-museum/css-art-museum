@@ -1,27 +1,11 @@
 [
 	{
-		"file": "sharanya_wheelandhamster.html",
-		"title": "Hamster and Wheel",
-		"author": "Sharanya",
-		"tags": ["animation", "hamster", "wheel", "css"],
-		"description": "A playful animation of a hamster running on a wheel, showcasing CSS animation techniques.",
-		"date": "2022-11-13"
-	},
-	{
 		"file": "bharath-pulsingdot.html",
 		"title": "Pulsing Dot",
 		"author": "Your Name",
 		"tags": ["animation", "dot", "pulse", "simple", "glow"],
 		"description": "A simple dot that pulses with a soft cyan glow.",
 		"date": "2025-10-20"
-	},
-	{
-		"file": "Keron-3D_Box.html",
-		"title": "3D_Box",
-		"author": "kronpatel",
-		"tags": ["3d", "geometry", "cube", "shapes"],
-		"description": "A three-dimensional box rendered in CSS, focusing on geometric structure and visual perspective.",
-		"date": "2023-08-01"
 	},
 	{
 		"file": "sk-water-ripple.html",
@@ -31,14 +15,14 @@
 		"description": "An animated effect simulating the rippling of water, often used for visual interest or backgrounds.",
 		"date": "2023-07-22"
 	},
-  {
-"file":"Aniruddhadwivedi07-robot.html",
-"title":"CSS Robot",
-"author":"Aniruddha Dwivedi",
-"tags":["robot","shapes","CSS"],
-"description":"A Robot shape using CSS stylings.",
-"date":"2025-10-22"
-  }
+	{
+	"file":"Aniruddhadwivedi07-robot.html",
+	"title":"CSS Robot",
+	"author":"Aniruddha Dwivedi",
+	"tags":["robot","shapes","CSS"],
+	"description":"A Robot shape using CSS stylings.",
+	"date":"2025-10-22"
+  },
   {
    "file": "sharanya_wheelandhamster.html",
    "title": "Hamster and Wheel",
@@ -1001,11 +985,6 @@
     "description":"An animated scene of an astronaut in the ocean.",
     "date":"2025-10-03"
   },
-  {
-    "file":"Commits_Grid_text.html",
-    "title":"Grid text",
-    "author":"Debosmita"
-  },
    {
     "file":"manglam-space-art.html",
     "title":"Space Art",
@@ -1205,7 +1184,6 @@
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
     "date":"2025-10-20"
-    "date":"2025-10-19"  
   },
  {
     "file": "amit-Morphing Butterfly Wings.html",
