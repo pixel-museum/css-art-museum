@@ -828,7 +828,7 @@ header h1::after {
   border-radius: 30px;
   padding: 10px 18px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s ease-out; /* Smooth, no bounce */
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--secondary-text);
@@ -838,8 +838,6 @@ header h1::after {
   animation: toggleFloat 4s ease-in-out infinite;
   flex-shrink: 0;
 }
-
-/* === MODIFIED HEADER AND NEW NAVBAR STYLING END === */
 
 @keyframes toggleFloat {
   0%,
@@ -852,20 +850,23 @@ header h1::after {
 }
 
 .theme-toggle:hover {
+  animation-play-state: paused;
   background: linear-gradient(
     135deg,
     var(--accent-subtle),
     rgba(212, 175, 55, 0.1)
   );
   border-color: var(--accent-color);
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-0.5px) scale(1.08);
   box-shadow: 0 8px 20px var(--shadow-medium),
-    0 4px 12px rgba(108, 99, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 4px 12px rgba(108, 99, 255, 0.2), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
   color: var(--accent-color);
 }
 
 .theme-toggle:active {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(0px) scale(1.01);
+  transition: all 0.45s ease-in-out; /* Quick, smooth press */
 }
 
 /* Sophisticated Gallery Layout with Visual Appeal */
@@ -1314,7 +1315,8 @@ header h1::after {
 
 .recent-art-card .card-actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 12px;
   align-items: center;
 }
@@ -1346,7 +1348,7 @@ header h1::after {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  padding: 8px;
+  padding: 5px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
@@ -1850,7 +1852,7 @@ li {
   box-shadow: 0 8px 25px rgba(139, 127, 255, 0.2);
 }
 
-.card-actions {
+/* .card-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -1887,12 +1889,44 @@ li {
   align-items: center;
   gap: 8px;
   border-radius: 10px;
+  height : 45px;
+  width:100%;
   border: 1px solid var(--border-color);
   background: transparent;
   color: var(--secondary-text);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+} */
+ .card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 5px;
+    padding: 0 4px 4px;
+    align-items: start; /* This ensures both start at the same vertical position */
 }
+
+.view-code,
+.like-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px; /* Fixed height for both */
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--secondary-text);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box; /* Important! */
+    padding: 0; /* Reset any inherited padding */
+    margin: 0; /* Reset any inherited margin */
+}
+
 
 /* Unified hover effects for both buttons */
 .view-code:hover,
