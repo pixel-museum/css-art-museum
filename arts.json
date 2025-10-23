@@ -1452,7 +1452,7 @@
 	{
 		"file": "Apurva_unicorn_art.html",
 		"title": "Mini Unicorn Art",
-		"author": "Apurva"
+		"author": "Apurva",
 		"tags": ["animal", "Unicorn", "character", "illustration", "feline"],
 		"description": "An artistic illustration of unicorn figure created entirely using CSS.",
 		"date": "2024-04-09"
@@ -1460,7 +1460,7 @@
 	{
 		"file": "Apurva_rainbow.html",
 		"title": "CSS Rainbow Art",
-		"author": "Apurva"
+		"author": "Apurva",
 		"tags": ["nature", "rain", "rainbow"],
 		"description": "An artistic rainbow figure created entirely using CSS.",
 		"date": "2024-04-09"
