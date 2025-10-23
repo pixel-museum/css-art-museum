@@ -38,7 +38,7 @@
 "tags":["robot","shapes","CSS"],
 "description":"A Robot shape using CSS stylings.",
 "date":"2025-10-22"
-  }
+  },
   {
    "file": "sharanya_wheelandhamster.html",
    "title": "Hamster and Wheel",
@@ -1204,8 +1204,7 @@
     "author":"Yash Savalkar",
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
-    "date":"2025-10-20"
-    "date":"2025-10-19"  
+    "date":"2025-10-20"  
   },
  {
     "file": "amit-Morphing Butterfly Wings.html",
@@ -2384,8 +2383,7 @@
 		"tags": ["animation", "bird", "Owl"],
 		"description": "Cute Little Owl.",
 		"date": "2025-10-20"
-	}
-=======
+	},
   {
     "file": "kunal-solarsystem.html",
     "title": "Solar System Cursor",
@@ -2457,8 +2455,18 @@
     "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
     "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
     "date": "2025-10-23"
-  } 
+  },
+  {
+  "file": "lakshith-dna.html",
+  "title": "3D DNA Helix Animation",
+  "author": "Lakshith",
+  "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
+  "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
+  "date": "2025-10-23"
+}
 ]
+
+
 
 
 
