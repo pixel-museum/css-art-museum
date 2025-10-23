@@ -8,14 +8,6 @@
 		"date": "2025-10-20"
 	},
 	{
-		"file": "sk-water-ripple.html",
-		"title": "Water Ripple",
-		"author": "Saikiran-Sugurthi",
-		"tags": ["water", "ripple", "animation", "nature", "effect"],
-		"description": "An animated effect simulating the rippling of water, often used for visual interest or backgrounds.",
-		"date": "2023-07-22"
-	},
-	{
 	"file":"Aniruddhadwivedi07-robot.html",
 	"title":"CSS Robot",
 	"author":"Aniruddha Dwivedi",
@@ -2394,6 +2386,14 @@
     "date": "2025-10-21" 
   },
   {
+    "file": "kulsum-BioluminescentCoral.html",
+    "title": "Bioluminescent Coral",
+    "author": "Kulsum",
+    "tags": ["deep-sea", "coral", "ocean", "glow", "neon"],
+    "description": "Bioluminescent coral stalks gently swaying, emitting a soft, pulsing neon glow.",
+    "date": "2025-10-23" 
+  },
+{
     "file": "SudoAnirudh-PulsatingCircle.html",
     "title": "Pulsating Circle",
     "author": "SudoAnirudh",
@@ -2442,6 +2442,5 @@
     "date": "2025-10-23"
   } 
 ]
-
 
 
