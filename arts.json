@@ -1229,6 +1229,16 @@
     "tags": ["animation", "aurora", "lights", "css"],
     "description": "A glowing aurora wave animation using pure CSS gradients and keyframes to mimic the northern lights.",
     "date": "2025-10-22"
-  }  
+  } ,
+  {
+    "file": "Sanskriti-aurora.html",
+    "title": "Aurora Borealis",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
+    "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
+    "date": "2025-10-23"
+  } 
 ]
+
+
 
