@@ -8,6 +8,14 @@
    "date": "2022-11-13"
   },
   {
+  "file": "shivangini_enchantedrose.html",
+  "title": "Enchanted Rose",
+  "author": "Shivangini",
+  "tags": ["animation", "rose", "beauty-and-the-beast", "disney", "css-art"],
+  "description": "A glowing enchanted rose inside a glass dome inspired by Belle’s rose from Beauty and the Beast, made with pure HTML, CSS, and a touch of JS sparkles.",
+  "date":"2025-10-23"
+},
+  {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
    "author": "kronpatel",
@@ -1229,14 +1237,25 @@
     "tags": ["animation", "aurora", "lights", "css"],
     "description": "A glowing aurora wave animation using pure CSS gradients and keyframes to mimic the northern lights.",
     "date": "2025-10-22"
-  }  ,
+  },
   {
-"file":"dawn-dusk.html",
-"title":"Dawn to Dusk",
-"author":"Anand Misra",
-"tags":["animation","dawn","dusk"],
-"description":"An animation that smoothly transitions a landscape scene from dawn to dusk.",
-"date":"2025-10-23"
-}
+    "file":"dawn-dusk.html",
+    "title":"Dawn to Dusk",
+    "author":"Anand Misra",
+    "tags":["animation","dawn","dusk"],
+    "description":"An animation that smoothly transitions a landscape scene from dawn to dusk.",
+    "date":"2025-10-23"
+  } ,
+  {
+    "file": "Sanskriti-aurora.html",
+    "title": "Aurora Borealis",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
+    "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
+    "date": "2025-10-23"
+  } 
+
 ]
+
+
 
