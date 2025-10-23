@@ -1299,6 +1299,9 @@
 		"file": "Apurva_sunrise.html",
 		"title": "Sunrise Over Mountains",
 		"author": "Apurva Jain"
+		"tags": ["sun", "sky", "celestial", "nature", "lights"],
+		"description": "An atmospheric art piece capturing the beauty of the sun rises in the morning",
+		"date": "2023-09-15"
 	},
 	{
 		"file": "SK-tesseract.html",
@@ -1464,11 +1467,17 @@
 		"file": "Apurva_unicorn_art.html",
 		"title": "Mini Unicorn Art",
 		"author": "Apurva"
+		"tags": ["animal", "Unicorn", "character", "illustration", "feline"],
+		"description": "An artistic illustration of unicorn figure created entirely using CSS.",
+		"date": "2024-04-09"
 	},
 	{
 		"file": "Apurva_rainbow.html",
 		"title": "CSS Rainbow Art",
 		"author": "Apurva"
+		"tags": ["nature", "rain", "rainbow"],
+		"description": "An artistic rainbow figure created entirely using CSS.",
+		"date": "2024-04-09"
 	},
 	{
 		"file": "waqar-cat.html",
@@ -2154,6 +2163,9 @@
 		"file": "Commits_Grid_text.html",
 		"title": "Grid text",
 		"author": "Debosmita"
+		"tags": ["text-effect","abstract"],
+		"description": "grid text",
+		"date": "2025-10-14"
 	},
 	{
 		"file": "manglam-space-art.html",
@@ -2327,13 +2339,7 @@
 		"file": "DIP72-CSS_mandala.html",
 		"title": "CSS Mandala",
 		"author": "Dipanjan Pradhan",
-		"tags": [
-			"animation",
-			"mandala",
-			"Geometric Art",
-			"Rotational Symmetry",
-			"Sacred Geometry"
-		],
+		"tags": ["animation","mandala","Geometric Art","Rotational Symmetry","Sacred Geometry"],
 		"description": "A mesmerizing CSS Mandala artwork featuring vibrant gradients and perfect rotational symmetry",
 		"date": "2025-10-19"
 	},
@@ -2384,8 +2390,7 @@
 		"tags": ["animation", "bird", "Owl"],
 		"description": "Cute Little Owl.",
 		"date": "2025-10-20"
-	}
-=======
+	},
   {
     "file": "kunal-solarsystem.html",
     "title": "Solar System Cursor",
