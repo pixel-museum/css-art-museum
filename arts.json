@@ -40,6 +40,14 @@
    "date": "2022-11-13"
   },
   {
+  "file": "shivangini_enchantedrose.html",
+  "title": "Enchanted Rose",
+  "author": "Shivangini",
+  "tags": ["animation", "rose", "beauty-and-the-beast", "disney", "css-art"],
+  "description": "A glowing enchanted rose inside a glass dome inspired by Belle’s rose from Beauty and the Beast, made with pure HTML, CSS, and a touch of JS sparkles.",
+  "date":"2025-10-23"
+},
+  {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
    "author": "kronpatel",
@@ -112,12 +120,7 @@
     "description": "A display of fluid or static non-representational shapes, focusing on form and color.",
     "date": "2023-10-03"
   },
-  {
-  "file": "Apurva_sunrise.html",
-  "title": "Sunrise Over Mountains",
-  "author": "Apurva Jain"
-  },
-  {
+ {
     "file":"SK-tesseract.html",
     "title":"Tesseract",
     "author":"Saikiran-Sugurthi",
@@ -277,16 +280,31 @@
     "description": "An animated representation of the flag of India, typically shown waving.",
     "date": "2024-03-31"
   },
-  {
-    "file": "Apurva_unicorn_art.html",
-    "title": "Mini Unicorn Art",
-    "author": "Apurva"
-  },
-   {
-    "file": "Apurva_rainbow.html",
-    "title": "CSS Rainbow Art",
-    "author": "Apurva"
-  },
+{
+  "file": "Apurva_unicorn_art.html",
+  "title": "Mini Unicorn Art",
+  "author": "Apurva",
+  "tags": ["unicorn", "art", "css", "animation"],
+  "description": "A colorful and whimsical mini unicorn illustration created using CSS art techniques.",
+  "date": "2025-10-22"
+},
+{
+  "file": "Apurva_rainbow.html",
+  "title": "CSS Rainbow Art",
+  "author": "Apurva",
+  "tags": ["rainbow", "css", "gradient", "art"],
+  "description": "A vibrant rainbow artwork crafted using pure CSS gradients and shapes.",
+  "date": "2025-10-22"
+},
+{
+  "file": "Apurva_sunrise.html",
+  "title": "Sunrise Over Mountains",
+  "author": "Apurva Jain",
+  "tags": ["sunrise", "mountains", "nature", "css"],
+  "description": "A serene CSS-based scene depicting the sunrise over mountain silhouettes with warm hues.",
+  "date": "2025-10-22"
+},
+
   {
     "file": "waqar-cat.html",
     "title": "CSS Cat Art",
@@ -2350,4 +2368,72 @@
 		"description": "Cute Little Owl.",
 		"date": "2025-10-20"
 	}
+=======
+  {
+    "file": "kunal-solarsystem.html",
+    "title": "Solar System Cursor",
+    "author": "Kunal",
+    "tags": ["animation", "cursor", "solar-system", "interactive"],
+    "description": "An interactive solar system that follows your cursor with orbiting planets.",
+    "date": "2025-10-21"
+  },
+  {
+    "file": "kunal534-bloodtext.html",
+    "title": "Dripping Blood Text",
+    "author": "Kunal",
+    "tags": ["horror", "animation", "halloween", "blood-effect", "text-effect"],
+    "description": "Eerie blood text with animated dripping effect and puddle formation - perfect for horror themes.",
+    "date": "2025-10-21"
+  },
+  {
+    "file": "kulsum-css-synthesizer.html",
+    "title": "Rhythmic Pulsating Synthesizer",
+    "author": "Kulsum",
+    "tags": ["music", "animation", "neon", "synthwave", "equalizer"],
+    "description": "An infinite loop animation of a stylish, pulsating synthesizer panel featuring moving equalizer bars and neon effects.",
+    "date": "2025-10-21" 
+  },
+  {
+    "file": "SudoAnirudh-PulsatingCircle.html",
+    "title": "Pulsating Circle",
+    "author": "SudoAnirudh",
+    "tags": ["animation", "circle", "pulse"],
+    "description": "A simple pulsating circle animation.",
+    "date": "2025-10-21"
+  },
+  {
+  "file": "hrithik_solar_system.html",
+   "title": "Solar System",
+   "author": "Hrithik Bhattacharya",
+   "tags": ["animation", "solar-system", "orbits", "css"],
+   "description": "Visualize an orbital dance of planets around the sun in this animated solar system model.Highlighting css animations",
+   "date": "2025-10-11"
+  },
+  {
+    "file": "prachip5202-aurorawaves.html",
+    "title": "Aurora Waves",
+    "author": "Prachi P",
+    "tags": ["animation", "aurora", "lights", "css"],
+    "description": "A glowing aurora wave animation using pure CSS gradients and keyframes to mimic the northern lights.",
+    "date": "2025-10-22"
+  },
+  {
+    "file":"dawn-dusk.html",
+    "title":"Dawn to Dusk",
+    "author":"Anand Misra",
+    "tags":["animation","dawn","dusk"],
+    "description":"An animation that smoothly transitions a landscape scene from dawn to dusk.",
+    "date":"2025-10-23"
+  } ,
+  {
+    "file": "Sanskriti-aurora.html",
+    "title": "Aurora Borealis",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
+    "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
+    "date": "2025-10-23"
+  } 
 ]
+
+
+
