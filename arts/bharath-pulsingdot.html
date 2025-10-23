@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pulsing Dot</title>
+		<style>
+			body {
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				background: #1a1a2e; /* Dark background */
+			}
+
+			.dot {
+				width: 50px;
+				height: 50px;
+				background-color: #00f2ea; /* Bright cyan dot */
+				border-radius: 50%;
+				box-shadow: 0 0 20px #00f2ea, 0 0 40px #00f2ea;
+				animation: pulse 1.5s infinite ease-in-out;
+			}
+
+			@keyframes pulse {
+				0%,
+				100% {
+					transform: scale(1);
+					opacity: 1;
+					box-shadow: 0 0 20px #00f2ea, 0 0 40px #00f2ea;
+				}
+				50% {
+					transform: scale(1.2);
+					opacity: 0.7;
+					box-shadow: 0 0 30px #00f2ea, 0 0 60px #00f2ea;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dot"></div>
+	</body>
+</html>
