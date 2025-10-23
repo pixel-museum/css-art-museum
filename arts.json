@@ -1196,6 +1196,15 @@
     "author":"Yash Savalkar",
     "tags":["animation","secret code","reveal"],
     "description":"The glide to reveal hover effect six digits that are blurred initially but scale up and become clear on hover or focus.",
+    "date":"2025-10-19"
+  },
+  {
+    "file":"yashsavalkar321-secretCode.html",
+    "title":"Animated Mail Button",
+    "author":"Yash Savalkar",
+    "tags":["animation","mail Button","mail","button"],
+    "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
+    "date":"2025-10-20"
     "date":"2025-10-19"  
   },
  {
