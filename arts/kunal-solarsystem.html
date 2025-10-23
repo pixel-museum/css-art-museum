@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Cursor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0a0e27, #1a1042);
+            height: 100vh;
+            overflow: hidden;
+            cursor: none; /* Hide default cursor */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Solar system cursor container */
+        #solar-cursor {
+            position: fixed;
+            pointer-events: none; /* Allow clicks through cursor */
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+
+        /* Sun at the center */
+        .sun {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ffd700, #ff8c00);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 
+                0 0 20px #ffd700, 
+                0 0 40px #ff8c00,
+                0 0 60px rgba(255, 140, 0, 0.5);
+        }
+
+        /* Orbit paths */
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* Individual orbit sizes and speeds */
+        .orbit-1 {
+            width: 50px;
+            height: 50px;
+            animation: rotate 2s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 80px;
+            height: 80px;
+            animation: rotate 3.5s linear infinite;
+        }
+
+        .orbit-3 {
+            width: 110px;
+            height: 110px;
+            animation: rotate 5s linear infinite;
+        }
+
+        .orbit-4 {
+            width: 140px;
+            height: 140px;
+            animation: rotate 6.5s linear infinite;
+        }
+
+        /* Planet base style */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Mercury - gray and small */
+        .mercury {
+            width: 6px;
+            height: 6px;
+            background: #8c7853;
+            box-shadow: 0 0 5px rgba(140, 120, 83, 0.8);
+        }
+
+        /* Venus - yellow-orange */
+        .venus {
+            width: 8px;
+            height: 8px;
+            background: #ffc649;
+            box-shadow: 0 0 8px rgba(255, 198, 73, 0.8);
+        }
+
+        /* Earth - blue with gradient */
+        .earth {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #2e86de, #54a0ff);
+            box-shadow: 0 0 8px rgba(84, 160, 255, 0.8);
+        }
+
+        /* Mars - red */
+        .mars {
+            width: 7px;
+            height: 7px;
+            background: #e74c3c;
+            box-shadow: 0 0 7px rgba(231, 76, 60, 0.8);
+        }
+
+        /* Rotation animation for orbits */
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Info text in center */
+        .info {
+            text-align: center;
+            color: white;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .info h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .info p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Glow animation for title */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        /* Add some stars in background */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Solar system cursor -->
+    <div id="solar-cursor">
+        <div class="sun"></div>
+        <div class="orbit orbit-1">
+            <div class="planet mercury"></div>
+        </div>
+        <div class="orbit orbit-2">
+            <div class="planet venus"></div>
+        </div>
+        <div class="orbit orbit-3">
+            <div class="planet earth"></div>
+        </div>
+        <div class="orbit orbit-4">
+            <div class="planet mars"></div>
+        </div>
+    </div>
+
+    <!-- Info section -->
+    <div class="info">
+        <h1>Solar System Cursor</h1>
+        <p>Move your mouse to explore the solar system!</p>
+        <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.6;">
+            Created with ❤️ using pure HTML & CSS
+        </p>
+    </div>
+
+    <script>
+        // Cursor tracking - follows mouse movement
+        const cursor = document.getElementById('solar-cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Hide cursor when mouse leaves window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        // Show cursor when mouse enters window
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+
+        // Generate random stars in background
+        function createStars() {
+            const starCount = 100;
+            const body = document.body;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 2 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                body.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
+</html>
