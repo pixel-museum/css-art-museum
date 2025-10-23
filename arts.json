@@ -2409,6 +2409,14 @@
     "description": "Bioluminescent coral stalks gently swaying, emitting a soft, pulsing neon glow.",
     "date": "2025-10-23" 
   },
+   {
+    "file": "kulsum-kinetic-sandfall.html",
+    "title": "Kinetic Sandfall",
+    "author": "Kulsum",
+    "tags": ["hourglass", "animation", "abstract", "warm"],
+    "description": "A mesmerizing, perpetual motion illusion rendered entirely with CSS. Warm, vibrant gradient particles appear to flow endlessly",
+    "date": "2025-10-23" 
+  },
 {
     "file": "SudoAnirudh-PulsatingCircle.html",
     "title": "Pulsating Circle",
