@@ -8,12 +8,28 @@
 		"date": "2025-10-20"
 	},
 	{
-	"file":"Aniruddhadwivedi07-robot.html",
-	"title":"CSS Robot",
-	"author":"Aniruddha Dwivedi",
-	"tags":["robot","shapes","CSS"],
-	"description":"A Robot shape using CSS stylings.",
-	"date":"2025-10-22"
+		"file": "Keron-3D_Box.html",
+		"title": "3D_Box",
+		"author": "kronpatel",
+		"tags": ["3d", "geometry", "cube", "shapes"],
+		"description": "A three-dimensional box rendered in CSS, focusing on geometric structure and visual perspective.",
+		"date": "2023-08-01"
+	},
+	{
+		"file": "sk-water-ripple.html",
+		"title": "Water Ripple",
+		"author": "Saikiran-Sugurthi",
+		"tags": ["water", "ripple", "animation", "nature", "effect"],
+		"description": "An animated effect simulating the rippling of water, often used for visual interest or backgrounds.",
+		"date": "2023-07-22"
+	},
+  {
+"file":"Aniruddhadwivedi07-robot.html",
+"title":"CSS Robot",
+"author":"Aniruddha Dwivedi",
+"tags":["robot","shapes","CSS"],
+"description":"A Robot shape using CSS stylings.",
+"date":"2025-10-22"
   },
   {
    "file": "sharanya_wheelandhamster.html",
@@ -2393,6 +2409,14 @@
     "description": "Bioluminescent coral stalks gently swaying, emitting a soft, pulsing neon glow.",
     "date": "2025-10-23" 
   },
+   {
+    "file": "kulsum-kinetic-sandfall.html",
+    "title": "Kinetic Sandfall",
+    "author": "Kulsum",
+    "tags": ["hourglass", "animation", "abstract", "warm"],
+    "description": "A mesmerizing, perpetual motion illusion rendered entirely with CSS. Warm, vibrant gradient particles appear to flow endlessly",
+    "date": "2025-10-23" 
+  },
 {
     "file": "SudoAnirudh-PulsatingCircle.html",
     "title": "Pulsating Circle",
@@ -2440,7 +2464,14 @@
     "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
     "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
     "date": "2025-10-23"
-  } 
+  },
+  {
+  "file": "lakshith-dna.html",
+  "title": "3D DNA Helix Animation",
+  "author": "Lakshith",
+  "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
+  "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
+  "date": "2025-10-23"
+}
 ]
-
 
