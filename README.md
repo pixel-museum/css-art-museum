@@ -17,7 +17,6 @@
 ## 📚 Table of Contents
 
 - [🌟 About The Project](#-about-the-project)
-- [🚀 Getting Started](#-getting-started)
 - [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
 - [💡 Tips for Great Contributions](#-tips-for-great-contributions)
 - [🤝 Community & Support](#-community--support)
@@ -41,39 +40,6 @@ Welcome to the **CSS Art Museum** — a vibrant community-driven project where d
 - 📚 **Learn & Grow** — Explore others' code and improve your skills
 
 ---
-
-## 🚀 Getting Started
-
-Follow these simple steps to add your artwork to the museum:
-
-### Prerequisites
-
-- Git installed on your machine
-- A GitHub account
-- Basic knowledge of HTML/CSS/JavaScript
-- Your creative spirit! ✨
-
-### Installation & Setup
-
-#### 1️⃣ Fork the Repository
-
-Click the **Fork** button at the top-right corner of this repository to create your own copy.
-
-#### 2️⃣ Clone Your Fork
-```bash
-git clone https://github.com/<your-username>/css-art-museum.git
-cd css-art-museum
-```
-
-#### 3️⃣ Create a New Branch
-```bash
-git checkout -b my-artwork-<#issue number>
-```
-
-> 💡 **Tip:** Use a descriptive branch name like `add-sunset-animation` or `neon-butterfly-art`
-
----
-
 
 ## 🛠️ Tech Stack
 
@@ -137,19 +103,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Here’s a glimpse of our project in action! 👇  
 
 ### 🏠 Home Page  
-![Home Screenshot](./screenshots/Home.png)  
+<img width="1900" height="869" alt="image" src="https://github.com/user-attachments/assets/59e211f8-f038-4d08-8703-56beb5d5951f" />
+ 
 
 ---
 
 ### 🎨  Footer Section  
-![Gallery Screenshot](./screenshots/Footer.png)  
+<img width="1897" height="763" alt="image" src="https://github.com/user-attachments/assets/3d723c7d-1eb9-45c4-8cc0-26148b4eae12" />
+ 
 
 ---
 
-### 🖌️ Sample Artwork  
-![Artwork Screenshot](./screenshots/Art_Ex.png)  
-
-> 🖼️ *Screenshots are stored inside the `screenshots` folder in the project root.*
+### 🖌️ Artwork  
+<img width="1903" height="865" alt="image" src="https://github.com/user-attachments/assets/8988d7ad-67b8-4e14-9877-118f674a04a9" />
 
 ---
 

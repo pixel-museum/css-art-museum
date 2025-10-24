@@ -112,6 +112,7 @@ iframe.preview {
   display: flex;
   gap: 8px;
 }
+
 @media (max-width: 920px) {
   .wrap {
     grid-template-columns: 1fr;

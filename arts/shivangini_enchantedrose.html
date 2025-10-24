@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enchanted Rose</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 100%);
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .dome {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.02) 100%);
+      box-shadow:
+        inset 0 0 30px rgba(255, 255, 255, 0.3),
+        0 0 40px rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dome::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 50px;
+      width: 30px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      transform: rotate(25deg);
+      filter: blur(1px);
+    }
+
+    .rose {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .stem {
+      width: 6px;
+      height: 100px;
+      background: linear-gradient(to bottom, #3a9a3a, #1e601e);
+      border-radius: 3px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 25px;
+      height: 15px;
+      background: linear-gradient(to right, #3a9a3a, #2a6d2a);
+      border-radius: 50% 50% 0 50%;
+      top: 30px;
+      transform-origin: left center;
+    }
+
+    .leaf.left {
+      left: -25px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf.right {
+      right: -25px;
+      transform: rotate(30deg) scaleX(-1);
+    }
+
+    .flower {
+      position: absolute;
+      top: -40px;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle at 30% 30%, #ff4f7d, #c70039 80%);
+      border-radius: 50%;
+      box-shadow: 0 0 25px #ff4f7d, 0 0 50px rgba(255, 80, 120, 0.3);
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 6px;
+      background: #d62357;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall 6s linear infinite;
+    }
+
+    .petal:nth-child(1) {
+      left: 60%;
+      animation-delay: 0s;
+    }
+
+    .petal:nth-child(2) {
+      left: 40%;
+      animation-delay: 2s;
+    }
+
+    .petal:nth-child(3) {
+      left: 50%;
+      animation-delay: 4s;
+    }
+
+    @keyframes fall {
+      0% {
+        top: 60%;
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        top: 95%;
+        opacity: 0;
+        transform: translateY(60px) rotate(180deg);
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .sparkle:nth-child(1) {
+      top: 40%;
+      left: 40%;
+      animation-delay: 0s;
+    }
+
+    .sparkle:nth-child(2) {
+      top: 50%;
+      left: 60%;
+      animation-delay: 1s;
+    }
+
+    .sparkle:nth-child(3) {
+      top: 60%;
+      left: 50%;
+      animation-delay: 2s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 10px #ff4f7d);
+      }
+
+      to {
+        filter: drop-shadow(0 0 25px #ff8fb7);
+      }
+    }
+
+    .base {
+      position: absolute;
+      bottom: 10px;
+      width: 140px;
+      height: 25px;
+      background: radial-gradient(circle at center, #6b4c2a, #3a2612);
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dome">
+    <div class="rose">
+      <div class="flower"></div>
+      <div class="stem">
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="base"></div>
+  </div>
+
+</body>
+
+</html>
