@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CSS Space Artwork — Rocket & Solar System</title>
+<style>
+/* -------------------------------------------------------
+   CSS Space Artwork — single-file HTML + CSS
+   Features:
+   - layered parallax starfield (CSS + pseudo elements)
+   - animated rotating planets with rings and shadows
+   - orbital motion (different speeds), asteroid belt
+   - animated rocket that launches and loops, flame + exhaust
+   - comet with trailing particles
+   - soft camera float + subtle vignette and glass highlights
+   - responsive, high-DPI friendly
+   ------------------------------------------------------- */
+
+:root{
+  --bg-deep-1: #060617;
+  --bg-deep-2: #0f1022;
+  --accent-1: #7c3aed;
+  --accent-2: #ff7a8a;
+  --accent-3: #60a5fa;
+  --sun: #ffd166;
+  --glass: rgba(255,255,255,0.06);
+  --radius: 18px;
+  --size: min(980px, 92vw);
+}
+
+/* page base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at 10% 15%, rgba(124,58,237,0.08), transparent 6%),
+    radial-gradient(900px 420px at 90% 85%, rgba(96,165,250,0.04), transparent 6%),
+    linear-gradient(180deg,var(--bg-deep-1), var(--bg-deep-2));
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-font-smoothing:antialiased;
+  color:white;
+  overflow:hidden;
+  padding:30px;
+}
+
+/* scene container */
+.scene {
+  width: var(--size);
+  height: calc(var(--size) * 0.62);
+  max-height: 720px;
+  position: relative;
+  border-radius: 24px;
+  overflow: visible;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 30px 60px rgba(2,6,23,0.6));
+  perspective: 1400px;
+}
+
+/* soft glass panel backdrop */
+.scene::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  pointer-events:none;
+  z-index:80;
+}
+
+/* vignette and starfield layers */
+.sky {
+  position:absolute; inset:0;
+  border-radius:inherit;
+  overflow:hidden;
+  background: radial-gradient(800px 220px at 20% 10%, rgba(124,58,237,0.06), transparent 10%),
+              radial-gradient(600px 260px at 80% 80%, rgba(96,165,250,0.03), transparent 12%);
+}
+
+/* stars: three layers for parallax */
+.star-layer{
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(1px 1px at 5% 12%, rgba(255,255,255,0.85) 50%, transparent 51%),
+    radial-gradient(1px 1px at 32% 24%, rgba(255,255,255,0.65) 50%, transparent 51%),
+    radial-gradient(1px 1px at 68% 44%, rgba(255,255,255,0.82) 50%, transparent 51%),
+    radial-gradient(1px 1px at 15% 72%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 52% 80%, rgba(255,255,255,0.7) 50%, transparent 51%);
+  opacity:0.55;
+  mix-blend-mode:screen;
+  animation: driftSlow 28s linear infinite;
+  z-index:1;
+}
+.star-layer.layer-mid{
+  background-size: 160% 160%;
+  opacity:0.36;
+  animation: driftMed 42s linear infinite;
+  filter: blur(.2px);
+  z-index:2;
+}
+.star-layer.layer-fast{
+  background-size: 220% 220%;
+  opacity:0.22;
+  animation: driftFast 68s linear infinite;
+  filter: blur(.8px);
+  z-index:3;
+}
+
+/* twinkle using many small pseudo elements */
+.star-spark {
+  position:absolute; inset:0; z-index:5;
+  pointer-events:none;
+}
+.star-spark::before, .star-spark::after{
+  content:"";
+  position:absolute;
+  width:6px;height:6px;border-radius:50%;
+  top:14%; left:28%;
+  background: radial-gradient(circle,#fff 0%, rgba(255,255,255,0.05) 60%, transparent 70%);
+  opacity:0.12;
+  animation: twinkle 4.6s ease-in-out infinite;
+  transform-origin:center;
+}
+
+/* main orbital system holder (centered) */
+.orbits {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-48%) translateZ(0);
+  width: 86%;
+  height: 86%;
+  pointer-events:none;
+  z-index:20;
+}
+
+/* sun */
+.sun {
+  position:absolute;
+  left:50%; top:50%;
+  width:120px; height:120px;
+  transform: translate(-50%,-50%) translateZ(120px);
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 25%, #fff2cc 0%, var(--sun) 28%, #ffb84d 52%, rgba(255,120,76,0.95) 80%);
+  box-shadow: 0 0 80px rgba(255,185,80,0.24), 0 6px 40px rgba(255,128,64,0.10), inset 0 -14px 40px rgba(0,0,0,0.12);
+  z-index:60;
+  filter: saturate(1.05);
+  animation: sunPulse 6s ease-in-out infinite;
+}
+
+/* orbit rings — each ring is an ellipse (using transform scale) */
+.orbit {
+  position:absolute;
+  left:50%; top:50%;
+  transform-origin:center;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+/* planet base */
+.planet {
+  position:absolute;
+  transform-origin:center;
+  border-radius:50%;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.45), inset 0 2px 8px rgba(255,255,255,0.03);
+  overflow:visible;
+}
+
+/* define orbits with different radii and speeds */
+.orbit.oo1 { width:190px; height:190px; transform: translate(-50%,-50%) rotate(0deg); animation: spinOrbit 18s linear infinite; z-index:40; }
+.orbit.oo2 { width:300px; height:200px; transform: translate(-50%,-50%) rotate(30deg); animation: spinOrbit 28s linear infinite; z-index:38; }
+.orbit.oo3 { width:420px; height:280px; transform: translate(-50%,-50%) rotate(-20deg); animation: spinOrbit 40s linear infinite; z-index:36; }
+.orbit.oo4 { width:560px; height:360px; transform: translate(-50%,-50%) rotate(10deg); animation: spinOrbit 64s linear infinite; z-index:34; }
+
+/* planets placed on orbit edges (positioned absolutely inside orbit) */
+.planet.mercury { width:14px;height:14px; left:calc(50% + 85px); top:50%; background: linear-gradient(180deg,#d9d9d9,#bfbfbf); transform: translate(-50%,-50%); box-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+.planet.venus   { width:22px;height:22px; left:calc(50% + 56px); top:50%; background: radial-gradient(circle at 30% 30%, #fff7e6 0%, #e4b77e 30%, #c07f56 65%); transform: translate(-50%,-50%); }
+.planet.earth   { width:36px;height:36px; left:calc(50% + 140px); top:50%; background: radial-gradient(circle at 30% 26%, #aee2ff 10%, #2196f3 45%, #0b4d6a 85%); transform: translate(-50%,-50%); box-shadow: 0 8px 18px rgba(2,6,23,0.6); }
+.planet.mars    { width:24px;height:24px; left:calc(50% + 220px); top:50%; background: linear-gradient(180deg,#ffb39a,#bf4b2c); transform: translate(-50%,-50%); }
+
+/* large ringed planet */
+.planet.jupiter { width:92px;height:92px; left:calc(50% - 120px); top:calc(50% - 80px); transform: translate(-50%,-50%); background: radial-gradient(circle at 20% 30%, #ffd8b3 0%, #d98f6e 30%, #a3573a 70%); z-index:45; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+.jupiter-ring {
+  position:absolute; left:50%; top:50%;
+  width:180px; height:180px; transform: translate(-50%,-50%) rotateX(65deg) rotateZ(14deg);
+  border-radius:50%;
+  border:12px solid rgba(255,255,255,0.06);
+  background: conic-gradient(from 120deg, rgba(255,255,255,0.04), rgba(0,0,0,0.02));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3), inset 0 6px 40px rgba(255,255,255,0.02);
+  z-index:10; pointer-events:none;
+  transform-origin:center;
+}
+
+/* asteroid belt: many tiny bits along an orbit via repeating-radial-gradient illusion */
+.asteroid-belt {
+  position:absolute; left:50%; top:50%;
+  width:560px; height:220px; transform: translate(-50%,-50%) rotate(-12deg); border-radius:50%;
+  background-image: radial-gradient(circle at 10% 40%, rgba(255,255,255,0.06) 0.5px, transparent 1px),
+                    radial-gradient(circle at 80% 55%, rgba(255,255,255,0.06) 0.6px, transparent 1px);
+  background-size: 10px 10px, 12px 12px;
+  opacity:0.55;
+  filter: blur(.4px);
+  animation: beltSpin 40s linear infinite;
+  z-index:22;
+  pointer-events:none;
+}
+
+/* rocket — positioned off-center and orbits through scene */
+.rocket {
+  position:absolute;
+  width:84px; height:84px;
+  left:18%; top:72%;
+  transform-origin:center;
+  z-index:120;
+  pointer-events:auto;
+  filter: drop-shadow(0 12px 30px rgba(2,6,23,0.5));
+  animation: rocketPath 9.8s linear infinite;
+}
+
+/* rocket body (SVG-like made from shapes) */
+.rocket .body {
+  position:absolute; left:50%; top:50%;
+  width:44px; height:68px; transform: translate(-50%,-50%);
+  background: linear-gradient(180deg,#ffffff 0%, #e6f7ff 15%, #dbe9ff 40%, #ccd9ff 100%);
+  border-radius: 14px 14px 8px 8px;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06);
+  overflow:visible;
+}
+.rocket .nose {
+  position:absolute; left:50%; top:-6px; width:34px; height:34px;
+  transform: translateX(-50%); border-radius:50% 50% 12px 12px;
+  background: linear-gradient(180deg,#fff 0%, #e8f6ff 50%, #d6e9ff 100%);
+  box-shadow: inset 0 -3px 8px rgba(0,0,0,0.06);
+}
+.rocket .window {
+  position:absolute; left:50%; top:28%; width:18px; height:18px; transform:translate(-50%,-50%);
+  border-radius:50%; background: radial-gradient(circle at 30% 30%, #fff 0%, #9fd4ff 18%, #2a7fb6 70%);
+  border:3px solid rgba(255,255,255,0.7);
+  box-shadow: 0 6px 16px rgba(42,127,182,0.14), inset 0 -3px 8px rgba(0,0,0,0.08);
+}
+.rocket .fin {
+  position:absolute; width:18px; height:16px; background: linear-gradient(180deg,#ffd6d6,#ff8a8a);
+  left:-6px; top:44%; transform-origin:50% 50%; border-radius:4px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+}
+.rocket .fin.r { left:auto; right:-6px; transform-origin:50% 50%; transform:scaleX(-1); }
+
+/* flame & exhaust animated */
+.rocket .flame {
+  position:absolute; left:50%; top:92%; transform:translateX(-50%);
+  width:10px; height:28px; border-radius:50%;
+  background: radial-gradient(circle at 50% 25%, #fff 0%, #ffd166 20%, #ff6b6b 60%, rgba(255,80,34,0.0) 100%);
+  filter: blur(.8px);
+  transform-origin:center top;
+  animation: flameFlicker 220ms linear infinite;
+  opacity:0.95;
+}
+.rocket .exhaust {
+  position:absolute; left:50%; top:100%; transform:translateX(-50%);
+  width:6px; height:6px; border-radius:50%;
+  background: radial-gradient(circle,#ffd166,#ff6b6b);
+  filter: blur(6px);
+  opacity:0.85;
+  animation: exhaustPulse 560ms cubic-bezier(.2,.9,.22,1) infinite;
+}
+
+/* comet — long trailing streak */
+.comet {
+  position:absolute;
+  width:220px; height:8px;
+  left:74%; top:12%;
+  transform: rotate(-18deg);
+  pointer-events:none;
+  z-index:70;
+  animation: cometMove 12s linear infinite;
+}
+.comet .head{
+  position:absolute; right:0; top:-6px; width:24px; height:24px; border-radius:50%;
+  background: radial-gradient(circle,#fff,#ffd166);
+  box-shadow: 0 8px 30px rgba(255,214,100,0.12);
+}
+.comet .trail{
+  position:absolute; left:0; top:0; height:6px; width:100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.0) 0%, rgba(255,214,100,0.18) 25%, rgba(255,120,80,0.06) 55%, rgba(255,255,255,0.0) 90%);
+  filter: blur(2px);
+  transform-origin:left center;
+  opacity:0.95;
+}
+
+/* subtle foreground glass panel */
+.glass-foreground {
+  position:absolute; left:4%; top:6%;
+  width: 92%; height:88%;
+  border-radius:20px;
+  pointer-events:none;
+  z-index:130;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* caption / label */
+.caption {
+  position:absolute; left:50%; bottom:18px; transform:translateX(-50%) translateZ(200px);
+  z-index:140; font-weight:600; letter-spacing:.6px; color:rgba(255,255,255,0.92);
+  text-align:center;
+  display:flex; flex-direction:column; gap:6px; align-items:center;
+}
+.caption .title{
+  font-size:18px; color: #fff;
+  background: linear-gradient(90deg,var(--accent-2),var(--accent-1));
+  -webkit-background-clip: text; background-clip: text; color:transparent;
+  font-weight:700;
+}
+.caption .subtitle{
+  font-size:12px; color:rgba(255,255,255,0.76);
+  opacity:0.9;
+}
+
+/* -------- keyframes -------- */
+@keyframes driftSlow { from{transform: translateY(0)} to{transform: translateY(-8px)} }
+@keyframes driftMed  { from{transform: translateX(0)} to{transform: translateX(12px)} }
+@keyframes driftFast { from{transform: translateY(0)} to{transform: translateY(18px)} }
+
+@keyframes twinkle {
+  0%{opacity:0.08; transform:scale(.8)}
+  50%{opacity:0.3; transform:scale(1.2)}
+  100%{opacity:0.08; transform:scale(.8)}
+}
+
+@keyframes spinOrbit {
+  from{ transform: rotate(0deg) }
+  to{ transform: rotate(360deg) }
+}
+
+@keyframes beltSpin {
+  from{ transform: rotate(-12deg) translateZ(0) }
+  to{ transform: rotate(348deg) translateZ(0) }
+}
+
+@keyframes sunPulse {
+  0%{ box-shadow: 0 0 60px rgba(255,185,80,0.14) }
+  50%{ box-shadow: 0 0 96px rgba(255,185,80,0.28) }
+  100%{ box-shadow: 0 0 60px rgba(255,185,80,0.14) }
+}
+
+/* rocket flight path: uses motion along the container by animating translate/rotate */
+@keyframes rocketPath {
+  0%{ left:18%; top:76%; transform: translateZ(0) rotate(-6deg) scale(.98) }
+  12%{ left:26%; top:62%; transform: rotate(-12deg) scale(1.02) }
+  28%{ left:44%; top:46%; transform: rotate(-26deg) scale(1.08) }
+  42%{ left:58%; top:36%; transform: rotate(-10deg) scale(1) }
+  56%{ left:70%; top:30%; transform: rotate(6deg) scale(.96) }
+  72%{ left:82%; top:26%; transform: rotate(10deg) scale(.92) }
+85% { left: 92%; top: 22%; transform: rotate(18deg) scale(.88); opacity: 0.95; }
+  100%{ left:18%; top:76%; transform: translateZ(0) rotate(-6deg) scale(.98) }
+}
+
+@keyframes flameFlicker {
+  0%{ transform: scaleY(1) translateY(0) }
+  30%{ transform: scaleY(1.26) translateY(3px) }
+  60%{ transform: scaleY(.94) translateY(0) }
+  100%{ transform: scaleY(1) translateY(0) }
+}
+@keyframes exhaustPulse {
+  0%{ transform: scale(1); opacity:0.9 }
+  50%{ transform: scale(1.8); opacity:0.2 }
+  100%{ transform: scale(1); opacity:0.9 }
+}
+
+@keyframes cometMove {
+  0%{ left:74%; top:12%; opacity:1; transform: rotate(-18deg) translateX(0) }
+  50%{ left:-8%; top:86%; opacity:0.82; transform: rotate(-18deg) translateX(-40%) }
+  100%{ left:74%; top:12%; opacity:1; transform: rotate(-18deg) translateX(0) }
+}
+
+/* small responsive tweak for narrow screens */
+@media (max-width:720px){
+  :root{ --size: 94vw }
+  .sun{ width:94px; height:94px }
+  .orbit.oo4{ display:none } /* simplify on small screens */
+  .rocket{ width:66px; height:66px }
+}
+
+/* high-DPI sharpness */
+@media (prefers-reduced-motion: reduce){
+  .star-layer, .orbit, .rocket, .asteroid-belt, .comet { animation: none !important; }
+}
+</style>
+</head>
+<body>
+  <div class="scene" role="img" aria-label="Stylized CSS solar system with orbiting planets and rocket">
+    <div class="sky">
+      <div class="star-layer"></div>
+      <div class="star-layer layer-mid"></div>
+      <div class="star-layer layer-fast"></div>
+      <div class="star-spark"></div>
+    </div>
+
+    <div class="orbits" aria-hidden="true">
+      <!-- Sun -->
+      <div class="sun" title="Sun"></div>
+
+      <!-- Orbits + planets -->
+      <div class="orbit oo1" style="--speed:1">
+        <div class="planet mercury" title="Mercury"></div>
+      </div>
+
+      <div class="orbit oo2" style="--speed:0.7">
+        <div class="planet venus" title="Venus"></div>
+        <div class="planet earth" title="Earth"></div>
+      </div>
+
+      <div class="orbit oo3" style="--speed:0.5">
+        <div class="planet mars" title="Mars"></div>
+        <div class="planet.jupiter" style="transform-origin:center" title="Jupiter">
+          <div class="jupiter-ring" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="asteroid-belt" aria-hidden="true"></div>
+    </div>
+
+    <!-- Rocket -->
+    <div class="rocket" role="presentation" aria-hidden="true">
+      <div class="body">
+        <div class="nose"></div>
+        <div class="window" aria-hidden="true"></div>
+        <div class="fin" style="left:-8px; top:46%;"></div>
+        <div class="fin r" style="right:-8px; top:46%;"></div>
+      </div>
+      <div class="flame" aria-hidden="true"></div>
+      <div class="exhaust" aria-hidden="true"></div>
+    </div>
+
+    <!-- Comet -->
+    <div class="comet" aria-hidden="true">
+      <div class="trail"></div>
+      <div class="head"></div>
+    </div>
+
+    <!-- glass overlay for premium finish -->
+    <div class="glass-foreground" aria-hidden="true"></div>
+
+    <!-- caption -->
+    <div class="caption" aria-hidden="true">
+      <div class="title">Orbital Voyage</div>
+      <div class="subtitle">CSS-only solar illustration — Rocket in perpetual flight</div>
+    </div>
+  </div>
+</body>
+</html>

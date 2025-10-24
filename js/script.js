@@ -2,10 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("gallery-container");
   const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
   const searchBar = document.getElementById("search-bar");
-  const sortByLikesBtn = document.getElementById("sort-by-likes-btn"); // Get the sort button
+  // Sorting dropdown
+  const sortingDropdown = document.getElementById("sorting-dropdown");
   let allArts = []; // This will store the merged data (art info + likes)
+  let currentFilteredArts = [];  //Initialize currentFilteredArts with all arts
   let pagination = null; // Pagination instance
-
+  
+  
   const RecentlyReviewed = {
     get: () => {
       try {
@@ -19,52 +22,56 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!art || !art.file) return;
       const list = RecentlyReviewed.get().filter((a) => a.file !== art.file);
       list.push({ file: art.file, title: art.title, author: art.author });
-      while (list.length > 3) list.shift();
+      while (list.length > 5) list.shift();
       localStorage.setItem("recentlyReviewed", JSON.stringify(list));
     },
   };
 
-  function renderRecentlyReviewed() {
-    if (!recentlyReviewedContainer) return;
-    const items = RecentlyReviewed.get();
-    recentlyReviewedContainer.innerHTML = "";
-    items
-      .slice()
-      .reverse()
-      .forEach((item) => {
-        const filePath = `arts/${item.file}`;
-        const card = document.createElement("div");
-        card.className = "art-card";
-        let isLiked = false;
-        try {
-          const liked = localStorage.getItem('likedArtworks');
-          const likedSet = liked ? new Set(JSON.parse(liked)) : new Set();
-          isLiked = likedSet.has(item.file);
-        } catch (e) {
-          isLiked = false;
-        }
-        const likesCount = (Array.isArray(allArts) ? (allArts.find(a => a.file === item.file)?.likes) : 0) || 0;
-        card.innerHTML = `
-          <iframe loading="lazy" seamless src="${filePath}" title="${item.title}"></iframe>
-        <h3>${item.title}</h3>
-        <p>by ${item.author}</p>
-        <div class="card-actions">
-            <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(item.file)}">
-                View Code
-            </a>
-            <div class="like-container" data-id="${item.file}">
-                <svg class="heart-icon ${isLiked ? 'liked' : ''}" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                 <span class="like-count">${likesCount}</span>
-            </div>
-        </div>
-        `;
-        recentlyReviewedContainer.appendChild(card);
-      });
+  async function renderRecentlyReviewed() {
+  const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
+  if (!recentlyReviewedContainer) return;
 
+  let items = RecentlyReviewed.get();
+
+  // 🔍 Check if files exist (remove deleted ones)
+  items = await Promise.all(items.map(async (item) => {
+    const filePath = `arts/${item.file}`;
+    try {
+      const res = await fetch(filePath, { method: "HEAD" });
+      return res.ok ? item : null;
+    } catch {
+      return null;
+    }
+  }));
+
+  // 🧹 Remove invalid (deleted) entries
+  items = items.filter(Boolean);
+  localStorage.setItem("recentlyReviewed", JSON.stringify(items));
+
+  // 🧱 Clear container before re-rendering
+  recentlyReviewedContainer.innerHTML = "";
+
+  // ♻️ Render only valid existing artworks
+  items.reverse().forEach((item) => {
+    const filePath = `arts/${item.file}`;
+    const card = document.createElement("div");
+    card.className = "art-card";
+    card.innerHTML = `
+      <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+      <div class="art-info">
+        <p class="art-title">${item.title || "Untitled"}</p>
+        <p class="art-author">${item.author || "Unknown"}</p>
+      </div>
+    `;
+    recentlyReviewedContainer.appendChild(card);
+  });
+
+  // 🌀 Reinitialize animations if you use them
+  if (typeof initializeCardAnimations === "function") {
     initializeCardAnimations();
   }
+}
+
 
   // Like handler for Recently Reviewed section
   function handleRecentLikeClick(event) {
@@ -147,6 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ...art,
         likes: artLikesMap.get(art.file) || 0, // Add likes property, default to 0
       }));
+
+      // Initialize currentFilteredArts with all arts
+      currentFilteredArts = [...allArts];
 
       // Initialize pagination after data is loaded
       initializePagination();
@@ -242,6 +252,9 @@ document.addEventListener("DOMContentLoaded", () => {
    * Wrapper function to maintain compatibility with existing code
    */
   function renderArts(arts) {
+
+    // Update currentFilteredArts whenever renderArts is called
+    currentFilteredArts = arts;
     if (pagination) {
       pagination.setFilteredItems(arts);
       pagination.render();
@@ -250,23 +263,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
     
-  // --- Sort by Likes functionality ---
-  function sortByLikes() {
-    // Create a copy of the array before sorting to avoid modifying the original
-    const sortedArts = [...allArts].sort((a, b) => b.likes - a.likes);
-    renderArts(sortedArts);
+
+  // --- Sorting integration ---
+  // FIXED: Now sorts currentFilteredArts instead of allArts
+  window.sortAndRenderArts = function() {
+    if (!currentFilteredArts || currentFilteredArts.length === 0) return;
+    const sorted = window.sortArts ? window.sortArts(currentFilteredArts) : currentFilteredArts;
+    renderArts(sorted);
+  };
+
+  if (sortingDropdown) {
+    sortingDropdown.addEventListener('change', () => {
+      window.sortAndRenderArts();
+    });
   }
 
-  // --- Search Filter ---
-  searchBar.addEventListener("input", () => {
-    const query = searchBar.value.toLowerCase().trim();
-    const filteredArts = allArts.filter(
-      (art) =>
-        art.title.toLowerCase().includes(query) ||
-        art.author.toLowerCase().includes(query)
-    );
+  // --- Search Filter with Recently Reviewed Hide/Show (Fix for Issue #184) ---
+const recentlyReviewedSection = document.querySelector('.recently-reviewed-container');
+
+searchBar.addEventListener("input", () => {
+  const query = searchBar.value.toLowerCase().trim();
+  
+  // Hide or show recently reviewed section based on search query
+  if (recentlyReviewedSection) {
+    if (query.length > 0) {
+      // Hide recently reviewed when searching
+      recentlyReviewedSection.classList.add('hidden');
+    } else {
+      // Show recently reviewed when search is empty
+      recentlyReviewedSection.classList.remove('hidden');
+    }
+  }
+  
+  // Existing filter logic
+  const filteredArts = allArts.filter(
+    (art) =>
+      art.title.toLowerCase().includes(query) ||
+      art.author.toLowerCase().includes(query)
+  );
+  
+  // Check if no results found
+  if (filteredArts.length === 0 && query !== "") {
+    galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
+    // Hide pagination controls if they exist
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = 'none';
+  } else {
+    // Show pagination controls again
+    const paginationControls = document.getElementById('pagination-controls');
+    if (paginationControls) paginationControls.style.display = '';
     renderArts(filteredArts);
-  });
+  }
+});
 
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
@@ -381,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://api.github.com/repos/Shamli-Singh-Yadav/css-art-museum"
+        "https://api.github.com/repos/pixel-museum/css-art-museum"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -399,9 +447,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Event Listeners and Initial Function Calls ---
   window.addEventListener("scroll", toggleScrollToTopButton);
   scrollToTopBtn.addEventListener("click", scrollToTop);
-  sortByLikesBtn.addEventListener("click", sortByLikes); // Add listener for the sort button
+
 
   loadArts();
+  // Initial sort and render after arts are loaded
+  window.sortAndRenderArts();
   getGitHubStars();
 
   renderRecentlyReviewed();
@@ -409,4 +459,118 @@ document.addEventListener("DOMContentLoaded", () => {
   if (recentlyReviewedContainer) {
     recentlyReviewedContainer.addEventListener('click', handleRecentLikeClick);
   }
+  window.addEventListener('keydown', (e) => {
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') return;
+    if (e.key === '/') {
+      e.preventDefault();
+      searchBar.focus();
+      searchBar.select();
+    }
+  });
 });
+
+
+// 🎨 Random Artwork of the Day — uses arts.json
+// 🎨 Random Artwork of the Day — uses arts.json
+function loadRandomArtwork() {
+  fetch("./arts.json")
+    .then(response => response.json())
+    .then(artworks => {
+      if (!Array.isArray(artworks) || artworks.length === 0) return;
+
+      const randomIndex = Math.floor(Math.random() * artworks.length);
+      const art = artworks[randomIndex];
+
+      const container = document.getElementById("random-artwork-container");
+      
+      // Create art card similar to your gallery
+      const artCard = document.createElement("div");
+      artCard.className = "art-card";
+      artCard.setAttribute("data-file", art.file);
+      artCard.setAttribute("data-title", art.title);
+      artCard.setAttribute("data-author", art.author);
+      artCard.style.animation = "0.8s ease-out 0s 1 normal both running cardEntrance";
+
+      artCard.innerHTML = `
+        <h3>${art.title || "Untitled Artwork"}</h3>
+        <iframe 
+          loading="lazy" 
+          seamless="" 
+          src="arts/${art.file}" 
+          title="${art.title || "Artwork"}"
+        ></iframe>
+        <p>by ${art.author || "Unknown Artist"}</p>
+        <div class="card-actions">
+          <a class="view-code" href="art-viewer.html?art=${art.file}">
+            View Code
+          </a>
+          <div class="like-container" data-id="${art.file}">
+            <svg class="heart-icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="like-count">0</span>
+          </div>
+        </div>
+      `;
+
+      // Clear previous artwork and add new one
+      container.innerHTML = '';
+      container.appendChild(artCard);
+
+      // Initialize like functionality for this card
+      initializeLikeButton(artCard);
+
+      // Optional: Change artwork every 24 hours
+      setTimeout(() => loadRandomArtwork(), 86400000);
+    })
+    .catch(err => {
+      console.error("Error loading random artwork:", err);
+    });
+}
+
+// Initialize like button functionality
+function initializeLikeButton(card) {
+  const likeContainer = card.querySelector('.like-container');
+  const heartIcon = card.querySelector('.heart-icon');
+  const likeCount = card.querySelector('.like-count');
+  
+  const artworkId = likeContainer.getAttribute('data-id');
+  
+  // Load existing likes from localStorage
+  let likes = JSON.parse(localStorage.getItem('artwork-likes')) || {};
+  let isLiked = JSON.parse(localStorage.getItem('artwork-liked')) || {};
+  
+  // Set initial like count and state
+  likeCount.textContent = likes[artworkId] || 0;
+  
+  if (isLiked[artworkId]) {
+    heartIcon.classList.add('liked');
+    heartIcon.style.fill = 'currentColor';
+  }
+  
+  // Add click event listener
+  likeContainer.addEventListener('click', function() {
+    if (!isLiked[artworkId]) {
+      // Like the artwork
+      likes[artworkId] = (likes[artworkId] || 0) + 1;
+      isLiked[artworkId] = true;
+      heartIcon.classList.add('liked');
+      heartIcon.style.fill = 'currentColor';
+    } else {
+      // Unlike the artwork
+      likes[artworkId] = Math.max(0, (likes[artworkId] || 1) - 1);
+      isLiked[artworkId] = false;
+      heartIcon.classList.remove('liked');
+      heartIcon.style.fill = 'none';
+    }
+    
+    // Update display and storage
+    likeCount.textContent = likes[artworkId];
+    localStorage.setItem('artwork-likes', JSON.stringify(likes));
+    localStorage.setItem('artwork-liked', JSON.stringify(isLiked));
+  });
+}
+
+// Run on load
+document.addEventListener("DOMContentLoaded", loadRandomArtwork);

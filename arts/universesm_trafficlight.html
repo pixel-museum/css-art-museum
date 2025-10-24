@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+</head>
+<style>
+    body {
+    background: linear-gradient(to bottom, rgb(117, 231, 117) 30%, white 90%);
+    background-size: 100vw 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 95vh;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    height: 90vh;
+
+}
+
+/*Traffic Light body*/
+.base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    width: 7vw;
+    background-color: rgb(39, 39, 39);
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 7px rgb(0, 0, 0, 0.5);
+    border: 4px solid black;
+}
+
+.stand {
+    height: 60vh;
+    width: 2vw;
+    background-color: rgb(39, 39, 39);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 8px 8px 7px rgb(0, 0, 0, 0.5);
+    border-bottom: 4px solid black;
+}
+
+/*Traffic Lights*/
+.red {
+    background: radial-gradient(circle, #f35a3c, black);
+    width: 90%;
+    height: 25%;
+    border-radius: 300px;
+    animation: 6s red1 ease-in infinite;
+    border: 1px solid black;
+}
+
+.yellow {
+    background: radial-gradient(circle, #ebeb65, black);
+    width: 90%;
+    height: 25%;
+    border-radius: 300px;
+    animation: 6s yellow1 ease-in infinite;
+    border: 1px solid black;
+}
+
+.green {
+    background: radial-gradient(circle, #70ec70, black);
+    width: 90%;
+    height: 25%;
+    border-radius: 300px;
+    border: 3px solid rgb(101, 100, 100);
+    border: 1px solid black;
+    animation: 6s green1 ease-in infinite;
+}
+
+/*Animations For Flickering of Lights*/
+@keyframes red1 {
+
+    0%,
+    30% {
+        background: radial-gradient(circle, #ff2a00, black);
+        box-shadow: 0px 0px 15px rgb(255, 0, 0, 0.5);
+    }
+
+    31%,
+    100% {
+        background: radial-gradient(circle, #f35a3c, black);
+        box-shadow: none;
+
+    }
+}
+
+@keyframes yellow1 {
+
+    0%,
+    30% {
+        background: radial-gradient(circle, #ebeb65, black);
+        box-shadow: none;
+
+    }
+
+    31%,
+    60% {
+        background: radial-gradient(circle, #ffff00, black);
+        box-shadow: 0px 0px 15px rgb(204, 229, 104, 0.5);
+    }
+
+    61%,
+    100% {
+        background: radial-gradient(circle, #ebeb65, black);
+        box-shadow: none;
+    }
+}
+
+@keyframes green1 {
+
+    0%,
+    30% {
+        ackground: radial-gradient(circle, #70ec70, black);
+        box-shadow: none;
+
+    }
+
+    31%,
+    60% {
+        background: radial-gradient(circle, #70ec70, black);
+        box-shadow: none;
+    }
+
+    61%,
+    100% {
+        background: radial-gradient(circle, #00ff00, black);
+        box-shadow: 0px 0px 15px rgb(132, 231, 125);
+
+    }
+}
+
+/*responsiveness*/
+@media (max-width:600px){
+    .base{
+        height:90vh;
+        width:12vw;
+    }
+    .stand{
+        height:60vh;
+        width:3vw;
+    }
+     .red{
+        height:50%;
+        width:95%;
+    }
+    .yellow{
+         height:50%;
+        width:95%;
+    }
+    .green{
+         height:50%;
+        width:95%;
+    }
+    .base{
+        gap:10px;
+    }
+    .container{
+        height:90vh;
+        width:90vw;
+    }
+}
+
+@media (min-width:601px){
+    .base{
+        height:90vh;
+        width:12vw;
+    }
+    .stand{
+        height:60vh;
+        width:3vw;
+    }
+    .red,.yellow,.green{
+        height:33%;
+        width:95%;
+    }
+
+}
+
+@media (min-width:1080px){
+    .base{
+        height:95vh;
+        width:7vw;
+    }
+    .stand{
+        height:60vh;
+        width:2vw;
+    }
+    .red,.yellow,.green{
+        height:26%;
+        width:90%;
+    }
+
+}
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="base">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+             <div class="stand"></div>
+        </div>
+       
+    </div>
+</body>
+
+</html>

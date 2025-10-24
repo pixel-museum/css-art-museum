@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Footer</title>
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+.footer {
+  position: relative;
+  background: #6c63ff;
+  height: 150px;
+}
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg"><path d="M0 30 V12 Q30 17 60 12 T120 12 V30z" fill="white"/></svg>') repeat-x;
+  background-size: 120px 28px;
+  animation: wave 4s linear infinite;
+}
+@keyframes wave {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 120px; }
+}
+</style>
+</head>
+<body>
+<div class="footer">
+  <div class="wave"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commits Grid Text - Purple Shades</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #0d0b14;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(70, 10px);
+      grid-template-rows: repeat(20, 10px);
+      gap: 2px;
+    }
+
+    .cell {
+      width: 10px;
+      height: 10px;
+      background-color: #1a1625;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.4s ease, background-color 0.4s ease;
+    }
+
+    .filled {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" id="grid"></div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const rows = 20;
+    const cols = 70;
+
+    // Create grid cells
+    const cells = [];
+    for (let i = 0; i < rows * cols; i++) {
+      const div = document.createElement('div');
+      div.classList.add('cell');
+      grid.appendChild(div);
+      cells.push(div);
+    }
+
+    // Simple text pixel patterns (uppercase only)
+    const letters = {
+      H: [
+        '10001',
+        '10001',
+        '11111',
+        '10001',
+        '10001',
+      ],
+      E: [
+        '11111',
+        '10000',
+        '11110',
+        '10000',
+        '11111',
+      ],
+      L: [
+        '10000',
+        '10000',
+        '10000',
+        '10000',
+        '11111',
+      ],
+      O: [
+        '01110',
+        '10001',
+        '10001',
+        '10001',
+        '01110',
+      ]
+    };
+
+    // Draw given text (static)
+    const text = 'HELLO';
+
+    function drawText(text) {
+      const startRow = 5;
+      let startCol = 5;
+      const colorShades = ['#3a0ca3', '#7209b7', '#b5179e', '#f72585'];
+
+      for (const char of text) {
+        const pattern = letters[char];
+        if (!pattern) {
+          startCol += 7; // skip unknown chars
+          continue;
+        }
+
+        for (let r = 0; r < pattern.length; r++) {
+          for (let c = 0; c < pattern[r].length; c++) {
+            if (pattern[r][c] === '1') {
+              const index = (startRow + r) * cols + (startCol + c);
+              const cell = cells[index];
+              if (cell) {
+                const shade = colorShades[Math.floor(Math.random() * colorShades.length)];
+                setTimeout(() => {
+                  cell.style.backgroundColor = shade;
+                  cell.classList.add('filled');
+                }, Math.random() * 1500);
+              }
+            }
+          }
+        }
+        startCol += 7; // space between letters
+      }
+    }
+
+    drawText(text);
+  </script>
+</body>
+</html>
