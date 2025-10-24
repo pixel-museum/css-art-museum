@@ -1147,5 +1147,13 @@
     "tags":["Glowing","Dot Effect","glow","effect"],
     "description":"The glowing dot effect creates a card component with a grid of tiny dots as its background. The dots expand as users hover over specific sections of the card, and this makes for an interesting effect.",
     "date":"2025-10-24"
+  },
+  {
+    "file":"yashsavalkar321-Rainbow_gradient_button.html",
+    "title":"Rainbow Gradient Button",
+    "author":"Yash Savalkar",
+    "tags":["Rainbow","Gradient Effect","Gradient","effect"],
+    "description":"The rainbow gradient button creates a button that scales up, shifts, and shuffles through various colors on hover. It relies on several colors, CSS variables, scale, translateY, and linear-gradient (docs) to work.",
+    "date":"2025-10-24"
   }  
 ]
