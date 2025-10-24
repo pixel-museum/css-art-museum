@@ -99,112 +99,112 @@
     <main class="gallery" id="gallery-container"></main>
 
     <footer>
-      <div class="footer-container">
-        <div class="footer-grid-container">
+      <div class="footer-top">
+        <div class="footer-container">
           <!-- About Section -->
           <div class="footer-section">
-            <h3>About ArtMuseum</h3>
-            <p>
-              ArtMuseum is a platform for artists, creators, and enthusiasts to
-              explore, share, and celebrate creativity worldwide.
+            <div class="footer-logo">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="var(--accent-color)" />
+                <path d="M2 17L12 22L22 17" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <h3>CSS Art Museum</h3>
+            </div>
+            <p class="footer-about">
+              A curated collection of stunning CSS artworks from talented developers and designers around the world. Join our community and showcase your creativity!
             </p>
+            <div class="footer-social">
+              <a href="https://github.com/pixel-museum/css-art-museum" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <img src="./assets/github-logo.png" alt="GitHub" class="footer-social-logo" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <img src="./assets/twitter.png" alt="Twitter" class="footer-social-logo" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                <img src="./assets/discord-logo.png" alt="Discord" class="footer-social-logo" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="./assets/linkedin-logo.png" alt="LinkedIn" class="footer-social-logo" />
+              </a>
+            </div>
           </div>
 
-          <!-- Features / Quick Links -->
+          <!-- Quick Links -->
           <div class="footer-section">
-            <h3>Features</h3>
-            <ul>
-              <li><a href="/index.html">Explore Gallery</a></li>
-              <li><a href="#">Submit Artwork</a></li>
-              <li><a href="#">Trending Art</a></li>
-              <li><a href="Contributors/contributors.html">Artist Profiles</a></li>
-              <li><a href="#">Events & Workshops</a></li>
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="/index.html"><span>🏠</span> Home</a></li>
+              <li><a href="#"><span>🎨</span> Gallery</a></li>
+              <li><a href="#"><span>📝</span> Submit Art</a></li>
+              <li><a href="Contributors/contributors.html"><span>👥</span> Contributors</a></li>
+              <li><a href="/blogs/blogs.html"><span>📚</span> Blog</a></li>
             </ul>
           </div>
 
-          <!-- Community -->
+          <!-- Resources -->
           <div class="footer-section">
-            <h3>Community</h3>
-            <ul>
-              <li><a href="#">Discord</a></li>
-              <li><a href="#">Slack</a></li>
-              <li><a href="#">Forum</a></li>
-              <li><a href="/blogs/blogs.html">Blog</a></li>
-              <li><a href="/support.html">Support</a></li>
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#"><span>📖</span> Documentation</a></li>
+              <li><a href="#"><span>🎓</span> Tutorials</a></li>
+              <li><a href="#"><span>💡</span> Inspiration</a></li>
+              <li><a href="#"><span>🔧</span> Tools</a></li>
+              <li><a href="#"><span>📊</span> Stats</a></li>
             </ul>
           </div>
 
           <!-- Newsletter -->
           <div class="footer-section footer-newsletter">
-            <h3>Subscribe</h3>
-            <p>Get latest updates and news directly in your inbox.</p>
-            <form>
-              <input type="email" placeholder="Your email" />
-              <button id="subscribe-btn" type="submit" class="subscribe-btn">
-                Subscribe
-              </button>
+            <h4>Stay Updated</h4>
+            <p>Subscribe to our newsletter for the latest artworks, tutorials, and community news.</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  aria-label="Email address"
+                  required 
+                />
+                <button type="submit" class="subscribe-btn">
+                  <span>Subscribe</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="privacy-notice">We respect your privacy. Unsubscribe at any time.</p>
             </form>
-          </div>
-
-          <!-- Social Media + Contributors -->
-          <div class="footer-section">
-            <h3>Connect with Us</h3>
-            <div class="footer-social">
-              <a
-                href="https://github.com/pixel-museum/css-art-museum"
-                title="GitHub"
-                ><img
-                  src="./assets/github-logo.png"
-                  alt="GitHub Logo"
-                  class="footer-social-logo"
-              /></a>
-              <a href="#" title="LinkedIn"
-                ><img
-                  src="./assets/linkedin-logo.png"
-                  alt="Linkedin logo"
-                  class="footer-social-logo"
-              /></a>
-              <a href="#" title="Twitter"
-                ><img
-                  src="./assets/twitter.png"
-                  alt="Twitter logo"
-                  class="footer-social-logo"
-              /></a>
-            </div>
-
-            <!-- Contributors & Stars -->
-            <div class="footer-extra-buttons">
-              <a
-                href="https://github.com/pixel-museum/css-art-museum"
-                target="_blank"
-                class="footer-button star-button"
-              >
-                <svg
-                  class="star-icon"
-                  viewBox="0 0 16 16"
-                  width="16"
-                  height="16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
-                  ></path>
+            <div class="footer-cta">
+              <a href="https://github.com/pixel-museum/css-art-museum" target="_blank" rel="noopener noreferrer" class="github-button">
+                <svg class="star-icon" viewBox="0 0 16 16" width="16" height="16">
+                  <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
                 </svg>
-                Star <span class="star-count" id="star-count">...</span>
+                <span>Star on GitHub</span>
+                <span class="star-count" id="star-count">...</span>
               </a>
-              <a
-                href="Contributors/contributors.html"
-                target="_blank"
-                class="footer-button"
-                >Contributors</a
-              >
             </div>
           </div>
         </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom">
-          &copy; 2025 ArtMuseum. All rights reserved.
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <div class="footer-legal">
+            <p>&copy; 2023 CSS Art Museum. All rights reserved.</p>
+            <div class="footer-legal-links">
+              <a href="#">Privacy Policy</a>
+              <span>•</span>
+              <a href="#">Terms of Service</a>
+              <span>•</span>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+          <div class="back-to-top" id="back-to-top" aria-label="Back to top">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
       </div>
     </footer>
@@ -260,6 +260,8 @@
     <script src="./js/sorting.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/mobile-nav.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/share-utils.js"></script>
     <script src="./js/break-restore.js"></script>
   </body>
 </html>
