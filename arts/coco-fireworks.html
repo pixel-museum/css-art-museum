@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fireworks animation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #1a1a1a;
+        overflow: hidden;
+      }
+
+      .fireworks {
+        opacity: 0;
+        animation-fill-mode: both;
+      }
+
+      @keyframes fireworks {
+        0% {
+          transform: translate(-50%, 60vh) scale(0.2);
+          width: 0.5vmin;
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-50%, 20vh) scale(1);
+          width: 0.5vmin;
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -10vh) scale(1.5);
+          width: 40vmin;
+          opacity: 0;
+        }
+      }
+
+      .fireworks,
+      .fireworks::before,
+      .fireworks::after {
+        content: "";
+        position: absolute;
+        top: var(--top, 50%);
+        left: var(--left, 50%);
+        transform: translate(-50%, -50%);
+        animation-timing-function: ease-out;
+        width: 0.5vmin;
+        aspect-ratio: 1;
+        --color: hsl(var(--hue), 100%, 50%);
+        background: radial-gradient(
+              circle,
+              hsl(var(--hue), 100%, 50%) 0.2vmin,
+              #0000 0
+            )
+            50% 0%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.3vmin, #0000 0)
+            0% 50%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.5vmin, #0000 0)
+            50% 99%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.2vmin, #0000 0)
+            99% 50%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.3vmin, #0000 0)
+            80% 90%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.5vmin, #0000 0)
+            95% 90%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.5vmin, #0000 0)
+            10% 60%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.2vmin, #0000 0)
+            31% 80%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.3vmin, #0000 0)
+            80% 10%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.2vmin, #0000 0)
+            90% 23%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.3vmin, #0000 0)
+            45% 20%,
+          radial-gradient(circle, hsl(var(--hue), 100%, 50%) 0.5vmin, #0000 0)
+            13% 24%;
+        background-size: 0.5vmin 0.5vmin;
+        background-repeat: no-repeat;
+        animation: fireworks 2.5s infinite;
+      }
+
+      .fireworks::before {
+        transform: translate(-50%, -50%) rotate(25deg) !important;
+      }
+
+      .fireworks::after {
+        transform: translate(-50%, -50%) rotate(-37deg) !important;
+      }
+
+      .fw1 {
+        --top: 55%; 
+        --left: 50%; 
+        --hue: 45;
+        animation-delay: 0s;
+      }
+
+      .fw2 {
+        --top: 65%; 
+        --left: 25%; 
+        --hue: 330;
+        animation-delay: 0.5s;
+      }
+
+      .fw3 {
+        --top: 50%; 
+        --left: 75%; 
+        --hue: 120;
+        animation-delay: 1.1s;
+      }
+
+      .fw4 {
+        --top: 40%; 
+        --left: 35%;
+        --hue: 210;
+        animation-delay: 1.7s;
+      }
+
+      .fw5 {
+        --top: 38%;   
+        --left: 62%; 
+        --hue: 60;
+        animation-delay: 2.3s;
+      }
+
+      .fw6 {
+        --top: 30%; 
+        --left: 52%; 
+        --hue: 280;
+        animation-delay: 2.8s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fireworks fw1"></div>
+    <div class="fireworks fw2"></div>
+    <div class="fireworks fw3"></div>
+    <div class="fireworks fw4"></div>
+    <div class="fireworks fw5"></div>
+    <div class="fireworks fw6"></div>
+
+    <script>
+      const fireworks = document.querySelectorAll(".fireworks");
+
+      fireworks.forEach((fw) => {
+        const hue = Math.floor(Math.random() * 360);
+        fw.style.setProperty("--hue", hue);
+      });
+    </script>
+  </body>
+</html>

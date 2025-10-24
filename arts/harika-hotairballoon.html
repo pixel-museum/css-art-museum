@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Hot Air Balloon - Harika</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to top, #fceabb, #f8b500, #f7a8a8); /* pastel sunset */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+  }
+
+  /* Balloon */
+  .balloon {
+    position: relative;
+    width: 140px;
+    height: 180px;
+    background: radial-gradient(circle at 50% 40%, #ff6b81, #ff3b5c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: float 6s ease-in-out infinite alternate;
+  }
+
+  /* Basket */
+  .basket {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    width: 50px;
+    height: 40px;
+    background: #8b4513;
+    border-radius: 5px;
+    transform: translateX(-50%);
+  }
+
+  /* Strings */
+  .string {
+    position: absolute;
+    width: 3px;
+    height: 45px;
+    background: #000;
+  }
+  .string.left { left: 27%; bottom: 40px; transform: rotate(-5deg); }
+  .string.right { left: 73%; bottom: 40px; transform: rotate(5deg); }
+
+  /* Float animation */
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-80px); }
+  }
+
+  /* Clouds */
+  .cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: moveClouds linear infinite;
+  }
+
+  .cloud1 { width: 120px; height: 60px; top: 50px; left: -150px; animation-duration: 60s; }
+  .cloud2 { width: 90px; height: 45px; top: 120px; left: -100px; animation-duration: 40s; }
+  .cloud3 { width: 150px; height: 70px; top: 200px; left: -200px; animation-duration: 80s; }
+
+  @keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(110vw); }
+  }
+
+</style>
+</head>
+<body>
+  <!-- Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <!-- Centered Balloon -->
+  <div class="balloon">
+    <div class="string left"></div>
+    <div class="string right"></div>
+    <div class="basket"></div>
+  </div>
+</body>
+</html>

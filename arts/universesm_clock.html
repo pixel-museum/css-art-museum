@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(to bottom, rgb(227, 153, 224) 20%, rgb(255, 255, 255) 90%);
+        background-size: 100vw 100vh;
+    }
+
+    .main {
+        width: 95vw;
+        height: 95vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 40vw;
+        height: 70vh;
+        background-size: 50vw 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*Clock Structure*/
+    .circle1 {
+        width: 26vw;
+        height: 56vh;
+        border-radius: 900px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 5px 7px 5px rgb(0, 0, 0, 0.6);
+        transform: translateZ(10px);
+    }
+
+    .circle2 {
+        width: 23vw;
+        height: 50vh;
+        border-radius: 900px;
+        background-color: rgb(255, 255, 255);
+
+    }
+
+    /*Hands Of clock*/
+    .minute {
+        transform-origin: center;
+        animation: 3600s minute linear infinite;
+    }
+
+    .second {
+        transform-origin: center;
+        animation: 60s minute linear infinite;
+    }
+
+    .hour {
+        transform-origin: center;
+        animation: 43200s hour linear infinite;
+
+    }
+
+    /*animation*/
+    @keyframes minute {
+        0% {
+            transform: rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateZ(360deg);
+        }
+
+    }
+
+    @keyframes hour {
+        0% {
+            transform: rotateZ(90deg);
+        }
+
+        100% {
+            transform: rotateZ(360deg);
+        }
+
+    }
+
+    /*responsiveness*/
+    @media (max-width:600px) {
+        .circle1 {
+            width: 35vw;
+            height: 43vh;
+        }
+
+        .circle2 {
+            width: 30vw;
+            height: 37vh;
+        }
+    }
+
+    @media (min-width:610px) {
+        .circle1 {
+            width: 35vw;
+            height: 45vh;
+        }
+
+        .circle2 {
+            width: 30vw;
+            height: 38vh;
+        }
+    }
+
+    @media (min-width:1080px) {
+        .circle1 {
+            width: 26vw;
+            height: 56vh;
+        }
+
+        .circle2 {
+            width: 23vw;
+            height: 50vh;
+        }
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="circle1">
+                <div class="circle2">
+                    <svg viewBox="0 0 1000 1000">
+                        <circle cx="500" cy="500" r="50" fill="black" />
+                        <line class="minute" x1="500" y1="500" x2="500" y2="90" stroke="black" stroke-width="10px" />
+                        <line class="hour" x1="500" y1="500" x2="500" y2="200" stroke="black" stroke-width="10px"
+                            transform="rotate(90 500 500)" />
+                        <line class="second" x1="500" y1="500" x2="500" y2="10" stroke="red" stroke-width="5px"
+                            transform="rotate(155 500 500)" />
+                        <line id="spoke" x1="500" y1="1000" x2="500" y2="970" stroke="black" stroke-width="4px" /><text
+                            id="text" x="500" y="965" font-size="60px" text-anchor="middle">6</text>
+                        <use href="#spoke" transform="rotate(30 500 500)" /><text x="505" y="965" font-size="60px"
+                            text-anchor="middle" transform="rotate(30 500 500) rotate(-30 500 965)">7</text>
+                        <use href="#spoke" transform="rotate(60 500 500)" /><text x="500" y="965" font-size="60px"
+                            text-anchor="middle" transform="rotate(60 500 500) rotate(-60 500 965)">8</text>
+                        <use href="#spoke" transform="rotate(90 500 500)" /><text x="510" y="975" font-size="60px"
+                            text-anchor="middle" transform="rotate(90 500 500) rotate(-90 500 965)">9</text>
+                        <use href="#spoke" transform="rotate(120 500 500)" /><text x="525" y="980" font-size="60px"
+                            text-anchor="middle" transform="rotate(120 500 500) rotate(-120 500 965)">10</text>
+                        <use href="#spoke" transform="rotate(150 500 500)" /><text x="525" y="985" font-size="60px"
+                            text-anchor="middle" transform="rotate(150 500 500) rotate(-150 500 965)">11</text>
+                        <use href="#spoke" transform="rotate(180 500 500)" /><text x="500" y="1000" font-size="60px"
+                            text-anchor="middle" transform="rotate(180 500 500) rotate(180 500 965 )">12</text>
+                        <use href="#spoke" transform="rotate(210  500 500)" /><text x="500" y="1010" font-size="60px"
+                            text-anchor="middle" transform="rotate(210 500 500) rotate(150 500 965 )">1</text>
+                        <use href="#spoke" transform="rotate(240 500 500)" /><text x="500" y="1005" font-size="60px"
+                            text-anchor="middle" transform="rotate(240 500 500) rotate(120 500 965 )">2</text>
+                        <use href="#spoke" transform="rotate(270 500 500)" /><text x="495" y="1001" font-size="60px"
+                            text-anchor="middle" transform="rotate(270 500 500) rotate(90 500 965 )">3</text>
+                        <use href="#spoke" transform="rotate(300 500 500)" /><text x="490" y="960" font-size="60px"
+                            text-anchor="middle" transform="rotate(300 500 500) rotate(60 500 965 )">4</text>
+                        <use href="#spoke" transform="rotate(330 500 500)" /><text x="488" y="955" font-size="60px"
+                            text-anchor="middle" transform="rotate(330 500 500) rotate(30 500 965 )">5</text>
+
+
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
