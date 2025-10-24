@@ -434,6 +434,14 @@
     "date": "2024-08-22"
   },
   {
+    "file": "SiddharthSwami_ScrollTrigger_Scroll_effect.html",
+    "title": "Scroll Trigger Scroll Effect",
+    "author": "Siddharth Swami",
+    "tags": ["scroll", "animation", "GSAP", "effect"],
+    "description": "An interactive scroll-triggered animation effect using GSAP.",
+    "date": "2025-10-23"
+  },
+  {
     "file": "Sneha-Raindrop Ripple.html",
     "title": "Raindrop Ripple",
     "author": "Sneha",
