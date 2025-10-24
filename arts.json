@@ -1229,5 +1229,13 @@
     "tags": ["flag","india","svg","css"],
     "description": "A static SVG/CSS representation of the Indian national flag.",
     "date": "2025-10-23"
+  },
+  {
+       "file": "deepak-hypnotyse-circle.",
+    "title": "Hypnotysing Circles",
+    "author": "Deepak Singh",
+    "tags": ["Circle","ring shape","svg","css"],
+    "description": "A hynotysic circles.",
+    "date": "2025-10-24"
   }
 ]

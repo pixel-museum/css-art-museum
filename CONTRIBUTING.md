@@ -16,7 +16,7 @@ cd arts/
 # Create your file: yourname-artname.html
 ```
 
-**File Structure:**
+**File Structure:** 
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@ cd arts/
     </style>
 </head>
 <body>
-    <!-- Your HTML structure -->
+    <!-- Your HTML structure --> 
     <script>
         // Optional JavaScript
     </script>
