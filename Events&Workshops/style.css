@@ -1,0 +1,467 @@
+/* Events page — page-specific styling that reuses /style.css variables and header/nav rules */
+@import url("../style.css");
+
+.events-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 28px;
+  background: var(--primary-bg, #fafafa);
+  border-radius: 14px;
+  border: 1px solid var(--border-color, #e8e8e8);
+  box-shadow: 0 8px 30px var(--shadow-light, rgba(0,0,0,0.04));
+  animation: fadeInUp 0.6s ease both;
+}
+
+.events-section .section-title,
+.events-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  text-align: center;
+  margin: 0 0 8px;
+  color: var(--primary-text);
+}
+
+.lead {
+  text-align: center;
+  max-width: 900px;
+  margin: 0.4rem auto 1.25rem;
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Events grid */
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: var(--secondary-bg, #fff);
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #e8e8e8);
+  box-shadow: 0 6px 18px var(--shadow-light, rgba(0,0,0,0.04));
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  min-height: 160px;
+}
+
+/* Date / time */
+.event-card time,
+.event-card .date {
+  display: block;
+  font-weight: 600;
+  color: var(--gold-accent, #c69a3d);
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+/* Title & body */
+.event-card h3 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.08rem;
+  color: var(--primary-text);
+  line-height: 1.25;
+}
+
+.event-card p {
+  color: var(--secondary-text);
+  margin: 6px 0;
+  font-size: 0.96rem;
+}
+
+/* Actions */
+.register-btn {
+  display: inline-block;
+  margin-top: auto;
+  align-self: start;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, var(--accent-color), var(--gold-accent));
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.register-btn:hover,
+.register-btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  opacity: 0.98;
+}
+
+/* Muted meta */
+.event-card .muted {
+  font-size: 0.88rem;
+  color: var(--muted-text, #757575);
+}
+
+/* Footer area */
+.events-footer {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-color);
+  text-align: center;
+  color: var(--secondary-text);
+  font-size: 0.95rem;
+}
+
+/* Hover / focus state */
+.event-card:hover,
+.event-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0,0,0,0.08));
+  border-color: rgba(var(--accent-color-rgb,108,99,255), 0.18);
+}
+
+/* Accessibility focus */
+.register-btn:focus,
+.event-card a:focus {
+  outline: 3px solid rgba(var(--accent-color-rgb,108,99,255), 0.16);
+  outline-offset: 4px;
+}
+
+/* Small screens */
+@media (max-width: 520px) {
+  .events-section {
+    margin: 28px 12px;
+    padding: 18px;
+  }
+
+  .event-card {
+    padding: 16px;
+  }
+
+  .register-btn {
+    width: 100%;
+    text-align: center;
+    align-self: stretch;
+  }
+}
+
+/* Ensure header/nav matches root styles on this page */
+header nav {
+  /* reuse root nav rules (kept minimal override here) */
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
+  z-index: 100;
+}
+
+/* small tweak if the site uses dark theme class on <html> or <body> */
+.dark-theme .events-section {
+  background: var(--secondary-bg);
+  border-color: var(--border-color);
+}
+
+/* print-friendly */
+@media print {
+  header nav, .theme-toggle, .register-btn { display: none !important; }
+  .events-section { box-shadow: none; border: none; background: transparent; }
+}
+/* ```// filepath: /Users/pthawait/Documents/GitHub/css-art-museum/Events&Workshops/style.css */
+/* Events page — page-specific styling that reuses /style.css variables and header/nav rules */
+@import url("../style.css");
+
+.events-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 28px;
+  background: var(--primary-bg, #fafafa);
+  border-radius: 14px;
+  border: 1px solid var(--border-color, #e8e8e8);
+  box-shadow: 0 8px 30px var(--shadow-light, rgba(0,0,0,0.04));
+  animation: fadeInUp 0.6s ease both;
+}
+
+.events-section .section-title,
+.events-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  text-align: center;
+  margin: 0 0 8px;
+  color: var(--primary-text);
+}
+
+.lead {
+  text-align: center;
+  max-width: 900px;
+  margin: 0.4rem auto 1.25rem;
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Events grid */
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: var(--secondary-bg, #fff);
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #e8e8e8);
+  box-shadow: 0 6px 18px var(--shadow-light, rgba(0,0,0,0.04));
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  min-height: 160px;
+}
+
+/* Date / time */
+.event-card time,
+.event-card .date {
+  display: block;
+  font-weight: 600;
+  color: var(--gold-accent, #c69a3d);
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+/* Title & body */
+.event-card h3 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.08rem;
+  color: var(--primary-text);
+  line-height: 1.25;
+}
+
+.event-card p {
+  color: var(--secondary-text);
+  margin: 6px 0;
+  font-size: 0.96rem;
+}
+
+/* Actions */
+.register-btn {
+  display: inline-block;
+  margin-top: auto;
+  align-self: start;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, var(--accent-color), var(--gold-accent));
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.register-btn:hover,
+.register-btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  opacity: 0.98;
+}
+
+/* Muted meta */
+.event-card .muted {
+  font-size: 0.88rem;
+  color: var(--muted-text, #757575);
+}
+
+/* Footer area */
+.events-footer {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-color);
+  text-align: center;
+  color: var(--secondary-text);
+  font-size: 0.95rem;
+}
+
+/* Hover / focus state */
+.event-card:hover,
+.event-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0,0,0,0.08));
+  border-color: rgba(var(--accent-color-rgb,108,99,255), 0.18);
+}
+
+/* Accessibility focus */
+.register-btn:focus,
+.event-card a:focus {
+  outline: 3px solid rgba(var(--accent-color-rgb,108,99,255), 0.16);
+  outline-offset: 4px;
+}
+
+/* Small screens */
+@media (max-width: 520px) {
+  .events-section {
+    margin: 28px 12px;
+    padding: 18px;
+  }
+
+  .event-card {
+    padding: 16px;
+  }
+
+  .register-btn {
+    width: 100%;
+    text-align: center;
+    align-self: stretch;
+  }
+}
+
+/* Ensure header/nav matches root styles on this page */
+header nav {
+  /* reuse root nav rules (kept minimal override here) */
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
+  z-index: 100;
+}
+
+/* small tweak if the site uses dark theme class on <html> or <body> */
+.dark-theme .events-section {
+  background: var(--secondary-bg);
+  border-color: var(--border-color);
+}
+
+/* print-friendly */
+@media print {
+  header nav, .theme-toggle, .register-btn { display: none !important; }
+  .events-section { box-shadow: none; border: none; background: transparent;}
+}
+/* // ...existing code... */
+
+/* Fix: prevent text overflowing event cards in grid/flex layouts */
+.events-list,
+.events-list .event-card {
+  /* allow grid items and flex children to shrink instead of forcing overflow */
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure long words / URLs wrap inside cards */
+.event-card,
+.event-card * {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Improve hyphenation for long runs of text */
+.event-card h3,
+.event-card p,
+.event-card time,
+.event-card .muted {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Images / iframes inside cards should not exceed card width */
+.event-card img,
+.event-card iframe,
+.event-card svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+/* ```// filepath: /Users/pthawait/Documents/GitHub/css-art-museum/Events&Workshops/style.css
+// ...existing code... */
+
+/* Fix: prevent text overflowing event cards in grid/flex layouts */
+.events-list,
+.events-list .event-card {
+  /* allow grid items and flex children to shrink instead of forcing overflow */
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure long words / URLs wrap inside cards */
+.event-card,
+.event-card * {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Improve hyphenation for long runs of text */
+.event-card h3,
+.event-card p,
+.event-card time,
+.event-card .muted {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Images / iframes inside cards should not exceed card width */
+.event-card img,
+.event-card iframe,
+.event-card svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ...existing code... */
+
+/* Stronger fix for overflowing text inside event cards */
+.events-list > li.event-card,
+.events-list > li.event-card .event-card,
+.events-list .event-card {
+  /* ensure grid item and flex container can shrink */
+  min-width: 0 !important;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Force content inside cards to allow wrapping and to not enforce min-width from inherited rules */
+.events-list > li.event-card * {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* Make sure paragraphs and headings behave */
+.events-list > li.event-card p,
+.events-list > li.event-card h3,
+.events-list > li.event-card time {
+  display: block;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* If any inline elements are forcing width, constrain them */
+.events-list > li.event-card a,
+.events-list > li.event-card img,
+.events-list > li.event-card svg,
+.events-list > li.event-card iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: inline-block;
+}
