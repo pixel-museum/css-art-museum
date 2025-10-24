@@ -2497,6 +2497,13 @@
   "tags": ["floating", "island", "sky", "dream", "animation"],
   "description": "A dreamy CSS art scene of floating islands gently bobbing in the sky with clouds, sparkles, and soft shadows.",
   "date": "2025-10-24"
-}
-
+},
+	{
+		"file": "SudoAnirudh-pulsingdot.html",
+		"title": "Pulsing Dot",
+		"author": "SudoAnirudh",
+		"tags": ["animation", "dot", "pulse", "simple", "glow"],
+		"description": "A simple dot that pulses with a soft cyan glow.",
+		"date": "2025-10-24"
+	}
 ]
