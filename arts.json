@@ -2472,23 +2472,15 @@
     "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
     "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
     "date": "2025-10-23"
-  } ,
-  {
-    "file": "Sanskriti-arcademachine.html",
-    "title": "Retro Arcade Machine",
-    "author": "Sanskriti Mishra",
-    "tags": ["animation", "retro", "gaming", "3D", "neon", "interactive"],
-    "description": "A nostalgic retro arcade cabinet with animated Space Invaders game, moving joystick, glowing buttons, CRT scanlines, and neon effects. Pure CSS 80s gaming tribute.",
-    "date": "2024-10-23"
   },
   {
-  "file": "lakshith-dna.html",
-  "title": "3D DNA Helix Animation",
-  "author": "Lakshith",
-  "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
-  "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
-  "date": "2025-10-23"
-}
+    "file": "AasthaRai-Dynamicthemesystem.html",
+    "title": "Dynamic Theme System",
+    "author": "Aastha Rai",
+    "tags": ["animation", "theme", "dark-mode", "light-mode"],
+    "description": "A dynamic theme system that smoothly transitions between light and dark modes with animated effects.",
+    "date": "2025-10-24"
+  } 
 ]
 
 
