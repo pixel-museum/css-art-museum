@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Lights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, 
+                #000428 0%, 
+                #004e92 40%, 
+                #001a33 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sky container */
+        .sky {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            top: 0;
+            overflow: hidden;
+        }
+
+        /* Stars */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        /* Create multiple stars at different positions */
+        .star:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 25%; left: 25%; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 35%; left: 45%; animation-delay: 1s; }
+        .star:nth-child(4) { top: 20%; left: 60%; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 40%; left: 75%; animation-delay: 2s; }
+        .star:nth-child(6) { top: 10%; left: 85%; animation-delay: 2.5s; }
+        .star:nth-child(7) { top: 30%; left: 35%; animation-delay: 0.8s; }
+        .star:nth-child(8) { top: 45%; left: 15%; animation-delay: 1.2s; }
+        .star:nth-child(9) { top: 18%; left: 92%; animation-delay: 1.8s; }
+        .star:nth-child(10) { top: 48%; left: 55%; animation-delay: 0.3s; }
+        .star:nth-child(11) { top: 12%; left: 42%; animation-delay: 2.2s; }
+        .star:nth-child(12) { top: 38%; left: 68%; animation-delay: 1.7s; }
+        .star:nth-child(13) { top: 22%; left: 5%; animation-delay: 0.9s; }
+        .star:nth-child(14) { top: 42%; left: 88%; animation-delay: 2.8s; }
+        .star:nth-child(15) { top: 8%; left: 52%; animation-delay: 1.4s; }
+
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5);
+            }
+        }
+
+        /* Moon */
+        .moon {
+            position: absolute;
+            top: 8%;
+            right: 15%;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                #ffffff 0%, 
+                #f0f0f0 50%, 
+                #d0d0d0 100%);
+            box-shadow: 
+                0 0 40px rgba(255, 255, 255, 0.6),
+                0 0 80px rgba(255, 255, 255, 0.3),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Moon craters */
+        .crater {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .crater-1 {
+            width: 15px;
+            height: 15px;
+            top: 25%;
+            left: 40%;
+        }
+
+        .crater-2 {
+            width: 10px;
+            height: 10px;
+            top: 50%;
+            left: 25%;
+        }
+
+        .crater-3 {
+            width: 12px;
+            height: 12px;
+            top: 60%;
+            left: 55%;
+        }
+
+        /* Aurora Borealis waves */
+        .aurora-container {
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            top: 20%;
+            filter: blur(2px);
+        }
+
+        .aurora {
+            position: absolute;
+            width: 120%;
+            left: -10%;
+            height: 100%;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        /* First aurora layer - Green */
+        .aurora-1 {
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(0, 255, 150, 0.4) 20%,
+                rgba(0, 255, 100, 0.6) 40%,
+                rgba(50, 255, 150, 0.5) 60%,
+                rgba(0, 255, 120, 0.4) 80%,
+                transparent 100%);
+            top: 0%;
+            animation: aurora-wave-1 15s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        /* Second aurora layer - Purple/Pink */
+        .aurora-2 {
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(200, 50, 255, 0.3) 15%,
+                rgba(180, 0, 255, 0.5) 35%,
+                rgba(220, 100, 255, 0.4) 55%,
+                rgba(200, 50, 255, 0.3) 75%,
+                transparent 100%);
+            top: 10%;
+            animation: aurora-wave-2 18s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        /* Third aurora layer - Blue/Cyan */
+        .aurora-3 {
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(0, 200, 255, 0.3) 25%,
+                rgba(50, 150, 255, 0.4) 45%,
+                rgba(0, 220, 255, 0.35) 65%,
+                rgba(30, 180, 255, 0.3) 85%,
+                transparent 100%);
+            top: 20%;
+            animation: aurora-wave-3 20s ease-in-out infinite;
+            animation-delay: -10s;
+        }
+
+        /* Fourth aurora layer - Light Green */
+        .aurora-4 {
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(100, 255, 150, 0.25) 30%,
+                rgba(150, 255, 100, 0.35) 50%,
+                rgba(120, 255, 180, 0.3) 70%,
+                transparent 100%);
+            top: 15%;
+            animation: aurora-wave-4 22s ease-in-out infinite;
+            animation-delay: -15s;
+        }
+
+        /* Aurora wave animations */
+        @keyframes aurora-wave-1 {
+            0%, 100% {
+                transform: translateX(0%) skewX(0deg) scaleY(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateX(-5%) skewX(5deg) scaleY(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(0%) skewX(-3deg) scaleY(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateX(5%) skewX(4deg) scaleY(1.05);
+                opacity: 0.75;
+            }
+        }
+
+        @keyframes aurora-wave-2 {
+            0%, 100% {
+                transform: translateX(5%) skewX(-2deg) scaleY(1);
+                opacity: 0.5;
+            }
+            33% {
+                transform: translateX(-3%) skewX(4deg) scaleY(1.08);
+                opacity: 0.7;
+            }
+            66% {
+                transform: translateX(2%) skewX(-5deg) scaleY(0.92);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes aurora-wave-3 {
+            0%, 100% {
+                transform: translateX(-3%) skewX(3deg) scaleY(1);
+                opacity: 0.55;
+            }
+            40% {
+                transform: translateX(4%) skewX(-4deg) scaleY(1.06);
+                opacity: 0.65;
+            }
+            80% {
+                transform: translateX(-2%) skewX(2deg) scaleY(0.96);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes aurora-wave-4 {
+            0%, 100% {
+                transform: translateX(2%) skewX(-3deg) scaleY(1);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateX(-4%) skewX(5deg) scaleY(1.04);
+                opacity: 0.6;
+            }
+            70% {
+                transform: translateX(3%) skewX(-4deg) scaleY(0.98);
+                opacity: 0.5;
+            }
+        }
+
+        /* Ground/Landscape */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to bottom,
+                rgba(10, 20, 40, 0.8) 0%,
+                rgba(5, 10, 20, 0.95) 100%);
+        }
+
+        /* Mountain silhouettes */
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent transparent #000814 transparent;
+        }
+
+        .mountain-1 {
+            left: 5%;
+            border-width: 0 150px 180px 150px;
+        }
+
+        .mountain-2 {
+            left: 25%;
+            border-width: 0 120px 150px 120px;
+        }
+
+        .mountain-3 {
+            left: 50%;
+            border-width: 0 180px 200px 180px;
+        }
+
+        .mountain-4 {
+            right: 15%;
+            border-width: 0 140px 170px 140px;
+        }
+
+        /* Pine trees */
+        .trees {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .tree-trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 40px;
+            background: #0a0a0a;
+        }
+
+        .tree-foliage {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .tree-top {
+            border-width: 0 25px 40px 25px;
+            border-color: transparent transparent #001a1a transparent;
+        }
+
+        .tree-middle {
+            border-width: 0 30px 45px 30px;
+            border-color: transparent transparent #001a1a transparent;
+            bottom: 40px;
+        }
+
+        .tree-bottom {
+            border-width: 0 35px 50px 35px;
+            border-color: transparent transparent #001a1a transparent;
+            bottom: 55px;
+        }
+
+        /* Position trees */
+        .tree-1 { left: 15%; }
+        .tree-2 { left: 35%; transform: scale(0.8); }
+        .tree-3 { left: 42%; transform: scale(0.6); }
+        .tree-4 { left: 65%; transform: scale(0.9); }
+        .tree-5 { left: 75%; transform: scale(0.7); }
+        .tree-6 { left: 85%; }
+
+        /* Snow ground */
+        .snow-ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom,
+                rgba(240, 248, 255, 0.1) 0%,
+                rgba(220, 235, 245, 0.15) 100%);
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: rgba(100, 255, 150, 0.9);
+            text-shadow: 
+                0 0 20px rgba(100, 255, 150, 0.8),
+                0 0 40px rgba(100, 255, 150, 0.4);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: title-shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes title-shimmer {
+            0%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(100, 255, 150, 0.8),
+                    0 0 40px rgba(100, 255, 150, 0.4);
+            }
+            50% {
+                text-shadow: 
+                    0 0 30px rgba(100, 255, 150, 1),
+                    0 0 60px rgba(100, 255, 150, 0.6),
+                    0 0 80px rgba(100, 255, 150, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sky with stars -->
+    <div class="sky">
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+
+        <!-- Moon -->
+        <div class="moon">
+            <div class="crater crater-1"></div>
+            <div class="crater crater-2"></div>
+            <div class="crater crater-3"></div>
+        </div>
+
+        <!-- Aurora Borealis -->
+        <div class="aurora-container">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+            <div class="aurora aurora-4"></div>
+        </div>
+    </div>
+
+    <!-- Ground landscape -->
+    <div class="ground">
+        <!-- Mountains -->
+        <div class="mountains">
+            <div class="mountain mountain-1"></div>
+            <div class="mountain mountain-2"></div>
+            <div class="mountain mountain-3"></div>
+            <div class="mountain mountain-4"></div>
+        </div>
+
+        <!-- Pine trees -->
+        <div class="trees">
+            <div class="tree tree-1">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+            <div class="tree tree-2">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+            <div class="tree tree-3">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+            <div class="tree tree-4">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+            <div class="tree tree-5">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+            <div class="tree tree-6">
+                <div class="tree-trunk"></div>
+                <div class="tree-foliage tree-bottom"></div>
+                <div class="tree-foliage tree-middle"></div>
+                <div class="tree-foliage tree-top"></div>
+            </div>
+        </div>
+
+        <!-- Snow ground -->
+        <div class="snow-ground"></div>
+    </div>
+
+    <!-- Title -->
+    <div class="title">Aurora Borealis</div>
+</body>
+</html>
