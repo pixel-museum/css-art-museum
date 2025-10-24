@@ -2457,6 +2457,14 @@
     "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
     "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
     "date": "2025-10-23"
+  },
+  {
+    "file": "AasthaRai-Dynamicthemesystem.html",
+    "title": "Dynamic Theme System",
+    "author": "Aastha Rai",
+    "tags": ["animation", "theme", "dark-mode", "light-mode"],
+    "description": "A dynamic theme system that smoothly transitions between light and dark modes with animated effects.",
+    "date": "2025-10-24"
   } 
 ]
 
