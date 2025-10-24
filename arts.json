@@ -1139,5 +1139,13 @@
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
     "date":"2025-10-20"
-  }
+  },
+  {
+    "file":"yashsavalkar321-secretCode.html",
+    "title":"Glowing Dot Effect",
+    "author":"Yash Savalkar",
+    "tags":["Glowing","Dot Effect","glow","effect"],
+    "description":"The glowing dot effect creates a card component with a grid of tiny dots as its background. The dots expand as users hover over specific sections of the card, and this makes for an interesting effect.",
+    "date":"2025-10-24"
+  }  
 ]
