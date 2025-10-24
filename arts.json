@@ -2480,8 +2480,14 @@
     "tags": ["animation", "theme", "dark-mode", "light-mode"],
     "description": "A dynamic theme system that smoothly transitions between light and dark modes with animated effects.",
     "date": "2025-10-24"
-  } 
+  } ,
+  {
+    "file": "css_roaster_machine.html",
+    "title": "CSS  Design Roaster Machine",
+    "author": "Sandeep",
+    "tags": ["animation"],
+    "description": "Roaster Machine Design",
+    "date": "2025-10-24"
+  }
+
 ]
-
-
-
