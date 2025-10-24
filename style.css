@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  
 }
 
 main {
@@ -54,10 +55,15 @@ main {
 /* Body Styling - Museum-inspired with Visual Appeal */
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.05) 0%, transparent 50%),
+  background: linear-gradient(135deg,
+  #a78bfa 0%,
+  #f0c3fc 40%,
+  #f6d365 100%
+);
+  /* background: radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
-    linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%);
+    linear-gradient(135deg, var(--primary-bg) 0%, var(--museum-warm) 100%); */
   background-size: 100% 100%, 80% 80%, 60% 60%, 100% 100%;
   background-attachment: scroll;
   color: var(--primary-text);
