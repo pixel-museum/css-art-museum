@@ -2561,6 +2561,22 @@
   "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
   "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
   "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_aurora-borealis.html",
+  "title": "Aurora Borealis / Northern Lights",
+  "author": "crazy-coder-neel",
+  "tags": ["aurora", "northern-lights", "animation", "css-effects", "gradients", "night-sky", "celestial", "particles", "interactive"],
+  "description": "A mesmerizing pure CSS animation of the Aurora Borealis with multiple layered gradients, interactive controls, and stunning visual effects that recreate the magical dance of the Northern Lights.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_volcano.html",
+  "title": "Volcanic Eruption / Lava Flow Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["volcano", "eruption", "lava", "animation", "css-effects", "particles", "fire", "smoke", "natural-phenomenon", "cinematic"],
+  "description": "A stunning pure CSS animation of a volcanic eruption with realistic lava flows, particle effects, smoke, ash clouds, and dynamic sky transitions. Features multiple layered animations for cinematic depth and realism.",
+  "date": "2025-10-25"
 }
 ]
 
