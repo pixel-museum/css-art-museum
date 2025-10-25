@@ -2507,4 +2507,46 @@
   "date": "2025-10-24"
 }
 
+,{
+  "file": "shooting-star-animation.html",
+  "title": "Shooting Star Animation",
+  "author": "Adrika Mandal",
+  "tags": ["stars", "animation", "sky", "night", "shooting star"],
+  "description": "A beautiful CSS animation of shooting stars streaking across the night sky.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage.html",
+  "title": "Holi Themed Webpage",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "A vibrant Holi-themed webpage with colorful splashes and animated effects built with HTML and CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage-2.html",
+  "title": "Holi Themed Webpage 2",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "Another Holi-themed creative webpage with animated color splashes and festive mood using HTML & CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses.html",
+  "title": "Solar and Lunar Eclipses",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "CSS animation showing the solar and lunar eclipse with smooth transitions of sun and moon.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses-2.html",
+  "title": "Solar and Lunar Eclipses 2",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
+  "date": "2025-10-25"
+}
 ]
+
+
