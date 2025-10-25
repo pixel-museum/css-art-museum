@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Volcanic Eruption</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a0a2a 0%, #1a1a3a 30%, #2a1e30 60%, #3a1e20 100%);
+            overflow: hidden;
+        }
+
+        /* Base mountain structure */
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            clip-path: polygon(0% 100%, 25% 40%, 50% 60%, 75% 30%, 100% 100%);
+            z-index: 10;
+        }
+
+        /* Crater at the top */
+        .crater {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            z-index: 11;
+            box-shadow: 0 0 20px rgba(255, 50, 0, 0.3);
+        }
+
+        /* Lava flows down the mountain */
+        .lava-flow {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 0;
+            background: linear-gradient(to top, #ff3300 0%, #ff6600 30%, #ffaa00 70%, #ffff00 100%);
+            border-radius: 20px 20px 0 0;
+            animation: lava-flow 8s infinite;
+            z-index: 9;
+            filter: blur(2px);
+            box-shadow: 0 0 20px #ff3300, 0 0 40px #ff6600;
+        }
+
+        .lava-flow-1 {
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .lava-flow-2 {
+            left: 45%;
+            animation-delay: 1.5s;
+        }
+
+        .lava-flow-3 {
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        @keyframes lava-flow {
+            0% {
+                height: 0;
+                opacity: 0.8;
+            }
+            50% {
+                height: 300px;
+                opacity: 1;
+            }
+            100% {
+                height: 0;
+                opacity: 0.8;
+            }
+        }
+
+        /* Glowing lava inside the crater */
+        .lava-pool {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 50px;
+            background: radial-gradient(ellipse at center, #ff3300 0%, #ff6600 50%, transparent 70%);
+            border-radius: 50%;
+            z-index: 12;
+            animation: lava-pool 4s infinite alternate;
+            box-shadow: 0 0 60px #ff3300, 0 0 120px #ff6600;
+        }
+
+        @keyframes lava-pool {
+            0% {
+                width: 100px;
+                height: 50px;
+                box-shadow: 0 0 60px #ff3300, 0 0 120px #ff6600;
+            }
+            100% {
+                width: 120px;
+                height: 60px;
+                box-shadow: 0 0 80px #ff3300, 0 0 160px #ff6600, 0 0 240px #ffaa00;
+            }
+        }
+
+        /* Eruption column */
+        .eruption-column {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 0;
+            background: linear-gradient(to top, transparent 0%, #ff3300 10%, #ff6600 30%, #ffaa00 50%, #ffff00 70%, #ffffff 90%, transparent 100%);
+            border-radius: 40px;
+            animation: eruption-column 6s infinite;
+            z-index: 8;
+            filter: blur(8px);
+        }
+
+        @keyframes eruption-column {
+            0% {
+                height: 0;
+                opacity: 0;
+            }
+            20% {
+                height: 300px;
+                opacity: 1;
+            }
+            80% {
+                height: 600px;
+                opacity: 0.8;
+            }
+            100% {
+                height: 800px;
+                opacity: 0;
+            }
+        }
+
+        /* Ash cloud */
+        .ash-cloud {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 40%, transparent 70%);
+            border-radius: 50%;
+            animation: ash-cloud 10s infinite;
+            z-index: 7;
+            filter: blur(20px);
+        }
+
+        @keyframes ash-cloud {
+            0% {
+                width: 200px;
+                height: 150px;
+                opacity: 0.5;
+            }
+            50% {
+                width: 400px;
+                height: 300px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 600px;
+                height: 450px;
+                opacity: 0;
+            }
+        }
+
+        /* Lava bombs (projectiles) */
+        .lava-bomb {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at center, #ff6600 0%, #ff3300 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 13;
+            animation: lava-bomb 4s infinite;
+            box-shadow: 0 0 20px #ff3300;
+        }
+
+        .lava-bomb-1 {
+            animation-delay: 0s;
+            animation-name: lava-bomb-1;
+        }
+
+        .lava-bomb-2 {
+            animation-delay: 1s;
+            animation-name: lava-bomb-2;
+        }
+
+        .lava-bomb-3 {
+            animation-delay: 2s;
+            animation-name: lava-bomb-3;
+        }
+
+        .lava-bomb-4 {
+            animation-delay: 3s;
+            animation-name: lava-bomb-4;
+        }
+
+        @keyframes lava-bomb-1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-200px, -400px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes lava-bomb-2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(150px, -350px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes lava-bomb-3 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-100px, -500px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes lava-bomb-4 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(180px, -450px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Sparks and embers */
+        .spark {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: #ffaa00;
+            border-radius: 50%;
+            z-index: 14;
+            animation: spark 3s infinite;
+            box-shadow: 0 0 10px #ff6600;
+        }
+
+        .spark-1 { animation-delay: 0s; animation-name: spark-1; }
+        .spark-2 { animation-delay: 0.2s; animation-name: spark-2; }
+        .spark-3 { animation-delay: 0.4s; animation-name: spark-3; }
+        .spark-4 { animation-delay: 0.6s; animation-name: spark-4; }
+        .spark-5 { animation-delay: 0.8s; animation-name: spark-5; }
+        .spark-6 { animation-delay: 1s; animation-name: spark-6; }
+        .spark-7 { animation-delay: 1.2s; animation-name: spark-7; }
+        .spark-8 { animation-delay: 1.4s; animation-name: spark-8; }
+        .spark-9 { animation-delay: 1.6s; animation-name: spark-9; }
+        .spark-10 { animation-delay: 1.8s; animation-name: spark-10; }
+
+        @keyframes spark-1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-100px, -200px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(120px, -180px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-3 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-80px, -250px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-4 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(150px, -220px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-5 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-120px, -150px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-6 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(90px, -280px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-7 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-150px, -170px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-8 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(70px, -240px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-9 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-130px, -190px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spark-10 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(110px, -260px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Smoke particles */
+        .smoke {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(100, 100, 100, 0.8) 0%, rgba(60, 60, 60, 0.6) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: 6;
+            animation: smoke 8s infinite;
+            filter: blur(10px);
+        }
+
+        .smoke-1 { animation-delay: 0s; animation-name: smoke-1; }
+        .smoke-2 { animation-delay: 1s; animation-name: smoke-2; }
+        .smoke-3 { animation-delay: 2s; animation-name: smoke-3; }
+        .smoke-4 { animation-delay: 3s; animation-name: smoke-4; }
+        .smoke-5 { animation-delay: 4s; animation-name: smoke-5; }
+        .smoke-6 { animation-delay: 5s; animation-name: smoke-6; }
+        .smoke-7 { animation-delay: 6s; animation-name: smoke-7; }
+        .smoke-8 { animation-delay: 7s; animation-name: smoke-8; }
+
+        @keyframes smoke-1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-100px, -300px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(120px, -350px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-3 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-150px, -400px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-4 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(80px, -250px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-5 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-80px, -450px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-6 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(150px, -300px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-7 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-120px, -350px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smoke-8 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(100px, -400px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Sky color transitions */
+        .sky-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 100, 0, 0.3) 0%, rgba(255, 50, 0, 0.2) 40%, transparent 70%);
+            animation: sky-pulse 10s infinite alternate;
+            z-index: 5;
+        }
+
+        @keyframes sky-pulse {
+            0% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Ground illumination from lava */
+        .ground-glow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: radial-gradient(ellipse at center, rgba(255, 100, 0, 0.4) 0%, rgba(255, 50, 0, 0.2) 50%, transparent 100%);
+            animation: ground-glow 6s infinite alternate;
+            z-index: 4;
+        }
+
+        @keyframes ground-glow {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Distant mountains for depth */
+        .distant-mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to top, transparent 0%, #1a1a2a 100%);
+            clip-path: polygon(0% 100%, 10% 70%, 20% 80%, 30% 60%, 40% 90%, 50% 50%, 60% 80%, 70% 60%, 80% 70%, 90% 40%, 100% 100%);
+            z-index: 3;
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 768px) {
+            .mountain {
+                width: 400px;
+                height: 300px;
+            }
+            
+            .lava-flow {
+                width: 30px;
+            }
+            
+            .crater {
+                width: 80px;
+                height: 40px;
+            }
+            
+            .lava-pool {
+                width: 70px;
+                height: 35px;
+            }
+            
+            @keyframes lava-pool {
+                0% {
+                    width: 70px;
+                    height: 35px;
+                }
+                100% {
+                    width: 85px;
+                    height: 42px;
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mountain {
+                width: 300px;
+                height: 200px;
+            }
+            
+            .lava-flow {
+                width: 20px;
+            }
+            
+            .crater {
+                width: 60px;
+                height: 30px;
+            }
+            
+            .lava-pool {
+                width: 50px;
+                height: 25px;
+            }
+            
+            @keyframes lava-pool {
+                0% {
+                    width: 50px;
+                    height: 25px;
+                }
+                100% {
+                    width: 60px;
+                    height: 30px;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <!-- Distant mountains for depth -->
+        <div class="distant-mountains"></div>
+        
+        <!-- Ground illumination -->
+        <div class="ground-glow"></div>
+        
+        <!-- Sky color transitions -->
+        <div class="sky-overlay"></div>
+        
+        <!-- Mountain structure -->
+        <div class="mountain">
+            <div class="crater"></div>
+            <div class="lava-pool"></div>
+        </div>
+        
+        <!-- Lava flows -->
+        <div class="lava-flow lava-flow-1"></div>
+        <div class="lava-flow lava-flow-2"></div>
+        <div class="lava-flow lava-flow-3"></div>
+        
+        <!-- Eruption column -->
+        <div class="eruption-column"></div>
+        
+        <!-- Ash cloud -->
+        <div class="ash-cloud"></div>
+        
+        <!-- Lava bombs -->
+        <div class="lava-bomb lava-bomb-1"></div>
+        <div class="lava-bomb lava-bomb-2"></div>
+        <div class="lava-bomb lava-bomb-3"></div>
+        <div class="lava-bomb lava-bomb-4"></div>
+        
+        <!-- Sparks -->
+        <div class="spark spark-1"></div>
+        <div class="spark spark-2"></div>
+        <div class="spark spark-3"></div>
+        <div class="spark spark-4"></div>
+        <div class="spark spark-5"></div>
+        <div class="spark spark-6"></div>
+        <div class="spark spark-7"></div>
+        <div class="spark spark-8"></div>
+        <div class="spark spark-9"></div>
+        <div class="spark spark-10"></div>
+        
+        <!-- Smoke particles -->
+        <div class="smoke smoke-1"></div>
+        <div class="smoke smoke-2"></div>
+        <div class="smoke smoke-3"></div>
+        <div class="smoke smoke-4"></div>
+        <div class="smoke smoke-5"></div>
+        <div class="smoke smoke-6"></div>
+        <div class="smoke smoke-7"></div>
+        <div class="smoke smoke-8"></div>
+    </div>
+</body>
+</html>
