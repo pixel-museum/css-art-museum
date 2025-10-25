@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mario Theme</title>
+<style>
+
+  body {
+    margin: 0;
+    background: linear-gradient(to top, #4c8efc 70%, #7ec8ff 100%);
+    overflow: hidden;
+  }
+
+  .game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* --- Sun --- */
+  .sun {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #fff176 30%, #fbc02d 60%, #f57f17 90%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px #ffd54f, 0 0 120px #ffb300;
+  }
+
+  /* --- Clouds --- */
+  .cloud {
+    position: absolute;
+    background: #fff;
+    width: 180px;
+    height: 90px;
+    border-radius: 60px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+  .cloud::before, .cloud::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .cloud::before { width: 120px; height: 80px; left: -60px; top: 30px; }
+  .cloud::after { width: 90px; height: 70px; right: -40px; top: 15px; }
+
+  /* Continuous infinite cloud movement using multiple layers */
+  @keyframes cloudDrift {
+    0% { transform: translateX(-200px); }
+    100% { transform: translateX(150vw); }
+  }
+
+  .cloud1 { top: 60px; animation: cloudDrift 30s linear infinite; left: -200px; }
+  .cloud2 { top: 100px; animation: cloudDrift 40s linear infinite; left: -600px; }
+  .cloud3 { top: 120px; animation: cloudDrift 45s linear infinite; left: -1000px; }
+  .cloud4 { top: 60px; animation: cloudDrift 50s linear infinite; left: -800px; }
+
+  /* --- Hills --- */
+  .hill {
+    position: absolute;
+    bottom: 140px;
+    background: radial-gradient(circle at center, #00aa00 60%, #006600 100%);
+    border-radius: 100% 100% 0 0;
+  }
+  .hill.small { width: 140px; height: 90px; left: 200px; }
+  .hill.large { width: 220px; height: 140px; left: 550px; }
+
+  /* --- Bushes --- */
+  .bush {
+    position: absolute;
+    bottom: 140px; /* perfectly flush now with ground top */
+    background: #009900;
+    border-radius: 50px;
+    box-shadow: 40px 0 #009900, 80px 0 #009900;
+    width: 50px;
+    height: 40px;
+  }
+  .bush.small { left: 300px; }
+  .bush.large { left: 700px; }
+
+  /* --- Ground --- */
+  .ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    background: repeating-linear-gradient(
+      90deg,
+      #b55227 0 40px,
+      #8a3315 40px 80px
+    );
+    border-top: 5px solid #552200;
+    box-shadow: inset 0 8px 0 #7a2a0f;
+  }
+
+  /* --- Rotating Coins --- */
+  .coin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle at 30% 30%, #ffec80, #f5c400);
+    border-radius: 50%;
+    border: 2px solid #d4a017;
+    box-shadow: 0 0 10px #f5d442;
+    animation: coinSpin 1.3s linear infinite, coinFloat 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes coinSpin {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(0.1); background: radial-gradient(circle at 70% 30%, #ffe066, #f5a623); }
+    100% { transform: scaleX(1); }
+  }
+
+  @keyframes coinFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-12px); }
+  }
+
+  .coin.c1 { top: 240px; left: 220px; }
+  .coin.c2 { top: 240px; left: 280px; }
+  .coin.c3 { top: 240px; left: 350px; }
+  .coin.c4 { top: 240px; left: 420px; }
+
+  /* --- Enemy --- */
+  .enemy {
+    position: absolute;
+    bottom: 110px;
+    left: 250px;
+    width: 36px;
+    height: 28px;
+    background: #a0522d;
+    border-radius: 36px 36px 12px 12px;
+    box-shadow: inset 0 -3px 0 #5a2a00;
+    animation: moveGoomba 4s linear infinite alternate;
+  }
+
+  @keyframes moveGoomba {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="game-container">
+  <div class="sun"></div>
+
+  <!-- Clouds (continuous drift) -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <!-- Background elements -->
+  <div class="hill small"></div>
+  <div class="hill large"></div>
+  <div class="bush small"></div>
+  <div class="bush large"></div>
+
+  <!-- Enemy -->
+  <div class="enemy"></div>
+
+  <!-- Coins -->
+  <div class="coin c1"></div>
+  <div class="coin c2"></div>
+  <div class="coin c3"></div>
+  <div class="coin c4"></div>
+
+  <!-- Ground -->
+  <div class="ground"></div>
+</div>
+
+<!-- Mario Green Pipe -->
+<div class="pipe"></div>
+
+<style>
+  /* --- Green Pipe --- */
+  .pipe {
+    position: absolute;
+    bottom: 143px; /* Adjust to sit nicely on your ground */
+    left: 80px;   /* Move horizontally as needed */
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(90deg, #0f0 0%, #00a000 30%, #007500 70%, #004d00 100%);
+    border: 3px solid #003d00;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: inset -3px 0 #006600, inset 3px 0 #00cc00;
+  }
+
+  .pipe::before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: -5px;
+    width: 70px;
+    height: 25px;
+    background: linear-gradient(90deg, #00ff00 0%, #00a000 30%, #007500 70%, #004d00 100%);
+    border: 3px solid #003d00;
+    border-radius: 4px 4px 0 0;
+    box-shadow: inset -3px 0 #006600, inset 3px 0 #00cc00;
+  }
+</style>
+</body>
+</html>
