@@ -2561,6 +2561,14 @@
   "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
   "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
   "date": "2025-10-25"
+},
+{
+  "file": "ANAGHAKTP-BouncingLoader.html",
+  "title": "Bouncing Loader",
+  "author": "ANAGHAKTP",
+  "tags": ["animation", "loader", "dots", "simple"],
+  "description": "A simple and clean bouncing loader animation.",
+  "date": "2025-10-25"
 }
 ]
 
