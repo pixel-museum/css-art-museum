@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Borealis - Northern Lights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            height: 100vh;
+            position: relative;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .aurora {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .aurora-layer {
+            position: absolute;
+            width: 200%;
+            height: 60%;
+            top: 10%;
+            left: -50%;
+            filter: blur(60px);
+        }
+
+        .aurora-layer-1 {
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(0, 255, 157, 0.6) 20%,
+                rgba(0, 212, 255, 0.6) 40%,
+                rgba(148, 0, 255, 0.6) 60%,
+                rgba(0, 255, 157, 0.6) 80%,
+                transparent 100%
+            );
+            animation: aurora-wave 15s ease-in-out infinite;
+        }
+
+        .aurora-layer-2 {
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 0, 255, 0.5) 20%,
+                rgba(0, 255, 255, 0.5) 40%,
+                rgba(0, 255, 100, 0.5) 60%,
+                rgba(255, 0, 255, 0.5) 80%,
+                transparent 100%
+            );
+            top: 20%;
+            animation: aurora-wave 20s ease-in-out infinite reverse;
+        }
+
+        .aurora-layer-3 {
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(100, 200, 255, 0.4) 20%,
+                rgba(200, 100, 255, 0.4) 40%,
+                rgba(100, 255, 200, 0.4) 60%,
+                rgba(100, 200, 255, 0.4) 80%,
+                transparent 100%
+            );
+            top: 15%;
+            animation: aurora-wave 18s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        @keyframes aurora-wave {
+            0% {
+                transform: translateX(0) translateY(0) scaleY(1);
+            }
+            25% {
+                transform: translateX(-10%) translateY(-5%) scaleY(1.1);
+            }
+            50% {
+                transform: translateX(-20%) translateY(-10%) scaleY(0.9);
+            }
+            75% {
+                transform: translateX(-30%) translateY(-5%) scaleY(1.05);
+            }
+            100% {
+                transform: translateX(-40%) translateY(0) scaleY(1);
+            }
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, #000000, #1a1a2e);
+            clip-path: polygon(
+                0% 100%,
+                0% 60%,
+                5% 55%,
+                10% 65%,
+                15% 50%,
+                20% 55%,
+                25% 45%,
+                30% 50%,
+                35% 40%,
+                40% 45%,
+                45% 35%,
+                50% 40%,
+                55% 30%,
+                60% 35%,
+                65% 40%,
+                70% 35%,
+                75% 45%,
+                80% 40%,
+                85% 50%,
+                90% 45%,
+                95% 55%,
+                100% 50%,
+                100% 100%
+            );
+        }
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial', sans-serif;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 20px rgba(0, 255, 200, 0.8),
+                         0 0 40px rgba(0, 200, 255, 0.6);
+            text-align: center;
+            z-index: 10;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(0, 255, 200, 0.8),
+                             0 0 40px rgba(0, 200, 255, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(0, 255, 200, 1),
+                             0 0 60px rgba(0, 200, 255, 0.9),
+                             0 0 80px rgba(100, 150, 255, 0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="aurora">
+        <div class="aurora-layer aurora-layer-1"></div>
+        <div class="aurora-layer aurora-layer-2"></div>
+        <div class="aurora-layer aurora-layer-3"></div>
+    </div>
+    
+    <div class="mountains"></div>
+    
+    <div class="title">Aurora Borealis</div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 70 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
