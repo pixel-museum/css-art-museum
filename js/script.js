@@ -57,7 +57,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.createElement("div");
     card.className = "art-card";
     card.innerHTML = `
-      <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+      <div class="art-card-inner">
+        <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+        <div class="art-actions">
+          <button class="share-button" aria-label="Share artwork">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.47" y2="10.49"></line>
+            </svg>
+          </button>
+          <div class="share-dropdown">
+            <button class="share-option" data-action="share-native">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                <polyline points="16 6 12 2 8 6"></polyline>
+                <line x1="12" y1="2" x2="12" y2="15"></line>
+              </svg>
+              Share via...
+            </button>
+            <button class="share-option" data-action="copy-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Link
+            </button>
+            <button class="share-option" data-action="download-source">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Source
+            </button>
+            <button class="share-option" data-action="export-png">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              Export as PNG
+            </button>
+            <button class="share-option" data-action="export-gif">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+              </svg>
+              Export as GIF
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="art-info">
         <p class="art-title">${item.title || "Untitled"}</p>
         <p class="art-author">${item.author || "Unknown"}</p>
@@ -222,9 +275,64 @@ document.addEventListener("DOMContentLoaded", () => {
       const isLiked = LikedArtworks.isLiked(art.file);
 
       artCard.innerHTML = `
-        <h3>${art.title}</h3>
-        <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
-        <p>by ${art.author}</p>
+        <div class="art-card-inner">
+          <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
+          <div class="art-actions">
+            <button class="share-button" aria-label="Share artwork">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.47" y2="10.49"></line>
+              </svg>
+            </button>
+            <div class="share-dropdown">
+              <button class="share-option" data-action="share-native">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                  <polyline points="16 6 12 2 8 6"></polyline>
+                  <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+                Share via...
+              </button>
+              <button class="share-option" data-action="copy-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Link
+              </button>
+              <button class="share-option" data-action="download-source">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Source
+              </button>
+              <button class="share-option" data-action="export-png">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                Export as PNG
+              </button>
+              <button class="share-option" data-action="export-gif">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+                </svg>
+                Export as GIF
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3 class="art-title">${art.title}</h3>
+          <p class="art-author">by ${art.author}</p>
+        </div>
         <div class="card-actions">
             <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(art.file)}">
                 View Code
