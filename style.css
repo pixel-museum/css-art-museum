@@ -1757,24 +1757,28 @@ header h1::after {
 }
 
 .subscribe-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0 1.25rem;
-  background: var(--accent-color);
-  color: var(--font);
-  border: 1px solic --accent-color;
+  background: white;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
   border-radius: 10px;
   font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  height: 2.5rem;
+  width: 83%;
   white-space: nowrap;
+  margin: 0 auto;
 }
 
 .subscribe-btn:hover {
-  background: #5549f5;
+  background: var(--accent-color);
+  color: white;
   transform: translateY(-1px);
 }
 
