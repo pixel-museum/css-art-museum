@@ -757,6 +757,17 @@ header h1::after {
   gap: 12px;
 }
 
+/* Style the Star button in the navigation */
+.nav-buttons .star-button {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/* Target the star count in the navigation */
+.nav-buttons .star-count-nav {
+  color: var(--accent-color);
+}
+
 .section-title {
   font-family: "Playfair Display", serif;
   font-size: clamp(1.25rem, 2.2vw, 1.6rem);
@@ -1710,6 +1721,8 @@ header h1::after {
 .footer-social-logo {
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  padding: 5px;
   object-fit: contain;
   transition: all 0.3s ease;
 }
@@ -1835,7 +1848,7 @@ header h1::after {
 }
 
 .star-count {
-  color: #ffd700;
+  color: darkgray
   font-weight: 600;
   margin-left: 0.25rem;
 }
@@ -3411,7 +3424,7 @@ header h1::after {
   gap: 5px;
   padding: 8px 12px;
   background: var(--button-bg);
-  border: 1px solid var(--button-border);
+  border: 1px solid var(--accent-color);
   border-radius: 6px;
   color: var(--primary-text);
   font-size: 0.9rem;
@@ -3419,9 +3432,13 @@ header h1::after {
   transition: 0.3s ease;
 }
 
-.footer-button:hover {
+.footer-button:hover,
+.footer-button:hover .star-icon,
+.footer-button:hover .star-count,
+.footer-button:hover .star-count-nav {
   background-color: var(--accent);
-  color: #fff;
+  color: #fff !important;
+  fill: #fff;
 }
 
 /* Footer Bottom */
