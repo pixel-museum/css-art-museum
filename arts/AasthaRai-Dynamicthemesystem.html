@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎨 CSS Art Museum - Dynamic Theme System</title>
+<style>
+    /* Default Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222;
+  --accent-color: #ff69b4;
+  --card-bg: #f4f4f4;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.6s ease-in-out;
+  overflow-x: hidden;
+}
+
+.theme-container {
+  text-align: center;
+  padding: 3rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-selector {
+  margin: 1rem;
+}
+
+select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+select:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.gallery {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 80%;
+  justify-items: center;
+}
+
+.art-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px var(--shadow-color);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.art-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.art-card img {
+  width: 450px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+    flex-shrink: 0;
+  object-fit: cover;
+}
+
+.art-card p {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* 🌃 THEMES */
+
+/* 💜 Neon Cyberpunk */
+body.cyberpunk {
+  --bg-color: #0a0028;
+  --text-color: #ff00f7;
+  --accent-color: #00ffe1;
+  --card-bg: #1a0033;
+  --shadow-color: #ff00f7;
+  background-image: radial-gradient(circle at top, #2e007b, #000);
+}
+
+/* 💾 Retro Pixel */
+body.retro {
+  --bg-color: #2a2a72;
+  --text-color: #f7e733;
+  --accent-color: #f59f00;
+  --card-bg: #1b1b3a;
+  --shadow-color: #f7e733;
+  font-family: 'Press Start 2P', cursive;
+  background-image: linear-gradient(135deg, #2a2a72, #009ffd);
+}
+
+/* 🌿 Minimal Zen */
+body.zen {
+  --bg-color: #f5f5f5;
+  --text-color: #1a1a1a;
+  --accent-color: #6ab04c;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  font-family: 'Nunito', sans-serif;
+  background-image: linear-gradient(to right, #d3f9d8, #f5f5f5);
+}
+
+/* 🌌 Galaxy Glow */
+body.galaxy {
+  --bg-color: #010018;
+  --text-color: #b3e3ff;
+  --accent-color: #6a0dad;
+  --card-bg: #1a0033;
+  --shadow-color: #6a0dad;
+  background-image: radial-gradient(circle at center, #3b006a, #000);
+}
+/* 🌞 Sunny Vibes */
+
+body.sunny {
+  --bg-color: #fff8e1;
+  --text-color: #ff6f00;
+  --accent-color: #ffca28;
+  --card-bg: #fff3e0;
+  --shadow-color: rgba(255, 193, 7, 0.3);
+  background-image: linear-gradient(to right, #fff8e1, #ffe0b2);
+}
+/* ❄️ Winter Chill */
+body.winter {
+    --bg-color: #e0f7fa;
+    --text-color: #01579b;
+    --accent-color: #00bcd4;
+    --card-bg: #b2ebf2;
+    --shadow-color: rgba(1, 87, 155, 0.3);
+    background-image: linear-gradient(to right, #e0f7fa, #b2ebf2);
+    }
+    /* ---------- Neon Cyberpunk Flicker ---------- */
+body.cyberpunk .art-card {
+  animation: neon-flicker 1.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0% { box-shadow: 0 6px 15px rgba(255,0,247,0.4); }
+  50% { box-shadow: 0 6px 15px rgba(0,255,225,0.6); }
+  100% { box-shadow: 0 6px 15px rgba(255,0,247,0.4); }
+}
+
+/* ---------- Galaxy Glow Twinkle ---------- */
+body.galaxy::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: transparent;
+  box-shadow: 
+    100px 50px 2px #fff,
+    200px 150px 2px #b3e3ff,
+    300px 80px 2px #fff,
+    400px 200px 2px #b3e3ff,
+    500px 120px 2px #fff,
+    600px 300px 2px #b3e3ff;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ---------- Minimal Zen Soft Fade ---------- */
+body.zen {
+  background: linear-gradient(135deg, #d3f9d8, #f5f5f5);
+  animation: zen-fade 10s infinite alternate;
+}
+
+@keyframes zen-fade {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Retro Pixel Hover Glitch ---------- */
+body.retro .art-card:hover img {
+  animation: pixel-glitch 0.3s infinite alternate;
+}
+
+@keyframes pixel-glitch {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-1px, 2px); }
+  75% { transform: translate(1px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.slideshow img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Show first image initially */
+.slideshow img:first-child {
+  opacity: 1;
+}
+/* Show active image */
+.slideshow img.active { 
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+  <div class="theme-container">
+    <h1>🎨 CSS Art Museum</h1>
+    <p>Experience artworks under different moods and styles!</p>
+
+    <div class="theme-selector">
+      <label for="themeSelect">Choose Theme:</label>
+      <select id="themeSelect">
+        <option value="cyberpunk">💜 Neon Cyberpunk</option>
+        <option value="retro">💾 Retro Pixel</option>
+        <option value="zen">🌿 Minimal Zen</option>
+        <option value="galaxy">🌌 Galaxy Glow</option>
+      </select>
+    </div>
+
+    <div class="gallery">
+      <div class="art-card">
+            <div class="slideshow">
+      <img src="https://img.freepik.com/free-photo/nail-polish-texture_23-2148111243.jpg?semt=ais_hybrid&w=740&q=80" alt="Abstract Vibes">
+      <img src="https://thumbs.dreamstime.com/b/abstract-colorful-music-wave-digital-art-concept-creativity-inspired-vibrations-vibrant-illustration-waves-notes-323338465.jpg" alt="Abstract Vibes 2">
+      <img src="https://img.freepik.com/free-photo/trendy-abstract-chrome-background-with-gradient-colors_1361-4253.jpg?semt=ais_hybrid&w=740&q=80" alt="Abstract Vibes 3">
+    </div>
+        <p>🎭 Abstract Vibes</p>
+      </div>
+
+      <div class="art-card">
+            <div class="slideshow">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRC23-pxAzxBVoJTyUsLTw4FRsexD3XTgqjg&s" alt="Motion Vibes">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCnQr-cU8rkRP36btj8V5JaayjuYOfdvtpdQ&s" alt="Motion Vibes 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd8h1kkgCa6Vnka7XJFV7fbUyiszVXEXAOl9H-Ym7Gog0hewvRWy1cU-57GLtyHvlDwF8&usqp=CAU" alt="Motion Vibes 3">
+    </div>
+        <p>🌀 Motion Mirage</p>
+      </div>
+
+
+      <div class="art-card">
+            <div class="slideshow">
+      <img src="https://www.northlandscapes-prints.com/cdn/shop/files/iceland_chromatic-flow_01_unframed.jpg?v=1743862169&width=2048" alt="Chromatic Vibes">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Bk_SDKtAFAQaB8VkWf7I_725hYm63L8AmA&s" alt="Chromatic Vibes 2">
+      <img src="https://www.pearl-abstracts.com/uploads/1/4/4/1/144172609/033.png" alt="Chromatic Vibes 3">
+    </div>
+        <p>🌈 Chromatic Flow</p>
+      </div>
+
+
+      <div class="art-card">
+            <div class="slideshow">
+      <img src="https://streetartnyc.org/wp-content/uploads/2019/08/adam-lucas-painting.jpg" alt=" Vibes">Geometric
+      <img src="https://thumbs.dreamstime.com/b/heat-pump-outdoor-unit-sleek-design-against-vibrant-backdrop-modern-heat-pump-outdoor-unit-featuring-plain-shroud-397412392.jpg" alt="Geometric Vibes 2">
+      <img src="https://thumbs.dreamstime.com/b/glowing-abstract-geometric-form-engulfed-vibrant-orange-yellow-flames-set-against-dark-star-filled-cosmic-background-402795042.jpg" alt="Chromatic Vibes 3">
+    </div>
+        <p>🔥 Geometric Heat</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const themeSelect = document.getElementById('themeSelect');
+const savedTheme = localStorage.getItem('selectedTheme');
+
+if (savedTheme) {
+  document.body.className = savedTheme;
+  themeSelect.value = savedTheme;
+}
+
+themeSelect.addEventListener('change', (e) => {
+  const theme = e.target.value;
+  document.body.className = theme;
+  localStorage.setItem('selectedTheme', theme);
+});
+// Select all slideshows
+const slideshows = document.querySelectorAll('.slideshow');
+
+slideshows.forEach(slideshow => {
+  const slides = slideshow.querySelectorAll('img');
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].style.opacity = 0; // hide current
+    current = (current + 1) % slides.length; // next slide
+    slides[current].style.opacity = 1; // show next
+  }, 3000); // change every 3 seconds
+});
+
+  </script>
+</body>
+</html>
