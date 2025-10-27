@@ -1528,6 +1528,7 @@ header h1::after {
 .recent-art-card .heart-icon {
   width: 18px;
   height: 18px;
+  margin-right:5px;
   color: var(--secondary-text);
   transition: all 0.3s ease;
   stroke: currentColor;
