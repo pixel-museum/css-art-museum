@@ -1,6 +1,5 @@
-
 * {
-  margin: 0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -22,7 +21,7 @@ body.dark-theme {
 
 body.dark-theme header {
     background: #2d3748;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-theme .logo-text {
@@ -58,11 +57,11 @@ body.dark-theme .dark-toggle {
 
 body.dark-theme .welcome-banner {
     background: #2d3748;
-    color : #fff;
+    color: #fff;
 }
 
-body.dark-theme .welcome-banner h1{
-  color : #fff;
+body.dark-theme .welcome-banner h1 {
+    color: #fff;
 }
 
 body.dark-theme .section-title {
@@ -71,7 +70,7 @@ body.dark-theme .section-title {
 
 body.dark-theme .blog-post {
     background: #2d3748;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-theme .post-title {
@@ -128,7 +127,7 @@ body.dark-theme .subscribe-form input::placeholder {
 header {
     background: white;
     padding: 1rem 2rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -245,7 +244,7 @@ main {
     border-radius: 12px;
     text-align: center;
     margin-bottom: 3rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-banner h1 {
@@ -285,14 +284,14 @@ main {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .blog-post:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .post-image {
@@ -310,7 +309,7 @@ main {
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     padding: 0.2rem 0.6rem;
     border-radius: 15px;
     font-size: 0.7rem;
@@ -373,7 +372,7 @@ main {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;

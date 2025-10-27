@@ -11,7 +11,7 @@ async function fetchWithRetry(url, options = {}, maxRetries = 3) {
                 console.error(`Failed after ${maxRetries} retries:`, error);
                 throw error;
             }
-            
+
             // Exponential backoff: 1s, 2s, 4s
             const delay = Math.pow(2, attempt) * 1000;
             console.log(`Retry attempt ${attempt + 1} after ${delay}ms`);
@@ -19,6 +19,7 @@ async function fetchWithRetry(url, options = {}, maxRetries = 3) {
         }
     }
 }
+
 async function getAllArtworksApi() {
     try {
         const response = await fetchWithRetry(`${BACKEND_URL}/api/artworks/all`);
@@ -28,7 +29,6 @@ async function getAllArtworksApi() {
         return [];
     }
 }
-
 
 async function getAllArtworksIdsApi(id) {
     try {
@@ -41,7 +41,6 @@ async function getAllArtworksIdsApi(id) {
         return [];
     }
 }
-
 
 async function addArtworkApi(id) {
     try {
@@ -59,7 +58,6 @@ async function addArtworkApi(id) {
         return null;
     }
 }
-
 
 async function likeArtworkApi(id) {
     try {
@@ -87,7 +85,6 @@ async function unlikeArtworkApi(id) {
     }
 }
 
-
 async function syncArtworks(localArtworks) {
     const backendArtworks = await getAllArtworksApi();
     console.log("Backend Artworks:", backendArtworks);
@@ -112,4 +109,3 @@ async function initializePage() {
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);
-

@@ -17,14 +17,14 @@ class ShareUtils {
 
       const action = shareOption.dataset.action;
       const card = shareOption.closest('.art-card');
-      
+
       if (!card) return;
-      
+
       const iframe = card.querySelector('iframe');
       const title = card.querySelector('.art-title')?.textContent || 'CSS Artwork';
       const author = card.querySelector('.art-author')?.textContent || 'Unknown';
       const url = window.location.origin + window.location.pathname + '#' + card.id;
-      
+
       switch (action) {
         case 'share-native':
           this.shareNative(title, url, author);
@@ -83,7 +83,7 @@ class ShareUtils {
       const response = await fetch(url);
       const blob = await response.blob();
       const blobUrl = window.URL.createObjectURL(blob);
-      
+
       const a = document.createElement('a');
       a.href = blobUrl;
       a.download = `${title.toLowerCase().replace(/\s+/g, '-')}.html`;
@@ -91,7 +91,7 @@ class ShareUtils {
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(blobUrl);
-      
+
       this.showToast('Source file downloaded!');
     } catch (err) {
       console.error('Error downloading source:', err);
@@ -103,7 +103,7 @@ class ShareUtils {
     try {
       const iframe = card.querySelector('iframe');
       if (!iframe) throw new Error('No iframe found');
-      
+
       const canvas = await html2canvas(iframe.contentDocument.documentElement, {
         scale: 2,
         useCORS: true,
@@ -111,7 +111,7 @@ class ShareUtils {
         backgroundColor: null,
         logging: false,
       });
-      
+
       const dataUrl = canvas.toDataURL(`image/${format}`);
       const a = document.createElement('a');
       a.href = dataUrl;
@@ -119,7 +119,7 @@ class ShareUtils {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      
+
       this.showToast(`Exported as ${format.toUpperCase()}!`);
     } catch (err) {
       console.error(`Error exporting as ${format}:`, err);
@@ -134,7 +134,7 @@ class ShareUtils {
       toast = document.createElement('div');
       toast.className = 'toast';
       document.body.appendChild(toast);
-      
+
       // Add toast styles
       const style = document.createElement('style');
       style.textContent = `
@@ -162,11 +162,11 @@ class ShareUtils {
       `;
       document.head.appendChild(style);
     }
-    
+
     // Update and show toast
     toast.textContent = message;
     toast.classList.add('show');
-    
+
     // Hide after delay
     setTimeout(() => {
       toast.classList.remove('show');

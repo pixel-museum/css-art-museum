@@ -101,7 +101,7 @@
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
-    }
+  }
 })();
 
 // Lightweight handlers for Events page buttons: Register / Set Reminder / Get Notified / View Rules
@@ -172,11 +172,11 @@
     const dateMatch = datetime.match(/^(\d{4})-(\d{2})-(\d{2})/);
 
     if (dateMatch) {
-      const [ , y, m, d ] = dateMatch;
+      const [, y, m, d] = dateMatch;
       if (timeMatch) {
         // parse time
-        let [ , hm, ampm ] = timeMatch;
-        let [ hour, minute ] = hm.split(':').map(Number);
+        let [, hm, ampm] = timeMatch;
+        let [hour, minute] = hm.split(':').map(Number);
         if (ampm) {
           ampm = ampm.toUpperCase();
           if (ampm === 'PM' && hour < 12) hour += 12;
