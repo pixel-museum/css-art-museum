@@ -1,3 +1,4 @@
+
 [
 	{
 		"file": "bharath-pulsingdot.html",
@@ -1200,6 +1201,14 @@
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
     "date":"2025-10-20"
+  },
+  {
+    "file":"yashsavalkar321-secretCode.html",
+    "title":"Glowing Dot Effect",
+    "author":"Yash Savalkar",
+    "tags":["Glowing","Dot Effect","glow","effect"],
+    "description":"The glowing dot effect creates a card component with a grid of tiny dots as its background. The dots expand as users hover over specific sections of the card, and this makes for an interesting effect.",
+    "date":"2025-10-24"
   },
  {
     "file": "amit-Morphing Butterfly Wings.html",
@@ -2458,6 +2467,14 @@
     "date": "2025-10-23"
   },
   {
+    "file": "deepak-hypnotyse-circle.",
+    "title": "Hypnotysing Circles",
+    "author": "Deepak Singh",
+    "tags": ["Circle","ring shape","svg","css"],
+    "description": "A hynotysic circles.",
+    "date": "2025-10-24"
+  },
+  {
     "file":"dawn-dusk.html",
     "title":"Dawn to Dusk",
     "author":"Anand Misra",
@@ -2561,6 +2578,38 @@
   "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
   "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
   "date": "2025-10-25"
+},
+{
+  "file": "ANAGHAKTP-BouncingLoader.html",
+  "title": "Bouncing Loader",
+  "author": "ANAGHAKTP",
+  "tags": ["animation", "loader", "dots", "simple"],
+  "description": "A simple and clean bouncing loader animation.",
+  "date": "2025-10-25"
+},
+  {
+  "file": "crazy-coder-neel_aurora-borealis.html",
+  "title": "Aurora Borealis / Northern Lights",
+  "author": "crazy-coder-neel",
+  "tags": ["aurora", "northern-lights", "animation", "css-effects", "gradients", "night-sky", "celestial", "particles", "interactive"],
+  "description": "A mesmerizing pure CSS animation of the Aurora Borealis with multiple layered gradients, interactive controls, and stunning visual effects that recreate the magical dance of the Northern Lights.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_volcano.html",
+  "title": "Volcanic Eruption / Lava Flow Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["volcano", "eruption", "lava", "animation", "css-effects", "particles", "fire", "smoke", "natural-phenomenon", "cinematic"],
+  "description": "A stunning pure CSS animation of a volcanic eruption with realistic lava flows, particle effects, smoke, ash clouds, and dynamic sky transitions. Features multiple layered animations for cinematic depth and realism.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_Lightning-storm.html",
+  "title": "Lightning Storm Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["rain", "lightning", "storm", "animation", "css-effects", "particles","cinematic"],
+  "description": "A stunning pure CSS animation of a Lightning Storm with realistic rain , lightning , clouds, and dynamic sky transitions.",
+  "date": "2025-10-26"
 }
 ,{
   "file": "Cat_eye_movement_along_with _cursor.html",
@@ -2570,7 +2619,6 @@
   "description": "A cute CSS art of a cat whose eyes move along the mouse movement.",
   "date": "2025-10-25"  
 }
-
 ,{
   "file": "shooting-star-animation.html",
   "title": "Shooting Star Animation",
@@ -2619,5 +2667,4 @@
   "description": "A Simple theme of super mario game.",
   "date": "2025-10-26"
 }
-
-
+]
