@@ -1209,7 +1209,7 @@
     "tags":["Glowing","Dot Effect","glow","effect"],
     "description":"The glowing dot effect creates a card component with a grid of tiny dots as its background. The dots expand as users hover over specific sections of the card, and this makes for an interesting effect.",
     "date":"2025-10-24"
-  }  
+  },
  {
     "file": "amit-Morphing Butterfly Wings.html",
     "title": "CSS Morphing Butterfly",
@@ -2467,6 +2467,13 @@
     "date": "2025-10-23"
   },
   {
+    "file": "deepak-hypnotyse-circle.",
+    "title": "Hypnotysing Circles",
+    "author": "Deepak Singh",
+    "tags": ["Circle","ring shape","svg","css"],
+    "description": "A hynotysic circles.",
+    "date": "2025-10-24"
+  },
     "file":"dawn-dusk.html",
     "title":"Dawn to Dusk",
     "author":"Anand Misra",
@@ -2603,6 +2610,7 @@
   "description": "A stunning pure CSS animation of a Lightning Storm with realistic rain , lightning , clouds, and dynamic sky transitions.",
   "date": "2025-10-26"
 }
+
 ]
 
 

@@ -14,7 +14,7 @@
 
 ---
 
-## 📚 Table of Contents
+## 📚 Table of Contents 
 
 - [🌟 About The Project](#-about-the-project)
 - [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
