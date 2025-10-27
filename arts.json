@@ -2667,4 +2667,20 @@
   "description": "A Simple theme of super mario game.",
   "date": "2025-10-26"
 }
+,{
+  "file": "loading-cat.html",
+  "title": "long loading cat",
+  "author": "Mehren Ansari",
+  "tags": ["cat", "long", "loading", "cute", "animation"],
+  "description": "A Simple cute loading cat.",
+  "date": "2025-10-28"
+}
+,{
+  "file": "coffee-cup.html",
+  "title": "Hot coffee cup",
+  "author": "Mehren Ansari",
+  "tags": ["cup", "coffee", "hot", "animation", "steam"],
+  "description": "A simple cup of coffee.",
+  "date": "2025-10-28"
+}
 ]
