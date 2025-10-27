@@ -2474,6 +2474,7 @@
     "description": "A hynotysic circles.",
     "date": "2025-10-24"
   },
+  {
     "file":"dawn-dusk.html",
     "title":"Dawn to Dusk",
     "author":"Anand Misra",
@@ -2610,7 +2611,60 @@
   "description": "A stunning pure CSS animation of a Lightning Storm with realistic rain , lightning , clouds, and dynamic sky transitions.",
   "date": "2025-10-26"
 }
-
+,{
+  "file": "Cat_eye_movement_along_with _cursor.html",
+  "title": "Cat_eye_movement_along_with _cursor",
+  "author": "Mehren Ansari",
+  "tags": ["cat", "cute", "nature", "animation", "eyes"],
+  "description": "A cute CSS art of a cat whose eyes move along the mouse movement.",
+  "date": "2025-10-25"  
+}
+,{
+  "file": "shooting-star-animation.html",
+  "title": "Shooting Star Animation",
+  "author": "Adrika Mandal",
+  "tags": ["stars", "animation", "sky", "night", "shooting star"],
+  "description": "A beautiful CSS animation of shooting stars streaking across the night sky.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage.html",
+  "title": "Holi Themed Webpage",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "A vibrant Holi-themed webpage with colorful splashes and animated effects built with HTML and CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage-2.html",
+  "title": "Holi Themed Webpage 2",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "Another Holi-themed creative webpage with animated color splashes and festive mood using HTML & CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses.html",
+  "title": "Solar and Lunar Eclipses",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "CSS animation showing the solar and lunar eclipse with smooth transitions of sun and moon.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses-2.html",
+  "title": "Solar and Lunar Eclipses 2",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "Super_MarioTheme.html",
+  "title": "Mario gameplay background",
+  "author": "Mehren Ansari",
+  "tags": ["clouds", "animation", "sky", "game", "mario"],
+  "description": "A Simple theme of super mario game.",
+  "date": "2025-10-26"
+}
 ]
-
-
