@@ -1,3 +1,4 @@
+
 [
 	{
 		"file": "bharath-pulsingdot.html",
@@ -2569,6 +2570,30 @@
   "tags": ["animation", "loader", "dots", "simple"],
   "description": "A simple and clean bouncing loader animation.",
   "date": "2025-10-25"
+},
+  {
+  "file": "crazy-coder-neel_aurora-borealis.html",
+  "title": "Aurora Borealis / Northern Lights",
+  "author": "crazy-coder-neel",
+  "tags": ["aurora", "northern-lights", "animation", "css-effects", "gradients", "night-sky", "celestial", "particles", "interactive"],
+  "description": "A mesmerizing pure CSS animation of the Aurora Borealis with multiple layered gradients, interactive controls, and stunning visual effects that recreate the magical dance of the Northern Lights.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_volcano.html",
+  "title": "Volcanic Eruption / Lava Flow Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["volcano", "eruption", "lava", "animation", "css-effects", "particles", "fire", "smoke", "natural-phenomenon", "cinematic"],
+  "description": "A stunning pure CSS animation of a volcanic eruption with realistic lava flows, particle effects, smoke, ash clouds, and dynamic sky transitions. Features multiple layered animations for cinematic depth and realism.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_Lightning-storm.html",
+  "title": "Lightning Storm Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["rain", "lightning", "storm", "animation", "css-effects", "particles","cinematic"],
+  "description": "A stunning pure CSS animation of a Lightning Storm with realistic rain , lightning , clouds, and dynamic sky transitions.",
+  "date": "2025-10-26"
 }
 ]
 
