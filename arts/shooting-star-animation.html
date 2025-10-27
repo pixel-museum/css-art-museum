@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shooting Star Night Sky</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 20%, #00111f, #000814 80%);
+    overflow: hidden;
+  }
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .earth {
+    position: absolute;
+    bottom: -10vh;
+    left: 50%;
+    width: 150vw;
+    height: 60vh;
+    background: radial-gradient(circle at 50% 20%, rgba(0, 80, 200, 0.4), rgba(0, 20, 50, 0.9) 60%, #000 100%);
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
+    box-shadow: 0 -5px 60px rgba(0, 120, 255, 0.5), 0 -10px 100px rgba(0, 150, 255, 0.3);
+  }
+</style>
+</head>
+<body>
+  <canvas id="sky"></canvas>
+  <div class="earth"></div>
+  <script>
+    const canvas = document.getElementById('sky');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    const stars = Array(200).fill().map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2
+    }));
+
+    function drawStars() {
+      ctx.fillStyle = 'white';
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    class ShootingStar {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = 0;
+        this.len = Math.random() * 100 + 80;
+        this.speed = Math.random() * 8 + 4;
+        this.size = Math.random() * 2 + 0.5;
+        this.angle = Math.PI / 4;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speed * Math.cos(this.angle);
+        this.y += this.speed * Math.sin(this.angle);
+        this.opacity -= 0.01;
+        if (this.opacity <= 0) this.reset();
+      }
+      draw() {
+        const gradient = ctx.createLinearGradient(this.x, this.y, this.x - this.len, this.y - this.len);
+        gradient.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
+        gradient.addColorStop(1, 'transparent');
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = this.size;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.len, this.y - this.len);
+        ctx.stroke();
+      }
+    }
+
+    const shootingStars = Array(3).fill().map(() => new ShootingStar());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawStars();
+      shootingStars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
+</body>
+</html>
