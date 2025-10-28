@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetic Sandfall</title>
+    <style>
+        /* CSS goes here */
+        :root {
+            /* Warm Color Palette */
+            --color-light: #fbe5c5; /* Very light sand */
+            --color-mid-light: #e0984a; /* Golden sand */
+            --color-mid-dark: #cc6d3a; /* Earthy orange */
+            --color-dark: #9e4620; /* Deep terracotta */
+            --bg-color: #0d0d0d; /* Dark background */
+            
+            /* Animation Variables */
+            --fall-duration: 4s;
+            --fall-steps: 50;
+            --fall-distance: 600px;
+            --sand-size: 2px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            margin: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        /* --- Sandfall Container (The Hourglass Shape) --- */
+        .sandfall-container {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            /* Define the hourglass shape using clip-path */
+            clip-path: polygon(
+                0% 0%, 
+                100% 0%, 
+                100% 35%, 
+                60% 50%, 
+                100% 65%, 
+                100% 100%, 
+                0% 100%, 
+                0% 65%, 
+                40% 50%, 
+                0% 35%
+            );
+            border: 2px solid var(--color-mid-light);
+        }
+
+        /* --- Sand Particles Layer 1: Main Flow --- */
+        .sand-flow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Contains the falling particles */
+        }
+
+        .sand-flow::before {
+            content: '';
+            position: absolute;
+            top: -10%; /* Start slightly above the container */
+            left: 0;
+            width: 100%;
+            height: var(--sand-size); 
+            background: linear-gradient(90deg, var(--color-light), var(--color-mid-light), var(--color-dark));
+            box-shadow: 
+                0 0px 0 var(--color-light), 
+                20px 10px 0 var(--color-mid-light), 
+                -30px 25px 0 var(--color-mid-dark),
+                40px 30px 0 var(--color-light),
+                -50px 45px 0 var(--color-mid-light),
+                60px 60px 0 var(--color-dark),
+                -70px 75px 0 var(--color-light),
+                80px 90px 0 var(--color-mid-dark),
+                -90px 105px 0 var(--color-dark);
+            
+            /* Apply the falling animation */
+            animation: sandfall var(--fall-duration) steps(var(--fall-steps)) infinite;
+            animation-delay: 0s;
+        }
+        
+        /* --- Sand Particles Layer 2: Second Flow (Offset) --- */
+        .sand-flow::after {
+            content: '';
+            position: absolute;
+            top: -10%; 
+            left: 0;
+            width: 100%;
+            height: var(--sand-size); 
+            background: linear-gradient(90deg, var(--color-mid-dark), var(--color-dark), var(--color-light));
+            box-shadow: 
+                -10px 5px 0 var(--color-mid-light), 
+                30px 15px 0 var(--color-dark), 
+                -40px 35px 0 var(--color-light),
+                50px 40px 0 var(--color-mid-dark),
+                -60px 55px 0 var(--color-dark),
+                70px 70px 0 var(--color-light),
+                -80px 85px 0 var(--color-mid-light),
+                90px 100px 0 var(--color-mid-dark),
+                -100px 115px 0 var(--color-light);
+
+            /* Apply the falling animation with a time offset */
+            animation: sandfall var(--fall-duration) steps(var(--fall-steps)) infinite;
+            animation-delay: calc(var(--fall-duration) / 2); /* Half-cycle offset */
+        }
+
+        /* --- Sand Particles Layer 3: Inner Fall (Nested Element) --- */
+        .sand-inner-fall {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sand-inner-fall::before {
+             content: '';
+            position: absolute;
+            top: -10%; 
+            left: 0;
+            width: 100%;
+            height: var(--sand-size); 
+            background-color: var(--color-dark);
+            box-shadow: 
+                15px 10px 0 var(--color-mid-dark), 
+                -25px 20px 0 var(--color-light), 
+                35px 40px 0 var(--color-dark),
+                -45px 50px 0 var(--color-mid-light),
+                55px 65px 0 var(--color-mid-dark),
+                -65px 80px 0 var(--color-light),
+                75px 95px 0 var(--color-dark);
+            
+            /* Shorter duration for slight variation */
+            animation: sandfall calc(var(--fall-duration) * 0.8) steps(var(--fall-steps)) infinite;
+            animation-delay: calc(var(--fall-duration) / 4); 
+        }
+
+        /* --- Keyframe Animation for the Perpetual Fall --- */
+        @keyframes sandfall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                /* The distance the 'sand' falls before resetting */
+                transform: translateY(var(--fall-distance)); 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sandfall-container">
+        <div class="sand-flow">
+            <div class="sand-inner-fall"></div>
+        </div>
+    </div>
+
+</body>
+</html>
