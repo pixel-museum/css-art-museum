@@ -2666,5 +2666,13 @@
   "tags": ["clouds", "animation", "sky", "game", "mario"],
   "description": "A Simple theme of super mario game.",
   "date": "2025-10-26"
-}
+},
+{
+    "file": "champbyte-typewrite.html",
+    "title": "Typewriter animation",
+    "author": "Champbyte",
+    "tags": ["letters", "modern", "typewriter"],
+    "description": "An animation that mimics the effect of text being typed out on a typewriter.",
+    "date": "2025-10-28"
+  }
 ]
