@@ -1,12 +1,5 @@
+
 [
-	{
-		"file": "sharanya_wheelandhamster.html",
-		"title": "Hamster and Wheel",
-		"author": "Sharanya",
-		"tags": ["animation", "hamster", "wheel", "css"],
-		"description": "A playful animation of a hamster running on a wheel, showcasing CSS animation techniques.",
-		"date": "2022-11-13"
-	},
 	{
 		"file": "bharath-pulsingdot.html",
 		"title": "Pulsing Dot",
@@ -440,6 +433,14 @@
     "tags": ["aurora", "night-sky", "interactive", "celestial", "nature"],
     "description": "An artistic and interactive representation of the Aurora Borealis.",
     "date": "2024-08-22"
+  },
+  {
+    "file": "SiddharthSwami_ScrollTrigger_Scroll_effect.html",
+    "title": "Scroll Trigger Scroll Effect",
+    "author": "Siddharth Swami",
+    "tags": ["scroll", "animation", "GSAP", "effect"],
+    "description": "An interactive scroll-triggered animation effect using GSAP.",
+    "date": "2025-10-23"
   },
   {
     "file": "Sneha-Raindrop Ripple.html",
@@ -1001,11 +1002,6 @@
     "description":"An animated scene of an astronaut in the ocean.",
     "date":"2025-10-03"
   },
-  {
-    "file":"Commits_Grid_text.html",
-    "title":"Grid text",
-    "author":"Debosmita"
-  },
    {
     "file":"manglam-space-art.html",
     "title":"Space Art",
@@ -1297,7 +1293,10 @@
 	{
 		"file": "Apurva_sunrise.html",
 		"title": "Sunrise Over Mountains",
-		"author": "Apurva Jain"
+		"author": "Apurva Jain",
+		"tags": ["sun", "sky", "celestial", "nature", "lights"],
+		"description": "An atmospheric art piece capturing the beauty of the sun rises in the morning",
+		"date": "2023-09-15"
 	},
 	{
 		"file": "SK-tesseract.html",
@@ -1462,12 +1461,18 @@
 	{
 		"file": "Apurva_unicorn_art.html",
 		"title": "Mini Unicorn Art",
-		"author": "Apurva"
+		"author": "Apurva",
+		"tags": ["animal", "Unicorn", "character", "illustration", "feline"],
+		"description": "An artistic illustration of unicorn figure created entirely using CSS.",
+		"date": "2024-04-09"
 	},
 	{
 		"file": "Apurva_rainbow.html",
 		"title": "CSS Rainbow Art",
-		"author": "Apurva"
+		"author": "Apurva",
+		"tags": ["nature", "rain", "rainbow"],
+		"description": "An artistic rainbow figure created entirely using CSS.",
+		"date": "2024-04-09"
 	},
 	{
 		"file": "waqar-cat.html",
@@ -2152,7 +2157,10 @@
 	{
 		"file": "Commits_Grid_text.html",
 		"title": "Grid text",
-		"author": "Debosmita"
+		"author": "Debosmita",
+		"tags": ["text-effect","abstract"],
+		"description": "grid text",
+		"date": "2025-10-14"
 	},
 	{
 		"file": "manglam-space-art.html",
@@ -2326,13 +2334,7 @@
 		"file": "DIP72-CSS_mandala.html",
 		"title": "CSS Mandala",
 		"author": "Dipanjan Pradhan",
-		"tags": [
-			"animation",
-			"mandala",
-			"Geometric Art",
-			"Rotational Symmetry",
-			"Sacred Geometry"
-		],
+		"tags": ["animation","mandala","Geometric Art","Rotational Symmetry","Sacred Geometry"],
 		"description": "A mesmerizing CSS Mandala artwork featuring vibrant gradients and perfect rotational symmetry",
 		"date": "2025-10-19"
 	},
@@ -2409,6 +2411,22 @@
     "date": "2025-10-21" 
   },
   {
+    "file": "kulsum-BioluminescentCoral.html",
+    "title": "Bioluminescent Coral",
+    "author": "Kulsum",
+    "tags": ["deep-sea", "coral", "ocean", "glow", "neon"],
+    "description": "Bioluminescent coral stalks gently swaying, emitting a soft, pulsing neon glow.",
+    "date": "2025-10-23" 
+  },
+   {
+    "file": "kulsum-kinetic-sandfall.html",
+    "title": "Kinetic Sandfall",
+    "author": "Kulsum",
+    "tags": ["hourglass", "animation", "abstract", "warm"],
+    "description": "A mesmerizing, perpetual motion illusion rendered entirely with CSS. Warm, vibrant gradient particles appear to flow endlessly",
+    "date": "2025-10-23" 
+  },
+{
     "file": "SudoAnirudh-PulsatingCircle.html",
     "title": "Pulsating Circle",
     "author": "SudoAnirudh",
@@ -2439,6 +2457,14 @@
     "tags": ["flag","india","svg","css"],
     "description": "A static SVG/CSS representation of the Indian national flag.",
     "date": "2025-10-23"
+  },
+  {
+    "file": "deepak-hypnotyse-circle.",
+    "title": "Hypnotysing Circles",
+    "author": "Deepak Singh",
+    "tags": ["Circle","ring shape","svg","css"],
+    "description": "A hynotysic circles.",
+    "date": "2025-10-24"
   },
   {
     "file":"dawn-dusk.html",

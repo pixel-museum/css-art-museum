@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Arcade Machine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1e 100%);
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Arcade Cabinet */
+        .arcade-machine {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            perspective: 1000px;
+        }
+
+        /* Cabinet body with 3D perspective */
+        .cabinet {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #2d1b4e 0%, #1a0f2e 100%);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 
+                0 0 60px rgba(138, 43, 226, 0.5),
+                0 0 100px rgba(138, 43, 226, 0.3),
+                inset 0 0 50px rgba(0, 0, 0, 0.5);
+            transform: rotateX(2deg);
+        }
+
+        /* Top marquee */
+        .marquee {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 60px;
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 20px rgba(255, 0, 255, 0.8),
+                0 0 40px rgba(0, 255, 255, 0.6);
+            animation: neon-pulse 2s ease-in-out infinite;
+        }
+
+        .marquee-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            letter-spacing: 3px;
+            animation: text-glow 1.5s ease-in-out infinite;
+        }
+
+        /* Screen */
+        .screen-container {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            height: 250px;
+            background: #000;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 
+                inset 0 0 20px rgba(0, 255, 255, 0.5),
+                0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #001a1a;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        /* CRT scanline effect */
+        .screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.03) 0px,
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        /* Game - Space Invaders style */
+        .game {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Score display */
+        .score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff00;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff00;
+            animation: score-blink 2s ease-in-out infinite;
+        }
+
+        /* Player ship */
+        .player {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #00ff00;
+            animation: player-move 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px #00ff00);
+        }
+
+        @keyframes player-move {
+            0%, 100% { left: 30%; }
+            50% { left: 70%; }
+        }
+
+        /* Enemy aliens */
+        .enemy {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: #ff00ff;
+            clip-path: polygon(
+                0% 40%, 20% 40%, 20% 20%, 40% 20%, 40% 0%, 
+                60% 0%, 60% 20%, 80% 20%, 80% 40%, 100% 40%,
+                100% 60%, 80% 60%, 80% 80%, 60% 80%, 60% 100%,
+                40% 100%, 40% 80%, 20% 80%, 20% 60%, 0% 60%
+            );
+            filter: drop-shadow(0 0 5px #ff00ff);
+            animation: enemy-move 4s ease-in-out infinite;
+        }
+
+        .enemy:nth-child(2) {
+            top: 50px;
+            left: 20%;
+            animation-delay: -1s;
+        }
+
+        .enemy:nth-child(3) {
+            top: 50px;
+            left: 50%;
+            animation-delay: -2s;
+        }
+
+        .enemy:nth-child(4) {
+            top: 50px;
+            left: 80%;
+            animation-delay: -3s;
+        }
+
+        .enemy:nth-child(5) {
+            top: 90px;
+            left: 35%;
+            animation-delay: -0.5s;
+        }
+
+        .enemy:nth-child(6) {
+            top: 90px;
+            left: 65%;
+            animation-delay: -1.5s;
+        }
+
+        @keyframes enemy-move {
+            0%, 100% { transform: translateX(-20px); }
+            50% { transform: translateX(20px); }
+        }
+
+        /* Laser bullets */
+        .bullet {
+            position: absolute;
+            width: 3px;
+            height: 15px;
+            background: #ffff00;
+            box-shadow: 0 0 5px #ffff00;
+            animation: bullet-shoot 1.5s linear infinite;
+        }
+
+        .bullet:nth-of-type(1) {
+            left: 25%;
+            animation-delay: 0s;
+        }
+
+        .bullet:nth-of-type(2) {
+            left: 55%;
+            animation-delay: 0.5s;
+        }
+
+        .bullet:nth-of-type(3) {
+            left: 75%;
+            animation-delay: 1s;
+        }
+
+        @keyframes bullet-shoot {
+            0% {
+                bottom: 50px;
+                opacity: 1;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Control panel */
+        .control-panel {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 140px;
+            background: linear-gradient(to bottom, #3d2463 0%, #2d1b4e 100%);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Joystick */
+        .joystick {
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .joystick-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: #1a0f2e;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .joystick-stick {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 50px;
+            background: linear-gradient(to bottom, #ff0000 0%, #cc0000 100%);
+            border-radius: 5px;
+            animation: joystick-wiggle 2s ease-in-out infinite;
+        }
+
+        .joystick-ball {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle at 30% 30%, #ff4444, #cc0000);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes joystick-wiggle {
+            0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+            50% { transform: translateX(-50%) rotate(5deg); }
+        }
+
+        /* Action buttons */
+        .buttons {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            animation: button-press 2s ease-in-out infinite;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5555);
+            box-shadow: 
+                0 5px 0 #aa3333,
+                0 0 20px rgba(255, 107, 107, 0.5);
+            transition: all 0.1s;
+        }
+
+        .button:nth-child(2)::before {
+            background: radial-gradient(circle at 30% 30%, #4ecdc4, #3bb5ab);
+            box-shadow: 
+                0 5px 0 #2a8882,
+                0 0 20px rgba(78, 205, 196, 0.5);
+        }
+
+        @keyframes button-press {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+        }
+
+        /* Coin slot */
+        .coin-slot {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .coin-slot::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: #333;
+        }
+
+        .insert-coin {
+            position: absolute;
+            top: -25px;
+            font-size: 10px;
+            color: #ffff00;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ffff00;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        /* Speaker grills */
+        .speaker {
+            position: absolute;
+            width: 40px;
+            height: 100px;
+            background: #1a0f2e;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 5px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .speaker-left {
+            left: 10px;
+            top: 200px;
+        }
+
+        .speaker-right {
+            right: 10px;
+            top: 200px;
+        }
+
+        .speaker-hole {
+            width: 100%;
+            height: 8px;
+            background: #0d0720;
+            border-radius: 2px;
+        }
+
+        /* Cabinet base */
+        .cabinet-base {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            height: 30px;
+            background: linear-gradient(to bottom, #1a0f2e 0%, #0d0720 100%);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Neon glow effects */
+        @keyframes neon-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 20px rgba(255, 0, 255, 0.8),
+                    0 0 40px rgba(0, 255, 255, 0.6);
+            }
+            50% {
+                box-shadow: 
+                    0 0 30px rgba(255, 0, 255, 1),
+                    0 0 60px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes text-glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 1),
+                    0 0 30px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+        @keyframes score-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Decorative side lights */
+        .side-light {
+            position: absolute;
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ff00ff, #00ffff);
+            border-radius: 4px;
+            animation: side-light-pulse 1.5s ease-in-out infinite;
+        }
+
+        .side-light-left {
+            left: 5px;
+            top: 120px;
+        }
+
+        .side-light-right {
+            right: 5px;
+            top: 120px;
+        }
+
+        @keyframes side-light-pulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+                opacity: 1;
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+                opacity: 0.6;
+            }
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff00ff;
+            text-shadow: 
+                0 0 10px #ff00ff,
+                0 0 20px #ff00ff,
+                0 0 30px #00ffff,
+                2px 2px 0 #000;
+            letter-spacing: 3px;
+            animation: title-glow 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes title-glow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #00ffff,
+                    2px 2px 0 #000;
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px #ff00ff,
+                    0 0 40px #ff00ff,
+                    0 0 60px #00ffff,
+                    2px 2px 0 #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="arcade-machine">
+        <div class="cabinet">
+            <!-- Marquee -->
+            <div class="marquee">
+                <div class="marquee-text">ARCADE</div>
+            </div>
+
+            <!-- Side lights -->
+            <div class="side-light side-light-left"></div>
+            <div class="side-light side-light-right"></div>
+
+            <!-- Screen -->
+            <div class="screen-container">
+                <div class="screen">
+                    <div class="game">
+                        <div class="score">SCORE: 9999</div>
+                        
+                        <!-- Enemies -->
+                        <div class="enemy"></div>
+                        <div class="enemy"></div>
+                        <div class="enemy"></div>
+                        <div class="enemy"></div>
+                        <div class="enemy"></div>
+                        <div class="enemy"></div>
+
+                        <!-- Bullets -->
+                        <div class="bullet"></div>
+                        <div class="bullet"></div>
+                        <div class="bullet"></div>
+
+                        <!-- Player -->
+                        <div class="player"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speakers -->
+            <div class="speaker speaker-left">
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+            </div>
+            <div class="speaker speaker-right">
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <!-- Joystick -->
+                <div class="joystick">
+                    <div class="joystick-base"></div>
+                    <div class="joystick-stick">
+                        <div class="joystick-ball"></div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="buttons">
+                    <div class="button"></div>
+                    <div class="button"></div>
+                </div>
+
+                <!-- Coin Slot -->
+                <div class="coin-slot">
+                    <div class="insert-coin">INSERT COIN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cabinet base -->
+        <div class="cabinet-base"></div>
+
+        <!-- Title -->
+        <div class="title">RETRO ARCADE</div>
+    </div>
+</body>
+</html>
