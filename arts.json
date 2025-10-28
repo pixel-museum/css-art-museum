@@ -1245,6 +1245,13 @@
     "tags": ["animation", "retro", "gaming", "3D", "neon", "interactive"],
     "description": "A nostalgic retro arcade cabinet with animated Space Invaders game, moving joystick, glowing buttons, CRT scanlines, and neon effects. Pure CSS 80s gaming tribute.",
     "date": "2024-10-23"
+  },{
+    "file": "sans_random.html",
+    "title": "Animated CSS Coffee Cup",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "coffee", "cute", "3D", "interactive", "kawaii"],
+    "description": "A delightful animated coffee cup with a smiling face, rising steam effects, floating animation, plate, and sparkles. Features blinking eyes, wiggle interaction on hover, and smooth CSS animations. Pure CSS caffeine art.",
+    "date": "2024-10-28"
   }
 ]
 
