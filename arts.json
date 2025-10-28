@@ -2463,6 +2463,14 @@
   "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
   "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
   "date": "2025-10-23"
+},
+{
+  "file":"sravanth-pikachu.html",
+  "title":"Pikachu Animation",
+  "author":"Sravanth Varri",
+  "tags":["animation","pokemon","pikachu","css"],
+  "description":"An animated Pikachu character using pure CSS, showcasing its iconic features and movements.",
+  "date":"2025-10-24"
 }
 ]
 
