@@ -63,8 +63,8 @@ main {
 /* Toggle Switch Styles */
 .break-restore-toggle {
   position: fixed;
-  top: 100px;
-  right: 20px;
+  top: 100px !important;
+  right: 40px !important;
   z-index: 10000;
   animation: toggleEntrance 0.8s ease-out 0.5s both;
 }
@@ -579,7 +579,7 @@ body {
   background-attachment: scroll;
   color: var(--primary-text);
   line-height: 1.6;
-  padding: 100px 20px 40px;
+  padding: 100px 0 0;
   min-height: 100vh;
   transition: all 0.3s ease;
   position: relative;
@@ -725,7 +725,7 @@ header h1::after {
 
 .random-artwork-section .section-title {
   text-align: center;
-  margin-bottom: 2rem;
+  padding-bottom: 3rem;
   font-size: 2rem;
   color: var(--text-primary);
 }
@@ -741,7 +741,7 @@ header h1::after {
 
 .random-artwork-section .art-card {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0;
 }
 
@@ -750,7 +750,6 @@ header h1::after {
   width: 100%;
   height: 300px;
   border: none;
-  border-radius: 8px;
 }
 
 /* Responsive design */
@@ -779,7 +778,7 @@ header h1::after {
 .nav-buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 /* Style the Star button in the navigation */
@@ -798,7 +797,7 @@ header h1::after {
   font-size: clamp(1.25rem, 2.2vw, 1.6rem);
   font-weight: 600;
   text-align: center;
-  margin: 10px auto 18px;
+  margin: 10px auto 30px;
   letter-spacing: 0.02em;
   color: var(--primary-text);
   background: linear-gradient(135deg,
@@ -909,10 +908,10 @@ header h1::after {
 /* Sophisticated Gallery Layout with Visual Appeal */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
   max-width: 1400px;
-  margin: 0 auto 80px;
+  margin: 0 80px 20px;
   padding: 0 20px;
   perspective: 1000px;
   position: relative;
@@ -922,8 +921,8 @@ header h1::after {
   content: "";
   position: absolute;
   top: -40px;
-  left: -40px;
-  right: -40px;
+  left: -60px;
+  right: -60px;
   bottom: -40px;
   background: linear-gradient(45deg,
       transparent 30%,
@@ -1192,7 +1191,6 @@ header h1::after {
   width: 100%;
   height: 250px;
   border: none;
-  border-radius: 12px;
   scrollbar-width: none;
   box-shadow: 0 6px 16px var(--shadow-light), 0 2px 4px var(--shadow-medium);
   transition: all 0.4s ease;
@@ -1240,7 +1238,6 @@ header h1::after {
 
 .art-card p {
   text-align: center;
-  margin-top: 16px;
   font-weight: 500;
   font-size: 0.9rem;
   color: var(--secondary-text);
@@ -1250,7 +1247,6 @@ header h1::after {
   background: linear-gradient(135deg,
       rgba(108, 99, 255, 0.05),
       rgba(212, 175, 55, 0.05));
-  border-radius: 10px;
   border: 1px solid rgba(108, 99, 255, 0.1);
   position: relative;
   transition: all 0.3s ease;
@@ -1783,25 +1779,23 @@ header h1::after {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0 1.25rem;
+  padding: 0 8px;
   background: white;
   color: var(--accent-color);
-  border: 1px solid var(--accent-color);
-  border-radius: 10px;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  height: 2.5rem;
-  width: 83%;
+  height: 100%;
   white-space: nowrap;
-  margin: 0 auto;
 }
 
 .subscribe-btn:hover {
   background: var(--accent-color);
   color: white;
-  transform: translateY(-1px);
 }
 
 .subscribe-btn svg {
@@ -2279,8 +2273,7 @@ header h1::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-top: 5px;
-  padding: 0 4px 4px;
+  padding: 10px;
   align-items: start;
   /* This ensures both start at the same vertical position */
 }
@@ -2292,6 +2285,7 @@ header h1::after {
   align-items: center;
   width: 100%;
   height: 45px;
+  gap: 5px;
   /* Fixed height for both */
   border-radius: 10px;
   border: 1px solid var(--border-color);
@@ -2505,6 +2499,7 @@ header h1::after {
   .gallery {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     max-width: 1200px;
+    margin: 0 auto 20px;
   }
 
   .footer-container {
@@ -3310,7 +3305,7 @@ header h1::after {
   gap: 1rem;
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  padding: 40px 20px 0;
+  padding: 40px 0 0;
   margin-top: 50px;
 }
 
@@ -3370,7 +3365,7 @@ header h1::after {
   height: 40px;
   border-radius: 50%;
   background: white;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s ease;
 }
 
 .footer-social a:hover {
@@ -3385,6 +3380,7 @@ header h1::after {
   color: var(--footer-link);
   text-decoration: none;
   transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .footer-section a:hover {
@@ -3394,8 +3390,7 @@ header h1::after {
 /* Newsletter Form */
 .footer-newsletter form {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
 }
 
 .footer-newsletter input {
@@ -3403,7 +3398,9 @@ header h1::after {
   font-size: 1rem;
   outline: none;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 180px;
 }
 
 .footer-newsletter input:focus {
@@ -3446,7 +3443,7 @@ header h1::after {
 .footer-bottom {
   width: 100%;
   text-align: center;
-  padding: 15px;
+  padding: 15px 0;
   margin-top: 30px;
   background: var(--footer-bottom-bg);
   font-size: 0.9rem;
