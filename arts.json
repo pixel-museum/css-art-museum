@@ -2483,12 +2483,101 @@
     "date": "2025-10-23"
   },
   {
+    "file": "Sanskriti-arcademachine.html",
+    "title": "Retro Arcade Machine",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "retro", "gaming", "3D", "neon", "interactive"],
+    "description": "A nostalgic retro arcade cabinet with animated Space Invaders game, moving joystick, glowing buttons, CRT scanlines, and neon effects. Pure CSS 80s gaming tribute.",
+    "date": "2024-10-23"
+  },
+  {
+    "file": "sans_random.html",
+    "title": "Animated CSS Coffee Cup",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "coffee", "cute", "3D", "interactive", "kawaii"],
+    "description": "A delightful animated coffee cup with a smiling face, rising steam effects, floating animation, plate, and sparkles. Features blinking eyes, wiggle interaction on hover, and smooth CSS animations. Pure CSS caffeine art.",
+    "date": "2024-10-28"
+  },
+  {
   "file": "lakshith-dna.html",
   "title": "3D DNA Helix Animation",
   "author": "Lakshith",
   "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
   "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
   "date": "2025-10-23"
+  },
+  {
+    "file": "AasthaRai-Dynamicthemesystem.html",
+    "title": "Dynamic Theme System",
+    "author": "Aastha Rai",
+    "tags": ["animation", "theme", "dark-mode", "light-mode"],
+    "description": "A dynamic theme system that smoothly transitions between light and dark modes with animated effects.",
+    "date": "2025-10-24"
+  } ,
+  {
+    "file": "css_roaster_machine.html",
+    "title": "CSS  Design Roaster Machine",
+    "author": "Sandeep",
+    "tags": ["animation"],
+    "description": "Roaster Machine Design",
+    "date": "2025-10-24"
+  },
+
+{
+  "file": "adrika-floating-island.html",
+  "title": "Floating Island Dream Scene",
+  "author": "Adrika Mandal",
+  "tags": ["floating", "island", "sky", "dream", "animation"],
+  "description": "A dreamy CSS art scene of floating islands gently bobbing in the sky with clouds, sparkles, and soft shadows.",
+  "date": "2025-10-24"
+},
+{
+  "file": "SudoAnirudh-pulsingdot.html",
+  "title": "Pulsing Dot",
+  "author": "SudoAnirudh",
+  "tags": ["animation", "dot", "pulse", "simple", "glow"],
+  "description": "A simple dot that pulses with a soft cyan glow.",
+  "date": "2025-10-24"
+},
+{
+  "file": "tsunami-thunder-glory.html",
+  "title": "Tsunami & Thunder Glory",
+  "author": "Adrika Mandal",
+  "tags": ["animation", "tsunami", "thunder", "storm", "waves"],
+  "description": "A dramatic CSS art scene of a powerful tsunami with thunder and lightning effects.",
+  "date": "2025-10-24"
+},
+  {
+  "file": "Cat_eye_movement_along_with _cursor.html",
+  "title": "Cat_eye_movement_along_with _cursor",
+  "author": "Adrika Mandal",
+  "tags": ["cat", "cute", "nature", "animation", "eyes"],
+  "description": "A cute CSS art of a cat whose eyes move along the mouse movement.",
+  "date": "2025-10-25"  
+},
+ {
+  "file": "shooting-star-animation.html",
+  "title": "Shooting Star Animation",
+  "author": "Adrika Mandal",
+  "tags": ["stars", "animation", "sky", "night", "shooting star"],
+  "description": "A beautiful CSS animation of shooting stars streaking across the night sky.",
+  "date": "2025-10-25"
+},
+{
+  "file": "holi-themed-webpage.html",
+  "title": "Holi Themed Webpage",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "A vibrant Holi-themed webpage with colorful splashes and animated effects built with HTML and CSS.",
+  "date": "2025-10-25"
+},
+{
+  "file": "holi-themed-webpage-2.html",
+  "title": "Holi Themed Webpage 2",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "Another Holi-themed creative webpage with animated color splashes and festive mood using HTML & CSS.",
+  "date": "2025-10-25"
 },
 {
   "file":"sravanth-pikachu.html",
@@ -2497,10 +2586,53 @@
   "tags":["animation","pokemon","pikachu","css"],
   "description":"An animated Pikachu character using pure CSS, showcasing its iconic features and movements.",
   "date":"2025-10-24"
+},
+  {
+  "file": "shooting-star-animation.html",
+  "title": "Shooting Star Animation",
+  "author": "Adrika Mandal",
+  "tags": ["stars", "animation", "sky", "night", "shooting star"],
+  "description": "A beautiful CSS animation of shooting stars streaking across the night sky.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage.html",
+  "title": "Holi Themed Webpage",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "A vibrant Holi-themed webpage with colorful splashes and animated effects built with HTML and CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "holi-themed-webpage-2.html",
+  "title": "Holi Themed Webpage 2",
+  "author": "Adrika Mandal",
+  "tags": ["holi", "festival", "colors", "animation", "celebration"],
+  "description": "Another Holi-themed creative webpage with animated color splashes and festive mood using HTML & CSS.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses.html",
+  "title": "Solar and Lunar Eclipses",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "CSS animation showing the solar and lunar eclipse with smooth transitions of sun and moon.",
+  "date": "2025-10-25"
+}
+,{
+  "file": "solar-and-lunar-eclipses-2.html",
+  "title": "Solar and Lunar Eclipses 2",
+  "author": "Adrika Mandal",
+  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
+  "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
+  "date": "2025-10-25"
+},
+{
+  "file": "Super_MarioTheme.html",
+  "title": "Mario gameplay background",
+  "author": "Mehren Ansari",
+  "tags": ["clouds", "animation", "sky", "game", "mario"],
+  "description": "A Simple theme of super mario game.",
+  "date": "2025-10-26"
 }
 ]
-
-
-
-
-
