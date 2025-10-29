@@ -1200,15 +1200,7 @@
     "author":"Yash Savalkar",
     "tags":["animation","mail Button","mail","button"],
     "description":"The animated CSS mail button creates an envelope animation where the envelope opens and reveals its content on hover.",
-    "date":"2025-10-20"
-  },
-  {
-    "file":"yashsavalkar321-secretCode.html",
-    "title":"Glowing Dot Effect",
-    "author":"Yash Savalkar",
-    "tags":["Glowing","Dot Effect","glow","effect"],
-    "description":"The glowing dot effect creates a card component with a grid of tiny dots as its background. The dots expand as users hover over specific sections of the card, and this makes for an interesting effect.",
-    "date":"2025-10-24"
+    "date":"2025-10-20"  
   },
  {
     "file": "amit-Morphing Butterfly Wings.html",
@@ -2491,6 +2483,30 @@
     "date": "2025-10-23"
   },
   {
+    "file": "Sanskriti-arcademachine.html",
+    "title": "Retro Arcade Machine",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "retro", "gaming", "3D", "neon", "interactive"],
+    "description": "A nostalgic retro arcade cabinet with animated Space Invaders game, moving joystick, glowing buttons, CRT scanlines, and neon effects. Pure CSS 80s gaming tribute.",
+    "date": "2024-10-23"
+  },
+  {
+    "file": "sans_random.html",
+    "title": "Animated CSS Coffee Cup",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "coffee", "cute", "3D", "interactive", "kawaii"],
+    "description": "A delightful animated coffee cup with a smiling face, rising steam effects, floating animation, plate, and sparkles. Features blinking eyes, wiggle interaction on hover, and smooth CSS animations. Pure CSS caffeine art.",
+    "date": "2024-10-28"
+  },
+  {
+  "file": "lakshith-dna.html",
+  "title": "3D DNA Helix Animation",
+  "author": "Lakshith",
+  "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
+  "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
+  "date": "2025-10-23"
+  },
+  {
     "file": "AasthaRai-Dynamicthemesystem.html",
     "title": "Dynamic Theme System",
     "author": "Aastha Rai",
@@ -2564,62 +2580,14 @@
   "date": "2025-10-25"
 },
 {
-  "file": "solar-and-lunar-eclipses.html",
-  "title": "Solar and Lunar Eclipses",
-  "author": "Adrika Mandal",
-  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
-  "description": "CSS animation showing the solar and lunar eclipse with smooth transitions of sun and moon.",
-  "date": "2025-10-25"
-},
-{
-  "file": "solar-and-lunar-eclipses-2.html",
-  "title": "Solar and Lunar Eclipses 2",
-  "author": "Adrika Mandal",
-  "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
-  "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
-  "date": "2025-10-25"
-},
-{
-  "file": "ANAGHAKTP-BouncingLoader.html",
-  "title": "Bouncing Loader",
-  "author": "ANAGHAKTP",
-  "tags": ["animation", "loader", "dots", "simple"],
-  "description": "A simple and clean bouncing loader animation.",
-  "date": "2025-10-25"
+  "file":"sravanth-pikachu.html",
+  "title":"Pikachu Animation",
+  "author":"Sravanth Varri",
+  "tags":["animation","pokemon","pikachu","css"],
+  "description":"An animated Pikachu character using pure CSS, showcasing its iconic features and movements.",
+  "date":"2025-10-24"
 },
   {
-  "file": "crazy-coder-neel_aurora-borealis.html",
-  "title": "Aurora Borealis / Northern Lights",
-  "author": "crazy-coder-neel",
-  "tags": ["aurora", "northern-lights", "animation", "css-effects", "gradients", "night-sky", "celestial", "particles", "interactive"],
-  "description": "A mesmerizing pure CSS animation of the Aurora Borealis with multiple layered gradients, interactive controls, and stunning visual effects that recreate the magical dance of the Northern Lights.",
-  "date": "2025-10-25"
-},
-{
-  "file": "crazy-coder-neel_volcano.html",
-  "title": "Volcanic Eruption / Lava Flow Animation",
-  "author": "crazy-coder-neel",
-  "tags": ["volcano", "eruption", "lava", "animation", "css-effects", "particles", "fire", "smoke", "natural-phenomenon", "cinematic"],
-  "description": "A stunning pure CSS animation of a volcanic eruption with realistic lava flows, particle effects, smoke, ash clouds, and dynamic sky transitions. Features multiple layered animations for cinematic depth and realism.",
-  "date": "2025-10-25"
-},
-{
-  "file": "crazy-coder-neel_Lightning-storm.html",
-  "title": "Lightning Storm Animation",
-  "author": "crazy-coder-neel",
-  "tags": ["rain", "lightning", "storm", "animation", "css-effects", "particles","cinematic"],
-  "description": "A stunning pure CSS animation of a Lightning Storm with realistic rain , lightning , clouds, and dynamic sky transitions.",
-  "date": "2025-10-26"
-}
-,{
-  "file": "Cat_eye_movement_along_with _cursor.html",
-  "title": "Cat_eye_movement_along_with _cursor",
-  "author": "Mehren Ansari",
-  "tags": ["cat", "cute", "nature", "animation", "eyes"],
-  "description": "A cute CSS art of a cat whose eyes move along the mouse movement.",
-  "date": "2025-10-25"  
-}
-,{
   "file": "shooting-star-animation.html",
   "title": "Shooting Star Animation",
   "author": "Adrika Mandal",
@@ -2658,8 +2626,8 @@
   "tags": ["eclipse", "sun", "moon", "animation", "celestial"],
   "description": "Another creative CSS animation representing solar and lunar eclipses with smooth motion effects.",
   "date": "2025-10-25"
-}
-,{
+},
+{
   "file": "Super_MarioTheme.html",
   "title": "Mario gameplay background",
   "author": "Mehren Ansari",
@@ -2682,5 +2650,14 @@
   "tags": ["cup", "coffee", "hot", "animation", "steam"],
   "description": "A simple cup of coffee.",
   "date": "2025-10-28"
-}
+},
+{
+    "file": "champbyte-typewrite.html",
+    "title": "Typewriter animation",
+    "author": "Champbyte",
+    "tags": ["letters", "modern", "typewriter"],
+    "description": "An animation that mimics the effect of text being typed out on a typewriter.",
+    "date": "2025-10-28"
+  }
 ]
+
