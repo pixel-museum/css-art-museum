@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,14 +42,37 @@
             clip-path: ellipse(50% 100% at 50% 100%);
         }
 
-        .layer:nth-child(1) .petal:nth-child(1) { transform: rotate(0deg); }
-        .layer:nth-child(1) .petal:nth-child(2) { transform: rotate(45deg); }
-        .layer:nth-child(1) .petal:nth-child(3) { transform: rotate(90deg); }
-        .layer:nth-child(1) .petal:nth-child(4) { transform: rotate(135deg); }
-        .layer:nth-child(1) .petal:nth-child(5) { transform: rotate(180deg); }
-        .layer:nth-child(1) .petal:nth-child(6) { transform: rotate(225deg); }
-        .layer:nth-child(1) .petal:nth-child(7) { transform: rotate(270deg); }
-        .layer:nth-child(1) .petal:nth-child(8) { transform: rotate(315deg); }
+        .layer:nth-child(1) .petal:nth-child(1) {
+            transform: rotate(0deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(3) {
+            transform: rotate(90deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(4) {
+            transform: rotate(135deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(5) {
+            transform: rotate(180deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(6) {
+            transform: rotate(225deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(7) {
+            transform: rotate(270deg);
+        }
+
+        .layer:nth-child(1) .petal:nth-child(8) {
+            transform: rotate(315deg);
+        }
 
         .inner-petal {
             position: absolute;
@@ -60,14 +84,37 @@
             clip-path: ellipse(50% 100% at 50% 100%);
         }
 
-        .layer:nth-child(2) .inner-petal:nth-child(1) { transform: rotate(22.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(2) { transform: rotate(67.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(3) { transform: rotate(112.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(4) { transform: rotate(157.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(5) { transform: rotate(202.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(6) { transform: rotate(247.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(7) { transform: rotate(292.5deg); }
-        .layer:nth-child(2) .inner-petal:nth-child(8) { transform: rotate(337.5deg); }
+        .layer:nth-child(2) .inner-petal:nth-child(1) {
+            transform: rotate(22.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(2) {
+            transform: rotate(67.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(3) {
+            transform: rotate(112.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(4) {
+            transform: rotate(157.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(5) {
+            transform: rotate(202.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(6) {
+            transform: rotate(247.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(7) {
+            transform: rotate(292.5deg);
+        }
+
+        .layer:nth-child(2) .inner-petal:nth-child(8) {
+            transform: rotate(337.5deg);
+        }
 
         .center {
             position: absolute;
@@ -82,8 +129,13 @@
         }
 
         @keyframes rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         .layer:nth-child(1) {
@@ -95,6 +147,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="mandala">
         <div class="layer">
@@ -107,6 +160,7 @@
             <div class="petal"></div>
             <div class="petal"></div>
         </div>
+
         <div class="layer">
             <div class="inner-petal"></div>
             <div class="inner-petal"></div>
@@ -117,7 +171,9 @@
             <div class="inner-petal"></div>
             <div class="inner-petal"></div>
         </div>
+        
         <div class="center"></div>
     </div>
 </body>
+
 </html>

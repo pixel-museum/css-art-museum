@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +31,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotateX(0deg); }
-            50% { transform: translateY(-20px) rotateX(10deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotateX(10deg);
+            }
         }
 
         .orb {
@@ -87,33 +95,63 @@
         }
 
         @keyframes rotateRing1 {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(0deg); }
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(0deg);
+            }
         }
 
         @keyframes rotateRing2 {
-            0% { transform: rotateX(60deg) rotateY(0deg); }
-            100% { transform: rotateX(60deg) rotateY(360deg); }
+            0% {
+                transform: rotateX(60deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(60deg) rotateY(360deg);
+            }
         }
 
         @keyframes rotateRing3 {
-            0% { transform: rotateX(0deg) rotateZ(0deg); }
-            100% { transform: rotateX(0deg) rotateZ(360deg); }
+            0% {
+                transform: rotateX(0deg) rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotateX(0deg) rotateZ(360deg);
+            }
         }
 
         @keyframes rotateRing4 {
-            0% { transform: rotateY(45deg) rotateX(0deg); }
-            100% { transform: rotateY(45deg) rotateX(360deg); }
+            0% {
+                transform: rotateY(45deg) rotateX(0deg);
+            }
+
+            100% {
+                transform: rotateY(45deg) rotateX(360deg);
+            }
         }
 
         @keyframes rotateRing5 {
-            0% { transform: rotateZ(30deg) rotateY(0deg); }
-            100% { transform: rotateZ(30deg) rotateY(360deg); }
+            0% {
+                transform: rotateZ(30deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateZ(30deg) rotateY(360deg);
+            }
         }
 
         @keyframes rotateRing6 {
-            0% { transform: rotateX(120deg) rotateZ(0deg); }
-            100% { transform: rotateX(120deg) rotateZ(360deg); }
+            0% {
+                transform: rotateX(120deg) rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotateX(120deg) rotateZ(360deg);
+            }
         }
 
         .core {
@@ -123,27 +161,30 @@
             width: 80px;
             height: 80px;
             transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(100,200,255,0.6) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(100, 200, 255, 0.6) 50%, transparent 100%);
             border-radius: 50%;
             animation: coreGlow 2s ease-in-out infinite;
-            box-shadow: 
-                0 0 40px rgba(255,255,255,0.6),
-                0 0 80px rgba(100,200,255,0.4),
-                inset 0 0 30px rgba(255,255,255,0.3);
+            box-shadow:
+                0 0 40px rgba(255, 255, 255, 0.6),
+                0 0 80px rgba(100, 200, 255, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.3);
         }
 
         @keyframes coreGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 40px rgba(255,255,255,0.6),
-                    0 0 80px rgba(100,200,255,0.4),
-                    inset 0 0 30px rgba(255,255,255,0.3);
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 40px rgba(255, 255, 255, 0.6),
+                    0 0 80px rgba(100, 200, 255, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.3);
             }
-            50% { 
-                box-shadow: 
-                    0 0 60px rgba(255,255,255,0.8),
-                    0 0 120px rgba(100,200,255,0.6),
-                    inset 0 0 40px rgba(255,255,255,0.5);
+
+            50% {
+                box-shadow:
+                    0 0 60px rgba(255, 255, 255, 0.8),
+                    0 0 120px rgba(100, 200, 255, 0.6),
+                    inset 0 0 40px rgba(255, 255, 255, 0.5);
             }
         }
 
@@ -160,30 +201,94 @@
             background: white;
             border-radius: 50%;
             animation: particleFloat 4s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes particleFloat {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translate(0, 0) scale(1);
                 opacity: 0;
             }
-            10% { opacity: 1; }
-            50% { 
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
                 transform: translate(var(--tx), var(--ty)) scale(1.5);
                 opacity: 1;
             }
-            90% { opacity: 1; }
+
+            90% {
+                opacity: 1;
+            }
         }
 
-        .particle:nth-child(1) { top: 50%; left: 50%; --tx: 100px; --ty: -80px; animation-delay: 0s; }
-        .particle:nth-child(2) { top: 50%; left: 50%; --tx: -90px; --ty: 70px; animation-delay: 0.5s; }
-        .particle:nth-child(3) { top: 50%; left: 50%; --tx: 80px; --ty: 90px; animation-delay: 1s; }
-        .particle:nth-child(4) { top: 50%; left: 50%; --tx: -100px; --ty: -60px; animation-delay: 1.5s; }
-        .particle:nth-child(5) { top: 50%; left: 50%; --tx: 70px; --ty: -100px; animation-delay: 2s; }
-        .particle:nth-child(6) { top: 50%; left: 50%; --tx: -80px; --ty: 80px; animation-delay: 2.5s; }
-        .particle:nth-child(7) { top: 50%; left: 50%; --tx: 90px; --ty: 60px; animation-delay: 3s; }
-        .particle:nth-child(8) { top: 50%; left: 50%; --tx: -70px; --ty: -90px; animation-delay: 3.5s; }
+        .particle:nth-child(1) {
+            top: 50%;
+            left: 50%;
+            --tx: 100px;
+            --ty: -80px;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            top: 50%;
+            left: 50%;
+            --tx: -90px;
+            --ty: 70px;
+            animation-delay: 0.5s;
+        }
+
+        .particle:nth-child(3) {
+            top: 50%;
+            left: 50%;
+            --tx: 80px;
+            --ty: 90px;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(4) {
+            top: 50%;
+            left: 50%;
+            --tx: -100px;
+            --ty: -60px;
+            animation-delay: 1.5s;
+        }
+
+        .particle:nth-child(5) {
+            top: 50%;
+            left: 50%;
+            --tx: 70px;
+            --ty: -100px;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(6) {
+            top: 50%;
+            left: 50%;
+            --tx: -80px;
+            --ty: 80px;
+            animation-delay: 2.5s;
+        }
+
+        .particle:nth-child(7) {
+            top: 50%;
+            left: 50%;
+            --tx: 90px;
+            --ty: 60px;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(8) {
+            top: 50%;
+            left: 50%;
+            --tx: -70px;
+            --ty: -90px;
+            animation-delay: 3.5s;
+        }
 
         .glow-effect {
             position: absolute;
@@ -192,14 +297,23 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(100,150,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
             animation: glowPulse 4s ease-in-out infinite;
             pointer-events: none;
         }
 
         @keyframes glowPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
         }
 
         .container:hover .ring {
@@ -207,6 +321,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="glow-effect"></div>
     <div class="container">
@@ -231,4 +346,5 @@
         </div>
     </div>
 </body>
+
 </html>

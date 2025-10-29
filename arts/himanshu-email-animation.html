@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -192,18 +193,24 @@
 
         /* Animations */
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
         }
 
         @keyframes flap {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotateX(0deg);
             }
+
             50% {
                 transform: rotateX(-10deg);
             }
@@ -214,6 +221,7 @@
                 opacity: 0;
                 transform: translateX(-20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateX(0);
@@ -221,19 +229,25 @@
         }
 
         @keyframes heartbeat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(-45deg) scale(1);
             }
+
             50% {
                 transform: rotate(-45deg) scale(1.2);
             }
         }
 
         @keyframes sparkle {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0;
                 transform: scale(0);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1);
@@ -308,12 +322,15 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
@@ -321,6 +338,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Floating particles -->
     <div class="particle"></div>
@@ -347,5 +365,7 @@
             </div>
         </div>
     </div>
+    
 </body>
+
 </html>

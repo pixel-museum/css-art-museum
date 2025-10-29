@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Animated Indian Flag</title>
@@ -17,9 +18,17 @@
     }
 
     @keyframes tricolor {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .flag-container {
@@ -44,13 +53,31 @@
     }
 
     @keyframes moveOrange {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    .white { background-color: #FFFFFF; flex: 1; display: flex; justify-content: center; align-items: center; }
-    .green { background-color: #138808; flex: 1; }
+    .white {
+      background-color: #FFFFFF;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .green {
+      background-color: #138808;
+      flex: 1;
+    }
 
     /* Ashoka Chakra rotation */
     .chakra {
@@ -60,16 +87,36 @@
     }
 
     @keyframes rotateChakra {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
-    svg { width: 100%; height: 100%; }
-    .circle { fill: none; stroke: #000080; stroke-width: 2; }
-    .spoke { stroke: #000080; stroke-width: 1.5; transform-origin: center; }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .circle {
+      fill: none;
+      stroke: #000080;
+      stroke-width: 2;
+    }
+
+    .spoke {
+      stroke: #000080;
+      stroke-width: 1.5;
+      transform-origin: center;
+    }
   </style>
 </head>
+
 <body>
+
   <div class="flag-container">
     <div class="saffron"></div>
 
@@ -111,5 +158,7 @@
 
     <div class="green"></div>
   </div>
+  
 </body>
+
 </html>

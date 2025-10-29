@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,19 +55,61 @@
             box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
         }
 
-        .feather:nth-child(1) { transform: translateX(-50%) rotate(-40deg); animation-delay: 0s; }
-        .feather:nth-child(2) { transform: translateX(-50%) rotate(-30deg); animation-delay: 0.2s; }
-        .feather:nth-child(3) { transform: translateX(-50%) rotate(-20deg); animation-delay: 0.4s; }
-        .feather:nth-child(4) { transform: translateX(-50%) rotate(-10deg); animation-delay: 0.6s; }
-        .feather:nth-child(5) { transform: translateX(-50%) rotate(0deg); animation-delay: 0.8s; }
-        .feather:nth-child(6) { transform: translateX(-50%) rotate(10deg); animation-delay: 1s; }
-        .feather:nth-child(7) { transform: translateX(-50%) rotate(20deg); animation-delay: 1.2s; }
-        .feather:nth-child(8) { transform: translateX(-50%) rotate(30deg); animation-delay: 1.4s; }
-        .feather:nth-child(9) { transform: translateX(-50%) rotate(40deg); animation-delay: 1.6s; }
+        .feather:nth-child(1) {
+            transform: translateX(-50%) rotate(-40deg);
+            animation-delay: 0s;
+        }
+
+        .feather:nth-child(2) {
+            transform: translateX(-50%) rotate(-30deg);
+            animation-delay: 0.2s;
+        }
+
+        .feather:nth-child(3) {
+            transform: translateX(-50%) rotate(-20deg);
+            animation-delay: 0.4s;
+        }
+
+        .feather:nth-child(4) {
+            transform: translateX(-50%) rotate(-10deg);
+            animation-delay: 0.6s;
+        }
+
+        .feather:nth-child(5) {
+            transform: translateX(-50%) rotate(0deg);
+            animation-delay: 0.8s;
+        }
+
+        .feather:nth-child(6) {
+            transform: translateX(-50%) rotate(10deg);
+            animation-delay: 1s;
+        }
+
+        .feather:nth-child(7) {
+            transform: translateX(-50%) rotate(20deg);
+            animation-delay: 1.2s;
+        }
+
+        .feather:nth-child(8) {
+            transform: translateX(-50%) rotate(30deg);
+            animation-delay: 1.4s;
+        }
+
+        .feather:nth-child(9) {
+            transform: translateX(-50%) rotate(40deg);
+            animation-delay: 1.6s;
+        }
 
         @keyframes featherWave {
-            0%, 100% { transform: translateX(-50%) rotate(var(--rotation)) scale(1); }
-            50% { transform: translateX(-50%) rotate(var(--rotation)) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(var(--rotation)) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) rotate(var(--rotation)) scale(1.05);
+            }
         }
 
         /* Peacock Body */
@@ -84,8 +127,15 @@
         }
 
         @keyframes bodyBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
         }
 
         /* Peacock Head */
@@ -102,9 +152,19 @@
         }
 
         @keyframes headTilt {
-            0%, 100% { transform: translateX(-50%) rotate(0deg); }
-            25% { transform: translateX(-50%) rotate(-5deg); }
-            75% { transform: translateX(-50%) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-50%) rotate(-5deg);
+            }
+
+            75% {
+                transform: translateX(-50%) rotate(5deg);
+            }
         }
 
         /* Crown/Crest */
@@ -152,8 +212,15 @@
         }
 
         @keyframes crownPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.3); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.3);
+            }
         }
 
         /* Eye */
@@ -169,8 +236,17 @@
         }
 
         @keyframes blink {
-            0%, 48%, 52%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(0.1); }
+
+            0%,
+            48%,
+            52%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(0.1);
+            }
         }
 
         /* Beak */
@@ -214,7 +290,9 @@
         }
     </style>
 </head>
+
 <body>
+    
     <div class="peacock-container">
         <!-- Feathers -->
         <div class="feather" style="--rotation: -40deg;"></div>
@@ -226,7 +304,7 @@
         <div class="feather" style="--rotation: 20deg;"></div>
         <div class="feather" style="--rotation: 30deg;"></div>
         <div class="feather" style="--rotation: 40deg;"></div>
-        
+
         <!-- Body -->
         <div class="body">
             <div class="head">
@@ -239,8 +317,10 @@
             <div class="leg leg-left"></div>
             <div class="leg leg-right"></div>
         </div>
-        
+
         <div class="ground"></div>
     </div>
+
 </body>
+
 </html>

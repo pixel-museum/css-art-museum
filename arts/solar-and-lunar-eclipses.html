@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,7 @@
             --earth-color: #1e90ff;
             --shadow-color: #2c003e;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--space-dark), var(--space-blue));
             min-height: 100vh;
@@ -24,11 +25,11 @@
             overflow-x: hidden;
             color: white;
         }
-        
+
         .container {
             max-width: 1400px;
         }
-        
+
         .header-section {
             background: rgba(11, 15, 31, 0.7);
             backdrop-filter: blur(10px);
@@ -39,7 +40,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .scene-container {
             position: relative;
             height: 600px;
@@ -50,7 +51,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .stars {
             position: absolute;
             top: 0;
@@ -59,13 +60,13 @@
             height: 100%;
             z-index: 1;
         }
-        
+
         .star {
             position: absolute;
             background-color: var(--star-color);
             border-radius: 50%;
         }
-        
+
         .solar-system {
             position: absolute;
             top: 50%;
@@ -75,7 +76,7 @@
             height: 80%;
             z-index: 10;
         }
-        
+
         .sun {
             position: absolute;
             top: 50%;
@@ -89,7 +90,7 @@
             z-index: 15;
             transition: all 0.5s ease;
         }
-        
+
         .earth-orbit {
             position: absolute;
             top: 50%;
@@ -101,7 +102,7 @@
             border-radius: 50%;
             animation: orbit 40s linear infinite;
         }
-        
+
         .earth {
             position: absolute;
             top: 0;
@@ -114,7 +115,7 @@
             box-shadow: 0 0 20px #1e90ff;
             z-index: 20;
         }
-        
+
         .moon-orbit {
             position: absolute;
             top: 50%;
@@ -126,7 +127,7 @@
             border-radius: 50%;
             animation: orbit 10s linear infinite;
         }
-        
+
         .moon {
             position: absolute;
             top: 0;
@@ -139,7 +140,7 @@
             box-shadow: 0 0 10px #c0c0c0;
             z-index: 25;
         }
-        
+
         .umbra {
             position: absolute;
             border-radius: 50%;
@@ -147,7 +148,7 @@
             z-index: 5;
             transition: all 2s ease;
         }
-        
+
         .penumbra {
             position: absolute;
             border-radius: 50%;
@@ -155,7 +156,7 @@
             z-index: 4;
             transition: all 2s ease;
         }
-        
+
         .controls {
             background: rgba(11, 15, 31, 0.7);
             backdrop-filter: blur(10px);
@@ -164,7 +165,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .btn-space {
             background: linear-gradient(45deg, #4a00e0, #8e2de2);
             border: none;
@@ -177,17 +178,17 @@
             margin: 5px;
             width: 100%;
         }
-        
+
         .btn-space:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
-        
+
         .btn-space.active {
             background: linear-gradient(45deg, #ff8c00, #ff4500);
             box-shadow: 0 0 15px #ff8c00;
         }
-        
+
         .info-panel {
             background: rgba(11, 15, 31, 0.7);
             backdrop-filter: blur(10px);
@@ -197,7 +198,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             height: 100%;
         }
-        
+
         .eclipse-info {
             background: rgba(26, 31, 58, 0.5);
             border-radius: 15px;
@@ -205,7 +206,7 @@
             margin-top: 15px;
             border-left: 4px solid #8e2de2;
         }
-        
+
         .eclipse-diagram {
             height: 200px;
             background: rgba(26, 31, 58, 0.5);
@@ -217,7 +218,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .diagram-sun {
             width: 50px;
             height: 50px;
@@ -226,7 +227,7 @@
             box-shadow: 0 0 20px #ff8c00;
             z-index: 5;
         }
-        
+
         .diagram-earth {
             width: 40px;
             height: 40px;
@@ -235,7 +236,7 @@
             box-shadow: 0 0 10px #1e90ff;
             z-index: 10;
         }
-        
+
         .diagram-moon {
             width: 20px;
             height: 20px;
@@ -244,41 +245,54 @@
             box-shadow: 0 0 5px #c0c0c0;
             z-index: 15;
         }
-        
+
         .diagram-shadow {
             position: absolute;
             background: rgba(44, 0, 62, 0.5);
             border-radius: 50%;
             z-index: 3;
         }
-        
+
         @keyframes orbit {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
-        
+
         @keyframes pulse {
-            0% { box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff4500; }
-            50% { box-shadow: 0 0 70px #ff8c00, 0 0 140px #ff4500; }
-            100% { box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff4500; }
+            0% {
+                box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff4500;
+            }
+
+            50% {
+                box-shadow: 0 0 70px #ff8c00, 0 0 140px #ff4500;
+            }
+
+            100% {
+                box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff4500;
+            }
         }
-        
+
         .pulse {
             animation: pulse 3s infinite;
         }
-        
+
         .constellation {
             position: absolute;
             z-index: 2;
         }
-        
+
         .constellation-line {
             position: absolute;
             height: 1px;
             background: rgba(255, 255, 255, 0.3);
             transform-origin: 0 0;
         }
-        
+
         .milky-way {
             position: absolute;
             top: 0;
@@ -288,7 +302,7 @@
             background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
             z-index: 1;
         }
-        
+
         .comet {
             position: absolute;
             width: 5px;
@@ -298,7 +312,7 @@
             box-shadow: 0 0 10px white;
             z-index: 3;
         }
-        
+
         .comet-tail {
             position: absolute;
             height: 2px;
@@ -306,7 +320,7 @@
             transform-origin: 0 0;
             z-index: 2;
         }
-        
+
         h1 {
             background: linear-gradient(45deg, #ffd700, #ff8c00, #8e2de2);
             -webkit-background-clip: text;
@@ -314,13 +328,13 @@
             color: transparent;
             font-weight: bold;
         }
-        
+
         .eclipse-title {
             color: #ff8c00;
             font-weight: bold;
             margin-top: 15px;
         }
-        
+
         .moon-phase {
             position: absolute;
             top: 20px;
@@ -331,7 +345,7 @@
             z-index: 30;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .phase-indicator {
             width: 100px;
             height: 100px;
@@ -340,7 +354,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .phase-shadow {
             position: absolute;
             background: var(--space-dark);
@@ -349,22 +363,24 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="container py-4">
         <div class="header-section text-center">
             <h1 class="display-4">Solar & Lunar Eclipses</h1>
             <p class="lead">Explore the celestial dance between the Sun, Earth, and Moon</p>
         </div>
-        
+
         <div class="row">
             <div class="col-lg-9">
                 <div class="scene-container">
                     <div class="stars" id="stars"></div>
                     <div class="milky-way"></div>
-                    
+
                     <div class="solar-system">
                         <div class="sun pulse" id="sun"></div>
-                        
+
                         <div class="earth-orbit">
                             <div class="earth" id="earth">
                                 <div class="moon-orbit">
@@ -372,11 +388,11 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="umbra" id="umbra"></div>
                         <div class="penumbra" id="penumbra"></div>
                     </div>
-                    
+
                     <div class="moon-phase">
                         <h6 class="text-center">Moon Phase</h6>
                         <div class="phase-indicator mx-auto mt-2">
@@ -385,54 +401,55 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-3">
                 <div class="controls">
                     <h4 class="text-center mb-4">Eclipse Controls</h4>
-                    
+
                     <button class="btn btn-space active" id="solarEclipseBtn">
                         <i class="fas fa-sun me-2"></i>Solar Eclipse
                     </button>
-                    
+
                     <button class="btn btn-space" id="lunarEclipseBtn">
                         <i class="fas fa-moon me-2"></i>Lunar Eclipse
                     </button>
-                    
+
                     <button class="btn btn-space" id="resetBtn">
                         <i class="fas fa-sync-alt me-2"></i>Reset View
                     </button>
-                    
+
                     <div class="mt-4">
                         <label for="speedControl" class="form-label">Animation Speed</label>
                         <input type="range" class="form-range" id="speedControl" min="0.5" max="2" step="0.1" value="1">
                     </div>
-                    
+
                     <div class="mt-4">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="starToggle" checked>
                             <label class="form-check-label" for="starToggle">Show Stars</label>
                         </div>
-                        
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="shadowToggle" checked>
                             <label class="form-check-label" for="shadowToggle">Show Shadows</label>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="info-panel mt-4">
                     <h4 class="text-center mb-3">Eclipse Information</h4>
-                    
+
                     <div class="eclipse-info" id="solarInfo">
                         <h5 class="eclipse-title">Solar Eclipse</h5>
-                        <p>Occurs when the Moon passes between the Sun and Earth, blocking all or part of the Sun's light.</p>
+                        <p>Occurs when the Moon passes between the Sun and Earth, blocking all or part of the Sun's
+                            light.</p>
                         <ul>
                             <li>Total: Moon completely covers the Sun</li>
                             <li>Partial: Moon partially covers the Sun</li>
                             <li>Annular: Moon is too far to completely cover the Sun</li>
                         </ul>
                     </div>
-                    
+
                     <div class="eclipse-info d-none" id="lunarInfo">
                         <h5 class="eclipse-title">Lunar Eclipse</h5>
                         <p>Occurs when Earth comes between the Sun and the Moon, casting its shadow on the Moon.</p>
@@ -442,7 +459,7 @@
                             <li>Penumbral: Moon passes through Earth's penumbra</li>
                         </ul>
                     </div>
-                    
+
                     <div class="eclipse-diagram mt-4">
                         <div class="diagram-sun" id="diagramSun"></div>
                         <div class="diagram-shadow" id="diagramShadow"></div>
@@ -455,7 +472,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Elements
             const starsContainer = document.getElementById('stars');
             const sun = document.getElementById('sun');
@@ -464,52 +481,52 @@
             const umbra = document.getElementById('umbra');
             const penumbra = document.getElementById('penumbra');
             const phaseShadow = document.getElementById('phaseShadow');
-            
+
             // Control buttons
             const solarEclipseBtn = document.getElementById('solarEclipseBtn');
             const lunarEclipseBtn = document.getElementById('lunarEclipseBtn');
             const resetBtn = document.getElementById('resetBtn');
-            
+
             // Info panels
             const solarInfo = document.getElementById('solarInfo');
             const lunarInfo = document.getElementById('lunarInfo');
-            
+
             // Diagram elements
             const diagramSun = document.getElementById('diagramSun');
             const diagramEarth = document.getElementById('diagramEarth');
             const diagramMoon = document.getElementById('diagramMoon');
             const diagramShadow = document.getElementById('diagramShadow');
-            
+
             // Create stars
             function createStars() {
                 for (let i = 0; i < 500; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
-                    
+
                     // Random position
                     const x = Math.random() * 100;
                     const y = Math.random() * 100;
-                    
+
                     // Random size
                     const size = Math.random() * 2 + 0.5;
-                    
+
                     // Random opacity
                     const opacity = Math.random() * 0.8 + 0.2;
-                    
+
                     star.style.left = `${x}%`;
                     star.style.top = `${y}%`;
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
                     star.style.opacity = opacity;
-                    
+
                     // Twinkle animation
                     if (Math.random() > 0.7) {
                         star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
                     }
-                    
+
                     starsContainer.appendChild(star);
                 }
-                
+
                 // Add twinkle keyframes
                 if (!document.getElementById('twinkleKeyframes')) {
                     const style = document.createElement('style');
@@ -523,7 +540,7 @@
                     document.head.appendChild(style);
                 }
             }
-            
+
             // Create constellations
             function createConstellations() {
                 const constellations = [
@@ -531,11 +548,11 @@
                     { name: 'Orion', stars: [[70, 30], [75, 35], [80, 30], [85, 35], [80, 40], [75, 45]] },
                     { name: 'Cassiopeia', stars: [[20, 70], [25, 75], [30, 70], [35, 75], [40, 70]] }
                 ];
-                
+
                 constellations.forEach(constellation => {
                     const constellationElement = document.createElement('div');
                     constellationElement.classList.add('constellation');
-                    
+
                     // Create stars for constellation
                     constellation.stars.forEach(starPos => {
                         const star = document.createElement('div');
@@ -547,55 +564,55 @@
                         star.style.opacity = '0.8';
                         constellationElement.appendChild(star);
                     });
-                    
+
                     // Create lines between stars
                     for (let i = 0; i < constellation.stars.length - 1; i++) {
                         const line = document.createElement('div');
                         line.classList.add('constellation-line');
-                        
+
                         const startX = constellation.stars[i][0];
                         const startY = constellation.stars[i][1];
-                        const endX = constellation.stars[i+1][0];
-                        const endY = constellation.stars[i+1][1];
-                        
+                        const endX = constellation.stars[i + 1][0];
+                        const endY = constellation.stars[i + 1][1];
+
                         const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
                         const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
-                        
+
                         line.style.left = `${startX}%`;
                         line.style.top = `${startY}%`;
                         line.style.width = `${length}%`;
                         line.style.transform = `rotate(${angle}deg)`;
-                        
+
                         constellationElement.appendChild(line);
                     }
-                    
+
                     document.querySelector('.scene-container').appendChild(constellationElement);
                 });
             }
-            
+
             // Create comets
             function createComets() {
                 setInterval(() => {
                     if (Math.random() > 0.7) {
                         const comet = document.createElement('div');
                         comet.classList.add('comet');
-                        
+
                         const startX = Math.random() * 100;
                         const startY = Math.random() * 30;
-                        
+
                         comet.style.left = `${startX}%`;
                         comet.style.top = `${startY}%`;
-                        
+
                         const tail = document.createElement('div');
                         tail.classList.add('comet-tail');
                         tail.style.left = `${startX}%`;
                         tail.style.top = `${startY}%`;
                         tail.style.width = '50px';
                         tail.style.transform = `rotate(${Math.random() * 360}deg)`;
-                        
+
                         document.querySelector('.scene-container').appendChild(comet);
                         document.querySelector('.scene-container').appendChild(tail);
-                        
+
                         // Animate comet
                         const animation = comet.animate([
                             { left: `${startX}%`, top: `${startY}%`, opacity: 1 },
@@ -604,7 +621,7 @@
                             duration: 3000,
                             easing: 'linear'
                         });
-                        
+
                         animation.onfinish = () => {
                             comet.remove();
                             tail.remove();
@@ -612,37 +629,37 @@
                     }
                 }, 5000);
             }
-            
+
             // Show solar eclipse
             function showSolarEclipse() {
                 // Position moon between sun and earth
                 const earthOrbit = document.querySelector('.earth-orbit');
                 earthOrbit.style.animationPlayState = 'paused';
-                
+
                 // Position elements for solar eclipse
                 sun.style.transform = 'translate(-50%, -50%)';
                 earth.style.transform = 'translateX(-50%)';
                 moon.style.transform = 'translateX(-50%)';
-                
+
                 // Show shadows
                 umbra.style.width = '200px';
                 umbra.style.height = '200px';
                 umbra.style.top = '50%';
                 umbra.style.left = '50%';
                 umbra.style.transform = 'translate(-50%, -50%)';
-                
+
                 penumbra.style.width = '400px';
                 penumbra.style.height = '400px';
                 penumbra.style.top = '50%';
                 penumbra.style.left = '50%';
                 penumbra.style.transform = 'translate(-50%, -50%)';
-                
+
                 // Update moon phase
                 phaseShadow.style.width = '100px';
                 phaseShadow.style.height = '100px';
                 phaseShadow.style.top = '0';
                 phaseShadow.style.left = '0';
-                
+
                 // Update diagram
                 diagramSun.style.marginRight = '0';
                 diagramMoon.style.marginLeft = '0';
@@ -652,37 +669,37 @@
                 diagramShadow.style.left = '50%';
                 diagramShadow.style.transform = 'translate(-50%, -50%)';
             }
-            
+
             // Show lunar eclipse
             function showLunarEclipse() {
                 // Position earth between sun and moon
                 const earthOrbit = document.querySelector('.earth-orbit');
                 earthOrbit.style.animationPlayState = 'paused';
-                
+
                 // Position elements for lunar eclipse
                 sun.style.transform = 'translate(-150%, -50%)';
                 earth.style.transform = 'translateX(-50%)';
                 moon.style.transform = 'translateX(-50%)';
-                
+
                 // Show shadows
                 umbra.style.width = '100px';
                 umbra.style.height = '100px';
                 umbra.style.top = '50%';
                 umbra.style.left = '50%';
                 umbra.style.transform = 'translate(-50%, -50%)';
-                
+
                 penumbra.style.width = '200px';
                 penumbra.style.height = '200px';
                 penumbra.style.top = '50%';
                 penumbra.style.left = '50%';
                 penumbra.style.transform = 'translate(-50%, -50%)';
-                
+
                 // Update moon phase
                 phaseShadow.style.width = '100px';
                 phaseShadow.style.height = '100px';
                 phaseShadow.style.top = '0';
                 phaseShadow.style.left = '0';
-                
+
                 // Update diagram
                 diagramSun.style.marginRight = '100px';
                 diagramMoon.style.marginLeft = '100px';
@@ -692,77 +709,77 @@
                 diagramShadow.style.left = '50%';
                 diagramShadow.style.transform = 'translate(-50%, -50%)';
             }
-            
+
             // Reset view
             function resetView() {
                 const earthOrbit = document.querySelector('.earth-orbit');
                 earthOrbit.style.animationPlayState = 'running';
-                
+
                 // Reset positions
                 sun.style.transform = 'translate(-50%, -50%)';
                 earth.style.transform = 'translateX(-50%)';
                 moon.style.transform = 'translateX(-50%)';
-                
+
                 // Hide shadows
                 umbra.style.width = '0';
                 umbra.style.height = '0';
                 penumbra.style.width = '0';
                 penumbra.style.height = '0';
-                
+
                 // Reset moon phase
                 phaseShadow.style.width = '50px';
                 phaseShadow.style.height = '100px';
                 phaseShadow.style.top = '0';
                 phaseShadow.style.left = '25px';
             }
-            
+
             // Event listeners
-            solarEclipseBtn.addEventListener('click', function() {
+            solarEclipseBtn.addEventListener('click', function () {
                 solarEclipseBtn.classList.add('active');
                 lunarEclipseBtn.classList.remove('active');
                 solarInfo.classList.remove('d-none');
                 lunarInfo.classList.add('d-none');
                 showSolarEclipse();
             });
-            
-            lunarEclipseBtn.addEventListener('click', function() {
+
+            lunarEclipseBtn.addEventListener('click', function () {
                 lunarEclipseBtn.classList.add('active');
                 solarEclipseBtn.classList.remove('active');
                 lunarInfo.classList.remove('d-none');
                 solarInfo.classList.add('d-none');
                 showLunarEclipse();
             });
-            
-            resetBtn.addEventListener('click', function() {
+
+            resetBtn.addEventListener('click', function () {
                 solarEclipseBtn.classList.remove('active');
                 lunarEclipseBtn.classList.remove('active');
                 solarInfo.classList.remove('d-none');
                 lunarInfo.classList.add('d-none');
                 resetView();
             });
-            
+
             // Speed control
             const speedControl = document.getElementById('speedControl');
-            speedControl.addEventListener('input', function() {
+            speedControl.addEventListener('input', function () {
                 const speed = this.value;
                 document.querySelectorAll('.earth-orbit, .moon-orbit').forEach(orbit => {
                     orbit.style.animationDuration = `${40 / speed}s`;
                 });
             });
-            
+
             // Toggle stars
             const starToggle = document.getElementById('starToggle');
-            starToggle.addEventListener('change', function() {
+            starToggle.addEventListener('change', function () {
                 starsContainer.style.opacity = this.checked ? '1' : '0';
             });
-            
+
             // Toggle shadows
             const shadowToggle = document.getElementById('shadowToggle');
-            shadowToggle.addEventListener('change', function() {
+            shadowToggle.addEventListener('change', function () {
                 umbra.style.display = this.checked ? 'block' : 'none';
                 penumbra.style.display = this.checked ? 'block' : 'none';
             });
-            
+
             // Initialize
             createStars();
             createConstellations();
@@ -770,5 +787,7 @@
             resetView();
         });
     </script>
+    
 </body>
+
 </html>

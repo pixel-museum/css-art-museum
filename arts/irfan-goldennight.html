@@ -1,89 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Golden Night</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(#0b1d51, #1a2a6c);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  <meta charset="UTF-8">
+  <title>Golden Night</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(#0b1d51, #1a2a6c);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  /* Moon */
-  .moon {
-    position: absolute;
-    top: 15%;
-    left: 70%;
-    width: 100px;
-    height: 100px;
-    background: gold;
-    border-radius: 50%;
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
-  }
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 15%;
+      left: 70%;
+      width: 100px;
+      height: 100px;
+      background: gold;
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+    }
 
-  /* Stars */
+    /* Stars */
 
-  /* Clouds */
-  .cloud {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    width: 60px;
-    height: 30px;
-    top: 20%;
-    animation: moveCloud 15s linear infinite;
-  }
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      width: 60px;
+      height: 30px;
+      top: 20%;
+      animation: moveCloud 15s linear infinite;
+    }
 
-  .cloud::before,
-  .cloud::after {
-    content: '';
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-  }
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+    }
 
-  .cloud::before {
-    width: 40px;
-    height: 40px;
-    top: -12px;
-    left: 6px;
-  }
+    .cloud::before {
+      width: 40px;
+      height: 40px;
+      top: -12px;
+      left: 6px;
+    }
 
-  .cloud::after {
-    width: 50px;
-    height: 50px;
-    top: -15px;
-    right: 6px;
-  }
+    .cloud::after {
+      width: 50px;
+      height: 50px;
+      top: -15px;
+      right: 6px;
+    }
 
-  /* Stars blink continuously */
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    width: 4px;
-    height: 4px;
-    opacity: 0.8;
-    animation: blink 2s infinite alternate;
-  }
+    /* Stars blink continuously */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 4px;
+      height: 4px;
+      opacity: 0.8;
+      animation: blink 2s infinite alternate;
+    }
 
-  @keyframes moveCloud {
-    0% { transform: translateX(-100px); }
-    100% { transform: translateX(calc(100vw + 100px)); }
-  }
+    @keyframes moveCloud {
+      0% {
+        transform: translateX(-100px);
+      }
 
-  @keyframes blink {
-    0% { opacity: 0.1; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-  }
-</style>
+      100% {
+        transform: translateX(calc(100vw + 100px));
+      }
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0.1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.3;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Moon -->
@@ -115,4 +130,5 @@
   <div class="star" style="top: 95%; left: 70%;"></div>
 
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,8 +36,15 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .cloud {
@@ -47,8 +55,13 @@
         }
 
         @keyframes float {
-            0% { transform: translateX(-200px); }
-            100% { transform: translateX(calc(100vw + 200px)); }
+            0% {
+                transform: translateX(-200px);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 200px));
+            }
         }
 
         .plane {
@@ -75,7 +88,7 @@
             clip-path: polygon(0 50%, 15% 20%, 85% 20%, 100% 50%, 85% 80%, 15% 80%);
             left: 15px;
             top: 17px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .plane-wing {
@@ -86,7 +99,7 @@
             clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%);
             top: 26px;
             left: 35px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         .plane-tail {
@@ -107,7 +120,7 @@
             border-radius: 8px 8px 0 0;
             top: 16px;
             left: 70px;
-            box-shadow: inset 0 -2px 4px rgba(0,0,0,0.3), 0 2px 8px rgba(0, 150, 255, 0.5);
+            box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 150, 255, 0.5);
         }
 
         .propeller {
@@ -132,8 +145,17 @@
         }
 
         @keyframes engine-glow {
-            0%, 100% { opacity: 0.6; box-shadow: 0 0 5px #ff6b35; }
-            50% { opacity: 1; box-shadow: 0 0 15px #ff6b35, 0 0 25px #ff4500; }
+
+            0%,
+            100% {
+                opacity: 0.6;
+                box-shadow: 0 0 5px #ff6b35;
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 15px #ff6b35, 0 0 25px #ff4500;
+            }
         }
 
         .afterburner {
@@ -149,8 +171,17 @@
         }
 
         @keyframes burn {
-            0%, 100% { transform: scaleX(1); opacity: 0.8; }
-            50% { transform: scaleX(1.2); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scaleX(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scaleX(1.2);
+                opacity: 1;
+            }
         }
 
         .trail {
@@ -165,8 +196,8 @@
         }
 
         @keyframes trail-fade {
-            to { 
-                opacity: 0; 
+            to {
+                opacity: 0;
                 transform: translateX(-50px) scaleX(1.5);
             }
         }
@@ -179,7 +210,7 @@
             text-align: center;
             color: white;
             font-size: 18px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             z-index: 200;
             background: rgba(0, 0, 0, 0.3);
             padding: 15px 30px;
@@ -212,17 +243,27 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
         }
 
         @keyframes fly {
-            0% { 
-                left: -50px; 
+            0% {
+                left: -50px;
                 top: 20%;
             }
-            100% { 
-                left: calc(100% + 50px); 
+
+            100% {
+                left: calc(100% + 50px);
                 top: 30%;
             }
         }
@@ -240,12 +281,19 @@
         }
 
         @keyframes mountain-pass {
-            0% { left: 100%; }
-            100% { left: -300px; }
+            0% {
+                left: 100%;
+            }
+
+            100% {
+                left: -300px;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <div class="sky" id="sky">
         <div class="sun"></div>
     </div>
@@ -318,13 +366,13 @@
 
         function drag(e) {
             if (!isDragging) return;
-            
+
             const clientX = e.clientX || e.touches[0].clientX;
             const clientY = e.clientY || e.touches[0].clientY;
-            
+
             targetX = clientX;
             targetY = clientY;
-            
+
             createTrail();
         }
 
@@ -346,10 +394,10 @@
         function animate() {
             const dx = targetX - currentX;
             const dy = targetY - currentY;
-            
+
             currentX += dx * 0.1;
             currentY += dy * 0.1;
-            
+
             plane.style.left = currentX + 'px';
             plane.style.top = currentY + 'px';
 
@@ -359,11 +407,13 @@
 
             const altitude = Math.round(5000 + (window.innerHeight - currentY) * 10);
             altitudeDisplay.textContent = altitude;
-            
+
             requestAnimationFrame(animate);
         }
 
         animate();
     </script>
+    
 </body>
+
 </html>
