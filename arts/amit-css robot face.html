@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CSS Robot Face</title>
   <style>
     body {
@@ -22,26 +21,19 @@
       height: 220px;
       border-radius: 30px;
       position: relative;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       animation: float 3s ease-in-out infinite;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .robot:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
 
     @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .eye {
@@ -124,9 +116,7 @@
     }
   </style>
 </head>
-
 <body>
-  
   <div class="robot">
     <div class="antenna"></div>
     <div class="antenna-tip"></div>
@@ -135,7 +125,6 @@
     <div class="mouth"></div>
     <div class="label">CSS Robot</div>
   </div>
-
 </body>
-
 </html>
+
