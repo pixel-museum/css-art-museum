@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pikachu</title>
+<style>
+  body {
+    margin: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, #fffef5, #ffe97a);
+  }
+
+  svg {
+    width: 320px;
+    height: auto;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+  }
+
+  /* colors */
+  :root {
+    --yellow: #FFD94A;
+    --yellow-dark: #F2C43A;
+    --cheek: #FF3B30;
+    --brown: #5B3608;
+    --black: #111;
+  }
+
+  /* animations */
+  .eye {
+    transform-origin: center;
+    animation: blink 4s infinite;
+  }
+  @keyframes blink {
+    0%, 7%, 100% { transform: scaleY(1); }
+    8%, 10% { transform: scaleY(0.1); }
+    11%, 13% { transform: scaleY(1); }
+  }
+
+  .cheek {
+    transform-origin: center;
+    animation: pulse 3s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .tail {
+    transform-origin: 22% 80%;
+    animation: wag 1s infinite ease-in-out;
+  }
+  @keyframes wag {
+    0%,100% { transform: rotate(0deg); }
+    50% { transform: rotate(-10deg); }
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 520 460" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tail -->
+  <g class="tail">
+    <path d="M400 160 L460 128 L432 200 L484 240 L420 256 L460 308 L400 268 L428 200 Z"
+          fill="#F5C33B" stroke="#b06f12" stroke-width="5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Body -->
+  <path d="M90 200 C60 170,52 120,98 86 C142 58,206 56,256 78 C312 56,374 60,420 88 C468 120,442 170,414 200
+           C472 240,460 330,360 350 C320 360,200 364,160 356 C76 340,82 248,90 200 Z"
+        fill="url(#grad)" stroke="#b07c0e" stroke-width="3"/>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE66A"/>
+      <stop offset="100%" stop-color="#FFD94A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cheeks -->
+  <circle class="cheek" cx="170" cy="240" r="30" fill="#FF4F4F"/>
+  <circle class="cheek" cx="350" cy="240" r="30" fill="#FF4F4F"/>
+
+  <!-- Eyes -->
+  <ellipse class="eye" cx="210" cy="200" rx="20" ry="26" fill="#111"/>
+  <ellipse class="eye" cx="320" cy="200" rx="20" ry="26" fill="#111"/>
+
+  <!-- Nose -->
+  <ellipse cx="268" cy="222" rx="6" ry="4" fill="#111"/>
+
+  <!-- Mouth -->
+  <path d="M248 238 Q268 254 288 238" stroke="#6b1b1b" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
+</body>
+</html>
