@@ -299,7 +299,7 @@ class BreakRestoreToggle {
             const navbar = document.querySelector('header nav');
             if (navbar) {
                 const navbarRect = navbar.getBoundingClientRect();
-                const navbarBottom = navbarRect.bottom + window.scrollY;
+                const navbarBottom = navbarRect.bottom;
                 toggleElement.style.top = (navbarBottom + 10) + 'px';
                 toggleElement.style.right = '20px';
             }
