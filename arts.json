@@ -2489,8 +2489,31 @@
     "tags": ["animation", "nature", "aurora", "landscape", "northern-lights"],
     "description": "Animated Northern Lights with flowing aurora waves, twinkling stars, moon, mountains, and pine trees. Pure CSS nature scene.",
     "date": "2025-10-23"
+  } ,
+  {
+    "file": "Sanskriti-arcademachine.html",
+    "title": "Retro Arcade Machine",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "retro", "gaming", "3D", "neon", "interactive"],
+    "description": "A nostalgic retro arcade cabinet with animated Space Invaders game, moving joystick, glowing buttons, CRT scanlines, and neon effects. Pure CSS 80s gaming tribute.",
+    "date": "2024-10-23"
+  },{
+    "file": "sans_random.html",
+    "title": "Animated CSS Coffee Cup",
+    "author": "Sanskriti Mishra",
+    "tags": ["animation", "coffee", "cute", "3D", "interactive", "kawaii"],
+    "description": "A delightful animated coffee cup with a smiling face, rising steam effects, floating animation, plate, and sparkles. Features blinking eyes, wiggle interaction on hover, and smooth CSS animations. Pure CSS caffeine art.",
+    "date": "2024-10-28"
+  
   },
   {
+  "file": "lakshith-dna.html",
+  "title": "3D DNA Helix Animation",
+  "author": "Lakshith",
+  "tags": ["dna", "helix", "3d", "animation", "science", "visualization"],
+  "description": "A 3D rotating DNA double-helix created using pure CSS and JavaScript, showcasing a scientific and visually immersive animation.",
+  "date": "2025-10-23"
+},
     "file": "AasthaRai-Dynamicthemesystem.html",
     "title": "Dynamic Theme System",
     "author": "Aastha Rai",
@@ -2668,3 +2691,4 @@
   "date": "2025-10-26"
 }
 ]
+
