@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Funny Emoji</title>
@@ -20,7 +21,7 @@
       border-radius: 50%;
       position: relative;
       animation: bounce 1s infinite alternate;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
     .eyes {
@@ -87,21 +88,44 @@
     }
 
     @keyframes bounce {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-10px) scale(1.05); }
+      0% {
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        transform: translateY(-10px) scale(1.05);
+      }
     }
 
     @keyframes blink {
-      0%, 90%, 100% { top: 10px; }
-      95% { top: 20px; }
+
+      0%,
+      90%,
+      100% {
+        top: 10px;
+      }
+
+      95% {
+        top: 20px;
+      }
     }
 
     @keyframes blushpulse {
-      0%, 100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
+
+      0%,
+      100% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="chibi">
     <div class="eyes">
@@ -113,4 +137,5 @@
     <div class="blush right"></div>
   </div>
 </body>
+
 </html>

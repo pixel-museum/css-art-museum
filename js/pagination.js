@@ -41,7 +41,7 @@ class Pagination {
       container = document.createElement('div');
       container.id = id;
       container.className = 'pagination-controls';
-      
+
       // Insert pagination after gallery container
       if (this.containerElement && this.containerElement.parentNode) {
         this.containerElement.parentNode.insertBefore(
@@ -142,9 +142,9 @@ class Pagination {
     }
 
     this.paginationContainer.style.display = 'flex';
-    
+
     const controls = [];
-    
+
     // Previous button
     controls.push(
       `<button 
@@ -206,7 +206,7 @@ class Pagination {
   getPageNumbersToDisplay() {
     const pages = [];
     const maxButtons = 7; // Maximum number of page buttons to show
-    
+
     if (this.totalPages <= maxButtons) {
       // Show all pages if total is small
       for (let i = 1; i <= this.totalPages; i++) {
@@ -215,30 +215,30 @@ class Pagination {
     } else {
       // Always show first page
       pages.push(1);
-      
+
       // Calculate range around current page
       const leftBound = Math.max(2, this.currentPage - 1);
       const rightBound = Math.min(this.totalPages - 1, this.currentPage + 1);
-      
+
       // Add ellipsis if needed before current range
       if (leftBound > 2) {
         pages.push('...');
       }
-      
+
       // Add pages around current page
       for (let i = leftBound; i <= rightBound; i++) {
         pages.push(i);
       }
-      
+
       // Add ellipsis if needed after current range
       if (rightBound < this.totalPages - 1) {
         pages.push('...');
       }
-      
+
       // Always show last page
       pages.push(this.totalPages);
     }
-    
+
     return pages;
   }
 
@@ -247,12 +247,12 @@ class Pagination {
    */
   attachEventListeners() {
     const buttons = this.paginationContainer.querySelectorAll('.pagination-btn');
-    
+
     buttons.forEach(button => {
       button.addEventListener('click', (e) => {
         const action = button.dataset.action;
         const page = button.dataset.page;
-        
+
         if (action === 'prev') {
           this.previousPage();
         } else if (action === 'next') {
@@ -288,12 +288,12 @@ class Pagination {
  */
 function injectPaginationStyles() {
   const styleId = 'pagination-styles';
-  
+
   // Check if styles already exist
   if (document.getElementById(styleId)) {
     return;
   }
-  
+
   const styles = `
     .pagination-controls {
       display: flex;
@@ -394,7 +394,7 @@ function injectPaginationStyles() {
       }
     }
   `;
-  
+
   const styleElement = document.createElement('style');
   styleElement.id = styleId;
   styleElement.textContent = styles;

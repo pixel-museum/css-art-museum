@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,12 @@
     <style>
         /* Base configuration for the pixel grid */
         :root {
-            --pixel-size: 10px; /* Large pixels for a basic look (20x20 grid) */
-            --dark-ground: #3c244c; /* Deep purple/brown for foreground */
-            --sun-color: #ff9900; /* Orange/Yellow sun */
+            --pixel-size: 10px;
+            /* Large pixels for a basic look (20x20 grid) */
+            --dark-ground: #3c244c;
+            /* Deep purple/brown for foreground */
+            --sun-color: #ff9900;
+            /* Orange/Yellow sun */
         }
 
         body {
@@ -24,7 +28,7 @@
             font-family: 'Press Start 2P', cursive;
             color: white;
             flex-direction: column;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
         h1 {
@@ -37,16 +41,16 @@
 
         .scene-wrapper {
             /* Scale up the basic canvas (20x20 grid) */
-            transform: scale(3.5); 
+            transform: scale(3.5);
             transform-origin: center;
             margin-top: 50px;
             /* Simple border to frame the "painting" */
-            border: calc(1 * var(--pixel-size)) solid #000000; 
+            border: calc(1 * var(--pixel-size)) solid #000000;
         }
 
         .scene {
             /* The 20x20 Pixel Canvas (200px x 200px before scaling) */
-            width: calc(20 * var(--pixel-size)); 
+            width: calc(20 * var(--pixel-size));
             height: calc(20 * var(--pixel-size));
             position: relative;
         }
@@ -56,7 +60,7 @@
             position: absolute;
             top: calc(15 * var(--pixel-size));
             left: 0;
-            width: calc(20 * var(--pixel-size)); 
+            width: calc(20 * var(--pixel-size));
             height: calc(5 * var(--pixel-size));
             background: var(--dark-ground);
             z-index: 5;
@@ -67,19 +71,36 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: calc(20 * var(--pixel-size)); 
+            width: calc(20 * var(--pixel-size));
             height: calc(15 * var(--pixel-size));
-            background: #205c74; /* Initial Blue */
+            background: #205c74;
+            /* Initial Blue */
             animation: color-cycle 8s infinite alternate;
             z-index: 10;
         }
 
         /* Color cycle for the sky (simulating day/night cycle) */
         @keyframes color-cycle {
-            0%   { background-color: #0b1a20; } /* Night */
-            30%  { background-color: #4b2a64; } /* Dawn Purple */
-            60%  { background-color: #ff6e40; } /* Sunrise Orange */
-            100% { background-color: #205c74; } /* Day Blue */
+            0% {
+                background-color: #0b1a20;
+            }
+
+            /* Night */
+            30% {
+                background-color: #4b2a64;
+            }
+
+            /* Dawn Purple */
+            60% {
+                background-color: #ff6e40;
+            }
+
+            /* Sunrise Orange */
+            100% {
+                background-color: #205c74;
+            }
+
+            /* Day Blue */
         }
 
         /* --- ANIMATED SUN/MOON --- */
@@ -87,31 +108,35 @@
             position: absolute;
             top: calc(5 * var(--pixel-size));
             left: calc(8 * var(--pixel-size));
-            width: calc(4 * var(--pixel-size)); 
+            width: calc(4 * var(--pixel-size));
             height: calc(4 * var(--pixel-size));
             background: var(--sun-color);
-            border-radius: 50%; /* Makes the sun circle (not pixelated) */
+            border-radius: 50%;
+            /* Makes the sun circle (not pixelated) */
             z-index: 15;
             animation: pulse 2s infinite ease-in-out alternate;
-            box-shadow: 
-                0 0 calc(2 * var(--pixel-size)) 0 rgba(255, 153, 0, 0.5); /* Outer glow */
+            box-shadow:
+                0 0 calc(2 * var(--pixel-size)) 0 rgba(255, 153, 0, 0.5);
+            /* Outer glow */
         }
 
         /* Sun Pulse animation */
         @keyframes pulse {
-            0% { 
-                transform: scale(1); 
+            0% {
+                transform: scale(1);
                 opacity: 0.8;
                 box-shadow: 0 0 calc(2 * var(--pixel-size)) 0 rgba(255, 153, 0, 0.5);
             }
-            100% { 
-                transform: scale(1.1); 
+
+            100% {
+                transform: scale(1.1);
                 opacity: 1;
                 box-shadow: 0 0 calc(4 * var(--pixel-size)) calc(1 * var(--pixel-size)) rgba(255, 153, 0, 0.8);
             }
         }
     </style>
 </head>
+
 <body>
 
     <h1 class="text-xl text-yellow-300">ANIMATED PIXEL PAINTING</h1>
@@ -128,6 +153,7 @@
             <div class="ground"></div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

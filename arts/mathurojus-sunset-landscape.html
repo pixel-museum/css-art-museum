@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +23,14 @@
       width: 100vw;
       height: 100vh;
       position: relative;
-      background: linear-gradient(
-        to bottom,
-        #1a1a2e 0%,
-        #2d2d44 15%,
-        #4a4a68 30%,
-        #ff6b6b 50%,
-        #ffa07a 70%,
-        #ffd89b 85%,
-        #ffe5b4 100%
-      );
+      background: linear-gradient(to bottom,
+          #1a1a2e 0%,
+          #2d2d44 15%,
+          #4a4a68 30%,
+          #ff6b6b 50%,
+          #ffa07a 70%,
+          #ffd89b 85%,
+          #ffe5b4 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -45,15 +44,13 @@
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(
-        circle,
-        #fff9e6 0%,
-        #ffe066 30%,
-        #ffb347 70%,
-        #ff8c42 100%
-      );
+      background: radial-gradient(circle,
+          #fff9e6 0%,
+          #ffe066 30%,
+          #ffb347 70%,
+          #ff8c42 100%);
       border-radius: 50%;
-      box-shadow: 
+      box-shadow:
         0 0 50px rgba(255, 200, 100, 0.8),
         0 0 100px rgba(255, 180, 80, 0.6),
         0 0 150px rgba(255, 160, 60, 0.4);
@@ -63,16 +60,19 @@
 
     /* Sun animation - subtle pulsing */
     @keyframes pulse {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate(-50%, -50%) scale(1);
-        box-shadow: 
+        box-shadow:
           0 0 50px rgba(255, 200, 100, 0.8),
           0 0 100px rgba(255, 180, 80, 0.6),
           0 0 150px rgba(255, 160, 60, 0.4);
       }
+
       50% {
         transform: translate(-50%, -50%) scale(1.05);
-        box-shadow: 
+        box-shadow:
           0 0 60px rgba(255, 200, 100, 0.9),
           0 0 120px rgba(255, 180, 80, 0.7),
           0 0 180px rgba(255, 160, 60, 0.5);
@@ -85,26 +85,22 @@
       bottom: 0;
       width: 100%;
       height: 40vh;
-      background: linear-gradient(
-        to bottom,
-        #2d2d44 0%,
-        #1a1a2e 100%
-      );
-      clip-path: polygon(
-        0% 100%,
-        0% 50%,
-        10% 45%,
-        20% 55%,
-        30% 40%,
-        40% 50%,
-        50% 35%,
-        60% 45%,
-        70% 40%,
-        80% 50%,
-        90% 45%,
-        100% 55%,
-        100% 100%
-      );
+      background: linear-gradient(to bottom,
+          #2d2d44 0%,
+          #1a1a2e 100%);
+      clip-path: polygon(0% 100%,
+          0% 50%,
+          10% 45%,
+          20% 55%,
+          30% 40%,
+          40% 50%,
+          50% 35%,
+          60% 45%,
+          70% 40%,
+          80% 50%,
+          90% 45%,
+          100% 55%,
+          100% 100%);
       z-index: 3;
     }
 
@@ -114,25 +110,21 @@
       bottom: 0;
       width: 100%;
       height: 35vh;
-      background: linear-gradient(
-        to bottom,
-        #3d3d55 0%,
-        #2d2d44 100%
-      );
-      clip-path: polygon(
-        0% 100%,
-        0% 60%,
-        15% 50%,
-        25% 65%,
-        35% 45%,
-        45% 55%,
-        55% 40%,
-        65% 50%,
-        75% 45%,
-        85% 60%,
-        100% 55%,
-        100% 100%
-      );
+      background: linear-gradient(to bottom,
+          #3d3d55 0%,
+          #2d2d44 100%);
+      clip-path: polygon(0% 100%,
+          0% 60%,
+          15% 50%,
+          25% 65%,
+          35% 45%,
+          45% 55%,
+          55% 40%,
+          65% 50%,
+          75% 45%,
+          85% 60%,
+          100% 55%,
+          100% 100%);
       z-index: 4;
     }
 
@@ -142,25 +134,21 @@
       bottom: 0;
       width: 100%;
       height: 30vh;
-      background: linear-gradient(
-        to bottom,
-        #4d4d66 0%,
-        #3d3d55 100%
-      );
-      clip-path: polygon(
-        0% 100%,
-        0% 70%,
-        20% 55%,
-        30% 70%,
-        40% 50%,
-        50% 60%,
-        60% 45%,
-        70% 55%,
-        80% 50%,
-        90% 65%,
-        100% 60%,
-        100% 100%
-      );
+      background: linear-gradient(to bottom,
+          #4d4d66 0%,
+          #3d3d55 100%);
+      clip-path: polygon(0% 100%,
+          0% 70%,
+          20% 55%,
+          30% 70%,
+          40% 50%,
+          50% 60%,
+          60% 45%,
+          70% 55%,
+          80% 50%,
+          90% 65%,
+          100% 60%,
+          100% 100%);
       z-index: 5;
     }
 
@@ -176,21 +164,77 @@
     }
 
     @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     /* Position stars randomly in upper sky */
-    .star:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
-    .star:nth-child(2) { top: 10%; left: 25%; animation-delay: 0.5s; }
-    .star:nth-child(3) { top: 8%; left: 40%; animation-delay: 1s; }
-    .star:nth-child(4) { top: 15%; left: 60%; animation-delay: 1.5s; }
-    .star:nth-child(5) { top: 7%; left: 75%; animation-delay: 2s; }
-    .star:nth-child(6) { top: 12%; left: 90%; animation-delay: 2.5s; }
-    .star:nth-child(7) { top: 18%; left: 15%; animation-delay: 0.8s; }
-    .star:nth-child(8) { top: 20%; left: 45%; animation-delay: 1.2s; }
-    .star:nth-child(9) { top: 22%; left: 70%; animation-delay: 1.8s; }
-    .star:nth-child(10) { top: 25%; left: 85%; animation-delay: 0.3s; }
+    .star:nth-child(1) {
+      top: 5%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .star:nth-child(2) {
+      top: 10%;
+      left: 25%;
+      animation-delay: 0.5s;
+    }
+
+    .star:nth-child(3) {
+      top: 8%;
+      left: 40%;
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(4) {
+      top: 15%;
+      left: 60%;
+      animation-delay: 1.5s;
+    }
+
+    .star:nth-child(5) {
+      top: 7%;
+      left: 75%;
+      animation-delay: 2s;
+    }
+
+    .star:nth-child(6) {
+      top: 12%;
+      left: 90%;
+      animation-delay: 2.5s;
+    }
+
+    .star:nth-child(7) {
+      top: 18%;
+      left: 15%;
+      animation-delay: 0.8s;
+    }
+
+    .star:nth-child(8) {
+      top: 20%;
+      left: 45%;
+      animation-delay: 1.2s;
+    }
+
+    .star:nth-child(9) {
+      top: 22%;
+      left: 70%;
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(10) {
+      top: 25%;
+      left: 85%;
+      animation-delay: 0.3s;
+    }
 
     /* Clouds for added atmosphere */
     .cloud {
@@ -202,8 +246,13 @@
     }
 
     @keyframes float {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(100vw); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(100vw);
+      }
     }
 
     .cloud:nth-child(11) {
@@ -267,12 +316,12 @@
         width: 120px;
         height: 120px;
       }
-      
+
       .info-card {
         font-size: 12px;
         padding: 10px 15px;
       }
-      
+
       .info-card h2 {
         font-size: 16px;
       }
@@ -283,16 +332,26 @@
         width: 100px;
         height: 100px;
       }
-      
-      .hill-back { height: 30vh; }
-      .hill-middle { height: 25vh; }
-      .hill-front { height: 20vh; }
+
+      .hill-back {
+        height: 30vh;
+      }
+
+      .hill-middle {
+        height: 25vh;
+      }
+
+      .hill-front {
+        height: 20vh;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Accessibility label -->
-  <div class="sr-only" role="img" aria-label="A CSS artwork depicting a sunset landscape with layered hills, a glowing sun, and twinkling stars in a gradient sky">
+  <div class="sr-only" role="img"
+    aria-label="A CSS artwork depicting a sunset landscape with layered hills, a glowing sun, and twinkling stars in a gradient sky">
     CSS Sunset Landscape Artwork
   </div>
 
@@ -309,7 +368,7 @@
     <div class="star" aria-hidden="true"></div>
     <div class="star" aria-hidden="true"></div>
     <div class="star" aria-hidden="true"></div>
-    
+
     <!-- Clouds -->
     <div class="cloud" aria-hidden="true"></div>
     <div class="cloud" aria-hidden="true"></div>
@@ -331,4 +390,5 @@
     </div>
   </div>
 </body>
+
 </html>

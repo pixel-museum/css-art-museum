@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +28,15 @@
     }
 
     @keyframes face-glow {
-      0%, 100% { box-shadow: 0 0 30px rgba(255, 255, 0, 0.3); }
-      50% { box-shadow: 0 0 60px rgba(255, 255, 0, 0.6); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 60px rgba(255, 255, 0, 0.6);
+      }
     }
 
     .up {
@@ -68,37 +76,49 @@
 
     @keyframes moodChange {
       0% {
-        border-top: 10px solid black;   /* Smile */
+        border-top: 10px solid black;
+        /* Smile */
         border-bottom: none;
         transform: translateY(20px) scaleY(1);
       }
+
       33% {
-        border-top: 4px solid black;    /* Neutral */
+        border-top: 4px solid black;
+        /* Neutral */
         border-bottom: none;
         transform: translateY(0) scaleY(0.7);
       }
+
       66% {
         border-top: none;
-        border-bottom: 10px solid black; /* Sad */
+        border-bottom: 10px solid black;
+        /* Sad */
         transform: translateY(-25px) scaleY(1.1);
       }
+
       100% {
-        border-top: 10px solid black;   /* Back to Smile */
+        border-top: 10px solid black;
+        /* Back to Smile */
         border-bottom: none;
         transform: translateY(20px) scaleY(1);
       }
     }
   </style>
 </head>
+
 <body>
+
   <div class="smile">
     <div class="up">
       <div class="eye"></div>
       <div class="eye"></div>
     </div>
+    
     <div class="mouth">
       <div class="curve"></div>
     </div>
   </div>
+
 </body>
+
 </html>

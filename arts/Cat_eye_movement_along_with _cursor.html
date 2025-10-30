@@ -1,145 +1,203 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Golden Cat + White Mouse Cursor</title>
   <style>
-    :root{
-      --bg:#FFF9E6;
-      --cat:#FFD36B;
-      --ear:#E8B84E;
-      --ear-inner:#FAD57A;
-      --eye:#3B2F2F;
-      --tongue:#E07A89;
-      --shadow: rgba(0,0,0,0.15);
+    :root {
+      --bg: #FFF9E6;
+      --cat: #FFD36B;
+      --ear: #E8B84E;
+      --ear-inner: #FAD57A;
+      --eye: #3B2F2F;
+      --tongue: #E07A89;
+      --shadow: rgba(0, 0, 0, 0.15);
     }
 
     /* page */
-    body{
-      margin:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       background: radial-gradient(circle at 20% 30%, #FFF3B0, transparent),
-                  radial-gradient(circle at 80% 70%, #FFF9E6, transparent),
-                  var(--bg);
-      cursor: none; /* hide real cursor */
+        radial-gradient(circle at 80% 70%, #FFF9E6, transparent),
+        var(--bg);
+      cursor: none;
+      /* hide real cursor */
       overflow: hidden;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* -------------------
        GOLDEN CAT
        ------------------- */
-    .cat{
-      position:relative;
-      width:200px;
-      height:260px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      transform-origin:bottom center;
-      animation:breathe 5s ease-in-out infinite;
-      user-select:none;
-      touch-action:none;
+    .cat {
+      position: relative;
+      width: 200px;
+      height: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transform-origin: bottom center;
+      animation: breathe 5s ease-in-out infinite;
+      user-select: none;
+      touch-action: none;
     }
-    @keyframes breathe{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-6px)}
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
     }
-    .ear{
-      position:absolute;
-      top:-10px;
-      width:65px;
-      height:65px;
-      background:var(--ear);
-      border-radius:20% 20% 50% 50%;
-      transform-origin:bottom;
-      box-shadow:0 2px 5px var(--shadow);
+
+    .ear {
+      position: absolute;
+      top: -10px;
+      width: 65px;
+      height: 65px;
+      background: var(--ear);
+      border-radius: 20% 20% 50% 50%;
+      transform-origin: bottom;
+      box-shadow: 0 2px 5px var(--shadow);
     }
-    .ear.left{left:20px; transform:rotate(-15deg);}
-    .ear.right{right:20px; transform:rotate(15deg);}
-    .ear::after{
-      content:"";
-      position:absolute;
-      top:10px;
-      left:12px;
-      width:40px;
-      height:40px;
-      background:var(--ear-inner);
-      border-radius:20% 20% 50% 50%;
+
+    .ear.left {
+      left: 20px;
+      transform: rotate(-15deg);
     }
-    .head{
-      margin-top:20px;
-      width:140px;
-      height:120px;
-      background:var(--cat);
-      border-radius:50% 50% 40% 40%;
-      box-shadow:0 4px 10px var(--shadow);
-      position:relative;
-      border:3px solid #E2B13C;
+
+    .ear.right {
+      right: 20px;
+      transform: rotate(15deg);
     }
-    .cat-eye{
-      position:absolute;
-      top:45px;
-      width:20px;
-      height:20px;
-      background:var(--eye);
-      border-radius:50%;
-      transition:transform 0.2s ease;
+
+    .ear::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      width: 40px;
+      height: 40px;
+      background: var(--ear-inner);
+      border-radius: 20% 20% 50% 50%;
     }
-    .cat-eye.left{left:40px;}
-    .cat-eye.right{right:40px;}
-    .tongue{
-      position:absolute;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%) scaleY(0);
-      width:20px;
-      height:24px;
-      background:var(--tongue);
-      border-radius:10px;
-      transform-origin:top;
-      transition:transform 0.4s ease;
+
+    .head {
+      margin-top: 20px;
+      width: 140px;
+      height: 120px;
+      background: var(--cat);
+      border-radius: 50% 50% 40% 40%;
+      box-shadow: 0 4px 10px var(--shadow);
+      position: relative;
+      border: 3px solid #E2B13C;
     }
-    .cat.lick .tongue{
-      transform:translateX(-50%) scaleY(1);
-      animation:lick 0.6s ease forwards;
+
+    .cat-eye {
+      position: absolute;
+      top: 45px;
+      width: 20px;
+      height: 20px;
+      background: var(--eye);
+      border-radius: 50%;
+      transition: transform 0.2s ease;
     }
-    @keyframes lick{
-      0%{transform:translateX(-50%) scaleY(0)}
-      50%{transform:translateX(-50%) scaleY(1.2)}
-      100%{transform:translateX(-50%) scaleY(0)}
+
+    .cat-eye.left {
+      left: 40px;
     }
-    .cat-paw{
-      position:absolute;
-      bottom:0;
-      width:40px;
-      height:30px;
-      background:var(--cat);
-      border-radius:20px;
-      box-shadow:0 2px 5px var(--shadow);
-      border:2px solid #E2B13C;
+
+    .cat-eye.right {
+      right: 40px;
     }
-    .cat-paw.left{left:30px; animation:lickpaw 4s infinite ease-in-out; transform-origin:center top;}
-    .cat-paw.right{right:30px;}
-    @keyframes lickpaw{
-      0%,80%,100%{transform:rotate(0);}
-      40%{transform:rotate(-25deg);}
+
+    .tongue {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) scaleY(0);
+      width: 20px;
+      height: 24px;
+      background: var(--tongue);
+      border-radius: 10px;
+      transform-origin: top;
+      transition: transform 0.4s ease;
     }
-    .cat-body{
-      width:160px;
-      height:80px;
-      background:var(--cat);
-      border-radius:80px 80px 30px 30px;
-      margin-top:-10px;
-      position:relative;
-      box-shadow:0 4px 10px var(--shadow);
-      border:3px solid #E2B13C;
+
+    .cat.lick .tongue {
+      transform: translateX(-50%) scaleY(1);
+      animation: lick 0.6s ease forwards;
+    }
+
+    @keyframes lick {
+      0% {
+        transform: translateX(-50%) scaleY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) scaleY(1.2)
+      }
+
+      100% {
+        transform: translateX(-50%) scaleY(0)
+      }
+    }
+
+    .cat-paw {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      height: 30px;
+      background: var(--cat);
+      border-radius: 20px;
+      box-shadow: 0 2px 5px var(--shadow);
+      border: 2px solid #E2B13C;
+    }
+
+    .cat-paw.left {
+      left: 30px;
+      animation: lickpaw 4s infinite ease-in-out;
+      transform-origin: center top;
+    }
+
+    .cat-paw.right {
+      right: 30px;
+    }
+
+    @keyframes lickpaw {
+
+      0%,
+      80%,
+      100% {
+        transform: rotate(0);
+      }
+
+      40% {
+        transform: rotate(-25deg);
+      }
+    }
+
+    .cat-body {
+      width: 160px;
+      height: 80px;
+      background: var(--cat);
+      border-radius: 80px 80px 30px 30px;
+      margin-top: -10px;
+      position: relative;
+      box-shadow: 0 4px 10px var(--shadow);
+      border: 3px solid #E2B13C;
     }
 
     /* -------------------
@@ -153,7 +211,8 @@
       height: 32px;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      transition: transform 0.06s linear; /* small smoothing */
+      transition: transform 0.06s linear;
+      /* small smoothing */
       z-index: 9999;
     }
 
@@ -166,7 +225,7 @@
       position: absolute;
       bottom: 0;
       border: 2px solid #ddd;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     .mouse-ear {
@@ -177,10 +236,16 @@
       border-radius: 50%;
       position: absolute;
       top: -6px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     }
-    .mouse-ear.left { left: 2px; }
-    .mouse-ear.right { right: 2px; }
+
+    .mouse-ear.left {
+      left: 2px;
+    }
+
+    .mouse-ear.right {
+      right: 2px;
+    }
 
     .mouse-nose {
       width: 6px;
@@ -199,6 +264,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Golden cat -->
@@ -231,7 +297,7 @@
 
   <script>
     // Cat interactivity
-    (function(){
+    (function () {
       const cat = document.getElementById('cat');
       const eyes = document.querySelectorAll('.cat-eye');
       const meow = document.getElementById('meowSound');
@@ -240,22 +306,22 @@
         const x = (e.clientX / window.innerWidth) - 0.5;
         const y = (e.clientY / window.innerHeight) - 0.5;
         eyes.forEach(eye => {
-          eye.style.transform = `translate(${x*10}px, ${y*10}px)`;
+          eye.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
         });
       });
 
       // cat licking and meow periodically
-      setInterval(()=>{
+      setInterval(() => {
         cat.classList.add('lick');
         if (meow) {
-          try { meow.currentTime = 0; meow.play().catch(()=>{}); } catch(e) {}
+          try { meow.currentTime = 0; meow.play().catch(() => { }); } catch (e) { }
         }
-        setTimeout(()=>cat.classList.remove('lick'),600);
-      },4000);
+        setTimeout(() => cat.classList.remove('lick'), 600);
+      }, 4000);
     })();
 
     // Mouse cursor follow (with tiny smoothing)
-    (function(){
+    (function () {
       const cursor = document.getElementById('mouseCursor');
       let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
       let curX = mouseX, curY = mouseY;
@@ -267,7 +333,7 @@
       });
 
       // small animation loop to lerp the cursor for smoothness
-      function raf(){
+      function raf() {
         // lerp toward mouse
         curX += (mouseX - curX) * 0.28;
         curY += (mouseY - curY) * 0.28;
@@ -278,12 +344,14 @@
       requestAnimationFrame(raf);
 
       // click feedback
-      document.addEventListener('mousedown', ()=> cursor.classList.add('click'));
-      document.addEventListener('mouseup', ()=> cursor.classList.remove('click'));
+      document.addEventListener('mousedown', () => cursor.classList.add('click'));
+      document.addEventListener('mouseup', () => cursor.classList.remove('click'));
 
       // hide cursor on touch devices (optional)
-      window.addEventListener('touchstart', ()=> cursor.style.display = 'none', {passive:true});
+      window.addEventListener('touchstart', () => cursor.style.display = 'none', { passive: true });
     })();
   </script>
+  
 </body>
+
 </html>

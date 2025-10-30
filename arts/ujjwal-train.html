@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,6 +56,7 @@
             0% {
                 left: -180px;
             }
+
             100% {
                 left: calc(100% + 20px);
             }
@@ -152,32 +154,40 @@
             left: -40px;
             width: 200px;
             height: 100%;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent 0px,
-                rgba(255, 255, 255, 0.1) 2px,
-                transparent 4px,
-                transparent 12px
-            );
+            background: repeating-linear-gradient(90deg,
+                    transparent 0px,
+                    rgba(255, 255, 255, 0.1) 2px,
+                    transparent 4px,
+                    transparent 12px);
             animation: speedLines 0.3s linear infinite;
         }
 
         @keyframes speedLines {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-20px); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-20px);
+            }
         }
 
         @media (max-width: 768px) {
-            .engine, .coach {
+
+            .engine,
+            .coach {
                 transform: scale(0.8);
             }
         }
     </style>
 </head>
+
 <body>
+    
     <div class="animation-container">
         <div class="track-container">
             <div class="track"></div>
+
             <div class="train">
                 <div class="coach">
                     <div class="window"></div>
@@ -192,5 +202,7 @@
             </div>
         </div>
     </div>
+
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +14,13 @@
             height: 100vh;
             background: linear-gradient(180deg, #a0d8ef 0%, #ffffff 100%);
         }
+
         .penguin {
             position: relative;
             width: 200px;
             height: 300px;
         }
+
         .body {
             position: absolute;
             bottom: 0;
@@ -26,6 +29,7 @@
             background: black;
             border-radius: 100px / 150px;
         }
+
         .belly {
             position: absolute;
             bottom: 10px;
@@ -36,6 +40,7 @@
             background: white;
             border-radius: 60px / 80px;
         }
+
         .eye {
             position: absolute;
             top: 40px;
@@ -44,12 +49,15 @@
             background: white;
             border-radius: 50%;
         }
+
         .eye.left {
             left: 50px;
         }
+
         .eye.right {
             right: 50px;
         }
+
         .beak {
             position: absolute;
             top: 70px;
@@ -60,6 +68,7 @@
             background: orange;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         }
+
         .wing {
             position: absolute;
             bottom: 30px;
@@ -68,14 +77,17 @@
             background: black;
             border-radius: 30px / 60px;
         }
+
         .wing.left {
             left: -30px;
             transform: rotate(-20deg);
         }
+
         .wing.right {
             right: -30px;
             transform: rotate(20deg);
         }
+
         .foot {
             position: absolute;
             bottom: -10px;
@@ -84,17 +96,17 @@
             background: orange;
             border-radius: 30% / 50%;
         }
+
         .foot.left {
             left: 40px;
         }
+
         .foot.right {
             right: 40px;
         }
-
-
-
     </style>
 </head>
+
 <body>
     <div class="penguin">
         <!-- Penguin body -->
@@ -109,6 +121,6 @@
             <div class="foot right"></div>
         </div>
     </div>
-    
 </body>
+
 </html>

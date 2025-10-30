@@ -1,176 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Luminous Deep-Sea Coral (CSS Art Museum)</title>
     <style>
-/* Global Environment */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    min-height: 100vh;
-    margin: 0;
-    /* Darker, more atmospheric deep ocean background */
-    background: radial-gradient(circle at 50% 100%, #000208 0%, #000000 100%);
-    overflow: hidden;
-    filter: contrast(130%); 
-}
+        /* Global Environment */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            /* Darker, more atmospheric deep ocean background */
+            background: radial-gradient(circle at 50% 100%, #000208 0%, #000000 100%);
+            overflow: hidden;
+            filter: contrast(130%);
+        }
 
-.ocean-floor {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
+        .ocean-floor {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
 
-.seabed {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 10vh;
-    background: #080d15;
-    z-index: 1;
-}
+        .seabed {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 10vh;
+            background: #080d15;
+            z-index: 1;
+        }
 
-/* Coral Structure Styles - Elevated and wider */
-.coral-root {
-    position: absolute;
-    bottom: 15vh; /* SHIFTED UP to be more visible and central */
-    width: 400px;
-    height: 40px;
-    background-color: #151e2b; 
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 0 30px rgba(21, 30, 43, 0.7);
-    display: flex;
-    justify-content: space-around;
-    z-index: 10;
-    padding: 0 20px;
-}
+        /* Coral Structure Styles - Elevated and wider */
+        .coral-root {
+            position: absolute;
+            bottom: 15vh;
+            /* SHIFTED UP to be more visible and central */
+            width: 400px;
+            height: 40px;
+            background-color: #151e2b;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 0 30px rgba(21, 30, 43, 0.7);
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+            padding: 0 20px;
+        }
 
-/* Coral Stalk Styles */
-.coral-stalk {
-    position: relative;
-    width: 20px;
-    background: linear-gradient(to top, #1a2233, #2f405c);
-    border-radius: 10px 10px 0 0;
-    transform-origin: bottom center;
-    z-index: 5;
-    animation: sway 10s ease-in-out infinite alternate;
-    transform-style: preserve-3d;
-}
+        /* Coral Stalk Styles */
+        .coral-stalk {
+            position: relative;
+            width: 20px;
+            background: linear-gradient(to top, #1a2233, #2f405c);
+            border-radius: 10px 10px 0 0;
+            transform-origin: bottom center;
+            z-index: 5;
+            animation: sway 10s ease-in-out infinite alternate;
+            transform-style: preserve-3d;
+        }
 
-.stalk-1 { height: 250px; animation-duration: 9s; }
-.stalk-2 { height: 350px; animation-duration: 11s; }
-.stalk-3 { height: 300px; animation-duration: 10s; }
-.stalk-4 { height: 200px; animation-duration: 8s; }
+        .stalk-1 {
+            height: 250px;
+            animation-duration: 9s;
+        }
 
+        .stalk-2 {
+            height: 350px;
+            animation-duration: 11s;
+        }
 
-/* Coral Tip (Bioluminescence Source) Styles */
-.coral-tip {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    animation: glow 3s ease-in-out infinite alternate;
-}
+        .stalk-3 {
+            height: 300px;
+            animation-duration: 10s;
+        }
 
-/* Color variations for tips */
-.tip-1 { 
-    background-color: #00ffff;
-    animation-duration: 3.2s;
-    box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.8);
-}
-.tip-2 { 
-    background-color: #00ffc8;
-    animation-duration: 2.8s;
-    box-shadow: 0 0 15px 5px rgba(0, 255, 200, 0.8);
-}
-.tip-3 { 
-    background-color: #00d5ff;
-    animation-duration: 3.5s;
-    box-shadow: 0 0 15px 5px rgba(0, 213, 255, 0.8);
-}
-.tip-4 { 
-    background-color: #d100ff;
-    animation-duration: 3.0s;
-    box-shadow: 0 0 15px 5px rgba(209, 0, 255, 0.8);
-}
+        .stalk-4 {
+            height: 200px;
+            animation-duration: 8s;
+        }
 
 
-/* Bubble Styles - Bigger and More Quantity */
-.bubble {
-    position: absolute;
-    bottom: 5vh; 
-    /* INCREASED BASE SIZE */
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%;
-    background: rgba(180, 220, 255, 0.6);
-    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
-    animation: rise 15s linear infinite;
-    opacity: 0;
-}
+        /* Coral Tip (Bioluminescence Source) Styles */
+        .coral-tip {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
 
-/* Randomizing bubble properties (Total 9 bubbles now) */
-.bubble-1 { left: 33%; width: 9px; height: 9px; animation-duration: 12s; animation-delay: 0s; }
-.bubble-2 { left: 40%; width: 12px; height: 12px; animation-duration: 18s; animation-delay: 3s; }
-.bubble-3 { left: 48%; width: 7px; height: 7px; animation-duration: 10s; animation-delay: 5s; }
-.bubble-4 { left: 55%; width: 11px; height: 11px; animation-duration: 14s; animation-delay: 7s; }
-.bubble-5 { left: 62%; width: 9px; height: 9px; animation-duration: 16s; animation-delay: 1s; }
-.bubble-6 { left: 69%; width: 10px; height: 10px; animation-duration: 11s; animation-delay: 4s; }
-.bubble-7 { left: 35%; width: 8px; height: 8px; animation-duration: 13s; animation-delay: 2s; } /* NEW */
-.bubble-8 { left: 58%; width: 13px; height: 13px; animation-duration: 17s; animation-delay: 6s; } /* NEW */
-.bubble-9 { left: 43%; width: 6px; height: 6px; animation-duration: 9s; animation-delay: 8s; }  /* NEW */
+        /* Color variations for tips */
+        .tip-1 {
+            background-color: #00ffff;
+            animation-duration: 3.2s;
+            box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.8);
+        }
 
+        .tip-2 {
+            background-color: #00ffc8;
+            animation-duration: 2.8s;
+            box-shadow: 0 0 15px 5px rgba(0, 255, 200, 0.8);
+        }
 
-/* Keyframe Animations */
+        .tip-3 {
+            background-color: #00d5ff;
+            animation-duration: 3.5s;
+            box-shadow: 0 0 15px 5px rgba(0, 213, 255, 0.8);
+        }
 
-/* 1. Swaying Motion */
-@keyframes sway {
-    0% { transform: rotate(3deg); }
-    100% { transform: rotate(-3deg); }
-}
+        .tip-4 {
+            background-color: #d100ff;
+            animation-duration: 3.0s;
+            box-shadow: 0 0 15px 5px rgba(209, 0, 255, 0.8);
+        }
 
-/* 2. Enhanced Bioluminescent Pulse */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 15px 5px currentColor, 0 0 30px 10px rgba(0, 255, 255, 0.5);
-        transform: translateX(-50%) scale(0.9);
-        opacity: 0.8;
-    }
-    100% {
-        box-shadow: 0 0 30px 10px currentColor, 0 0 50px 20px rgba(0, 255, 255, 0.8); 
-        transform: translateX(-50%) scale(1.1);
-        opacity: 1;
-    }
-}
+        /* Bubble Styles - Bigger and More Quantity */
+        .bubble {
+            position: absolute;
+            bottom: 5vh;
+            /* INCREASED BASE SIZE */
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(180, 220, 255, 0.6);
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+            animation: rise 15s linear infinite;
+            opacity: 0;
+        }
 
-/* 3. Bubble Rising (with lateral drift for realism) */
-@keyframes rise {
-    0% {
-        bottom: 5vh;
-        opacity: 0;
-        transform: translateX(0) scale(1);
-    }
-    10% {
-        opacity: 0.8;
-    }
-    100% {
-        bottom: 100vh;
-        opacity: 0;
-        transform: translateX(20px) scale(0.8);
-    }
-}
-</style>
+        /* Randomizing bubble properties (Total 9 bubbles now) */
+        .bubble-1 {
+            left: 33%;
+            width: 9px;
+            height: 9px;
+            animation-duration: 12s;
+            animation-delay: 0s;
+        }
+
+        .bubble-2 {
+            left: 40%;
+            width: 12px;
+            height: 12px;
+            animation-duration: 18s;
+            animation-delay: 3s;
+        }
+
+        .bubble-3 {
+            left: 48%;
+            width: 7px;
+            height: 7px;
+            animation-duration: 10s;
+            animation-delay: 5s;
+        }
+
+        .bubble-4 {
+            left: 55%;
+            width: 11px;
+            height: 11px;
+            animation-duration: 14s;
+            animation-delay: 7s;
+        }
+
+        .bubble-5 {
+            left: 62%;
+            width: 9px;
+            height: 9px;
+            animation-duration: 16s;
+            animation-delay: 1s;
+        }
+
+        .bubble-6 {
+            left: 69%;
+            width: 10px;
+            height: 10px;
+            animation-duration: 11s;
+            animation-delay: 4s;
+        }
+
+        .bubble-7 {
+            left: 35%;
+            width: 8px;
+            height: 8px;
+            animation-duration: 13s;
+            animation-delay: 2s;
+        }
+
+        /* NEW */
+        .bubble-8 {
+            left: 58%;
+            width: 13px;
+            height: 13px;
+            animation-duration: 17s;
+            animation-delay: 6s;
+        }
+
+        /* NEW */
+        .bubble-9 {
+            left: 43%;
+            width: 6px;
+            height: 6px;
+            animation-duration: 9s;
+            animation-delay: 8s;
+        }
+
+        /* NEW */
+
+        /* Keyframe Animations */
+
+        /* 1. Swaying Motion */
+        @keyframes sway {
+            0% {
+                transform: rotate(3deg);
+            }
+
+            100% {
+                transform: rotate(-3deg);
+            }
+        }
+
+        /* 2. Enhanced Bioluminescent Pulse */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 15px 5px currentColor, 0 0 30px 10px rgba(0, 255, 255, 0.5);
+                transform: translateX(-50%) scale(0.9);
+                opacity: 0.8;
+            }
+
+            100% {
+                box-shadow: 0 0 30px 10px currentColor, 0 0 50px 20px rgba(0, 255, 255, 0.8);
+                transform: translateX(-50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* 3. Bubble Rising (with lateral drift for realism) */
+        @keyframes rise {
+            0% {
+                bottom: 5vh;
+                opacity: 0;
+                transform: translateX(0) scale(1);
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: translateX(20px) scale(0.8);
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <div class="ocean-floor">
         <div class="coral-root">
             <div class="coral-stalk stalk-1">
@@ -186,15 +280,17 @@ body {
                 <div class="coral-tip tip-4"></div>
             </div>
         </div>
-        
+
         <div class="bubble bubble-1"></div>
         <div class="bubble bubble-2"></div>
         <div class="bubble bubble-3"></div>
         <div class="bubble bubble-4"></div>
         <div class="bubble bubble-5"></div>
         <div class="bubble bubble-6"></div>
-        
+
         <div class="seabed"></div>
     </div>
+    
 </body>
+
 </html>

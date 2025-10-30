@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,8 +35,15 @@
     }
 
     @keyframes rise {
-      0% { transform: translateY(20px); opacity: 0.9; }
-      100% { transform: translateY(-20px); opacity: 1; }
+      0% {
+        transform: translateY(20px);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-20px);
+        opacity: 1;
+      }
     }
 
     /* Trees */
@@ -62,17 +70,47 @@
 
     /* Tree animation */
     @keyframes sway {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(2deg); }
+
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(2deg);
+      }
     }
 
     /* Multiple trees positioned */
-    .tree:nth-child(2) { left: 50px; bottom: 0; }
-    .tree:nth-child(3) { left: 150px; bottom: 10px; }
-    .tree:nth-child(4) { left: 250px; bottom: 0; }
-    .tree:nth-child(5) { left: 400px; bottom: 20px; }
-    .tree:nth-child(6) { left: 550px; bottom: 0; }
-    .tree:nth-child(7) { left: 700px; bottom: 10px; }
+    .tree:nth-child(2) {
+      left: 50px;
+      bottom: 0;
+    }
+
+    .tree:nth-child(3) {
+      left: 150px;
+      bottom: 10px;
+    }
+
+    .tree:nth-child(4) {
+      left: 250px;
+      bottom: 0;
+    }
+
+    .tree:nth-child(5) {
+      left: 400px;
+      bottom: 20px;
+    }
+
+    .tree:nth-child(6) {
+      left: 550px;
+      bottom: 0;
+    }
+
+    .tree:nth-child(7) {
+      left: 700px;
+      bottom: 10px;
+    }
 
     /* Mist */
     .mist {
@@ -80,13 +118,18 @@
       bottom: 0;
       width: 100%;
       height: 120px;
-      background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
       animation: moveMist 8s linear infinite;
     }
 
     @keyframes moveMist {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100px); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100px);
+      }
     }
 
     /* Title */
@@ -111,6 +154,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="sun"></div>
 
@@ -128,4 +172,5 @@
 
   <div class="mist"></div>
 </body>
+
 </html>

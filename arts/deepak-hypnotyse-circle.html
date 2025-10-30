@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hypnotic Spiral — Dynamic</title>
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
-            background: #fff; /* white background like the reference */
+            background: #fff;
+            /* white background like the reference */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -20,7 +23,7 @@
             height: 90vmin;
             max-width: 1200px;
             max-height: 1200px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             border-radius: 6px;
             background: #fff;
             display: block;
@@ -30,21 +33,34 @@
             position: fixed;
             left: 12px;
             bottom: 12px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             padding: 8px 10px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             display: flex;
             gap: 8px;
             align-items: center;
             backdrop-filter: blur(4px);
         }
 
-        .controls label { font-size: 13px; color: #222 }
-        .controls input[type="range"] { width: 160px }
-        .btn { padding: 6px 10px; border-radius: 6px; border: none; cursor: pointer }
+        .controls label {
+            font-size: 13px;
+            color: #222
+        }
+
+        .controls input[type="range"] {
+            width: 160px
+        }
+
+        .btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer
+        }
     </style>
 </head>
+
 <body>
     <canvas id="spiral"></canvas>
 
@@ -187,4 +203,5 @@
         })();
     </script>
 </body>
+
 </html>

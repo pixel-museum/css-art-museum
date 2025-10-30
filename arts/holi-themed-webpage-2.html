@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
@@ -22,7 +23,7 @@
             justify-content: center;
             padding: 20px;
         }
-        
+
         .container {
             text-align: center;
             max-width: 800px;
@@ -34,20 +35,20 @@
             position: relative;
             z-index: 10;
         }
-        
+
         h1 {
             color: #ff4081;
             font-size: 3rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        
+
         .subtitle {
             color: #7b1fa2;
             font-size: 1.5rem;
             margin-bottom: 30px;
         }
-        
+
         .holi-info {
             background: linear-gradient(45deg, #ff4081, #7b1fa2, #2196f3);
             -webkit-background-clip: text;
@@ -58,14 +59,14 @@
             margin-bottom: 30px;
             padding: 0 20px;
         }
-        
+
         .color-container {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin: 30px 0;
         }
-        
+
         .color {
             width: 50px;
             height: 50px;
@@ -74,17 +75,31 @@
             transition: transform 0.3s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        
+
         .color:hover {
             transform: scale(1.2);
         }
-        
-        .red { background-color: #ff4081; }
-        .blue { background-color: #2196f3; }
-        .green { background-color: #4caf50; }
-        .yellow { background-color: #ffeb3b; }
-        .purple { background-color: #7b1fa2; }
-        
+
+        .red {
+            background-color: #ff4081;
+        }
+
+        .blue {
+            background-color: #2196f3;
+        }
+
+        .green {
+            background-color: #4caf50;
+        }
+
+        .yellow {
+            background-color: #ffeb3b;
+        }
+
+        .purple {
+            background-color: #7b1fa2;
+        }
+
         .play-btn {
             background: linear-gradient(45deg, #ff4081, #7b1fa2);
             color: white;
@@ -97,12 +112,12 @@
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(123, 31, 162, 0.4);
         }
-        
+
         .play-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(123, 31, 162, 0.6);
         }
-        
+
         .message {
             margin-top: 20px;
             font-size: 1.5rem;
@@ -110,7 +125,7 @@
             color: #7b1fa2;
             height: 40px;
         }
-        
+
         .canvas-container {
             position: fixed;
             top: 0;
@@ -120,7 +135,7 @@
             pointer-events: none;
             z-index: 1;
         }
-        
+
         footer {
             margin-top: 30px;
             color: #7b1fa2;
@@ -128,21 +143,23 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="canvas-container">
         <canvas id="holiCanvas"></canvas>
     </div>
-    
+
     <div class="container">
         <h1>Happy Holi!</h1>
         <div class="subtitle">Festival of Colors</div>
-        
+
         <div class="holi-info">
-            Holi is a popular ancient Hindu festival, also known as the "Festival of Spring", 
-            the "Festival of Colours", and the "Festival of Love". The festival celebrates 
+            Holi is a popular ancient Hindu festival, also known as the "Festival of Spring",
+            the "Festival of Colours", and the "Festival of Love". The festival celebrates
             the eternal and divine love of Radha Krishna.
         </div>
-        
+
         <div class="color-container">
             <div class="color red" data-color="red"></div>
             <div class="color blue" data-color="blue"></div>
@@ -150,12 +167,12 @@
             <div class="color yellow" data-color="yellow"></div>
             <div class="color purple" data-color="purple"></div>
         </div>
-        
+
         <button class="play-btn" id="playHoli">Play Holi!</button>
-        
+
         <div class="message" id="message"></div>
     </div>
-    
+
     <footer>
         Made with ❤️ for Holi Festival
     </footer>
@@ -164,21 +181,21 @@
         // Canvas setup for falling colors
         const canvas = document.getElementById('holiCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         // Set canvas to full window size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
+
         // Resize canvas when window is resized
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-        
+
         // Color particles array
         let particles = [];
         const colors = ['#ff4081', '#2196f3', '#4caf50', '#ffeb3b', '#7b1fa2'];
-        
+
         // Particle class
         class Particle {
             constructor(x, y, color) {
@@ -190,13 +207,13 @@
                 this.speedY = Math.random() * 3 + 1;
                 this.gravity = 0.1;
             }
-            
+
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
                 this.speedY += this.gravity;
             }
-            
+
             draw() {
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
@@ -204,7 +221,7 @@
                 ctx.fill();
             }
         }
-        
+
         // Create particles
         function createParticles(x, y, count) {
             for (let i = 0; i < count; i++) {
@@ -212,30 +229,30 @@
                 particles.push(new Particle(x, y, color));
             }
         }
-        
+
         // Animation loop
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
-                
+
                 // Remove particles that are out of screen
                 if (particles[i].y > canvas.height) {
                     particles.splice(i, 1);
                     i--;
                 }
             }
-            
+
             requestAnimationFrame(animate);
         }
-        
+
         // Start animation
         animate();
-        
+
         // Add event listeners
-        document.getElementById('playHoli').addEventListener('click', function() {
+        document.getElementById('playHoli').addEventListener('click', function () {
             const messages = [
                 "Wishing you a colorful and joyful Holi!",
                 "May your life be filled with vibrant colors!",
@@ -243,10 +260,10 @@
                 "Let's celebrate the festival of colors!",
                 "Spread love and colors this Holi!"
             ];
-            
+
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             document.getElementById('message').textContent = randomMessage;
-            
+
             // Create particles from the top of the screen
             for (let i = 0; i < 5; i++) {
                 setTimeout(() => {
@@ -258,13 +275,13 @@
                 }, i * 200);
             }
         });
-        
+
         // Add color click effect
         document.querySelectorAll('.color').forEach(color => {
-            color.addEventListener('click', function() {
+            color.addEventListener('click', function () {
                 const colorName = this.getAttribute('data-color');
                 document.getElementById('message').textContent = `You selected ${colorName} color!`;
-                
+
                 // Create particles from the color element
                 const rect = this.getBoundingClientRect();
                 createParticles(
@@ -274,7 +291,7 @@
                 );
             });
         });
-        
+
         // Add random particles occasionally
         setInterval(() => {
             createParticles(
@@ -284,5 +301,7 @@
             );
         }, 1000);
     </script>
+    
 </body>
+
 </html>

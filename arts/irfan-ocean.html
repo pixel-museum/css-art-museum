@@ -1,155 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Boat on Moving Sea with Sun, Birds, Clouds</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(to top, #87ceeb, #aee1f9); /* sky gradient */
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Sun slightly higher */
-  .sun {
-    position: absolute;
-    bottom: 180px; /* slightly higher */
-    left: 80%;
-    width: 100px;
-    height: 100px;
-    background: gold;
-    border-radius: 50%;
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
-  }
-
-  /* Birds - positioned just above the boat */
-  .bird {
-    position: absolute;
-    width: 18px;
-    height: 8px;
-    border: 2px solid #333;
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-    animation: flyLeftToRight linear infinite;
-    z-index: 10;
-    left: -100px; /* Start off-screen by default */
-  }
-
-  .bird:nth-child(2) { bottom: 170px; animation-duration: 12s; animation-delay: 0s; }
-  .bird:nth-child(3) { bottom: 165px; animation-duration: 15s; animation-delay: 6s; }
-
-  @keyframes flyLeftToRight {
-    0% { 
-      left: -120px;
-      transform: translateY(0) rotate(-45deg);
+  <meta charset="UTF-8">
+  <title>Boat on Moving Sea with Sun, Birds, Clouds</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to top, #87ceeb, #aee1f9);
+      /* sky gradient */
+      overflow: hidden;
+      position: relative;
     }
-    100% { 
-      left: calc(100vw + 120px);
-      transform: translateY(0) rotate(-45deg);
+
+    /* Sun slightly higher */
+    .sun {
+      position: absolute;
+      bottom: 180px;
+      /* slightly higher */
+      left: 80%;
+      width: 100px;
+      height: 100px;
+      background: gold;
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
     }
-  }
 
-  /* Clouds - 50% opacity and positioned above birds */
-  .cloud {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    width: 80px;
-    height: 35px;
-    z-index: 5;
-  }
-  .cloud::before,
-  .cloud::after {
-    content: '';
-    position: absolute;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-  }
-  .cloud::before { width: 50px; height: 50px; top: -15px; left: 8px; }
-  .cloud::after { width: 60px; height: 60px; top: -20px; right: 8px; }
+    /* Birds - positioned just above the boat */
+    .bird {
+      position: absolute;
+      width: 18px;
+      height: 8px;
+      border: 2px solid #333;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      animation: flyLeftToRight linear infinite;
+      z-index: 10;
+      left: -100px;
+      /* Start off-screen by default */
+    }
 
-  .cloud1 { top: 50px; left: 10%; }
-  .cloud2 { top: 30px; left: 30%; }
-  .cloud3 { top: 70px; left: 70%; }
+    .bird:nth-child(2) {
+      bottom: 170px;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
 
-  /* Sea - reduced height */
-  .sea {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to top, #005f73, #0a9396);
-    overflow: hidden;
-  }
+    .bird:nth-child(3) {
+      bottom: 165px;
+      animation-duration: 15s;
+      animation-delay: 6s;
+    }
 
-  /* Waves */
-  .wave {
-    position: absolute;
-    width: 200%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 43%;
-    top: -50%;
-    left: -50%;
-    animation: waveMove 4s linear infinite;
-  }
+    @keyframes flyLeftToRight {
+      0% {
+        left: -120px;
+        transform: translateY(0) rotate(-45deg);
+      }
 
-  .wave:nth-child(2) {
-    background: rgba(255, 255, 255, 0.15);
-    animation-duration: 6s;
-    top: -55%;
-    left: -55%;
-  }
+      100% {
+        left: calc(100vw + 120px);
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
 
-  @keyframes waveMove {
-    0% { transform: translateX(0) translateY(0) rotate(0deg); }
-    50% { transform: translateX(50px) translateY(10px) rotate(5deg); }
-    100% { transform: translateX(0) translateY(0) rotate(0deg); }
-  }
+    /* Clouds - 50% opacity and positioned above birds */
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      width: 80px;
+      height: 35px;
+      z-index: 5;
+    }
 
-  /* Boat - adjusted position for smaller sea */
-  .boat {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 60px;
-    animation: boatBob 3s ease-in-out infinite;
-    z-index: 15;
-  }
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+    }
 
-  .hull {
-    width: 100%;
-    height: 30px;
-    background: #8b4513;
-    border-radius: 0 0 20px 20px;
-    position: absolute;
-    bottom: 0;
-  }
+    .cloud::before {
+      width: 50px;
+      height: 50px;
+      top: -15px;
+      left: 8px;
+    }
 
-  .sail {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 40px solid white;
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    .cloud::after {
+      width: 60px;
+      height: 60px;
+      top: -20px;
+      right: 8px;
+    }
 
-  @keyframes boatBob {
-    0% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
-    100% { transform: translateX(-50%) translateY(0); }
-  }
-</style>
+    .cloud1 {
+      top: 50px;
+      left: 10%;
+    }
+
+    .cloud2 {
+      top: 30px;
+      left: 30%;
+    }
+
+    .cloud3 {
+      top: 70px;
+      left: 70%;
+    }
+
+    /* Sea - reduced height */
+    .sea {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, #005f73, #0a9396);
+      overflow: hidden;
+    }
+
+    /* Waves */
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 43%;
+      top: -50%;
+      left: -50%;
+      animation: waveMove 4s linear infinite;
+    }
+
+    .wave:nth-child(2) {
+      background: rgba(255, 255, 255, 0.15);
+      animation-duration: 6s;
+      top: -55%;
+      left: -55%;
+    }
+
+    @keyframes waveMove {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateX(50px) translateY(10px) rotate(5deg);
+      }
+
+      100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+      }
+    }
+
+    /* Boat - adjusted position for smaller sea */
+    .boat {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 60px;
+      animation: boatBob 3s ease-in-out infinite;
+      z-index: 15;
+    }
+
+    .hull {
+      width: 100%;
+      height: 30px;
+      background: #8b4513;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .sail {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid white;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes boatBob {
+      0% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Sun -->
@@ -177,4 +232,5 @@
   </div>
 
 </body>
+
 </html>

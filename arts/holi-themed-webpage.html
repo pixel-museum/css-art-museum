@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,11 +36,19 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 1;}
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0;}
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <h1>Happy Holi! 🌸</h1>
 
@@ -47,7 +56,7 @@
         const colors = ["#FF5733", "#FFC300", "#DAF7A6", "#C70039", "#900C3F", "#581845", "#FF33FF"];
         const particleCount = 150;
 
-        for(let i = 0; i < particleCount; i++) {
+        for (let i = 0; i < particleCount; i++) {
             let particle = document.createElement("div");
             particle.classList.add("particle");
             particle.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -59,4 +68,5 @@
         }
     </script>
 </body>
+
 </html>

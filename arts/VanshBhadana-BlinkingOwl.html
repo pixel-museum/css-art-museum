@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,9 +26,12 @@
         }
 
         @keyframes bob {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -36,18 +40,20 @@
         .body {
             width: 200px;
             height: 180px;
-            background: #5d4037; /* Dark brown */
+            background: #5d4037;
+            /* Dark brown */
             border-radius: 50% 50% 40% 40%;
             position: absolute;
             bottom: 0;
-            box-shadow: inset 0 -15px 20px rgba(0,0,0,0.3);
+            box-shadow: inset 0 -15px 20px rgba(0, 0, 0, 0.3);
         }
 
         .belly {
             position: absolute;
             width: 140px;
             height: 120px;
-            background: #efebe9; /* Light beige */
+            background: #efebe9;
+            /* Light beige */
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
@@ -61,7 +67,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 30% 30%, #d7ccc8 10%, transparent 10.5%),
                 radial-gradient(circle at 70% 30%, #d7ccc8 10%, transparent 10.5%),
                 radial-gradient(circle at 50% 60%, #d7ccc8 10%, transparent 10.5%),
@@ -86,7 +92,8 @@
             height: 60px;
             background: #ffffff;
             border-radius: 50%;
-            border: 4px solid #3e2723; /* Darker brown */
+            border: 4px solid #3e2723;
+            /* Darker brown */
             position: relative;
             display: flex;
             justify-content: center;
@@ -96,9 +103,13 @@
         }
 
         @keyframes blink {
-            0%, 90%, 100% {
+
+            0%,
+            90%,
+            100% {
                 transform: scaleY(1);
             }
+
             95% {
                 transform: scaleY(0.1);
             }
@@ -107,7 +118,8 @@
         .pupil {
             width: 25px;
             height: 25px;
-            background: #212121; /* Black */
+            background: #212121;
+            /* Black */
             border-radius: 50%;
             position: relative;
         }
@@ -133,18 +145,20 @@
             height: 0;
             border-left: 12px solid transparent;
             border-right: 12px solid transparent;
-            border-top: 18px solid #ff9800; /* Orange */
+            border-top: 18px solid #ff9800;
+            /* Orange */
         }
 
         .wing {
             width: 70px;
             height: 120px;
-            background: #4e342e; /* Mid brown */
+            background: #4e342e;
+            /* Mid brown */
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             position: absolute;
             top: 40px;
             z-index: -1;
-            box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
         .wing.left {
@@ -176,7 +190,8 @@
         }
 
         /* Talons */
-        .foot::before, .foot::after {
+        .foot::before,
+        .foot::after {
             content: '';
             position: absolute;
             width: 6px;
@@ -185,21 +200,24 @@
             border-radius: 0 0 50% 50%;
             bottom: -5px;
         }
+
         .foot::before {
             left: 5px;
         }
+
         .foot::after {
             right: 5px;
         }
-
     </style>
 </head>
+
 <body>
 
     <div class="owl">
         <div class="body">
             <div class="belly"></div>
         </div>
+
         <div class="eyes">
             <div class="eye">
                 <div class="pupil"></div>
@@ -208,9 +226,11 @@
                 <div class="pupil"></div>
             </div>
         </div>
+
         <div class="beak"></div>
         <div class="wing left"></div>
         <div class="wing right"></div>
+        
         <div class="feet">
             <div class="foot"></div>
             <div class="foot"></div>
@@ -218,4 +238,5 @@
     </div>
 
 </body>
+
 </html>
