@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             background-color: var(--cor-fundo);
             overflow: hidden;
         }
-        
+
         .relogio {
             width: 90vmin;
             height: 90vmin;
@@ -49,22 +50,18 @@
         }
 
         .relogio::before {
-            background: conic-gradient(
-                from 0deg,
-                var(--cor-ponteiro-horas) 0%,
-                transparent 40%
-            );
+            background: conic-gradient(from 0deg,
+                    var(--cor-ponteiro-horas) 0%,
+                    transparent 40%);
             filter: drop-shadow(0 0 15px var(--cor-ponteiro-horas));
-            animation: girar 43200s linear infinite; 
+            animation: girar 43200s linear infinite;
         }
 
         .relogio::after {
-            background: conic-gradient(
-                from 0deg,
-                var(--cor-ponteiro-minutos) 0%,
-                transparent 15%
-            );
-             filter: drop-shadow(0 0 10px var(--cor-ponteiro-minutos));
+            background: conic-gradient(from 0deg,
+                    var(--cor-ponteiro-minutos) 0%,
+                    transparent 15%);
+            filter: drop-shadow(0 0 10px var(--cor-ponteiro-minutos));
             animation: girar 3600s linear infinite;
         }
 
@@ -80,18 +77,18 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
         }
-
     </style>
 </head>
-<body>
 
+<body>
     <div class="relogio">
         <div class="ponto-central"></div>
     </div>
-
 </body>
+
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typewriter Effect</title>
+
+    <style type="text/css">
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+
+        body {
+            background-color:blanchedalmond;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            display: flex;
+        }
+
+        h1 {
+            font-size: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typewriter 2s steps(13) infinite alternate,
+                blink 800ms steps(13) infinite normal;
+            border-right: 5px solid black;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 60%;
+            }
+        }
+
+        @keyframes blink {
+            from {
+                border-color: black;
+            }
+
+            to {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Typewriter animation</h1>
+</body>
+</html>

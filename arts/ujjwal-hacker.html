@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +44,7 @@
                 top: -100%;
                 opacity: 1;
             }
+
             100% {
                 top: 100%;
                 opacity: 0.3;
@@ -67,13 +69,18 @@
             width: 800px;
             max-width: 95%;
             box-shadow: 0 0 50px rgba(0, 255, 0, 0.5),
-                        inset 0 0 50px rgba(0, 255, 0, 0.1);
+                inset 0 0 50px rgba(0, 255, 0, 0.1);
             animation: terminalGlow 2s ease-in-out infinite alternate;
         }
 
         @keyframes terminalGlow {
-            0% { box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 255, 0, 0.1); }
-            100% { box-shadow: 0 0 50px rgba(0, 255, 0, 0.6), inset 0 0 50px rgba(0, 255, 0, 0.2); }
+            0% {
+                box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 255, 0, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 0 50px rgba(0, 255, 0, 0.6), inset 0 0 50px rgba(0, 255, 0, 0.2);
+            }
         }
 
         .terminal-header {
@@ -92,13 +99,28 @@
             animation: buttonPulse 2s ease-in-out infinite;
         }
 
-        .btn-red { background: #ff5f56; }
-        .btn-yellow { background: #ffbd2e; }
-        .btn-green { background: #27c93f; }
+        .btn-red {
+            background: #ff5f56;
+        }
+
+        .btn-yellow {
+            background: #ffbd2e;
+        }
+
+        .btn-green {
+            background: #27c93f;
+        }
 
         @keyframes buttonPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         .terminal-title {
@@ -122,7 +144,9 @@
         }
 
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
 
         .prompt {
@@ -140,13 +164,29 @@
         }
 
         @keyframes blink {
-            50% { opacity: 0; }
+            50% {
+                opacity: 0;
+            }
         }
 
-        .success { color: #0f0; }
-        .warning { color: #ff0; text-shadow: 0 0 5px #ff0; }
-        .error { color: #f00; text-shadow: 0 0 5px #f00; }
-        .info { color: #0ff; text-shadow: 0 0 5px #0ff; }
+        .success {
+            color: #0f0;
+        }
+
+        .warning {
+            color: #ff0;
+            text-shadow: 0 0 5px #ff0;
+        }
+
+        .error {
+            color: #f00;
+            text-shadow: 0 0 5px #f00;
+        }
+
+        .info {
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
+        }
 
         /* Skull ASCII Art */
         .skull {
@@ -159,19 +199,25 @@
         }
 
         @keyframes skullGlitch {
-            0%, 90%, 100% { 
+
+            0%,
+            90%,
+            100% {
                 transform: translate(0, 0);
                 text-shadow: 0 0 10px #f00;
             }
-            92% { 
+
+            92% {
                 transform: translate(-2px, 2px);
                 text-shadow: 2px 0 10px #0ff, -2px 0 10px #f0f;
             }
-            94% { 
+
+            94% {
                 transform: translate(2px, -2px);
                 text-shadow: -2px 0 10px #0ff, 2px 0 10px #f0f;
             }
-            96% { 
+
+            96% {
                 transform: translate(-2px, -2px);
                 text-shadow: 2px 2px 10px #0ff, -2px -2px 10px #f0f;
             }
@@ -197,7 +243,9 @@
         }
 
         @keyframes progressFill {
-            to { width: 100%; }
+            to {
+                width: 100%;
+            }
         }
 
         /* Loading spinner */
@@ -207,7 +255,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Glitch effect */
@@ -216,24 +266,31 @@
         }
 
         @keyframes glitchText {
-            0%, 90%, 100% { 
+
+            0%,
+            90%,
+            100% {
                 transform: translate(0);
             }
-            92% { 
+
+            92% {
                 transform: translate(-2px, 2px);
                 color: #f0f;
             }
-            94% { 
+
+            94% {
                 transform: translate(2px, -2px);
                 color: #0ff;
             }
-            96% { 
+
+            96% {
                 transform: translate(-2px, -2px);
                 color: #ff0;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Matrix Background -->
     <div class="matrix-bg" id="matrixBg"></div>
@@ -247,6 +304,7 @@
                 <div class="terminal-button btn-green"></div>
                 <div class="terminal-title">root@hacker:~$</div>
             </div>
+
             <div class="terminal-body" id="terminalBody">
                 <div class="terminal-line" style="animation-delay: 0s;">
                     <span class="prompt">root@hacker:~$</span> initializing system...
@@ -287,7 +345,7 @@
                     <span class="glitch">ACCESS GRANTED</span>
                 </div>
                 <div class="terminal-line skull" style="animation-delay: 8.5s;">
-<pre>
+                    <pre>
     ___________
    /           \
   /   X     X   \
@@ -312,31 +370,31 @@
         // Matrix rain effect
         const matrixBg = document.getElementById('matrixBg');
         const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-        
+
         function createMatrixColumn() {
             const column = document.createElement('div');
             column.className = 'matrix-column';
             column.style.left = Math.random() * 100 + '%';
             column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            
+
             let text = '';
             for (let i = 0; i < 20; i++) {
                 text += characters[Math.floor(Math.random() * characters.length)] + '<br>';
             }
             column.innerHTML = text;
-            
+
             matrixBg.appendChild(column);
-            
+
             setTimeout(() => {
                 column.remove();
             }, 5000);
         }
-        
+
         // Create initial columns
         for (let i = 0; i < 30; i++) {
             setTimeout(createMatrixColumn, i * 200);
         }
-        
+
         // Keep creating columns
         setInterval(createMatrixColumn, 300);
 
@@ -344,7 +402,7 @@
         const spinnerChars = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
         let spinnerIndex = 0;
         const spinners = document.querySelectorAll('.spinner');
-        
+
         setInterval(() => {
             spinnerIndex = (spinnerIndex + 1) % spinnerChars.length;
             spinners.forEach(spinner => {
@@ -352,5 +410,7 @@
             });
         }, 100);
     </script>
+    
 </body>
+
 </html>

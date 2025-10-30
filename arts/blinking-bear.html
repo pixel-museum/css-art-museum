@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,13 @@
       background: linear-gradient(to bottom, #0a0a23 0%, #1c2526 100%);
       overflow: hidden;
     }
+
     .scene {
       position: relative;
       width: 300px;
       height: 300px;
     }
+
     .ground {
       position: absolute;
       bottom: 0;
@@ -29,6 +32,7 @@
       border-radius: 50% 50% 0 0;
       z-index: 1;
     }
+
     .bear {
       position: absolute;
       bottom: 100px;
@@ -38,6 +42,7 @@
       height: 100px;
       z-index: 2;
     }
+
     .head {
       position: absolute;
       width: 80px;
@@ -47,7 +52,9 @@
       left: 10px;
       top: 10px;
     }
-    .ear-left, .ear-right {
+
+    .ear-left,
+    .ear-right {
       position: absolute;
       width: 30px;
       height: 30px;
@@ -55,8 +62,15 @@
       border-radius: 50%;
       top: 0;
     }
-    .ear-left { left: 5px; }
-    .ear-right { right: 5px; }
+
+    .ear-left {
+      left: 5px;
+    }
+
+    .ear-right {
+      right: 5px;
+    }
+
     .snout {
       position: absolute;
       width: 40px;
@@ -67,6 +81,7 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
     .nose {
       position: absolute;
       width: 10px;
@@ -77,7 +92,9 @@
       left: 50%;
       transform: translateX(-50%);
     }
-    .eye-left, .eye-right {
+
+    .eye-left,
+    .eye-right {
       position: absolute;
       width: 10px;
       height: 10px;
@@ -87,8 +104,15 @@
       z-index: 3;
       animation: blink 4s infinite;
     }
-    .eye-left { left: 25px; }
-    .eye-right { right: 25px; }
+
+    .eye-left {
+      left: 25px;
+    }
+
+    .eye-right {
+      right: 25px;
+    }
+
     .stars {
       position: absolute;
       width: 100%;
@@ -96,6 +120,7 @@
       top: 0;
       left: 0;
     }
+
     .star {
       position: absolute;
       background: #ffffff;
@@ -103,21 +128,70 @@
       opacity: 0.8;
       animation: twinkle 3s infinite;
     }
-    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
-    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
-    .star3 { width: 1px; height: 1px; top: 150px; left: 100px; animation-delay: 1.5s; }
-    .star4 { width: 2px; height: 2px; top: 30px; left: 250px; animation-delay: 2s; }
-    @keyframes blink {
-      0%, 10%, 90%, 100% { height: 10px; }
-      5% { height: 2px; transform: translateY(4px); }
+
+    .star1 {
+      width: 2px;
+      height: 2px;
+      top: 20px;
+      left: 50px;
+      animation-delay: 0.5s;
     }
+
+    .star2 {
+      width: 3px;
+      height: 3px;
+      top: 80px;
+      left: 200px;
+      animation-delay: 1s;
+    }
+
+    .star3 {
+      width: 1px;
+      height: 1px;
+      top: 150px;
+      left: 100px;
+      animation-delay: 1.5s;
+    }
+
+    .star4 {
+      width: 2px;
+      height: 2px;
+      top: 30px;
+      left: 250px;
+      animation-delay: 2s;
+    }
+
+    @keyframes blink {
+
+      0%,
+      10%,
+      90%,
+      100% {
+        height: 10px;
+      }
+
+      5% {
+        height: 2px;
+        transform: translateY(4px);
+      }
+    }
+
     @keyframes twinkle {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.3; }
+
+      0%,
+      100% {
+        opacity: 0.8;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <div class="scene">
     <div class="stars">
       <div class="star star1"></div>
@@ -125,7 +199,9 @@
       <div class="star star3"></div>
       <div class="star star4"></div>
     </div>
+
     <div class="ground"></div>
+
     <div class="bear">
       <div class="head">
         <div class="ear-left"></div>
@@ -138,5 +214,7 @@
       </div>
     </div>
   </div>
+  
 </body>
+
 </html>

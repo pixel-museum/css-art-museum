@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enchanted Mjolnir ⚡</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #0a0a1f 0%, #000 100%);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Mist / fog layer */
+    .fog {
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      background: url("https://i.imgur.com/kSvxP0S.png") repeat;
+      opacity: 0.1;
+      animation: fogMove 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fogMove {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .scene {
+      position: relative;
+      width: 250px;
+      height: 400px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .hammer {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-10deg);
+      animation: float 3s ease-in-out infinite alternate;
+      transition: all 0.5s ease;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateX(-50%) rotate(-10deg) translateY(0);
+      }
+
+      to {
+        transform: translateX(-50%) rotate(-10deg) translateY(-15px);
+      }
+    }
+
+    .handle {
+      width: 22px;
+      height: 130px;
+      background: repeating-linear-gradient(45deg, #5c3a1e 0 10px, #3b2411 10px 20px);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .head {
+      width: 140px;
+      height: 80px;
+      background: linear-gradient(145deg, #bfc3c7, #7f858a);
+      border-radius: 10px;
+      position: absolute;
+      top: -70px;
+      left: -60px;
+      box-shadow:
+        inset 0 0 20px #9fa4a8,
+        0 0 25px rgba(173, 216, 230, 0.6),
+        0 0 60px rgba(100, 200, 255, 0.3);
+      overflow: hidden;
+    }
+
+    .head::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      right: 10px;
+      bottom: 12px;
+      border-radius: 5px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Glowing runes */
+    .runes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00eaff;
+      font-size: 1.4em;
+      letter-spacing: 6px;
+      font-family: "Courier New", monospace;
+      opacity: 0;
+      text-shadow: 0 0 10px #00eaff, 0 0 30px #00eaff;
+      animation: glowRunes 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowRunes {
+      from {
+        opacity: 0.3;
+      }
+
+      to {
+        opacity: 0.8;
+      }
+    }
+
+    .glow {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(0, 200, 255, 0.4) 0%, transparent 70%);
+      top: 35%;
+      left: 15%;
+      filter: blur(40px);
+      opacity: 0.7;
+      animation: pulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      to {
+        transform: scale(1.4);
+        opacity: 0.9;
+      }
+    }
+
+    /* Lightning effects */
+    .lightning {
+      position: absolute;
+      width: 2px;
+      height: 150px;
+      background: linear-gradient(to bottom, rgba(0, 200, 255, 0.9), transparent);
+      left: 50%;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes strike {
+      0%, 95%, 100% {
+        opacity: 0;
+      }
+
+      10%, 20% {
+        opacity: 1;
+        transform: scaleY(1.2);
+        box-shadow: 0 0 25px #00eaff;
+      }
+    }
+
+    .shadow {
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 20px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7), transparent);
+      filter: blur(3px);
+    }
+
+    .title {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: #bde9ff;
+      font-size: 1.3em;
+      text-shadow: 0 0 15px #00eaff;
+      letter-spacing: 2px;
+      animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+
+      20%, 24%, 55% {
+        opacity: 0.6;
+      }
+    }
+
+    /* On thunder click */
+    .active .runes {
+      opacity: 1;
+      text-shadow: 0 0 20px #00eaff, 0 0 60px #00eaff;
+    }
+
+    .active .hammer {
+      filter: drop-shadow(0 0 40px #00eaff);
+      transform: translateX(-50%) rotate(-10deg) translateY(-20px);
+    }
+
+    .active .lightning {
+      animation: strike 0.8s ease-in-out;
+    }
+
+    /* Screen flash */
+    .flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 999;
+      animation: flashEffect 0.4s ease;
+    }
+
+    @keyframes flashEffect {
+      0% {
+        opacity: 0.8;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="fog"></div>
+
+  <div class="scene" id="scene">
+    <div class="glow"></div>
+
+    <!-- Lightning Bolts -->
+    <div class="lightning" id="light1"></div>
+    <div class="lightning" id="light2"></div>
+    <div class="lightning" id="light3"></div>
+
+    <!-- Hammer -->
+    <div class="hammer">
+      <div class="handle"></div>
+      <div class="head">
+        <div class="runes">ᛏᚺᛟᚱ</div>
+      </div>
+    </div>
+
+    <div class="shadow"></div>
+    <div class="title">Enchanted Mjolnir ⚡</div>
+  </div>
+
+  <script>
+    const scene = document.getElementById('scene');
+    const bolts = [
+      document.getElementById('light1'),
+      document.getElementById('light2'),
+      document.getElementById('light3')
+    ];
+
+    scene.addEventListener('click', () => {
+      scene.classList.add('active');
+
+      bolts.forEach((bolt, i) => {
+        bolt.style.animation = 'none';
+        bolt.offsetHeight; // trigger reflow
+        bolt.style.left = `${40 + Math.random() * 20}%`;
+        bolt.style.animation = `strike 0.8s ease-in-out ${i * 0.1}s`;
+      });
+
+      // Flash effect
+      const flash = document.createElement('div');
+      flash.className = 'flash';
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 400);
+
+      // Remove active after effect
+      setTimeout(() => {
+        scene.classList.remove('active');
+      }, 1000);
+    });
+  </script>
+
+</body>
+
+</html>

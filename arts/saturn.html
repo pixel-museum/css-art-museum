@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
       background: radial-gradient(circle at center, #1a1a3d 0%, #000000 100%);
       overflow: hidden;
     }
+
     .saturn {
       position: relative;
       width: 200px;
@@ -23,6 +25,7 @@
       box-shadow: 0 0 20px rgba(230, 184, 0, 0.5), inset 10px 10px 20px rgba(0, 0, 0, 0.3);
       animation: float 6s ease-in-out infinite;
     }
+
     .rings {
       position: absolute;
       top: 50%;
@@ -36,6 +39,7 @@
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
       animation: spin 12s linear infinite;
     }
+
     .rings::before {
       content: '';
       position: absolute;
@@ -47,19 +51,35 @@
       top: 50%;
       left: 50%;
     }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
     }
+
     @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); }
-      100% { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
+      0% {
+        transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg);
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="saturn">
     <div class="rings"></div>
   </div>
 </body>
+
 </html>

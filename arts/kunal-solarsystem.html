@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,8 @@
             background: linear-gradient(to bottom, #0a0e27, #1a1042);
             height: 100vh;
             overflow: hidden;
-            cursor: none; /* Hide default cursor */
+            cursor: none;
+            /* Hide default cursor */
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
@@ -25,7 +27,8 @@
         /* Solar system cursor container */
         #solar-cursor {
             position: fixed;
-            pointer-events: none; /* Allow clicks through cursor */
+            pointer-events: none;
+            /* Allow clicks through cursor */
             z-index: 9999;
             transform: translate(-50%, -50%);
             transition: opacity 0.3s ease;
@@ -41,8 +44,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 
-                0 0 20px #ffd700, 
+            box-shadow:
+                0 0 20px #ffd700,
                 0 0 40px #ff8c00,
                 0 0 60px rgba(255, 140, 0, 0.5);
         }
@@ -130,6 +133,7 @@
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
+
             to {
                 transform: translate(-50%, -50%) rotate(360deg);
             }
@@ -161,6 +165,7 @@
             from {
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             }
+
             to {
                 text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
             }
@@ -175,11 +180,19 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Solar system cursor -->
     <div id="solar-cursor">
@@ -230,7 +243,7 @@
         function createStars() {
             const starCount = 100;
             const body = document.body;
-            
+
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
@@ -246,4 +259,5 @@
         createStars();
     </script>
 </body>
+
 </html>

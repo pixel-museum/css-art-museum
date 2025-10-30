@@ -1,93 +1,135 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Night Sky — CSS Art</title>
   <style>
-    body{
-      margin:0;
-      background: linear-gradient(180deg,#031026 0%, #07142b 100%);
-      display:flex;align-items:center;justify-content:center;
-      height:100vh;
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #031026 0%, #07142b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    .night-sky{
-      position:relative;
-      width:100%;height:100%;
-      overflow:hidden;
+
+    .night-sky {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
     /* Moon (smaller + lower) */
-    .moon{
+    .moon {
       --size: clamp(50px, 8vw, 100px);
-      position:absolute;
-      right:10%;
-      top:15%;
-      width:var(--size);
-      height:var(--size);
-      border-radius:50%;
+      position: absolute;
+      right: 10%;
+      top: 15%;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #fffefe 0%, #f8f3da 35%, #f3ecce 60%);
-      box-shadow: 0 0 20px rgba(255,255,200,0.5);
+      box-shadow: 0 0 20px rgba(255, 255, 200, 0.5);
     }
-    .moon::before{
-      content:"";
-      position:absolute;
-      right:-18%;
-      top:8%;
-      width:84%;
-      height:84%;
-      border-radius:50%;
-      background: rgba(2,6,23,0.95);
+
+    .moon::before {
+      content: "";
+      position: absolute;
+      right: -18%;
+      top: 8%;
+      width: 84%;
+      height: 84%;
+      border-radius: 50%;
+      background: rgba(2, 6, 23, 0.95);
     }
 
     /* Stars */
-    .star{
-      position:absolute;
-      left:calc(var(--x));
-      top:calc(var(--y));
+    .star {
+      position: absolute;
+      left: calc(var(--x));
+      top: calc(var(--y));
       width: calc(4px * var(--s));
       height: calc(4px * var(--s));
-      background:#fff;
-      border-radius:50%;
-      opacity:0.8;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
       animation: twinkle 3s ease-in-out infinite;
       animation-delay: calc(var(--i) * 0.5s);
     }
-    @keyframes twinkle{
-      0%,100%{opacity:0.6; transform:scale(0.8);}
-      50%{opacity:1; transform:scale(1.4);}
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
     }
 
     /* Shooting Stars */
-    .shooting-star{
-      --delay:0s;
-      --top:20%;
-      --rot:25deg;
-      position:absolute;
-      width:140px;height:2px;
-      top:var(--top);left:-30%;
+    .shooting-star {
+      --delay: 0s;
+      --top: 20%;
+      --rot: 25deg;
+      position: absolute;
+      width: 140px;
+      height: 2px;
+      top: var(--top);
+      left: -30%;
       background: linear-gradient(90deg, transparent, white);
-      transform:rotate(var(--rot));
-      opacity:0;
+      transform: rotate(var(--rot));
+      opacity: 0;
       animation: shoot 6s linear infinite;
       animation-delay: var(--delay);
     }
-    .shooting-star::before{
-      content:"";
-      position:absolute;right:0;top:-3px;
-      width:8px;height:8px;border-radius:50%;
-      background:white;
-      box-shadow:0 0 10px white;
+
+    .shooting-star::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 10px white;
     }
-    @keyframes shoot{
-      0%{left:-30%;opacity:0;}
-      10%{opacity:1;}
-      50%{left:120%;opacity:1;}
-      70%{opacity:0;}
-      100%{left:120%;opacity:0;}
+
+    @keyframes shoot {
+      0% {
+        left: -30%;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      50% {
+        left: 120%;
+        opacity: 1;
+      }
+
+      70% {
+        opacity: 0;
+      }
+
+      100% {
+        left: 120%;
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body>
   <section class="night-sky">
     <div class="moon"></div>
@@ -105,4 +147,5 @@
     <div class="shooting-star" style="--delay:7s; --top:15%; --rot:28deg;"></div>
   </section>
 </body>
+
 </html>

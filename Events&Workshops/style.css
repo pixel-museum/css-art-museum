@@ -8,7 +8,7 @@
   background: var(--primary-bg, #fafafa);
   border-radius: 14px;
   border: 1px solid var(--border-color, #e8e8e8);
-  box-shadow: 0 8px 30px var(--shadow-light, rgba(0,0,0,0.04));
+  box-shadow: 0 8px 30px var(--shadow-light, rgba(0, 0, 0, 0.04));
   animation: fadeInUp 0.6s ease both;
 }
 
@@ -49,7 +49,7 @@
   background: var(--secondary-bg, #fff);
   border-radius: 12px;
   border: 1px solid var(--border-color, #e8e8e8);
-  box-shadow: 0 6px 18px var(--shadow-light, rgba(0,0,0,0.04));
+  box-shadow: 0 6px 18px var(--shadow-light, rgba(0, 0, 0, 0.04));
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   min-height: 160px;
 }
@@ -98,7 +98,7 @@
 .register-btn:hover,
 .register-btn:focus {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb, 108, 99, 255), 0.18);
   opacity: 0.98;
 }
 
@@ -122,14 +122,14 @@
 .event-card:hover,
 .event-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0,0,0,0.08));
-  border-color: rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0, 0, 0, 0.08));
+  border-color: rgba(var(--accent-color-rgb, 108, 99, 255), 0.18);
 }
 
 /* Accessibility focus */
 .register-btn:focus,
 .event-card a:focus {
-  outline: 3px solid rgba(var(--accent-color-rgb,108,99,255), 0.16);
+  outline: 3px solid rgba(var(--accent-color-rgb, 108, 99, 255), 0.16);
   outline-offset: 4px;
 }
 
@@ -171,9 +171,20 @@ header nav {
 
 /* print-friendly */
 @media print {
-  header nav, .theme-toggle, .register-btn { display: none !important; }
-  .events-section { box-shadow: none; border: none; background: transparent; }
+
+  header nav,
+  .theme-toggle,
+  .register-btn {
+    display: none !important;
+  }
+
+  .events-section {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
 }
+
 /* ```// filepath: /Users/pthawait/Documents/GitHub/css-art-museum/Events&Workshops/style.css */
 /* Events page — page-specific styling that reuses /style.css variables and header/nav rules */
 @import url("../style.css");
@@ -185,7 +196,7 @@ header nav {
   background: var(--primary-bg, #fafafa);
   border-radius: 14px;
   border: 1px solid var(--border-color, #e8e8e8);
-  box-shadow: 0 8px 30px var(--shadow-light, rgba(0,0,0,0.04));
+  box-shadow: 0 8px 30px var(--shadow-light, rgba(0, 0, 0, 0.04));
   animation: fadeInUp 0.6s ease both;
 }
 
@@ -226,7 +237,7 @@ header nav {
   background: var(--secondary-bg, #fff);
   border-radius: 12px;
   border: 1px solid var(--border-color, #e8e8e8);
-  box-shadow: 0 6px 18px var(--shadow-light, rgba(0,0,0,0.04));
+  box-shadow: 0 6px 18px var(--shadow-light, rgba(0, 0, 0, 0.04));
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   min-height: 160px;
 }
@@ -275,7 +286,7 @@ header nav {
 .register-btn:hover,
 .register-btn:focus {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb, 108, 99, 255), 0.18);
   opacity: 0.98;
 }
 
@@ -299,14 +310,14 @@ header nav {
 .event-card:hover,
 .event-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0,0,0,0.08));
-  border-color: rgba(var(--accent-color-rgb,108,99,255), 0.18);
+  box-shadow: 0 12px 30px var(--shadow-medium, rgba(0, 0, 0, 0.08));
+  border-color: rgba(var(--accent-color-rgb, 108, 99, 255), 0.18);
 }
 
 /* Accessibility focus */
 .register-btn:focus,
 .event-card a:focus {
-  outline: 3px solid rgba(var(--accent-color-rgb,108,99,255), 0.16);
+  outline: 3px solid rgba(var(--accent-color-rgb, 108, 99, 255), 0.16);
   outline-offset: 4px;
 }
 
@@ -348,9 +359,20 @@ header nav {
 
 /* print-friendly */
 @media print {
-  header nav, .theme-toggle, .register-btn { display: none !important; }
-  .events-section { box-shadow: none; border: none; background: transparent;}
+
+  header nav,
+  .theme-toggle,
+  .register-btn {
+    display: none !important;
+  }
+
+  .events-section {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
 }
+
 /* // ...existing code... */
 
 /* Fix: prevent text overflowing event cards in grid/flex layouts */
@@ -387,6 +409,7 @@ header nav {
   height: auto;
   display: block;
 }
+
 /* ```// filepath: /Users/pthawait/Documents/GitHub/css-art-museum/Events&Workshops/style.css
 // ...existing code... */
 
@@ -428,8 +451,8 @@ header nav {
 /* ...existing code... */
 
 /* Stronger fix for overflowing text inside event cards */
-.events-list > li.event-card,
-.events-list > li.event-card .event-card,
+.events-list>li.event-card,
+.events-list>li.event-card .event-card,
 .events-list .event-card {
   /* ensure grid item and flex container can shrink */
   min-width: 0 !important;
@@ -438,7 +461,7 @@ header nav {
 }
 
 /* Force content inside cards to allow wrapping and to not enforce min-width from inherited rules */
-.events-list > li.event-card * {
+.events-list>li.event-card * {
   min-width: 0 !important;
   max-width: 100% !important;
   white-space: normal !important;
@@ -447,9 +470,9 @@ header nav {
 }
 
 /* Make sure paragraphs and headings behave */
-.events-list > li.event-card p,
-.events-list > li.event-card h3,
-.events-list > li.event-card time {
+.events-list>li.event-card p,
+.events-list>li.event-card h3,
+.events-list>li.event-card time {
   display: block;
   white-space: normal !important;
   overflow-wrap: anywhere !important;
@@ -457,10 +480,10 @@ header nav {
 }
 
 /* If any inline elements are forcing width, constrain them */
-.events-list > li.event-card a,
-.events-list > li.event-card img,
-.events-list > li.event-card svg,
-.events-list > li.event-card iframe {
+.events-list>li.event-card a,
+.events-list>li.event-card img,
+.events-list>li.event-card svg,
+.events-list>li.event-card iframe {
   max-width: 100% !important;
   height: auto !important;
   display: inline-block;

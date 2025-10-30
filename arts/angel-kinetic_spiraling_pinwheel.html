@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinetic Spiraling Pinwheel</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             height: 100vh;
             display: flex;
@@ -14,6 +20,7 @@
             background: #0d0d1a;
             overflow: hidden;
         }
+
         .pinwheel-container {
             position: relative;
             width: 200px;
@@ -23,6 +30,7 @@
             align-items: center;
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
         }
+
         .spiral {
             position: absolute;
             width: 150px;
@@ -31,6 +39,7 @@
             border: 4px solid transparent;
             animation: rotate-slow 15s linear infinite;
         }
+
         .spiral:nth-child(1) {
             width: 200px;
             height: 200px;
@@ -38,23 +47,26 @@
             opacity: 0.8;
             animation: rotate-slow 20s linear infinite;
         }
+
         .spiral:nth-child(2) {
             width: 170px;
             height: 170px;
             border-color: #3498db;
             opacity: 0.9;
             animation: rotate-fast 12s linear infinite reverse;
-            border-radius: 5px; 
-            transform: rotate(45deg); 
+            border-radius: 5px;
+            transform: rotate(45deg);
         }
+
         .spiral:nth-child(3) {
             width: 120px;
             height: 120px;
             border-color: #ffffff;
             opacity: 1;
-            border-style: dashed; 
+            border-style: dashed;
             animation: rotate-slower 30s linear infinite;
         }
+
         .spiral:nth-child(4) {
             width: 50px;
             height: 50px;
@@ -63,18 +75,37 @@
             border-radius: 5px;
             animation: rotate-fast 8s linear infinite;
         }
+
         @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         @keyframes rotate-fast {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
         }
+
         @keyframes rotate-slower {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         .pinwheel-container::before {
             content: '';
             position: absolute;
@@ -87,6 +118,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="pinwheel-container">
         <div class="spiral"></div>
@@ -95,4 +127,5 @@
         <div class="spiral"></div>
     </div>
 </body>
+
 </html>

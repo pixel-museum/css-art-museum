@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,7 @@
             height: 100%;
             background: linear-gradient(to bottom, #2d1b4e 0%, #1a0f2e 100%);
             border-radius: 20px 20px 0 0;
-            box-shadow: 
+            box-shadow:
                 0 0 60px rgba(138, 43, 226, 0.5),
                 0 0 100px rgba(138, 43, 226, 0.3),
                 inset 0 0 50px rgba(0, 0, 0, 0.5);
@@ -56,7 +57,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(255, 0, 255, 0.8),
                 0 0 40px rgba(0, 255, 255, 0.6);
             animation: neon-pulse 2s ease-in-out infinite;
@@ -82,7 +83,7 @@
             background: #000;
             border-radius: 10px;
             padding: 10px;
-            box-shadow: 
+            box-shadow:
                 inset 0 0 20px rgba(0, 255, 255, 0.5),
                 0 0 30px rgba(0, 255, 255, 0.3);
         }
@@ -104,20 +105,23 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 255, 0.03) 0px,
-                rgba(0, 255, 255, 0.03) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 255, 255, 0.03) 0px,
+                    rgba(0, 255, 255, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px);
             pointer-events: none;
             animation: scanlines 8s linear infinite;
         }
 
         @keyframes scanlines {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(4px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(4px);
+            }
         }
 
         /* Game - Space Invaders style */
@@ -155,8 +159,15 @@
         }
 
         @keyframes player-move {
-            0%, 100% { left: 30%; }
-            50% { left: 70%; }
+
+            0%,
+            100% {
+                left: 30%;
+            }
+
+            50% {
+                left: 70%;
+            }
         }
 
         /* Enemy aliens */
@@ -165,12 +176,10 @@
             width: 30px;
             height: 20px;
             background: #ff00ff;
-            clip-path: polygon(
-                0% 40%, 20% 40%, 20% 20%, 40% 20%, 40% 0%, 
-                60% 0%, 60% 20%, 80% 20%, 80% 40%, 100% 40%,
-                100% 60%, 80% 60%, 80% 80%, 60% 80%, 60% 100%,
-                40% 100%, 40% 80%, 20% 80%, 20% 60%, 0% 60%
-            );
+            clip-path: polygon(0% 40%, 20% 40%, 20% 20%, 40% 20%, 40% 0%,
+                    60% 0%, 60% 20%, 80% 20%, 80% 40%, 100% 40%,
+                    100% 60%, 80% 60%, 80% 80%, 60% 80%, 60% 100%,
+                    40% 100%, 40% 80%, 20% 80%, 20% 60%, 0% 60%);
             filter: drop-shadow(0 0 5px #ff00ff);
             animation: enemy-move 4s ease-in-out infinite;
         }
@@ -206,8 +215,15 @@
         }
 
         @keyframes enemy-move {
-            0%, 100% { transform: translateX(-20px); }
-            50% { transform: translateX(20px); }
+
+            0%,
+            100% {
+                transform: translateX(-20px);
+            }
+
+            50% {
+                transform: translateX(20px);
+            }
         }
 
         /* Laser bullets */
@@ -240,6 +256,7 @@
                 bottom: 50px;
                 opacity: 1;
             }
+
             100% {
                 bottom: 100%;
                 opacity: 0;
@@ -307,8 +324,15 @@
         }
 
         @keyframes joystick-wiggle {
-            0%, 100% { transform: translateX(-50%) rotate(-5deg); }
-            50% { transform: translateX(-50%) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateX(-50%) rotate(5deg);
+            }
         }
 
         /* Action buttons */
@@ -339,7 +363,7 @@
             bottom: 0;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5555);
-            box-shadow: 
+            box-shadow:
                 0 5px 0 #aa3333,
                 0 0 20px rgba(255, 107, 107, 0.5);
             transition: all 0.1s;
@@ -347,14 +371,21 @@
 
         .button:nth-child(2)::before {
             background: radial-gradient(circle at 30% 30%, #4ecdc4, #3bb5ab);
-            box-shadow: 
+            box-shadow:
                 0 5px 0 #2a8882,
                 0 0 20px rgba(78, 205, 196, 0.5);
         }
 
         @keyframes button-press {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(3px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(3px);
+            }
         }
 
         /* Coin slot */
@@ -392,8 +423,17 @@
         }
 
         @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
         }
 
         /* Speaker grills */
@@ -442,32 +482,45 @@
 
         /* Neon glow effects */
         @keyframes neon-pulse {
-            0%, 100% {
-                box-shadow: 
+
+            0%,
+            100% {
+                box-shadow:
                     0 0 20px rgba(255, 0, 255, 0.8),
                     0 0 40px rgba(0, 255, 255, 0.6);
             }
+
             50% {
-                box-shadow: 
+                box-shadow:
                     0 0 30px rgba(255, 0, 255, 1),
                     0 0 60px rgba(0, 255, 255, 0.8);
             }
         }
 
         @keyframes text-glow {
-            0%, 100% {
+
+            0%,
+            100% {
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             }
+
             50% {
-                text-shadow: 
+                text-shadow:
                     0 0 20px rgba(255, 255, 255, 1),
                     0 0 30px rgba(255, 0, 255, 0.8);
             }
         }
 
         @keyframes score-blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         /* Decorative side lights */
@@ -491,10 +544,13 @@
         }
 
         @keyframes side-light-pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
                 opacity: 1;
             }
+
             50% {
                 box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
                 opacity: 0.6;
@@ -510,7 +566,7 @@
             font-size: 32px;
             font-weight: bold;
             color: #ff00ff;
-            text-shadow: 
+            text-shadow:
                 0 0 10px #ff00ff,
                 0 0 20px #ff00ff,
                 0 0 30px #00ffff,
@@ -521,15 +577,18 @@
         }
 
         @keyframes title-glow {
-            0%, 100% {
-                text-shadow: 
+
+            0%,
+            100% {
+                text-shadow:
                     0 0 10px #ff00ff,
                     0 0 20px #ff00ff,
                     0 0 30px #00ffff,
                     2px 2px 0 #000;
             }
+
             50% {
-                text-shadow: 
+                text-shadow:
                     0 0 20px #ff00ff,
                     0 0 40px #ff00ff,
                     0 0 60px #00ffff,
@@ -538,7 +597,9 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="arcade-machine">
         <div class="cabinet">
             <!-- Marquee -->
@@ -555,7 +616,7 @@
                 <div class="screen">
                     <div class="game">
                         <div class="score">SCORE: 9999</div>
-                        
+
                         <!-- Enemies -->
                         <div class="enemy"></div>
                         <div class="enemy"></div>
@@ -586,6 +647,7 @@
                 <div class="speaker-hole"></div>
                 <div class="speaker-hole"></div>
             </div>
+
             <div class="speaker speaker-right">
                 <div class="speaker-hole"></div>
                 <div class="speaker-hole"></div>
@@ -626,5 +688,7 @@
         <!-- Title -->
         <div class="title">RETRO ARCADE</div>
     </div>
+    
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,7 +124,7 @@
             transform: rotate(30deg);
         }
 
-        .cat > .tail {
+        .cat>.tail {
             height: 18%;
             width: 50%;
             background-color: var(--black);
@@ -132,11 +133,11 @@
             border-radius: 50%/250%;
         }
 
-        .cat > .tail > .tail {
+        .cat>.tail>.tail {
             right: 90%;
         }
 
-        .tail > .tail {
+        .tail>.tail {
             height: 100%;
             transform-origin: center right;
             transform: rotate(0deg);
@@ -152,9 +153,11 @@
             5% {
                 transform: rotate(0);
             }
+
             50% {
                 transform: rotate(10deg);
             }
+
             70%,
             100% {
                 transform: rotate(0);
@@ -165,6 +168,7 @@
             0% {
                 transform: scaleY(1);
             }
+
             5% {
                 transform: scaleY(0);
             }
@@ -176,9 +180,12 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="cat center">
         <div class="body"></div>
+
         <div class="head">
             <div class="eyes">
                 <div class="eye left"></div>
@@ -187,6 +194,7 @@
             <div class="ear left"></div>
             <div class="ear right"></div>
         </div>
+        
         <div class="tail">
             <div class="tail">
                 <div class="tail">
@@ -199,5 +207,7 @@
             </div>
         </div>
     </div>
+
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,13 @@
       background: radial-gradient(circle at center, #1a1a3d 0%, #000000 100%);
       overflow: hidden;
     }
+
     .moon-landing {
       position: relative;
       width: 300px;
       height: 300px;
     }
+
     .moon-surface {
       position: absolute;
       bottom: 0;
@@ -28,15 +31,35 @@
       border-radius: 50% 50% 0 0;
       box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
     }
+
     .crater {
       position: absolute;
       background: #777777;
       border-radius: 50%;
       box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
     }
-    .crater1 { width: 30px; height: 30px; top: 40px; left: 50px; }
-    .crater2 { width: 20px; height: 20px; top: 60px; left: 150px; }
-    .crater3 { width: 15px; height: 15px; top: 20px; left: 220px; }
+
+    .crater1 {
+      width: 30px;
+      height: 30px;
+      top: 40px;
+      left: 50px;
+    }
+
+    .crater2 {
+      width: 20px;
+      height: 20px;
+      top: 60px;
+      left: 150px;
+    }
+
+    .crater3 {
+      width: 15px;
+      height: 15px;
+      top: 20px;
+      left: 220px;
+    }
+
     .lander {
       position: absolute;
       top: 50px;
@@ -48,6 +71,7 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       animation: descend 5s ease-in-out infinite;
     }
+
     .lander::before {
       content: '';
       position: absolute;
@@ -58,6 +82,7 @@
       background: #cccccc;
       transform: skew(-20deg);
     }
+
     .lander::after {
       content: '';
       position: absolute;
@@ -68,6 +93,7 @@
       background: #cccccc;
       transform: skew(20deg);
     }
+
     .flame {
       position: absolute;
       bottom: -10px;
@@ -79,6 +105,7 @@
       opacity: 0.8;
       animation: flicker 0.5s ease-in-out infinite alternate;
     }
+
     .stars {
       position: absolute;
       width: 100%;
@@ -86,6 +113,7 @@
       top: 0;
       left: 0;
     }
+
     .star {
       position: absolute;
       background: #ffffff;
@@ -93,24 +121,77 @@
       opacity: 0.7;
       animation: twinkle 3s infinite;
     }
-    .star1 { width: 2px; height: 2px; top: 20px; left: 50px; animation-delay: 0.5s; }
-    .star2 { width: 3px; height: 3px; top: 80px; left: 200px; animation-delay: 1s; }
-    .star3 { width: 2px; height: 2px; top: 150px; left: 100px; animation-delay: 1.5s; }
-    .star4 { width: 1px; height: 1px; top: 30px; left: 250px; animation-delay: 2s; }
+
+    .star1 {
+      width: 2px;
+      height: 2px;
+      top: 20px;
+      left: 50px;
+      animation-delay: 0.5s;
+    }
+
+    .star2 {
+      width: 3px;
+      height: 3px;
+      top: 80px;
+      left: 200px;
+      animation-delay: 1s;
+    }
+
+    .star3 {
+      width: 2px;
+      height: 2px;
+      top: 150px;
+      left: 100px;
+      animation-delay: 1.5s;
+    }
+
+    .star4 {
+      width: 1px;
+      height: 1px;
+      top: 30px;
+      left: 250px;
+      animation-delay: 2s;
+    }
+
     @keyframes descend {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(20px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(20px);
+      }
     }
+
     @keyframes flicker {
-      0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-      100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+      0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 1;
+      }
     }
+
     @keyframes twinkle {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 0.3; }
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="moon-landing">
     <div class="stars">
@@ -119,14 +200,17 @@
       <div class="star star3"></div>
       <div class="star star4"></div>
     </div>
+
     <div class="moon-surface">
       <div class="crater crater1"></div>
       <div class="crater crater2"></div>
       <div class="crater crater3"></div>
     </div>
+    
     <div class="lander">
       <div class="flame"></div>
     </div>
   </div>
 </body>
+
 </html>

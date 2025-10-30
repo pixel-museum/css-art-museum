@@ -5,53 +5,58 @@
 </div>
 
 <style>
-.ocean-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(to top, #001f3f 0%, #003366 100%);
-  overflow: hidden;
-  border-radius: 12px;
-}
+  .ocean-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to top, #001f3f 0%, #003366 100%);
+    overflow: hidden;
+    border-radius: 12px;
+  }
 
-/* Wave layers */
-.wave {
-  position: absolute;
-  bottom: 0;
-  width: 200%;
-  height: 120px;
-  background-repeat: repeat-x;
-  background-size: 50% 100%;
-  opacity: 0.6;
-  animation: waveMove 12s linear infinite;
-  border-radius: 100% 100% 0 0;
-}
+  /* Wave layers */
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 120px;
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    opacity: 0.6;
+    animation: waveMove 12s linear infinite;
+    border-radius: 100% 100% 0 0;
+  }
 
-/* Different colors + speeds for depth */
-.wave1 {
-  background: rgba(0,150,255,0.7);
-  height: 120px;
-  animation-duration: 12s;
-  z-index: 1;
-}
+  /* Different colors + speeds for depth */
+  .wave1 {
+    background: rgba(0, 150, 255, 0.7);
+    height: 120px;
+    animation-duration: 12s;
+    z-index: 1;
+  }
 
-.wave2 {
-  background: rgba(0,200,255,0.6);
-  height: 100px;
-  animation-duration: 18s;
-  z-index: 2;
-}
+  .wave2 {
+    background: rgba(0, 200, 255, 0.6);
+    height: 100px;
+    animation-duration: 18s;
+    z-index: 2;
+  }
 
-.wave3 {
-  background: rgba(0,255,200,0.5);
-  height: 80px;
-  animation-duration: 25s;
-  z-index: 3;
-}
+  .wave3 {
+    background: rgba(0, 255, 200, 0.5);
+    height: 80px;
+    animation-duration: 25s;
+    z-index: 3;
+  }
 
-/* Wave animation */
-@keyframes waveMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+  /* Wave animation */
+  @keyframes waveMove {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
 </style>

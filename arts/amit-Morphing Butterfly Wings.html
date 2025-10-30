@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSS Morphing Butterfly</title>
   <style>
     body {
@@ -89,6 +90,7 @@
         border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
         transform: scale(1) rotate(20deg);
       }
+
       100% {
         border-radius: 40% 60% 40% 60% / 40% 40% 60% 60%;
         transform: scale(1.1) rotate(25deg);
@@ -96,8 +98,15 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .label {
@@ -112,7 +121,9 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="butterfly">
     <div class="wing left"></div>
     <div class="wing right"></div>
@@ -121,5 +132,7 @@
     <div class="antenna right"></div>
   </div>
   <div class="label">Morphing Butterfly</div>
+
 </body>
+
 </html>

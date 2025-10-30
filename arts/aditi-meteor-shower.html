@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,31 +48,137 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Generate random stars */
-        .star:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .star:nth-child(2) { left: 85%; top: 15%; animation-delay: 0.5s; }
-        .star:nth-child(3) { left: 30%; top: 45%; animation-delay: 1s; }
-        .star:nth-child(4) { left: 65%; top: 70%; animation-delay: 1.5s; }
-        .star:nth-child(5) { left: 50%; top: 25%; animation-delay: 2s; }
-        .star:nth-child(6) { left: 75%; top: 55%; animation-delay: 2.5s; }
-        .star:nth-child(7) { left: 20%; top: 65%; animation-delay: 0.8s; }
-        .star:nth-child(8) { left: 90%; top: 40%; animation-delay: 1.3s; }
-        .star:nth-child(9) { left: 45%; top: 80%; animation-delay: 1.8s; }
-        .star:nth-child(10) { left: 60%; top: 10%; animation-delay: 2.3s; }
-        .star:nth-child(11) { left: 15%; top: 50%; animation-delay: 0.3s; }
-        .star:nth-child(12) { left: 80%; top: 85%; animation-delay: 1.1s; }
-        .star:nth-child(13) { left: 35%; top: 30%; animation-delay: 1.6s; }
-        .star:nth-child(14) { left: 70%; top: 20%; animation-delay: 2.1s; }
-        .star:nth-child(15) { left: 25%; top: 75%; animation-delay: 0.6s; }
-        .star:nth-child(16) { left: 55%; top: 60%; animation-delay: 1.4s; }
-        .star:nth-child(17) { left: 5%; top: 35%; animation-delay: 1.9s; }
-        .star:nth-child(18) { left: 95%; top: 65%; animation-delay: 2.4s; }
-        .star:nth-child(19) { left: 40%; top: 5%; animation-delay: 0.9s; }
-        .star:nth-child(20) { left: 68%; top: 90%; animation-delay: 1.7s; }
+        .star:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            left: 85%;
+            top: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(3) {
+            left: 30%;
+            top: 45%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(4) {
+            left: 65%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(5) {
+            left: 50%;
+            top: 25%;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(6) {
+            left: 75%;
+            top: 55%;
+            animation-delay: 2.5s;
+        }
+
+        .star:nth-child(7) {
+            left: 20%;
+            top: 65%;
+            animation-delay: 0.8s;
+        }
+
+        .star:nth-child(8) {
+            left: 90%;
+            top: 40%;
+            animation-delay: 1.3s;
+        }
+
+        .star:nth-child(9) {
+            left: 45%;
+            top: 80%;
+            animation-delay: 1.8s;
+        }
+
+        .star:nth-child(10) {
+            left: 60%;
+            top: 10%;
+            animation-delay: 2.3s;
+        }
+
+        .star:nth-child(11) {
+            left: 15%;
+            top: 50%;
+            animation-delay: 0.3s;
+        }
+
+        .star:nth-child(12) {
+            left: 80%;
+            top: 85%;
+            animation-delay: 1.1s;
+        }
+
+        .star:nth-child(13) {
+            left: 35%;
+            top: 30%;
+            animation-delay: 1.6s;
+        }
+
+        .star:nth-child(14) {
+            left: 70%;
+            top: 20%;
+            animation-delay: 2.1s;
+        }
+
+        .star:nth-child(15) {
+            left: 25%;
+            top: 75%;
+            animation-delay: 0.6s;
+        }
+
+        .star:nth-child(16) {
+            left: 55%;
+            top: 60%;
+            animation-delay: 1.4s;
+        }
+
+        .star:nth-child(17) {
+            left: 5%;
+            top: 35%;
+            animation-delay: 1.9s;
+        }
+
+        .star:nth-child(18) {
+            left: 95%;
+            top: 65%;
+            animation-delay: 2.4s;
+        }
+
+        .star:nth-child(19) {
+            left: 40%;
+            top: 5%;
+            animation-delay: 0.9s;
+        }
+
+        .star:nth-child(20) {
+            left: 68%;
+            top: 90%;
+            animation-delay: 1.7s;
+        }
 
         /* Meteors */
         .meteor {
@@ -89,11 +196,11 @@
             position: absolute;
             width: 100px;
             height: 2px;
-            background: linear-gradient(to right, 
-                rgba(255, 255, 255, 0.9), 
-                rgba(255, 255, 255, 0.6) 30%,
-                rgba(200, 220, 255, 0.3) 60%,
-                transparent);
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0.9),
+                    rgba(255, 255, 255, 0.6) 30%,
+                    rgba(200, 220, 255, 0.3) 60%,
+                    transparent);
             top: 50%;
             right: 3px;
             transform: translateY(-50%);
@@ -105,9 +212,11 @@
                 transform: translate(0, 0) rotate(45deg);
                 opacity: 1;
             }
+
             70% {
                 opacity: 1;
             }
+
             100% {
                 transform: translate(-600px, 600px) rotate(45deg);
                 opacity: 0;
@@ -115,21 +224,110 @@
         }
 
         /* Different meteor timings and positions */
-        .meteor:nth-child(1) { left: 20%; top: -5%; animation-duration: 2s; animation-delay: 0s; }
-        .meteor:nth-child(2) { left: 50%; top: -8%; animation-duration: 2.3s; animation-delay: 0.5s; }
-        .meteor:nth-child(3) { left: 80%; top: -3%; animation-duration: 1.8s; animation-delay: 1s; }
-        .meteor:nth-child(4) { left: 35%; top: -6%; animation-duration: 2.1s; animation-delay: 1.5s; }
-        .meteor:nth-child(5) { left: 65%; top: -4%; animation-duration: 2.4s; animation-delay: 2s; }
-        .meteor:nth-child(6) { left: 90%; top: -7%; animation-duration: 1.9s; animation-delay: 2.5s; }
-        .meteor:nth-child(7) { left: 15%; top: -9%; animation-duration: 2.2s; animation-delay: 3s; }
-        .meteor:nth-child(8) { left: 45%; top: -5%; animation-duration: 2s; animation-delay: 3.5s; }
-        .meteor:nth-child(9) { left: 75%; top: -8%; animation-duration: 2.3s; animation-delay: 4s; }
-        .meteor:nth-child(10) { left: 25%; top: -4%; animation-duration: 2.1s; animation-delay: 4.5s; }
-        .meteor:nth-child(11) { left: 55%; top: -6%; animation-duration: 1.8s; animation-delay: 5s; }
-        .meteor:nth-child(12) { left: 85%; top: -9%; animation-duration: 2.4s; animation-delay: 5.5s; }
-        .meteor:nth-child(13) { left: 10%; top: -7%; animation-duration: 2.2s; animation-delay: 6s; }
-        .meteor:nth-child(14) { left: 40%; top: -5%; animation-duration: 1.9s; animation-delay: 6.5s; }
-        .meteor:nth-child(15) { left: 70%; top: -8%; animation-duration: 2.1s; animation-delay: 7s; }
+        .meteor:nth-child(1) {
+            left: 20%;
+            top: -5%;
+            animation-duration: 2s;
+            animation-delay: 0s;
+        }
+
+        .meteor:nth-child(2) {
+            left: 50%;
+            top: -8%;
+            animation-duration: 2.3s;
+            animation-delay: 0.5s;
+        }
+
+        .meteor:nth-child(3) {
+            left: 80%;
+            top: -3%;
+            animation-duration: 1.8s;
+            animation-delay: 1s;
+        }
+
+        .meteor:nth-child(4) {
+            left: 35%;
+            top: -6%;
+            animation-duration: 2.1s;
+            animation-delay: 1.5s;
+        }
+
+        .meteor:nth-child(5) {
+            left: 65%;
+            top: -4%;
+            animation-duration: 2.4s;
+            animation-delay: 2s;
+        }
+
+        .meteor:nth-child(6) {
+            left: 90%;
+            top: -7%;
+            animation-duration: 1.9s;
+            animation-delay: 2.5s;
+        }
+
+        .meteor:nth-child(7) {
+            left: 15%;
+            top: -9%;
+            animation-duration: 2.2s;
+            animation-delay: 3s;
+        }
+
+        .meteor:nth-child(8) {
+            left: 45%;
+            top: -5%;
+            animation-duration: 2s;
+            animation-delay: 3.5s;
+        }
+
+        .meteor:nth-child(9) {
+            left: 75%;
+            top: -8%;
+            animation-duration: 2.3s;
+            animation-delay: 4s;
+        }
+
+        .meteor:nth-child(10) {
+            left: 25%;
+            top: -4%;
+            animation-duration: 2.1s;
+            animation-delay: 4.5s;
+        }
+
+        .meteor:nth-child(11) {
+            left: 55%;
+            top: -6%;
+            animation-duration: 1.8s;
+            animation-delay: 5s;
+        }
+
+        .meteor:nth-child(12) {
+            left: 85%;
+            top: -9%;
+            animation-duration: 2.4s;
+            animation-delay: 5.5s;
+        }
+
+        .meteor:nth-child(13) {
+            left: 10%;
+            top: -7%;
+            animation-duration: 2.2s;
+            animation-delay: 6s;
+        }
+
+        .meteor:nth-child(14) {
+            left: 40%;
+            top: -5%;
+            animation-duration: 1.9s;
+            animation-delay: 6.5s;
+        }
+
+        .meteor:nth-child(15) {
+            left: 70%;
+            top: -8%;
+            animation-duration: 2.1s;
+            animation-delay: 7s;
+        }
 
         /* Larger meteors */
         .meteor.large {
@@ -141,31 +339,33 @@
         .meteor.large::before {
             width: 150px;
             height: 3px;
-            background: linear-gradient(to right, 
-                rgba(255, 255, 255, 1), 
-                rgba(255, 255, 255, 0.8) 20%,
-                rgba(200, 220, 255, 0.5) 50%,
-                rgba(150, 180, 255, 0.2) 80%,
-                transparent);
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 1),
+                    rgba(255, 255, 255, 0.8) 20%,
+                    rgba(200, 220, 255, 0.5) 50%,
+                    rgba(150, 180, 255, 0.2) 80%,
+                    transparent);
         }
 
-        .meteor:nth-child(3), .meteor:nth-child(7), .meteor:nth-child(12) {
+        .meteor:nth-child(3),
+        .meteor:nth-child(7),
+        .meteor:nth-child(12) {
             width: 5px;
             height: 5px;
             box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.9);
         }
 
-        .meteor:nth-child(3)::before, 
-        .meteor:nth-child(7)::before, 
+        .meteor:nth-child(3)::before,
+        .meteor:nth-child(7)::before,
         .meteor:nth-child(12)::before {
             width: 150px;
             height: 3px;
-            background: linear-gradient(to right, 
-                rgba(255, 255, 255, 1), 
-                rgba(255, 255, 255, 0.8) 20%,
-                rgba(200, 220, 255, 0.5) 50%,
-                rgba(150, 180, 255, 0.2) 80%,
-                transparent);
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 1),
+                    rgba(255, 255, 255, 0.8) 20%,
+                    rgba(200, 220, 255, 0.5) 50%,
+                    rgba(150, 180, 255, 0.2) 80%,
+                    transparent);
         }
 
         /* Milky Way glow */
@@ -176,11 +376,11 @@
             left: -10%;
             top: 0;
             background: linear-gradient(to bottom right,
-                transparent 0%,
-                rgba(150, 150, 200, 0.05) 20%,
-                rgba(180, 180, 220, 0.1) 40%,
-                rgba(150, 150, 200, 0.05) 60%,
-                transparent 80%);
+                    transparent 0%,
+                    rgba(150, 150, 200, 0.05) 20%,
+                    rgba(180, 180, 220, 0.1) 40%,
+                    rgba(150, 150, 200, 0.05) 60%,
+                    transparent 80%);
             transform: rotate(-15deg);
             pointer-events: none;
         }
@@ -226,21 +426,28 @@
             width: 2px;
             height: 80px;
             background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.8),
-                rgba(200, 220, 255, 0.4),
-                transparent);
+                    rgba(255, 255, 255, 0.8),
+                    rgba(200, 220, 255, 0.4),
+                    transparent);
             animation: fadeTrail 0.5s ease-out forwards;
             pointer-events: none;
             opacity: 0;
         }
 
         @keyframes fadeTrail {
-            0% { opacity: 0.6; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <div class="scene">
         <!-- Milky Way -->
         <div class="milky-way"></div>
@@ -293,5 +500,7 @@
             <div class="mountain mountain3"></div>
         </div>
     </div>
+    
 </body>
+
 </html>

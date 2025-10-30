@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Box</title>
   <style>
     body {
@@ -47,12 +48,29 @@
       font-weight: bold;
     }
 
-    .face.front  { transform: translateZ(100px); }
-    .face.back   { transform: rotateY(180deg) translateZ(100px); }
-    .face.right  { transform: rotateY(90deg) translateZ(100px); }
-    .face.left   { transform: rotateY(-90deg) translateZ(100px); }
-    .face.top    { transform: rotateX(90deg) translateZ(100px); }
-    .face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+    .face.front {
+      transform: translateZ(100px);
+    }
+
+    .face.back {
+      transform: rotateY(180deg) translateZ(100px);
+    }
+
+    .face.right {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+
+    .face.left {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    .face.top {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+
+    .face.bottom {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
 
     /* Funny face on the front */
     .face.front {
@@ -68,18 +86,37 @@
 
     /* Animations */
     @keyframes spin {
-      from { transform: rotateX(0deg) rotateY(0deg); }
-      to   { transform: rotateX(360deg) rotateY(360deg); }
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
     }
 
     @keyframes dance {
-      0%, 100% { transform: translateY(0) rotateZ(0deg); }
-      25% { transform: translateY(-20px) rotateZ(5deg); }
-      50% { transform: translateY(0) rotateZ(-5deg); }
-      75% { transform: translateY(-10px) rotateZ(3deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotateZ(0deg);
+      }
+
+      25% {
+        transform: translateY(-20px) rotateZ(5deg);
+      }
+
+      50% {
+        transform: translateY(0) rotateZ(-5deg);
+      }
+
+      75% {
+        transform: translateY(-10px) rotateZ(3deg);
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="stage">
     <div class="cube">
@@ -92,4 +129,5 @@
     </div>
   </div>
 </body>
+
 </html>

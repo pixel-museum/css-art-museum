@@ -1,86 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DNA Helix</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Helix</title>
 
-<style>
-    /* Page layout & background */
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #020515;
-        overflow: hidden;
-        perspective: 900px; /* 3D camera depth */
-    }
+    <style>
+        /* Page layout & background */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #020515;
+            overflow: hidden;
+            perspective: 900px;
+            /* 3D camera depth */
+        }
 
-    /* DNA container (rotates continuously to show helix effect) */
-    .dna {
-        position: relative;
-        width: 200px;
-        height: 900px;
-        transform-style: preserve-3d;
-        animation: rotate 8s linear infinite;
-    }
+        /* DNA container (rotates continuously to show helix effect) */
+        .dna {
+            position: relative;
+            width: 200px;
+            height: 900px;
+            transform-style: preserve-3d;
+            animation: rotate 8s linear infinite;
+        }
 
-    /* Single DNA rung (horizontal connector between nucleotides) */
-    .bar {
-        position: absolute;
-        width: 140px;
-        height: 6px;
-        background: rgba(0,255,255,0.2);
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 4px;
-    }
+        /* Single DNA rung (horizontal connector between nucleotides) */
+        .bar {
+            position: absolute;
+            width: 140px;
+            height: 6px;
+            background: rgba(0, 255, 255, 0.2);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+        }
 
-    /* Nucleotide endpoints (circular glowing ends of each strand) */
-    .bar::before, .bar::after {
-        content: "";
-        width: 20px;
-        height: 20px;
-        background: cyan;
-        border-radius: 50%;
-        box-shadow: 0 0 10px cyan;
-    }
+        /* Nucleotide endpoints (circular glowing ends of each strand) */
+        .bar::before,
+        .bar::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: cyan;
+            border-radius: 50%;
+            box-shadow: 0 0 10px cyan;
+        }
 
-    /* Continuous rotation animation */
-    @keyframes rotate {
-        from { transform: rotateY(0deg); }
-        to   { transform: rotateY(360deg); }
-    }
-</style>
+        /* Continuous rotation animation */
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="dna" id="dna"></div>
+    <div class="dna" id="dna"></div>
 
-<script>
-/*
- Dynamically create multiple bars to form a full-length DNA helix.
- Each bar:
- - moves down vertically (top offset)
- - rotates around Y-axis
- - shifts in Z-depth to create the helical 3D spiral
-*/
-const dna = document.getElementById("dna");
-const bars = 70; // total helix segments
+    <script>
+        /*
+         Dynamically create multiple bars to form a full-length DNA helix.
+         Each bar:
+         - moves down vertically (top offset)
+         - rotates around Y-axis
+         - shifts in Z-depth to create the helical 3D spiral
+        */
+        const dna = document.getElementById("dna");
+        const bars = 70; // total helix segments
 
-for (let i = 0; i < bars; i++) {
-    const bar = document.createElement("div");
-    bar.className = "bar";
-    bar.style.top = `${i * 12}px`;
-    bar.style.transform = `translateX(-50%) rotateY(${i * 10}deg) translateZ(80px)`;
-    dna.appendChild(bar);
-}
-</script>
+        for (let i = 0; i < bars; i++) {
+            const bar = document.createElement("div");
+            bar.className = "bar";
+            bar.style.top = `${i * 12}px`;
+            bar.style.transform = `translateX(-50%) rotateY(${i * 10}deg) translateZ(80px)`;
+            dna.appendChild(bar);
+        }
+    </script>
 
 </body>
+
 </html>
