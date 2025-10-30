@@ -2667,6 +2667,14 @@
     "tags": ["letters", "modern", "typewriter"],
     "description": "An animation that mimics the effect of text being typed out on a typewriter.",
     "date": "2025-10-28"
+  },
+  {
+	"file":"darshan-Sunset-Landscape.html",
+	"title":"Sunset CSS Art",
+	"author":"Darshan Totagi",
+	"tags":["sunset","scenary","CSS"],
+	"description":"A Animated Sunset View",
+	"date":"2025-10-29"
   }
 ]
 
