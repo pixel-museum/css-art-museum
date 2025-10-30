@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Coffee Cup</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #8da0ab 0%, #6d818c 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .cup {
+    position: relative;
+    width: 200px;
+    height: 220px;
+  }
+
+  /* Saucer */
+  .saucer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 280px;
+    height: 60px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #fafafa 0%, #d9d9d9 60%, #b5b5b5 100%);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Cup body */
+  .cup-body {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 180px;
+    border-radius: 0 0 80px 80px / 0 0 100px 100px;
+    background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f1f1f1 60%, #d8d8d8 100%);
+    box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Rim of cup */
+  .cup-rim {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #ffffff 0%, #e5e5e5 60%, #cfcfcf 100%);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Coffee surface */
+  .coffee {
+    position: absolute;
+    bottom: 188px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, #7b3f2c 0%, #4b2619 100%);
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Handle */
+  .handle {
+    position: absolute;
+    right: -50px;
+    bottom: 50px;
+    width: 100px;
+    height: 100px;
+    border: 15px solid #f7f7f7;
+    border-left: none;
+    border-radius: 50%;
+    transform: rotate(10deg);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Steam */
+  .steam {
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 150px;
+    overflow: visible;
+  }
+
+  .steam span {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 95px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: rise 4s infinite ease-in-out;
+    filter: blur(3px);
+  }
+
+  .steam span:nth-child(1) { left: 40%; animation-delay: 0s; }
+  .steam span:nth-child(2) { left: 50%; animation-delay: 1.5s; }
+  .steam span:nth-child(3) { left: 60%; animation-delay: 3s; }
+
+  @keyframes rise {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    20% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="cup">
+    <div class="saucer"></div>
+    <div class="cup-body"></div>
+    <div class="cup-rim"></div>
+    <div class="coffee"></div>
+    <div class="handle"></div>
+    <div class="steam">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</body>
+</html>
