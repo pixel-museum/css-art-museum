@@ -49,6 +49,15 @@
   "description": "A glowing enchanted rose inside a glass dome inspired by Belle’s rose from Beauty and the Beast, made with pure HTML, CSS, and a touch of JS sparkles.",
   "date":"2025-10-23"
 },
+{
+  "file": "shivangini_thorshammer.html",
+  "title": "Enchanted Mjolnir ⚡",
+  "author": "Shivangini",
+  "tags": ["animation", "marvel", "thor", "lightning", "runes", "mythic", "futuristic", "css"],
+  "description": "A cinematic, futuristic, and mythic fusion of Thor’s enchanted hammer — glowing with divine runes, lightning, and mist. Click to summon thunder and awaken Mjolnir’s ancient power.",
+  "date": "2025-10-29"
+},
+
   {
    "file": "Keron-3D_Box.html",
    "title": "3D_Box",
