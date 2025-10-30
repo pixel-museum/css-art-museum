@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Animated Grid Background</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Grid Background</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      background: rgb(13, 14, 13);
+      opacity: 0.8;
+      z-index: 10;
+    }
+
+    .grid-background {
+      position: absolute;
+      z-index: 9;
+      inset: 0;
+      background-image: linear-gradient(90deg,
+          rgba(238, 237, 241, 0.6) 1px,
+          transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: grid-move 3s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes grid-move {
+      0% {
+        background-position: 0 0, 0 0;
       }
-      body {
-        width: 100vw;
-        height: 100vh;
-        overflow-x: hidden;
-        position: relative;
-        background: rgb(13, 14, 13);
-        opacity: 0.8;
-        z-index: 10;
+
+      100% {
+        background-position: 20px 20px, 20px 20px;
       }
-      .grid-background {
-        position: absolute;
-        z-index: 9;
-        inset: 0;
-        background-image: linear-gradient(
-            90deg,
-            rgba(238, 237, 241, 0.6) 1px,
-            transparent 1px
-          ),
-          linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-        background-size: 20px 20px;
-        animation: grid-move 3s linear infinite;
-        pointer-events: none;
+    }
+
+    .main {
+      position: relative;
+      padding: 2rem 1rem;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main h1 {
+      color: #fff;
+      text-shadow: 5px 5px 2px #000, 2px 3px 15px #1825df;
+      animation: float 3s ease infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
       }
-      @keyframes grid-move {
-        0% {
-          background-position: 0 0, 0 0;
-        }
-        100% {
-          background-position: 20px 20px, 20px 20px;
-        }
+
+      50% {
+        transform: translateY(-6px) rotate(1deg);
       }
-      .main {
-        position: relative;
-        padding: 2rem 1rem;
-        z-index: 10;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .main h1 {
-        color: #fff;
-        text-shadow: 5px 5px 2px #000, 2px 3px 15px #1825df;
-        animation: float 3s ease infinite;
-      }
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        } 
-        50% {
-          transform: translateY(-6px) rotate(1deg);
-        } 
-      }
-      .overlay-shimmer {
-        position: absolute;
-        inset: 0;
-        z-index: 9;
-        pointer-events: none;
-        background: linear-gradient(
-          120deg,
+    }
+
+    .overlay-shimmer {
+      position: absolute;
+      inset: 0;
+      z-index: 9;
+      pointer-events: none;
+      background: linear-gradient(120deg,
           rgba(255, 255, 255, 0) 0%,
           rgba(255, 255, 255, 0.3) 50%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        background-size: 200% 200%;
-        animation: shimmer 6s linear infinite;
+          rgba(255, 255, 255, 0) 100%);
+      background-size: 200% 200%;
+      animation: shimmer 6s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
       }
-      @keyframes shimmer {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+
+      50% {
+        background-position: 100% 50%;
       }
-      @media (max-width: 418px) {
-        .main-text {
-          font-size: 1.5rem;
-        }
+
+      100% {
+        background-position: 0% 50%;
       }
-    </style>
-  </head>
-  <body>
-    <div class="grid-background"></div>
-    <div class="overlay-shimmer"></div>
-    <div class="main">
-      <h1 class="main-text">Animated Grid Background</h1>
-    </div>
-  </body>
+    }
+
+    @media (max-width: 418px) {
+      .main-text {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-background"></div>
+  <div class="overlay-shimmer"></div>
+  <div class="main">
+    <h1 class="main-text">Animated Grid Background</h1>
+  </div>
+</body>
+
 </html>

@@ -96,10 +96,14 @@
         }
 
         @keyframes typing {
-            0%, 100% {
+
+            0%,
+            100% {
                 width: 0;
             }
-            50%, 90% {
+
+            50%,
+            90% {
                 width: 90%;
             }
         }
@@ -200,11 +204,15 @@
         }
 
         @keyframes keyPress {
-            0%, 90%, 100% {
+
+            0%,
+            90%,
+            100% {
                 transform: translateY(0);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4),
                     inset 0 1px 2px rgba(255, 255, 255, 0.1);
             }
+
             5% {
                 transform: translateY(3px);
                 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),
@@ -263,10 +271,15 @@
         }
 
         @keyframes typeBarStrike {
-            0%, 90%, 100% {
+
+            0%,
+            90%,
+            100% {
                 transform: translateX(-50%) rotateX(0deg);
             }
-            5%, 10% {
+
+            5%,
+            10% {
                 transform: translateX(-50%) rotateX(-45deg);
             }
         }
@@ -312,6 +325,7 @@
             0% {
                 transform: translateX(-10px);
             }
+
             100% {
                 transform: translateX(10px);
             }
@@ -358,6 +372,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -418,6 +433,7 @@
 </head>
 
 <body>
+
     <div class="art-container">
         <div class="content-wrapper">
             <div class="paper-holder">
@@ -492,6 +508,7 @@
             <div class="title">Vintage Typewriter</div>
         </div>
     </div>
+    
 </body>
 
 </html>

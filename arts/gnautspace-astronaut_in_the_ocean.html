@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,9 +100,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(-5deg);
             }
+
             50% {
                 transform: translateY(-30px) rotate(5deg);
             }
@@ -115,7 +119,7 @@
             position: relative;
             border: 4px solid #e0e0e0;
             box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.2),
-                        0 0 30px rgba(100, 200, 255, 0.5);
+                0 0 30px rgba(100, 200, 255, 0.5);
         }
 
         .visor {
@@ -183,18 +187,24 @@
         }
 
         @keyframes wave-left {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(20deg);
             }
+
             50% {
                 transform: rotate(40deg);
             }
         }
 
         @keyframes wave-right {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(-20deg);
             }
+
             50% {
                 transform: rotate(-40deg);
             }
@@ -220,18 +230,24 @@
         }
 
         @keyframes kick-left {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(10deg);
             }
+
             50% {
                 transform: rotate(-10deg);
             }
         }
 
         @keyframes kick-right {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(-10deg);
             }
+
             50% {
                 transform: rotate(10deg);
             }
@@ -265,9 +281,11 @@
                 transform: translateX(-200px) rotate(-10deg);
                 opacity: 0;
             }
+
             50% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateX(calc(100vw + 200px)) rotate(10deg);
                 opacity: 0;
@@ -312,13 +330,16 @@
             from {
                 left: -60px;
             }
+
             to {
                 left: calc(100% + 60px);
             }
         }
     </style>
 </head>
+
 <body>
+    
     <div class="ocean">
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -333,16 +354,20 @@
 
     <div class="astronaut">
         <div class="backpack"></div>
+
         <div class="helmet">
             <div class="visor">
                 <div class="reflection"></div>
             </div>
         </div>
+
         <div class="body"></div>
         <div class="arm arm-left"></div>
         <div class="arm arm-right"></div>
         <div class="leg leg-left"></div>
         <div class="leg leg-right"></div>
     </div>
+
 </body>
+
 </html>

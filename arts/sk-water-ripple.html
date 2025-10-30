@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             height: 100vh;
             background-color: #1a1a1a;
         }
+
         #water-surface {
             position: relative;
             width: 80vw;
@@ -23,23 +25,28 @@
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
+
         .ripple {
             position: absolute;
             border-radius: 50%;
             background-color: transparent;
             border: 2px solid rgba(255, 255, 255, 0.5);
-            pointer-events: none; /* Clicks should pass through the ripple */
-            transform: translate(-50%, -50%); /* Center the ripple on the cursor */
+            pointer-events: none;
+            /* Clicks should pass through the ripple */
+            transform: translate(-50%, -50%);
+            /* Center the ripple on the cursor */
             animation: ripple-effect 1.5s ease-out forwards;
         }
+
         @keyframes ripple-effect {
             0% {
                 width: 0;
                 height: 0;
                 opacity: 1;
             }
+
             100% {
                 width: 400px;
                 height: 400px;
@@ -48,6 +55,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div id="water-surface"></div>
@@ -55,7 +63,7 @@
     <script>
         const waterSurface = document.getElementById('water-surface');
 
-        waterSurface.addEventListener('click', function(e) {
+        waterSurface.addEventListener('click', function (e) {
             // Get the position of the click relative to the element
             const rect = waterSurface.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -64,7 +72,7 @@
             // Create a new ripple element
             const ripple = document.createElement('span');
             ripple.classList.add('ripple');
-            
+
             // Position the ripple at the click coordinates
             ripple.style.left = `${x}px`;
             ripple.style.top = `${y}px`;
@@ -80,4 +88,5 @@
     </script>
 
 </body>
+
 </html>

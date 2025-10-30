@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bouncing Color Ball</title>
-<style>
-  body {
-    margin: 0;
-    background: #222;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100vh;
-    overflow: hidden;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Color Ball</title>
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-  .ball {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: red;
-    animation: 
-      bounce 2s ease-in-out infinite,
-      colorChange 2s ease-in-out infinite;
-    box-shadow: 0 0 15px #ff6ec7, 0 0 30px #8e44ad;
-  }
+    .ball {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: red;
+      animation:
+        bounce 2s ease-in-out infinite,
+        colorChange 2s ease-in-out infinite;
+      box-shadow: 0 0 15px #ff6ec7, 0 0 30px #8e44ad;
+    }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-200px); }
-  }
+    @keyframes bounce {
 
-  @keyframes colorChange {
-    0% { background: #ff6ec7; }
-    25% { background: #8e44ad; }
-    50% { background: #ffdd59; }
-    75% { background: #4cd137; }
-    100% { background: #ff6ec7; }
-  }
-</style>
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-200px);
+      }
+    }
+
+    @keyframes colorChange {
+      0% {
+        background: #ff6ec7;
+      }
+
+      25% {
+        background: #8e44ad;
+      }
+
+      50% {
+        background: #ffdd59;
+      }
+
+      75% {
+        background: #4cd137;
+      }
+
+      100% {
+        background: #ff6ec7;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="ball"></div>
 </body>
+
 </html>

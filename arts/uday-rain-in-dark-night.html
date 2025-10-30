@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,8 +61,15 @@
         }
 
         @keyframes moonGlow {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.9;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Clouds */
@@ -126,8 +134,13 @@
         }
 
         @keyframes drift {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(100vw + 200px)); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 200px));
+            }
         }
 
         /* Street Lights */
@@ -181,10 +194,23 @@
         }
 
         @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            25% { opacity: 0.9; }
-            50% { opacity: 0.95; }
-            75% { opacity: 0.88; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 0.9;
+            }
+
+            50% {
+                opacity: 0.95;
+            }
+
+            75% {
+                opacity: 0.88;
+            }
         }
 
         .light-1 {
@@ -226,66 +252,365 @@
         }
 
         /* Generate more rain drops */
-        .drop:nth-child(1) { left: 1%; animation-duration: 0.7s; animation-delay: 0s; }
-        .drop:nth-child(2) { left: 3%; animation-duration: 0.9s; animation-delay: 0.2s; }
-        .drop:nth-child(3) { left: 6%; animation-duration: 0.8s; animation-delay: 0.1s; }
-        .drop:nth-child(4) { left: 9%; animation-duration: 0.75s; animation-delay: 0.3s; }
-        .drop:nth-child(5) { left: 12%; animation-duration: 0.85s; animation-delay: 0.15s; }
-        .drop:nth-child(6) { left: 15%; animation-duration: 0.95s; animation-delay: 0.25s; }
-        .drop:nth-child(7) { left: 18%; animation-duration: 0.8s; animation-delay: 0.05s; }
-        .drop:nth-child(8) { left: 21%; animation-duration: 0.88s; animation-delay: 0.35s; }
-        .drop:nth-child(9) { left: 24%; animation-duration: 0.78s; animation-delay: 0.12s; }
-        .drop:nth-child(10) { left: 27%; animation-duration: 0.92s; animation-delay: 0.28s; }
-        .drop:nth-child(11) { left: 30%; animation-duration: 0.82s; animation-delay: 0.18s; }
-        .drop:nth-child(12) { left: 33%; animation-duration: 0.87s; animation-delay: 0.08s; }
-        .drop:nth-child(13) { left: 36%; animation-duration: 0.91s; animation-delay: 0.22s; }
-        .drop:nth-child(14) { left: 39%; animation-duration: 0.79s; animation-delay: 0.32s; }
-        .drop:nth-child(15) { left: 42%; animation-duration: 0.84s; animation-delay: 0.14s; }
-        .drop:nth-child(16) { left: 45%; animation-duration: 0.89s; animation-delay: 0.26s; }
-        .drop:nth-child(17) { left: 48%; animation-duration: 0.77s; animation-delay: 0.06s; }
-        .drop:nth-child(18) { left: 51%; animation-duration: 0.93s; animation-delay: 0.19s; }
-        .drop:nth-child(19) { left: 54%; animation-duration: 0.81s; animation-delay: 0.31s; }
-        .drop:nth-child(20) { left: 57%; animation-duration: 0.86s; animation-delay: 0.11s; }
-        .drop:nth-child(21) { left: 60%; animation-duration: 0.94s; animation-delay: 0.23s; }
-        .drop:nth-child(22) { left: 63%; animation-duration: 0.76s; animation-delay: 0.33s; }
-        .drop:nth-child(23) { left: 66%; animation-duration: 0.83s; animation-delay: 0.13s; }
-        .drop:nth-child(24) { left: 69%; animation-duration: 0.9s; animation-delay: 0.27s; }
-        .drop:nth-child(25) { left: 72%; animation-duration: 0.8s; animation-delay: 0.07s; }
-        .drop:nth-child(26) { left: 75%; animation-duration: 0.88s; animation-delay: 0.21s; }
-        .drop:nth-child(27) { left: 78%; animation-duration: 0.74s; animation-delay: 0.29s; }
-        .drop:nth-child(28) { left: 81%; animation-duration: 0.85s; animation-delay: 0.16s; }
-        .drop:nth-child(29) { left: 84%; animation-duration: 0.91s; animation-delay: 0.09s; }
-        .drop:nth-child(30) { left: 87%; animation-duration: 0.79s; animation-delay: 0.24s; }
-        .drop:nth-child(31) { left: 90%; animation-duration: 0.87s; animation-delay: 0.04s; }
-        .drop:nth-child(32) { left: 93%; animation-duration: 0.82s; animation-delay: 0.3s; }
-        .drop:nth-child(33) { left: 96%; animation-duration: 0.89s; animation-delay: 0.17s; }
-        .drop:nth-child(34) { left: 99%; animation-duration: 0.78s; animation-delay: 0.34s; }
-        .drop:nth-child(35) { left: 2%; animation-duration: 0.86s; animation-delay: 0.2s; }
-        .drop:nth-child(36) { left: 5%; animation-duration: 0.92s; animation-delay: 0.1s; }
-        .drop:nth-child(37) { left: 8%; animation-duration: 0.81s; animation-delay: 0.36s; }
-        .drop:nth-child(38) { left: 11%; animation-duration: 0.84s; animation-delay: 0.03s; }
-        .drop:nth-child(39) { left: 14%; animation-duration: 0.9s; animation-delay: 0.38s; }
-        .drop:nth-child(40) { left: 17%; animation-duration: 0.77s; animation-delay: 0.19s; }
-        .drop:nth-child(41) { left: 20%; animation-duration: 0.83s; animation-delay: 0.37s; }
-        .drop:nth-child(42) { left: 23%; animation-duration: 0.88s; animation-delay: 0.02s; }
-        .drop:nth-child(43) { left: 26%; animation-duration: 0.94s; animation-delay: 0.31s; }
-        .drop:nth-child(44) { left: 29%; animation-duration: 0.76s; animation-delay: 0.39s; }
-        .drop:nth-child(45) { left: 32%; animation-duration: 0.85s; animation-delay: 0.06s; }
-        .drop:nth-child(46) { left: 35%; animation-duration: 0.91s; animation-delay: 0.27s; }
-        .drop:nth-child(47) { left: 38%; animation-duration: 0.79s; animation-delay: 0.14s; }
-        .drop:nth-child(48) { left: 41%; animation-duration: 0.87s; animation-delay: 0.33s; }
-        .drop:nth-child(49) { left: 44%; animation-duration: 0.82s; animation-delay: 0.21s; }
-        .drop:nth-child(50) { left: 47%; animation-duration: 0.89s; animation-delay: 0.08s; }
-        .drop:nth-child(51) { left: 50%; animation-duration: 0.8s; animation-delay: 0.35s; }
-        .drop:nth-child(52) { left: 53%; animation-duration: 0.93s; animation-delay: 0.12s; }
-        .drop:nth-child(53) { left: 56%; animation-duration: 0.78s; animation-delay: 0.25s; }
-        .drop:nth-child(54) { left: 59%; animation-duration: 0.86s; animation-delay: 0.16s; }
-        .drop:nth-child(55) { left: 62%; animation-duration: 0.84s; animation-delay: 0.29s; }
-        .drop:nth-child(56) { left: 65%; animation-duration: 0.91s; animation-delay: 0.04s; }
-        .drop:nth-child(57) { left: 68%; animation-duration: 0.77s; animation-delay: 0.32s; }
-        .drop:nth-child(58) { left: 71%; animation-duration: 0.88s; animation-delay: 0.15s; }
-        .drop:nth-child(59) { left: 74%; animation-duration: 0.83s; animation-delay: 0.26s; }
-        .drop:nth-child(60) { left: 77%; animation-duration: 0.9s; animation-delay: 0.07s; }
+        .drop:nth-child(1) {
+            left: 1%;
+            animation-duration: 0.7s;
+            animation-delay: 0s;
+        }
+
+        .drop:nth-child(2) {
+            left: 3%;
+            animation-duration: 0.9s;
+            animation-delay: 0.2s;
+        }
+
+        .drop:nth-child(3) {
+            left: 6%;
+            animation-duration: 0.8s;
+            animation-delay: 0.1s;
+        }
+
+        .drop:nth-child(4) {
+            left: 9%;
+            animation-duration: 0.75s;
+            animation-delay: 0.3s;
+        }
+
+        .drop:nth-child(5) {
+            left: 12%;
+            animation-duration: 0.85s;
+            animation-delay: 0.15s;
+        }
+
+        .drop:nth-child(6) {
+            left: 15%;
+            animation-duration: 0.95s;
+            animation-delay: 0.25s;
+        }
+
+        .drop:nth-child(7) {
+            left: 18%;
+            animation-duration: 0.8s;
+            animation-delay: 0.05s;
+        }
+
+        .drop:nth-child(8) {
+            left: 21%;
+            animation-duration: 0.88s;
+            animation-delay: 0.35s;
+        }
+
+        .drop:nth-child(9) {
+            left: 24%;
+            animation-duration: 0.78s;
+            animation-delay: 0.12s;
+        }
+
+        .drop:nth-child(10) {
+            left: 27%;
+            animation-duration: 0.92s;
+            animation-delay: 0.28s;
+        }
+
+        .drop:nth-child(11) {
+            left: 30%;
+            animation-duration: 0.82s;
+            animation-delay: 0.18s;
+        }
+
+        .drop:nth-child(12) {
+            left: 33%;
+            animation-duration: 0.87s;
+            animation-delay: 0.08s;
+        }
+
+        .drop:nth-child(13) {
+            left: 36%;
+            animation-duration: 0.91s;
+            animation-delay: 0.22s;
+        }
+
+        .drop:nth-child(14) {
+            left: 39%;
+            animation-duration: 0.79s;
+            animation-delay: 0.32s;
+        }
+
+        .drop:nth-child(15) {
+            left: 42%;
+            animation-duration: 0.84s;
+            animation-delay: 0.14s;
+        }
+
+        .drop:nth-child(16) {
+            left: 45%;
+            animation-duration: 0.89s;
+            animation-delay: 0.26s;
+        }
+
+        .drop:nth-child(17) {
+            left: 48%;
+            animation-duration: 0.77s;
+            animation-delay: 0.06s;
+        }
+
+        .drop:nth-child(18) {
+            left: 51%;
+            animation-duration: 0.93s;
+            animation-delay: 0.19s;
+        }
+
+        .drop:nth-child(19) {
+            left: 54%;
+            animation-duration: 0.81s;
+            animation-delay: 0.31s;
+        }
+
+        .drop:nth-child(20) {
+            left: 57%;
+            animation-duration: 0.86s;
+            animation-delay: 0.11s;
+        }
+
+        .drop:nth-child(21) {
+            left: 60%;
+            animation-duration: 0.94s;
+            animation-delay: 0.23s;
+        }
+
+        .drop:nth-child(22) {
+            left: 63%;
+            animation-duration: 0.76s;
+            animation-delay: 0.33s;
+        }
+
+        .drop:nth-child(23) {
+            left: 66%;
+            animation-duration: 0.83s;
+            animation-delay: 0.13s;
+        }
+
+        .drop:nth-child(24) {
+            left: 69%;
+            animation-duration: 0.9s;
+            animation-delay: 0.27s;
+        }
+
+        .drop:nth-child(25) {
+            left: 72%;
+            animation-duration: 0.8s;
+            animation-delay: 0.07s;
+        }
+
+        .drop:nth-child(26) {
+            left: 75%;
+            animation-duration: 0.88s;
+            animation-delay: 0.21s;
+        }
+
+        .drop:nth-child(27) {
+            left: 78%;
+            animation-duration: 0.74s;
+            animation-delay: 0.29s;
+        }
+
+        .drop:nth-child(28) {
+            left: 81%;
+            animation-duration: 0.85s;
+            animation-delay: 0.16s;
+        }
+
+        .drop:nth-child(29) {
+            left: 84%;
+            animation-duration: 0.91s;
+            animation-delay: 0.09s;
+        }
+
+        .drop:nth-child(30) {
+            left: 87%;
+            animation-duration: 0.79s;
+            animation-delay: 0.24s;
+        }
+
+        .drop:nth-child(31) {
+            left: 90%;
+            animation-duration: 0.87s;
+            animation-delay: 0.04s;
+        }
+
+        .drop:nth-child(32) {
+            left: 93%;
+            animation-duration: 0.82s;
+            animation-delay: 0.3s;
+        }
+
+        .drop:nth-child(33) {
+            left: 96%;
+            animation-duration: 0.89s;
+            animation-delay: 0.17s;
+        }
+
+        .drop:nth-child(34) {
+            left: 99%;
+            animation-duration: 0.78s;
+            animation-delay: 0.34s;
+        }
+
+        .drop:nth-child(35) {
+            left: 2%;
+            animation-duration: 0.86s;
+            animation-delay: 0.2s;
+        }
+
+        .drop:nth-child(36) {
+            left: 5%;
+            animation-duration: 0.92s;
+            animation-delay: 0.1s;
+        }
+
+        .drop:nth-child(37) {
+            left: 8%;
+            animation-duration: 0.81s;
+            animation-delay: 0.36s;
+        }
+
+        .drop:nth-child(38) {
+            left: 11%;
+            animation-duration: 0.84s;
+            animation-delay: 0.03s;
+        }
+
+        .drop:nth-child(39) {
+            left: 14%;
+            animation-duration: 0.9s;
+            animation-delay: 0.38s;
+        }
+
+        .drop:nth-child(40) {
+            left: 17%;
+            animation-duration: 0.77s;
+            animation-delay: 0.19s;
+        }
+
+        .drop:nth-child(41) {
+            left: 20%;
+            animation-duration: 0.83s;
+            animation-delay: 0.37s;
+        }
+
+        .drop:nth-child(42) {
+            left: 23%;
+            animation-duration: 0.88s;
+            animation-delay: 0.02s;
+        }
+
+        .drop:nth-child(43) {
+            left: 26%;
+            animation-duration: 0.94s;
+            animation-delay: 0.31s;
+        }
+
+        .drop:nth-child(44) {
+            left: 29%;
+            animation-duration: 0.76s;
+            animation-delay: 0.39s;
+        }
+
+        .drop:nth-child(45) {
+            left: 32%;
+            animation-duration: 0.85s;
+            animation-delay: 0.06s;
+        }
+
+        .drop:nth-child(46) {
+            left: 35%;
+            animation-duration: 0.91s;
+            animation-delay: 0.27s;
+        }
+
+        .drop:nth-child(47) {
+            left: 38%;
+            animation-duration: 0.79s;
+            animation-delay: 0.14s;
+        }
+
+        .drop:nth-child(48) {
+            left: 41%;
+            animation-duration: 0.87s;
+            animation-delay: 0.33s;
+        }
+
+        .drop:nth-child(49) {
+            left: 44%;
+            animation-duration: 0.82s;
+            animation-delay: 0.21s;
+        }
+
+        .drop:nth-child(50) {
+            left: 47%;
+            animation-duration: 0.89s;
+            animation-delay: 0.08s;
+        }
+
+        .drop:nth-child(51) {
+            left: 50%;
+            animation-duration: 0.8s;
+            animation-delay: 0.35s;
+        }
+
+        .drop:nth-child(52) {
+            left: 53%;
+            animation-duration: 0.93s;
+            animation-delay: 0.12s;
+        }
+
+        .drop:nth-child(53) {
+            left: 56%;
+            animation-duration: 0.78s;
+            animation-delay: 0.25s;
+        }
+
+        .drop:nth-child(54) {
+            left: 59%;
+            animation-duration: 0.86s;
+            animation-delay: 0.16s;
+        }
+
+        .drop:nth-child(55) {
+            left: 62%;
+            animation-duration: 0.84s;
+            animation-delay: 0.29s;
+        }
+
+        .drop:nth-child(56) {
+            left: 65%;
+            animation-duration: 0.91s;
+            animation-delay: 0.04s;
+        }
+
+        .drop:nth-child(57) {
+            left: 68%;
+            animation-duration: 0.77s;
+            animation-delay: 0.32s;
+        }
+
+        .drop:nth-child(58) {
+            left: 71%;
+            animation-duration: 0.88s;
+            animation-delay: 0.15s;
+        }
+
+        .drop:nth-child(59) {
+            left: 74%;
+            animation-duration: 0.83s;
+            animation-delay: 0.26s;
+        }
+
+        .drop:nth-child(60) {
+            left: 77%;
+            animation-duration: 0.9s;
+            animation-delay: 0.07s;
+        }
 
         /* Ground */
         .ground {
@@ -306,7 +631,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(40, 50, 60, 0.3) 49px, rgba(40, 50, 60, 0.3) 50px),
                 repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(40, 50, 60, 0.2) 99px, rgba(40, 50, 60, 0.2) 100px);
             opacity: 0.6;
@@ -321,13 +646,20 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(ellipse at 20% 0%, rgba(255, 240, 180, 0.15), transparent 40%),
-                        radial-gradient(ellipse at 80% 0%, rgba(255, 240, 180, 0.15), transparent 40%);
+                radial-gradient(ellipse at 80% 0%, rgba(255, 240, 180, 0.15), transparent 40%);
             animation: shimmer 4s ease-in-out infinite;
         }
 
         @keyframes shimmer {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 0.8; }
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
 
         /* Puddle effects */
@@ -368,65 +700,84 @@
         }
 
         @keyframes ripple {
-            0%, 100% { 
-                opacity: 0.5; 
-                transform: scale(1); 
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
             }
-            50% { 
-                opacity: 0.7; 
-                transform: scale(1.08); 
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.08);
             }
         }
 
         @keyframes reflection {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         @keyframes gleam {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
-        .puddle-1 { 
-            left: 22%; 
-            animation-delay: 0s; 
-            width: 140px; 
+        .puddle-1 {
+            left: 22%;
+            animation-delay: 0s;
+            width: 140px;
             height: 8px;
         }
-        
-        .puddle-2 { 
-            left: 78%; 
-            animation-delay: 1s; 
-            width: 130px; 
+
+        .puddle-2 {
+            left: 78%;
+            animation-delay: 1s;
+            width: 130px;
             height: 7px;
         }
-        
-        .puddle-3 { 
-            left: 45%; 
-            animation-delay: 0.5s; 
-            width: 100px; 
-            bottom: 8px; 
+
+        .puddle-3 {
+            left: 45%;
+            animation-delay: 0.5s;
+            width: 100px;
+            bottom: 8px;
         }
 
-        .puddle-4 { 
-            left: 60%; 
-            animation-delay: 1.5s; 
-            width: 80px; 
-            bottom: 15px; 
+        .puddle-4 {
+            left: 60%;
+            animation-delay: 1.5s;
+            width: 80px;
+            bottom: 15px;
             height: 5px;
         }
 
-        .puddle-5 { 
-            left: 10%; 
-            animation-delay: 0.8s; 
-            width: 90px; 
-            bottom: 20px; 
+        .puddle-5 {
+            left: 10%;
+            animation-delay: 0.8s;
+            width: 90px;
+            bottom: 20px;
             height: 6px;
         }
     </style>
 </head>
+
 <body>
+
     <div class="scene">
         <!-- Moon -->
         <div class="moon"></div>
@@ -525,5 +876,7 @@
             <div class="puddle puddle-5"></div>
         </div>
     </div>
+    
 </body>
+
 </html>

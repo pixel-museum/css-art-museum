@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,86 +47,92 @@
             top: -70px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 
+            box-shadow:
                 0 0 20px #00ff00,
                 0 0 40px #00ff00,
                 0 0 60px #00ff00,
                 0 0 80px rgba(0, 255, 0, 0.5),
                 inset 0 0 20px rgba(127, 255, 0, 0.3);
-            animation: 
+            animation:
                 bounce-position 12s cubic-bezier(0.4, 0, 0.2, 1) infinite,
                 bounce-squish 12s ease infinite;
         }
 
         @keyframes bounce-position {
+
             /* Drop from top */
             0% {
                 top: -70px;
             }
-            
+
             /* First bounce - highest */
             10% {
                 top: 320px;
             }
+
             18% {
                 top: 60px;
             }
-            
+
             /* Second bounce - medium */
             24% {
                 top: 320px;
             }
+
             30% {
                 top: 140px;
             }
-            
+
             /* Third bounce - lower */
             35% {
                 top: 320px;
             }
+
             39% {
                 top: 210px;
             }
-            
+
             /* Fourth bounce - small */
             42% {
                 top: 320px;
             }
+
             44.5% {
                 top: 260px;
             }
-            
+
             /* Fifth bounce - tiny */
             46.5% {
                 top: 320px;
             }
+
             48% {
                 top: 295px;
             }
-            
+
             /* Settle */
             49% {
                 top: 320px;
             }
-            
+
             /* Rest for 3 seconds */
             75% {
                 top: 320px;
                 opacity: 1;
             }
-            
+
             /* Fade out */
             80% {
                 top: 320px;
                 opacity: 0;
             }
-            
+
             /* Reset */
             81% {
                 top: -70px;
                 opacity: 0;
             }
-            
+
             100% {
                 top: -70px;
                 opacity: 1;
@@ -133,99 +140,109 @@
         }
 
         @keyframes bounce-squish {
+
             /* No squish when falling */
-            0%, 9.5% {
+            0%,
+            9.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* First impact - BIG squish */
             10% {
                 width: 75px;
                 height: 45px;
                 border-radius: 50%;
             }
+
             10.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Rising - slight stretch */
             14% {
                 width: 55px;
                 height: 65px;
                 border-radius: 50%;
             }
+
             17.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Second impact - Medium squish */
             24% {
                 width: 72px;
                 height: 48px;
                 border-radius: 50%;
             }
+
             24.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Rising - slight stretch */
             27% {
                 width: 57px;
                 height: 63px;
                 border-radius: 50%;
             }
+
             29.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Third impact - small squish */
             35% {
                 width: 68px;
                 height: 52px;
                 border-radius: 50%;
             }
+
             35.5% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Fourth impact - tiny squish */
             42% {
                 width: 65px;
                 height: 55px;
                 border-radius: 50%;
             }
+
             42.3% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Fifth impact - minimal squish */
             46.5% {
                 width: 63px;
                 height: 57px;
                 border-radius: 50%;
             }
+
             46.7% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
             }
-            
+
             /* Rest of animation - normal shape */
-            49%, 100% {
+            49%,
+            100% {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
@@ -246,10 +263,13 @@
         }
 
         @keyframes glow-pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 0.6;
             }
+
             50% {
                 transform: scale(1.2);
                 opacity: 1;
@@ -281,57 +301,69 @@
         }
 
         @keyframes impact-effect {
+
             /* First impact - biggest */
             10% {
                 transform: translateX(-50%) scaleX(2);
                 opacity: 1;
             }
+
             10.8% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
-            
+
             /* Second impact - medium */
             24% {
                 transform: translateX(-50%) scaleX(1.7);
                 opacity: 0.9;
             }
+
             24.8% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
-            
+
             /* Third impact - smaller */
             35% {
                 transform: translateX(-50%) scaleX(1.4);
                 opacity: 0.7;
             }
+
             35.6% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
-            
+
             /* Fourth impact - small */
             42% {
                 transform: translateX(-50%) scaleX(1.1);
                 opacity: 0.5;
             }
+
             42.4% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
-            
+
             /* Fifth impact - tiny */
             46.5% {
                 transform: translateX(-50%) scaleX(0.8);
                 opacity: 0.3;
             }
+
             46.8% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
-            
-            0%, 9.9%, 23.9%, 34.9%, 41.9%, 46.4%, 100% {
+
+            0%,
+            9.9%,
+            23.9%,
+            34.9%,
+            41.9%,
+            46.4%,
+            100% {
                 transform: translateX(-50%) scaleX(0);
                 opacity: 0;
             }
@@ -363,13 +395,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
         }
     </style>
 </head>
+
 <body>
     <div class="card">
         <div class="art-container">
@@ -378,11 +411,12 @@
             <div class="impact"></div>
             <div class="ball"></div>
         </div>
-        
+
         <div class="info">
             <h2>Bouncy Glow Ball</h2>
             <p>Physics Simulation - Pure CSS</p>
         </div>
     </div>
 </body>
+
 </html>

@@ -1,57 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Art Viewer — CSS Art Museum</title>
-    <link rel="stylesheet" href="art-viewer.css" />
-  </head>
-  <body>
-    <header>
-      <a class="back" href="index.html" title="Back to gallery">← Back</a>
-      <h1>CSS Art Viewer</h1>
-      <div class="like-container" data-id="${art.file}">
-        <svg
-          class="heart-icon"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-          ></path>
-        </svg> 
-         <span> </span>
-      </div>
-      <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
-    </header>
 
-    <main class="wrap">
-      <section class="preview-panel" aria-label="Live preview">
-        <iframe class="preview" id="artPreview" title="Art preview"></iframe>
-      </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Art Viewer — CSS Art Museum</title>
+  <link rel="stylesheet" href="art-viewer.css" />
+</head>
 
-      <section class="code-panel" aria-label="Source code">
-        <div class="code-header">
-          <div class="filename" id="fileName">—</div>
-          <div class="controls">
-            <button class="btn" id="copyBtn">Copy</button>
-            <a class="btn" id="downloadBtn" href="#" download>Download</a>
-          </div>
+<body>
+  <header>
+    <a class="back" href="index.html" title="Back to gallery">← Back</a>
+    <h1>CSS Art Viewer</h1>
+
+    <div class="like-container" data-id="${art.file}">
+      <svg class="heart-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+        </path>
+      </svg>
+      <span> </span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
+  </header>
+
+  <main class="wrap">
+    <section class="preview-panel" aria-label="Live preview">
+      <iframe class="preview" id="artPreview" title="Art preview"></iframe>
+    </section>
+
+    <section class="code-panel" aria-label="Source code">
+      <div class="code-header">
+        <div class="filename" id="fileName">—</div>
+        <div class="controls">
+          <button class="btn" id="copyBtn">Copy</button>
+          <a class="btn" id="downloadBtn" href="#" download>Download</a>
         </div>
+      </div>
 
-        <pre class="code-area" id="codeBlock" aria-live="polite">
-Loading code…</pre
-        >
-      </section>
-    </main>
-    
-    <script src="./js/api-service.js"></script>
-    <script src="./js/art-viewer.js"></script>
-  </body>
+      <pre class="code-area" id="codeBlock" aria-live="polite">Loading code…</pre>
+    </section>
+  </main>
+
+  <script src="./js/api-service.js"></script>
+  <script src="./js/art-viewer.js"></script>
+
+</body>
+
 </html>

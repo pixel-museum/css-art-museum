@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,12 +31,12 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, 
-                #0a0015 0%, 
-                #1a0a2e 30%, 
-                #2d1b3d 60%, 
-                #4a2f5e 80%, 
-                #6b4984 100%);
+            background: linear-gradient(to bottom,
+                    #0a0015 0%,
+                    #1a0a2e 30%,
+                    #2d1b3d 60%,
+                    #4a2f5e 80%,
+                    #6b4984 100%);
         }
 
         /* Stars */
@@ -43,7 +44,7 @@
             position: absolute;
             width: 100%;
             height: 60%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20% 30%, white, transparent),
                 radial-gradient(2px 2px at 60% 70%, white, transparent),
                 radial-gradient(1px 1px at 50% 50%, white, transparent),
@@ -57,8 +58,15 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Moon */
@@ -70,7 +78,7 @@
             height: 60px;
             background: radial-gradient(circle at 35% 35%, #fff, #ddd);
             border-radius: 50%;
-            box-shadow: 
+            box-shadow:
                 0 0 30px rgba(255, 255, 255, 0.5),
                 0 0 60px rgba(255, 255, 255, 0.3),
                 inset -5px -5px 15px rgba(0, 0, 0, 0.2);
@@ -97,7 +105,7 @@
             flex-direction: column;
             justify-content: space-evenly;
             padding: 10px;
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(0, 255, 255, 0.2),
                 inset 0 0 30px rgba(0, 0, 0, 0.5);
         }
@@ -143,7 +151,7 @@
             width: 20px;
             height: 20px;
             background: rgba(255, 220, 100, 0.8);
-            box-shadow: 
+            box-shadow:
                 0 0 10px rgba(255, 220, 100, 0.8),
                 inset 0 0 5px rgba(255, 255, 255, 0.5);
             animation: windowFlicker 4s infinite alternate;
@@ -151,14 +159,21 @@
 
         .building-2 .window {
             background: rgba(100, 200, 255, 0.8);
-            box-shadow: 
+            box-shadow:
                 0 0 10px rgba(100, 200, 255, 0.8),
                 inset 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         @keyframes windowFlicker {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Neon signs */
@@ -170,7 +185,7 @@
             color: #ff00ff;
             font-size: 24px;
             font-weight: bold;
-            text-shadow: 
+            text-shadow:
                 0 0 10px #ff00ff,
                 0 0 20px #ff00ff,
                 0 0 30px #ff00ff,
@@ -187,7 +202,7 @@
             color: #00ffff;
             font-size: 16px;
             font-weight: bold;
-            text-shadow: 
+            text-shadow:
                 0 0 10px #00ffff,
                 0 0 20px #00ffff,
                 0 0 30px #00ffff;
@@ -195,8 +210,15 @@
         }
 
         @keyframes neonPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         /* Antennas */
@@ -225,8 +247,15 @@
         }
 
         @keyframes antennaBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         /* Rooftop light */
@@ -238,15 +267,24 @@
             width: 40px;
             height: 10px;
             background: rgba(255, 100, 100, 0.6);
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(255, 100, 100, 0.8),
                 0 -20px 40px rgba(255, 100, 100, 0.4);
             animation: searchLight 3s linear infinite;
         }
 
         @keyframes searchLight {
-            0%, 100% { width: 40px; opacity: 0.6; }
-            50% { width: 60px; opacity: 1; }
+
+            0%,
+            100% {
+                width: 40px;
+                opacity: 0.6;
+            }
+
+            50% {
+                width: 60px;
+                opacity: 1;
+            }
         }
 
         /* Ground */
@@ -265,9 +303,9 @@
             top: 0;
             width: 100%;
             height: 50%;
-            background: linear-gradient(to bottom, 
-                rgba(255, 0, 255, 0.1), 
-                transparent);
+            background: linear-gradient(to bottom,
+                    rgba(255, 0, 255, 0.1),
+                    transparent);
         }
 
         /* Neon grid lines */
@@ -284,52 +322,55 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: linear-gradient(to right, 
-                transparent, 
-                rgba(255, 0, 255, 0.6), 
-                transparent);
+            background: linear-gradient(to right,
+                    transparent,
+                    rgba(255, 0, 255, 0.6),
+                    transparent);
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
             transform-origin: top;
             animation: gridMove 3s linear infinite;
         }
 
-        .grid-line:nth-child(1) { 
-            bottom: 80%; 
+        .grid-line:nth-child(1) {
+            bottom: 80%;
             animation-delay: 0s;
         }
 
-        .grid-line:nth-child(2) { 
-            bottom: 60%; 
+        .grid-line:nth-child(2) {
+            bottom: 60%;
             animation-delay: 0.6s;
         }
 
-        .grid-line:nth-child(3) { 
-            bottom: 40%; 
+        .grid-line:nth-child(3) {
+            bottom: 40%;
             animation-delay: 1.2s;
         }
 
-        .grid-line:nth-child(4) { 
-            bottom: 20%; 
+        .grid-line:nth-child(4) {
+            bottom: 20%;
             animation-delay: 1.8s;
         }
 
-        .grid-line:nth-child(5) { 
-            bottom: 0%; 
+        .grid-line:nth-child(5) {
+            bottom: 0%;
             animation-delay: 2.4s;
         }
 
         @keyframes gridMove {
-            0% { 
+            0% {
                 transform: rotateX(75deg) translateY(0);
                 opacity: 0;
             }
+
             20% {
                 opacity: 1;
             }
+
             80% {
                 opacity: 1;
             }
-            100% { 
+
+            100% {
                 transform: rotateX(75deg) translateY(200px);
                 opacity: 0;
             }
@@ -368,12 +409,13 @@
         }
 
         @keyframes flyBy {
-            0% { 
-                left: -100px; 
+            0% {
+                left: -100px;
                 top: 30%;
             }
-            100% { 
-                left: calc(100% + 100px); 
+
+            100% {
+                left: calc(100% + 100px);
                 top: 25%;
             }
         }
@@ -390,17 +432,19 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="scene">
         <!-- Sky gradient background -->
         <div class="sky"></div>
-        
+
         <!-- Stars -->
         <div class="stars"></div>
-        
+
         <!-- Moon -->
         <div class="moon"></div>
-        
+
         <!-- Buildings -->
         <div class="buildings">
             <!-- Left building -->
@@ -427,7 +471,7 @@
                 </div>
                 <div class="antenna antenna-1"></div>
             </div>
-            
+
             <!-- Center tall building -->
             <div class="building building-2">
                 <div class="window-row">
@@ -457,7 +501,7 @@
                 <div class="neon-sign">CYBER</div>
                 <div class="antenna antenna-2"></div>
             </div>
-            
+
             <!-- Right building -->
             <div class="building building-3">
                 <div class="window-row">
@@ -492,7 +536,7 @@
                 </div>
                 <div class="rooftop-light"></div>
             </div>
-            
+
             <!-- Small left building -->
             <div class="building building-4">
                 <div class="window-row">
@@ -508,7 +552,7 @@
                     <div class="window"></div>
                 </div>
             </div>
-            
+
             <!-- Small right building -->
             <div class="building building-5">
                 <div class="window-row">
@@ -524,12 +568,12 @@
                 <div class="neon-sign-small">CITY</div>
             </div>
         </div>
-        
+
         <!-- Ground with reflection -->
         <div class="ground">
             <div class="ground-shine"></div>
         </div>
-        
+
         <!-- Neon grid lines -->
         <div class="grid-container">
             <div class="grid-line"></div>
@@ -538,15 +582,17 @@
             <div class="grid-line"></div>
             <div class="grid-line"></div>
         </div>
-        
+
         <!-- Flying vehicle -->
         <div class="vehicle">
             <div class="vehicle-body"></div>
             <div class="vehicle-light"></div>
         </div>
-        
+
         <!-- Credit -->
         <div class="credit">CSS Art Museum - Neon City</div>
     </div>
+
 </body>
+
 </html>

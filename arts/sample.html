@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sample Art</title>
@@ -12,6 +13,7 @@
       height: 100%;
       margin: 0;
     }
+
     .circle {
       width: 100px;
       height: 100px;
@@ -19,13 +21,21 @@
       border-radius: 50%;
       animation: bounce 2s infinite alternate;
     }
+
     @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-30px); }
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-30px);
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="circle"></div>
 </body>
+
 </html>

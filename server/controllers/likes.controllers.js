@@ -33,7 +33,7 @@ const unlikeArtwork = async (req, res) => {
             console.log(`PUT /api/artworks/unlike/${id} - Artwork not found.`);
             return res.status(404).json({ message: 'Artwork not found' });
         }
-        
+
         if (artworkToUpdate.likes === 0) {
             console.log(`PUT /api/artworks/unlike/${id} - Cannot unlike. Count is already 0.`);
             return res.status(200).json(artworkToUpdate);
@@ -55,4 +55,3 @@ module.exports = {
     likeArtwork,
     unlikeArtwork,
 };
-
