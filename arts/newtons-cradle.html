@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Newton's Cradle</title>
+  <style>
+    body{
+  background-color: #98cfb2;
+}
+.pendulum{
+  position:absolute; 
+  width: 220px;
+  height: 180px;
+  background-color: #f8c6cf;
+  top:50%;
+  left:  50%;
+  border-radius: 5%;
+  align-items: center;
+  border-top: 15px solid #eee7d5;
+  transform: translate(-50%, -50%);
+  }
+.pendulum_box{
+  display: flex;
+  padding: 120px 0 0 10px;
+  position: absolute;
+  flex: 1;
+}
+.ball{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #455681;
+  position: relative;
+  transform-origin: 50% -300%;
+  
+}
+  .ball::before{
+    content: '';
+    width: 2px;
+    height: 120px;
+    background-color: #fffeff;
+    left: 18px;
+    top: -120px;
+    position: absolute;
+  }
+
+.ball.first{
+  animation: firstball .9s alternate ease-in infinite;
+}
+
+@keyframes firstball{
+  0%{
+    transform: rotate(35deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+}
+
+.ball.last{
+  animation: lastball .9s alternate ease-out infinite;
+}
+
+@keyframes lastball{
+  50%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-35deg);
+  }
+}
+  </style>
+</head>
+<body>
+    <div class="pendulum">
+  <div class="pendulum_box">
+    <div class="ball first"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball last"></div>
+  </div>
+</div>
+</body>
+</html>
