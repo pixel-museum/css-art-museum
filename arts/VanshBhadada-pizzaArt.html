@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steaming Pizza Slice</title>
+    <style>
+        /* Your CSS magic here */
+        body {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* The main container for the art */
+        .pizza-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The pizza slice shape */
+        .pizza-slice {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 170px solid #ffc700; /* Cheese color */
+            position: absolute;
+            top: 70px;
+        }
+
+        /* The crust */
+        .pizza-slice::before {
+            content: '';
+            position: absolute;
+            top: 170px; /* At the bottom of the slice */
+            left: -100px; /* Aligned with the left edge */
+            width: 200px;
+            height: 30px;
+            background-color: #e6a749; /* Crust color */
+            border-radius: 15px 15px 5px 5px;
+            box-shadow: inset 0 -3px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Sauce/Topping layer */
+        .pizza-slice::after {
+            content: '';
+            position: absolute;
+            top: -15px; /* Slightly above the cheese layer */
+            left: -85px; 
+            width: 0;
+            height: 0;
+            border-left: 85px solid transparent;
+            border-right: 85px solid transparent;
+            border-bottom: 145px solid #d94a2b; /* Sauce color */
+            border-radius: 10px;
+        }
+
+        /* Pepperoni (circles) */
+        .pepperoni {
+            position: absolute;
+            background-color: #c43a3a; /* Pepperoni color */
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            z-index: 2; /* Above the sauce */
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.3);
+        }
+
+        .pep-1 {
+            top: 100px;
+            left: 135px;
+        }
+
+        .pep-2 {
+            top: 140px;
+            left: 100px;
+        }
+
+        .pep-3 {
+            top: 145px;
+            left: 165px;
+        }
+
+        /* Steam animation */
+        @keyframes steam-rise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-40px) scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-80px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Steam elements */
+        .steam {
+            position: absolute;
+            background-color: #f0f0f0;
+            width: 8px;
+            height: 20px;
+            border-radius: 4px;
+            z-index: 3; /* Above everything */
+            opacity: 0;
+            animation: steam-rise 3s infinite linear;
+        }
+
+        .steam.s1 {
+            top: 50px;
+            left: 130px;
+            animation-delay: 0s;
+        }
+
+        .steam.s2 {
+            top: 60px;
+            left: 150px;
+            animation: steam-rise 2.8s infinite linear;
+            animation-delay: 0.5s;
+        }
+
+        .steam.s3 {
+            top: 55px;
+            left: 170px;
+            animation: steam-rise 3.2s infinite linear;
+            animation-delay: 1s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pizza-container">
+        <div class="pizza-slice"></div>
+        <div class="pepperoni pep-1"></div>
+        <div class="pepperoni pep-2"></div>
+        <div class="pepperoni pep-3"></div>
+        
+        <div class="steam s1"></div>
+        <div class="steam s2"></div>
+        <div class="steam s3"></div>
+    </div>
+</body>
+</html>
