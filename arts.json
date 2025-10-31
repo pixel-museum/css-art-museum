@@ -2701,6 +2701,14 @@
   "date": "2025-10-26"
 },
 {
+  "file": "newtons-cradle.html",
+  "title": "Newton's Cradle Animation",
+  "author": "m-a45",
+  "tags": ["newton", "cradle", "physics", "motion", "css-animation"],
+  "description": "A smooth CSS animation of Newton's Cradle demonstrating momentum transfer with swinging spheres in motion.",
+  "date": "2025-10-30"
+},
+{
   "file": "crazy-coder-neel_ghost_animation.html",
   "title": "Ghost Animation",
   "author": "crazy-coder-neel",
