@@ -2749,6 +2749,14 @@
   "tags": ["watch", "luxury", "realistic", "css", "animation", "sketch"],
   "description": "A realistic luxury wristwatch artwork made using pure HTML and CSS, featuring metallic textures, rotating hands, and elegant detailing.",
   "date": "2025-10-31"
+},
+{
+  "file": "halloween_art.html",
+  "title": "halloween art",
+  "author": "Mehren Ansari",
+  "tags": ["floating island", "waterfall", "nature", "animation", "css art"],
+  "description": "A serene CSS art scene of a floating island with a cascading waterfall, surrounded by clouds and gentle animations.",
+  "date": "2025-10-31"
 }
 
 ]
