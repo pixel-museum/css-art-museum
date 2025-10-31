@@ -2749,6 +2749,14 @@
   "tags": ["watch", "luxury", "realistic", "css", "animation", "sketch"],
   "description": "A realistic luxury wristwatch artwork made using pure HTML and CSS, featuring metallic textures, rotating hands, and elegant detailing.",
   "date": "2025-10-31"
+},
+{
+  "file": "crazy-coder-neel_falling_leaf.html",
+  "title": "Falling Leaf Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["fall", "leaf", "autumn", "tree", "css-animation"],
+  "description": "A smooth falling leaf transition.",
+  "date": "2025-10-31"
 }
 
 ]
