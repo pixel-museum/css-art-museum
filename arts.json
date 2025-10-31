@@ -2749,6 +2749,14 @@
   "tags": ["watch", "luxury", "realistic", "css", "animation", "sketch"],
   "description": "A realistic luxury wristwatch artwork made using pure HTML and CSS, featuring metallic textures, rotating hands, and elegant detailing.",
   "date": "2025-10-31"
+},
+{
+  "file": "halloween_art.html",
+  "title": "halloween art",
+  "author": "Mehren Ansari",
+  "tags": ["halloween", "ghost", "horror", "animation", "css art"],
+  "description": "A serene CSS art scene of a floating dracula along with 2 cute ghost and a hanging pumpkin as a lamp.",
+  "date": "2025-10-31"
 }
 
 ]
