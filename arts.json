@@ -49,6 +49,15 @@
   "date":"2025-10-23"
 },
 {
+  "file": "shivangini_butterfly.html",
+  "title": "Enchanted Butterfly",
+  "author": "Shivangini",
+  "tags": ["animation", "butterfly", "enchanted", "css-art", "fantasy"],
+  "description": "A magical butterfly with realistic wing motion, glowing trails, and a dreamy night aesthetic.",
+  "date": "2025-10-30"
+},
+
+{
   "file": "shivangini_thorshammer.html",
   "title": "Enchanted Mjolnir ⚡",
   "author": "Shivangini",
@@ -73,6 +82,15 @@
     "description": "An animated effect simulating the rippling of water, often used for visual interest or backgrounds.",
     "date": "2023-07-22"
    },
+   {
+  "file": "shivangini_haunted_ghosts_castle.html",
+  "title": "Haunted Castle with Floating Ghosts",
+  "author": "Shivangini",
+  "tags": ["halloween", "haunted", "castle", "ghosts", "bats", "css", "animation"],
+  "description": "A spooky Halloween CSS art scene featuring glowing white wispy ghosts floating through a foggy night sky above a haunted castle, under the full moon with bats soaring past.",
+  "date": "2025-10-31"
+},
+
   
   {
    "file": "Keron-Funny_Emoji.html",
@@ -2669,6 +2687,14 @@
     "date": "2025-10-28"
   },
   {
+	"file":"darshan-Sunset-Landscape.html",
+	"title":"Sunset CSS Art",
+	"author":"Darshan Totagi",
+	"tags":["sunset","scenary","CSS"],
+	"description":"A Animated Sunset View",
+	"date":"2025-10-29"
+  },
+  {
   "file": "crazy-coder-neel_aurora-borealis.html",
   "title": "Aurora Borealis Animation",
   "author": "crazy-coder-neel",
@@ -2693,12 +2719,37 @@
   "date": "2025-10-26"
 },
 {
+  "file": "newtons-cradle.html",
+  "title": "Newton's Cradle Animation",
+  "author": "m-a45",
+  "tags": ["newton", "cradle", "physics", "motion", "css-animation"],
+  "description": "A smooth CSS animation of Newton's Cradle demonstrating momentum transfer with swinging spheres in motion.",
+  "date": "2025-10-30"
+},
+{
   "file": "crazy-coder-neel_ghost_animation.html",
   "title": "Ghost Animation",
   "author": "crazy-coder-neel",
   "tags": ["ghost", "halloween", "spooky", "floating", "css-animation"],
   "description": "A spooky yet playful CSS animation of a floating ghost gliding across the screen with smooth motion effects.",
   "date": "2025-10-30"
+},
+{
+  "file": "athrvas017-Halloweenvisual.html",
+  "title": "Add Halloween Visual",
+  "author": "athrvas017",
+  "tags": ["ghost", "halloween", "spooky", "eerie night-time effect", "css-animation"],
+  "description": "A spooky yet playful CSS animation of eerie nighttime with moonlight and fog layer and a floating ghost cursor gliding across the screen with smooth motion effects.",
+  "date": "2025-10-30"
+},
+{
+  "file": "surya-luxurywatch.html",
+  "title": "Luxury Watch Sketch",
+  "author": "Surya",
+  "tags": ["watch", "luxury", "realistic", "css", "animation", "sketch"],
+  "description": "A realistic luxury wristwatch artwork made using pure HTML and CSS, featuring metallic textures, rotating hands, and elegant detailing.",
+  "date": "2025-10-31"
 }
+
 ]
 

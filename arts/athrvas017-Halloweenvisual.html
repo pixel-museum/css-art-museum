@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Night</title>
+    <style>
+        /* GLOBAL RESET & SETUP */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: auto; 
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* MOONLIGHT EFFECT (Visual Feature) */
+        .moon {
+            position: fixed;
+            top: 10%;
+            right: 15%;
+            width: 10vw; 
+            max-width: 150px;
+            height: 10vw; 
+            max-height: 150px;
+            background: radial-gradient(circle, #fff9e6 0%, #ffe4b3 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px 30px rgba(255, 255, 200, 0.3),
+                        0 0 100px 50px rgba(255, 255, 200, 0.2),
+                        0 0 140px 70px rgba(255, 255, 200, 0.1);
+            z-index: 1;
+            -webkit-animation: moonGlow 4s ease-in-out infinite alternate;
+            animation: moonGlow 4s ease-in-out infinite alternate;
+        }
+
+        /* Moon Glow Animation */
+        @-webkit-keyframes moonGlow {
+            0% { box-shadow: 0 0 60px 30px rgba(255, 255, 200, 0.3), 0 0 100px 50px rgba(255, 255, 200, 0.2), 0 0 140px 70px rgba(255, 255, 200, 0.1); opacity: 1; }
+            45% { box-shadow: 0 0 80px 40px rgba(255, 255, 200, 0.4), 0 0 120px 60px rgba(255, 255, 200, 0.3), 0 0 160px 80px rgba(255, 255, 200, 0.15); opacity: 1; }
+            48% { box-shadow: 0 0 30px 15px rgba(255, 255, 200, 0.2), 0 0 50px 25px rgba(255, 255, 200, 0.1), 0 0 70px 35px rgba(255, 255, 200, 0.05); opacity: 0.3; }
+            50% { box-shadow: 0 0 80px 40px rgba(255, 255, 200, 0.4), 0 0 120px 60px rgba(255, 255, 200, 0.3), 0 0 160px 80px rgba(255, 255, 200, 0.15); opacity: 1; }
+            72% { box-shadow: 0 0 70px 35px rgba(255, 255, 200, 0.35), 0 0 110px 55px rgba(255, 255, 200, 0.25), 0 0 150px 75px rgba(255, 255, 200, 0.12); opacity: 1; }
+            74% { box-shadow: 0 0 20px 10px rgba(255, 255, 200, 0.15), 0 0 40px 20px rgba(255, 255, 200, 0.08), 0 0 60px 30px rgba(255, 255, 200, 0.03); opacity: 0.2; }
+            75% { box-shadow: 0 0 30px 15px rgba(255, 255, 200, 0.2), 0 0 50px 25px rgba(255, 255, 200, 0.1), 0 0 70px 35px rgba(255, 255, 200, 0.05); opacity: 0.4; }
+            77% { box-shadow: 0 0 70px 35px rgba(255, 255, 200, 0.35), 0 0 110px 55px rgba(255, 255, 200, 0.25), 0 0 150px 75px rgba(255, 255, 200, 0.12); opacity: 1; }
+            100% { box-shadow: 0 0 60px 30px rgba(255, 255, 200, 0.3), 0 0 100px 50px rgba(255, 255, 200, 0.2), 0 0 140px 70px rgba(255, 255, 200, 0.1); opacity: 1; }
+        }
+        @keyframes moonGlow {
+            0%, 100% { box-shadow: 0 0 60px 30px rgba(255, 255, 200, 0.3), 0 0 100px 50px rgba(255, 255, 200, 0.2), 0 0 140px 70px rgba(255, 255, 200, 0.1); opacity: 1; }
+            45% { box-shadow: 0 0 80px 40px rgba(255, 255, 200, 0.4), 0 0 120px 60px rgba(255, 255, 200, 0.3), 0 0 160px 80px rgba(255, 255, 200, 0.15); opacity: 1; }
+            48% { box-shadow: 0 0 30px 15px rgba(255, 255, 200, 0.2), 0 0 50px 25px rgba(255, 255, 200, 0.1), 0 0 70px 35px rgba(255, 255, 200, 0.05); opacity: 0.3; }
+            50% { box-shadow: 0 0 80px 40px rgba(255, 255, 200, 0.4), 0 0 120px 60px rgba(255, 255, 200, 0.3), 0 0 160px 80px rgba(255, 255, 200, 0.15); opacity: 1; }
+            72% { box-shadow: 0 0 70px 35px rgba(255, 255, 200, 0.35), 0 0 110px 55px rgba(255, 255, 200, 0.25), 0 0 150px 75px rgba(255, 255, 200, 0.12); opacity: 1; }
+            74% { box-shadow: 0 0 20px 10px rgba(255, 255, 200, 0.15), 0 0 40px 20px rgba(255, 255, 200, 0.08); opacity: 0.2; }
+            75% { box-shadow: 0 0 30px 15px rgba(255, 255, 200, 0.2), 0 0 50px 25px rgba(255, 255, 200, 0.1); opacity: 0.4; }
+            77% { box-shadow: 0 0 70px 35px rgba(255, 255, 200, 0.35), 0 0 110px 55px rgba(255, 255, 200, 0.25); opacity: 1; }
+        }
+
+        /* FOG LAYERS (Visual Feature) */
+        .fog {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .fog-layer {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(to top, 
+                rgba(200, 200, 220, 0.4) 0%,
+                rgba(200, 200, 220, 0.2) 30%,
+                transparent 70%);
+            -webkit-animation: fogMove 60s linear infinite;
+            animation: fogMove 60s linear infinite;
+        }
+
+        .fog-layer:nth-child(1) {
+            animation-duration: 40s;
+            -webkit-animation-duration: 40s;
+            opacity: 0.5;
+        }
+
+        .fog-layer:nth-child(2) {
+            animation-duration: 55s;
+            -webkit-animation-duration: 55s;
+            animation-delay: -20s;
+            -webkit-animation-delay: -20s;
+            opacity: 0.3;
+        }
+
+        .fog-layer:nth-child(3) {
+            animation-duration: 70s;
+            -webkit-animation-duration: 70s;
+            animation-delay: -40s;
+            -webkit-animation-delay: -40s;
+            opacity: 0.4;
+        }
+
+        /* Fog Movement Animation */
+        @-webkit-keyframes fogMove {
+            0% { -webkit-transform: translateX(0); }
+            100% { -webkit-transform: translateX(-50%); }
+        }
+        @keyframes fogMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* PARTICLE EFFECT (Floating Embers/Wisps) */
+        .particle {
+            position: fixed;
+            background-color: rgba(255, 200, 100, 0.7); /* Orange/yellow glow */
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2; /* Below fog, above background */
+            opacity: 0;
+            -webkit-animation: floatUp 15s linear infinite;
+            animation: floatUp 15s linear infinite;
+            box-shadow: 0 0 5px rgba(255, 200, 100, 0.8);
+        }
+
+        /* Particle Floating Animation */
+        @-webkit-keyframes floatUp {
+            0% { -webkit-transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { -webkit-transform: translateY(-10vh); opacity: 0; }
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* CUSTOM CURSOR & TRAIL (Desktop Only) */
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+            .cursor {
+                position: fixed;
+                width: 40px;
+                height: 40px;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.15s ease;
+            }
+            .ghost-trail {
+                position: fixed;
+                width: 25px;
+                height: 30px;
+                pointer-events: none;
+                z-index: 9998;
+                opacity: 0;
+                -webkit-animation: ghostTrailFade 1s ease-out forwards;
+                animation: ghostTrailFade 1s ease-out forwards;
+            }
+        }
+        
+        .ghost {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 35px;
+            background: #fff;
+            border-radius: 50% 50% 0 0;
+            -webkit-animation: ghostFloat 2s ease-in-out infinite;
+            animation: ghostFloat 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+        }
+
+        .ghost::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: #fff;
+            clip-path: polygon(0 0, 20% 100%, 40% 0, 60% 100%, 80% 0, 100% 100%, 100% 0);
+        }
+
+        .ghost-eyes {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ghost-eye {
+            width: 4px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            -webkit-animation: blink 4s infinite;
+            animation: blink 4s infinite;
+        }
+
+        /* Ghost Animations */
+        @-webkit-keyframes blink { 0%, 98%, 100% { -webkit-transform: scaleY(1); } 99% { -webkit-transform: scaleY(0.1); } }
+        @keyframes blink { 0%, 98%, 100% { transform: scaleY(1); } 99% { transform: scaleY(0.1); } }
+
+        @-webkit-keyframes ghostFloat { 0%, 100% { -webkit-transform: translate(-50%, -50%) translateY(0px); } 50% { -webkit-transform: translate(-50%, -50%) translateY(-5px); } }
+        @keyframes ghostFloat { 0%, 100% { transform: translate(-50%, -50%) translateY(0px); } 50% { transform: translate(-50%, -50%) translateY(-5px); } }
+
+        @-webkit-keyframes ghostTrailFade { 0% { opacity: 0.6; -webkit-transform: scale(1); } 100% { opacity: 0; -webkit-transform: scale(0.5); } }
+        @keyframes ghostTrailFade { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 0; transform: scale(0.5); } }
+
+        /* CONTENT LAYOUT */
+        .content {
+            position: relative;
+            z-index: 5;
+            color: #e0e0e0;
+            padding: 50px 20px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+            margin-bottom: 20px;
+            color: #ff8c00;
+        }
+
+        p {
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* RESPONSIVE DESIGN (For Mobile/Tablet) */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            p { font-size: 1.2rem; }
+            .moon { display: none; }
+            .cursor, .ghost-trail { display: none; }
+            body { cursor: default !important; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            p { font-size: 1.3rem; }
+            .moon { width: 120px; height: 120px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="moon"></div>
+    
+    <div class="fog">
+        <div class="fog-layer"></div>
+        <div class="fog-layer"></div>
+        <div class="fog-layer"></div>
+    </div>
+    
+    <div class="particles-container"></div>
+
+    <div class="cursor">
+        <div class="ghost">
+            <div class="ghost-eyes">
+                <div class="ghost-eye"></div>
+                <div class="ghost-eye"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>🎃 Happy Halloween 🎃</h1>
+        <p>Move your cursor to experience the spooky atmosphere...</p>
+    </div>
+
+    <script>
+        // DOM ELEMENTS
+        const cursor = document.querySelector('.cursor');
+        const body = document.body;
+        const particlesContainer = document.querySelector('.particles-container');
+
+        // DEVICE CHECK: Determine if the device is touch-enabled for cursor logic
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+        // PARTICLE GENERATION: Creates continuous floating embers
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            // Random size between 2px and 6px
+            const size = Math.random() * 4 + 2; 
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            // Start particle at a random horizontal position
+            particle.style.left = Math.random() * 100 + 'vw';
+            // Randomize animation duration for a varied effect
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            // Randomize animation delay so they don't all start at once
+            particle.style.animationDelay = -Math.random() * 10 + 's';
+
+            particlesContainer.appendChild(particle);
+
+            // Clean up old particles to prevent memory leak
+            setTimeout(() => {
+                particle.remove();
+            }, 20000); 
+        }
+
+        // Generate a new particle every 300ms
+        setInterval(createParticle, 300); 
+
+        // CUSTOM CURSOR LOGIC (Desktop Only)
+        if (!isTouchDevice) {
+            document.addEventListener('mousemove', (e) => {
+                // Update cursor position
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Create ghost trail effect occasionally
+                if (Math.random() > 0.6) {
+                    const trail = document.createElement('div');
+                    trail.className = 'ghost-trail';
+                    trail.innerHTML = '<div class="trail-body"></div>';
+                    // Position trail slightly behind the ghost
+                    trail.style.left = (e.clientX + Math.random() * 10 - 5) + 'px';
+                    trail.style.top = (e.clientY + Math.random() * 10 - 5) + 'px';
+                    document.body.appendChild(trail);
+                    
+                    // Remove trail after animation completes
+                    setTimeout(() => {
+                        trail.remove();
+                    }, 1000);
+                }
+            });
+
+            // Cursor click effect
+            document.addEventListener('mousedown', () => {
+                cursor.style.transform = 'scale(0.8)';
+            });
+
+            document.addEventListener('mouseup', () => {
+                cursor.style.transform = 'scale(1)';
+            });
+        } else {
+            // Hide custom cursor on touch devices
+            cursor.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

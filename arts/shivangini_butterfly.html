@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enchanted Butterfly</title>
+  <style>
+    /* 🌌 Background */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at bottom, #1a0435 0%, #0c0018 100%);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* ✨ Sparkle Trail */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: fadeSparkle 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeSparkle {
+      0% { transform: scale(1) translateY(0); opacity: 1; }
+      100% { transform: scale(0.5) translateY(-50px); opacity: 0; }
+    }
+
+    /* 🦋 Butterfly Container */
+    .butterfly {
+      position: relative;
+      width: 150px;
+      height: 120px;
+      animation: float 6s ease-in-out infinite;
+      transform-origin: center;
+      cursor: pointer;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(3deg); }
+    }
+
+    /* Wings */
+    .wing {
+      position: absolute;
+      top: 0;
+      width: 75px;
+      height: 120px;
+      border-radius: 70% 70% 10% 10%;
+      transform-origin: right center;
+      background: radial-gradient(circle at 40% 40%, #ff7fcb 0%, #d36cf0 40%, #3a0ca3 100%);
+      box-shadow: 0 0 25px 5px rgba(210, 140, 255, 0.5);
+      animation: flap 1.5s ease-in-out infinite;
+    }
+
+    .wing.left {
+      left: 0;
+      transform-origin: right center;
+      z-index: 1;
+    }
+
+    .wing.right {
+      right: 0;
+      transform-origin: left center;
+      background: radial-gradient(circle at 60% 40%, #7fffdf 0%, #6cd0f0 40%, #3a8ca3 100%);
+      box-shadow: 0 0 25px 5px rgba(100, 220, 255, 0.5);
+      animation-delay: 0.15s;
+    }
+
+    @keyframes flap {
+      0%, 100% { transform: rotateY(0deg) rotateZ(0deg); }
+      50% { transform: rotateY(45deg) rotateZ(5deg); }
+    }
+
+    /* Butterfly Body */
+    .body {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 60px;
+      background: linear-gradient(to bottom, #2a1f3b, #12071f);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    .body::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 25px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 20%, transparent 80%);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { opacity: 0.6; filter: blur(2px); }
+      100% { opacity: 1; filter: blur(4px); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="butterfly" id="butterfly">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <script>
+    // 💫 Sparkle Trail Generator
+    const butterfly = document.getElementById('butterfly');
+    document.body.addEventListener('mousemove', (e) => {
+      if (Math.random() < 0.4) { // reduce particle spam
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = e.pageX + 'px';
+        sparkle.style.top = e.pageY + 'px';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1500);
+      }
+    });
+
+    // Optional: gentle drift around screen
+    let angle = 0;
+    function drift() {
+      angle += 0.01;
+      const x = 300 * Math.cos(angle);
+      const y = 100 * Math.sin(angle * 2);
+      butterfly.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(drift);
+    }
+    drift();
+  </script>
+</body>
+</html>
