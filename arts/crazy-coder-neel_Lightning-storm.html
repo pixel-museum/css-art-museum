@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Storm Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a16;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sky {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a0a16 0%, #1a1a2e 40%, #16213e 100%);
+            z-index: 1;
+        }
+
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #f5f5dc, #d4d4a8 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px 15px rgba(245, 245, 220, 0.3);
+            z-index: 2;
+            animation: moon-glow 8s infinite alternate;
+        }
+
+        @keyframes moon-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 40px 15px rgba(245, 245, 220, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 60px 20px rgba(245, 245, 220, 0.5);
+            }
+        }
+
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+        }
+
+        .cloud {
+            position: absolute;
+            background: #1a1a2e;
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.9;
+            animation: cloud-move 30s infinite linear;
+        }
+
+        .cloud-1 {
+            width: 300px;
+            height: 100px;
+            top: 20%;
+            left: -300px;
+            animation-delay: 0s;
+        }
+
+        .cloud-2 {
+            width: 400px;
+            height: 120px;
+            top: 30%;
+            left: -400px;
+            animation-delay: 5s;
+        }
+
+        .cloud-3 {
+            width: 250px;
+            height: 80px;
+            top: 40%;
+            left: -250px;
+            animation-delay: 10s;
+        }
+
+        .cloud-4 {
+            width: 350px;
+            height: 110px;
+            top: 50%;
+            left: -350px;
+            animation-delay: 15s;
+        }
+
+        .cloud-5 {
+            width: 200px;
+            height: 70px;
+            top: 60%;
+            left: -200px;
+            animation-delay: 20s;
+        }
+
+        @keyframes cloud-move {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 500px));
+            }
+        }
+
+        .lightning-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+        }
+
+        .lightning {
+            position: absolute;
+            width: 4px;
+            height: 0;
+            background: #fff;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8),
+                0 0 30px 10px rgba(100, 150, 255, 0.6),
+                0 0 45px 15px rgba(65, 105, 225, 0.4);
+            opacity: 0;
+            filter: blur(1px);
+            transform-origin: top center;
+        }
+
+        .lightning-1 {
+            left: 20%;
+            animation: lightning-strike 8s infinite;
+        }
+
+        .lightning-2 {
+            left: 45%;
+            animation: lightning-strike 12s infinite 4s;
+        }
+
+        .lightning-3 {
+            left: 70%;
+            animation: lightning-strike 10s infinite 2s;
+        }
+
+        @keyframes lightning-strike {
+
+            0%,
+            100% {
+                height: 0;
+                opacity: 0;
+            }
+
+            1% {
+                height: 0;
+                opacity: 0;
+            }
+
+            2% {
+                height: 40%;
+                opacity: 1;
+            }
+
+            3% {
+                height: 0;
+                opacity: 0;
+            }
+
+            4% {
+                height: 60%;
+                opacity: 1;
+            }
+
+            5% {
+                height: 0;
+                opacity: 0;
+            }
+
+            6% {
+                height: 30%;
+                opacity: 1;
+            }
+
+            7% {
+                height: 0;
+                opacity: 0;
+            }
+
+            98% {
+                height: 0;
+                opacity: 0;
+            }
+        }
+
+        .rain-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8));
+            animation: rain-fall 1s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes rain-fall {
+            0% {
+                transform: translateY(-100px);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .neon-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(65, 105, 225, 0.1) 0%, transparent 70%);
+            z-index: 6;
+            animation: neon-pulse 5s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes neon-pulse {
+            0% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        .motion-blur {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(2px);
+            z-index: 7;
+            pointer-events: none;
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(100, 150, 255, 0.8),
+                0 0 20px rgba(65, 105, 225, 0.6),
+                0 0 30px rgba(30, 60, 200, 0.4);
+            animation: title-glow 3s infinite alternate;
+        }
+
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 10px rgba(100, 150, 255, 0.8),
+                    0 0 20px rgba(65, 105, 225, 0.6),
+                    0 0 30px rgba(30, 60, 200, 0.4);
+            }
+
+            100% {
+                text-shadow: 0 0 15px rgba(100, 150, 255, 1),
+                    0 0 30px rgba(65, 105, 225, 0.8),
+                    0 0 45px rgba(30, 60, 200, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .control-btn {
+            background: rgba(30, 30, 60, 0.7);
+            border: 1px solid rgba(100, 150, 255, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .control-btn:hover {
+            background: rgba(50, 50, 100, 0.8);
+            border-color: rgba(100, 150, 255, 0.8);
+            box-shadow: 0 0 15px rgba(100, 150, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .control-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .moon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .moon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="sky"></div>
+        <div class="moon"></div>
+
+        <div class="clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+            <div class="cloud cloud-5"></div>
+        </div>
+
+        <div class="lightning-container">
+            <div class="lightning lightning-1"></div>
+            <div class="lightning lightning-2"></div>
+            <div class="lightning lightning-3"></div>
+        </div>
+
+        <div class="rain-container" id="rain-container"></div>
+
+        <div class="neon-glow"></div>
+        <div class="motion-blur"></div>
+
+        <div class="controls">
+            <button class="control-btn" id="toggle-rain">Toggle Rain</button>
+            <button class="control-btn" id="intensity-up">Increase Intensity</button>
+            <button class="control-btn" id="intensity-down">Decrease Intensity</button>
+        </div>
+    </div>
+
+    <script>
+
+        const rainContainer = document.getElementById('rain-container');
+        const rainCount = 150;
+
+        function createRain() {
+            for (let i = 0; i < rainCount; i++) {
+                const rain = document.createElement('div');
+                rain.classList.add('rain');
+
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 2;
+                const animationDuration = 0.5 + Math.random() * 1;
+
+                rain.style.left = `${left}%`;
+                rain.style.animationDelay = `${animationDelay}s`;
+                rain.style.animationDuration = `${animationDuration}s`;
+
+                rainContainer.appendChild(rain);
+            }
+        }
+
+        createRain();
+
+        const toggleRainBtn = document.getElementById('toggle-rain');
+        const intensityUpBtn = document.getElementById('intensity-up');
+        const intensityDownBtn = document.getElementById('intensity-down');
+
+        let rainEnabled = true;
+        let intensity = 1;
+
+        toggleRainBtn.addEventListener('click', () => {
+            rainEnabled = !rainEnabled;
+            rainContainer.style.opacity = rainEnabled ? '1' : '0';
+            toggleRainBtn.textContent = rainEnabled ? 'Disable Rain' : 'Enable Rain';
+        });
+
+        intensityUpBtn.addEventListener('click', () => {
+            if (intensity < 3) {
+                intensity += 0.5;
+                updateIntensity();
+            }
+        });
+
+        intensityDownBtn.addEventListener('click', () => {
+            if (intensity > 0.5) {
+                intensity -= 0.5;
+                updateIntensity();
+            }
+        });
+
+        function updateIntensity() {
+            const lightnings = document.querySelectorAll('.lightning');
+            lightnings.forEach(lightning => {
+                const currentAnimation = lightning.style.animation;
+                const newDuration = 15 / intensity;
+                lightning.style.animationDuration = `${newDuration}s`;
+            });
+
+            const clouds = document.querySelectorAll('.cloud');
+            clouds.forEach(cloud => {
+                const currentAnimation = cloud.style.animation;
+                const newDuration = 40 / intensity;
+                cloud.style.animationDuration = `${newDuration}s`;
+            });
+
+            if (rainEnabled) {
+                rainContainer.innerHTML = '';
+                const newRainCount = rainCount * intensity;
+                for (let i = 0; i < newRainCount; i++) {
+                    const rain = document.createElement('div');
+                    rain.classList.add('rain');
+
+                    const left = Math.random() * 100;
+                    const animationDelay = Math.random() * 2;
+                    const animationDuration = 0.5 + Math.random() * 1;
+
+                    rain.style.left = `${left}%`;
+                    rain.style.animationDelay = `${animationDelay}s`;
+                    rain.style.animationDuration = `${animationDuration}s`;
+
+                    rainContainer.appendChild(rain);
+                }
+            }
+        }
+
+        function createFlash() {
+            const flash = document.createElement('div');
+            flash.style.position = 'absolute';
+            flash.style.top = '0';
+            flash.style.left = '0';
+            flash.style.width = '100%';
+            flash.style.height = '100%';
+            flash.style.background = 'rgba(255, 255, 255, 0.2)';
+            flash.style.zIndex = '8';
+            flash.style.pointerEvents = 'none';
+            flash.style.animation = 'flash 0.2s forwards';
+
+            document.querySelector('.container').appendChild(flash);
+
+            setTimeout(() => {
+                flash.remove();
+            }, 200);
+        }
+
+        setInterval(() => {
+            if (Math.random() < 0.3 * intensity) {
+                createFlash();
+            }
+        }, 3000);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flash {
+                0% { opacity: 0; }
+                50% { opacity: 0.4; }
+                100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+</body>
+
+</html>

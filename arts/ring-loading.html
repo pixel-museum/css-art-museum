@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .ring-loader {
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
+    .ring-loader {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
 
-  .ring-loader div {
-    box-sizing: border-box;
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: 8px solid transparent;
-    border-top-color: #ff6b6b;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
+    .ring-loader div {
+      box-sizing: border-box;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 8px solid transparent;
+      border-top-color: #ff6b6b;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
 
-  .ring-loader div:nth-child(2) {
-    border-top-color: #48dbfb;
-    animation-delay: 0.2s;
-  }
+    .ring-loader div:nth-child(2) {
+      border-top-color: #48dbfb;
+      animation-delay: 0.2s;
+    }
 
-  .ring-loader div:nth-child(3) {
-    border-top-color: #feca57;
-    animation-delay: 0.4s;
-  }
+    .ring-loader div:nth-child(3) {
+      border-top-color: #feca57;
+      animation-delay: 0.4s;
+    }
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="ring-loader">
     <div></div>
@@ -51,4 +58,5 @@
     <div></div>
   </div>
 </body>
+
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar & Lunar Eclipses 🌞🌑</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #0b0c1a, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+
+      100% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+    }
+
+    /* Celestial bodies */
+    .sun,
+    .moon,
+    .earth {
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+
+    .sun {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #FFD700, #FFA500);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .moon {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #f0f0f0, #999);
+      top: 20%;
+      left: 80%;
+      transform: translateX(-50%);
+    }
+
+    .earth {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #4da6ff, #003366);
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Solar Eclipse */
+    .solar-eclipse {
+      animation: solarEclipse 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes solarEclipse {
+      0% {
+        left: 80%;
+        top: 20%;
+      }
+
+      50% {
+        left: 50%;
+        top: 20%;
+      }
+
+      100% {
+        left: 80%;
+        top: 20%;
+      }
+    }
+
+    /* Lunar Eclipse */
+    .lunar-eclipse-shadow {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      animation: lunarEclipse 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes lunarEclipse {
+      0% {
+        transform: translateX(-50%) scale(0);
+      }
+
+      50% {
+        transform: translateX(-50%) scale(1);
+      }
+
+      100% {
+        transform: translateX(-50%) scale(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Stars -->
+  <script>
+    const starCount = 150;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.left = `${Math.random() * 100}vw`;
+      const size = Math.random() * 3 + 1;
+      star.style.width = star.style.height = `${size}px`;
+      star.style.animationDuration = `${Math.random() * 2 + 1.5}s`;
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- Celestial Bodies -->
+  <div class="sun"></div>
+  <div class="moon solar-eclipse"></div>
+  <div class="lunar-eclipse-shadow"></div>
+  <div class="earth"></div>
+
+  <!-- Title -->
+  <h1 class="absolute text-white text-3xl top-5 left-1/2 transform -translate-x-1/2 font-bold drop-shadow-lg">
+    Solar & Lunar Eclipses 🌞🌑
+  </h1>
+
+</body>
+
+</html>

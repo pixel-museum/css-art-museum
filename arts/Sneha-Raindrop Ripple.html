@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +28,7 @@
         transform: scale(0);
         opacity: 1;
       }
+
       100% {
         transform: scale(5);
         opacity: 0;
@@ -34,16 +36,37 @@
     }
 
     /* Create multiple ripples */
-    .drop:nth-child(1) { width: 40px; height: 40px; animation-delay: 0s; }
-    .drop:nth-child(2) { width: 60px; height: 60px; animation-delay: 0.5s; }
-    .drop:nth-child(3) { width: 80px; height: 80px; animation-delay: 1s; }
-    .drop:nth-child(4) { width: 100px; height: 100px; animation-delay: 1.5s; }
+    .drop:nth-child(1) {
+      width: 40px;
+      height: 40px;
+      animation-delay: 0s;
+    }
+
+    .drop:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      animation-delay: 0.5s;
+    }
+
+    .drop:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      animation-delay: 1s;
+    }
+
+    .drop:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      animation-delay: 1.5s;
+    }
   </style>
 </head>
+
 <body>
   <div class="drop"></div>
   <div class="drop"></div>
   <div class="drop"></div>
   <div class="drop"></div>
 </body>
+
 </html>

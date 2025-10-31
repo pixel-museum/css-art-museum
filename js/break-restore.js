@@ -8,10 +8,10 @@ class BreakRestoreToggle {
         this.isGlitterEnabled = true;
         this.bubbleInterval = null;
         this.lastGlitterTime = 0;
-        
+
         this.init();
     }
-    
+
     init() {
         this.createToggle();
         this.createBubbles();
@@ -19,7 +19,7 @@ class BreakRestoreToggle {
         this.bindEvents();
         console.log('🎨 Break-Restore Toggle initialized!');
     }
-    
+
     createToggle() {
         const toggleHTML = `
             <div class="break-restore-toggle">
@@ -30,25 +30,25 @@ class BreakRestoreToggle {
                 </label>
             </div>
         `;
-        
+
         const header = document.querySelector('header');
         if (header) {
             header.insertAdjacentHTML('afterend', toggleHTML);
         } else {
             document.body.insertAdjacentHTML('afterbegin', toggleHTML);
         }
-        
+
         this.toggle = document.getElementById('breakRestoreToggle');
         this.positionToggle();
     }
-    
+
     createBubbles() {
         this.bubblesContainer = document.createElement('div');
         this.bubblesContainer.className = 'underwater-bubbles';
         this.bubblesContainer.style.display = 'none';
         document.body.appendChild(this.bubblesContainer);
     }
-    
+
     createGlitterContainer() {
         this.glitterContainer = document.createElement('div');
         this.glitterContainer.className = 'glitter-container';
@@ -63,12 +63,12 @@ class BreakRestoreToggle {
         `;
         document.body.appendChild(this.glitterContainer);
     }
-    
+
     startBubbleGeneration() {
         if (this.bubbleInterval) {
             clearInterval(this.bubbleInterval);
         }
-        
+
         // Generate bubbles more frequently for full coverage
         this.bubbleInterval = setInterval(() => {
             if (this.bubblesContainer.children.length < 100) {
@@ -76,7 +76,7 @@ class BreakRestoreToggle {
             }
         }, 600);
     }
-    
+
     stopBubbleGeneration() {
         if (this.bubbleInterval) {
             clearInterval(this.bubbleInterval);
@@ -84,21 +84,21 @@ class BreakRestoreToggle {
         }
         this.fadeOutBubbles();
     }
-    
+
     generateBubbles(count) {
         const viewportHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
-        
+
         for (let i = 0; i < count; i++) {
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            
+
             // Larger size range for better visibility
             const size = Math.random() * 80 + 20; // 20px to 100px
             const left = Math.random() * 100;
             const delay = Math.random() * 8;
             const duration = Math.random() * 10 + 8; // 8s to 18s for full travel
-            
+
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
             bubble.style.left = `${left}%`;
@@ -106,19 +106,19 @@ class BreakRestoreToggle {
             bubble.style.animationDuration = `${duration}s`;
             bubble.style.opacity = Math.random() * 0.8 + 0.2;
             bubble.style.setProperty('--bubble-delay', `${delay}s`);
-            
+
             // More dramatic horizontal movement
             bubble.style.setProperty('--bubble-x', `${(Math.random() - 0.5) * 80}px`);
-            
+
             // Random starting position within document height
             const startPosition = Math.random() * documentHeight;
             bubble.style.top = `${startPosition}px`;
-            
+
             // Random z-index for depth
             bubble.style.zIndex = Math.floor(Math.random() * 10) + 9990;
-            
+
             this.bubblesContainer.appendChild(bubble);
-            
+
             // Remove bubble after animation completes
             setTimeout(() => {
                 if (bubble.parentNode === this.bubblesContainer) {
@@ -127,7 +127,7 @@ class BreakRestoreToggle {
             }, (delay + duration) * 1000);
         }
     }
-    
+
     fadeOutBubbles() {
         const bubbles = this.bubblesContainer.children;
         for (let bubble of bubbles) {
@@ -139,27 +139,27 @@ class BreakRestoreToggle {
             }, 2000);
         }
     }
-    
+
     clearAllBubbles() {
         if (this.bubblesContainer) {
             this.bubblesContainer.innerHTML = '';
         }
     }
-    
+
     createGlitter(x, y) {
         if (!this.isGlitterEnabled) return;
-        
+
         const glitterCount = Math.floor(Math.random() * 4) + 3;
-        
+
         for (let i = 0; i < glitterCount; i++) {
             const glitter = document.createElement('div');
             glitter.className = 'cursor-glitter';
-            
+
             const size = Math.random() * 5 + 2;
             const glitterX = (Math.random() - 0.5) * 40;
             const glitterY = (Math.random() - 0.5) * 40;
             const rotation = Math.random() * 360;
-            
+
             glitter.style.width = `${size}px`;
             glitter.style.height = `${size}px`;
             glitter.style.left = `${x}px`;
@@ -168,9 +168,9 @@ class BreakRestoreToggle {
             glitter.style.setProperty('--glitter-y', `${glitterY}px`);
             glitter.style.animationDuration = `${Math.random() * 0.8 + 0.4}s`;
             glitter.style.transform = `rotate(${rotation}deg)`;
-            
+
             this.glitterContainer.appendChild(glitter);
-            
+
             setTimeout(() => {
                 if (glitter.parentNode === this.glitterContainer) {
                     glitter.remove();
@@ -178,20 +178,20 @@ class BreakRestoreToggle {
             }, 1200);
         }
     }
-    
+
     bindEvents() {
         this.toggle.addEventListener('change', () => {
             if (!this.isAnimating) {
                 this.toggleEffect();
             }
         });
-        
+
         this.toggle.addEventListener('click', (e) => {
             if (this.isAnimating) {
                 e.preventDefault();
             }
         });
-        
+
         document.addEventListener('mousemove', (e) => {
             const now = Date.now();
             if (now - this.lastGlitterTime > 35) {
@@ -199,26 +199,26 @@ class BreakRestoreToggle {
                 this.lastGlitterTime = now;
             }
         });
-        
+
         document.addEventListener('touchmove', (e) => {
             e.preventDefault();
             const touch = e.touches[0];
             this.createGlitter(touch.clientX, touch.clientY);
         }, { passive: false });
-        
+
         document.addEventListener('click', (e) => {
             this.createGlitterBurst(e.clientX, e.clientY, 10);
         });
-        
+
         window.addEventListener('resize', () => {
             this.positionToggle();
         });
-        
+
         window.addEventListener('scroll', () => {
             this.positionToggle();
         });
     }
-    
+
     createGlitterBurst(x, y, count) {
         for (let i = 0; i < count; i++) {
             setTimeout(() => {
@@ -226,54 +226,54 @@ class BreakRestoreToggle {
             }, i * 40);
         }
     }
-    
+
     toggleEffect() {
         this.isAnimating = true;
-        
+
         if (this.isUnderwater) {
             this.deactivateEffects();
         } else {
             this.activateEffects();
         }
-        
+
         this.isUnderwater = !this.isUnderwater;
         this.updateToggleText();
-        
+
         const toggleRect = this.toggle.getBoundingClientRect();
         const toggleX = toggleRect.left + toggleRect.width / 2;
         const toggleY = toggleRect.top + toggleRect.height / 2;
         this.createGlitterBurst(toggleX, toggleY, 15);
-        
+
         setTimeout(() => {
             this.isAnimating = false;
         }, 1000);
     }
-    
+
     activateEffects() {
         console.log('🌊 Activating magic effects...');
-        
+
         this.bubblesContainer.style.display = 'block';
         this.startBubbleGeneration();
-        
+
         setTimeout(() => {
             document.body.classList.add('underwater-mode');
             // Generate large initial burst
             this.generateBubbles(40);
         }, 200);
     }
-    
+
     deactivateEffects() {
         console.log('🔮 Deactivating magic effects...');
-        
+
         document.body.classList.remove('underwater-mode');
         this.stopBubbleGeneration();
-        
+
         setTimeout(() => {
             this.bubblesContainer.style.display = 'none';
             this.clearAllBubbles();
         }, 2000);
     }
-    
+
     updateToggleText() {
         const toggleText = document.querySelector('.toggle-text');
         if (toggleText) {
@@ -292,28 +292,28 @@ class BreakRestoreToggle {
             }
         }
     }
-    
+
     positionToggle() {
         const toggleElement = document.querySelector('.break-restore-toggle');
         if (toggleElement) {
             const navbar = document.querySelector('header nav');
             if (navbar) {
                 const navbarRect = navbar.getBoundingClientRect();
-                const navbarBottom = navbarRect.bottom + window.scrollY;
+                const navbarBottom = navbarRect.bottom;
                 toggleElement.style.top = (navbarBottom + 10) + 'px';
                 toggleElement.style.right = '20px';
             }
         }
     }
-    
+
     enableGlitter() {
         this.isGlitterEnabled = true;
     }
-    
+
     disableGlitter() {
         this.isGlitterEnabled = false;
     }
-    
+
     getState() {
         return {
             isUnderwater: this.isUnderwater,
@@ -322,29 +322,29 @@ class BreakRestoreToggle {
             bubbleCount: this.bubblesContainer.children.length
         };
     }
-    
+
     destroy() {
         if (this.toggle) {
             const newToggle = this.toggle.cloneNode(true);
             this.toggle.parentNode.replaceChild(newToggle, this.toggle);
         }
-        
+
         this.stopBubbleGeneration();
-        
+
         if (this.bubblesContainer) {
             this.bubblesContainer.remove();
         }
         if (this.glitterContainer) {
             this.glitterContainer.remove();
         }
-        
+
         const toggleElement = document.querySelector('.break-restore-toggle');
         if (toggleElement) {
             toggleElement.remove();
         }
-        
+
         document.body.classList.remove('underwater-mode');
-        
+
         console.log('🧹 Break-Restore Toggle cleaned up!');
     }
 }
@@ -399,27 +399,27 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         try {
             window.breakRestoreToggle = new BreakRestoreToggle();
-            
+
             window.toggleMagicEffects = () => {
                 if (window.breakRestoreToggle && window.breakRestoreToggle.toggle) {
                     window.breakRestoreToggle.toggle.click();
                 }
             };
-            
+
             window.enableGlitter = () => {
                 if (window.breakRestoreToggle) {
                     window.breakRestoreToggle.enableGlitter();
                 }
             };
-            
+
             window.disableGlitter = () => {
                 if (window.breakRestoreToggle) {
                     window.breakRestoreToggle.disableGlitter();
                 }
             };
-            
+
             console.log('✨ Magic Effects Toggle Ready!');
-            
+
         } catch (error) {
             console.error('❌ Failed to initialize Break-Restore Toggle:', error);
         }

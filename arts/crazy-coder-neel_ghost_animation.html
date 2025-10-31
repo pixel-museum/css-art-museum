@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Animation</title>
+    <style>
+        :root {
+            --ghost-color-light: 240, 248, 255; 
+            --ghost-color-main: 200, 220, 255; 
+            --ghost-color-dark: 180, 200, 240; 
+            --scene-bg-dark: #050515;
+            --scene-bg-mid: #0a0a2a;
+            --scene-bg-light: #1a1a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 80%, var(--scene-bg-mid) 0%, var(--scene-bg-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none; 
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+            pointer-events: none; 
+        }
+
+        .background-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .moon {
+            position: absolute;
+            top: 12%;
+            right: 18%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #fffbe0 20%, #e0e0c0 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 80px rgba(255, 255, 220, 0.7),
+                0 0 150px rgba(255, 255, 220, 0.4);
+            filter: blur(0.8px);
+            z-index: 1;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .star {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: twinkle 10s infinite ease-in-out;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+        
+        .distant-fog {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(10, 10, 40, 0.6) 0%, transparent 100%);
+            filter: blur(20px);
+            opacity: 0.7;
+            z-index: 2;
+            transform: translateZ(-200px); 
+        }
+
+        .near-fog {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            background: linear-gradient(to top, rgba(20, 20, 60, 0.8) 0%, transparent 100%);
+            filter: blur(15px);
+            opacity: 0.9;
+            z-index: 6;
+            transform: translateZ(-50px); 
+        }
+
+        .ghost-container {
+            position: relative;
+            width: 250px; 
+            height: 350px;
+            z-index: 10;
+            transform-style: preserve-3d; 
+            transition: transform 0.1s ease-out; 
+        }
+
+        .ghost-core {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: ghost-float 10s ease-in-out infinite, ghost-sway 15s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(var(--ghost-color-light), 0.7));
+        }
+
+        .ghost-body {
+            position: absolute;
+            width: 90%;
+            height: 80%;
+            top: 10%;
+            left: 5%;
+            background: radial-gradient(circle at 50% 20%, 
+                rgba(var(--ghost-color-light), 0.95) 0%, 
+                rgba(var(--ghost-color-main), 0.8) 40%, 
+                rgba(var(--ghost-color-dark), 0.6) 100%);
+            border-radius: 45% 45% 40% 40%;
+            box-shadow: 
+                inset 0 15px 50px rgba(var(--ghost-color-light), 0.5),
+                inset 0 -15px 50px rgba(var(--ghost-color-dark), 0.4),
+                0 0 60px rgba(var(--ghost-color-light), 0.5); 
+            animation: subtle-pulse 12s ease-in-out infinite;
+            transform-origin: center bottom;
+            filter: blur(1px); 
+            opacity: 0.9;
+            transform: translateZ(5px);
+        }
+
+        .ghost-body::before, .ghost-body::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background: radial-gradient(circle, 
+                rgba(var(--ghost-color-light), 0.8) 0%, 
+                rgba(var(--ghost-color-main), 0.5) 50%, 
+                transparent 100%);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .ghost-body::before {
+            top: -10%;
+            left: 0;
+            animation: top-swirl 18s ease-in-out infinite alternate;
+        }
+        .ghost-body::after {
+            bottom: -15%;
+            left: 0;
+            animation: bottom-swirl 20s ease-in-out infinite alternate;
+        }
+
+
+        .ghost-face {
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            top: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateZ(10px); 
+        }
+
+        .eye {
+            position: absolute;
+            width: 28px; 
+            height: 38px;
+            background: radial-gradient(ellipse, #1a1a3a 30%, #0a0a20 70%);
+            border-radius: 50%;
+            top: 15px;
+            animation: blink 6s infinite ease-in-out, subtle-eye-move 18s infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .eye.left {
+            left: 60px;
+        }
+
+        .eye.right {
+            right: 60px; 
+        }
+
+        .mouth {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            bottom: 0px;
+            background: radial-gradient(ellipse, #1a1a3a 30%, transparent 70%);
+            border-radius: 0 0 50% 50%;
+            animation: mouth-move 15s infinite ease-in-out;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .ghost-bottom {
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            bottom: 0;
+            display: flex;
+            justify-content: space-around;
+            transform: translateZ(5px);
+        }
+
+        .sheet-fold {
+            position: relative;
+            width: 18%;
+            height: 100%;
+            background: linear-gradient(165deg, 
+                rgba(var(--ghost-color-light), 0.85) 0%, 
+                rgba(var(--ghost-color-main), 0.7) 100%);
+            border-radius: 0 0 40% 40%;
+            animation: fold-sway 5s ease-in-out infinite alternate, wave-opacity 7s infinite ease-in-out;
+            transform-origin: top center;
+            filter: blur(0.5px);
+            opacity: 0.9;
+        }
+
+        .sheet-fold:nth-child(1) { animation-delay: 0s, 0.3s; }
+        .sheet-fold:nth-child(2) { animation-delay: 0.3s, 0.6s; }
+        .sheet-fold:nth-child(3) { animation-delay: 0.6s, 0.9s; }
+        .sheet-fold:nth-child(4) { animation-delay: 0.9s, 1.2s; }
+        .sheet-fold:nth-child(5) { animation-delay: 1.2s, 1.5s; }
+
+        .ghost-aura {
+            position: absolute;
+            width: 160%;
+            height: 160%;
+            top: -30%;
+            left: -30%;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(var(--ghost-color-light), 0.3) 0%, 
+                rgba(var(--ghost-color-main), 0.2) 20%, 
+                rgba(var(--ghost-color-dark), 0.1) 40%, 
+                transparent 70%);
+            filter: blur(35px);
+            animation: aura-pulse 8s ease-in-out infinite;
+            z-index: -1;
+            transform: translateZ(-10px); 
+        }
+
+        .spirit-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(var(--ghost-color-light), 0.9) 0%, 
+                rgba(var(--ghost-color-main), 0.6) 40%, 
+                transparent 80%);
+            filter: blur(4px);
+            animation: orb-float 25s linear infinite, orb-pulse 4s infinite alternate;
+            box-shadow: 0 0 25px rgba(var(--ghost-color-light), 0.7);
+            transform-style: preserve-3d;
+        }
+
+        .orb:nth-child(1) { width: 25px; height: 25px; top: 10%; left: 15%; animation-delay: 0s, 0.5s; animation-duration: 30s, 4.2s; transform: translateZ(10px); }
+        .orb:nth-child(2) { width: 18px; height: 18px; top: 60%; left: 70%; animation-delay: -7s, 1s; animation-duration: 35s, 3.8s; transform: translateZ(5px); }
+        .orb:nth-child(3) { width: 22px; height: 22px; top: 30%; left: 80%; animation-delay: -12s, 1.5s; animation-duration: 28s, 4s; transform: translateZ(12px); }
+        .orb:nth-child(4) { width: 16px; height: 16px; top: 75%; left: 20%; animation-delay: -5s, 2s; animation-duration: 32s, 3.5s; transform: translateZ(8px); }
+        .orb:nth-child(5) { width: 28px; height: 28px; top: 45%; left: 8%; animation-delay: -15s, 2.5s; animation-duration: 40s, 4.5s; transform: translateZ(15px); }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(var(--ghost-color-light), 0.7);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: particle-float 20s linear infinite;
+            transform-style: preserve-3d;
+            opacity: 0; 
+        }
+        
+        .cursor-trail {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(var(--ghost-color-light), 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.05s linear, opacity 0.5s ease-out;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+
+
+        @keyframes ghost-float {
+            0%, 100% {
+                transform: translateY(0) rotateY(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotateY(5deg);
+            }
+            50% {
+                transform: translateY(0) rotateY(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotateY(-5deg);
+            }
+        }
+
+        @keyframes ghost-sway {
+            0%, 100% {
+                transform: rotateZ(0deg) rotateX(0deg);
+            }
+            30% {
+                transform: rotateZ(2deg) rotateX(2deg);
+            }
+            70% {
+                transform: rotateZ(-2deg) rotateX(-2deg);
+            }
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+            50% {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0%, 90%, 92%, 100% {
+                height: 38px;
+            }
+            91%, 91.5% {
+                height: 5px;
+            }
+        }
+
+        @keyframes subtle-eye-move {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(2px); }
+            40% { transform: translateX(-3px); }
+            60% { transform: translateX(1px); }
+            80% { transform: translateX(-1px); }
+        }
+
+        @keyframes mouth-move {
+            0%, 70%, 100% {
+                height: 20px;
+                width: 50px;
+                transform: translateY(0);
+            }
+            75%, 95% {
+                height: 15px;
+                width: 45px;
+                transform: translateY(2px);
+            }
+        }
+
+        @keyframes fold-sway {
+            0%, 100% {
+                transform: rotateX(0deg) scaleY(1);
+            }
+            50% {
+                transform: rotateX(5deg) scaleY(0.9);
+            }
+        }
+        
+        @keyframes wave-opacity {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes aura-pulse {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scale(1) translateZ(-10px);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.05) translateZ(-10px);
+            }
+        }
+        
+        @keyframes top-swirl {
+            0%, 100% { transform: rotate(0deg) scaleX(1); }
+            50% { transform: rotate(5deg) scaleX(0.95); }
+        }
+
+        @keyframes bottom-swirl {
+            0%, 100% { transform: rotate(0deg) scaleX(1); }
+            50% { transform: rotate(-5deg) scaleX(1.05); }
+        }
+
+        @keyframes orb-float {
+            0% { transform: translate3d(0, 0, 0) rotateY(0deg) scale(1); opacity: 0.7; }
+            16% { transform: translate3d(calc(var(--rand-x) * 1px), calc(var(--rand-y) * 1px), calc(var(--rand-z) * 1px)) rotateY(30deg) scale(1.1); opacity: 0.9; }
+            33% { transform: translate3d(calc(var(--rand-x) * 2px), calc(var(--rand-y) * 2px), calc(var(--rand-z) * 2px)) rotateY(60deg) scale(1.05); opacity: 0.8; }
+            50% { transform: translate3d(calc(var(--rand-x) * 3px), calc(var(--rand-y) * 3px), calc(var(--rand-z) * 3px)) rotateY(90deg) scale(0.95); opacity: 0.7; }
+            66% { transform: translate3d(calc(var(--rand-x) * 2px), calc(var(--rand-y) * 2px), calc(var(--rand-z) * 2px)) rotateY(60deg) scale(1); opacity: 0.8; }
+            83% { transform: translate3d(calc(var(--rand-x) * 1px), calc(var(--rand-y) * 1px), calc(var(--rand-z) * 1px)) rotateY(30deg) scale(1.05); opacity: 0.9; }
+            100% { transform: translate3d(0, 0, 0) rotateY(0deg) scale(1); opacity: 0.7; }
+        }
+
+        @keyframes orb-pulse {
+            0%, 100% { filter: blur(4px) brightness(1); }
+            50% { filter: blur(6px) brightness(1.2); }
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translate3d(0, 0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate3d(calc(var(--tx) * 1px), calc(var(--ty) * 1px), calc(var(--tz) * 1px));
+                opacity: 0;
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="background-elements">
+            <div class="moon"></div>
+            <div class="stars" id="stars"></div>
+            <div class="distant-fog"></div>
+            <div class="near-fog"></div>
+        </div>
+        
+        <div class="ghost-container" id="ghost-container">
+            <div class="ghost-core">
+                <div class="ghost-body">
+                    <div class="ghost-face">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="ghost-bottom">
+                        <div class="sheet-fold"></div>
+                        <div class="sheet-fold"></div>
+                        <div class="sheet-fold"></div>
+                        <div class="sheet-fold"></div>
+                        <div class="sheet-fold"></div>
+                    </div>
+                    <div class="ghost-aura"></div>
+                </div>
+                
+                <div class="spirit-orbs">
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                </div>
+            </div>
+            
+            <div class="particles" id="particles"></div>
+        </div>
+    </div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+
+    <script>
+        const starsContainer = document.getElementById('stars');
+        const starCount = 250;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 3 + 1; 
+            const delay = Math.random() * 10;
+            const duration = 8 + Math.random() * 4; 
+
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.animationDelay = `${delay}s`;
+            star.style.animationDuration = `${duration}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        const scene = document.querySelector('.scene');
+        const backgroundOrbCount = 12; 
+        for (let i = 0; i < backgroundOrbCount; i++) {
+            const orb = document.createElement('div');
+            orb.classList.add('orb');
+            
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = 10 + Math.random() * 30; 
+            const duration = 30 + Math.random() * 30; 
+            const delay = -Math.random() * 30;
+            const opacity = 0.1 + Math.random() * 0.2; 
+            const zTranslate = -200 - Math.random() * 300; 
+
+            const randX = (Math.random() - 0.5) * 100;
+            const randY = (Math.random() - 0.5) * 100;
+            const randZ = (Math.random() - 0.5) * 50;
+            
+            orb.style.left = `${x}%`;
+            orb.style.top = `${y}%`;
+            orb.style.width = `${size}px`;
+            orb.style.height = `${size}px`;
+            orb.style.animationDuration = `${duration}s, ${4 + Math.random() * 2}s`; 
+            orb.style.animationDelay = `${delay}s, ${Math.random() * 2}s`;
+            orb.style.opacity = opacity;
+            orb.style.transform = `translateZ(${zTranslate}px)`; 
+            orb.style.setProperty('--rand-x', randX);
+            orb.style.setProperty('--rand-y', randY);
+            orb.style.setProperty('--rand-z', randZ);
+            
+            scene.appendChild(orb);
+        }
+
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const x = 40 + Math.random() * 20;
+            const y = 40 + Math.random() * 20;
+            
+            const tx = (Math.random() - 0.5) * 400; 
+            const ty = (Math.random() - 0.5) * 400;
+            const tz = (Math.random() - 0.5) * 200; 
+
+            const duration = 18 + Math.random() * 25; 
+            const delay = -Math.random() * 25;
+            const size = 1 + Math.random() * 4; 
+            
+            particle.style.left = `${x}%`;
+            particle.style.top = `${y}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.setProperty('--tx', tx);
+            particle.style.setProperty('--ty', ty);
+            particle.style.setProperty('--tz', tz);
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        const ghostContainer = document.getElementById('ghost-container');
+        const cursorTrail = document.getElementById('cursor-trail');
+
+        document.addEventListener('mousemove', (e) => {
+            cursorTrail.style.left = `${e.clientX}px`;
+            cursorTrail.style.top = `${e.clientY}px`;
+            cursorTrail.style.opacity = '1';
+
+            const mouseX = e.clientX / window.innerWidth - 0.5; 
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            const rotateY = mouseX * 10; 
+            const rotateX = -mouseY * 10; 
+            const translateX = mouseX * 30; 
+            const translateY = mouseY * 30;
+
+            ghostContainer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+
+            document.querySelector('.distant-fog').style.transform = `translateZ(-200px) translateX(${mouseX * 50}px) translateY(${mouseY * 30}px)`;
+            document.querySelector('.near-fog').style.transform = `translateZ(-50px) translateX(${mouseX * 20}px) translateY(${mouseY * 10}px)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorTrail.style.opacity = '0';
+        });
+
+
+        const eyes = document.querySelectorAll('.eye');
+        function randomBlink() {
+            eyes.forEach(eye => {
+                eye.style.animation = 'none'; 
+                setTimeout(() => {
+                    eye.style.animation = `blink ${5 + Math.random() * 3}s infinite ease-in-out, subtle-eye-move 18s infinite`;
+                }, 10);
+            });
+            setTimeout(randomBlink, 3000 + Math.random() * 7000); 
+        }
+        randomBlink();
+
+        const mouth = document.querySelector('.mouth');
+        function randomMouthMovement() {
+            mouth.style.animation = 'none';
+            setTimeout(() => {
+                mouth.style.animation = `mouth-move ${12 + Math.random() * 5}s infinite ease-in-out`;
+            }, 10);
+            setTimeout(randomMouthMovement, 4000 + Math.random() * 6000); 
+        }
+        randomMouthMovement();
+
+    </script>
+</body>
+</html>

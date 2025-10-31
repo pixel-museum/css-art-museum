@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let allArts = []; // This will store the merged data (art info + likes)
   let currentFilteredArts = [];  //Initialize currentFilteredArts with all arts
   let pagination = null; // Pagination instance
-  
-  
+
+
   const RecentlyReviewed = {
     get: () => {
       try {
@@ -28,50 +28,102 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   async function renderRecentlyReviewed() {
-  const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
-  if (!recentlyReviewedContainer) return;
+    const recentlyReviewedContainer = document.getElementById("recently-reviewed-gallery");
+    if (!recentlyReviewedContainer) return;
 
-  let items = RecentlyReviewed.get();
+    let items = RecentlyReviewed.get();
 
-  // 🔍 Check if files exist (remove deleted ones)
-  items = await Promise.all(items.map(async (item) => {
-    const filePath = `arts/${item.file}`;
-    try {
-      const res = await fetch(filePath, { method: "HEAD" });
-      return res.ok ? item : null;
-    } catch {
-      return null;
-    }
-  }));
+    // 🔍 Check if files exist (remove deleted ones)
+    items = await Promise.all(items.map(async (item) => {
+      const filePath = `arts/${item.file}`;
+      try {
+        const res = await fetch(filePath, { method: "HEAD" });
+        return res.ok ? item : null;
+      } catch {
+        return null;
+      }
+    }));
 
-  // 🧹 Remove invalid (deleted) entries
-  items = items.filter(Boolean);
-  localStorage.setItem("recentlyReviewed", JSON.stringify(items));
+    // 🧹 Remove invalid (deleted) entries
+    items = items.filter(Boolean);
+    localStorage.setItem("recentlyReviewed", JSON.stringify(items));
 
-  // 🧱 Clear container before re-rendering
-  recentlyReviewedContainer.innerHTML = "";
+    // 🧱 Clear container before re-rendering
+    recentlyReviewedContainer.innerHTML = "";
 
-  // ♻️ Render only valid existing artworks
-  items.reverse().forEach((item) => {
-    const filePath = `arts/${item.file}`;
-    const card = document.createElement("div");
-    card.className = "art-card";
-    card.innerHTML = `
-      <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+    // ♻️ Render only valid existing artworks
+    items.reverse().forEach((item) => {
+      const filePath = `arts/${item.file}`;
+      const card = document.createElement("div");
+      card.className = "art-card";
+      card.innerHTML = `
+      <div class="art-card-inner">
+        <iframe src="${filePath}" frameborder="0" loading="lazy"></iframe>
+        <div class="art-actions">
+          <button class="share-button" aria-label="Share artwork">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.47" y2="10.49"></line>
+            </svg>
+          </button>
+          <div class="share-dropdown">
+            <button class="share-option" data-action="share-native">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                <polyline points="16 6 12 2 8 6"></polyline>
+                <line x1="12" y1="2" x2="12" y2="15"></line>
+              </svg>
+              Share via...
+            </button>
+            <button class="share-option" data-action="copy-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Link
+            </button>
+            <button class="share-option" data-action="download-source">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Source
+            </button>
+            <button class="share-option" data-action="export-png">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              Export as PNG
+            </button>
+            <button class="share-option" data-action="export-gif">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+              </svg>
+              Export as GIF
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="art-info">
         <p class="art-title">${item.title || "Untitled"}</p>
         <p class="art-author">${item.author || "Unknown"}</p>
       </div>
     `;
-    recentlyReviewedContainer.appendChild(card);
-  });
+      recentlyReviewedContainer.appendChild(card);
+    });
 
-  // 🌀 Reinitialize animations if you use them
-  if (typeof initializeCardAnimations === "function") {
-    initializeCardAnimations();
+    // 🌀 Reinitialize animations if you use them
+    if (typeof initializeCardAnimations === "function") {
+      initializeCardAnimations();
+    }
   }
-}
-
 
   // Like handler for Recently Reviewed section
   function handleRecentLikeClick(event) {
@@ -183,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pagination.setItems(allArts);
 
     // Override the render method to use our custom rendering
-    pagination.render = function() {
+    pagination.render = function () {
       const currentItems = this.getCurrentPageItems();
       renderArtCards(currentItems);
       this.renderControls();
@@ -198,20 +250,20 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   function renderArtCards(arts) {
     galleryContainer.innerHTML = "";
-    
+
     // We need the LikedArtworks helper to check the liked status
     const LikedArtworks = {
-        get: () => {
-            try {
-                const liked = localStorage.getItem('likedArtworks');
-                return liked ? new Set(JSON.parse(liked)) : new Set();
-            } catch (e) {
-                return new Set();
-            }
-        },
-        isLiked: (id) => LikedArtworks.get().has(id),
+      get: () => {
+        try {
+          const liked = localStorage.getItem('likedArtworks');
+          return liked ? new Set(JSON.parse(liked)) : new Set();
+        } catch (e) {
+          return new Set();
+        }
+      },
+      isLiked: (id) => LikedArtworks.get().has(id),
     };
-      
+
     arts.forEach((art) => {
       const artCard = document.createElement("div");
       artCard.className = "art-card";
@@ -222,9 +274,64 @@ document.addEventListener("DOMContentLoaded", () => {
       const isLiked = LikedArtworks.isLiked(art.file);
 
       artCard.innerHTML = `
-        <h3>${art.title}</h3>
-        <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
-        <p>by ${art.author}</p>
+        <div class="art-card-inner">
+          <iframe loading="lazy" seamless src="${filePath}" title="${art.title}"></iframe>
+          <div class="art-actions">
+            <button class="share-button" aria-label="Share artwork">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.47" y2="10.49"></line>
+              </svg>
+            </button>
+            <div class="share-dropdown">
+              <button class="share-option" data-action="share-native">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                  <polyline points="16 6 12 2 8 6"></polyline>
+                  <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+                Share via...
+              </button>
+              <button class="share-option" data-action="copy-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Link
+              </button>
+              <button class="share-option" data-action="download-source">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Source
+              </button>
+              <button class="share-option" data-action="export-png">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                Export as PNG
+              </button>
+              <button class="share-option" data-action="export-gif">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+                </svg>
+                Export as GIF
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3 class="art-title">${art.title}</h3>
+          <p class="art-author">by ${art.author}</p>
+        </div>
         <div class="card-actions">
             <a class="view-code" href="art-viewer.html?art=${encodeURIComponent(art.file)}">
                 View Code
@@ -237,14 +344,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
       `;
-     artCard.addEventListener("click", (e) => {
+      artCard.addEventListener("click", (e) => {
         if (e.target && e.target.closest && e.target.closest('.like-container')) return;
         RecentlyReviewed.add({ file: art.file, title: art.title, author: art.author });
         renderRecentlyReviewed();
       });
       galleryContainer.appendChild(artCard);
     });
-    
+
     initializeCardAnimations();
   }
 
@@ -262,11 +369,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderArtCards(arts);
     }
   }
-    
 
   // --- Sorting integration ---
   // FIXED: Now sorts currentFilteredArts instead of allArts
-  window.sortAndRenderArts = function() {
+  window.sortAndRenderArts = function () {
     if (!currentFilteredArts || currentFilteredArts.length === 0) return;
     const sorted = window.sortArts ? window.sortArts(currentFilteredArts) : currentFilteredArts;
     renderArts(sorted);
@@ -279,42 +385,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Search Filter with Recently Reviewed Hide/Show (Fix for Issue #184) ---
-const recentlyReviewedSection = document.querySelector('.recently-reviewed-container');
+  const recentlyReviewedSection = document.querySelector('.recently-reviewed-container');
 
-searchBar.addEventListener("input", () => {
-  const query = searchBar.value.toLowerCase().trim();
-  
-  // Hide or show recently reviewed section based on search query
-  if (recentlyReviewedSection) {
-    if (query.length > 0) {
-      // Hide recently reviewed when searching
-      recentlyReviewedSection.classList.add('hidden');
-    } else {
-      // Show recently reviewed when search is empty
-      recentlyReviewedSection.classList.remove('hidden');
+  searchBar.addEventListener("input", () => {
+    const query = searchBar.value.toLowerCase().trim();
+
+    // Hide or show recently reviewed section based on search query
+    if (recentlyReviewedSection) {
+      if (query.length > 0) {
+        // Hide recently reviewed when searching
+        recentlyReviewedSection.classList.add('hidden');
+      } else {
+        // Show recently reviewed when search is empty
+        recentlyReviewedSection.classList.remove('hidden');
+      }
     }
-  }
-  
-  // Existing filter logic
-  const filteredArts = allArts.filter(
-    (art) =>
-      art.title.toLowerCase().includes(query) ||
-      art.author.toLowerCase().includes(query)
-  );
-  
-  // Check if no results found
-  if (filteredArts.length === 0 && query !== "") {
-    galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
-    // Hide pagination controls if they exist
-    const paginationControls = document.getElementById('pagination-controls');
-    if (paginationControls) paginationControls.style.display = 'none';
-  } else {
-    // Show pagination controls again
-    const paginationControls = document.getElementById('pagination-controls');
-    if (paginationControls) paginationControls.style.display = '';
-    renderArts(filteredArts);
-  }
-});
+
+    // Existing filter logic
+    const filteredArts = allArts.filter(
+      (art) =>
+        art.title.toLowerCase().includes(query) ||
+        art.author.toLowerCase().includes(query)
+    );
+
+    // Check if no results found
+    if (filteredArts.length === 0 && query !== "") {
+      galleryContainer.innerHTML = `<p class="error-message">No art for '${query}' found</p>`;
+      // Hide pagination controls if they exist
+      const paginationControls = document.getElementById('pagination-controls');
+      if (paginationControls) paginationControls.style.display = 'none';
+    } else {
+      // Show pagination controls again
+      const paginationControls = document.getElementById('pagination-controls');
+      if (paginationControls) paginationControls.style.display = '';
+      renderArts(filteredArts);
+    }
+  });
 
   // --- Theme toggle and other existing functions ---
   const toggleBtn = document.getElementById("themeToggle");
@@ -448,7 +554,6 @@ searchBar.addEventListener("input", () => {
   window.addEventListener("scroll", toggleScrollToTopButton);
   scrollToTopBtn.addEventListener("click", scrollToTop);
 
-
   loadArts();
   // Initial sort and render after arts are loaded
   window.sortAndRenderArts();
@@ -470,8 +575,6 @@ searchBar.addEventListener("input", () => {
   });
 });
 
-
-// 🎨 Random Artwork of the Day — uses arts.json
 // 🎨 Random Artwork of the Day — uses arts.json
 function loadRandomArtwork() {
   fetch("./arts.json")
@@ -483,7 +586,7 @@ function loadRandomArtwork() {
       const art = artworks[randomIndex];
 
       const container = document.getElementById("random-artwork-container");
-      
+
       // Create art card similar to your gallery
       const artCard = document.createElement("div");
       artCard.className = "art-card";
@@ -534,23 +637,23 @@ function initializeLikeButton(card) {
   const likeContainer = card.querySelector('.like-container');
   const heartIcon = card.querySelector('.heart-icon');
   const likeCount = card.querySelector('.like-count');
-  
+
   const artworkId = likeContainer.getAttribute('data-id');
-  
+
   // Load existing likes from localStorage
   let likes = JSON.parse(localStorage.getItem('artwork-likes')) || {};
   let isLiked = JSON.parse(localStorage.getItem('artwork-liked')) || {};
-  
+
   // Set initial like count and state
   likeCount.textContent = likes[artworkId] || 0;
-  
+
   if (isLiked[artworkId]) {
     heartIcon.classList.add('liked');
     heartIcon.style.fill = 'currentColor';
   }
-  
+
   // Add click event listener
-  likeContainer.addEventListener('click', function() {
+  likeContainer.addEventListener('click', function () {
     if (!isLiked[artworkId]) {
       // Like the artwork
       likes[artworkId] = (likes[artworkId] || 0) + 1;
@@ -564,7 +667,7 @@ function initializeLikeButton(card) {
       heartIcon.classList.remove('liked');
       heartIcon.style.fill = 'none';
     }
-    
+
     // Update display and storage
     likeCount.textContent = likes[artworkId];
     localStorage.setItem('artwork-likes', JSON.stringify(likes));

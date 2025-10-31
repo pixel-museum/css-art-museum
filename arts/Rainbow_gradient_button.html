@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainbow Gradient Button</title>
+  <style>
+    @font-face {
+      font-family: "Mona Sans";
+      src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"),
+        url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
+      font-weight: 100 1000;
+    }
+
+    @layer properties {
+      @property --bg-position {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 100;
+      }
+
+      @property --after-blur {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+      }
+
+      @property --after-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+      }
+
+      @property --before-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0.3;
+      }
+
+      @property --btn-offset {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+      }
+
+      @property --btn-scale {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+      }
+    }
+
+    :root {
+      --debug: 0;
+
+      /* colors */
+      --body-bg: hsl(0, 0%, 6%);
+      --btn-bg: hsl(0, 0%, 0%);
+      --btn-border-width: 1.5;
+      --btn-offset: 1;
+      --btn-scale: 1;
+      --after-bg: linear-gradient(to right,
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0),
+          rgb(0 0 0));
+      --after-blur: 10;
+      --after-opacity: 1;
+      --after-pos-y: 10;
+
+      --before-opacity: 0.3;
+
+      /* positions */
+      --bg-position: 100;
+
+      --color-white: hsl(0, 0%, 100%);
+      --color-cyan: hsl(180, 100%, 50%);
+      --color-blue: hsl(240, 100%, 50%);
+      --color-purple: hsl(270, 100%, 50%);
+      --color-pink: hsl(330, 40%, 70%);
+      --color-red: hsl(0, 100%, 50%);
+      --color-yellow: hsl(60, 100%, 50%);
+      --color-lime: hsl(90, 100%, 75%);
+
+      --color-orange: oklch(69.1% 0.223 36.85);
+    }
+
+    @supports (color: color(display-p3 0 0 0)) {
+      :root {
+        --color-white: color(display-p3 1 1 1);
+        --color-cyan: color(display-p3 0 1 1);
+        --color-blue: color(display-p3 0 0 1);
+        --color-purple: color(display-p3 0.5 0 1);
+        --color-pink: color(display-p3 1 0.4 0.7);
+        --color-red: color(display-p3 1 0 0);
+        --color-yellow: color(display-p3 1 1 0);
+        --color-lime: color(display-p3 0.75 1 0);
+
+        --color-orange: color(display-p3 0.96 0.39 0.2);
+      }
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      outline: calc(var(--debug) * 1px) dotted red;
+      outline-offset: -1px;
+    }
+
+    html,
+    body,
+    main {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: var(--body-bg);
+      font-family: "Mona Sans", sans-serif;
+      padding: 0 6em;
+    }
+
+    main {
+      display: grid;
+      place-items: center;
+
+      & button {
+        all: unset;
+        background: transparent;
+        border-width: 0;
+        transform: scale(var(--btn-scale));
+        transition:
+          --bg-position 3s ease,
+          --after-blur 0.3s ease,
+          --before-opacity 0.3s ease,
+          --btn-offset 0.3s ease,
+          --btn-scale 0.2s cubic-bezier(.76, -0.25, .51, 1.13);
+
+        >div {
+          display: block;
+          padding: 0.8em 1.2em;
+          background: var(--btn-bg);
+          color: white;
+          font-weight: bold;
+          border-radius: 8px;
+          font-size: 22px;
+          position: relative;
+
+          cursor: pointer;
+
+          &:not(:hover) {
+            transition: --after-blur 0.3s ease;
+          }
+
+          >span {
+            background: linear-gradient(to right,
+                var(--color-white),
+                var(--color-white),
+                var(--color-cyan),
+                var(--color-blue),
+                var(--color-purple),
+                var(--color-pink),
+                var(--color-red),
+                var(--color-yellow),
+                var(--color-lime),
+                var(--color-white),
+                var(--color-white)) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.15ch;
+            font-weight: 600;
+          }
+
+          &:after {
+            display: block;
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: var(--after-bg) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+            transform: translateY(calc(var(--after-pos-y) * 1px));
+            left: 0;
+            top: 0;
+            z-index: -2;
+            filter: blur(calc(var(--after-blur) * 1px));
+            opacity: var(--after-opacity);
+          }
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: calc(100% + calc(calc(var(--btn-border-width) * 2) * 1px));
+            height: calc(100% + calc(calc(var(--btn-border-width) * 2) * 1px));
+            background: linear-gradient(to right,
+                var(--color-white),
+                var(--color-white),
+                var(--color-cyan),
+                var(--color-blue),
+                var(--color-purple),
+                var(--color-pink),
+                var(--color-red),
+                var(--color-yellow),
+                var(--color-lime),
+                var(--color-white),
+                var(--color-white)) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+            border-radius: 9px;
+            z-index: -1;
+            top: calc(var(--btn-border-width) * -1px);
+            left: calc(var(--btn-border-width) * -1px);
+            opacity: var(--before-opacity);
+          }
+        }
+
+        &:hover {
+          --btn-scale: 1.05;
+          --bg-position: 0;
+          --after-bg: linear-gradient(to right,
+              var(--color-white),
+              var(--color-white),
+              var(--color-cyan),
+              var(--color-blue),
+              var(--color-purple),
+              var(--color-pink),
+              var(--color-red),
+              var(--color-yellow),
+              var(--color-lime),
+              var(--color-white),
+              var(--color-white));
+          --after-blur: 30;
+          --after-opacity: 0.3;
+          --after-pos-y: 0;
+          --before-opacity: 1;
+          --btn-offset: 5;
+
+          &:active {
+            --btn-scale: 0.98;
+            --after-blur: 15;
+          }
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <button>
+      <div>
+        <span>Join today!</span>
+      </div>
+    </button>
+  </main>
+
+  <!--info box-->
+  <div class="info-box" data-info="" data-issue="">
+    <p>Made by <a href="" target="_blank">@LukyVj</a></p>
+  </div>
+
+</body>
+
+</html>

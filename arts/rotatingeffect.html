@@ -128,6 +128,7 @@
 </html> -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,10 +191,7 @@
       pointer-events: auto;
       border-radius: 9999px;
       animation: spin-in var(--duration) linear infinite reverse;
-      offset: circle(
-          calc(var(--size) / (2 * sin(0.5turn / 7)) + var(--offset))
-        )
-        calc(100% * var(--i) / 7) 0deg;
+      offset: circle(calc(var(--size) / (2 * sin(0.5turn / 7)) + var(--offset))) calc(100% * var(--i) / 7) 0deg;
     }
 
     .container .item img {
@@ -217,7 +215,7 @@
       box-shadow: 0 0 1rem var(--secondary-color);
     }
 
-    .container .item:hover ~ .item img {
+    .container .item:hover~.item img {
       scale: 0.6;
     }
 
@@ -275,8 +273,7 @@
       border-width: 2px;
       border-radius: inherit;
       border-color: var(--secondary-color);
-      transform: scale(var(--scale))
-        translate(var(--translate), var(--translate));
+      transform: scale(var(--scale)) translate(var(--translate), var(--translate));
       box-shadow: 0 0 15px var(--secondary-color),
         0 0 15px var(--primary-color) inset;
     }
@@ -293,6 +290,7 @@
       from {
         rotate: 0;
       }
+
       to {
         rotate: 360deg;
       }
@@ -302,12 +300,14 @@
       from {
         transform: rotate(0);
       }
+
       to {
         transform: rotate(360deg);
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="item" style="--i:0">
@@ -333,4 +333,5 @@
     </div>
   </div>
 </body>
+
 </html>

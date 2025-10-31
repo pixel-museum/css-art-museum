@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +35,7 @@
             height: 2px;
             background: white;
             border-radius: 50%;
-            box-shadow: 
+            box-shadow:
                 100px 150px white,
                 200px 80px white,
                 300px 200px white,
@@ -69,8 +70,15 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Aurora Borealis */
@@ -88,13 +96,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(0, 255, 200, 0.3) 20%,
-                rgba(100, 200, 255, 0.4) 40%,
-                rgba(150, 100, 255, 0.3) 60%,
-                rgba(255, 100, 200, 0.3) 80%,
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(0, 255, 200, 0.3) 20%,
+                    rgba(100, 200, 255, 0.4) 40%,
+                    rgba(150, 100, 255, 0.3) 60%,
+                    rgba(255, 100, 200, 0.3) 80%,
+                    transparent 100%);
             animation: aurora1 8s ease-in-out infinite;
         }
 
@@ -102,13 +110,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(100, 255, 150, 0.2) 15%,
-                rgba(150, 200, 255, 0.3) 35%,
-                rgba(200, 150, 255, 0.4) 55%,
-                rgba(255, 150, 200, 0.2) 75%,
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(100, 255, 150, 0.2) 15%,
+                    rgba(150, 200, 255, 0.3) 35%,
+                    rgba(200, 150, 255, 0.4) 55%,
+                    rgba(255, 150, 200, 0.2) 75%,
+                    transparent 100%);
             animation: aurora2 10s ease-in-out infinite reverse;
         }
 
@@ -116,43 +124,52 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(50, 255, 255, 0.2) 25%,
-                rgba(150, 150, 255, 0.3) 50%,
-                rgba(255, 100, 255, 0.2) 75%,
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(50, 255, 255, 0.2) 25%,
+                    rgba(150, 150, 255, 0.3) 50%,
+                    rgba(255, 100, 255, 0.2) 75%,
+                    transparent 100%);
             animation: aurora3 12s ease-in-out infinite;
         }
 
         @keyframes aurora1 {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translateX(-10%) scaleY(1);
                 opacity: 0.6;
             }
-            50% { 
+
+            50% {
                 transform: translateX(10%) scaleY(1.2);
                 opacity: 0.8;
             }
         }
 
         @keyframes aurora2 {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translateX(5%) scaleY(0.9);
                 opacity: 0.5;
             }
-            50% { 
+
+            50% {
                 transform: translateX(-5%) scaleY(1.1);
                 opacity: 0.7;
             }
         }
 
         @keyframes aurora3 {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translateX(0%) scaleY(1);
                 opacity: 0.4;
             }
-            50% { 
+
+            50% {
                 transform: translateX(8%) scaleY(1.15);
                 opacity: 0.6;
             }
@@ -236,7 +253,7 @@
             height: 80px;
             background: radial-gradient(circle at 30% 30%, #fefefe, #e8e8e8);
             border-radius: 50%;
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(255, 255, 255, 0.5),
                 0 0 40px rgba(255, 255, 255, 0.3),
                 inset -10px -10px 20px rgba(0, 0, 0, 0.1);
@@ -288,9 +305,11 @@
                 transform: translateX(0) translateY(0);
                 opacity: 1;
             }
+
             70% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateX(-200px) translateY(200px);
                 opacity: 0;
@@ -365,28 +384,30 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="scene">
         <!-- Stars -->
         <div class="stars"></div>
-        
+
         <!-- Aurora Borealis -->
         <div class="aurora">
             <div class="aurora-layer-1"></div>
             <div class="aurora-layer-2"></div>
             <div class="aurora-layer-3"></div>
         </div>
-        
+
         <!-- Moon -->
         <div class="moon">
             <div class="crater crater-1"></div>
             <div class="crater crater-2"></div>
             <div class="crater crater-3"></div>
         </div>
-        
+
         <!-- Shooting star -->
         <div class="shooting-star"></div>
-        
+
         <!-- Mountains -->
         <div class="mountains">
             <div class="mountain-back"></div>
@@ -395,13 +416,15 @@
             <div class="snow-cap-1"></div>
             <div class="snow-cap-2"></div>
         </div>
-        
+
         <!-- Trees -->
         <div class="tree tree-1"></div>
         <div class="tree tree-2"></div>
-        
+
         <!-- Credit -->
         <div class="credit">CSS Art Museum - Aurora Night Sky</div>
     </div>
+
 </body>
+
 </html>

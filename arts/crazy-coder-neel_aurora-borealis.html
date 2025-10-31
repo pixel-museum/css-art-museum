@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Lights Spectacular</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0a0e17;
+            --color-secondary: #1a1f2e;
+            --color-accent-1: #00ff9d;
+            --color-accent-2: #00d9ff;
+            --color-accent-3: #9d4dff;
+            --color-accent-4: #ff00c8;
+            --color-text: #e0f7ff;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            z-index: 100;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2), var(--color-accent-3), var(--color-accent-4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            animation: title-glow 8s infinite alternate;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .scene-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.2);
+            background: linear-gradient(to bottom, #050814 0%, #0f1525 100%);
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ddd, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-size: 200px 100px;
+            animation: twinkle 8s infinite alternate;
+        }
+
+        .stars::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(1px 1px at 250px 150px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 350px 80px, #eee, transparent),
+                radial-gradient(1px 1px at 480px 120px, #ddd, transparent),
+                radial-gradient(1.5px 1.5px at 550px 60px, #fff, transparent),
+                radial-gradient(1px 1px at 650px 180px, #eee, transparent);
+            background-size: 200px 100px;
+            animation: twinkle 12s infinite alternate-reverse;
+        }
+
+        .aurora {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            overflow: hidden;
+        }
+
+        .layer {
+            position: absolute;
+            width: 120%;
+            height: 100%;
+            left: -10%;
+            border-radius: 50% 50% 0 0;
+            filter: blur(20px);
+            mix-blend-mode: screen;
+            opacity: 0.7;
+            animation-duration: 15s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .layer-1 {
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 136, 0.6) 0%,
+                    rgba(0, 183, 255, 0.7) 50%,
+                    rgba(195, 0, 255, 0.6) 100%);
+            animation-name: aurora-move-1;
+            top: 10%;
+            animation-delay: 0s;
+        }
+
+        .layer-2 {
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 234, 0.5) 0%,
+                    rgba(0, 119, 255, 0.6) 50%,
+                    rgba(123, 0, 255, 0.5) 100%);
+            animation-name: aurora-move-2;
+            top: 20%;
+            animation-delay: -2s;
+        }
+
+        .layer-3 {
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 191, 0.4) 0%,
+                    rgba(0, 217, 255, 0.5) 50%,
+                    rgba(149, 0, 255, 0.4) 100%);
+            animation-name: aurora-move-3;
+            top: 30%;
+            animation-delay: -5s;
+        }
+
+        .layer-4 {
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 149, 0.3) 0%,
+                    rgba(0, 140, 255, 0.4) 50%,
+                    rgba(183, 0, 255, 0.3) 100%);
+            animation-name: aurora-move-4;
+            top: 40%;
+            animation-delay: -7s;
+        }
+
+        .layer-5 {
+            background: linear-gradient(90deg,
+                    rgba(0, 200, 255, 0.2) 0%,
+                    rgba(100, 0, 255, 0.3) 50%,
+                    rgba(255, 0, 200, 0.2) 100%);
+            animation-name: aurora-move-5;
+            top: 50%;
+            animation-delay: -9s;
+        }
+
+        .shimmer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center,
+                    rgba(255, 255, 255, 0.1) 0%,
+                    rgba(255, 255, 255, 0) 70%);
+            animation: shimmer 12s infinite alternate;
+            mix-blend-mode: overlay;
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            background:
+                linear-gradient(75deg, transparent 30%, #0a0e17 30%),
+                linear-gradient(-75deg, transparent 30%, #0a0e17 30%),
+                linear-gradient(45deg, transparent 40%, #0a0e17 40%),
+                linear-gradient(-45deg, transparent 40%, #0a0e17 40%);
+            background-size: 200px 100px, 200px 100px, 150px 80px, 150px 80px;
+            background-position: 0 0, 100px 0, 50px 20px, 150px 20px;
+            background-repeat: repeat-x;
+        }
+
+        .mountains::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(70deg, transparent 35%, #0a0e17 35%),
+                linear-gradient(-70deg, transparent 35%, #0a0e17 35%),
+                linear-gradient(50deg, transparent 45%, #0a0e17 45%),
+                linear-gradient(-50deg, transparent 45%, #0a0e17 45%);
+            background-size: 180px 90px, 180px 90px, 120px 70px, 120px 70px;
+            background-position: 30px 10px, 130px 10px, 80px 25px, 180px 25px;
+            background-repeat: repeat-x;
+            opacity: 0.7;
+        }
+
+        .snow {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 15%;
+            background:
+                radial-gradient(ellipse at 20% 100%, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 100%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 5;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            z-index: 100;
+        }
+
+        .control-btn {
+            background: rgba(10, 14, 23, 0.7);
+            border: 2px solid var(--color-accent-2);
+            color: var(--color-text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .control-btn:hover {
+            background: var(--color-accent-2);
+            color: var(--color-primary);
+            box-shadow: 0 0 15px var(--color-accent-2);
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(10, 14, 23, 0.8);
+            border: 1px solid var(--color-accent-1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+        }
+
+        .info-panel.active {
+            transform: translateX(0);
+        }
+
+        .info-panel h2 {
+            color: var(--color-accent-1);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-panel p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .close-info {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes aurora-move-1 {
+
+            0%,
+            100% {
+                transform: translateX(-5%) scale(1.1);
+                opacity: 0.6;
+            }
+
+            25% {
+                transform: translateX(5%) scale(1.05);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateX(-3%) scale(1.15);
+                opacity: 0.7;
+            }
+
+            75% {
+                transform: translateX(3%) scale(1.08);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes aurora-move-2 {
+
+            0%,
+            100% {
+                transform: translateX(3%) scale(1.05);
+                opacity: 0.5;
+            }
+
+            25% {
+                transform: translateX(-3%) scale(1.1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateX(5%) scale(1.08);
+                opacity: 0.6;
+            }
+
+            75% {
+                transform: translateX(-5%) scale(1.12);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes aurora-move-3 {
+
+            0%,
+            100% {
+                transform: translateX(-2%) scale(1.12);
+                opacity: 0.4;
+            }
+
+            25% {
+                transform: translateX(2%) scale(1.15);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateX(-4%) scale(1.1);
+                opacity: 0.5;
+            }
+
+            75% {
+                transform: translateX(4%) scale(1.18);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes aurora-move-4 {
+
+            0%,
+            100% {
+                transform: translateX(4%) scale(1.08);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translateX(-4%) scale(1.12);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateX(2%) scale(1.05);
+                opacity: 0.4;
+            }
+
+            75% {
+                transform: translateX(-2%) scale(1.15);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes aurora-move-5 {
+
+            0%,
+            100% {
+                transform: translateX(-3%) scale(1.05);
+                opacity: 0.2;
+            }
+
+            25% {
+                transform: translateX(3%) scale(1.08);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateX(-5%) scale(1.1);
+                opacity: 0.3;
+            }
+
+            75% {
+                transform: translateX(5%) scale(1.12);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+            }
+
+            25% {
+                text-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(157, 0, 255, 0.7);
+            }
+
+            75% {
+                text-shadow: 0 0 25px rgba(255, 0, 200, 0.7);
+            }
+
+            100% {
+                text-shadow: 0 0 30px rgba(0, 255, 234, 0.7);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .layer {
+                animation-duration: 20s;
+            }
+
+            .controls {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .info-panel {
+                position: relative;
+                top: auto;
+                right: auto;
+                max-width: 100%;
+                margin: 1rem;
+                transform: translateX(0);
+            }
+        }
+
+        .moon {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #f5f3ce 0%, #d8d6a5 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(245, 243, 206, 0.5);
+            animation: moon-glow 10s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes moon-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(245, 243, 206, 0.5);
+                opacity: 0.9;
+            }
+
+            50% {
+                box-shadow: 0 0 60px rgba(245, 243, 206, 0.8);
+                opacity: 1;
+            }
+        }
+
+        .constellation {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 150px;
+            height: 100px;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .star-connect {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .star-connect:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            width: 3px;
+            height: 3px;
+        }
+
+        .star-connect:nth-child(2) {
+            top: 30%;
+            left: 40%;
+            width: 2px;
+            height: 2px;
+        }
+
+        .star-connect:nth-child(3) {
+            top: 50%;
+            left: 10%;
+            width: 3px;
+            height: 3px;
+        }
+
+        .star-connect:nth-child(4) {
+            top: 70%;
+            left: 30%;
+            width: 2px;
+            height: 2px;
+        }
+
+        .star-connect:nth-child(5) {
+            top: 20%;
+            left: 60%;
+            width: 3px;
+            height: 3px;
+        }
+
+        .star-connect:nth-child(6) {
+            top: 60%;
+            left: 70%;
+            width: 2px;
+            height: 2px;
+        }
+
+        .star-connect::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .star-connect:nth-child(1)::after {
+            width: 40px;
+            height: 1px;
+            top: 50%;
+            left: 100%;
+            transform: rotate(30deg);
+            transform-origin: left;
+        }
+
+        .star-connect:nth-child(2)::after {
+            width: 30px;
+            height: 1px;
+            top: 50%;
+            left: 100%;
+            transform: rotate(-20deg);
+            transform-origin: left;
+        }
+
+        .aurora-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite alternate;
+            mix-blend-mode: overlay;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1.1);
+            }
+        }
+
+        .credit {
+            margin-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- <header>
+            <h1>Northern Lights Spectacular</h1>f
+            <p class="subtitle">Experience the mesmerizing dance of the Aurora Borealis with this stunning CSS animation</p>
+        </header> -->
+
+        <div class="scene-container">
+            <div class="stars"></div>
+            <div class="moon"></div>
+            <div class="constellation">
+                <div class="star-connect"></div>
+                <div class="star-connect"></div>
+                <div class="star-connect"></div>
+                <div class="star-connect"></div>
+                <div class="star-connect"></div>
+                <div class="star-connect"></div>
+            </div>
+
+            <div class="aurora">
+                <div class="layer layer-1"></div>
+                <div class="layer layer-2"></div>
+                <div class="layer layer-3"></div>
+                <div class="layer layer-4"></div>
+                <div class="layer layer-5"></div>
+                <div class="shimmer"></div>
+                <div class="aurora-pulse"></div>
+            </div>
+
+            <div class="particles" id="particles"></div>
+            <div class="mountains"></div>
+            <div class="snow"></div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="speed-up">
+                <i class="fas fa-fast-forward"></i> Speed Up
+            </button>
+            <button class="control-btn" id="speed-down">
+                <i class="fas fa-fast-backward"></i> Slow Down
+            </button>
+        </div>
+
+        <div class="credit">
+            Created by crazy-coder-neel
+        </div>
+    </div>
+
+    <script>
+
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            const size = Math.random() * 3 + 1;
+            const left = Math.random() * 100;
+            const animationDuration = Math.random() * 20 + 10;
+            const animationDelay = Math.random() * 20;
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.animationDuration = `${animationDuration}s`;
+            particle.style.animationDelay = `${animationDelay}s`;
+
+            particlesContainer.appendChild(particle);
+        }
+
+        const infoBtn = document.getElementById('info-btn');
+        const closeInfo = document.getElementById('close-info');
+        const infoPanel = document.getElementById('info-panel');
+
+        infoBtn.addEventListener('click', () => {
+            infoPanel.classList.toggle('active');
+        });
+
+        closeInfo.addEventListener('click', () => {
+            infoPanel.classList.remove('active');
+        });
+
+        const speedUp = document.getElementById('speed-up');
+        const speedDown = document.getElementById('speed-down');
+        const auroraLayers = document.querySelectorAll('.layer');
+
+        let animationSpeed = 1;
+
+        speedUp.addEventListener('click', () => {
+            animationSpeed = Math.min(animationSpeed + 0.2, 3);
+            updateAnimationSpeed();
+        });
+
+        speedDown.addEventListener('click', () => {
+            animationSpeed = Math.max(animationSpeed - 0.2, 0.5);
+            updateAnimationSpeed();
+        });
+
+        function updateAnimationSpeed() {
+            auroraLayers.forEach(layer => {
+                const currentDuration = parseFloat(layer.style.animationDuration || getComputedStyle(layer).animationDuration);
+                layer.style.animationDuration = `${15 / animationSpeed}s`;
+            });
+        }
+
+        const colorChange = document.getElementById('color-change');
+        let colorScheme = 0;
+
+        colorChange.addEventListener('click', () => {
+            colorScheme = (colorScheme + 1) % 3;
+            updateColorScheme();
+        });
+
+        function updateColorScheme() {
+            const root = document.documentElement;
+
+            if (colorScheme === 0) {
+
+                root.style.setProperty('--color-accent-1', '#00ff9d');
+                root.style.setProperty('--color-accent-2', '#00d9ff');
+                root.style.setProperty('--color-accent-3', '#9d4dff');
+                root.style.setProperty('--color-accent-4', '#ff00c8');
+            } else if (colorScheme === 1) {
+
+                root.style.setProperty('--color-accent-1', '#ff00c8');
+                root.style.setProperty('--color-accent-2', '#9d4dff');
+                root.style.setProperty('--color-accent-3', '#00d9ff');
+                root.style.setProperty('--color-accent-4', '#00ff9d');
+            } else {
+
+                root.style.setProperty('--color-accent-1', '#00ff9d');
+                root.style.setProperty('--color-accent-2', '#00a2ff');
+                root.style.setProperty('--color-accent-3', '#0066ff');
+                root.style.setProperty('--color-accent-4', '#00ffea');
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

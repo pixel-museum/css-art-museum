@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events & Workshops - CSS Art Museum</title>
+  <link rel="icon" type="image/png" href="./assets/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-left">
+        <h1 class="logo">🎨 CSS Art Museum</h1>
+        <input class="desktop-only" type="text" id="search-bar" placeholder="Search artworks..." />
+      </div>
+
+      <div class="nav-buttons">
+        <a href="https://github.com/pixel-museum/css-art-museum" target="_blank" rel="noopener noreferrer"
+          class="footer-button star-button desktop-only">
+          <svg class="star-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+            <path
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z">
+            </path>
+          </svg>
+          Star
+          <span class="star-count-nav" id="star-count-nav">...</span>
+        </a>
+
+        <a href="/index.html" class="footer-button desktop-only">Home</a>
+
+        <button class="theme-toggle desktop-only" id="themeToggle">
+          🌙 Dark
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ...existing code... -->
+  <main>
+    <section aria-labelledby="events-title" class="events-section">
+      <h2 id="events-title">Upcoming Events & Workshops</h2>
+      <p class="lead">Browse upcoming art events, workshops, and registration details. Placeholder content below —
+        update as events are confirmed.</p>
+
+      <ul class="events-list">
+        <li class="event-card">
+          <time datetime="2026-03-15">March 15, 2026 • 10:00 AM UTC</time>
+          <h3>Advanced CSS Grid Workshop</h3>
+          <p>Hands-on workshop exploring advanced CSS Grid techniques, responsiveness, and layout patterns.</p>
+          <p><strong>Level:</strong> Intermediate</p>
+          <p><strong>Location:</strong> Online (link provided after registration)</p>
+          <a href="#" class="register-btn" aria-label="Register for Advanced CSS Grid Workshop">Register</a>
+        </li>
+
+        <li class="event-card">
+          <time datetime="2026-04-02">April 2, 2026 • 17:00 UTC</time>
+          <h3>Live Coding: CSS Portraits</h3>
+          <p>Live demonstration creating a portrait using only HTML and CSS. Q&A with the artist after the session.</p>
+          <p><strong>Artist:</strong> Placeholder Artist</p>
+          <a href="#" class="register-btn">Set Reminder</a>
+        </li>
+
+        <li class="event-card">
+          <time datetime="2026-05-01">May 1, 2026 • All Day</time>
+          <h3>Month-long Challenge: Spring Portraits</h3>
+          <p>Submit a spring-themed CSS portrait. Open to all skill levels. Winners featured on the homepage.</p>
+          <p><strong>Submissions:</strong> May 1–31, 2026</p>
+          <a href="#" class="register-btn">View Rules</a>
+        </li>
+
+        <li class="event-card">
+          <time datetime="2026-06-10">June 10, 2026 • 14:00 UTC</time>
+          <h3>Beginner's Guide to SASS/SCSS</h3>
+          <p>Introductory workshop covering variables, nesting, and mixins to improve CSS workflow.</p>
+          <p><strong>Level:</strong> Beginner</p>
+          <a href="#" class="register-btn">Get Notified</a>
+        </li>
+      </ul>
+
+      <div class="events-footer">
+        <p>Questions or submissions for events? Email us at <a href="mailto:events@example.com">events@example.com</a>
+        </p>
+        <p class="note">Note: Times and details are placeholders and may change. Update this page when details are
+          finalized.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid-container">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>About ArtMuseum</h3>
+          <p>
+            ArtMuseum is a platform for artists, creators, and enthusiasts to
+            explore, share, and celebrate creativity worldwide.
+          </p>
+        </div>
+
+        <!-- Features / Quick Links -->
+        <div class="footer-section">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="../index.html">Explore Gallery</a></li>
+            <li><a href="#">Submit Artwork</a></li>
+            <li><a href="#">Trending Art</a></li>
+            <li><a href="../Contributors/contributors.html">Artist Profiles</a></li>
+            <li><a href="events.html">Events & Workshops</a></li>
+          </ul>
+        </div>
+
+        <!-- Community -->
+        <div class="footer-section">
+          <h3>Community</h3>
+          <ul>
+            <li><a href="https://discord.com/channels/707751027973161132/1423283734148550740">Discord</a></li>
+            <li><a href="#">Slack</a></li>
+            <li><a href="#">Forum</a></li>
+            <li><a href="../blogs/blogs.html">Blog</a></li>
+            <li><a href="../support.html">Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-section footer-newsletter">
+          <h3>Subscribe</h3>
+          <p>Get latest updates and news directly in your inbox.</p>
+          <form>
+            <input type="email" placeholder="Your email" />
+            <button id="subscribe-btn" type="submit" class="subscribe-btn">
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+        <!-- Social Media + Contributors -->
+        <div class="footer-section">
+          <h3>Connect with Us</h3>
+          <div class="footer-social">
+            <a href="https://github.com/pixel-museum/css-art-museum" title="GitHub" target="_blank"
+              rel="noopener noreferrer">
+              <img src="../assets/github-logo.png" alt="GitHub Logo" class="footer-social-logo" />
+            </a>
+            <a href="#" title="LinkedIn"><img src="../assets/linkedin-logo.png" alt="Linkedin logo"
+                class="footer-social-logo" /></a>
+            <a href="#" title="Twitter"><img src="../assets/twitter.png" alt="Twitter logo"
+                class="footer-social-logo" /></a>
+          </div>
+
+          <!-- Contributors & Stars -->
+          <div class="footer-extra-buttons">
+            <a href="https://github.com/pixel-museum/css-art-museum" target="_blank" class="footer-button star-button"
+              rel="noopener noreferrer">
+              <svg class="star-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z">
+                </path>
+              </svg>
+              Star <span class="star-count" id="star-count">...</span>
+            </a>
+
+            <a href="../Contributors/contributors.html" target="_blank" class="footer-button"
+              rel="noopener noreferrer">Contributors</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        &copy; 2026 CSS Art Museum. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="events-script.js"></script>
+
+</body>
+
+</html>

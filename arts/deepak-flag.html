@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Waving Indian Flag</title>
+  <style>
+    :root {
+      --bg: linear-gradient(180deg, #a6d8ff, #eaf6ff 60%);
+      --pole-color: #333;
+      --pole-width: 10px;
+      --flag-w: 720px;
+      --flag-h: 420px;
+      /* 3:5 aspect approximation */
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      display: grid;
+      place-items: center
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      padding-bottom: 40px
+    }
+
+    .rope {
+      position: absolute;
+      left: calc(var(--pole-width) + 2px);
+      top: 14px;
+      width: 10px;
+      height: 12px;
+      background: linear-gradient(#eee, #ddd);
+      border-radius: 2px;
+      transform: rotate(6deg);
+    }
+
+    /* flag wrapper (for layout) */
+    .flag-wrap {
+      width: var(--flag-w);
+      height: var(--flag-h);
+      display: block;
+      overflow: visible;
+      transform-origin: left center;
+      /* wave from left */
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
+    }
+
+    /* small caption */
+    .caption {
+      position: fixed;
+      left: 20px;
+      bottom: 10px;
+      color: #034e6a;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0.9
+    }
+
+    /* make responsive */
+    @media (max-width:900px) {
+      :root {
+        --flag-w: min(86vw, 600px);
+        --flag-h: calc(var(--flag-w) * 0.58);
+      }
+
+      .pole {
+        height: 46vh
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container" aria-hidden="false">
+    <div class="pole" role="presentation" aria-hidden="true">
+      <div class="rope" aria-hidden="true"></div>
+    </div>
+
+    <div class="flag-wrap" id="flagWrap" aria-label="Indian national flag waving" role="img">
+      <svg id="flagSVG" viewBox="0 0 900 540" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="false">
+        <defs>
+
+          <clipPath id="flagClip">
+            <path id="flagClipPath" d="M0,0 L900,0 L900,540 L0,540 Z" />
+          </clipPath>
+
+          <pattern id="fabric" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="transparent" />
+            <circle cx="1" cy="1" r="0.5" fill="rgba(255,255,255,0.03)" />
+          </pattern>
+
+          <g id="chakra">
+            <circle cx="0" cy="0" r="18" fill="none" stroke="#0b3d91" stroke-width="2" />
+          </g>
+        </defs>
+
+        <g id="flagGroup" clip-path="url(#flagClip)">
+          <!-- saffron -->
+          <rect x="0" y="0" width="900" height="180" fill="#FF9933"></rect>
+          <!-- white -->
+          <rect x="0" y="180" width="900" height="180" fill="#FFFFFF"></rect>
+          <!-- green -->
+          <rect x="0" y="360" width="900" height="180" fill="#138808"></rect>
+
+          <!-- apply subtle fabric pattern over white to give texture -->
+          <rect x="0" y="180" width="900" height="180" fill="url(#fabric)" opacity="0.25"></rect>
+
+          <!-- chakra group at center of white stripe -->
+          <g id="chakraGroup" transform="translate(450,270)" aria-hidden="true"></g>
+
+          <!-- grommet removed to avoid visible dot in saffron stripe -->
+        </g>
+
+        <!-- optional pole cap shadow to match mast -->
+        <rect x="-30" y="0" width="30" height="540" fill="none" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="caption">Indian flag — CSS / SVG waving demo</div>
+
+  <script>
+
+    (function () {
+      const svg = document.getElementById('flagSVG');
+      const chakraGroup = svg.querySelector('#chakraGroup');
+
+      const clipPath = svg.getElementById('flagClipPath');
+
+      // create chakra: 24 spokes and an outer wheel
+      function makeChakra() {
+        const spineCount = 24;
+        const outerR = 54;   // outer radius of chakra
+        const innerR = 0;
+        const spokeLen = outerR;
+        const spokeStroke = 2;
+        const color = '#0b3d91';
+
+        // outer wheel
+        const wheel = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        wheel.setAttribute('cx', 0);
+        wheel.setAttribute('cy', 0);
+        wheel.setAttribute('r', outerR);
+        wheel.setAttribute('fill', 'none');
+        wheel.setAttribute('stroke', color);
+        wheel.setAttribute('stroke-width', 4);
+        wheel.setAttribute('stroke-linecap', 'round');
+        chakraGroup.appendChild(wheel);
+
+        // spokes
+        for (let i = 0; i < spineCount; i++) {
+          const ang = (i / spineCount) * Math.PI * 2;
+          const x2 = Math.cos(ang) * spokeLen;
+          const y2 = Math.sin(ang) * spokeLen;
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', 0);
+          line.setAttribute('y1', 0);
+          line.setAttribute('x2', x2.toFixed(2));
+          line.setAttribute('y2', y2.toFixed(2));
+          line.setAttribute('stroke', color);
+          line.setAttribute('stroke-width', spokeStroke);
+          line.setAttribute('stroke-linecap', 'round');
+          chakraGroup.appendChild(line);
+        }
+
+        const hub = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        hub.setAttribute('cx', 0);
+        hub.setAttribute('cy', 0);
+        hub.setAttribute('r', 5);
+        hub.setAttribute('fill', color);
+        chakraGroup.appendChild(hub);
+      }
+
+      makeChakra();
+      makeChakra();
+
+      // Static, rectangular flag: set a fixed rectangular clip-path and remove any animation/turbulence.
+      clipPath.setAttribute('d', 'M0,0 L900,0 L900,540 L0,540 Z');
+
+      const flagGroup = svg.getElementById('flagGroup');
+      flagGroup.style.transform = 'rotate(0deg)';
+
+      // Provide harmless no-op controls so older console calls won't throw errors.
+      window.__flagControls = window.__flagControls || {};
+      window.__flagControls.setSway = function () { };
+      window.__flagControls.setScale = function () { };
+      window.__flagControls.setBase = function () { };
+
+      // Keep click behaviour no-op for a static flag.
+      const flagWrap = document.getElementById('flagWrap');
+      flagWrap.addEventListener('click', () => { /* no-op: static flag */ });
+
+    })();
+  </script>
+  
+</body>
+
+</html>

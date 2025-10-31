@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-       
-
         :root {
 
             --bg-color: #0d0c1d;
@@ -29,9 +28,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; 
+            overflow: hidden;
         }
-
 
         .container {
             display: flex;
@@ -40,8 +38,6 @@
             gap: 2rem;
             padding: 2rem;
         }
-
-       
 
         .portal-wrapper {
             position: relative;
@@ -52,29 +48,26 @@
             align-items: center;
         }
 
-
         .portal-wrapper::before {
             content: '';
             position: absolute;
             width: 100%;
             height: 100%;
-            background: repeating-conic-gradient(
-                from 0deg,
-                var(--portal-glow1) 0%,
-                #c77dff 5%,
-                transparent 10%,
-                transparent 50%,
-                var(--portal-glow1) 100%
-            );
+            background: repeating-conic-gradient(from 0deg,
+                    var(--portal-glow1) 0%,
+                    #c77dff 5%,
+                    transparent 10%,
+                    transparent 50%,
+                    var(--portal-glow1) 100%);
             border-radius: 50%;
 
             animation: rotate 6s linear infinite;
-            filter: blur(15px); 
+            filter: blur(15px);
             opacity: 0.8;
             z-index: 1;
             transition: animation-duration 0.5s ease;
         }
-        
+
         .portal {
             width: 180px;
             height: 180px;
@@ -87,23 +80,21 @@
             cursor: pointer;
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 10;
-            overflow: hidden; 
+            overflow: hidden;
             border: 2px solid rgba(157, 78, 221, 0.3);
-
             box-shadow:
                 0 0 10px 5px rgba(157, 78, 221, 0.2),
                 inset 0 0 20px 10px var(--portal-glow2);
         }
-
 
         .portal span {
             font-size: 1.1rem;
             font-weight: 300;
             letter-spacing: 1px;
             transition: opacity 0.5s ease, transform 0.5s ease;
-            position: absolute; 
+            position: absolute;
         }
-        
+
         .hidden-text {
             opacity: 0;
             transform: translateY(20px);
@@ -111,7 +102,6 @@
             color: var(--accent-color);
         }
 
-       
         .portal:hover {
             transform: scale(1.15);
             box-shadow:
@@ -119,23 +109,19 @@
                 inset 0 0 30px 15px var(--portal-glow2);
         }
 
-
         .portal:hover .prompt-text {
             opacity: 0;
             transform: translateY(-20px);
         }
 
-
         .portal:hover .hidden-text {
             opacity: 1;
             transform: translateY(0);
         }
-        
 
         .portal-wrapper:hover::before {
             animation-duration: 3s;
         }
-
 
         .footer-text {
             font-size: 0.9rem;
@@ -144,28 +130,29 @@
             letter-spacing: 0.5px;
         }
 
-
         @keyframes rotate {
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-
         <div class="portal-wrapper">
             <div class="portal">
                 <span class="prompt-text">What's inside?</span>
                 <span class="hidden-text">CSS Magic</span>
             </div>
         </div>
-        <div class="footer-text">
-        </div>
+
+        <div class="footer-text"></div>
     </div>
 </body>
+
 </html>

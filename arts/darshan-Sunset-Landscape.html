@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Sunset Landscape</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to top, #0d1b2a, #1b263b, #415a77, #778da9, #e0e1dd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    /* Sun */
+    .sun {
+      position: absolute;
+      bottom: 30%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at center, #ffcc33 0%, #ff6600 80%);
+      border-radius: 50%;
+      animation: sunset 8s ease-in-out infinite alternate;
+      box-shadow: 0 0 80px 20px rgba(255, 153, 0, 0.6);
+    }
+
+    @keyframes sunset {
+      0% { bottom: 30%; }
+      100% { bottom: 10%; opacity: 0.8; }
+    }
+
+    /* Sea */
+    .sea {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, #023e8a, #0077b6, #0096c7);
+      overflow: hidden;
+    }
+
+    /* Waves */
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      top: -10%;
+      border-radius: 100%;
+      animation: waveMove 8s linear infinite;
+    }
+
+    .wave:nth-child(2) {
+      top: -15%;
+      animation-delay: -4s;
+      opacity: 0.6;
+    }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Mountains */
+    .mountains {
+      position: absolute;
+      bottom: 35%;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, #03045e, #023e8a);
+      clip-path: polygon(0% 100%, 15% 60%, 35% 90%, 55% 50%, 75% 85%, 100% 40%, 100% 100%);
+    }
+
+    /* Foreground hill */
+    .hill {
+      position: absolute;
+      bottom: 0;
+      width: 120%;
+      height: 40%;
+      background: linear-gradient(to top, #001219, #005f73);
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      transform: translateX(-10%);
+    }
+
+    /* Birds */
+    .bird {
+      position: absolute;
+      width: 40px;
+      height: 20px;
+      background: transparent;
+      top: 20%;
+      animation: fly 12s linear infinite;
+    }
+
+    .bird::before,
+    .bird::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      border-radius: 50%;
+      top: 5px;
+    }
+
+    .bird::after {
+      transform: rotate(45deg);
+      right: 0;
+    }
+
+    @keyframes fly {
+      0% { left: -10%; top: 25%; transform: scale(1); }
+      50% { top: 15%; transform: scale(1.2); }
+      100% { left: 110%; top: 25%; transform: scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="mountains"></div>
+  <div class="sea">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <div class="hill"></div>
+  <div class="bird"></div>
+</body>
+</html>

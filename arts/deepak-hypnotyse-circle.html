@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypnotic Spiral — Dynamic</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: #fff;
+            /* white background like the reference */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        }
+
+        canvas {
+            width: 90vmin;
+            height: 90vmin;
+            max-width: 1200px;
+            max-height: 1200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            border-radius: 6px;
+            background: #fff;
+            display: block;
+        }
+
+        .controls {
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 8px 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .controls label {
+            font-size: 13px;
+            color: #222
+        }
+
+        .controls input[type="range"] {
+            width: 160px
+        }
+
+        .btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="spiral"></canvas>
+
+    <div class="controls" aria-hidden="false">
+        <label>Speed <input id="speed" type="range" min="-1.2" max="1.2" step="0.01" value="0.18"></label>
+        <label>Density <input id="density" type="range" min="0.3" max="2.5" step="0.01" value="1.0"></label>
+        <button id="toggle" class="btn">Pause</button>
+    </div>
+
+    <script>
+        // Hypnotic spiral: draws alternating black/white spiral bands and animates rotation + subtle pulsation.
+        (function () {
+            const canvas = document.getElementById('spiral');
+            const ctx = canvas.getContext('2d', { alpha: false });
+
+            let W = 0, H = 0, cx = 0, cy = 0, pixelRatio = Math.max(1, window.devicePixelRatio || 1);
+
+            const speedSlider = document.getElementById('speed');
+            const densitySlider = document.getElementById('density');
+            const toggleBtn = document.getElementById('toggle');
+
+            let running = true;
+            toggleBtn.addEventListener('click', () => {
+                running = !running;
+                toggleBtn.textContent = running ? 'Pause' : 'Play';
+                if (running) requestAnimationFrame(loop);
+            });
+
+            function resize() {
+                const rect = canvas.getBoundingClientRect();
+                W = Math.max(300, Math.floor(rect.width));
+                H = Math.max(300, Math.floor(rect.height));
+                canvas.width = Math.round(W * pixelRatio);
+                canvas.height = Math.round(H * pixelRatio);
+                canvas.style.width = W + 'px';
+                canvas.style.height = H + 'px';
+                ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                cx = W / 2; cy = H / 2;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Parameters controlling look
+            const params = {
+                bandWidth: 18,      // thickness of black/white bands
+                thetaMax: 300,      // how many radians to draw the spiral (large number = many turns)
+            };
+
+            // Draw one frame
+            function draw(t) {
+                // subtle motion blur (clears slowly) — white background
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, W, H);
+
+                ctx.save();
+                ctx.translate(cx, cy);
+
+                const time = t * 0.001; // ms -> s
+                const baseSpeed = parseFloat(speedSlider.value); // rotation direction/speed
+                const density = parseFloat(densitySlider.value);
+
+                // rotation and pulse
+                const rotation = time * baseSpeed; // radians per second
+                const pulse = 1 + 0.06 * Math.sin(time * 1.6);
+
+                ctx.rotate(rotation);
+                ctx.scale(pulse, pulse);
+
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                // Draw spiral as many short stroked segments alternating color. Using small step gives continuous look.
+                const dTheta = 0.6 / density; // angular step, smaller -> more segments -> denser bands
+                const spacing = params.bandWidth * 0.6; // radial spacing per radian
+
+                let prevX = 0, prevY = 0;
+                let first = true;
+                let colorSwitch = 0; // alternate black/white
+
+                // We'll march theta from small value to thetaMax
+                for (let theta = 0; theta < params.thetaMax; theta += dTheta) {
+                    const r = spacing * theta; // simple linear spiral r = k * theta
+                    const x = r * Math.cos(theta);
+                    const y = r * Math.sin(theta);
+
+                    if (first) {
+                        prevX = x; prevY = y; first = false;
+                    }
+
+                    // Determine which band color for this theta (alternates every 'bandPeriod')
+                    const bandPeriod = 2.1; // radians per color band
+                    const bandIndex = Math.floor(theta / bandPeriod);
+                    const isBlack = (bandIndex % 2) === 0;
+
+                    ctx.strokeStyle = isBlack ? '#111' : '#fff';
+                    ctx.lineWidth = params.bandWidth + (isBlack ? 0 : 0); // slight variation possible
+
+                    ctx.beginPath();
+                    ctx.moveTo(prevX, prevY);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+
+                    prevX = x; prevY = y;
+
+                    // stop drawing if the spiral goes off-canvas enough
+                    if (Math.abs(x) > Math.max(W, H) * 1.1 && Math.abs(y) > Math.max(W, H) * 1.1) break;
+                }
+
+                ctx.restore();
+            }
+
+            // Animation loop with fps-limited cadence
+            let lastTime = 0;
+            function loop(now) {
+                if (!running) { lastTime = now; return; }
+                draw(now);
+                lastTime = now;
+                requestAnimationFrame(loop);
+            }
+
+            // initial kickoff
+            requestAnimationFrame(loop);
+
+            // accessibility: keyboard shortcuts
+            window.addEventListener('keydown', (e) => {
+                if (e.key === ' ') { e.preventDefault(); toggleBtn.click(); }
+                if (e.key === 'ArrowUp') { speedSlider.value = Math.min(1.2, parseFloat(speedSlider.value) + 0.02); }
+                if (e.key === 'ArrowDown') { speedSlider.value = Math.max(-1.2, parseFloat(speedSlider.value) - 0.02); }
+            });
+
+            // hint: clicking canvas nudges speed briefly
+            canvas.addEventListener('click', () => {
+                // small speed burst
+                const v = parseFloat(speedSlider.value);
+                speedSlider.value = (v >= 0) ? Math.min(1.2, v + 0.18) : Math.max(-1.2, v - 0.18);
+                setTimeout(() => { /* fade back slowly */ }, 400);
+            });
+
+        })();
+    </script>
+</body>
+
+</html>

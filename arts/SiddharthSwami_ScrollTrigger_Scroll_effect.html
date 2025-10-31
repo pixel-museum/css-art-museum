@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="w-full text-white text-center flex flex-col gap-4 items-center py-[10vh]">
+    <div
+      class="card card1 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237006/1_lwikfz.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+
+    <div
+      class="card card2 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237006/5_he87s8.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+
+    <div
+      class="card card3 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237007/3_jbtjv6.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+
+    <div
+      class="card card4 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237007/3_jbtjv6.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+
+    <div
+      class="card card5 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237007/4_em50te.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+
+    <div
+      class="card card6 sticky top-[10vh] w-[27vw] rounded-lg py-20 px-[20px] flex flex-col gap-4 items-center bg-[#2e251e]">
+      <img src="https://res.cloudinary.com/dsa4zu6en/image/upload/v1761237006/5_he87s8.png" alt=""
+        class="w-[250px] aspect-square" />
+      <h1 class="capitalize font-thin text-4xl">
+        the <br />
+        <span class="font-bold uppercase">ALgorithm</span>
+      </h1>
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        quos.
+      </p>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+  <script>
+    document.querySelectorAll(".card").forEach((card) => {
+      gsap.to(card, {
+        opacity: 0,
+        scale: 0.7,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 15%",
+          end: "bottom 15%",
+          scrub: true,
+        },
+      });
+    });
+  </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Holi!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffe066, #ff6b6b, #6a4c93);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px #000;
+            position: relative;
+            z-index: 10;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Happy Holi! 🌸</h1>
+
+    <script>
+        const colors = ["#FF5733", "#FFC300", "#DAF7A6", "#C70039", "#900C3F", "#581845", "#FF33FF"];
+        const particleCount = 150;
+
+        for (let i = 0; i < particleCount; i++) {
+            let particle = document.createElement("div");
+            particle.classList.add("particle");
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.width = particle.style.height = `${Math.random() * 15 + 5}px`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(particle);
+        }
+    </script>
+</body>
+
+</html>

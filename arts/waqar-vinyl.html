@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,14 +65,12 @@
             height: 200%;
             border-radius: 50%;
             z-index: 2;
-            background: radial-gradient(
-                circle,
-                rgba(0, 0, 0, 1),
-                rgba(0, 0, 0, 1) 48%,
-                rgba(0, 0, 0, 0.5) 60%,
-                rgba(0, 0, 0, 0) 70%,
-                rgba(0, 0, 0, 0) 71%
-            );
+            background: radial-gradient(circle,
+                    rgba(0, 0, 0, 1),
+                    rgba(0, 0, 0, 1) 48%,
+                    rgba(0, 0, 0, 0.5) 60%,
+                    rgba(0, 0, 0, 0) 70%,
+                    rgba(0, 0, 0, 0) 71%);
             transform: rotate(45deg);
         }
 
@@ -88,6 +87,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -108,27 +108,25 @@
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                var(--dark-yellow) 42%,
-                var(--yellow) 42%,
-                var(--yellow) 47%,
-                var(--yellow-line) 47%,
-                var(--yellow-line) 48%,
-                var(--yellow) 48%,
-                var(--yellow) 53%,
-                var(--yellow-line) 53%,
-                var(--yellow-line) 54%,
-                var(--yellow) 54%,
-                var(--yellow) 59%,
-                var(--yellow-line) 59%,
-                var(--yellow-line) 60%,
-                var(--yellow) 60%,
-                var(--yellow) 65%,
-                var(--yellow-line) 65%,
-                var(--yellow-line) 66%,
-                var(--yellow) 66%
-            );
+            background: radial-gradient(circle,
+                    var(--dark-yellow) 42%,
+                    var(--yellow) 42%,
+                    var(--yellow) 47%,
+                    var(--yellow-line) 47%,
+                    var(--yellow-line) 48%,
+                    var(--yellow) 48%,
+                    var(--yellow) 53%,
+                    var(--yellow-line) 53%,
+                    var(--yellow-line) 54%,
+                    var(--yellow) 54%,
+                    var(--yellow) 59%,
+                    var(--yellow-line) 59%,
+                    var(--yellow-line) 60%,
+                    var(--yellow) 60%,
+                    var(--yellow) 65%,
+                    var(--yellow-line) 65%,
+                    var(--yellow-line) 66%,
+                    var(--yellow) 66%);
         }
 
         .highlight {
@@ -139,13 +137,11 @@
             top: -5%;
             right: 52%;
             transform: rotate(37deg);
-            background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0),
-                rgba(255, 255, 255, 0.5) 48%,
-                rgba(255, 255, 255, 0.5) 52%,
-                rgba(255, 255, 255, 0) 100%
-            );
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.5) 48%,
+                    rgba(255, 255, 255, 0.5) 52%,
+                    rgba(255, 255, 255, 0) 100%);
         }
 
         .center-label {
@@ -191,16 +187,14 @@
             content: "";
             width: 478%;
             aspect-ratio: 1/1;
-            background: radial-gradient(
-                circle,
-                rgba(179, 211, 214, 1) 10%,
-                rgba(52, 80, 122, 1) 11%,
-                rgba(52, 79, 119, 1) 32%,
-                rgba(36, 77, 88, 1) 34%,
-                rgba(38, 85, 96, 1) 58%,
-                rgba(6, 118, 130, 1) 59%,
-                rgba(53, 143, 153, 1) 75%
-            );
+            background: radial-gradient(circle,
+                    rgba(179, 211, 214, 1) 10%,
+                    rgba(52, 80, 122, 1) 11%,
+                    rgba(52, 79, 119, 1) 32%,
+                    rgba(36, 77, 88, 1) 34%,
+                    rgba(38, 85, 96, 1) 58%,
+                    rgba(6, 118, 130, 1) 59%,
+                    rgba(53, 143, 153, 1) 75%);
             border-radius: 50%;
             bottom: 80%;
             left: 0;
@@ -291,38 +285,156 @@
             animation: fade 4s ease-in-out infinite, movement 4s ease-in-out infinite;
         }
 
-        .note:nth-child(1) { left: 10%; animation-delay: 1s; width: 3%; }
-        .note:nth-child(2) { left: 20%; animation-delay: 2s; width: 4%; }
-        .note:nth-child(3) { left: 30%; animation-delay: 0.5s; width: 5%; }
-        .note:nth-child(4) { left: 40%; animation-delay: 1.5s; width: 3%; }
-        .note:nth-child(5) { left: 50%; animation-delay: 3s; width: 4%; }
-        .note:nth-child(6) { left: 60%; animation-delay: 0.8s; width: 5%; }
-        .note:nth-child(7) { left: 70%; animation-delay: 2.5s; width: 3%; }
-        .note:nth-child(8) { left: 80%; animation-delay: 1.2s; width: 4%; }
-        .note:nth-child(9) { left: 15%; animation-delay: 2.8s; width: 5%; }
-        .note:nth-child(10) { left: 25%; animation-delay: 0.3s; width: 3%; }
-        .note:nth-child(11) { left: 35%; animation-delay: 1.8s; width: 4%; }
-        .note:nth-child(12) { left: 45%; animation-delay: 2.2s; width: 5%; }
-        .note:nth-child(13) { left: 55%; animation-delay: 0.7s; width: 3%; }
-        .note:nth-child(14) { left: 65%; animation-delay: 2.7s; width: 4%; }
-        .note:nth-child(15) { left: 75%; animation-delay: 1.3s; width: 5%; }
-        .note:nth-child(16) { left: 85%; animation-delay: 0.9s; width: 3%; }
-        .note:nth-child(17) { left: 5%; animation-delay: 2.4s; width: 4%; }
-        .note:nth-child(18) { left: 90%; animation-delay: 1.7s; width: 5%; }
-        .note:nth-child(19) { left: 12%; animation-delay: 0.4s; width: 3%; }
-        .note:nth-child(20) { left: 88%; animation-delay: 2.9s; width: 4%; }
+        .note:nth-child(1) {
+            left: 10%;
+            animation-delay: 1s;
+            width: 3%;
+        }
+
+        .note:nth-child(2) {
+            left: 20%;
+            animation-delay: 2s;
+            width: 4%;
+        }
+
+        .note:nth-child(3) {
+            left: 30%;
+            animation-delay: 0.5s;
+            width: 5%;
+        }
+
+        .note:nth-child(4) {
+            left: 40%;
+            animation-delay: 1.5s;
+            width: 3%;
+        }
+
+        .note:nth-child(5) {
+            left: 50%;
+            animation-delay: 3s;
+            width: 4%;
+        }
+
+        .note:nth-child(6) {
+            left: 60%;
+            animation-delay: 0.8s;
+            width: 5%;
+        }
+
+        .note:nth-child(7) {
+            left: 70%;
+            animation-delay: 2.5s;
+            width: 3%;
+        }
+
+        .note:nth-child(8) {
+            left: 80%;
+            animation-delay: 1.2s;
+            width: 4%;
+        }
+
+        .note:nth-child(9) {
+            left: 15%;
+            animation-delay: 2.8s;
+            width: 5%;
+        }
+
+        .note:nth-child(10) {
+            left: 25%;
+            animation-delay: 0.3s;
+            width: 3%;
+        }
+
+        .note:nth-child(11) {
+            left: 35%;
+            animation-delay: 1.8s;
+            width: 4%;
+        }
+
+        .note:nth-child(12) {
+            left: 45%;
+            animation-delay: 2.2s;
+            width: 5%;
+        }
+
+        .note:nth-child(13) {
+            left: 55%;
+            animation-delay: 0.7s;
+            width: 3%;
+        }
+
+        .note:nth-child(14) {
+            left: 65%;
+            animation-delay: 2.7s;
+            width: 4%;
+        }
+
+        .note:nth-child(15) {
+            left: 75%;
+            animation-delay: 1.3s;
+            width: 5%;
+        }
+
+        .note:nth-child(16) {
+            left: 85%;
+            animation-delay: 0.9s;
+            width: 3%;
+        }
+
+        .note:nth-child(17) {
+            left: 5%;
+            animation-delay: 2.4s;
+            width: 4%;
+        }
+
+        .note:nth-child(18) {
+            left: 90%;
+            animation-delay: 1.7s;
+            width: 5%;
+        }
+
+        .note:nth-child(19) {
+            left: 12%;
+            animation-delay: 0.4s;
+            width: 3%;
+        }
+
+        .note:nth-child(20) {
+            left: 88%;
+            animation-delay: 2.9s;
+            width: 4%;
+        }
 
         @keyframes fade {
-            0% { opacity: 0; }
-            25% { opacity: 0.5; }
-            50% { opacity: 1; }
-            75% { opacity: 0.5; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         @keyframes movement {
-            from { transform: translateY(0); }
-            to { transform: translateY(-80vh); }
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-80vh);
+            }
         }
 
         .note .top {
@@ -376,14 +488,18 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="scene">
         <div class="shadow-large"></div>
+
         <div class="record-container">
             <div class="record">
                 <div class="center-label">
                     <div class="label-element01"></div>
                     <div class="center-spot"></div>
+
                     <div class="text-container">
                         <svg viewBox="0 0 500 500" id="top-text">
                             <defs>
@@ -395,9 +511,11 @@
                                 </textPath>
                             </text>
                         </svg>
+
                         <svg viewBox="0 0 500 500" id="bottom-text">
                             <defs>
-                                <path id="Path02" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+                                <path id="Path02"
+                                    d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
                             </defs>
                             <text width="500" font-size="3.1em" fill="#fff">
                                 <textPath id="message02" alignment-baseline="top" xlink:href="#Path02">
@@ -407,38 +525,122 @@
                         </svg>
                     </div>
                 </div>
+
                 <div class="highlight"></div>
             </div>
         </div>
+
         <div class="annotation">
             <h1>Yours Truly</h1>
             <h2>Hip-Hop Album</h2>
             <div class="twitter-link"><a href="#"><span>#</span>YoursTruly</a></div>
             <div class="web-link"><a href="#">KR$NA Official</a></div>
         </div>
+
         <div class="notes">
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
-            <div class="note"><div class="top"></div><div class="left"></div><div class="right"></div></div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="note">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
         </div>
     </div>
+
 </body>
+
 </html>
-``` 

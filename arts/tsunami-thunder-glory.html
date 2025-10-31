@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsunami & Thunder Glory</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* Hide scrollbars */
+            background: #0d1a29;
+            /* Deep blue/black for storm */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* * SKY & RAIN (Thunderstorm effect) */
+        .sky {
+            position: relative;
+            width: 100%;
+            height: 60%;
+            /* Occupies top 60% of the screen */
+            background: linear-gradient(to top, #1e3a5a, #0d1a29);
+        }
+
+        .rain {
+            /* Class added by JavaScript */
+            position: absolute;
+            top: -5px;
+            width: 2px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            opacity: 0.8;
+            transform: rotate(20deg);
+            /* Angled rain */
+            animation: rain-fall 0.8s linear infinite;
+        }
+
+        @keyframes rain-fall {
+            0% {
+                transform: translateY(-10px) rotate(20deg);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(20deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* * OCEAN & TSUNAMI WAVES (Heavy movement effect) */
+        .ocean-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40%;
+            /* Waves occupy bottom 40% */
+        }
+
+        .wave {
+            position: absolute;
+            width: 300%;
+            /* Extra wide to scroll for 'big' feeling */
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            /* Create the curved wave shape */
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+        }
+
+        .wave-back {
+            background-color: #051421;
+            /* Darker, deeper water */
+            height: 110%;
+            /* Makes it taller and behind */
+            animation: wave-motion-back 12s cubic-bezier(0.5, 0.5, 0.5, 0.5) infinite;
+            z-index: 1;
+        }
+
+        .wave-front {
+            background-color: #081e33;
+            /* Slightly lighter water */
+            height: 90%;
+            animation: wave-motion-front 8s cubic-bezier(0.5, 0.5, 0.5, 0.5) infinite;
+            z-index: 2;
+        }
+
+        .wave-foam {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* White foam/spray */
+            height: 95%;
+            animation: wave-motion-foam 6s cubic-bezier(0.5, 0.5, 0.5, 0.5) infinite;
+            z-index: 3;
+        }
+
+        /* * KEYFRAMES for the heavy, rolling motion */
+        @keyframes wave-motion-front {
+            0% {
+                transform: translateX(0) scaleY(1);
+            }
+
+            50% {
+                transform: translateX(-66.6%) scaleY(1.05);
+            }
+
+            /* Move across and slightly 'swell' */
+            100% {
+                transform: translateX(0) scaleY(1);
+            }
+        }
+
+        @keyframes wave-motion-back {
+            0% {
+                transform: translateX(0) scaleY(1.1);
+            }
+
+            50% {
+                transform: translateX(-66.6%) scaleY(1.15);
+            }
+
+            /* Move across and slightly 'swell' */
+            100% {
+                transform: translateX(0) scaleY(1.1);
+            }
+        }
+
+        @keyframes wave-motion-foam {
+            0% {
+                transform: translateX(0) scaleY(1);
+            }
+
+            50% {
+                transform: translateX(-66.6%) scaleY(1.1);
+            }
+
+            100% {
+                transform: translateX(0) scaleY(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sky"></div>
+
+    <div class="ocean-container">
+        <div class="wave wave-back"></div>
+        <div class="wave wave-front"></div>
+        <div class="wave wave-foam"></div>
+    </div>
+
+    <script>
+        const sky = document.querySelector('.sky');
+        const rainCount = 100; // Number of raindrops
+        const thunderInterval = 5000; // Thunder flash every 5 seconds
+
+        // 1. Create Rain Drops
+        for (let i = 0; i < rainCount; i++) {
+            const rain = document.createElement('div');
+            rain.classList.add('rain');
+            // Randomize starting position
+            rain.style.left = Math.random() * 100 + 'vw';
+            // Randomize animation delay for staggered look
+            rain.style.animationDelay = Math.random() * 2 + 's';
+            rain.style.opacity = Math.random() * 0.8;
+            sky.appendChild(rain);
+        }
+
+        // 2. Create Thunder Effect
+        function thunderFlash() {
+            // Briefly change the sky background color to white/light blue
+            sky.style.transition = 'background 0.05s ease-in-out';
+            sky.style.background = 'linear-gradient(to top, #778899, #c3d9e8)'; // Flash color
+
+            // Change back after a very short delay
+            setTimeout(() => {
+                sky.style.transition = 'background 0.5s ease-in-out';
+                sky.style.background = 'linear-gradient(to top, #1e3a5a, #0d1a29)'; // Original dark color
+            }, 100);
+        }
+
+        // Start the repeated thunder flash
+        setInterval(thunderFlash, thunderInterval);
+    </script>
+    
+</body>
+
+</html>

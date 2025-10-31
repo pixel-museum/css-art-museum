@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,11 +29,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
                 radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
                 radial-gradient(2px 2px at 160px 30px, #fff, transparent);
             background-repeat: repeat;
             background-size: 200px 100px;
@@ -40,8 +41,13 @@
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.8; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         /* Earth container */
@@ -51,7 +57,7 @@
             height: 300px;
             border-radius: 50%;
             background: linear-gradient(45deg, #1e3c72 0%, #2a5298 100%);
-            box-shadow: 
+            box-shadow:
                 0 0 50px rgba(30, 60, 114, 0.8),
                 inset -20px -20px 50px rgba(0, 0, 0, 0.3),
                 inset 20px 20px 50px rgba(255, 255, 255, 0.1);
@@ -67,7 +73,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: 
+            background:
                 radial-gradient(circle at 30% 40%, #4a7c59 0%, #2d5016 100%),
                 radial-gradient(circle at 70% 30%, #8b4513 0%, #654321 100%),
                 radial-gradient(circle at 20% 70%, #228b22 0%, #006400 100%),
@@ -82,8 +88,13 @@
         }
 
         @keyframes earth-rotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
         }
 
         /* Continents */
@@ -169,21 +180,24 @@
             width: 330px;
             height: 330px;
             border-radius: 50%;
-            background: radial-gradient(circle, 
-                transparent 60%, 
-                rgba(135, 206, 235, 0.2) 70%, 
-                rgba(135, 206, 235, 0.1) 80%, 
-                transparent 90%);
+            background: radial-gradient(circle,
+                    transparent 60%,
+                    rgba(135, 206, 235, 0.2) 70%,
+                    rgba(135, 206, 235, 0.1) 80%,
+                    transparent 90%);
             animation: atmosphere-pulse 4s ease-in-out infinite;
             z-index: 3;
         }
 
         @keyframes atmosphere-pulse {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: translate(-50%, -50%) scale(1);
                 opacity: 0.4;
             }
-            50% { 
+
+            50% {
                 transform: translate(-50%, -50%) scale(1.02);
                 opacity: 0.6;
             }
@@ -197,7 +211,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: 
+            background:
                 radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.25) 0%, transparent 45%),
                 radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 35%),
@@ -207,8 +221,13 @@
         }
 
         @keyframes clouds-move {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
         }
 
         /* Moon */
@@ -220,7 +239,7 @@
             height: 50px;
             background: linear-gradient(45deg, #c0c0c0, #a0a0a0);
             border-radius: 50%;
-            box-shadow: 
+            box-shadow:
                 0 0 15px rgba(192, 192, 192, 0.4),
                 inset -8px -8px 15px rgba(0, 0, 0, 0.2);
             transform: translate(-50%, -50%);
@@ -250,19 +269,23 @@
         }
 
         @keyframes moon-orbit {
-            0% { 
+            0% {
                 transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
             }
-            25% { 
+
+            25% {
                 transform: translate(-50%, -50%) rotate(90deg) translateX(200px) rotate(-90deg);
             }
-            50% { 
+
+            50% {
                 transform: translate(-50%, -50%) rotate(180deg) translateX(200px) rotate(-180deg);
             }
-            75% { 
+
+            75% {
                 transform: translate(-50%, -50%) rotate(270deg) translateX(200px) rotate(-270deg);
             }
-            100% { 
+
+            100% {
                 transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg);
             }
         }
@@ -295,7 +318,7 @@
         /* Hover effect */
         .earth-container:hover {
             transform: scale(1.02);
-            box-shadow: 
+            box-shadow:
                 0 0 60px rgba(30, 60, 114, 0.9),
                 inset -20px -20px 50px rgba(0, 0, 0, 0.3),
                 inset 20px 20px 50px rgba(255, 255, 255, 0.15);
@@ -313,14 +336,14 @@
                 width: 250px;
                 height: 250px;
             }
-            
+
             .atmosphere {
                 width: 270px;
                 height: 270px;
                 top: -10px;
                 left: -10px;
             }
-            
+
             .moon {
                 width: 50px;
                 height: 50px;
@@ -328,10 +351,10 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Stars background -->
     <div class="stars"></div>
-
 
     <!-- Earth container -->
     <div class="earth-container">
@@ -342,7 +365,7 @@
             <div class="continent continent-2"></div>
             <div class="continent continent-3"></div>
             <div class="continent continent-4"></div>
-            
+
             <!-- Oceans -->
             <div class="ocean ocean-1"></div>
             <div class="ocean ocean-2"></div>
@@ -363,5 +386,7 @@
         Hover to pause rotation<br>
         Pure CSS • No JSJSJscr
     </div> -->
+    
 </body>
+
 </html>
