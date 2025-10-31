@@ -2669,6 +2669,14 @@
     "date": "2025-10-28"
   },
   {
+	"file":"darshan-Sunset-Landscape.html",
+	"title":"Sunset CSS Art",
+	"author":"Darshan Totagi",
+	"tags":["sunset","scenary","CSS"],
+	"description":"A Animated Sunset View",
+	"date":"2025-10-29"
+  },
+  {
   "file": "crazy-coder-neel_aurora-borealis.html",
   "title": "Aurora Borealis Animation",
   "author": "crazy-coder-neel",
@@ -2708,5 +2716,6 @@
   "description": "A spooky yet playful CSS animation of eerie nighttime with moonlight and fog layer and a floating ghost cursor gliding across the screen with smooth motion effects.",
   "date": "2025-10-30"
 }
+
 ]
 
