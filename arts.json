@@ -2723,6 +2723,14 @@
   "tags": ["ghost", "halloween", "spooky", "eerie night-time effect", "css-animation"],
   "description": "A spooky yet playful CSS animation of eerie nighttime with moonlight and fog layer and a floating ghost cursor gliding across the screen with smooth motion effects.",
   "date": "2025-10-30"
+},
+{
+  "file": "surya-luxurywatch.html",
+  "title": "Luxury Watch Sketch",
+  "author": "Surya",
+  "tags": ["watch", "luxury", "realistic", "css", "animation", "sketch"],
+  "description": "A realistic luxury wristwatch artwork made using pure HTML and CSS, featuring metallic textures, rotating hands, and elegant detailing.",
+  "date": "2025-10-31"
 }
 
 ]
