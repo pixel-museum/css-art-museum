@@ -2675,6 +2675,39 @@
 	"tags":["sunset","scenary","CSS"],
 	"description":"A Animated Sunset View",
 	"date":"2025-10-29"
-  }
+  },
+  {
+  "file": "crazy-coder-neel_aurora-borealis.html",
+  "title": "Aurora Borealis Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["aurora", "northern lights", "sky", "css-animation"],
+  "description": "A mesmerizing animation that recreates the flowing colors of the aurora borealis using modern CSS effects.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_Lightning-storm.html",
+  "title": "Lightning Storm Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["lightning", "storm", "rain", "weather", "css-animation"],
+  "description": "A dynamic animation depicting a dramatic lightning storm with flashes and rain using pure CSS effects.",
+  "date": "2025-10-25"
+},
+{
+  "file": "crazy-coder-neel_volcano.html",
+  "title": "Volcano Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["volcano", "lava", "eruption", "nature", "css-animation"],
+  "description": "A fiery CSS animation that brings a volcano to life with glowing lava flows and eruptive bursts.",
+  "date": "2025-10-26"
+},
+{
+  "file": "crazy-coder-neel_ghost_animation.html",
+  "title": "Ghost Animation",
+  "author": "crazy-coder-neel",
+  "tags": ["ghost", "halloween", "spooky", "floating", "css-animation"],
+  "description": "A spooky yet playful CSS animation of a floating ghost gliding across the screen with smooth motion effects.",
+  "date": "2025-10-30"
+}
+
 ]
 
