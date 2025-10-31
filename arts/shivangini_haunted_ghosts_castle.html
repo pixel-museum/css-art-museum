@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haunted Castle with Floating Ghosts by Shivangini 👻🏰</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to bottom, #1a1d35 0%, #06070f 100%);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #2c3260 0%, #090b16 90%);
+    }
+
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 50px;
+      right: 120px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #fff9c4 0%, #f8e071 50%, transparent 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px 10px rgba(255, 250, 200, 0.4);
+      z-index: 1;
+    }
+
+    /* Haunted Castle */
+    .castle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 200px;
+      background: #0a0a15;
+      clip-path: polygon(0 100%, 0 50%, 10% 45%, 10% 0%, 20% 0%, 20% 45%, 30% 50%, 40% 35%, 50% 0%, 60% 35%, 70% 50%, 80% 45%, 80% 0%, 90% 0%, 90% 45%, 100% 50%, 100% 100%);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+      z-index: 2;
+    }
+
+    .window {
+      position: absolute;
+      width: 15px;
+      height: 20px;
+      background: radial-gradient(circle, #ffcf66 0%, #ff9900 80%);
+      border-radius: 3px;
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    .window:nth-child(1) { left: 40px; top: 90px; }
+    .window:nth-child(2) { left: 130px; top: 60px; }
+    .window:nth-child(3) { left: 230px; top: 100px; }
+
+    @keyframes flicker {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+
+    /* Wispy Ghosts */
+    .ghost {
+      position: absolute;
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0) 80%);
+      border-radius: 50% 50% 60% 60% / 40% 40% 80% 80%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      animation: floatGhost 8s ease-in-out infinite, fadeGhost 6s ease-in-out infinite alternate;
+      z-index: 4;
+    }
+
+    .ghost::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 80px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 70%);
+      transform: translateX(-50%);
+      border-radius: 50%;
+      filter: blur(8px);
+    }
+
+    @keyframes floatGhost {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    @keyframes fadeGhost {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* Fog */
+    .fog {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 70%);
+      animation: drift 40s linear infinite;
+      opacity: 0.4;
+      filter: blur(50px);
+      z-index: 3;
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Bats */
+    .bat {
+      position: absolute;
+      width: 40px;
+      height: 20px;
+      background: transparent;
+      animation: fly 10s linear infinite;
+      z-index: 5;
+    }
+
+    .bat::before, .bat::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: black;
+      border-radius: 50% 50% 0 0;
+      animation: flap 0.5s ease-in-out infinite;
+    }
+
+    .bat::before {
+      left: 0;
+      transform-origin: right center;
+    }
+
+    .bat::after {
+      right: 0;
+      transform-origin: left center;
+    }
+
+    @keyframes flap {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(40deg); }
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(-100px) translateY(0); }
+      50% { transform: translateX(100vw) translateY(-40px); }
+      100% { transform: translateX(110vw) translateY(10px); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="scene" id="scene">
+    <div class="moon"></div>
+    <div class="castle">
+      <div class="window"></div>
+      <div class="window"></div>
+      <div class="window"></div>
+    </div>
+    <div class="fog"></div>
+  </div>
+
+  <script>
+    const scene = document.getElementById('scene');
+
+    // Add floating ghosts
+    for (let i = 0; i < 10; i++) {
+      const ghost = document.createElement('div');
+      ghost.classList.add('ghost');
+      ghost.style.left = Math.random() * 100 + 'vw';
+      ghost.style.top = Math.random() * 70 + 'vh';
+      ghost.style.animationDelay = `${Math.random() * 5}s`;
+      scene.appendChild(ghost);
+    }
+
+    // Add bats
+    for (let i = 0; i < 6; i++) {
+      const bat = document.createElement('div');
+      bat.classList.add('bat');
+      bat.style.top = Math.random() * 50 + 'vh';
+      bat.style.left = Math.random() * -100 + 'px';
+      bat.style.animationDelay = `${Math.random() * 12}s`;
+      scene.appendChild(bat);
+    }
+  </script>
+</body>
+</html>
