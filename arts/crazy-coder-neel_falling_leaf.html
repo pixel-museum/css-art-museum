@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Tree with Falling Leaves</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            z-index: 1;
+        }
+
+        .tree-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 5%;
+        }
+
+        .tree-trunk {
+            width: 60px;
+            height: 200px;
+            background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tree-crown {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 250px;
+            background: radial-gradient(ellipse at center, #556B2F, #2F4F2F);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 50px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .tree-crown::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(ellipse at center, rgba(107, 142, 35, 0.3), transparent 70%);
+            border-radius: 50%;
+            animation: crown-glow 4s ease-in-out infinite alternate;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 1.5rem;
+            z-index: 3;
+            pointer-events: none;
+            user-select: none;
+            animation-name: fall, sway;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: 1, infinite;
+            animation-fill-mode: forwards, none;
+            filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes sway {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-15px);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes crown-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            color: #2F4F2F;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #A0522D;
+        }
+
+        .leaf-count {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2F4F2F;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        
+        
+        <div class="tree-container">
+            <div class="tree-crown"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        
+        <div class="ground"></div>
+        
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scene = document.querySelector('.scene');
+            const leafTypes = ['🍂', '🍁', '🍃'];
+            let leafInterval = 500; // Initial interval (2 leaves per second)
+            let leafIntervalId = null;
+            
+            // Get control elements
+            const moreLeavesBtn = document.getElementById('moreLeaves');
+            const fewerLeavesBtn = document.getElementById('fewerLeaves');
+            const resetBtn = document.getElementById('reset');
+            const leafRateDisplay = document.getElementById('leafRate');
+            
+            // Function to create a leaf
+            const createLeaf = () => {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                
+                // Randomize leaf type
+                leaf.innerHTML = leafTypes[Math.floor(Math.random() * leafTypes.length)];
+                
+                // Position leaf at random position within the tree crown
+                const treeCrown = document.querySelector('.tree-crown');
+                const crownRect = treeCrown.getBoundingClientRect();
+                
+                // Calculate random position within the crown
+                const crownCenterX = crownRect.left + crownRect.width / 2;
+                const crownCenterY = crownRect.top + crownRect.height / 2;
+                const crownRadiusX = crownRect.width / 2;
+                const crownRadiusY = crownRect.height / 2;
+                
+                // Generate random position within the elliptical crown
+                let angle = Math.random() * 2 * Math.PI;
+                let radiusX = Math.random() * crownRadiusX * 0.8;
+                let radiusY = Math.random() * crownRadiusY * 0.8;
+                
+                const leafX = crownCenterX + Math.cos(angle) * radiusX;
+                const leafY = crownCenterY + Math.sin(angle) * radiusY;
+                
+                // Set leaf position
+                leaf.style.left = `${leafX}px`;
+                leaf.style.top = `${leafY}px`;
+                
+                // Randomize size
+                leaf.style.fontSize = (Math.random() * 1 + 1) + 'rem'; // 1rem to 2rem
+                
+                // Randomize opacity
+                leaf.style.opacity = Math.random() * 0.5 + 0.5; // 0.5 to 1.0
+                
+                // Randomize animation durations
+                const fallDuration = Math.random() * 5 + 8; // Fall speed: 8s to 13s
+                const swayDuration = Math.random() * 2 + 3; // Sway speed: 3s to 5s
+                
+                // Set the durations for both animations
+                leaf.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
+                
+                // Add a random delay to the sway animation
+                leaf.style.animationDelay = `0s, ${Math.random() * 2}s`;
+                
+                // Add the new leaf to the scene
+                scene.appendChild(leaf);
+                
+                // Clean up: Remove the leaf from the DOM after it finishes falling
+                leaf.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'fall') {
+                        leaf.remove();
+                    }
+                });
+            };
+            
+            // Function to start leaf generation
+            const startLeafGeneration = () => {
+                if (leafIntervalId) {
+                    clearInterval(leafIntervalId);
+                }
+                leafIntervalId = setInterval(createLeaf, leafInterval);
+                leafRateDisplay.textContent = Math.round(1000 / leafInterval);
+            };
+            
+            // Initialize leaf generation
+            startLeafGeneration();
+            
+            // Add some initial leaves
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createLeaf, i * 300);
+            }
+            
+            // Control event listeners
+            moreLeavesBtn.addEventListener('click', () => {
+                if (leafInterval > 100) { // Minimum interval of 100ms
+                    leafInterval -= 100;
+                    startLeafGeneration();
+                }
+            });
+            
+            fewerLeavesBtn.addEventListener('click', () => {
+                leafInterval += 100;
+                startLeafGeneration();
+            });
+            
+            resetBtn.addEventListener('click', () => {
+                leafInterval = 500;
+                startLeafGeneration();
+            });
+        });
+    </script>
+</body>
+</html>
