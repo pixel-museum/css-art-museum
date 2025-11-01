@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halloween Scene 🎃👻🧛‍♂️</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #0a0a0a 40%, #1b0b0b);
+      overflow: hidden;
+    }
+
+    /* 🎃 Pumpkin */
+    .pumpkin {
+      z-index: 10;
+      position: relative;
+      width: 80px;
+      height: 70px;
+      background-color: #f18b36;
+      border-radius: 70px;
+      margin: 3em auto;
+      background-image: linear-gradient(to right, #f6ad60 50%, #f18b36 50%);
+      box-shadow: -30px 0 0 0 #f38b36,
+                   -50px 0 0 0 #c95927,
+                    30px 0 0 0 #c95927,
+                    50px 0 0 0 #97441a;
+      transform: scaleY(1.5);
+    }
+    .pumpkin::before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 25px;
+      top: -25%;
+      left: 41%;
+      background-image: linear-gradient(-70deg, #967532 50%, transparent 50%);
+    }
+    .pumpkin::after {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 25px;
+      top: -25%;
+      left: 50%;
+      background-color: #7b6200;
+    }
+    .eye {
+      width: 25px;
+      height: 30px;
+      background: #967532;
+      position: absolute;
+      top: 10px;
+      right: 60%;
+      border-radius: 100% 0 0 50%;
+      box-shadow: inset 3px 5px 0 rgba(0, 0, 0, 0.2);
+      animation: eyeanim 3s infinite;
+    }
+    .eye::after {
+      content: "";
+      width: 25px;
+      height: 20px;
+      background: #967532;
+      position: absolute;
+      right: 60%;
+      border-radius: 100% 0 0 50%;
+      box-shadow: inset 3px 5px 0 rgba(0, 0, 0, 0.2);
+      transform: translateX(63px) scaleX(-1) rotate(-30deg) translateY(2px);
+      animation: eyeanim 3s infinite;
+    }
+    .mouth {
+      position: absolute;
+      animation: hasna 0.7s infinite;
+      width: 80px;
+      height: 20px;
+      background-color: #967532;
+      top: 55%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 30px 30px;
+      box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.2);
+    }
+    .mouth::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24%;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 13px solid #f6ad60;
+    }
+    .mouth::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 24%;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 13px solid #f18b36;
+    }
+    @keyframes eyeanim {
+      0% { background: #a24d13; }
+      50% { height: 1.5em; }
+      100% { background: #967532; }
+    }
+    @keyframes hasna {
+      50% { height: 1.5em; background-color: #a24d13; }
+    }
+
+    /* 👻 Ghosts */
+    #container, #container1 {
+      width: 180px;
+      height: 180px;
+      position: absolute;
+      box-sizing: border-box;
+    }
+    #container { top: 30%; left: 10%; }
+    #container1 { top: 10%; right: 10%; }
+
+    #ghost {
+      margin: 10% auto;
+      width: 70%;
+      height: 70%;
+      animation: floaty 2s infinite;
+    }
+    #body {
+      position: relative;
+      margin: 50px auto 0;
+      width: 160px;
+      height: 220px;
+      background: white;
+      border-top-left-radius: 90px;
+      border-top-right-radius: 90px;
+    }
+    #body:before, #body:after {
+      content: '';
+      position: absolute;
+      top: 130px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      animation: floaty .2s infinite;
+    }
+    #body:before { left: -18px; }
+    #body:after { right: -18px; }
+    #eyes {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding: 90px 0 0;
+      width: 80px;
+      height: 20px;
+    }
+    #eyes:before, #eyes:after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 20px;
+      background: black;
+      border-radius: 50%;
+    }
+    #mouth {
+      background: black;
+      margin: 25px auto 0;
+      width: 60px;
+      height: 30px;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 30px;
+    }
+    #feet {
+      position: absolute;
+      display: flex;
+      bottom: -18px;
+      width: 180px;
+      height: 36px;
+      left: .5px;
+    }
+    #feet > * {
+      width: 36px;
+      height: 36px;
+      background: black;
+      border-radius: 50%;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* 🧛 Dracula */
+    .halloween {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .dracula {
+      position: relative;
+      cursor: pointer;
+      top: -250px;
+    }
+    .head {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: black;
+      box-shadow: inset 20px -20px #c7c2e0;
+      z-index: 3;
+    }
+    .head:before, .head:after {
+      content: "";
+      position: absolute;
+      background-color: #c7c2e0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+    }
+    .head:before { left: -55px; }
+    .head:after { left: 45px; }
+    .sides {
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: -20px;
+      top: -20px;
+      box-shadow: 90px 0px black;
+      z-index: 3;
+    }
+    .sides:before {
+      content: "";
+      position: absolute;
+      background-color: black;
+      width: 35px;
+      height: 5px;
+      top: 90px;
+      left: 50px;
+    }
+    .sides:after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 20px;
+      background-color: #f11828;
+      top: 95px;
+      left: 78px;
+      border-radius: 0 0 10px 10px;
+      animation: drip 3s linear infinite;
+    }
+    @keyframes drip {
+      0%,10%,70%,100% { height: 20px; }
+      30% { height: 30px; }
+      50% { height: 25px; }
+      85% { height: 10px; }
+    }
+    .teeth, .teeth:before {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid transparent;
+    }
+    .teeth {
+      border-right: 10px solid black;
+      top: 73px;
+      left: 30px;
+      z-index: 4;
+    }
+    .teeth:before {
+      content: "";
+      border-left: 10px solid black;
+      left: 25px;
+    }
+    .eyes {
+      position: absolute;
+      border-radius: 50%;
+      width: 33px;
+      height: 33px;
+      background-color: white;
+      top: 32px;
+      left: 18.5px;
+      z-index: 2;
+      box-shadow: 30px 0 white;
+    }
+    .eyes:before, .eyes:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+    .eyes:before {
+      background-color: #ed439d;
+      width: 25px;
+      height: 25px;
+      top: 5px;
+      left: 7px;
+      box-shadow: 25px 0 #ed439d;
+    }
+    .eyes:after {
+      background-color: #7d203a;
+      width: 15px;
+      height: 15px;
+      top: 10px;
+      left: 13px;
+      box-shadow: 24px 0 #7d203a;
+    }
+    .eyelids {
+      position: absolute;
+      background-color: black;
+      width: 25px;
+      height: 10px;
+      border-radius: 100px 100px 0 0;
+      top: 30px;
+      left: 27px;
+      transform: rotate(20deg);
+      z-index: 4;
+    }
+    .eyelids:before {
+      content: "";
+      position: absolute;
+      background-color: black;
+      width: 25px;
+      height: 10px;
+      border-radius: 100px 100px 0 0;
+      transform: rotate(-40deg);
+      left: 20px;
+      top: -7px;
+    }
+    .ears {
+      position: absolute;
+      background-color: #9e8dc3;
+      width: 50px;
+      height: 25px;
+      border-radius: 0 0 100px 100px;
+      top: 40px;
+      left: -30px;
+      transform: rotate(40deg);
+      z-index: 2;
+    }
+    .ears:before {
+      content: "";
+      position: absolute;
+      background-color: #9e8dc3;
+      width: 50px;
+      height: 25px;
+      border-radius: 0 0 100px 100px;
+      transform: rotate(-80deg);
+      left: 83px;
+      top: -70px;
+    }
+    .collar {
+      position: absolute;
+      background-color: black;
+      width: 150px;
+      height: 75px;
+      border-radius: 0 0 100px 100px;
+      top: 55px;
+      left: -25px;
+      z-index: 1;
+    }
+    .collar:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-right: 20px solid transparent;
+      border-left: 20px solid transparent;
+      border-top: 30px solid #1a0e36;
+      left: 55px;
+      top: 40px;
+    }
+    .collar:before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 0;
+      border-right: 25px solid transparent;
+      border-left: 25px solid transparent;
+      border-bottom: 180px solid black;
+      top: 30px;
+      left: 10px;
+    }
+    .arms {
+      position: absolute;
+      width: 100px;
+      height: 0;
+      border-right: 25px solid transparent;
+      border-left: 25px solid transparent;
+      border-bottom: 155px solid #1a0e36;
+      left: -25px;
+      transition: .2s;
+    }
+    .text {
+      position: absolute;
+      z-index: 5;
+      text-align: center;
+      font-family: 'Freckle Face', cursive;
+      font-size: 50px;
+      color: #f11828;
+      top: 120px;
+      left: -50px;
+      opacity: 0;
+      transition: .2s;
+    }
+    .dracula:hover .arms { transform: scaleX(2); }
+    .dracula:hover .text { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- 🎃 Pumpkin -->
+  <div class="pumpkin">
+    <div class="eye"></div>
+    <div class="mouth"></div>
+  </div>
+
+  <!-- 👻 Ghosts -->
+  <div id="container">
+    <div id="ghost">
+      <div id="body">
+        <div id="eyes">
+          <div id="mouth">
+            <div id="feet">
+              <div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="container1">
+    <div id="ghost">
+      <div id="body">
+        <div id="eyes">
+          <div id="mouth">
+            <div id="feet">
+              <div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🧛 Dracula -->
+  <div class="halloween">
+    <div class="dracula">
+      <div class="head">
+        <div class="sides"></div>
+        <div class="teeth"></div>
+        <div class="eyes"></div>
+        <div class="eyelids"></div>
+      </div>
+      <div class="ears"></div>
+      <div class="collar"></div>
+      <div class="arms"></div>
+      <div class="text">Happy Halloween</div>
+    </div>
+  </div>
+
+</body>
+</html>

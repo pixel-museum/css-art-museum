@@ -2757,6 +2757,14 @@
   "tags": ["fall", "leaf", "autumn", "tree", "css-animation"],
   "description": "A smooth falling leaf transition.",
   "date": "2025-10-31"
+},
+  {
+  "file": "halloween_art.html",
+  "title": "halloween art",
+  "author": "Mehren Ansari",
+  "tags": ["halloween", "ghost", "horror", "animation", "css art"],
+  "description": "A serene CSS art scene of a floating dracula along with 2 cute ghost and a hanging pumpkin as a lamp.",
+  "date": "2025-10-31"
 }
 
 ]
