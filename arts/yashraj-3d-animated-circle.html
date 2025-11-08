@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-R">
+    <title>3D Rotating Circle (X-Axis)</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5;
+            /* Add perspective to enable 3D transformations */
+            perspective: 800px; 
+        }
+
+        .art {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            
+            /* Apply the animation */
+            animation: rotate-x 4s linear infinite;
+        }
+
+        /* Define the rotation animation */
+        @keyframes rotate-x {
+            from {
+                transform: rotateX(0deg);
+            }
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="art"></div>
+</body>
+</html>
