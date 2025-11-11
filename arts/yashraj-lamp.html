@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Woven Lamp Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1a0f08;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .art-card {
+      position: relative;
+      width: 350px;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      border-radius: 20px;
+      overflow: hidden;
+      
+      /* Animation for the card's background color */
+      animation: illuminate-bg 4s ease-in-out infinite;
+    }
+    
+    /* Lamp container (Scaled down) */
+    .lamp-container {
+      position: relative;
+      width: 175px; 
+      height: 250px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    }
+
+    /* Lamp base (Scaled down) */
+    .lamp-base {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px; 
+      height: 12.5px;
+      background: linear-gradient(to bottom, #B8956A, #8B6F47);
+      border-radius: 50%;
+      box-shadow: 
+        0 2.5px 10px rgba(0, 0, 0, 0.5),
+        inset 0 -1.5px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1.5px 2.5px rgba(255, 255, 255, 0.2);
+    }
+
+    .lamp-base::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25px;
+      height: 7.5px;
+      background: linear-gradient(to bottom, #9B7E52, #6B5435);
+      border-radius: 50%;
+      box-shadow: inset 0 -1px 2.5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Woven lamp shade (Scaled down) */
+    .lamp-shade {
+      position: absolute;
+      bottom: 12.5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 210px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420"><defs><pattern id="weave" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="%23654321"/><line x1="0" y1="0" x2="8" y2="8" stroke="%23432818" stroke-width="1.5"/><line x1="8" y1="0" x2="0" y2="8" stroke="%23432818" stroke-width="1.5"/><circle cx="4" cy="4" r="1" fill="%2333250F"/></pattern></defs><ellipse cx="140" cy="30" rx="120" ry="30" fill="%23B8956A"/><path d="M 20 30 Q 20 80 35 150 Q 45 220 60 290 Q 70 350 100 390 L 180 390 Q 210 350 220 290 Q 235 220 245 150 Q 260 80 260 30 Z" fill="url(%23weave)"/><ellipse cx="140" cy="390" rx="80" ry="20" fill="%23B8956A"/></svg>') no-repeat center;
+      background-size: contain;
+      
+      /* Animation */
+      animation: illuminate-shade 4s ease-in-out infinite;
+    }
+
+    /* Inner glow (Scaled down) */
+    .inner-glow {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130px;
+      height: 200px;
+      background: radial-gradient(ellipse at center, rgba(255, 200, 120, 0.8) 0%, transparent 60%);
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(20px);
+      
+      /* Animation */
+      animation: illuminate-glow 4s ease-in-out infinite;
+    }
+
+    /* Light rays (Scaled down) */
+    .light-rays {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 210px;
+      pointer-events: none;
+      
+      /* Animation */
+      animation: illuminate-rays 4s ease-in-out infinite;
+    }
+
+    .ray {
+      position: absolute;
+      width: 2px;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(255, 200, 120, 0.6), transparent);
+      filter: blur(3px);
+    }
+    .ray:nth-child(1) { left: 30%; top: 20%; transform: rotate(15deg); }
+    .ray:nth-child(2) { left: 70%; top: 25%; transform: rotate(-20deg); }
+    .ray:nth-child(3) { left: 15%; top: 45%; transform: rotate(25deg); }
+    .ray:nth-child(4) { left: 85%; top: 50%; transform: rotate(-15deg); }
+    .ray:nth-child(5) { left: 40%; top: 65%; transform: rotate(10deg); }
+    .ray:nth-child(6) { left: 60%; top: 70%; transform: rotate(-25deg); }
+    .ray:nth-child(7) { left: 25%; top: 80%; transform: rotate(30deg); }
+    .ray:nth-child(8) { left: 75%; top: 75%; transform: rotate(-10deg); }
+
+    /* Top glow (Scaled down) */
+    .top-glow {
+      position: absolute;
+      bottom: 220px;
+      left: 50%;
+      /* Set base transform */
+      transform: translateX(-50%);
+      width: 150px; /* Made wider */
+      height: 150px; /* Made taller */
+      
+      /* Changed to a brighter, more focused beam */
+      background: radial-gradient(ellipse at bottom, rgba(255, 220, 180, 0.8) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(15px);
+      
+      /* Animation */
+      animation: illuminate-top-glow 4s ease-in-out infinite;
+    }
+
+
+    /* --- KEYFRAME ANIMATIONS --- */
+    
+    @keyframes illuminate-bg {
+      /* Background stays dark now */
+      0%, 50%, 100% {
+        background: linear-gradient(135deg, hsl(25, 50%, 10%) 0%, hsl(25, 60%, 7%) 100%);
+      }
+    }
+
+    /* Ambient glow animation removed */
+
+    @keyframes illuminate-glow {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; } /* Brighter peak */
+    }
+
+    @keyframes illuminate-rays {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; } /* Brighter peak */
+    }
+    
+    @keyframes illuminate-top-glow {
+      0%, 100% { 
+        opacity: 0; 
+        /* Beams starts small */
+        transform: translateX(-50%) scaleY(0.5); 
+      }
+      50% { 
+        opacity: 1; 
+        /* Beams flashes out */
+        transform: translateX(-50%) scaleY(1.5); 
+      }
+    }
+
+    @keyframes illuminate-shade {
+      0%, 100% {
+        filter: brightness(1) contrast(1);
+      }
+      50% {
+        filter: brightness(1.5) contrast(0.9);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="art-card">
+    
+    <div class="lamp-container">
+      <div class="top-glow"></div>
+      <div class="light-rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+      </div>
+      <div class="inner-glow"></div>
+      <div class="lamp-shade"></div>
+      <div class="lamp-base"></div>
+    </div>
+  </div>
+
+</body>
+</html>
