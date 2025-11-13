@@ -2767,6 +2767,13 @@
   "date": "2025-10-31"
 },
 {
+  "file": "dog.html",
+  "title": "CSS Dog",
+  "author": "Kryonn",
+  "tags": ["dog", "css art"],
+  "description": "A simple dog face.",
+  "date": "2025-11-03"
+},
   "file": "yashraj-lamp.html",
   "title": "Animated Lamp",
   "author": "Yashraj",
@@ -2782,6 +2789,5 @@
   "description": "An animated circle rotating in 3D space along its X-axis.",
   "date": "2025-11-08"
 }
-
 ]
 
