@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a0933;
+            margin: 0;
+        }
+
+        .candle {
+            width: 40px;
+            height: 150px;
+            background-color: #ba0909;
+            border-radius: 5px;
+            position: relative;
+            box-shadow:
+                inset 0 0 10px rgba(0, 0, 0, 0.2),
+                0 10px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .candle::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -15px;
+            width: 4px;
+            height: 15px;
+            background-color: #090909;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .candle::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -45px;
+            width: 15px;
+            height: 30px;
+            background-color: #ffde00;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow:
+                0 0 5px 3px rgba(255, 255, 0, 0.7),
+                0 0 10px 5px rgba(255, 150, 0, 0.5),
+                0 0 20px 10px rgba(255, 50, 0, 0.3);
+            animation: flicker 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                transform: translate(-50%, 0) scale(1, 1);
+                box-shadow:
+                    0 0 5px 3px rgba(255, 255, 0, 0.7),
+                    0 0 10px 5px rgba(255, 150, 0, 0.5),
+                    0 0 20px 10px rgba(255, 50, 0, 0.3);
+            }
+
+            25% {
+                transform: translate(-55%, 2px) scale(0.98, 0.95);
+                box-shadow:
+                    0 0 4px 2px rgba(255, 255, 0, 0.6),
+                    0 0 8px 4px rgba(255, 150, 0, 0.4),
+                    0 0 18px 8px rgba(255, 50, 0, 0.2);
+            }
+
+            50% {
+                transform: translate(-45%, -1px) scale(1.02, 1.05);
+                box-shadow:
+                    0 0 6px 4px rgba(255, 255, 0, 0.8),
+                    0 0 12px 6px rgba(255, 150, 0, 0.6),
+                    0 0 22px 12px rgba(255, 50, 0, 0.4);
+            }
+
+            75% {
+                transform: translate(-52%, 1px) scale(0.95, 0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="candle"></div>
+</body>
+</html>
